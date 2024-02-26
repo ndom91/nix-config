@@ -22,6 +22,7 @@
     pkgs.gnome.gnome-boxes
     pkgs.slack
     pkgs.virt-manager
+    pkgs.lazygit
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
