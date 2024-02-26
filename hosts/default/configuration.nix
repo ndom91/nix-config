@@ -180,9 +180,6 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    nixPath = [
-      "nixos-config=/home/ndo/nixos/hosts/default/configuration.nix"
-    ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
