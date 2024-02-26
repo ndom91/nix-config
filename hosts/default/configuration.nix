@@ -15,15 +15,22 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "ndo-nix"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  # Enable wireless networking
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+
+  networking = {
+    hostName = "ndo4";
+    networkmanager.enable = true;
+    firewall.enable = false;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -173,6 +180,9 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+    nixPath = [
+      "nixos-config=/home/ndo/nixos/hosts/default/configuration.nix"
+    ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -183,11 +193,6 @@
   #   enableSSHSupport = true;
   # };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
 
   # system.copySystemConfiguration = true;
   system.stateVersion = "23.11"; # Did you read the comment?
