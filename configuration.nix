@@ -2,12 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }:
+{ lib, inputs, config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./home/main-user.nix
+      inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -81,16 +83,25 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  users.users.ndo = {
-    isNormalUser = true;
-    description = "ndo";
-    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
-    packages = with pkgs; [
-      vivaldi
-      gnome.gnome-boxes
-      slack
-      virt-manager
-    ];
+  main-user.enable = true;
+  main-user.userName = "ndo";
+  # users.users.ndo = {
+    # isNormalUser = true;
+    # description = "ndo";
+    # extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
+    # packages = with pkgs; [
+      # vivaldi
+      # gnome.gnome-boxes
+      # slack
+      # virt-manager
+    # ];
+  # };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "ndo" = import ./home.nix;
+    };
   };
 
 
