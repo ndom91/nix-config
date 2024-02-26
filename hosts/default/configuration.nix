@@ -1,15 +1,19 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ lib, inputs, config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  lib,
+  inputs,
+  config,
+  unstable,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -92,31 +96,26 @@
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
+    extraGroups = ["networkmanager" "docker" "wheel" "libvirt" "kvm"];
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     useGlobalPkgs = true;
     users = {
       "ndo" = import ./home.nix;
     };
   };
 
-
   nixpkgs.config.allowUnfree = true;
-
-  # environment.systemPackages = import ./common-packages.nix {
-    # pkgs = pkgs;
-  # };
 
   environment.systemPackages = with pkgs; [
     ## Unstable
     # TODO: Needs setup
-    # unstable.neovim
-    neovim
+    unstable.neovim
+    # neovim
 
-    # alejandra # nix code formatter
+    alejandra
     coreutils
     difftastic
     docker-compose
@@ -145,8 +144,8 @@
   # FOR LATER: dynamically-linked binaries work-around
   # programs.nix-ld.enable = true;
   # programs.nix-ld.libraries with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
+  # Add any missing dynamic libraries for unpackaged programs
+  # here, NOT in environment.systemPackages
   # ];
 
   services.openssh = {
@@ -172,7 +171,7 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       warn-dirty = false;
     };
     gc = {
@@ -190,17 +189,14 @@
   #   enableSSHSupport = true;
   # };
 
-
   # system.copySystemConfiguration = true;
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
-
 ## hardware-configuration.nix options for future
 # networking.useDHCP = lib.mkDefault true;
 # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 # hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
 # Bluetooth
 # hardware.bluetooth.enable = true;
 # hardware.bluetooth.powerOnBoot = true;
+
