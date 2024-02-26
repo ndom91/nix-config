@@ -18,10 +18,10 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    vivaldi
-    gnome.gnome-boxes
-    slack
-    virt-manager
+    pkgs.vivaldi
+    pkgs.gnome.gnome-boxes
+    pkgs.slack
+    pkgs.virt-manager
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -71,7 +71,7 @@
   #  /etc/profiles/per-user/ndo/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.

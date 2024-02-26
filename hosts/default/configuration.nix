@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./home/ndo.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -83,22 +82,15 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  main-user.enable = true;
-  main-user.userName = "ndo";
-  # users.users.ndo = {
-    # isNormalUser = true;
-    # description = "ndo";
-    # extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
-    # packages = with pkgs; [
-      # vivaldi
-      # gnome.gnome-boxes
-      # slack
-      # virt-manager
-    # ];
-  # };
+  users.users.ndo = {
+    isNormalUser = true;
+    description = "ndo";
+    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
+  };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
     users = {
       "ndo" = import ./home.nix;
     };
