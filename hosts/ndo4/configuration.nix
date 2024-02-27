@@ -65,7 +65,7 @@
     displayManager = {
       gdm.enable = true;
       gdm.wayland = true;
-      defaultSession = "hyprland";
+      # defaultSession = "hyprland";
     };
     desktopManager.gnome.enable = true;
     # videoDrivers = [ "amdgpu" ];
