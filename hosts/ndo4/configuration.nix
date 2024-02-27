@@ -1,24 +1,12 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 { lib, inputs, config, pkgs, ... }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../common/system-packages.nix
     inputs.home-manager.nixosModules.default
   ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable wireless networking
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -46,26 +34,6 @@
     LC_PAPER = "de_DE.UTF-8";
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
-  };
-
-  xdg.portal = {
-    config = {
-      common = {
-        default = [
-          "gtk"
-        ];
-      };
-      sddm = {
-        default = [
-          "hyprland"
-        ];
-      };
-    };
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
-    ];
   };
 
   # Enable the X11 windowing system.
@@ -122,6 +90,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
+    useUserPackages = true;
     users = {
       "ndo" = import ./home.nix;
     };
@@ -220,6 +189,7 @@
   };
 
   nix = {
+    autoOptimiseStore = true;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;

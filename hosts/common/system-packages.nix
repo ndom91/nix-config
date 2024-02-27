@@ -22,8 +22,8 @@
     lm_sensors
     lshw
     neofetch
-    neovim
     nmap
+    nmtui
     ouch
     pasystray
     pavucontrol

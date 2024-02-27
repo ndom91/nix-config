@@ -1,22 +1,22 @@
 { pkgs, config, ... }:
 {
-  home.packages = [
-    pkgs.vivaldi
-    pkgs.gnome.gnome-boxes
-    pkgs.slack
-    pkgs.virt-manager
-    pkgs.lazygit
-    pkgs.wezterm
+  home.packages = with pkgs; [
+    vivaldi
+    gnome.gnome-boxes
+    slack
+    virt-manager
+    lazygit
+    wezterm
 
-    pkgs.zathura
-    pkgs.vlc
-    pkgs.whois
-    pkgs.jq
+    zathura
+    vlc
+    whois
+    jq
 
-    pkgs.starship
+    starship
 
-    (pkgs.nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
-    pkgs.noto-fonts-color-emoji
+    (nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
+    noto-fonts-color-emoji
 
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
