@@ -1,8 +1,5 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-{ lib, inputs, config, pkgs, ... }: {
-  imports = [
+{ lib, inputs, pkgs, ... }: {
+  imports = with pkgs; [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../common/system-packages.nix
@@ -13,16 +10,17 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
 
   networking = {
     hostName = "ndo4";
+    useDHCP = lib.mkDefault true;
+    wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
+
     firewall.enable = false;
+    # Open ports in the firewall.
+    # firewall.allowedTCPPorts = [ ... ];
+    # firewall.allowedUDPPorts = [ ... ];
   };
 
   # Set your time zone.
@@ -218,8 +216,3 @@
   # DO NOT TOUCH #
   system.stateVersion = "23.11";
 }
-## hardware-configuration.nix options for future
-# networking.useDHCP = lib.mkDefault true;
-# nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-# hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-# Bluetooth

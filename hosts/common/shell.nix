@@ -1,4 +1,4 @@
-{ home, inputs, pkgs, ... }:
+{ ... }:
 {
   # https://nix-community.github.io/home-manager/options.xhtml#opt-home.sessionPath
   # home.sessionPath = [];

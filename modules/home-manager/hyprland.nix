@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, lib, ... }:
+{ pkgs, inputs, ... }:
 {
   
   xdg.portal = {

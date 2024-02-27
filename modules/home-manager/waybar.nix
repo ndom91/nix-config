@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 let
   mainWaybarConfig = {
     # output = "DP-1";

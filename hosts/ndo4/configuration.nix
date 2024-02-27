@@ -1,5 +1,5 @@
 { lib, inputs, config, pkgs, ... }: {
-  imports = [
+  imports = with pkgs; [
     ./hardware-configuration.nix
     ../common/system-packages.nix
     inputs.home-manager.nixosModules.default
@@ -8,14 +8,15 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-
   networking = {
     hostName = "ndo4";
+    useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
+
     firewall.enable = false;
+    # Open ports in the firewall.
+    # firewall.allowedTCPPorts = [ ... ];
+    # firewall.allowedUDPPorts = [ ... ];
   };
 
   # Set your time zone.
@@ -78,8 +79,9 @@
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
-  };
 
+    # cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  };
 
   users.users.ndo = {
     isNormalUser = true;
@@ -97,41 +99,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    bat
-    brightnessctl
-    coreutils
-    difftastic
-    docker-compose
-    dua
-    eza
-    fd
-    ffmpeg
-    file
-    fzf
-    git
-    htop
-    ipmitool
-    jq
-    libnotify
-    lm_sensors
-    neofetch
-    neovim
-    nmap
-    ouch
-    qemu
-    ripgrep
-    smartmontools
-    tmux
-    tree
-    tree
-    unzip
-    watch
-    wget
-    zip
-    zoxide
-  ];
 
   # Set in home-manager home.nix
   # programs.hyprland.enable = true;
@@ -204,8 +171,3 @@
   # DO NOT TOUCH #
   system.stateVersion = "23.11";
 }
-## hardware-configuration.nix options for future
-# networking.useDHCP = lib.mkDefault true;
-# nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-# hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-# Bluetooth

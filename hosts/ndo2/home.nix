@@ -1,6 +1,6 @@
-{ inputs, config, pkgs, nix-colors, ... }:
+{ inputs, nix-colors, pkgs, ... }:
 {
-  imports = with inputs; [
+  imports = with inputs pkgs; [
     nix-colors.homeManagerModules.default
 
     ../common/packages.nix

@@ -1,4 +1,4 @@
-{ input, pkgs, ... }: {
+{ input, ... }: {
   programs.wezterm = {
     enable = true;
     enableBashIntegration = true;

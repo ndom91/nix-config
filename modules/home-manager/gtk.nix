@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, config, ... }:
 {
   # home.file = {
   #   ".local/share/icons/GruvboxPlus".source = "${gruvboxPlus}";
