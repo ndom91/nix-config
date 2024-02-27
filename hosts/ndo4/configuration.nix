@@ -4,7 +4,6 @@
 { lib
 , inputs
 , config
-, unstable
 , pkgs
 , ...
 }: {
@@ -137,10 +136,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    ## Unstable
-    # TODO: Needs setup
-    unstable.neovim
-    # neovim
+    neovim
 
     alejandra
     coreutils
