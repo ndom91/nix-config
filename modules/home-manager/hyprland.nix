@@ -66,6 +66,21 @@
         "blueberry"
 
       ];
+      plugin = {
+        hy3 = {
+          tabs = {
+            height = 5;
+            padding = 8;
+            render_text = false;
+            col.active = "rgb(8a8dcc)";
+          };
+          autotile = {
+            enable = true;
+            trigger_width = 800;
+            trigger_height = 500;
+          };
+        };
+      };
       general = {
         gaps_in = 10;
         gaps_out = 20;
@@ -73,7 +88,7 @@
         "col.active_border" = "rgb(11111b) rgb(181825) 45deg";
         "col.inactive_border" = "rgba(f5e0dc20)";
 
-        layout = hy3;
+        layout = "hy3";
         resize_on_border = true;
       };
       decoration = {
@@ -357,22 +372,6 @@
       binde = , J, resizeactive, 0 40
       bind = , escape, submap, reset
       submap = reset
-
-      plugin {
-        hy3 {
-          tabs {
-            height = 5;
-            padding = 8;
-            render_text = false;
-            col.active = "rgb(8a8dcc)";
-          };
-          autotile {
-            enable = true;
-            trigger_width = 800;
-            trigger_height = 500;
-          }
-        }
-      }
     '';
   };
   home.packages = with pkgs; [
