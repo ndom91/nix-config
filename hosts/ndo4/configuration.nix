@@ -53,11 +53,25 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-hyprland
-  ];
-  xdg.portal.enable = true;
+  xdg.portal = {
+    config = {
+      common = {
+        default = [
+          "gtk"
+        ];
+      };
+      sddm = {
+        default = [
+          "hyprland"
+        ];
+      };
+    };
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
 
   # Enable the X11 windowing system.
   services.xserver = {
