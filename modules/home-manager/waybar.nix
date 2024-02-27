@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 let
   mainWaybarConfig = {
-    output = "DP-1";
+    # output = "DP-1";
     layer = "top";
     exclusive = true;
     passthrough = false;
@@ -424,6 +424,7 @@ in
     #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     # });
     style = css;
-    settings = { mainBar = mainWaybarConfig; verticalBar = verticalWaybarConfig; };
+    settings = { mainBar = mainWaybarConfig; };
+    # settings = { mainBar = mainWaybarConfig; verticalBar = verticalWaybarConfig; };
   };
 }
