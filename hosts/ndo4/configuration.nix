@@ -63,155 +63,159 @@
   services.xserver = {
     enable = true;
     displayManager = {
-      gdm.enable = true;
-      gdm.wayland = true;
-      # defaultSession = "hyprland";
-    };
-    desktopManager.gnome.enable = true;
-    # videoDrivers = [ "amdgpu" ];
-    xkb = {
-      layout = "us";
-      variant = "";
-      options = "caps:escape";
-    };
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # systemd services
-  systemd.services.systemd-udevd.restartIfChanged = false;
-  systemd.services.NetworkManager-wait-online.enable = false;
-  systemd.services.systemd-networkd-wait-online.enable = false;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # hardware.bluetooth.enable = true;
-  # hardware.bluetooth.powerOnBoot = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  users.users.ndo = {
-    isNormalUser = true;
-    description = "ndo";
-    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
-  };
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    useGlobalPkgs = true;
-    users = {
-      "ndo" = import ./home.nix;
-    };
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    ## Unstable
-    # TODO: Needs setup
-    unstable.neovim
-    # neovim
-
-    alejandra
-    coreutils
-    difftastic
-    docker-compose
-    dua
-    fd
-    ffmpeg
-    git
-    bat
-    zoxide
-    file
-    zip
-    unzip
-    fzf
-    eza
-    htop
-    ipmitool
-    jq
-    libnotify
-    lm_sensors
-    neofetch
-    nmap
-    ouch
-    qemu
-    ripgrep
-    smartmontools
-    # terraform
-    tmux
-    tree
-    tree
-    watch
-    wget
-  ];
-
-  # Set in home-manager home.nix
-  # programs.hyprland.enable = true;
-  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-
-  # FOR LATER: dynamically-linked binaries work-around
-  # programs.nix-ld.enable = true;
-  # programs.nix-ld.libraries with pkgs; [
-  # Add any missing dynamic libraries for unpackaged programs
-  # here, NOT in environment.systemPackages
-  # ];
-
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = true;
-    settings.PermitRootLogin = "yes";
-  };
-
-  services.fwupd.enable = true;
-  services.tailscale.enable = true;
-
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation = {
-    docker = {
-      enable = true;
-      autoPrune = {
+      sddm = {
         enable = true;
-        dates = "weekly";
+        wayland.enable = true;
+      };
+      gdm = {
+        enable = false;
+        wayland = false;
+      };
+      desktopManager.gnome.enable = false;
+      # videoDrivers = [ "amdgpu" ];
+      xkb = {
+        layout = "us";
+        variant = "";
+        options = "caps:escape";
       };
     };
-  };
 
-  nix = {
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      warn-dirty = false;
+    # Enable CUPS to print documents.
+    services.printing.enable = true;
+
+    # systemd services
+    systemd.services.systemd-udevd.restartIfChanged = false;
+    systemd.services.NetworkManager-wait-online.enable = false;
+    systemd.services.systemd-networkd-wait-online.enable = false;
+
+    # Enable sound with pipewire.
+    sound.enable = true;
+    hardware.pulseaudio.enable = false;
+    security.rtkit.enable = true;
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
     };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
+
+    # hardware.bluetooth.enable = true;
+    # hardware.bluetooth.powerOnBoot = true;
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    # services.xserver.libinput.enable = true;
+
+    users.users.ndo = {
+      isNormalUser = true;
+      description = "ndo";
+      extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
     };
-  };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+    home-manager = {
+      extraSpecialArgs = { inherit inputs; };
+      useGlobalPkgs = true;
+      users = {
+        "ndo" = import ./home.nix;
+      };
+    };
 
-  # DO NOT TOUCH #
-  system.stateVersion = "23.11";
-}
+    nixpkgs.config.allowUnfree = true;
+
+    environment.systemPackages = with pkgs; [
+      ## Unstable
+      # TODO: Needs setup
+      unstable.neovim
+      # neovim
+
+      alejandra
+      coreutils
+      difftastic
+      docker-compose
+      dua
+      fd
+      ffmpeg
+      git
+      bat
+      zoxide
+      file
+      zip
+      unzip
+      fzf
+      eza
+      htop
+      ipmitool
+      jq
+      libnotify
+      lm_sensors
+      neofetch
+      nmap
+      ouch
+      qemu
+      ripgrep
+      smartmontools
+      # terraform
+      tmux
+      tree
+      tree
+      watch
+      wget
+    ];
+
+    # Set in home-manager home.nix
+    # programs.hyprland.enable = true;
+    # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+
+    # FOR LATER: dynamically-linked binaries work-around
+    # programs.nix-ld.enable = true;
+    # programs.nix-ld.libraries with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+    # ];
+
+    services.openssh = {
+      enable = true;
+      settings.PasswordAuthentication = true;
+      settings.PermitRootLogin = "yes";
+    };
+
+    services.fwupd.enable = true;
+    services.tailscale.enable = true;
+
+    virtualisation.libvirtd.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
+    virtualisation = {
+      docker = {
+        enable = true;
+        autoPrune = {
+          enable = true;
+          dates = "weekly";
+        };
+      };
+    };
+
+    nix = {
+      settings = {
+        experimental-features = [ "nix-command" "flakes" ];
+        warn-dirty = false;
+      };
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+      };
+    };
+
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+
+    # DO NOT TOUCH #
+    system.stateVersion = "23.11";
+  }
 ## hardware-configuration.nix options for future
 # networking.useDHCP = lib.mkDefault true;
 # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
