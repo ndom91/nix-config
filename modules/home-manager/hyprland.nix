@@ -14,8 +14,8 @@
     #   # pkgs.xdg-desktop-portal-gtk
     #   pkgs.xdg-desktop-portal-hyprland
     # ];
-    extraPortals = [ pkgs.inputs.hyprland.xdg-desktop-portal-hyprland ];
-    configPackages = [ pkgs.inputs.hyprland.hyprland ];
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    # configPackages = [ pkgs.inputs.hyprland.hyprland ];
   };
 
 

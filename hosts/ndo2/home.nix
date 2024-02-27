@@ -1,7 +1,7 @@
-{ inputs, nix-colors, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = with inputs pkgs; [
-    nix-colors.homeManagerModules.default
+    # nix-colors.homeManagerModules.default
 
     ../common/packages.nix
     ../common/gitconfig.nix
@@ -21,7 +21,7 @@
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  colorScheme = nix-colors.colorSchemes.rose-pine;
+  # colorScheme = nix-colors.colorSchemes.rose-pine;
 
   home.file = {
     "nvim/init.lua".source = ../../dotfiles/nvim/init.lua;

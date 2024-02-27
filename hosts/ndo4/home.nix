@@ -1,8 +1,8 @@
-{ inputs, config, nix-colors, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 {
 
   imports = with inputs; [
-    nix-colors.homeManagerModules.default
+    # nix-colors.homeManagerModules.default
 
     # Common
     ../common/packages.nix
@@ -23,7 +23,7 @@
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  colorScheme = nix-colors.colorSchemes.rose-pine;
+  # colorScheme = nix-colors.colorSchemes.rose-pine;
 
   # TODO: Add mime-type list
 

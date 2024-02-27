@@ -34,7 +34,6 @@
     gitroot = "cd \"$(git rev-parse --show-toplevel)\"";
 
     #### TYPOS ####
-    suod = "sudo";
     sduo = "sudo";
     udso = "sudo";
     suod = "sudo";
@@ -87,7 +86,7 @@
   };
 
   programs.bat.enable = true;
-  programs.bat.theme = "Coldark-Dark";
+  # programs.bat.theme = "Coldark-Dark";
 
   programs.bash.initExtra = ''
     if [ -f "$HOME/.dotfiles/colorscripts/blocks.sh" ]; then
