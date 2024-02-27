@@ -118,12 +118,12 @@ in
         enabled = "yes";
         bezier = "smoothIn, 0.25, 1, 0.5, 1";
 
-        animation = "windows, 1, 3, overshot";
-        animation = "windowsOut, 1, 4, smoothOut, slide";
-        animation = "border, 1, 10, default";
-        animation = "borderangle, 1, 8, default";
-        animation = "fade, 1, 10, smoothIn";
-        animation = "fadeDim, 1, 10, smoothIn";
+        # animation = "windows, 1, 3, overshot";
+        # animation = "windowsOut, 1, 4, smoothOut, slide";
+        # animation = "border, 1, 10, default";
+        # animation = "borderangle, 1, 8, default";
+        # animation = "fade, 1, 10, smoothIn";
+        # animation = "fadeDim, 1, 10, smoothIn";
         animation = "workspaces, 1, 6, default";
       };
       master = {
