@@ -6,12 +6,17 @@
     pkgs.slack
     pkgs.virt-manager
     pkgs.lazygit
-    pkgs.alejandra
     pkgs.wezterm
+
+    pkgs.zathura
+    pkgs.vlc
+    pkgs.whois
+    pkgs.jq
+
+    pkgs.starship
 
     (pkgs.nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
     pkgs.noto-fonts-color-emoji
-    pkgs.starship
 
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"

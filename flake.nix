@@ -33,6 +33,12 @@
             ./hosts/ndo4/configuration.nix
           ];
         };
+        ndo2 = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/ndo2/configuration.nix
+          ];
+        };
       };
     };
 }

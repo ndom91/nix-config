@@ -70,6 +70,7 @@
 
   # Enable the X11 windowing system.
   services.xserver = {
+    libinput.enable = true;
     enable = true;
     displayManager = {
       sddm = {
@@ -90,12 +91,12 @@
     desktopManager.gnome.enable = false;
   };
 
+
   # systemd services
   systemd.services.systemd-udevd.restartIfChanged = false;
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.systemd-networkd-wait-online.enable = false;
 
-  # Enable sound with pipewire.
   sound = {
     enable = true;
     mediaKeys = {
@@ -113,6 +114,8 @@
   };
 
 
+  # Enable touchpad support (enabled default in most desktopManager).
+
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
@@ -129,40 +132,40 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    bat
-    brightnessctl
-    coreutils
-    difftastic
-    docker-compose
-    dua
-    eza
-    fd
-    ffmpeg
-    file
-    fzf
-    git
-    htop
-    ipmitool
-    jq
-    libnotify
-    lm_sensors
-    neofetch
-    neovim
-    nmap
-    ouch
-    qemu
-    ripgrep
-    smartmontools
-    tmux
-    tree
-    tree
-    unzip
-    watch
-    wget
-    zip
-    zoxide
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   bat
+  #   brightnessctl
+  #   coreutils
+  #   difftastic
+  #   docker-compose
+  #   dua
+  #   eza
+  #   fd
+  #   ffmpeg
+  #   file
+  #   fzf
+  #   git
+  #   htop
+  #   ipmitool
+  #   jq
+  #   libnotify
+  #   lm_sensors
+  #   neofetch
+  #   neovim
+  #   nmap
+  #   ouch
+  #   qemu
+  #   ripgrep
+  #   smartmontools
+  #   tmux
+  #   tree
+  #   tree
+  #   unzip
+  #   watch
+  #   wget
+  #   zip
+  #   zoxide
+  # ];
 
   # Set in home-manager home.nix
   # programs.hyprland.enable = true;
@@ -188,6 +191,10 @@
       daemon.enable = true;
       updater.enable = true;
     };
+    logind = {
+      lidSwitch = "suspend";
+      extraConfig = "IdleAction=lock";
+    };
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -195,11 +202,13 @@
       pulse.enable = true;
     };
 
-    # Enable CUPS to print documents.
     printing.enable = true;
   };
 
+  powerManagement.enable = true;
+
   programs = {
+    light.enable = true;
     mtr.enable = true;
     gnupg.agent = {
       enable = true;
