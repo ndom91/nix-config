@@ -67,7 +67,7 @@
     VIDEO = "vlc";
     XDG_CONFIG_HOME = "$HOME/.config";
     RIPGREP_CONFIG_PATH = "$HOME/.ripgreprc";
-    CARGO_NET_GIT_FETCH_WITH_CLI = true;
+    CARGO_NET_GIT_FETCH_WITH_CLI = "true";
 
     # History
     HISTCONTROL = "erasedups:ignoreboth";
@@ -81,8 +81,8 @@
     NPM_CONFIG_INIT_AUTHOR_URL = "https://ndo.dev";
     NPM_CONFIG_INIT_LICENSE = "MIT";
     NPM_CONFIG_INIT_VERSION = "0.0.1";
-    NPM_CONFIG_PROGRESS = true;
-    NPM_CONFIG_SAVE = true;
+    NPM_CONFIG_PROGRESS = "true";
+    NPM_CONFIG_SAVE = "true";
   };
 
   programs.bat.enable = true;

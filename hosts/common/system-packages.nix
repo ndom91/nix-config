@@ -23,7 +23,6 @@
     lshw
     neofetch
     nmap
-    nmtui
     ouch
     pasystray
     pavucontrol
