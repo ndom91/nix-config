@@ -22,7 +22,6 @@
 
       env = [
         "XCURSOR_SIZE,24"
-        "XCURSOR_SIZE,24"
         "MOZ_ENABLE_WAYLAND,1"
         "QT_QPA_PLATFORM,wayland"
         # "VDPAU_DRIVER,radeonsi"
@@ -254,11 +253,11 @@
       ];
       bind = [
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        "$mainMod, D, exec, '$HOME/.config/rofi/bin/launcher'"
+        "$mainMod, D, exec, \"$HOME/.config/rofi/bin/launcher\""
         "$mainMod, M, exec, flemozi"
         # "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
         # "$mainMod, Y, hy3:changegroup, opposite"
-        "$mainMod, Q, killactive";
+        "$mainMod, Q, killactive"
         # "$mainMod, Q, hy3:killactive,"
         # "$mainMod, Return, exec, alacritty
         "$mainMod, Return, exec, wezterm"
@@ -351,7 +350,6 @@
         ",xf86audionext, exec, playerctl next"
         ",xf86audioprev, exec, playerctl previous"
         ",xf86audiostop, exec, playerctl stop"
-
       ];
       bindn = [
         # 1Password Quick Search - NOT WORKING
