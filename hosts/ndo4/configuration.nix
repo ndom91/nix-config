@@ -71,14 +71,14 @@
         enable = false;
         wayland = false;
       };
-      desktopManager.gnome.enable = false;
-      # videoDrivers = [ "amdgpu" ];
-      xkb = {
-        layout = "us";
-        variant = "";
-        options = "caps:escape";
-      };
     };
+    # videoDrivers = [ "amdgpu" ];
+    xkb = {
+      layout = "us";
+      variant = "";
+      options = "caps:escape";
+    };
+    desktopManager.gnome.enable = false;
   };
 
   # Enable CUPS to print documents.
