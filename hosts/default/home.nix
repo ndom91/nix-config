@@ -1,14 +1,16 @@
+{ config
+, pkgs
+, ...
+}:
 {
-  config,
-  pkgs,
-  ...
-}: 
-let
-  startupScript = pkgs.pkgs.writeShellScriptBin "waybar" ''
-    ${pkgs.waybar}/bin/waybar &
-  '';
-in
-{
+
+  imports = [
+    ../../modules/home-manager/gtk.nix
+    ../../modules/home-manager/hyprland.nix
+    ../../modules/home-manager/waybar.nix
+    ../../modules/home-manager/rofi/default.nix
+    ./packages.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ndo";
@@ -23,32 +25,6 @@ in
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = [
-    pkgs.vivaldi
-    pkgs.gnome.gnome-boxes
-    pkgs.slack
-    pkgs.virt-manager
-    pkgs.lazygit
-    pkgs.alejandra
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -82,41 +58,6 @@ in
   #
   home.sessionVariables = {
     EDITOR = "nvim";
-  };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    plugins = {
-      inputs.hyprland-plugins.packages."${pkgs.system}".h3
-    };
-    settings = {
-      exec-once = [
-        "${startupScript}/bin/start"
-        "${startupScript}/bin/waybar"
-      ];
-      general = {
-        gaps_in = 10;
-        gaps_out = 20;
-        border_size = 6;
-        "col.active_border" = "rgb(11111b) rgb(181825) 45deg";
-        "col.inactive_border" = "rgba(f5e0dc20)";
-
-        layout = hy3;
-        resize_on_border = true;
-      };
-      decoration = {
-        rounded = 1;
-        drop_shadow = false;
-        active_opacity = 0.95;
-        inactive_opacity = 0.80;
-        fullscreen_opacity = 1.00;
-      };
-      animations = {
-        enabled = "yes";
-        bezier = "overshot, 0.05, 0.9, 0.1, 1.05";
-      };
-      "$mainMod" = "SUPER";
-    };
   };
 
   # Let Home Manager install and manage itself.

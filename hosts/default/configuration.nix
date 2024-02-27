@@ -1,13 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  lib,
-  inputs,
-  config,
-  unstable,
-  pkgs,
-  ...
+{ lib
+, inputs
+, config
+, unstable
+, pkgs
+, ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -54,7 +53,10 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-hyprland
+  ];
   xdg.portal.enable = true;
 
   # Enable the X11 windowing system.
@@ -102,11 +104,11 @@
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = ["networkmanager" "docker" "wheel" "libvirt" "kvm"];
+    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     users = {
       "ndo" = import ./home.nix;
@@ -187,7 +189,7 @@
 
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
     };
     gc = {
