@@ -31,7 +31,7 @@
       formatter.${system} = pkgs.nixpkgs-fmt;
       nixosConfigurations = {
         ndo4 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs unstable outputs; };
+          specialArgs = { inherit inputs unstable; };
           modules = [
             ./hosts/ndo4/configuration.nix
           ];
