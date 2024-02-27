@@ -1,20 +1,4 @@
 { pkgs, config, inputs, lib, ... }:
-let
-  startupScript = pkgs.pkgs.writeShellScriptBin "waybar" ''
-    #!/bin/bash
-
-    CONFIG_FILES="$HOME/.config/waybar/config.jsonc"
-    # $HOME/.config/waybar/modules.jsonc $HOME/.config/waybar/style.css"
-
-    trap "killall waybar" EXIT
-
-    while true; do
-      waybar &
-      inotifywait -e create,modify "$CONFIG_FILES"
-      killall waybar
-    done
-  '';
-in
 {
   wayland.windowManager.hyprland = {
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -43,7 +27,7 @@ in
         # "LIBVA_DRIVER_NAME,radeonsi"
       ];
       input = {
-        kb_layout = us;
+        kb_layout = "us";
         kb_options = "caps:escape";
 
         # focus follow mouse
@@ -378,6 +362,17 @@ in
       ];
       "$mainMod" = "SUPER";
     };
+    extraConfig = ''
+      # Resize
+      bind = $mainMod, R, submap, resize
+      submap = resize
+      binde = , H, resizeactive, -40 0
+      binde = , L, resizeactive, 40 0
+      binde = , K, resizeactive, 0 -40
+      binde = , J, resizeactive, 0 40
+      bind = , escape, submap, reset
+      submap = reset
+    '';
   };
   home.packages = with pkgs; [
     pkgs.swaynotificationcenter
