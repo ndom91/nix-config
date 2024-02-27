@@ -1,6 +1,7 @@
 { pkgs, config, inputs, lib, ... }:
 {
   wayland.windowManager.hyprland = {
+    # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
     plugins = [
@@ -42,7 +43,7 @@
         sensitivity = 0;
       };
       exec-once = [
-        "${startupScript}/bin/start"
+        # "${startupScript}/bin/start"
         "waybar"
 
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
