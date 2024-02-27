@@ -7,9 +7,9 @@
 
   imports = with inputs; [
     ./packages.nix
-    ./common/gitconfig.nix
-    ./common/tmux.nix
-    ./common/ssh.nix
+    ../common/gitconfig.nix
+    ../common/tmux.nix
+    ../common/ssh.nix
     # Modules
     ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/hyprland.nix
