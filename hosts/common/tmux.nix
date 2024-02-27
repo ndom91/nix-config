@@ -8,9 +8,12 @@
     historyLimit = 10000;
     prefix = "C-a";
     plugins = with pkgs.tmuxPlugins; [
-      "tmux-plugins/tpm"
-      "tmux-plugins/tmux-sensible"
-      "ofirgall/tmux-window-name"
+      {
+        plugin = mode-indicator;
+      }
+      # "ofirgall/tmux-window-name"
+      #   Not in nixpkgs.tmuxPlugins
+      #   Manual installation: https://github.com/ofirgall/tmux-window-name#manual-installation
       {
         plugin = catppuccin;
         extraConfig = ''
