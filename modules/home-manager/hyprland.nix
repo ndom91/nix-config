@@ -5,7 +5,7 @@
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
     plugins = [
-      inputs.hyprland-plugins.packages."${pkgs.system}".h3
+      inputs.hyprland-plugins.packages."${pkgs.system}".hy3
     ];
 
     settings = {
