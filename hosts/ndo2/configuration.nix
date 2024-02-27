@@ -51,8 +51,8 @@
         wayland.enable = true;
       };
       gdm = {
-        enable = false;
-        wayland = false;
+        enable = true;
+        wayland = true;
       };
     };
     # videoDrivers = [ "amdgpu" ];
@@ -61,7 +61,7 @@
       variant = "";
       options = "caps:escape";
     };
-    desktopManager.gnome.enable = false;
+    desktopManager.gnome.enable = true;
   };
 
 
@@ -182,7 +182,6 @@
 
   programs = {
     light.enable = true;
-    mtr.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;

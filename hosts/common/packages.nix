@@ -7,6 +7,8 @@
     virt-manager
     lazygit
     wezterm
+    gnome-text-editor
+    cinnamon.nemo
 
     zathura
     vlc

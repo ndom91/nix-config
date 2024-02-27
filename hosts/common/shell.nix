@@ -118,4 +118,38 @@
     export AWS_DEFAULT_REGION=eu-central-1
     export AWS_REGION=eu-central-1
   '';
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = "nemo.desktop";
+      "x-scheme-handler/http" = "vivaldi-stable.desktop";
+      "x-scheme-handler/https" = "vivaldi-stable.desktop";
+      "x-scheme-handler/slack" = "slack.desktop";
+      "image/image" = "imv.desktop";
+      "image/*" = "imv.desktop";
+      "image/png" = "imv.desktop";
+      "image/jpeg" = "imv.desktop";
+      "image/gif" = "imv.desktop";
+      "image/svg" = "imv.desktop";
+      "image/svg+xml" = "imv.desktop";
+      "image/webp" = "imv.desktop";
+      "text/html" = "vivaldi-stable.desktop";
+      "x-scheme-handler/about" = "vivaldi-stable.desktop";
+      "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
+      "x-scheme-handler/webcal" = "vivaldi-stable.desktop";
+      "x-scheme-handler/anytype" = "anytype.desktop";
+      "x-scheme-handler/chrome" = "vivaldi-stable.desktop";
+      "application/x-extension-htm" = "vivaldi-stable.desktop";
+      "application/x-extension-html" = "vivaldi-stable.desktop";
+      "application/x-extension-shtml" = "vivaldi-stable.desktop";
+      "application/xhtml+xml" = "vivaldi-stable.desktop";
+      "application/x-extension-xhtml" = "vivaldi-stable.desktop";
+      "application/x-extension-xht" = "vivaldi-stable.desktop";
+      "application/pdf" = "org.pwmt.zathura.desktop;";
+      "text/markdown" = "gnome-text-editor.desktop;";
+      "text/x-log" = "gnome-text-editor.desktop;";
+      "text/plain" = "gnome-text-editor.desktop;";
+    };
+  };
 }

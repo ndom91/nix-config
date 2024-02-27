@@ -17,6 +17,7 @@
     gnupg
     htop
     ipmitool
+    imv
     jq
     libnotify
     lm_sensors
