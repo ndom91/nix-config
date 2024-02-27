@@ -3,7 +3,7 @@
   programs.tmux = {
     enable = true;
     clock24 = true;
-    keyMmode = "vi";
+    keyMode = "vi";
     newSession = true;
     historyLimit = 10000;
     prefix = "C-a";
