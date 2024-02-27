@@ -141,6 +141,7 @@
     htop
     ipmitool
     jq
+    libnotify
     lm_sensors
     neofetch
     nmap
@@ -156,8 +157,9 @@
     wget
   ];
 
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  # Set in home-manager home.nix
+  # programs.hyprland.enable = true;
+  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # FOR LATER: dynamically-linked binaries work-around
   # programs.nix-ld.enable = true;

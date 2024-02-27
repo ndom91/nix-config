@@ -2,6 +2,7 @@
 {
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
+    # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
     # hy3 not included in hyprland-plugins flake yet, see: https://github.com/hyprwm/hyprland-plugins
@@ -101,15 +102,22 @@
       };
       animations = {
         enabled = "yes";
-        bezier = "smoothIn, 0.25, 1, 0.5, 1";
+        bezier = [
+          "smoothIn, 0.25, 1, 0.5, 1"
+          "overshot, 0.05, 0.9, 0.1, 1.05"
+          "smoothOut, 0.36, 0, 0.66, -0.56"
+          "smoothIn, 0.25, 1, 0.5, 1"
+        ];
 
-        # animation = "windows, 1, 3, overshot";
-        # animation = "windowsOut, 1, 4, smoothOut, slide";
-        # animation = "border, 1, 10, default";
-        # animation = "borderangle, 1, 8, default";
-        # animation = "fade, 1, 10, smoothIn";
-        # animation = "fadeDim, 1, 10, smoothIn";
-        animation = "workspaces, 1, 6, default";
+        animation = [
+          "windows, 1, 3, overshot"
+          "windowsOut, 1, 4, smoothOut, slide"
+          "border, 1, 10, default"
+          "borderangle, 1, 8, default"
+          "fade, 1, 10, smoothIn"
+          "fadeDim, 1, 10, smoothIn"
+          "workspaces, 1, 6, default"
+        ];
       };
       master = {
         new_is_master = true;
@@ -375,9 +383,13 @@
     '';
   };
   home.packages = with pkgs; [
+    pkgs.xorg.xrdb
+    pkgs.xorg.xsetroot
+    pkgs.xorg.xprop
     pkgs.swaynotificationcenter
     pkgs._1password-gui
     pkgs.networkmanagerapplet
+    pkgs.playerctl
     pkgs.swaybg
     pkgs.swayidle
     pkgs.mkchromecast

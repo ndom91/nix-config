@@ -7,6 +7,7 @@
     pkgs.virt-manager
     pkgs.lazygit
     pkgs.alejandra
+    pkgs.wezterm
 
     (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     pkgs.noto-fonts-color-emoji

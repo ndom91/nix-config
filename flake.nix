@@ -21,18 +21,19 @@
     , nixpkgs
     , nixpkgs-unstable
     , ...
-    } @ inputs:
+    } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       unstable = nixpkgs-unstable.legacyPackages.${system};
     in
     {
+      formatter.${system} = pkgs.nixpkgs-fmt;
       nixosConfigurations = {
-        default = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs unstable; };
+        ndo4 = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs unstable outputs; };
           modules = [
-            ./hosts/default/configuration.nix
+            ./hosts/ndo4/configuration.nix
           ];
         };
       };
