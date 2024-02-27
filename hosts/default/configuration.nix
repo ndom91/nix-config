@@ -54,16 +54,19 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.enable = true;
+
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
+    displayManager = {
+      gdm.enable = true;
+      gdm.wayland = true;
+      defaultSession = "hyprland";
+    };
+    desktopManager.gnome.enable = true;
+    # videoDrivers = [ "amdgpu" ];
     xkb = {
       layout = "us";
       variant = "";
@@ -89,6 +92,9 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  # hardware.bluetooth.enable = true;
+  # hardware.bluetooth.powerOnBoot = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -123,6 +129,13 @@
     fd
     ffmpeg
     git
+    bat
+    zoxide
+    file
+    zip
+    unzip
+    fzf
+    eza
     htop
     ipmitool
     jq
@@ -140,6 +153,9 @@
     watch
     wget
   ];
+
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # FOR LATER: dynamically-linked binaries work-around
   # programs.nix-ld.enable = true;
@@ -189,14 +205,12 @@
   #   enableSSHSupport = true;
   # };
 
-  # system.copySystemConfiguration = true;
-  system.stateVersion = "23.11"; # Did you read the comment?
+  # DO NOT TOUCH #
+  system.stateVersion = "23.11";
 }
 ## hardware-configuration.nix options for future
 # networking.useDHCP = lib.mkDefault true;
 # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 # hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 # Bluetooth
-# hardware.bluetooth.enable = true;
-# hardware.bluetooth.powerOnBoot = true;
 
