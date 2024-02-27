@@ -43,26 +43,6 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  xdg.portal = {
-    config = {
-      common = {
-        default = [
-          "gtk"
-        ];
-      };
-      sddm = {
-        default = [
-          "hyprland"
-        ];
-      };
-    };
-    enable = true;
-    extraPortals = [
-      # pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
-    ];
-  };
-
   # Enable the X11 windowing system.
   services.xserver = {
     libinput.enable = true;
