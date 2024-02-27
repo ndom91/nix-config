@@ -17,27 +17,46 @@ let
 in
 {
   wayland.windowManager.hyprland = {
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
     plugins = [
       inputs.hyprland-plugins.packages."${pkgs.system}".h3
     ];
 
-    input = {
-      kb_layout = us;
-      kb_options = "caps:escape";
-
-      # focus follow mouse
-      follow_mouse = 2;
-      accel_profile = "flat";
-
-      touchpad = {
-        natural_scroll = false;
-        clickfinger_behavior = true;
-      };
-
-      sensitivity = 0;
-    };
     settings = {
+      xwayland = {
+        force_zero_scaling = true;
+      };
+      monitor = ",preferred,auto,auto";
+      # monitor = ",highres,auto,1.7";
+      # monitor = [
+      #   "DP-1,3440x1440,1080x480,1"
+      #   "DP-2,1920x1080,0x0,1,transform,3"
+      # ];
+
+      env = [
+        "XCURSOR_SIZE,24"
+        "XCURSOR_SIZE,24"
+        "MOZ_ENABLE_WAYLAND,1"
+        "QT_QPA_PLATFORM,wayland"
+        # "VDPAU_DRIVER,radeonsi"
+        # "LIBVA_DRIVER_NAME,radeonsi"
+      ];
+      input = {
+        kb_layout = us;
+        kb_options = "caps:escape";
+
+        # focus follow mouse
+        follow_mouse = 2;
+        accel_profile = "flat";
+
+        touchpad = {
+          natural_scroll = false;
+          clickfinger_behavior = true;
+        };
+
+        sensitivity = 0;
+      };
       exec-once = [
         "${startupScript}/bin/start"
         "waybar"
