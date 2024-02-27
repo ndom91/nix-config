@@ -1,7 +1,8 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, nix-colors, ... }:
 {
-
   imports = with inputs; [
+    nix-colors.homeManagerModules.default
+
     ../common/packages.nix
     ../common/gitconfig.nix
     ../common/tmux.nix
@@ -11,6 +12,7 @@
     # Modules
     ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/hyprland.nix
+    ../../modules/home-manager/neovim.nix
     ../../modules/home-manager/waybar.nix
     ../../modules/home-manager/wezterm.nix
     ../../modules/home-manager/rofi/default.nix
@@ -19,44 +21,37 @@
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # TODO: Add more dotfiles
-  # TODO: Add aliases
-  # TODO: Add mime-type list
+  colorScheme = nix-colors.colorSchemes.rose-pine;
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    "nvim/init.lua".source = ../../dotfiles/nvim/init.lua;
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/ndo/etc/profile.d/hm-session-vars.sh
-  #
+  fonts.fontconfig.enable = true;
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
 
+  # programs.dconf.enable = true;
+  programs.atuin = {
+    enable = true;
+    settings = {
+      auto_sync = false;
+      style = "compact";
+      history_filter = [
+        "^cd"
+        "^ll"
+        "^n?vim"
+      ];
+      common_prefix = [ "sudo" "ll" "cd" "clear" "ls" "echo" "pwd" "exit" "history" ];
+      secrets_filter = true;
+      enter_accept = true;
+    };
+  };
+  programs.gh.enable = true;
+  programs.git.diff-so-fancy.enable = true;
   programs.home-manager.enable = true;
+  programs.bash.enable = true;
   programs.zoxide.enable = true;
 }
