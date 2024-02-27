@@ -4,9 +4,10 @@
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
-    plugins = [
-      inputs.hyprland-plugins.packages."${pkgs.system}".hy3
-    ];
+    # hy3 not included in hyprland-plugins flake yet, see: https://github.com/hyprwm/hyprland-plugins
+    # plugins = [
+    #   inputs.hyprland-plugins.packages."${pkgs.system}".hy3
+    # ];
 
     settings = {
       xwayland = {
@@ -67,21 +68,21 @@
         "blueberry"
 
       ];
-      plugin = {
-        hy3 = {
-          tabs = {
-            height = 5;
-            padding = 8;
-            render_text = false;
-            col.active = "rgb(8a8dcc)";
-          };
-          autotile = {
-            enable = true;
-            trigger_width = 800;
-            trigger_height = 500;
-          };
-        };
-      };
+      # plugin = {
+      #   hy3 = {
+      #     tabs = {
+      #       height = 5;
+      #       padding = 8;
+      #       render_text = false;
+      #       col.active = "rgb(8a8dcc)";
+      #     };
+      #     autotile = {
+      #       enable = true;
+      #       trigger_width = 800;
+      #       trigger_height = 500;
+      #     };
+      #   };
+      # };
       general = {
         gaps_in = 10;
         gaps_out = 20;
@@ -89,7 +90,7 @@
         "col.active_border" = "rgb(11111b) rgb(181825) 45deg";
         "col.inactive_border" = "rgba(f5e0dc20)";
 
-        layout = "hy3";
+        # layout = "hy3";
         resize_on_border = true;
       };
       decoration = {
@@ -255,10 +256,10 @@
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         "$mainMod, D, exec, '$HOME/.config/rofi/bin/launcher'"
         "$mainMod, M, exec, flemozi"
-        "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
-        "$mainMod, Y, hy3:changegroup, opposite"
-        # "$mainMod, Q, killactive,
-        "$mainMod, Q, hy3:killactive,"
+        # "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
+        # "$mainMod, Y, hy3:changegroup, opposite"
+        "$mainMod, Q, killactive";
+        # "$mainMod, Q, hy3:killactive,"
         # "$mainMod, Return, exec, alacritty
         "$mainMod, Return, exec, wezterm"
         "$mainMod SHIFT, R, exec, hyprctl reload"
@@ -284,23 +285,23 @@
         "CTRL SHIFT, Space, exec, swaync-client -C -sw"
 
         # Move focus with mainMod + arrow keys
-        # "$mainMod, H, hy3:movefocus, l
-        # "$mainMod, L, hy3:movefocus, r
-        "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
-        "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
-        "$mainMod, K, hy3:movefocus, u"
-        "$mainMod, J, hy3:movefocus, d"
-        # "$mainMod, K, movefocus, u
-        # "$mainMod, J, movefocus, d
+        "$mainMod, H, movefocus, l"
+        "$mainMod, L, movefocus, r"
+        "$mainMod, K, movefocus, u"
+        "$mainMod, J, movefocus, d"
+        # "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
+        # "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
+        # "$mainMod, K, hy3:movefocus, u"
+        # "$mainMod, J, hy3:movefocus, d"
 
-        "$mainMod SHIFT, H, hy3:movewindow, l"
-        "$mainMod SHIFT, L, hy3:movewindow, r"
-        "$mainMod SHIFT, K, hy3:movewindow, u"
-        "$mainMod SHIFT, J, hy3:movewindow, d"
-        # "$mainMod SHIFT, H, movewindow, l
-        # "$mainMod SHIFT, L, movewindow, r
-        # "$mainMod SHIFT, K, movewindow, u
-        # "$mainMod SHIFT, J, movewindow, d
+        # "$mainMod SHIFT, H, hy3:movewindow, l"
+        # "$mainMod SHIFT, L, hy3:movewindow, r"
+        # "$mainMod SHIFT, K, hy3:movewindow, u"
+        # "$mainMod SHIFT, J, hy3:movewindow, d"
+        "$mainMod SHIFT, H, movewindow, l"
+        "$mainMod SHIFT, L, movewindow, r"
+        "$mainMod SHIFT, K, movewindow, u"
+        "$mainMod SHIFT, J, movewindow, d"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
