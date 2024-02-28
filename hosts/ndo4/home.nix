@@ -45,6 +45,7 @@
     };
     "./.ripgreprc".source = ../../dotfiles/.ripgreprc;
     "./.config/starship.toml".source = ../../dotfiles/starship.toml;
+    "./.face.icon".source = ../../dotfiles/.face.icon;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
