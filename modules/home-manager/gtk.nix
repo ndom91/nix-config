@@ -4,6 +4,13 @@
   #   ".local/share/icons/GruvboxPlus".source = "${gruvboxPlus}";
   # };
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.bibata-cursors-translucent;
+    name = "Bibata Ghost";
+    size = 16;
+  };
+
   gtk = {
     enable = true;
 
@@ -26,6 +33,18 @@
       name = "Dracula";
     };
 
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
     # xdg.configFile."gtk-4.0/gtk.css" = {
     #   text = cssContent;
     # };
@@ -33,5 +52,14 @@
     # xdg.configFile."gtk-3.0/gtk.css" = {
     #   text = cssContent;
     # };
+  };
+
+  services.xsettingsd = {
+    enable = true;
+    settings = {
+      "Net/ThemeName" = "Catppuccin-Mocha-Standard-Maroon-Dark";
+      "Net/IconThemeName" = "Dracula";
+    };
+
   };
 }

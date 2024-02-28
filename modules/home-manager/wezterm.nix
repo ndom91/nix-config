@@ -8,6 +8,8 @@
 
         config.warn_about_missing_glyphs = false
 
+        config.enable_wayland = false
+
         -- In newer versions of wezterm, use the config_builder which will
         -- help provide clearer error messages
         if wezterm.config_builder then

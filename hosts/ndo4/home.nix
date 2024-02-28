@@ -15,6 +15,7 @@
 
     # Modules
     ../../modules/home-manager/gtk.nix
+    ../../modules/home-manager/qt.nix
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/neovim.nix
     ../../modules/home-manager/waybar/default.nix
@@ -24,15 +25,6 @@
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    # package = pkgs.bibata-cursors;
-    # name = "Bibata-Modern-Classic";
-    package = pkgs.bibata-cursors-translucent;
-    name = "Bibata Ghost";
-    size = 16;
-  };
 
   # colorScheme = nix-colors.colorSchemes.rose-pine;
 

@@ -18,8 +18,13 @@
       };
       xdgOpenUsePortal = true;
       extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-hyprland
+        # pkgs.xdg-desktop-portal-gtk
+        # pkgs.xdg-desktop-portal-hyprland
+        inputs.hyprland-contrib.packages.${pkgs.system}.xdg-desktop-portal-gtk
+        inputs.hyprland-contrib.packages.${pkgs.system}.xdg-desktop-portal-hyprland
+      ];
+      configPackages = [
+        inputs.hyprland-contrib.packages.${pkgs.system}.hyprland
       ];
       # extraPortals = [ 
       #   pkgs.xdg-desktop-portal-hyprland 
@@ -53,6 +58,7 @@
       env = [
         "XCURSOR_SIZE,24"
         "MOZ_ENABLE_WAYLAND,1"
+        "XDG_SESSION_TYPE,wayland"
         "QT_QPA_PLATFORM,wayland"
         # "VDPAU_DRIVER,radeonsi"
         # "LIBVA_DRIVER_NAME,radeonsi"
@@ -76,7 +82,7 @@
         # "${startupScript}/bin/start"
         "waybar"
         # "/nix/store/$(ls -la /nix/store | grep polkit_gnome | grep '^d' | awk '{print $9}')/libexec/polkit-gnome-authentication-agent-1"
-
+        "${polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
         # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
