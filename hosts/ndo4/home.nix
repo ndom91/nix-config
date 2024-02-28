@@ -84,7 +84,7 @@
       enter_accept = true;
     };
   };
-  programs.starship.enable;
+  programs.starship.enable = true;
   programs.gh.enable = true;
   programs.git.diff-so-fancy.enable = true;
   programs.home-manager.enable = true;
