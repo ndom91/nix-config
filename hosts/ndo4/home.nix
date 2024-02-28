@@ -25,6 +25,13 @@
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
+
   # programs.hyprland.enable = true;
 
   # colorScheme = nix-colors.colorSchemes.rose-pine;
