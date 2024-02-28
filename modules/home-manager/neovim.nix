@@ -151,6 +151,7 @@
       shfmt
       eslint_d
       stylua
+      vimPlugins.telescope-fzf-native-nvim
     ];
   };
 }

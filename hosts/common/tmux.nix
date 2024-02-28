@@ -67,7 +67,7 @@
       set-option -g renumber-windows on
 
       # Undercurl
-      set -g default-terminal "$(echo $TERM)"
+      set -g default-terminal "xterm-256color"
       set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
       set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
 

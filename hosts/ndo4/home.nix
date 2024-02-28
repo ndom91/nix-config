@@ -70,7 +70,7 @@
 
   # programs.dconf.enable = true;
   programs.atuin = {
-    enable = true;
+    enable = false;
     settings = {
       auto_sync = false;
       style = "compact";
@@ -84,6 +84,7 @@
       enter_accept = true;
     };
   };
+  programs.starship.enable;
   programs.gh.enable = true;
   programs.git.diff-so-fancy.enable = true;
   programs.home-manager.enable = true;
