@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
-  imports = [
+  imports = with pkgs inputs; [
     ./hyprland.nix
     ./swaylock.nix
     ./wlogout.nix
