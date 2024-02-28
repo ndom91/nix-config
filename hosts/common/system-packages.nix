@@ -52,5 +52,3 @@
     sddm-chili-theme
   ];
 }
-}
-}
