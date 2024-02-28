@@ -125,11 +125,11 @@
         resize_on_border = true;
       };
       decoration = {
-        rounded = 1;
+        rounded = "1";
         drop_shadow = false;
-        active_opacity = 0.95;
-        inactive_opacity = 0.80;
-        fullscreen_opacity = 1.00;
+        active_opacity = "0.95";
+        inactive_opacity = "0.80";
+        fullscreen_opacity = "1.00";
       };
       animations = {
         enabled = "yes";

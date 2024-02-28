@@ -7,7 +7,6 @@ in
     ./hardware-configuration.nix
     ../common/system-packages.nix
     inputs.home-manager.nixosModules.default
-    # inputs.hyprland.homeManagerModules.default
   ];
 
   nix = {
