@@ -10,6 +10,7 @@
     tree = "eza --long --tree --time-style long-iso --icons --group";
 
     # Commands
+    vim = "nvim";
     hn = "hostname";
     topfolders = "sudo du -hs * | sort -rh | head -5";
     topfiles = "sudo find -type f -exec du -Sh {} + | sort -rh | head -n 5";

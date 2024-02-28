@@ -42,7 +42,7 @@
     enable = true;
     displayManager = {
       sddm = {
-        enable = true;
+        enable = false;
         wayland.enable = true;
       };
       gdm = {

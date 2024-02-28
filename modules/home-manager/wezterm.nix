@@ -4,8 +4,6 @@
     enableBashIntegration = true;
     enableZshIntegration = false;
     extraConfig = ''
-      local wezterm = require 'wezterm'
-
       local config = {}
 
       -- In newer versions of wezterm, use the config_builder which will
