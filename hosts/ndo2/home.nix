@@ -9,6 +9,7 @@
     ../common/ssh.nix
     ../common/shell.nix
     ../common/languages/node.nix
+    ../common/languages/rust.nix
 
     # Modules
     ../../modules/home-manager/gtk.nix
@@ -34,7 +35,6 @@
     EDITOR = "nvim";
   };
 
-  # programs.dconf.enable = true;
   programs.atuin = {
     enable = true;
     settings = {

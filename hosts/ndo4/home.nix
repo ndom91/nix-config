@@ -11,6 +11,7 @@
     ../common/ssh.nix
     ../common/shell.nix
     ../common/languages/node.nix
+    ../common/languages/rust.nix
 
     # Modules
     ../../modules/home-manager/gtk.nix
@@ -23,6 +24,8 @@
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
+
+  # programs.hyprland.enable = true;
 
   # colorScheme = nix-colors.colorSchemes.rose-pine;
 
@@ -64,7 +67,6 @@
     EDITOR = "nvim";
   };
 
-  # programs.dconf.enable = true;
   programs.atuin = {
     enable = false;
     settings = {

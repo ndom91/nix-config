@@ -38,16 +38,16 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     displayManager = {
       sddm = {
-        enable = false;
+        enable = true;
+        theme = "catppuccin";
         wayland.enable = true;
       };
       gdm = {
-        enable = true;
+        enable = false;
         wayland = true;
       };
     };
@@ -57,7 +57,7 @@
       variant = "";
       options = "caps:escape";
     };
-    desktopManager.gnome.enable = true;
+    # desktopManager.gnome.enable = false;
   };
 
   # systemd services

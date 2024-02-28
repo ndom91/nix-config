@@ -4,6 +4,7 @@
     bat
     brightnessctl
     coreutils
+    dconf
     difftastic
     docker-compose
     dua
@@ -12,6 +13,7 @@
     ffmpeg
     file
     fzf
+    gcc
     git
     gnumake
     gnupg
@@ -38,7 +40,7 @@
     watch
     wget
     zip
-    zig
+    # zig
     zoxide
   ];
 }

@@ -19,6 +19,7 @@ return {
     opts = {
       automatic_installation = true,
       ensure_installed = {
+        "rnix",
         "lua_ls",
         "tsserver",
         "bashls",
@@ -43,11 +44,12 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = {
       ensure_installed = {
+        "nixpkgs-fmt",
+        "prettierd",
+        "rustywind",
         -- "biome",
         "eslint_d",
         "js-debug-adapter",
-        "prettierd",
-        "rustywind",
         "shellcheck",
         "shfmt",
       },
