@@ -6,7 +6,7 @@
     extraConfig = ''
       local config = {}
 
-      config.warn_about_missing_glyph = false
+      config.warn_about_missing_glyphs = false
 
       -- In newer versions of wezterm, use the config_builder which will
       -- help provide clearer error messages
