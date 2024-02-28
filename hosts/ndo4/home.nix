@@ -17,7 +17,7 @@
     ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/neovim.nix
-    ../../modules/home-manager/waybar.nix
+    ../../modules/home-manager/waybar/waybarnix
     ../../modules/home-manager/wezterm.nix
     ../../modules/home-manager/rofi/default.nix
   ];
@@ -31,7 +31,6 @@
     name = "Bibata-Modern-Classic";
     size = 16;
   };
-
 
   # colorScheme = nix-colors.colorSchemes.rose-pine;
 

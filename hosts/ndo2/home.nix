@@ -15,7 +15,7 @@
     ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/neovim.nix
-    ../../modules/home-manager/waybar.nix
+    ../../modules/home-manager/waybar/waybar.nix
     ../../modules/home-manager/wezterm.nix
     ../../modules/home-manager/rofi/default.nix
   ];
@@ -23,10 +23,28 @@
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
   # colorScheme = nix-colors.colorSchemes.rose-pine;
 
   home.file = {
-    "nvim/init.lua".source = ../../dotfiles/nvim/init.lua;
+    "./.config/nvim/" = {
+      source = ../../dotfiles/nvim;
+      recursive = true;
+    };
+    "./.ripgreprc".source = ../../dotfiles/.ripgreprc;
+    "./.config/starship.toml".source = ../../dotfiles/starship.toml;
+    "./.face.icon".source = ../../dotfiles/.face.icon;
+
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
   };
 
   fonts.fontconfig.enable = true;
@@ -35,8 +53,9 @@
     EDITOR = "nvim";
   };
 
+
   programs.atuin = {
-    enable = true;
+    enable = false;
     settings = {
       auto_sync = false;
       style = "compact";
@@ -50,6 +69,7 @@
       enter_accept = true;
     };
   };
+  programs.starship.enable = true;
   programs.gh.enable = true;
   programs.git.diff-so-fancy.enable = true;
   programs.home-manager.enable = true;
