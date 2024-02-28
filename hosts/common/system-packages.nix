@@ -30,6 +30,7 @@
     libnotify
     lm_sensors
     lshw
+    mesa
     neofetch
     nmap
     ouch
