@@ -46,6 +46,7 @@
     "./.ripgreprc".source = ../../dotfiles/.ripgreprc;
     "./.config/starship.toml".source = ../../dotfiles/starship.toml;
     "/run/current-system/sw/share/sddm/faces/ndo.face.icon".source = ../../dotfiles/.face.icon;
+    "./.config/hypr/wallpapers/dark-purple-space-01.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
