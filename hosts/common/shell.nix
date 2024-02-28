@@ -113,7 +113,7 @@
 
     # fnm
     if [ "$(command -v fnm)" ]; then
-      eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
+      eval "$(fnm env --shell bash --use-on-cd --version-file-strategy recursive)"      eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
     fi
 
     # AWS
@@ -155,3 +155,4 @@
     };
   };
 }
+

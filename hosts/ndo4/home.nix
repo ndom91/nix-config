@@ -26,8 +26,6 @@
 
   # colorScheme = nix-colors.colorSchemes.rose-pine;
 
-  # TODO: Add mime-type list
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -35,10 +33,8 @@
       source = ../../dotfiles/nvim;
       recursive = true;
     };
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    "./.ripgreprc".source = ../../dotfiles/.ripgreprc;
+    "./.config/starship.toml".source = ../../dotfiles/starship.toml;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -90,4 +86,5 @@
   programs.home-manager.enable = true;
   programs.bash.enable = true;
   programs.zoxide.enable = true;
+}
 }
