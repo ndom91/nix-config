@@ -1,28 +1,36 @@
 { pkgs, inputs, ... }:
 {
 
-  xdg.portal = {
-    config = {
-      common = {
-        default = [
-          "hyprland"
-        ];
-      };
+  # xresources.extraConfig
+  xdg = {
+    userDirs = {
+      enable = true;
+      createDirectories = true;
     };
-    enable = true;
-    # extraPortals = [
-    #   # pkgs.xdg-desktop-portal-gtk
-    #   pkgs.xdg-desktop-portal-hyprland
-    # ];
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-    # configPackages = [ pkgs.inputs.hyprland.hyprland ];
+    portal = {
+      enable = true;
+      config = {
+        common = {
+          default = [
+            "Hyprland"
+          ];
+        };
+      };
+      xdgOpenUsePortal = true;
+      # extraPortals = [
+      #   # pkgs.xdg-desktop-portal-gtk
+      #   pkgs.xdg-desktop-portal-hyprland
+      # ];
+      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+      # configPackages = [ pkgs.inputs.hyprland.hyprland ];
+    };
   };
 
 
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
     # hy3 not included in hyprland-plugins flake yet, see: https://github.com/hyprwm/hyprland-plugins
     # plugins = [
@@ -33,7 +41,7 @@
       xwayland = {
         force_zero_scaling = true;
       };
-      monitor = ",preferred,auto,auto";
+      # monitor = ",preferred,auto,auto";
       # monitor = ",highres,auto,1.7";
       # monitor = [
       #   "DP-1,3440x1440,1080x480,1"
