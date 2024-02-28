@@ -402,9 +402,6 @@
     '';
   };
   home.packages = with pkgs; [
-    xorg.xrdb
-    xorg.xsetroot
-    xorg.xprop
     swaynotificationcenter
     _1password-gui
     networkmanagerapplet
@@ -416,8 +413,6 @@
     wl-clipboard
     wlsunset
     blueberry
-
-    sddm-chili-theme
 
     # Screenshot
     # grim

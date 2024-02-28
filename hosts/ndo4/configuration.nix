@@ -46,6 +46,11 @@
         enable = true;
         theme = "chili";
         wayland.enable = true;
+        settings = {
+          Theme = {
+            CursorTheme = "Bibata-Modern-Classic";
+          };
+        };
       };
       gdm = {
         enable = false;

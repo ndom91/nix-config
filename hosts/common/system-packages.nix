@@ -42,5 +42,12 @@
     zip
     # zig
     zoxide
+
+    # sddm
+    bibata-cursors
+    xorg.xrdb
+    xorg.xsetroot
+    xorg.xprop
+    sddm-chili-theme
   ];
 }
