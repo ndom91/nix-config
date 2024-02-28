@@ -93,6 +93,13 @@
       bind-key c split-window -v # split pane horizontally
       bind-key v split-window -h # split pane vertically
 
+      # windows
+      bind-key m new-window
+      bind C-j previous-window
+      bind C-k next-window
+      bind-key C-a last-window # C-a C-a for last active window
+      bind A command-prompt "rename-window %%"
+
       # use the vim motion keys to move between panes
       bind-key h select-pane -L
       bind-key j select-pane -D
