@@ -32,7 +32,6 @@
     size = 16;
   };
 
-  # programs.hyprland.enable = true;
 
   # colorScheme = nix-colors.colorSchemes.rose-pine;
 
@@ -97,3 +96,4 @@
   programs.bash.enable = true;
   programs.zoxide.enable = true;
 }
+

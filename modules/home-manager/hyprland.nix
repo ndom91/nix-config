@@ -41,7 +41,7 @@
       xwayland = {
         force_zero_scaling = true;
       };
-      # monitor = ",preferred,auto,auto";
+      monitor = ",preferred,auto,auto";
       # monitor = ",highres,auto,1.7";
       # monitor = [
       #   "DP-1,3440x1440,1080x480,1"
@@ -74,25 +74,25 @@
         # "${startupScript}/bin/start"
         "waybar"
 
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
-        "xrdb -merge ~/.Xresources"
-        "xsetroot -xcf /usr/share/icons/BreezeX-RosePine-Linux/cursors/left_ptr 24"
-        "hyprctl setcursor BreezeX-RosePine-Linux 24"
-        "gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-RosePine-Linux'"
-        "gsettings set org.gnome.desktop.interface cursor-size 24"
+        # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        # "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
+        # "xrdb -merge ~/.Xresources"
+        # "xsetroot -xcf /usr/share/icons/BreezeX-RosePine-Linux/cursors/left_ptr 24"
+        # "hyprctl setcursor BreezeX-RosePine-Linux 24"
+        # "gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-RosePine-Linux'"
+        # "gsettings set org.gnome.desktop.interface cursor-size 24"
 
         "swaync"
-        "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
+        # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
         "nm-applet --indicator"
         "swaybg -m fill -i ~/.config/hypr/wallpapers/dark-purple-space-01.png"
-        "swayidle -w"
-        "mkchromecast -t"
+        # "swayidle -w"
+        # "mkchromecast -t"
         "swayosd"
         "wl-paste --watch cliphist store"
-        "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
-        "blueberry"
+        # "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
+        # "blueberry"
 
       ];
       # plugin = {
@@ -338,32 +338,32 @@
         "$mainMod SHIFT, J, movewindow, d"
 
         # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+        # "$mainMod, 1, workspace, 1"
+        # "$mainMod, 2, workspace, 2"
+        # "$mainMod, 3, workspace, 3"
+        # "$mainMod, 4, workspace, 4"
+        # "$mainMod, 5, workspace, 5"
+        # "$mainMod, 6, workspace, 6"
+        # "$mainMod, 7, workspace, 7"
+        # "$mainMod, 8, workspace, 8"
+        # "$mainMod, 9, workspace, 9"
+        # "$mainMod, 0, workspace, 10"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
-        "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
-        "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
-        "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
-        "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
-        "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
-        "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
-        "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
-        "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
-        "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
+        # "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
+        # "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
+        # "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
+        # "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
+        # "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
+        # "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
+        # "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
+        # "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
+        # "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
+        # "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
 
         # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+        # "$mainMod, mouse_down, workspace, e+1"
+        # "$mainMod, mouse_up, workspace, e-1"
 
         # Special Keys
         ",XF86MonBrightnessUp,exec,brightnessctl set 5%+"
@@ -385,7 +385,27 @@
         ",xf86audionext, exec, playerctl next"
         ",xf86audioprev, exec, playerctl previous"
         ",xf86audiostop, exec, playerctl stop"
-      ];
+      ]
+      ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+        builtins.concatLists (builtins.genList
+          (
+            x:
+            let
+              ws =
+                let
+                  c = (x + 1) / 10;
+                in
+                builtins.toString (x + 1 - (c * 10));
+            in
+            [
+              "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
+              "$mainMod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+            ]
+          )
+          10)
+      );
       bindn = [
         # 1Password Quick Search - NOT WORKING
         "CTRL SHIFT, Period, exec, 1password --quick-access"

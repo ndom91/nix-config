@@ -30,6 +30,7 @@
     ouch
     pasystray
     pavucontrol
+    polkit_gnome
     qemu
     ripgrep
     smartmontools
@@ -50,4 +51,6 @@
     xorg.xprop
     sddm-chili-theme
   ];
+}
+}
 }
