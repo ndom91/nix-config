@@ -1,7 +1,7 @@
-{ inputs, config, pkgs, system, ... }:
+{ inputs, config, pkgs, ... }:
 {
 
-  imports = with pkgs system inputs; [
+  imports = with pkgs inputs; [
     # nix-colors.homeManagerModules.default
 
     # Common

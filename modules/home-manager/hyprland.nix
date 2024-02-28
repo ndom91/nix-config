@@ -18,18 +18,18 @@
       };
       xdgOpenUsePortal = true;
       extraPortals = [
-        # pkgs.xdg-desktop-portal-gtk
-        # pkgs.xdg-desktop-portal-hyprland
-        inputs.hyprland.packages.${system}.xdg-desktop-portal-gtk
-        inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-hyprland
+        # inputs.hyprland.packages."x86_64-linux".xdg-desktop-portal-gtk
+        # inputs.hyprland.packages."x86_64-linux".xdg-desktop-portal-hyprland
       ];
-      configPackages = [
-        inputs.hyprland.packages.${system}.hyprland
-      ];
+      # configPackages = [
+      #   inputs.hyprland.packages."x86_64-linux".hyprland
+      # ];
       # extraPortals = [ 
       #   pkgs.xdg-desktop-portal-hyprland 
       # ];
-      # configPackages = [ pkgs.inputs.hyprland.hyprland ];
+      configPackages = [ pkgs.hyprland ];
     };
   };
 
@@ -461,6 +461,6 @@
     # grim
     # slurp
     swappy
-    inputs.hyprland-contrib.packages.${system}.grimblast
+    inputs.hyprland-contrib.packages."x86_64-linux".grimblast
   ];
 }
