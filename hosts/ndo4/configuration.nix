@@ -107,6 +107,7 @@ in
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
+    opengl.enable = true;
 
     # cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
