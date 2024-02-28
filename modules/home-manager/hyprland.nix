@@ -291,15 +291,15 @@
         "noinitialfocus,class:^(xwaylandvideobridge)$"
       ];
       bind = [
-        # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         "$mainMod, D, exec, \"$HOME/.config/rofi/bin/launcher\""
-        "$mainMod, M, exec, flemozi"
+        # "$mainMod, M, exec, flemozi" # TODO: Find rofi-emoji alternative
         # "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
         # "$mainMod, Y, hy3:changegroup, opposite"
         "$mainMod, Q, killactive"
         # "$mainMod, Q, hy3:killactive,"
         # "$mainMod, Return, exec, alacritty
         "$mainMod, Return, exec, wezterm"
+        "CTRL, P, exec, wezterm"
         "$mainMod SHIFT, R, exec, hyprctl reload"
         "$mainMod SHIFT, F, exec, nemo"
         "$mainMod SHIFT, Q, exec, wlogout --protocol layer-shell"
