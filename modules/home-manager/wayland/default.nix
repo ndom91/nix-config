@@ -2,6 +2,7 @@
 {
   imports = [
     ./hyprland.nix
+    ./swaylock.nix
     ./polkit-gnome.nix
     ./waybar/default.nix
     ./rofi/default.nix
@@ -51,7 +52,6 @@
     wf-recorder
     mkchromecast
     swayosd
-    swaylock-effects
     wlogout
     wl-clipboard
     wlsunset
