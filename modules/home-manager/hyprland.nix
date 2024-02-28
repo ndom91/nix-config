@@ -300,6 +300,7 @@
         # "$mainMod, Return, exec, alacritty
         "$mainMod, Return, exec, wezterm"
         "CTRL, P, exec, wezterm"
+        "CTRL, D, exec, \"$HOME/.config/rofi/bin/launcher\""
         "$mainMod SHIFT, R, exec, hyprctl reload"
         "$mainMod SHIFT, F, exec, nemo"
         "$mainMod SHIFT, Q, exec, wlogout --protocol layer-shell"
