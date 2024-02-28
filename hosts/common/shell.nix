@@ -11,6 +11,7 @@
 
     # Commands
     vim = "nvim";
+    lg = "lazygit";
     hn = "hostname";
     topfolders = "sudo du -hs * | sort -rh | head -5";
     topfiles = "sudo find -type f -exec du -Sh {} + | sort -rh | head -n 5";

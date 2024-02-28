@@ -6,6 +6,7 @@
     slack
     virt-manager
     lazygit
+    lazydocker
     wezterm
     gnome-text-editor
     cinnamon.nemo
