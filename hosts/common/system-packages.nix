@@ -15,6 +15,7 @@
     git
     gnumake
     gnupg
+    cmake
     htop
     ipmitool
     imv
@@ -37,6 +38,7 @@
     watch
     wget
     zip
+    zig
     zoxide
   ];
 }

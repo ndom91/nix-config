@@ -8,6 +8,7 @@
     ../common/tmux.nix
     ../common/ssh.nix
     ../common/shell.nix
+    ../common/languages/node.nix
 
     # Modules
     ../../modules/home-manager/gtk.nix

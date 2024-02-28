@@ -30,6 +30,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
+    LC_ALL = "en_US.UTF-8";
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
     LC_MEASUREMENT = "de_DE.UTF-8";
@@ -47,7 +48,7 @@
     enable = true;
     displayManager = {
       sddm = {
-        enable = true;
+        enable = lib.mkDefault true;
         wayland.enable = true;
       };
       gdm = {

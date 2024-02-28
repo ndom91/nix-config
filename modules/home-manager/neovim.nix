@@ -147,9 +147,10 @@
       -- Set .mdx files as 'tsx'
       cmd "autocmd BufNewFile,BufRead *.mdx set filetype=tsx"
     '';
-    # extraPackages = [
-    # pkgs.vimPlugins.nvim-lspconfig
-    # pkgs.shfmt
-    # ];
+    extraPackages = with pkgs; [
+      shfmt
+      eslint_d
+      stylua
+    ];
   };
 }

@@ -4,8 +4,6 @@
     enableBashIntegration = true;
     enableZshIntegration = false;
     extraConfig = ''
-      local wezterm = require 'wezterm'
-
       local config = {}
 
       -- In newer versions of wezterm, use the config_builder which will
@@ -25,8 +23,7 @@
       config.window_background_opacity = 0.92
 
       config.font = wezterm.font_with_fallback {
-        { family = 'Fira Code', harfbuzz_features = { 'liga=1' } },
-        'Fira Code',
+        'FiraCode Nerd Font',
         'Ubuntu Mono',
         -- { family = 'Operator Mono Light', harfbuzz_features = { 'liga=1' } },
       }
@@ -53,6 +50,8 @@
           action = wezterm.action.QuickSelect,
         },
       }
+
+    return config
     '';
   };
 }

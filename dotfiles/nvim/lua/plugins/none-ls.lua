@@ -4,7 +4,10 @@ local read_package_json = require("utils").read_package_json
 
 return {
   "nvimtools/none-ls.nvim",
-  dependencies = { "mason.nvim" },
+  dependencies = { 
+    "mason.nvim",
+    "nvimtools/none-ls-extras.nvim"
+  },
   opts = function(_, opts)
     local nls = require("null-ls")
 
@@ -41,9 +44,9 @@ return {
         -- end
       }),
       -- nls.builtins.formatting.biome,
-      nls.builtins.formatting.eslint_d.with({
-        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
-      }),
+      -- nls.builtins.formatting.eslint_d.with({
+      --   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
+      -- }),
       nls.builtins.formatting.stylua,
       nls.builtins.formatting.rustywind, -- Organise Tailwind Classes
       -- nls.builtins.formatting.lua_format,
@@ -55,8 +58,8 @@ return {
       -- nls.builtins.diagnostics.tsc,
       -- nls.builtins.diagnostics.deno_lint,
       -- require "typescript.extensions.null-ls.code-actions",
-      nls.builtins.code_actions.shellcheck,
-      nls.builtins.code_actions.eslint_d,
+      -- nls.builtins.code_actions.eslint_d,
+      -- nls.builtins.code_actions.shellcheck,
     })
   end,
 }
