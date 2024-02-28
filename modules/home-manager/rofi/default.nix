@@ -13,6 +13,8 @@
       -terminal alacritty \
       -theme "$HOME"/.config/rofi/config/launcher.rasi
   '';
+  xdg.configFile."rofi/bin/launcher".executable = true;
+
   xdg.configFile."rofi/config.rasi".text = ''
     configuration {
       kb-row-up:                      "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
