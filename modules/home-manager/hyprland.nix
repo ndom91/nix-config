@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 {
-  
+
   xdg.portal = {
     config = {
       common = {
@@ -417,7 +417,7 @@
     wlsunset
     blueberry
 
-    catppuccin-sddm-corners
+    sddm-chili-theme
 
     # Screenshot
     # grim

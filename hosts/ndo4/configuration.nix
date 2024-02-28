@@ -41,9 +41,10 @@
   services.xserver = {
     enable = true;
     displayManager = {
+      # defaultSession = "hyprland";
       sddm = {
         enable = true;
-        theme = "catppuccin";
+        theme = "chili";
         wayland.enable = true;
       };
       gdm = {
@@ -105,8 +106,8 @@
   nixpkgs.config.allowUnfree = true;
 
   # Set in home-manager home.nix
-  # programs.hyprland.enable = true;
-  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # FOR LATER: dynamically-linked binaries work-around
   # programs.nix-ld.enable = true;

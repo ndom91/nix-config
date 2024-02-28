@@ -1,7 +1,7 @@
 {pkgs, input, ... }:
 {
   home.packages = with pkgs; [
-    rustup
+    rustc
     cargo
   ];
 }
