@@ -131,7 +131,7 @@
         resize_on_border = true;
       };
       decoration = {
-        rounded = "1";
+        rounding = "1";
         drop_shadow = false;
         active_opacity = "0.95";
         inactive_opacity = "0.80";

@@ -44,8 +44,8 @@
       }
       {
         plugin = tmux-thumbs;
+        # run-shell ~/.config/tmux/plugins/tmux-thumbs/tmux-thumbs.tmux
         extraConfig = ''
-          run-shell ~/.config/tmux/plugins/tmux-thumbs/tmux-thumbs.tmux
           set -g @thumbs-command 'echo -n {} | wl-copy'
         '';
       }
