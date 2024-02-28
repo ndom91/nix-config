@@ -61,7 +61,8 @@
       defaultSession = "hyprland";
       sddm = {
         enable = true;
-        theme = "chili";
+        theme = "maldives";
+        # theme = "chili";
         wayland.enable = true;
         settings = {
           Theme = {
