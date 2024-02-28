@@ -1,4 +1,8 @@
-{ lib, inputs, config, pkgs, ... }: {
+{ lib, inputs, config, pkgs, ... }:
+let
+  tokyo-night-sddm = pkgs.libsForQt5.callPackage ./tokyo-night-sddm/default.nix { };
+in
+{
   imports = with pkgs; [
     ./hardware-configuration.nix
     ../common/system-packages.nix
@@ -61,7 +65,7 @@
       defaultSession = "hyprland";
       sddm = {
         enable = true;
-        theme = "chili";
+        theme = "tokyo-night-sddm";
         wayland.enable = true;
         settings = {
           Theme = {
@@ -130,6 +134,10 @@
   # Set in home-manager home.nix
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+
+  environment.systemPackages = with pkgs; [
+    tokyo-night-sddm
+  ];
 
   # FOR LATER: dynamically-linked binaries work-around
   # programs.nix-ld.enable = true;
