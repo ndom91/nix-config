@@ -438,8 +438,12 @@
     playerctl
     swaybg
     swayidle
+    swayosd
+    wf-recorder
     mkchromecast
     swayosd
+    swaylock-effects
+    wlogout
     wl-clipboard
     wlsunset
     blueberry

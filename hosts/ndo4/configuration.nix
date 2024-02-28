@@ -69,7 +69,8 @@ in
         wayland.enable = true;
         settings = {
           Theme = {
-            CursorTheme = "Bibata-Modern-Classic";
+            CursorTheme = "Bibata Ghost";
+            # CursorTheme = "Bibata-Modern-Classic";
           };
         };
       };

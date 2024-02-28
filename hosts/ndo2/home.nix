@@ -25,8 +25,10 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
+    package = pkgs.bibata-cursors-translucent;
+    name = "Bibata Ghost";
+    # package = pkgs.bibata-cursors;
+    # name = "Bibata-Modern-Classic";
     size = 16;
   };
   # colorScheme = nix-colors.colorSchemes.rose-pine;

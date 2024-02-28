@@ -2,11 +2,15 @@
 {
   environment.systemPackages = with pkgs; [
     bat
+    bluez
     brightnessctl
+    catppuccin-gtk
     coreutils
     dconf
     difftastic
     docker-compose
+    dracula-theme
+    dracula-icon-theme
     dua
     eza
     fd
@@ -20,6 +24,7 @@
     cmake
     htop
     ipmitool
+    inotify-tools
     imv
     jq
     libnotify
@@ -30,7 +35,9 @@
     ouch
     pasystray
     pavucontrol
+    pamixer
     polkit_gnome
+    python311Packages.requests
     qemu
     ripgrep
     smartmontools
@@ -45,7 +52,7 @@
     zoxide
 
     # sddm
-    bibata-cursors
+    bibata-cursors-translucent
     xorg.xrdb
     xorg.xsetroot
     xorg.xprop
