@@ -1,39 +1,6 @@
 { pkgs, inputs, ... }:
 {
 
-  # xresources.extraConfig
-  xdg = {
-    userDirs = {
-      enable = true;
-      createDirectories = true;
-    };
-    portal = {
-      enable = true;
-      config = {
-        common = {
-          default = [
-            "Hyprland"
-          ];
-        };
-      };
-      xdgOpenUsePortal = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-hyprland
-        # inputs.hyprland.packages."x86_64-linux".xdg-desktop-portal-gtk
-        # inputs.hyprland.packages."x86_64-linux".xdg-desktop-portal-hyprland
-      ];
-      # configPackages = [
-      #   inputs.hyprland.packages."x86_64-linux".hyprland
-      # ];
-      # extraPortals = [ 
-      #   pkgs.xdg-desktop-portal-hyprland 
-      # ];
-      configPackages = [ pkgs.hyprland ];
-    };
-  };
-
-
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
@@ -440,27 +407,4 @@
       submap = reset
     '';
   };
-  home.packages = with pkgs; [
-    swaynotificationcenter
-    _1password-gui
-    networkmanagerapplet
-    playerctl
-    swaybg
-    swayidle
-    swayosd
-    wf-recorder
-    mkchromecast
-    swayosd
-    swaylock-effects
-    wlogout
-    wl-clipboard
-    wlsunset
-    blueberry
-
-    # Screenshot
-    # grim
-    # slurp
-    swappy
-    inputs.hyprland-contrib.packages."x86_64-linux".grimblast
-  ];
 }

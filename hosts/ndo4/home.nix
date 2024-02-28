@@ -1,6 +1,5 @@
 { inputs, config, pkgs, ... }:
 {
-
   imports = with pkgs inputs; [
     # nix-colors.homeManagerModules.default
 
@@ -16,11 +15,9 @@
     # Modules
     ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/qt.nix
-    ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/neovim.nix
-    ../../modules/home-manager/waybar/default.nix
     ../../modules/home-manager/wezterm.nix
-    ../../modules/home-manager/rofi/default.nix
+    ../../modules/home-manager/wayland/default.nix
   ];
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
@@ -49,8 +46,6 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    WLR_RENDERER_ALLOW_SOFTWARE = "1";
-    HYPRLAND_LOG_WLR = "1";
   };
 
   programs.atuin = {
@@ -72,7 +67,6 @@
   programs.gh.enable = true;
   programs.git.diff-so-fancy.enable = true;
   programs.home-manager.enable = true;
-  programs.bash.enable = true;
   programs.zoxide.enable = true;
+  programs.bash.enable = true;
 }
-
