@@ -19,7 +19,7 @@
         user = "ndo";
         identityFile = "~/.ssh/id_ndo4";
       };
-      github = {
+      "github.com" = {
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/id_ndo4";
