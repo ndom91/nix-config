@@ -20,11 +20,11 @@
       extraPortals = [
         # pkgs.xdg-desktop-portal-gtk
         # pkgs.xdg-desktop-portal-hyprland
-        inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-gtk
-        inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
+        inputs.hyprland.packages.${system}.xdg-desktop-portal-gtk
+        inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland
       ];
       configPackages = [
-        inputs.hyprland.packages.${pkgs.system}.hyprland
+        inputs.hyprland.packages.${system}.hyprland
       ];
       # extraPortals = [ 
       #   pkgs.xdg-desktop-portal-hyprland 
@@ -461,6 +461,6 @@
     # grim
     # slurp
     swappy
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    inputs.hyprland-contrib.packages.${system}.grimblast
   ];
 }
