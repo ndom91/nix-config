@@ -150,6 +150,7 @@
     extraPackages = with pkgs; [
       shfmt
       eslint_d
+      stylua
     ];
   };
 }
