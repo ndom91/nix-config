@@ -417,6 +417,8 @@
     wlsunset
     blueberry
 
+    catppuccin-sddm-corners
+
     # Screenshot
     # grim
     # slurp
