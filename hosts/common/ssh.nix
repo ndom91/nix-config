@@ -19,6 +19,11 @@
         user = "ndo";
         identityFile = "~/.ssh/id_ndo4";
       };
+      github = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_ndo4";
+      };
       tursteher = {
         hostname = "tursteher.puff.lan";
         user = "ndo";
