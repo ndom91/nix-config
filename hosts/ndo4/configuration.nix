@@ -98,14 +98,20 @@ in
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.systemd-networkd-wait-online.enable = false;
 
-  # Enable sound with pipewire.
   sound = {
     enable = true;
     mediaKeys = {
       enable = true;
     };
   };
-  security.rtkit.enable = true;
+
+  security = {
+    rtkit.enable = true;
+    # polkit
+    polkit.enable = true;
+    # Auth
+    services.gnome.gnome-keyring.enable = true;
+  };
 
   hardware = {
     enableAllFirmware = true;
@@ -116,7 +122,7 @@ in
     opengl.enable = true;
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
 
-    # cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
   users.users.ndo = {
@@ -130,8 +136,8 @@ in
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    # useUserPackages = true;
     useGlobalPkgs = true;
-    useUserPackages = true;
     users = {
       "ndo" = import ./home.nix;
     };

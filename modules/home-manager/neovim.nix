@@ -1,5 +1,6 @@
 { input, pkgs, ... }:
 {
+  # kickstart-nix.nvim: https://github.com/mrcjkb/kickstart-nix.nvim
   programs.neovim = {
     enable = true;
     defaultEditor = true;

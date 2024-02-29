@@ -127,7 +127,14 @@ in
       enable = true;
     };
   };
-  security.rtkit.enable = true;
+
+  security = {
+    rtkit.enable = true;
+    # polkit
+    polkit.enable = true;
+    # Auth
+    services.gnome.gnome-keyring.enable = true;
+  };
 
   hardware = {
     enableAllFirmware = true;
@@ -135,6 +142,8 @@ in
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
+
+    # Intel Hardware Acceleration
     opengl = {
       extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl ];
     };

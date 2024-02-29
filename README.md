@@ -18,10 +18,15 @@ Some configured packages include:
 - tmux
 
 ## 📂 Directories
+
 - `modules/home-manager` - Configuration for my user(s) home dir and xdg config (`~/.config`) settings
 - `hosts/common` - Common system packages, system configs like shell aliases and tmux config
 - `hosts/*` - Host specific configurations
 - `flake.nix` - Starting point for the flake
+
+## 📓 Notes
+
+- Hyprland-nix author - https://github.com/spikespaz/dotfiles
 
 ## 📝 License
 
