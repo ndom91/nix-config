@@ -1,6 +1,8 @@
 { input, pkgs, ... }:
 {
   # kickstart-nix.nvim: https://github.com/mrcjkb/kickstart-nix.nvim
+  # Example with LSP installs via nix: https://github.com/ryan4yin/nix-config/blob/main/home/base/desktop/editors/neovim/astronvim_user/init.lua
+  # https://github.com/b-src/lazy-nix-helper.nvim
   programs.neovim = {
     enable = true;
     defaultEditor = true;
