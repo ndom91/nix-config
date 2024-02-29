@@ -82,7 +82,7 @@ in
         wayland.enable = true;
         settings = {
           Theme = {
-            CursorTheme = "Bibata Ghost";
+            CursorTheme = "BreezeX-RosePine-Linux";
             # CursorTheme = "Bibata-Modern-Classic";
           };
         };

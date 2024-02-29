@@ -15,6 +15,7 @@ let
     height = 35;
     modules-left = [
       "clock"
+      "battery"
       "cpu"
       "memory"
       "disk"
@@ -63,6 +64,38 @@ let
       format = "⮝";
       on-click = "$HOME/.config/hypr/scripts/menu";
       tooltip = false;
+    };
+    battery = {
+      interval = 60;
+      align = 0;
+      rotate = 0;
+      full-at = 100;
+      design-capacity = false;
+      states = {
+        good = 95;
+        warning = 30;
+        critical = 15;
+      };
+      format = "{icon} {capacity}%";
+      format-charging = " {capacity}%";
+      format-plugged = " {capacity}%";
+      format-full = "{icon} Full";
+      format-alt = "{icon} {time}";
+      format-icons = [
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'></span>"
+      ];
+      format-time = "{H}h {M}min";
+      tooltip = true;
     };
     disk = {
       interval = 120;

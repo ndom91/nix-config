@@ -11,8 +11,9 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.bibata-cursors-translucent;
-    name = "Bibata_Ghost";
+    package = pkgs.rose-pine-cursor;
+    # package = pkgs.bibata-cursors-translucent;
+    name = "BreezeX-RosePine-Linux";
     size = 24;
   };
 

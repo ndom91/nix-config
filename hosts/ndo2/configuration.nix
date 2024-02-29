@@ -106,7 +106,7 @@ in
           Theme = {
             Font = "FiraCode Nerd Font";
             EnableAvatars = true;
-            CursorTheme = "Bibata Ghost";
+            CursorTheme = "BreezeX-RosePine-Linux";
             # CursorTheme = "Bibata-Modern-Classic";
           };
         };

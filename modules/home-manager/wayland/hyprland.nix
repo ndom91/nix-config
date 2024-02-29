@@ -75,8 +75,8 @@
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         # "xrdb -merge ~/.Xresources"
-        "xsetroot -xcf ${pkgs.bibata-cursors-translucent}/Bibata_Ghost/cursors/left_ptr 24"
-        "hyprctl setcursor \"Bibata Ghost\" 24"
+        "xsetroot -xcf ${pkgs.rose-pine-cursor}/BreezeX-RosePine-Linux/cursors/left_ptr 24"
+        "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
 
       ];
       # plugin = {
