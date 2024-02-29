@@ -26,8 +26,32 @@ in
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+
+    # make 3.5mm jack work
+    extraModprobeConfig = ''
+      options snd_hda_intel model=headset-mode
+    '';
+    # Disable Nvidia GPU
+    extraModprobeConfig = ''
+      blacklist nouveau
+      options nouveau modeset=0
+    '';
+
+    services.udev.extraRules = ''
+      # Remove NVIDIA USB xHCI Host Controller devices, if present
+      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+      # Remove NVIDIA USB Type-C UCSI devices, if present
+      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+      # Remove NVIDIA Audio devices, if present
+      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+      # Remove NVIDIA VGA/3D controller devices
+      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+    '';
+    blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+  };
 
   networking = {
     hostName = "ndo2";
@@ -110,29 +134,15 @@ in
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
+    opengl = {
+      extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl ];
+    };
     # opengl.enable = true;
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
 
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
-  # Disable Nvidia GPU
-  boot.extraModprobeConfig = ''
-    blacklist nouveau
-    options nouveau modeset=0
-  '';
-
-  services.udev.extraRules = ''
-    # Remove NVIDIA USB xHCI Host Controller devices, if present
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
-    # Remove NVIDIA USB Type-C UCSI devices, if present
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
-    # Remove NVIDIA Audio devices, if present
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
-    # Remove NVIDIA VGA/3D controller devices
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
-  '';
-  boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
 
   users.users.ndo = {
     isNormalUser = true;

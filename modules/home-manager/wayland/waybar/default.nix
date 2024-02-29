@@ -238,9 +238,9 @@ in
 {
   programs.waybar = {
     enable = true;
-    # package = pkgs.waybar.overrideAttrs (oldAttrs: {
-    #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    # });
+    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    });
     style = ./style.css;
     settings = { mainBar = mainWaybarConfig; };
     # settings = { mainBar = mainWaybarConfig; verticalBar = verticalWaybarConfig; };

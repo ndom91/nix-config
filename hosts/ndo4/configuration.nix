@@ -27,6 +27,12 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # used by tailscale for exit node
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv6.conf.all.forwarding" = 1;
+  };
+
   networking = {
     hostName = "ndo4";
     useDHCP = lib.mkDefault true;

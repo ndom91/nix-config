@@ -47,16 +47,16 @@
       };
       exec-once = [
         # "${startupScript}/bin/start"
-        "${pkgs.waybar}/bin/.waybar-wrapped"
         # "/nix/store/$(ls -la /nix/store | grep polkit_gnome | grep '^d' | awk '{print $9}')/libexec/polkit-gnome-authentication-agent-1"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
-        # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        # "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         # "xrdb -merge ~/.Xresources"
         "xsetroot -xcf ${pkgs.bibata-cursors-translucent}/Bibata_Ghost/cursors/left_ptr 24"
         "hyprctl setcursor \"Bibata Ghost\" 24"
+        "${pkgs.waybar}/bin/.waybar-wrapped"
         # "gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-RosePine-Linux'"
         # "gsettings set org.gnome.desktop.interface cursor-size 24"
 
