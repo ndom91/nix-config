@@ -1,6 +1,6 @@
-{ inputs, pkgs, ... }:
+{ rose-pine-cursor, inputs, pkgs, ... }:
 {
-  imports = with pkgs inputs; [
+  imports = with rose-pine-cursor pkgs inputs; [
     ./hyprland.nix
     ./swaylock.nix
     ./wlogout.nix

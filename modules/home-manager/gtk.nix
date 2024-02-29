@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, rose-pine-cursor, config, ... }:
 {
   # home.file = {
   #   ".local/share/icons/GruvboxPlus".source = "${gruvboxPlus}";
@@ -11,7 +11,7 @@
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.rose-pine-cursor;
+    package = rose-pine-cursor;
     # package = pkgs.bibata-cursors-translucent;
     name = "BreezeX-RosePine-Linux";
     size = 24;
