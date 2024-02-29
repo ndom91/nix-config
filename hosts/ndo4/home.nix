@@ -12,7 +12,7 @@
     ../common/mimeApps.nix
     ../common/languages/node.nix
     ../common/languages/rust.nix
-    ../common/languages/python.nix
+    # ../common/languages/python.nix
 
     # Modules
     ../../modules/home-manager/gtk.nix
