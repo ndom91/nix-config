@@ -110,7 +110,7 @@ in
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
-    opengl.enable = true;
+    # opengl.enable = true;
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
 
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

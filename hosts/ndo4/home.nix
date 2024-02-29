@@ -34,6 +34,11 @@
     "./.config/starship.toml".source = ../../dotfiles/starship.toml;
     "/run/current-system/sw/share/sddm/faces/ndo.face.icon".source = ../../dotfiles/.face.icon;
     "./.config/hypr/wallpapers/dark-purple-space-01.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
+    "./.config/vivaldi-stable.conf".source = ../../dotfiles/vivaldi-stable.conf;
+    "./.config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
+    "./.config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
+    "./.config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
+
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
