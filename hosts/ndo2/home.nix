@@ -100,4 +100,12 @@
   programs.home-manager.enable = true;
   programs.bash.enable = true;
   programs.zoxide.enable = true;
+  services = {
+    syncthing = {
+      enable = true;
+      tray = {
+        enable = true;
+      };
+    };
+  };
 }
