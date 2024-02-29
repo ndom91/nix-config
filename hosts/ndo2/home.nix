@@ -1,8 +1,9 @@
-{ inputs, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 {
   imports = with inputs pkgs; [
     # nix-colors.homeManagerModules.default
 
+    # Common
     ../common/packages.nix
     ../common/gitconfig.nix
     ../common/tmux.nix
@@ -13,24 +14,15 @@
 
     # Modules
     ../../modules/home-manager/gtk.nix
-    ../../modules/home-manager/hyprland.nix
+    ../../modules/home-manager/qt.nix
     ../../modules/home-manager/neovim.nix
-    ../../modules/home-manager/waybar/default.nix
     ../../modules/home-manager/wezterm.nix
-    ../../modules/home-manager/rofi/default.nix
+    ../../modules/home-manager/wayland/default.nix
   ];
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.bibata-cursors-translucent;
-    name = "Bibata Ghost";
-    # package = pkgs.bibata-cursors;
-    # name = "Bibata-Modern-Classic";
-    size = 16;
-  };
   # colorScheme = nix-colors.colorSchemes.rose-pine;
 
   home.file = {
