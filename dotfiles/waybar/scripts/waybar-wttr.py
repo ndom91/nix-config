@@ -1,4 +1,4 @@
-#!/usr/bin/env nix-shell
+#!/run/current-system/sw/bin/nix-shell
 #!nix-shell -i python3 -p "python3.withPackages(ps: [ ps.requests ])"
 
 import json

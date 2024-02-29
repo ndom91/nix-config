@@ -96,7 +96,7 @@ let
       tooltip = true;
       format = "{}";
       interval = 30;
-      exec = "${lib.getExe pkgs.python311Full} ~/.config/waybar/scripts/waybar-wttr.py";
+      exec = "~/.config/waybar/scripts/waybar-wttr.py";
       return-type = "json";
     };
     "custom/updater" = {
