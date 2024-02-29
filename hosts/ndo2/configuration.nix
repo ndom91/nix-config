@@ -202,6 +202,10 @@ in
     };
 
     printing.enable = true;
+    syncthing = {
+      enable = true;
+      tray.enable = true;
+    };
   };
 
   powerManagement.enable = true;

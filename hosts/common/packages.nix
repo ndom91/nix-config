@@ -11,7 +11,7 @@
     gnome-text-editor
     cinnamon.nemo
 
-    zathura
+    # zathura
     vlc
     whois
     jq

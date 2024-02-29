@@ -41,6 +41,14 @@
     };
   };
 
+  # make stuff work on wayland
+  home.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
+    # WLR_RENDERER_ALLOW_SOFTWARE = "1";
+    HYPRLAND_LOG_WLR = "1";
+  };
 
   home.packages = with pkgs; [
     swaynotificationcenter
@@ -55,6 +63,7 @@
     swayosd
     wl-clipboard
     wlsunset
+    wlr-randr
     blueberry
 
     # Screenshot
@@ -63,9 +72,4 @@
     swappy
     inputs.hyprland-contrib.packages."x86_64-linux".grimblast
   ];
-
-  home.sessionVariables = {
-    WLR_RENDERER_ALLOW_SOFTWARE = "1";
-    HYPRLAND_LOG_WLR = "1";
-  };
 }

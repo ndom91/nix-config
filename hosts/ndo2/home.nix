@@ -16,6 +16,7 @@
     ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/neovim.nix
+    ../../modules/home-manager/zathura.nix
     ../../modules/home-manager/wezterm.nix
     ../../modules/home-manager/wayland/default.nix
   ];
@@ -77,11 +78,6 @@
   };
 
   fonts.fontconfig.enable = true;
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
 
   programs.atuin = {
     enable = false;
