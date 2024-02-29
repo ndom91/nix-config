@@ -10,36 +10,36 @@
   ];
 
   # xresources.extraConfig
-  xdg = {
-    userDirs = {
-      enable = true;
-      createDirectories = true;
-    };
-    portal = {
-      enable = true;
-      config = {
-        common = {
-          default = [
-            "Hyprland"
-          ];
-        };
-      };
-      xdgOpenUsePortal = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-hyprland
-        # inputs.hyprland.packages."x86_64-linux".xdg-desktop-portal-gtk
-        # inputs.hyprland.packages."x86_64-linux".xdg-desktop-portal-hyprland
-      ];
-      # configPackages = [
-      #   inputs.hyprland.packages."x86_64-linux".hyprland
-      # ];
-      # extraPortals = [ 
-      #   pkgs.xdg-desktop-portal-hyprland 
-      # ];
-      # configPackages = [ pkgs.hyprland ];
-    };
-  };
+  # xdg = {
+  #   userDirs = {
+  #     enable = true;
+  #     createDirectories = true;
+  #   };
+  #   portal = {
+  #     enable = true;
+  #     config = {
+  #       common = {
+  #         default = [
+  #           "Hyprland"
+  #         ];
+  #       };
+  #     };
+  #     xdgOpenUsePortal = true;
+  #     extraPortals = [
+  #       pkgs.xdg-desktop-portal-gtk
+  #       pkgs.xdg-desktop-portal-hyprland
+  #       # inputs.hyprland.packages."x86_64-linux".xdg-desktop-portal-gtk
+  #       # inputs.hyprland.packages."x86_64-linux".xdg-desktop-portal-hyprland
+  #     ];
+  #     # configPackages = [
+  #     #   inputs.hyprland.packages."x86_64-linux".hyprland
+  #     # ];
+  #     # extraPortals = [ 
+  #     #   pkgs.xdg-desktop-portal-hyprland 
+  #     # ];
+  #     # configPackages = [ pkgs.hyprland ];
+  #   };
+  # };
 
   # make stuff work on wayland
   home.sessionVariables = {

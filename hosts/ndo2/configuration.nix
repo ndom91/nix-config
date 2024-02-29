@@ -95,6 +95,7 @@ in
         settings = {
           Theme = {
             Font = "FiraCode Nerd Font";
+            EnableAvatars = true;
             CursorTheme = "Bibata Ghost";
             # CursorTheme = "Bibata-Modern-Classic";
           };
