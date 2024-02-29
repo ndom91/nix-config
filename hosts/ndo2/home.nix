@@ -60,6 +60,9 @@
     "/run/current-system/sw/share/sddm/faces/ndo.face.icon".source = ../../dotfiles/.face.icon;
     "./.config/hypr/wallpapers/dark-purple-space-01.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
     "./.face.icon".source = ../../dotfiles/.face.icon;
+
+    "./.config/waybar/scripts/waybar-wttr.py".source = ../../dotfiles/waybar/scripts/waybar-wttr.py;
+
     "./.config/vivaldi-stable.conf".source = ../../dotfiles/vivaldi-stable.conf;
     "./.config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
     "./.config/code-flags.conf".source = ../../dotfiles/code-flags.conf;

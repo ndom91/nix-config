@@ -18,7 +18,6 @@ let
       "cpu"
       "memory"
       "disk"
-      "custom/updater"
       "hyprland/workspaces"
       "hyprland/submap"
     ];
