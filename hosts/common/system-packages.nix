@@ -30,6 +30,7 @@
     imv
     jq
     libnotify
+    libcamera
     lm_sensors
     lshw
     mesa
@@ -78,3 +79,4 @@
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
 }
+
