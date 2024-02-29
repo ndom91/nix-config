@@ -57,7 +57,7 @@
     zoxide
 
     # sddm
-    bibata-cursors-translucent
+    # bibata-cursors-translucent
     xorg.xrdb
     xorg.xsetroot
     xorg.xprop

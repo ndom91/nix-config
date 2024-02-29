@@ -27,12 +27,12 @@
 
     # gtk.cursorTheme.package = pkgs.catppuccin-cursors;
     # gtk.cursorTheme.name = "mochaDark";
-    # cursorTheme = {
-    #   package = pkgs.bibata-cursors-translucent;
-    #   name = "Bibata Ghost";
-    # package = pkgs.bibata-cursors;
-    # name = "Bibata-Modern-Classic";
-    # };
+    cursorTheme = {
+      package = rose-pine-cursor;
+      name = "BreezeX-RosePine-Linux";
+      # package = pkgs.bibata-cursors;
+      # name = "Bibata-Modern-Classic";
+    };
 
     iconTheme = {
       package = pkgs.dracula-icon-theme;

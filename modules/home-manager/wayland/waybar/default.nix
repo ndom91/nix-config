@@ -51,8 +51,8 @@ let
         default = "";
       };
       persistent_workspaces = "{'1','2','3','4','5'}";
-      on-scroll-up = "hyprctl dispatch workspace e+1";
       on-scroll-down = "hyprctl dispatch workspace e-1";
+      on-scroll-up = "hyprctl dispatch workspace e+1";
       all-outputs = false;
     };
     cpu = {
@@ -82,17 +82,16 @@ let
       format-full = "{icon} Full";
       format-alt = "{icon} {time}";
       format-icons = [
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
-        "<span font='12' rise='-2pt'></span>"
+        "<span font='12' rise='-2pt'>󰁺</span>"
+        "<span font='12' rise='-2pt'>󰁻</span>"
+        "<span font='12' rise='-2pt'>󰁼</span>"
+        "<span font='12' rise='-2pt'>󰁽</span>"
+        "<span font='12' rise='-2pt'>󰁾</span>"
+        "<span font='12' rise='-2pt'>󰁿</span>"
+        "<span font='12' rise='-2pt'>󰂀</span>"
+        "<span font='12' rise='-2pt'>󰂁</span>"
+        "<span font='12' rise='-2pt'>󰂂</span>"
+        "<span font='12' rise='-2pt'>󰂄</span>"
       ];
       format-time = "{H}h {M}min";
       tooltip = true;
@@ -116,13 +115,13 @@ let
     };
     network = {
       interval = 1;
-      format-wifi = "<span font='15' rise='-2pt'></span> {ipaddr}";
+      format-wifi = "<span font='12' rise='-2pt'>󱚿</span> {ipaddr}";
       format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
-      format-alt = "<span font='15' rise='-2pt'></span> {ipaddr}/{cidr}";
-      format-linked = " {ifname} (No IP)";
-      format-disconnected = "睊 Disconnected";
-      format-disabled = "睊 Disabled";
-      tooltip-format = " {ifname} via {gwaddr}";
+      format-alt = "<span font='12' rise='-2pt'>󰲐</span> {ipaddr}/{cidr}";
+      format-linked = "󰖪 {ifname} (No IP)";
+      format-disconnected = "󱛅 Disconnected";
+      format-disabled = "󰖪 Disabled";
+      tooltip-format = "󰀂 {ifname} via {gwaddr}";
       on-click-right = "nm-connection-editor";
     };
     "custom/weather" = {
@@ -155,7 +154,7 @@ let
       tooltip-format = "{device_alias}";
       tooltip-format-connected = " {device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
-      on-click-right = "blueberry";
+      on-click = "blueberry";
     };
     tray = {
       icon-size = 16;
@@ -166,13 +165,14 @@ let
       interval = 60;
       align = 0;
       rotate = 0;
-      format = "🕐 {:%H:%M | %a %b %d}";
+      format = " {:%H:%M | %a %b %d}";
+      # format = "🕐 {:%H:%M | %a %b %d}";
       format-alt = " {:%a %b %d}";
       tooltip-format = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
     };
     wireplumber = {
-      format = "<span font='15' rise='-2pt'></span> {volume}";
-      format-muted = "<span font='15' rise='-2pt'></span>";
+      format = "<span font='12' rise='-2pt'></span> {volume}";
+      format-muted = "<span font='12' rise='-2pt'></span>";
       on-click = "pavucontrol";
     };
     pulseaudio = {
