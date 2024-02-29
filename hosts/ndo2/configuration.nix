@@ -8,12 +8,12 @@ in
     ./hardware-configuration.nix
     ../common/system-packages.nix
     inputs.home-manager.nixosModules.default
-    inputs.hyprland-nix.homeManagerModules.default
+    # inputs.hyprland-nix.homeManagerModules.default
   ];
 
   nix = {
-    autoOptimiseStore = true;
     settings = {
+      auto-optimise-store = true;
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
       experimental-features = [ "nix-command" "flakes" ];
@@ -43,13 +43,13 @@ in
   };
   services.udev.extraRules = ''
     # Remove NVIDIA USB xHCI Host Controller devices, if present
-        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
     # Remove NVIDIA USB Type-C UCSI devices, if present
-        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
     # Remove NVIDIA Audio devices, if present
-        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
     # Remove NVIDIA VGA/3D controller devices
-        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
   '';
 
   networking = {
@@ -166,8 +166,8 @@ in
   nixpkgs.config.allowUnfree = true;
 
   # Set in home-manager home.nix
-  # programs.hyprland.enable = true;
-  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland-nix.packages."${pkgs.system}".hyprland;
 
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm

@@ -43,7 +43,6 @@
 
   # make stuff work on wayland
   home.sessionVariables = {
-    QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
     # WLR_RENDERER_ALLOW_SOFTWARE = "1";
@@ -54,9 +53,7 @@
     NIXOS_OZONE_WL = "1";
     # make qt apps expect wayland
     QT_QPA_PLATFORM = "wayland";
-    
-    # set backend for sdl
-    SDL_VIDEODRIVER = "wayland";
+
     # fix modals from being attached on tiling wms
     _JAVA_AWT_WM_NONREPARENTING = "1";
     # fix java gui antialiasing

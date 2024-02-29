@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   # xdg.configFile."rofi/config.rasi".source = ./config.rasi;
 
   xdg.configFile."rofi/bin/launcher".text = ''

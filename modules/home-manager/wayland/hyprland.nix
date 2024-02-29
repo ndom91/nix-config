@@ -8,9 +8,9 @@
     enable = true;
     package = pkgs.hyprland;
 
-    reloadConfig = true;
-    systemdIntegration = true;
-    recommendedEnvironment = true;
+    # reloadConfig = true;
+    # systemdIntegration = true;
+    # recommendedEnvironment = true;
 
     xwayland.enable = true;
     # hy3 not included in hyprland-plugins flake yet, see: https://github.com/hyprwm/hyprland-plugins
