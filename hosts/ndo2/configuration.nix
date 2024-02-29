@@ -94,6 +94,7 @@ in
         wayland.enable = true;
         settings = {
           Theme = {
+            Font = "FiraCode Nerd Font";
             CursorTheme = "Bibata Ghost";
             # CursorTheme = "Bibata-Modern-Classic";
           };

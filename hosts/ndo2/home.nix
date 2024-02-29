@@ -103,6 +103,7 @@
   services = {
     syncthing = {
       enable = true;
+      extraOptions = [ "--wait" ];
       tray = {
         enable = true;
       };
