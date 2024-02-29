@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ lib, inputs, config, pkgs, ... }:
 {
   imports = with inputs pkgs; [
     # nix-colors.homeManagerModules.default
@@ -22,6 +22,13 @@
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
+
+  # ndo2 overrides
+  wayland.windowManager.hyprland = {
+    settings = {
+      monitor = lib.mkForce ",highres,auto,1.7";
+    };
+  };
 
   # colorScheme = nix-colors.colorSchemes.rose-pine;
 

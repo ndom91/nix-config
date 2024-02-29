@@ -15,6 +15,7 @@
     vlc
     whois
     jq
+    cliphist
 
     starship
 

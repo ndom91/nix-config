@@ -20,6 +20,7 @@
     hibernate = "echo disk > sudo /sys/power/state";
     nightmode = "echo 900 > /sys/class/backlight/intel_backlight/brightness > /dev/null & sct 3100 > /dev/null";
     daymode = "echo 3000 > /sys/class/backlight/intel_backlight/brightness > /dev/null & sct 4500 > /dev/null";
+    xc = "wl-copy";
 
     # Git
     gs = "git status";

@@ -15,6 +15,21 @@
   '';
   xdg.configFile."rofi/bin/launcher".executable = true;
 
+  xdg.configFile."rofi/bin/cliphist".text = ''
+    #!/usr/bin/env bash
+    cliphist list |
+      rofi \
+        -p ' ' \
+        -window-title 'Cliphist' \
+        -i \
+        -dmenu \
+        -scroll-method 0 \
+        -theme "$HOME"/.config/rofi/config/launcher.rasi |
+      cliphist decode |
+      wl-copy
+  '';
+  xdg.configFile."rofi/bin/cliphist".executable = true;
+
   xdg.configFile."rofi/config.rasi".text = ''
     configuration {
       kb-row-up:                      "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
