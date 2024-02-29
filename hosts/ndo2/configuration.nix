@@ -57,11 +57,18 @@ in
     useDHCP = lib.mkDefault true;
     # wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
+    nameservers = [
+      "10.0.0.1"
+    ];
 
-    firewall.enable = false;
-    # Open ports in the firewall.
-    # firewall.allowedTCPPorts = [ ... ];
-    # firewall.allowedUDPPorts = [ ... ];
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [
+        80
+        443
+      ];
+      # allowedUDPPorts = [];
+    };
   };
 
   # Set your time zone.
@@ -138,7 +145,7 @@ in
 
   hardware = {
     enableAllFirmware = true;
-    pulseaudio.enable = false;
+    enableRedistributableFirmware = true;
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
@@ -213,13 +220,21 @@ in
       pulse.enable = true;
       wireplumber.enable = true;
     };
+    # Gnome Remote Desktop support via pipewire
+    # gnome.gnome-remote-desktop.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
 
     printing.enable = true;
+    # flatpak.enable = true;
   };
 
   powerManagement.enable = true;
 
   programs = {
+    fuse.userAllowOther = true;
     light.enable = true;
     gnupg.agent = {
       enable = true;
@@ -227,9 +242,12 @@ in
     };
   };
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
   virtualisation = {
+    libvirtd = {
+      enable = true;
+      onBoot = "ignore";
+    };
+    # spiceUSBRedirection.enable = true;
     docker = {
       enable = true;
       autoPrune = {

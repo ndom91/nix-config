@@ -23,7 +23,6 @@
       merge = {
         conflictStyle = "zdiff3";
         tool = "nvim";
-        # tool = "meld";
       };
       pull = {
         rebase = false;

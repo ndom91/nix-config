@@ -37,11 +37,18 @@ in
     hostName = "ndo4";
     useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
+    nameservers = [
+      "10.0.0.1"
+    ];
 
-    firewall.enable = false;
-    # Open ports in the firewall.
-    # firewall.allowedTCPPorts = [ ... ];
-    # firewall.allowedUDPPorts = [ ... ];
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [
+        80
+        443
+      ];
+      # allowedUDPPorts = [];
+    };
   };
 
   # Set your time zone.
@@ -115,6 +122,7 @@ in
 
   hardware = {
     enableAllFirmware = true;
+    enableRedistributableFirmware = true;
     pulseaudio.enable = false;
 
     bluetooth.enable = true;
@@ -180,21 +188,36 @@ in
       pulse.enable = true;
       wireplumber.enable = true;
     };
+    # Gnome Remote Desktop support via pipewire
+    # gnome.gnome-remote-desktop.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
+
+    # enable fingerprint sensor
+    services.fprintd.enable = true;
 
     # Enable CUPS to print documents.
     printing.enable = true;
+
+    # flatpak.enable = true;
   };
 
   programs = {
+    fuse.userAllowOther = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
   };
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
   virtualisation = {
+    libvirtd = {
+      enable = true;
+      onBoot = "ignore";
+    };
+    # spiceUSBRedirection.enable = true;
     docker = {
       enable = true;
       autoPrune = {

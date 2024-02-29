@@ -1,24 +1,32 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    # Graphical Applications
     vivaldi
     gnome.gnome-boxes
+    gnome.seahorse
     slack
     virt-manager
-    lazygit
-    lazydocker
     wezterm
     gnome-text-editor
     cinnamon.nemo
-
-    # zathura
     vlc
+
+    # System Tools
+    qdirstat
+    gparted
+    libsecret
+
+    # Terminal Apps
+    lazygit
+    lazydocker
+    starship
     whois
     jq
     cliphist
 
-    starship
 
+    # Fonts
     (nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
     noto-fonts-color-emoji
 

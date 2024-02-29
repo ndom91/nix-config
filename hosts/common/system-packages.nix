@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     alacritty
+    appimage-run
     bat
     bluez
     brightnessctl
@@ -41,8 +42,10 @@
     polkit_gnome
     python311Packages.requests
     qemu
+    rclone
     ripgrep
     smartmontools
+    system-config-printer
     tmux
     tree
     tree
@@ -58,6 +61,16 @@
     xorg.xrdb
     xorg.xsetroot
     xorg.xprop
-    sddm-chili-theme
   ];
+
+  # Register AppImages as binary format
+  # See: https://nixos.wiki/wiki/Appimage
+  boot.binfmt.registrations.appimage = {
+    wrapInterpreterInShell = false;
+    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+    recognitionType = "magic";
+    offset = 0;
+    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+    magicOrExtension = ''\x7fELF....AI\x02'';
+  };
 }
