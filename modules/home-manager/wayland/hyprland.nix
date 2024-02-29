@@ -53,23 +53,23 @@
 
         # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         # "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        # "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
+        "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         # "xrdb -merge ~/.Xresources"
-        # "xsetroot -xcf /usr/share/icons/BreezeX-RosePine-Linux/cursors/left_ptr 24"
-        # "hyprctl setcursor BreezeX-RosePine-Linux 24"
+        "xsetroot -xcf ${pkgs.bibata-cursor-translucent}/Bibata_Ghost/cursors/left_ptr 24"
+        "hyprctl setcursor \"Bibata Ghost\" 24"
         # "gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-RosePine-Linux'"
         # "gsettings set org.gnome.desktop.interface cursor-size 24"
 
         "swaync"
-        # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
+        "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
         "nm-applet --indicator"
         "swaybg -m fill -i ~/.config/hypr/wallpapers/dark-purple-space-01.png"
         # "swayidle -w"
         # "mkchromecast -t"
         "swayosd"
         "wl-paste --watch cliphist store"
-        # "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
-        # "blueberry"
+        "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
+        "blueberry"
 
       ];
       # plugin = {
