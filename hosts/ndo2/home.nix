@@ -48,11 +48,8 @@
         workspace_swipe_distance = 200;
         workspace_swipe_create_new = false;
       };
-
     };
   };
-
-  # colorScheme = nix-colors.colorSchemes.rose-pine;
 
   home.file = {
     "./.config/nvim/" = {
@@ -72,17 +69,23 @@
     "./.config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
     "./.config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
 
-    "./.dotfiles/colorscripts/blocks.sh".source = ../../dotfiles/colorscripts/blocks.sh;
-    "./.dotfiles/colorscripts/crunchbang-mini.sh".source = ../../dotfiles/colorscripts/crunchbang-mini.sh;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    "./.dotfiles/colorscripts/" = {
+      source = ../../dotfiles/colorscripts;
+      recursive = true;
+    };
   };
 
   fonts.fontconfig.enable = true;
+
+  services = {
+    syncthing = {
+      enable = true;
+      # extraOptions = [ "--wait" ];
+      # tray = {
+      #   enable = true;
+      # };
+    };
+  };
 
   programs.atuin = {
     enable = false;
@@ -105,14 +108,5 @@
   programs.home-manager.enable = true;
   programs.bash.enable = true;
   programs.zoxide.enable = true;
-  services = {
-    syncthing = {
-      enable = true;
-      # extraOptions = [ "--wait" ];
-      # tray = {
-      #   enable = true;
-      # };
-    };
-  };
 }
 

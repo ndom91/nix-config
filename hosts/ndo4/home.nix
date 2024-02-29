@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ lib, inputs, config, pkgs, ... }:
 {
   imports = with pkgs inputs; [
     # nix-colors.homeManagerModules.default
@@ -24,7 +24,22 @@
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # colorScheme = nix-colors.colorSchemes.rose-pine;
+  systemd.user.sessionVariables = config.home.sessionVariables;
+
+  # ndo4 overrides
+  wayland.windowManager.hyprland = {
+    settings = {
+      monitor = lib.mkForce [
+        "DP-1,3440x1440,1080x480,1"
+        "DP-2,1920x1080,0x0,1,transform,3"
+      ];
+      # monitor = lib.mkForce "eDP-1,highres,auto,1.7";
+      env = [
+        "GDK_SCALE,1.5"
+        "XCURSOR_SIZE,24"
+      ];
+    };
+  };
 
   home.file = {
     "./.config/nvim/" = {
@@ -35,6 +50,7 @@
     "./.config/starship.toml".source = ../../dotfiles/starship.toml;
     "/run/current-system/sw/share/sddm/faces/ndo.face.icon".source = ../../dotfiles/.face.icon;
     "./.config/hypr/wallpapers/dark-purple-space-01.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
+    "./.face.icon".source = ../../dotfiles/.face.icon;
 
     "./.config/waybar/scripts/waybar-wttr.py".source = ../../dotfiles/waybar/scripts/waybar-wttr.py;
 
@@ -43,17 +59,23 @@
     "./.config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
     "./.config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
 
-    "./.dotfiles/colorscripts/blocks.sh".source = ../../dotfiles/colorscripts/blocks.sh;
-    "./.dotfiles/colorscripts/crunchbang-mini.sh".source = ../../dotfiles/colorscripts/crunchbang-mini.sh;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    "./.dotfiles/colorscripts/" = {
+      source = ../../dotfiles/colorscripts;
+      recursive = true;
+    };
   };
 
   fonts.fontconfig.enable = true;
+
+  services = {
+    syncthing = {
+      enable = true;
+      # extraOptions = [ "--wait" ];
+      # tray = {
+      #   enable = true;
+      # };
+    };
+  };
 
   programs.atuin = {
     enable = false;
