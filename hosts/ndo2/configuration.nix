@@ -185,6 +185,7 @@ in
 
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
+    rose-pine-cursors = pkgs.callPackage ../../modules/packages/rose-pine-cursors/default.nix { };
   ];
 
   # FOR LATER: dynamically-linked binaries work-around
