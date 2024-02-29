@@ -4,7 +4,7 @@
     ./hyprland.nix
     ./swaylock.nix
     ./wlogout.nix
-    ./polkit-gnome.nix
+    # ./polkit-gnome.nix
     ./waybar/default.nix
     ./rofi/default.nix
   ];
