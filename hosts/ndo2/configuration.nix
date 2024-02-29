@@ -6,7 +6,7 @@ in
   imports = with pkgs; [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../common/system-packages.nix
+    ../common/system.nix
     ../common/languages/python.nix
     inputs.home-manager.nixosModules.default
     # inputs.hyprland-nix.homeManagerModules.default

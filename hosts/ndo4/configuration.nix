@@ -5,7 +5,7 @@ in
 {
   imports = with pkgs; [
     ./hardware-configuration.nix
-    ../common/system-packages.nix
+    ../common/system.nix
     ../common/languages/python.nix
     inputs.home-manager.nixosModules.default
   ];
