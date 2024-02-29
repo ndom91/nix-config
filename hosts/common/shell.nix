@@ -4,6 +4,9 @@
   # home.sessionPath = [];
 
   home.shellAliases = {
+    # nix
+    nclean = "nix-env -p /nix/var/nix/profiles/system --delete-generations +2";
+    nrebuild = "nix-rebuild switch --flake /etc/nixos#ndo2";
     # coreutils
     ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";
     ls = "eza --icons --group-directories-first --classify";
@@ -120,6 +123,18 @@
     # AWS
     export AWS_DEFAULT_REGION=eu-central-1
     export AWS_REGION=eu-central-1
+
+    nix-clean () {
+      nix-env --delete-generations old
+      nix-store --gc
+      # nix-channel --update
+      # nix-env -u --always
+      # for link in /nix/var/nix/gcroots/auto/*
+      # do
+        # rm $(readlink "$link")
+      # done
+      nix-collect-garbage -d
+    }
   '';
 
   xdg.mimeApps = {
