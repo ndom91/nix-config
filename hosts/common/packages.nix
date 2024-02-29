@@ -17,6 +17,13 @@
     gparted
     libsecret
 
+    ### HARDWARE DIAGNOSTICS ###
+    btop # system process monitor
+    bottom # not top
+    procs # process viewer
+    du-dust # du but rust
+    bandwhich # network monitor
+
     # Terminal Apps
     lazygit
     lazydocker
