@@ -16,6 +16,7 @@
     qdirstat
     gparted
     libsecret
+    polkit_gnome
 
     ### HARDWARE DIAGNOSTICS ###
     btop # system process monitor

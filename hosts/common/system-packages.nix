@@ -40,7 +40,6 @@
     pasystray
     pavucontrol
     pamixer
-    polkit_gnome
     python311Packages.requests
     qemu
     rclone
