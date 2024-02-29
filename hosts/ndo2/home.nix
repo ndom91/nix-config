@@ -25,8 +25,8 @@
 
   # ndo2 overrides
   wayland.windowManager.hyprland = {
-    settings = lib.mkDefault {
-      monitor = ",highres,auto,1.7";
+    settings = {
+      monitor = lib.mkForce "eDP-1,highres,auto,1.7";
       env = [
         "GDK_SCALE,1.7"
         "XCURSOR_SIZE,48"

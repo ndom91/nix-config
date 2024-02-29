@@ -4,6 +4,10 @@
   #   ".local/share/icons/GruvboxPlus".source = "${gruvboxPlus}";
   # };
 
+  imports = [
+    ./catppuccin-gtk-4.0.nix
+  ];
+
   home.pointerCursor = {
     gtk.enable = true;
     package = pkgs.bibata-cursors-translucent;
@@ -34,15 +38,11 @@
     };
 
     gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+      gtk-application-prefer-dark-theme = 1;
     };
 
     gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+      gtk-application-prefer-dark-theme = 1;
     };
 
     # xdg.configFile."gtk-4.0/gtk.css" = {

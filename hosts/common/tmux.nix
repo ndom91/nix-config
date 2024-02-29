@@ -51,7 +51,17 @@
       }
     ];
     extraConfig = ''
+      # Setup 'v' to begin selection as in Vim
+      bind-key -T edit-mode-vi Up send-keys -X history-up
+      bind-key -T edit-mode-vi Down send-keys -X history-down
+      unbind-key -T copy-mode-vi Space     ;   bind-key -T copy-mode-vi v send-keys -X begin-selection
+      unbind-key -T copy-mode-vi Enter     ;   bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace xclip"
+      unbind-key -T copy-mode-vi C-v       ;   bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+      unbind-key -T copy-mode-vi [         ;   bind-key -T copy-mode-vi [ send-keys -X begin-selection
+      unbind-key -T copy-mode-vi ]         ;   bind-key -T copy-mode-vi ] send-keys -X copy-selection
+
       # for nested tmux sessions
+      set -g prefix C-a
       bind-key a send-prefix 
 
       setw -g aggressive-resize on
@@ -59,6 +69,10 @@
       # basic settings
       set-window-option -g xterm-keys on # for vim
       set-window-option -g monitor-activity on
+      # use mouse # More on mouse support http://floriancrouzat.net/2010/07/run-tmux-with-mouse-support-in-mac-os-x-terminal-app/
+      set -g history-limit 30000
+      set -g mouse on
+
 
       # start panes at 1 - 0 is too far away :)
       set -g base-index 1

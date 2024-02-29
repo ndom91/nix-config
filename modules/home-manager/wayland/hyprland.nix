@@ -47,7 +47,7 @@
       };
       exec-once = [
         # "${startupScript}/bin/start"
-        "waybar"
+        "${pkgs.waybar}/bin/waybar"
         # "/nix/store/$(ls -la /nix/store | grep polkit_gnome | grep '^d' | awk '{print $9}')/libexec/polkit-gnome-authentication-agent-1"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
