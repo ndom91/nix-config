@@ -1,6 +1,7 @@
 { lib, inputs, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
+  rose-pine-cursors = pkgs.callPackage ../../modules/packages/rose-pine-cursors/default.nix { };
 in
 {
   imports = with pkgs; [
@@ -185,7 +186,7 @@ in
 
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
-    rose-pine-cursors = pkgs.callPackage ../../modules/packages/rose-pine-cursors/default.nix { };
+    rose-pine-cursors
   ];
 
   # FOR LATER: dynamically-linked binaries work-around
