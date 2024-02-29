@@ -66,7 +66,7 @@
         "swayosd"
         "wl-paste --watch cliphist store"
         "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
-        "blueberry"
+        "blueberry-tray"
         # "${startupScript}/bin/start"
         # "/nix/store/$(ls -la /nix/store | grep polkit_gnome | grep '^d' | awk '{print $9}')/libexec/polkit-gnome-authentication-agent-1"
         # "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
