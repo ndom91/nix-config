@@ -18,19 +18,19 @@
   gtk = {
     enable = true;
 
-    theme = {
-      package = pkgs.catppuccin-gtk;
-      name = "Catppuccin-Mocha-Standard-Maroon-Dark";
-    };
+    # theme = {
+    #   package = pkgs.catppuccin-gtk;
+    #   name = "Catppuccin-Mocha-Standard-Maroon-Dark";
+    # };
 
     # gtk.cursorTheme.package = pkgs.catppuccin-cursors;
     # gtk.cursorTheme.name = "mochaDark";
-    cursorTheme = {
-      package = pkgs.bibata-cursors-translucent;
-      name = "Bibata Ghost";
-      # package = pkgs.bibata-cursors;
-      # name = "Bibata-Modern-Classic";
-    };
+    # cursorTheme = {
+    #   package = pkgs.bibata-cursors-translucent;
+    #   name = "Bibata Ghost";
+    # package = pkgs.bibata-cursors;
+    # name = "Bibata-Modern-Classic";
+    # };
 
     iconTheme = {
       package = pkgs.dracula-icon-theme;
