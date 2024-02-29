@@ -31,6 +31,20 @@
         "GDK_SCALE,1.7"
         "XCURSOR_SIZE,48"
       ];
+
+      "device:MSFT0001:00 04F3:31EB Touchpad" = {
+        accel_profile = "adaptive";
+        natural_scroll = true;
+        sensitivity = 0.1;
+      };
+
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_fingers = 3;
+        workspace_swipe_distance = 200;
+        workspace_swipe_create_new = false;
+      };
+
     };
   };
 

@@ -1,4 +1,4 @@
-{ lib, inputs, config, pkgs, ... }: 
+{ lib, inputs, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
 in
@@ -10,7 +10,7 @@ in
     inputs.home-manager.nixosModules.default
   ];
 
-	nix = {
+  nix = {
     autoOptimiseStore = true;
     settings = {
       substituters = [ "https://hyprland.cachix.org" ];
@@ -46,23 +46,23 @@ in
 
   # Select internationalisation properties.
   i18n = {
-		defaultLocale = "en_US.UTF-8";
-		extraLocaleSettings = {
-			LC_ALL = "en_US.UTF-8";
-			LC_ADDRESS = "de_DE.UTF-8";
-			LC_IDENTIFICATION = "de_DE.UTF-8";
-			LC_MEASUREMENT = "de_DE.UTF-8";
-			LC_MONETARY = "de_DE.UTF-8";
-			LC_NAME = "de_DE.UTF-8";
-			LC_NUMERIC = "de_DE.UTF-8";
-			LC_PAPER = "de_DE.UTF-8";
-			LC_TELEPHONE = "de_DE.UTF-8";
-			LC_TIME = "de_DE.UTF-8";
-		};
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ALL = "en_US.UTF-8";
+      LC_ADDRESS = "de_DE.UTF-8";
+      LC_IDENTIFICATION = "de_DE.UTF-8";
+      LC_MEASUREMENT = "de_DE.UTF-8";
+      LC_MONETARY = "de_DE.UTF-8";
+      LC_NAME = "de_DE.UTF-8";
+      LC_NUMERIC = "de_DE.UTF-8";
+      LC_PAPER = "de_DE.UTF-8";
+      LC_TELEPHONE = "de_DE.UTF-8";
+      LC_TIME = "de_DE.UTF-8";
+    };
   };
 
   # Enable the X11 windowing system.
-	services.xserver = {
+  services.xserver = {
     enable = true;
     displayManager = {
       defaultSession = "hyprland";
@@ -110,26 +110,25 @@ in
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
-		opengl.enable = true;
+    opengl.enable = true;
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
 
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
 
-  # Enable touchpad support (enabled default in most desktopManager).
-
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
     extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
-		openssh.authorizedKeys.keys = [
+    openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRAbAylECwZpvAOEq69apq5J1OAAF3ka TebhuqOps2O7WoJCCylqzu7rrPAun2tE3tsjeqwEdFMjSXYxBQowp5b0HiAT6w1Mtwy6Pg jnQW5/VOsTYpg1dl3hw1ZiRYa1yUT+xfVba4+POEKXizpMjL8xlkW/ugnj2WL8O85QplqI GRRIsSAa4jBsZ3d1j88iSv0ZFpTXdTuf9EISNFBrIXq7f+JyhtGZqaj4m67CNoxPiadfyX 7XrgVKra8/SaYa00RebI4V+tp6NDhJL6LZN8rX2O1a7O6NCUhZ1avYw4aY00kMyGqx2bR5 5ml7jN9k/edaKqHJInff8cPefa45ub ndo@ndo4"
     ];
   };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    # useUserPackages = true;
     useGlobalPkgs = true;
     users = {
       "ndo" = import ./home.nix;
@@ -138,7 +137,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-	# Set in home-manager home.nix
+  # Set in home-manager home.nix
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
