@@ -56,7 +56,7 @@ let
       all-outputs = false;
     };
     cpu = {
-      interval = 1;
+      interval = 2;
       format = "<span font='15' rise='-1pt'>󰻠</span> {usage}%";
       # format = "<span font='15' rise='-1pt'>󰻠</span> {usage =>2}%";
     };
@@ -66,10 +66,10 @@ let
       tooltip = false;
     };
     battery = {
-      interval = 60;
+      interval = 10;
       align = 0;
       rotate = 0;
-      full-at = 100;
+      full-at = 95;
       design-capacity = false;
       states = {
         good = 95;
@@ -114,7 +114,7 @@ let
       tooltip = false;
     };
     network = {
-      interval = 1;
+      interval = 5;
       format-wifi = "<span font='12' rise='-2pt'>󱚿</span> {ipaddr}";
       format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
       format-alt = "<span font='12' rise='-2pt'>󰲐</span> {ipaddr}/{cidr}";
