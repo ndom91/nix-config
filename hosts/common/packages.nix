@@ -11,6 +11,7 @@
     gnome-text-editor
     cinnamon.nemo
     vlc
+    protonvpn-gui
 
     # System Tools
     qdirstat
