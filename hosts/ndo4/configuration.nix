@@ -107,7 +107,7 @@ in
   systemd.services.systemd-networkd-wait-online.enable = false;
 
   sound = {
-    enable = true;
+    enable = false;
     mediaKeys = {
       enable = true;
     };
