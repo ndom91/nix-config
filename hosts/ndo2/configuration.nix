@@ -138,10 +138,7 @@ in
 
   security = {
     rtkit.enable = true;
-    # polkit
     polkit.enable = true;
-    # Auth
-    services.gnome.gnome-keyring.enable = true;
   };
 
   hardware = {
@@ -203,6 +200,7 @@ in
       settings.PasswordAuthentication = true;
       settings.PermitRootLogin = "yes";
     };
+    gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
     tailscale.enable = true;

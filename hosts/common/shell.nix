@@ -6,8 +6,8 @@
   home.shellAliases = {
     # nix
     nclean = "nix-env -p /nix/var/nix/profiles/system --delete-generations +2";
-    nrebuild = "nix-rebuild switch --flake /etc/nixos#ndo2";
 
+    nrebuild = "nixos-rebuild switch --flake /etc/nixos#ndo2";
     # coreutils
     ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";
     ls = "eza --icons --group-directories-first --classify";
