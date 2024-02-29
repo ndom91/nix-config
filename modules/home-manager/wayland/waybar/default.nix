@@ -33,8 +33,8 @@ let
     ];
     "wlr/workspaces" = {
       format = "{icon}";
-      "on-click" = "activate";
-      "format-icons" = {
+      on-click = "activate";
+      format-icons = {
         "1" = "1";
         "2" = "2";
         "3" = "3";
@@ -45,22 +45,23 @@ let
         "8" = "8";
         "9" = "9";
         "10" = "10";
-        "urgent" = "";
-        "active" = "";
-        "default" = "";
+        urgent = "";
+        active = "";
+        default = "";
       };
-      "persistent_workspaces" = "{'1','2','3','4','5'}";
-      "on-scroll-up" = "hyprctl dispatch workspace e+1";
-      "on-scroll-down" = "hyprctl dispatch workspace e-1";
-      "all-outputs" = false;
+      persistent_workspaces = "{'1','2','3','4','5'}";
+      on-scroll-up = "hyprctl dispatch workspace e+1";
+      on-scroll-down = "hyprctl dispatch workspace e-1";
+      all-outputs = false;
     };
     cpu = {
       interval = 1;
-      format = "<span font='15' rise='-1pt'>󰻠</span> {usage =>2}%";
+      format = "<span font='15' rise='-1pt'>󰻠</span> {usage}%";
+      # format = "<span font='15' rise='-1pt'>󰻠</span> {usage =>2}%";
     };
     "custom/menu" = {
       format = "⮝";
-      "on-click" = "$HOME/.config/hypr/scripts/menu";
+      on-click = "$HOME/.config/hypr/scripts/menu";
       tooltip = false;
     };
     disk = {
@@ -73,30 +74,30 @@ let
     };
     "hyprland/window" = {
       format = "{}";
-      "separate-outputs" = true;
+      separate-outputs = true;
     };
     "hyprland/submap" = {
       format = "{}";
-      "max-length" = 8;
+      max-length = 8;
       tooltip = false;
     };
     network = {
       interval = 1;
-      "format-wifi" = "<span font='15' rise='-2pt'></span> {ipaddr}";
-      "format-ethernet" = " {bandwidthUpBits} |  {bandwidthDownBits}";
-      "format-alt" = "<span font='15' rise='-2pt'></span> {ipaddr}/{cidr}";
-      "format-linked" = " {ifname} (No IP)";
-      "format-disconnected" = "睊 Disconnected";
-      "format-disabled" = "睊 Disabled";
-      "tooltip-format" = " {ifname} via {gwaddr}";
-      "on-click-right" = "nm-connection-editor";
+      format-wifi = "<span font='15' rise='-2pt'></span> {ipaddr}";
+      format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
+      format-alt = "<span font='15' rise='-2pt'></span> {ipaddr}/{cidr}";
+      format-linked = " {ifname} (No IP)";
+      format-disconnected = "睊 Disconnected";
+      format-disabled = "睊 Disabled";
+      tooltip-format = " {ifname} via {gwaddr}";
+      on-click-right = "nm-connection-editor";
     };
     "custom/weather" = {
       tooltip = true;
       format = "{}";
       interval = 30;
-      "exec" = "~/.config/waybar/scripts/waybar-wttr.py";
-      "return-type" = "json";
+      exec = "~/.config/waybar/scripts/waybar-wttr.py";
+      return-type = "json";
     };
     "custom/updater" = {
       format = "<span font='15' rise='-2pt'></span> {}";
@@ -106,65 +107,66 @@ let
     };
     "custom/cycle_wall" = {
       format = "";
-      "on-click" = "~/.config/hypr/scripts/changeWallpaper";
-      "tooltip-format" = "Change wallpaper";
+      on-click = "~/.config/hypr/scripts/changeWallpaper";
+      tooltip-format = "Change wallpaper";
     };
     "custom/keybindings" = {
       format = "爵";
       tooltip = false;
-      "on-click" = "~/.config/hypr/scripts/keyhint";
+      on-click = "~/.config/hypr/scripts/keyhint";
     };
     bluetooth = {
       format = "";
-      "format-disabled" = "";
-      "format-connected" = " {num_connections}";
-      "tooltip-format" = "{device_alias}";
-      "tooltip-format-connected" = " {device_enumerate}";
-      "tooltip-format-enumerate-connected" = "{device_alias}";
-      "on-click-right" = "blueberry";
+      format-disabled = "";
+      format-connected = " {num_connections}";
+      tooltip-format = "{device_alias}";
+      tooltip-format-connected = " {device_enumerate}";
+      tooltip-format-enumerate-connected = "{device_alias}";
+      on-click-right = "blueberry";
     };
     tray = {
-      "icon-size" = 16;
-      "spacing" = 10;
+      icon-size = 16;
+      show-passive-items = true;
+      spacing = 10;
     };
     clock = {
       interval = 60;
       align = 0;
       rotate = 0;
       format = "🕐 {:%H:%M | %a %b %d}";
-      "format-alt" = " {:%a %b %d}";
-      "tooltip-format" = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+      format-alt = " {:%a %b %d}";
+      tooltip-format = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
     };
     wireplumber = {
       format = "<span font='15' rise='-2pt'></span> {volume}";
-      "format-muted" = "<span font='15' rise='-2pt'></span>";
-      "on-click" = "pavucontrol";
+      format-muted = "<span font='15' rise='-2pt'></span>";
+      on-click = "pavucontrol";
     };
     pulseaudio = {
       format = "<span font='15' rise='-2pt'></span>  {volume}";
-      "format-muted" = "<span font='15' rise='-2pt'></span>";
-      "format-bluetooth" = "<span font='15' rise='-2pt'></span> {volume}% {format_source}";
-      "format-bluetooth-muted" = "<span font='15' rise='-2pt'></span> Muted";
-      "format-icons" = {
-        "headphone" = "";
-        "hands-free" = "";
-        "headset" = "";
-        "phone" = "";
-        "portable" = "";
-        "car" = "";
-        "default" = [
+      format-muted = "<span font='15' rise='-2pt'></span>";
+      format-bluetooth = "<span font='15' rise='-2pt'></span> {volume}% {format_source}";
+      format-bluetooth-muted = "<span font='15' rise='-2pt'></span> Muted";
+      format-icons = {
+        hands-free = "";
+        headphone = "";
+        headset = "";
+        phone = "";
+        portable = "";
+        car = "";
+        default = [
           "<span font='20' rise='-5pt'>奄</span>"
           "<span font='20' rise='-5pt'>奔</span>"
           "<span font='20' rise='-5pt'>墳</span>"
           "<span font='20' rise='-5pt'>墳</span>"
         ];
       };
-      "scroll-step" = 5;
-      "on-click" = "pamixer -t";
-      "on-click-right" = "pavucontrol";
-      "on-scroll-up" = "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
-      "on-scroll-down" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-      "smooth-scrolling-threshold" = 1;
+      scroll-step = 5;
+      on-click = "pamixer -t";
+      on-click-right = "pavucontrol";
+      on-scroll-up = "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
+      on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+      smooth-scrolling-threshold = 1;
     };
   };
 
@@ -238,6 +240,7 @@ in
 {
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
     package = pkgs.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     });

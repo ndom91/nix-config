@@ -7,6 +7,7 @@
     # nix
     nclean = "nix-env -p /nix/var/nix/profiles/system --delete-generations +2";
     nrebuild = "nix-rebuild switch --flake /etc/nixos#ndo2";
+
     # coreutils
     ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";
     ls = "eza --icons --group-directories-first --classify";
@@ -71,7 +72,6 @@
     READER = "zathura";
     BROWSER = "vivaldi";
     VIDEO = "vlc";
-    XDG_CONFIG_HOME = "$HOME/.config";
     RIPGREP_CONFIG_PATH = "$HOME/.ripgreprc";
     CARGO_NET_GIT_FETCH_WITH_CLI = "true";
 

@@ -24,6 +24,8 @@
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  systemd.user.sessionVariables = config.home.sessionVariables;
+
   # ndo2 overrides
   wayland.windowManager.hyprland = {
     settings = {
@@ -70,6 +72,9 @@
     "./.config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
     "./.config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
 
+    "./.dotfiles/colorscripts/blocks.sh".source = ../../dotfiles/colorscripts/blocks.sh;
+    "./.dotfiles/colorscripts/crunchbang-mini.sh".source = ../../dotfiles/colorscripts/crunchbang-mini.sh;
+
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
@@ -110,3 +115,4 @@
     };
   };
 }
+

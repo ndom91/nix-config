@@ -8,6 +8,7 @@ in
     ./hardware-configuration.nix
     ../common/system-packages.nix
     inputs.home-manager.nixosModules.default
+    inputs.hyprland-nix.homeManagerModules.default
   ];
 
   nix = {
@@ -165,8 +166,8 @@ in
   nixpkgs.config.allowUnfree = true;
 
   # Set in home-manager home.nix
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  # programs.hyprland.enable = true;
+  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm

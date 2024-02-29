@@ -68,7 +68,7 @@
     }
 
     * {
-        font: "Geist Mono Light 12";
+        font: "FiraCode Nerd Font 12";
     }
 
     window {
@@ -98,6 +98,7 @@
       text-color:                     @FG;
       padding:                  8px 0px 8px 8px;
       font:			                "Geist Mono Light 18";
+      font:			                "FiraCode Nerd Font 18";
     }
 
     entry {
@@ -208,12 +209,15 @@
     }
   '';
 
-  home.packages = with pkgs; [
-    rofi-wayland
-  ];
+  # home.packages = with pkgs; [
+  #   rofi-wayland
+  # ];
 
-  # programs.rofi = {
-  #   enable = true;
-  #   package = pkgs.rofi-wayland;
-  # };
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    font = "FiraCode Nerd Font 12";
+    terminal = lib.getExe pkgs.wezterm;
+    cycle = true;
+  };
 }

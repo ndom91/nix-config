@@ -6,6 +6,13 @@
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
     # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
+    package = pkgs.hyprland;
+
+    reloadConfig = true;
+    systemdIntegration = true;
+    recommendedEnvironment = true;
+
+    xwayland.enable = true;
     # hy3 not included in hyprland-plugins flake yet, see: https://github.com/hyprwm/hyprland-plugins
     # plugins = [
     #   inputs.hyprland-plugins.packages."${pkgs.system}".hy3
@@ -46,7 +53,7 @@
         sensitivity = 0;
       };
       exec-once = [
-        "${pkgs.waybar}/bin/.waybar-wrapped"
+        # "${pkgs.waybar}/bin/.waybar-wrapped"
         # "gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-RosePine-Linux'"
         # "gsettings set org.gnome.desktop.interface cursor-size 24"
 

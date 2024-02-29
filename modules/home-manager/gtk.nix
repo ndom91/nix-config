@@ -10,9 +10,10 @@
 
   home.pointerCursor = {
     gtk.enable = true;
+    x11.enable = true;
     package = pkgs.bibata-cursors-translucent;
-    name = "Bibata Ghost";
-    size = 16;
+    name = "Bibata_Ghost";
+    size = 24;
   };
 
   gtk = {
