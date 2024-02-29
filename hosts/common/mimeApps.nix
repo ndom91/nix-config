@@ -13,17 +13,17 @@ in
     let
       associations = flipAssocs {
         ### FILE BROWSER ###
-        "nemo.desktop" = [ "inode/directory" "x-directory/normal" ];
+        "nemo" = [ "inode/directory" "x-directory/normal" ];
 
         ### TEXT ###
-        "gnome-text-editor.desktop" = [
+        "gnome-text-editor" = [
           "text/markdown"
           "text/x-log"
           "text/plain"
         ];
 
         ### WEB BROWSER ###
-        "vivaldi-stable.desktop" = [
+        "vivaldi-stable" = [
           "text/html"
           "x-scheme-handler/http"
           "x-scheme-handler/https"
@@ -45,10 +45,10 @@ in
         # "webcord" = [ "x-scheme-handler/discord" ];
 
         ### SLACK ###
-        "slack.desktop" = [ "x-scheme-handler/slack" ];
+        "slack" = [ "x-scheme-handler/slack" ];
 
         ### DOCUMENT VIEWER ###
-        "org.pwmt.zathura.desktop;" = [
+        "org.pwmt.zathura" = [
           "application/pdf"
           "application/epub"
           "application/djvu"
@@ -191,7 +191,7 @@ in
         ];
 
         ### IMAGE VIEWER ###
-        "imv.desktop" = [
+        "imv" = [
           "image/bmp"
           "image/gif"
           "image/jpeg"
