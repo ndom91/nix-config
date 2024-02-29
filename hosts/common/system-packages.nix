@@ -61,6 +61,10 @@
     xorg.xrdb
     xorg.xsetroot
     xorg.xprop
+
+    # Fonts
+    (nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
+    noto-fonts-color-emoji
   ];
 
   # Register AppImages as binary format

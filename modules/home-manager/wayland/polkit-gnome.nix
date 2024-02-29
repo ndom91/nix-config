@@ -12,7 +12,7 @@
     };
 
     Service = {
-      ExecStart = lib.getExe pkgs.polkit_gnome;
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
       Restart = "on-failure";
       BusName = "org.freedesktop.PolicyKit1.Authority";
     };
