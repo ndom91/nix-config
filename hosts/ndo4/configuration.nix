@@ -26,13 +26,20 @@ in
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
+      netbootxyz.enable = true;
+    };
 
-  # used by tailscale for exit node
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = 1;
-    "net.ipv6.conf.all.forwarding" = 1;
+    loader.efi.canTouchEfiVariables = true;
+
+    # used by tailscale for exit node
+    kernel.sysctl = {
+      "net.ipv4.ip_forward" = 1;
+      "net.ipv6.conf.all.forwarding" = 1;
+    };
   };
 
   networking = {

@@ -30,7 +30,11 @@ in
   };
 
   boot = {
-    loader.systemd-boot.enable = true;
+    loader.systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
+      netbootxyz.enable = true;
+    };
     loader.efi.canTouchEfiVariables = true;
 
     # make 3.5mm jack work
@@ -268,3 +272,4 @@ in
   # DO NOT TOUCH #
   system.stateVersion = "23.11";
 }
+
