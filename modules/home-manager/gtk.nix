@@ -19,6 +19,7 @@
 
   gtk = {
     enable = true;
+    font = "Ubuntu Nerd Font";
 
     # theme = {
     #   package = pkgs.catppuccin-gtk;

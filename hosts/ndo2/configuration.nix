@@ -98,7 +98,7 @@ in
         wayland.enable = true;
         settings = {
           Theme = {
-            Font = "FiraCode Nerd Font";
+            Font = "Ubuntu Nerd Font";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
             # CursorTheme = "Bibata-Modern-Classic";
