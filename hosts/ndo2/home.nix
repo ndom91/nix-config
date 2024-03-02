@@ -97,7 +97,7 @@
         }
         {
           timeout = 300;
-          command = "${pkgs.swaylock}/bin/swaylock";
+          command = "${config.programs.swaylock.package}/bin/swaylock";
         }
         {
           timeout = 360;
@@ -108,7 +108,7 @@
       events = [
         {
           event = "before-sleep";
-          command = "${pkgs.swaylock}/bin/swaylock";
+          command = "${config.programs.swaylock.package}/bin/swaylock";
         }
       ];
     };
