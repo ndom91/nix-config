@@ -9,7 +9,7 @@
     ../common/tmux.nix
     ../common/user-dirs.nix
     ../common/ssh.nix
-    ../common/shell.nix
+    ../common/sh.nix
     ../common/mimeApps.nix
     ../common/languages/node.nix
     ../common/languages/rust.nix
