@@ -5,9 +5,9 @@
 
   home.shellAliases = {
     # nix
-    nclean = "nix-env -p /nix/var/nix/profiles/system --delete-generations +2";
+    nclean = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +3";
+    nrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#ndo2";
 
-    nrebuild = "nixos-rebuild switch --flake /etc/nixos#ndo2";
     # coreutils
     ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";
     ls = "eza --icons --group-directories-first --classify";
@@ -136,39 +136,5 @@
       nix-collect-garbage -d
     }
   '';
-
-  # xdg.mimeApps = {
-  #   enable = true;
-  #   defaultApplications = {
-  #     "inode/directory" = "nemo.desktop";
-  #     "x-scheme-handler/http" = "vivaldi-stable.desktop";
-  #     "x-scheme-handler/https" = "vivaldi-stable.desktop";
-  #     "x-scheme-handler/slack" = "slack.desktop";
-  #     "image/image" = "imv.desktop";
-  #     "image/*" = "imv.desktop";
-  #     "image/png" = "imv.desktop";
-  #     "image/jpeg" = "imv.desktop";
-  #     "image/gif" = "imv.desktop";
-  #     "image/svg" = "imv.desktop";
-  #     "image/svg+xml" = "imv.desktop";
-  #     "image/webp" = "imv.desktop";
-  #     "text/html" = "vivaldi-stable.desktop";
-  #     "x-scheme-handler/about" = "vivaldi-stable.desktop";
-  #     "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
-  #     "x-scheme-handler/webcal" = "vivaldi-stable.desktop";
-  #     "x-scheme-handler/anytype" = "anytype.desktop";
-  #     "x-scheme-handler/chrome" = "vivaldi-stable.desktop";
-  #     "application/x-extension-htm" = "vivaldi-stable.desktop";
-  #     "application/x-extension-html" = "vivaldi-stable.desktop";
-  #     "application/x-extension-shtml" = "vivaldi-stable.desktop";
-  #     "application/xhtml+xml" = "vivaldi-stable.desktop";
-  #     "application/x-extension-xhtml" = "vivaldi-stable.desktop";
-  #     "application/x-extension-xht" = "vivaldi-stable.desktop";
-  #     "application/pdf" = "org.pwmt.zathura.desktop;";
-  #     "text/markdown" = "gnome-text-editor.desktop;";
-  #     "text/x-log" = "gnome-text-editor.desktop;";
-  #     "text/plain" = "gnome-text-editor.desktop;";
-  #   };
-  # };
 }
 
