@@ -68,7 +68,7 @@
     networkmanagerapplet
     playerctl
     swaybg
-    swayidle
+    # swayidle
     swaynotificationcenter
     unstablePkgs.swayosd
     wf-recorder
