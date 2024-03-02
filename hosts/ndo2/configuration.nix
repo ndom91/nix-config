@@ -1,6 +1,7 @@
 { lib, inputs, unstablePkgs, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
+  corners-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../modules/packages/rose-pine-cursor/default.nix { };
 in
 {
@@ -94,7 +95,7 @@ in
       defaultSession = "hyprland";
       sddm = {
         enable = true;
-        theme = "tokyo-night-sddm";
+        theme = "corners-sddm";
         wayland.enable = true;
         settings = {
           Theme = {
@@ -184,6 +185,7 @@ in
 
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
+    corners-sddm
     rose-pine-cursor
   ];
 
