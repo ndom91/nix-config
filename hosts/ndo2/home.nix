@@ -110,6 +110,11 @@
   programs.git.diff-so-fancy.enable = true;
   programs.home-manager.enable = true;
   programs.bash.enable = true;
-  programs.zoxide.enable = true;
+  programs.zoxide = {
+    enable = true;
+    options = [
+      "--cmd cd"
+    ];
+  };
 }
 

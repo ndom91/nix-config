@@ -62,9 +62,9 @@
         "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
         "nm-applet --indicator"
         "swaybg -m fill -i ~/.config/hypr/wallpapers/dark-purple-space-01.png"
-        # "swayidle -w"
+        "swayidle -w"
         # "mkchromecast -t"
-        "swayosd"
+        "swayosd-server"
         "wl-paste --watch cliphist store"
         "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
         "blueberry-tray"
@@ -346,10 +346,10 @@
         ",XF86AudioStop, exec, playerctl stop"
 
         # SwayOSD + AudioControl
-        ",XF86AudioRaiseVolume, exec, swayosd --output-volume raise"
-        ",XF86AudioLowerVolume, exec, swayosd --output-volume lower"
-        ",XF86AudioMute, exec, swayosd --output-volume mute-toggle"
-        ",XF86AudioMicMute, exec, swayosd --input-volume mute-toggle"
+        ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+        ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+        ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
       ]
       ++ (
         # workspaces
