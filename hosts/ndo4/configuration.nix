@@ -121,8 +121,7 @@ in
 
   hardware = {
     enableAllFirmware = true;
-    enableRedistributableFirmware = true;
-    pulseaudio.enable = false;
+    # enableRedistributableFirmware = true;
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;

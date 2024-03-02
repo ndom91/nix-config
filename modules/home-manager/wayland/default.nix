@@ -61,20 +61,20 @@
   };
 
   home.packages = with pkgs; [
-    swaynotificationcenter
+    # swayosd
     _1password-gui
+    blueberry
+    mkchromecast
     networkmanagerapplet
     playerctl
     swaybg
     swayidle
-    swayosd
+    swaynotificationcenter
+    unstable.swayosd
     wf-recorder
-    mkchromecast
-    swayosd
     wl-clipboard
-    wlsunset
     wlr-randr
-    blueberry
+    wlsunset
 
     # Screenshot
     # grim

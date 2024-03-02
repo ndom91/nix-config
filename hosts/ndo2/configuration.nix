@@ -24,23 +24,20 @@ in
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 5d";
     };
   };
 
-  # Bootloader.
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
     # make 3.5mm jack work
-    # Disable Nvidia GPU
     extraModprobeConfig = ''
-      blacklist nouveau
-      options nouveau modeset=0
       options snd_hda_intel model=headset-mode
     '';
 
+    # Disable Nvidia GPU
     blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
   };
   services.udev.extraRules = ''
@@ -57,7 +54,6 @@ in
   networking = {
     hostName = "ndo2";
     useDHCP = lib.mkDefault true;
-    # wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
     nameservers = [
       "10.0.0.1"
@@ -73,10 +69,8 @@ in
     };
   };
 
-  # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -144,7 +138,7 @@ in
 
   hardware = {
     enableAllFirmware = true;
-    enableRedistributableFirmware = true;
+    acpilight.enable = true;
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;

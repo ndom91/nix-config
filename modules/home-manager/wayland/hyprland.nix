@@ -7,6 +7,7 @@
     # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     enable = true;
     package = pkgs.hyprland;
+    # systemd.enable = true;
 
     # reloadConfig = true;
     # systemdIntegration = true;
@@ -71,10 +72,10 @@
         # "/nix/store/$(ls -la /nix/store | grep polkit_gnome | grep '^d' | awk '{print $9}')/libexec/polkit-gnome-authentication-agent-1"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         # "xrdb -merge ~/.Xresources"
+        # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        # "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         "xsetroot -xcf ${rose-pine-cursor}/BreezeX-RosePine-Linux/cursors/left_ptr 24"
 
         "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
@@ -330,54 +331,25 @@
         "$mainMod SHIFT, K, movewindow, u"
         "$mainMod SHIFT, J, movewindow, d"
 
-        # Switch workspaces with mainMod + [0-9]
-        # "$mainMod, 1, workspace, 1"
-        # "$mainMod, 2, workspace, 2"
-        # "$mainMod, 3, workspace, 3"
-        # "$mainMod, 4, workspace, 4"
-        # "$mainMod, 5, workspace, 5"
-        # "$mainMod, 6, workspace, 6"
-        # "$mainMod, 7, workspace, 7"
-        # "$mainMod, 8, workspace, 8"
-        # "$mainMod, 9, workspace, 9"
-        # "$mainMod, 0, workspace, 10"
-
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        # "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
-        # "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
-        # "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
-        # "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
-        # "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
-        # "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
-        # "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
-        # "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
-        # "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
-        # "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
-
-        # Scroll through existing workspaces with mainMod + scroll
-        # "$mainMod, mouse_down, workspace, e+1"
-        # "$mainMod, mouse_up, workspace, e-1"
-
         # Special Keys
-        ",XF86MonBrightnessUp,exec,brightnessctl set 5%+"
-        ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
-        ",XF86AudioRaiseVolume,exec,wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86AudioMicMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ",xf86audioplay, exec, playerctl play-pause"
-        ",xf86audionext, exec, playerctl next"
-        ",xf86audioprev, exec, playerctl previous"
-        ",xf86audiostop, exec, playerctl stop"
-        # SwayOSD
-        ",XF86AudioRaiseVolume,exec,swayosd --output-volume raise"
-        ",XF86AudioLowerVolume,exec,swayosd --output-volume lower"
-        ",XF86AudioMute,exec,swayosd --output-volume mute-toggle"
-        ",XF86AudioMicMute,exec,swayosd --input-volume mute-toggle"
-        ",xf86audioplay, exec, playerctl play-pause"
-        ",xf86audionext, exec, playerctl next"
-        ",xf86audioprev, exec, playerctl previous"
-        ",xf86audiostop, exec, playerctl stop"
+        ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+        ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+
+        # ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+        # ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        # ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        # ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+        ",XF86AudioPlay, exec, playerctl play-pause"
+        ",XF86AudioNext, exec, playerctl next"
+        ",XF86AudioPrev, exec, playerctl previous"
+        ",XF86AudioStop, exec, playerctl stop"
+
+        # SwayOSD + AudioControl
+        ",XF86AudioRaiseVolume, exec, swayosd --output-volume raise"
+        ",XF86AudioLowerVolume, exec, swayosd --output-volume lower"
+        ",XF86AudioMute, exec, swayosd --output-volume mute-toggle"
+        ",XF86AudioMicMute, exec, swayosd --input-volume mute-toggle"
       ]
       ++ (
         # workspaces

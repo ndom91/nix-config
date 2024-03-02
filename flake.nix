@@ -23,10 +23,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... } @inputs:
+  outputs = { self, unstable, nixpkgs, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      unstable = unstable.legacyPackages.${system};
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
