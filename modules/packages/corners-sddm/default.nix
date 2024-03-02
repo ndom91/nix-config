@@ -13,8 +13,8 @@ stdenvNoCC.mkDerivation rec {
 
   propagatedUserEnvPkgs = [ qtbase qtsvg qtgraphicaleffects qtquickcontrols2 ];
 
-  installPhase = '' 
-    mkdir -p $out/share/sddm/themes 
-    cp -aR $src $out/share/sddm/themes/corners
+  installPhase = ''
+    mkdir -p $out/share/sddm/themes/corners
+    cp -R $src/corners/* $out/share/sddm/themes/corners/
   '';
 }

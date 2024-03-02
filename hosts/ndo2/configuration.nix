@@ -95,7 +95,7 @@ in
       defaultSession = "hyprland";
       sddm = {
         enable = true;
-        theme = "corners-sddm";
+        theme = "corners";
         wayland.enable = true;
         settings = {
           Theme = {
