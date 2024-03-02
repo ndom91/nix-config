@@ -165,7 +165,7 @@ let
       interval = 60;
       align = 0;
       rotate = 0;
-      format = " {:%H:%M | %a %b %d}";
+      format = "{:%H:%M | %a %b %d}";
       # format = "🕐 {:%H:%M | %a %b %d}";
       format-alt = " {:%a %b %d}";
       tooltip-format = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";

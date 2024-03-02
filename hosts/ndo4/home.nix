@@ -7,6 +7,7 @@
     ../common/packages.nix
     ../common/gitconfig.nix
     ../common/tmux.nix
+    ../common/user-dirs.nix
     ../common/ssh.nix
     ../common/shell.nix
     ../common/mimeApps.nix
