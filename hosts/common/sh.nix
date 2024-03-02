@@ -7,6 +7,7 @@
     # nix
     nclean = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +3";
     nrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#ndo2";
+    ndiff = "nix store diff-closures $(ls -d  /nix/var/nix/profiles/* | tail -2 | awk '{ print $1 }')";
 
     # coreutils
     ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";

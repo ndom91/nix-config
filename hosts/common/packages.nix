@@ -35,7 +35,6 @@
     duf # Disk Usage/Free Utility - a better 'df' alternative
     ncdu # analyzer your disk usage Interactively, via TUI(replacement of `du`)
 
-
     # Terminal Apps
     lazygit
     lazydocker
@@ -43,6 +42,7 @@
     whois
     jq
     cliphist
+    nvd
 
     # Fonts
     (nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
