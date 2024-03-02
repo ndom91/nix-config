@@ -4,10 +4,10 @@ stdenvNoCC.mkDerivation rec {
   version = "1.0";
   dontBuild = true;
   src = fetchFromGitHub {
-    owner = "czw";
+    owner = "aczw";
     repo = "sddm-theme-corners";
-    rev = "320c8e74ade1e94f640708eee0b9a75a395697c6";
-    sha256 = "sha256-JRVVzyefqR2L3UrEK2iWyhUKfPMUNUnfRZmwdz05wL0=";
+    rev = "6ff0ff455261badcae36cd7d151a34479f157a3c";
+    sha256 = "sha256-CPK3kbc8lroPU8MAeNP8JSStzDCKCvAHhj6yQ1fWKkY=";
   };
   nativeBuildInputs = [ wrapQtAppsHook ];
 
