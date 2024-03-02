@@ -27,19 +27,19 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      unstable = unstable.legacyPackages.${system};
+      unstablePkgs = unstable.legacyPackages.${system};
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
       nixosConfigurations = {
         ndo4 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs unstablePkgs; };
           modules = [
             ./hosts/ndo4/configuration.nix
           ];
         };
         ndo2 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs unstablePkgs; };
           modules = [
             ./hosts/ndo2/configuration.nix
           ];

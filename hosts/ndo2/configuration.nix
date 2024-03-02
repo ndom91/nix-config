@@ -1,4 +1,4 @@
-{ lib, inputs, config, pkgs, ... }:
+{ lib, inputs, unstablePkgs, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../modules/packages/rose-pine-cursor/default.nix { };
@@ -164,7 +164,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit rose-pine-cursor inputs; };
+    extraSpecialArgs = { inherit rose-pine-cursor inputs unstablePkgs; };
     # useUserPackages = true;
     useGlobalPkgs = true;
     users = {
@@ -174,7 +174,6 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  # Set in home-manager home.nix
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 

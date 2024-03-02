@@ -1,4 +1,4 @@
-{ rose-pine-cursor, inputs, pkgs, ... }:
+{ rose-pine-cursor, unstablePkgs, inputs, pkgs, ... }:
 {
   imports = with rose-pine-cursor pkgs inputs; [
     ./hyprland.nix
@@ -70,7 +70,7 @@
     swaybg
     swayidle
     swaynotificationcenter
-    unstable.swayosd
+    unstablePkgs.swayosd
     wf-recorder
     wl-clipboard
     wlr-randr
