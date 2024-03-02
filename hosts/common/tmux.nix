@@ -51,6 +51,9 @@
       }
     ];
     extraConfig = ''
+      # Quick escape back to insert mode in nvim
+      set -sg escape-time 10
+
       # Setup 'v' to begin selection as in Vim
       bind-key -T edit-mode-vi Up send-keys -X history-up
       bind-key -T edit-mode-vi Down send-keys -X history-down
