@@ -9,6 +9,7 @@ let
   mapMimeListToXDGAttrs = prog: map (type: { "${type}" = "${prog}.desktop"; });
 in
 {
+  xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps =
     let
       associations = flipAssocs {

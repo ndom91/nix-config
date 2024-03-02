@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+  xdg.configFile."user-dirs.dirs".force = true;
   xdg.userDirs = {
     enable = true;
     extraConfig = {
