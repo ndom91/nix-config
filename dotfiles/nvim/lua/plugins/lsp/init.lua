@@ -24,7 +24,7 @@ return {
         "tsserver",
         "bashls",
         "cssls",
-        "eslint",
+        -- "eslint",
         "html",
         "svelte",
         "tailwindcss",
@@ -213,7 +213,8 @@ return {
         end,
       })
 
-      require("plugins.lsp.langs.eslint")
+      -- Temporarily Disabled
+      -- require("plugins.lsp.langs.eslint")
       require("plugins.lsp.langs.typescript")
       require("plugins.lsp.langs.vue")
       -- require("plugins.lsp.langs.json")

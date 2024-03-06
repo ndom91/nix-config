@@ -7,7 +7,12 @@ return {
     "MunifTanjim/nui.nvim",
   },
   keys = {
-    { "\\", "<cmd>Neotree toggle<cr>", desc = "Neotree Toggle", silent = true },
+    {
+      "\\",
+      function() require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() }) end,
+      desc = "Neotree Toggle",
+      silent = true,
+    },
   },
   config = function()
     -- If you want icons for diagnostic errors, you'll need to define them somewhere:

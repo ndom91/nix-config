@@ -13,13 +13,17 @@ if not have_vue then
       -- vim.bo[bufnr].formatexpr = nil
     end,
     handlers = {
-      -- Go right to first result if there is only 1
+      -- Go right to first result if there is more than 1
       ["textDocument/definition"] = function(err, result, ctx, ...)
-        if #result > 1 then result = { result[1] } end
-        vim.lsp.handlers["textDocument/definition"](err, result, ctx, ...)
+        if #result > 1 then
+          result = { result[1] }
+          return vim.lsp.handlers["textDocument/definition"](err, result, ctx, ...)
+        end
+
+        return vim.lsp.handlers["textDocument/definition"](err, result, ctx, ...)
       end,
     },
-    root_dir = require("lspconfig/util").root_pattern("tsconfig.json"),
+    -- root_dir = require("lspconfig/util").root_pattern("tsconfig.json"),
     settings = {
       documentFormatting = false,
       -- taken from https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration
@@ -56,7 +60,13 @@ if not have_vue then
       "typescriptreact",
       "typescript.tsx",
     },
-    -- root_dir = require("lspconfig.util").root_pattern("package.json", "package-lock.json", "tsconfig.json", "jsconfig.json", ".git"),
-    -- single_file_support = true,
+    root_dir = require("lspconfig.util").root_pattern(
+      "package.json",
+      "package-lock.json",
+      "tsconfig.json",
+      "jsconfig.json",
+      ".git"
+    ),
+    single_file_support = true,
   })
 end

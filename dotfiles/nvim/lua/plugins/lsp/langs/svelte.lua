@@ -14,8 +14,6 @@ require("lspconfig").svelte.setup({
     svelte = {
       plugin = {
         svelte = {
-          -- defaultScriptLanguage = "typescript",
-          --
           format = {
             enable = false,
           },
