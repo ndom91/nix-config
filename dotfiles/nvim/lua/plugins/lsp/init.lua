@@ -213,6 +213,7 @@ return {
         end,
       })
 
+      require("plugins.lsp.langs.eslint")
       require("plugins.lsp.langs.typescript")
       require("plugins.lsp.langs.vue")
       -- require("plugins.lsp.langs.json")
