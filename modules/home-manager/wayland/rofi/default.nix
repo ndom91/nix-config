@@ -1,34 +1,16 @@
 { lib, pkgs, ... }: {
-  # xdg.configFile."rofi/config.rasi".source = ./config.rasi;
 
-  xdg.configFile."rofi/bin/launcher".text = ''
-    #!/usr/bin/env bash
-    rofi \
-      -show drun \
-      -modi run,drun,ssh \
-      -scroll-method 0 \
-      -drun-match-fields all \
-      -drun-display-format "{name}" \
-      -no-drun-show-actions \
-      -terminal alacritty \
-      -theme "$HOME"/.config/rofi/config/launcher.rasi
-  '';
+  xdg.configFile."rofi/bin/launcher".source = ./launcher;
   xdg.configFile."rofi/bin/launcher".executable = true;
 
-  xdg.configFile."rofi/bin/cliphist".text = ''
-    #!/usr/bin/env bash
-    cliphist list |
-      rofi \
-        -p ' ' \
-        -window-title 'Cliphist' \
-        -i \
-        -dmenu \
-        -scroll-method 0 \
-        -theme "$HOME"/.config/rofi/config/launcher.rasi |
-      cliphist decode |
-      wl-copy
-  '';
+  xdg.configFile."rofi/bin/screenshot".source = ./screenshot;
+  xdg.configFile."rofi/bin/screenshot".executable = true;
+
+  xdg.configFile."rofi/bin/cliphist".source = ./cliphist;
   xdg.configFile."rofi/bin/cliphist".executable = true;
+
+  xdg.configFile."rofi/bin/emoji".source = ./emoji;
+  xdg.configFile."rofi/bin/emoji".executable = true;
 
   xdg.configFile."rofi/config.rasi".text = ''
     configuration {
@@ -54,41 +36,41 @@
     }
 
     * {
-        BG:    #11111Bff;
-        BGA:   #b4befeff;
-        FG:    #D9E0EEff;
-        FGA:   #b4befeff;
-        BDR:   #b4befeff;
-        SEL:   #1E1E2Eff;
-        UGT:   #F28FADff;
-        IMG:   #b4befeff;
-        OFF:   #575268ff;
-        ON:    #ABE9B3ff;
-        TRANS: #00000000;
+      BG:    #11111Bff;
+      BGA:   #b4befeff;
+      FG:    #D9E0EEff;
+      FGA:   #b4befeff;
+      BDR:   #b4befeff;
+      SEL:   #1E1E2Eff;
+      UGT:   #F28FADff;
+      IMG:   #b4befeff;
+      OFF:   #575268ff;
+      ON:    #ABE9B3ff;
+      TRANS: #00000000;
     }
 
     * {
-        font: "FiraCode Nerd Font 12";
+      font: "FiraCode Nerd Font 12";
     }
 
     window {
-    transparency:                   "real";
-    background-color:               @BG;
-    text-color:                     @FG;
-    border:                         2px;
-    border-color:                   @BDR;
-    border-radius:                  5px;
-    width:                          450px;
-    anchor:                         center;
-    x-offset:                       0;
-    y-offset:                       -50;
+      transparency:                   "real";
+      background-color:               @BG;
+      text-color:                     @FG;
+      border:                         2px;
+      border-color:                   @BDR;
+      border-radius:                  5px;
+      width:                          450px;
+      anchor:                         center;
+      x-offset:                       0;
+      y-offset:                       -50;
     }
 
     prompt {
-    enabled: 			            true;
-    padding: 			            8px;
-    background-color: 		        @BG;
-    text-color: 		            @IMG;
+      enabled: 			            true;
+      padding: 			            8px;
+      background-color: 		        @BG;
+      text-color: 		            @IMG;
     }
 
     textbox-prompt-colon {
@@ -145,10 +127,10 @@
     }
 
     mainbox {
-    background-color:               @BG;
-    children:                       [ inputbar, listview ];
-    spacing:                        15px;
-    padding:                        15px;
+      background-color:               @BG;
+      children:                       [ inputbar, listview ];
+      spacing:                        15px;
+      padding:                        15px;
     }
 
     element {
@@ -208,10 +190,6 @@
       color:                          @FG;
     }
   '';
-
-  # home.packages = with pkgs; [
-  #   rofi-wayland
-  # ];
 
   programs.rofi = {
     enable = true;

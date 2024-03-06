@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+chosen=$(echo /etc/nixos/dotfiles/emojis | rofi \
+  -p ' ' \
+  -window-title 'Emoji' \
+  -i \
+  -dmenu \
+  -scroll-method 0 \
+  -theme "$HOME"/.config/rofi/config/launcher.rasi)
+
+# Exit if none chosen
+[ -z "$chosen" ] && exit
+
+wl-copy "$chosen"

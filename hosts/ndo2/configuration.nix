@@ -240,6 +240,7 @@ in
     printing.enable = true;
     # flatpak.enable = true;
     fprintd.enable = true;
+    fstrim.enable = true;
   };
 
   powerManagement.enable = true;

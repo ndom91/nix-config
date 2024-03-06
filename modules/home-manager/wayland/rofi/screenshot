@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+
+rofi_command="rofi -theme $HOME/.config/rofi/config/screenshot.rasi"
+
+time=$(date +%Y-%m-%d-%I-%M-%S)
+# geometry=$(xrandr | head -n1 | cut -d',' -f2 | tr -d '[:blank:],current')
+height=$(wlr-randr --json | jq .[0].modes[0].height)
+width=$(wlr-randr --json | jq .[0].modes[0].width)
+geometry="${width}x${height}"
+dir="$(xdg-user-dir PICTURES)/Screenshots"
+file="Screenshot_${time}_${geometry}.png"
+
+# Icons
+icon1="$HOME/.config/dunst/icons/collections.svg"
+icon2="$HOME/.config/dunst/icons/timer.svg"
+
+# Buttons
+screen=" Capture Desktop"
+area=" Capture Area"
+window="缾 Capture Window"
+infive="靖 Take in 3s"
+inten="福 Take in 10s"
+
+# Notify and view screenshot
+notify_view() {
+  notify-send -u low -i "$icon1" "Copied to clipboard."
+  imv "${dir}/$file"
+
+  if [[ -e "$dir/$file" ]]; then
+    notify-send -u low -i "$icon1" "Screenshot Saved."
+  else
+    notify-send -u low -i "$icon1" "Screenshot Deleted."
+  fi
+}
+
+# countdown
+countdown() {
+  for sec in $(seq "$1" -1 1); do
+    notify-send -t 1000 -i "$icon2" "Taking shot in : $sec"
+    sleep 1
+  done
+}
+
+# take shots
+shotnow() {
+  cd "${dir}" && sleep 0.5 && grim -c | tee "$file" | wl-copy --primary --type image/png
+  notify_view
+}
+
+shot5() {
+  coords=$(slurp)
+  countdown '3'
+  # grim -c -g "$coords" - | satty --copy-command wl-copy --early-exit --output-filename "$dir/$file" --filename -
+  # grim -c -g "$coords" - | annotator -i
+  grim -c -g "$coords" - | swappy -f -
+}
+
+shot10() {
+  coords=$(slurp)
+  countdown '10'
+  # grim -c -g "$coords" - | satty --copy-command wl-copy --early-exit --filename -
+  # grim -c -g "$coords" - | annotator -i
+  grim -c -g "$coords" - | swappy -f -
+  notify_view
+}
+
+shotwin() {
+  cd "${dir}" && grim -c -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee "$file" | wl-copy --primary --type image/png
+  notify_view
+}
+
+shotarea() {
+  coords=$(slurp -d)
+  # grim -c -g "$coords" - | satty --copy-command wl-copy --early-exit --output-filename "$dir/$file" --filename -
+  # grim -c -g "$coords" - | annotator -i
+
+  grim -c -g "$coords" - | swappy -f -
+  # notify_view
+}
+
+if [[ ! -d "$dir" ]]; then
+  mkdir -p "$dir"
+fi
+
+# Variable passed to rofi
+options="$area\n$screen\n$window\n$infive\n$inten"
+
+chosen="$(echo -e "$options" | $rofi_command -p 'Screenshot' -dmenu -selected-row 0)"
+case $chosen in
+  "$area")
+    shotarea
+    ;;
+  "$screen")
+    shotnow
+    ;;
+  "$window")
+    shotwin
+    ;;
+  "$infive")
+    shot5
+    ;;
+  "$inten")
+    shot10
+    ;;
+esac

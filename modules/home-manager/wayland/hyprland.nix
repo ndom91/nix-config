@@ -111,6 +111,14 @@
         active_opacity = "0.95";
         inactive_opacity = "0.80";
         fullscreen_opacity = "1.00";
+        blur = {
+          enabled = true;
+          new_optimizations = true;
+          xray = false;
+          ignore_opacity = true;
+          passes = 2;
+          size = 5;
+        };
       };
       animations = {
         enabled = "yes";
@@ -281,6 +289,7 @@
       ];
       bind = [
         "$mainMod, D, exec, \"$HOME/.config/rofi/bin/launcher\""
+        "$mainMod, M, exec, \"$HOME/.config/rofi/bin/emoji/\"" # TODO: Find rofi-emoji alternative
         # "$mainMod, M, exec, flemozi" # TODO: Find rofi-emoji alternative
         # "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
         # "$mainMod, Y, hy3:changegroup, opposite"

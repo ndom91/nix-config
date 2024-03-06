@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+cliphist list |
+  rofi \
+    -p ' ' \
+    -window-title 'Cliphist' \
+    -i \
+    -dmenu \
+    -scroll-method 0 \
+    -theme "$HOME"/.config/rofi/config/launcher.rasi |
+  cliphist decode |
+  wl-copy
