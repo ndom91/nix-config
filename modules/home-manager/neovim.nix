@@ -23,6 +23,7 @@
       pynvim
     ];
     extraPackages = with pkgs; [
+      silicon # code screenshots
       shfmt
       eslint_d
       stylua
