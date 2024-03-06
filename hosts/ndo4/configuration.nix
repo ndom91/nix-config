@@ -1,4 +1,4 @@
-{ lib, inputs, config, pkgs, ... }:
+{ lib, inputs, unstablePkgs, overlays, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../modules/packages/rose-pine-cursor/default.nix { };
@@ -12,10 +12,18 @@ in
   ];
 
   nix = {
-    autoOptimiseStore = true;
     settings = {
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      auto-optimise-store = true;
+      substituters = [
+        "https://hyprland.cachix.org"
+        "https://cache.nixos.org/"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
     };
@@ -153,7 +161,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit rose-pine-cursor inputs unstablePkgs; };
     # useUserPackages = true;
     useGlobalPkgs = true;
     users = {
@@ -162,13 +170,15 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = overlays;
 
-  # Set in home-manager home.nix
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
+    corners-sddm
+    rose-pine-cursor
   ];
 
   # FOR LATER: dynamically-linked binaries work-around
@@ -209,10 +219,7 @@ in
     # enable fingerprint sensor
     fprintd.enable = true;
 
-    # Enable CUPS to print documents.
     printing.enable = true;
-
-    # flatpak.enable = true;
     fstrim.enable = true;
   };
 

@@ -1,4 +1,4 @@
-{ lib, inputs, unstablePkgs, config, pkgs, ... }:
+{ lib, inputs, unstablePkgs, overlays, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/corners-sddm/default.nix { };
@@ -17,8 +17,16 @@ in
   nix = {
     settings = {
       auto-optimise-store = true;
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = [
+        "https://hyprland.cachix.org"
+        "https://cache.nixos.org/"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
     };
@@ -188,6 +196,7 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = overlays;
 
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;

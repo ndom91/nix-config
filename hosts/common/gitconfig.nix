@@ -51,6 +51,8 @@
       maintenance = {
         repo = "/opt/nextauthjs/next-auth";
       };
+      checkout = { defaultRemote = "origin"; };
+      protocol = { version = 2; };
       gpg = {
         format = "ssh";
         # ssh = {
