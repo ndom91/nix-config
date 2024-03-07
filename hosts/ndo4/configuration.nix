@@ -52,11 +52,23 @@ in
 
   networking = {
     hostName = "ndo4";
-    useDHCP = lib.mkDefault true;
+    # useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
     nameservers = [
       "10.0.0.1"
     ];
+    interfaces = {
+			enp42s0 = {
+				name = "eth0";
+				useDHCP = false;
+				ipv4 = {
+					addresses = [{
+						address = "10.0.0.10";
+						prefixLength = 24;
+					}];
+				};
+			};
+    };
 
     firewall = {
       enable = false;
