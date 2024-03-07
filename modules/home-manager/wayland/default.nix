@@ -26,12 +26,6 @@
     _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd";
   };
 
-  programs._1password = { enable = true; };
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "ndo" ];
-  };
-
   home.packages = with pkgs; [
     blueberry
     mkchromecast

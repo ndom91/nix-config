@@ -2,6 +2,7 @@
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../modules/packages/rose-pine-cursor/default.nix { };
+  corners-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/corners-sddm/default.nix { };
 in
 {
   imports = with pkgs; [
@@ -186,6 +187,12 @@ in
 
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+
+  programs._1password = { enable = true; };
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "ndo" ];
+  };
 
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm

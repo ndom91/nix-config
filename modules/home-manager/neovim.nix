@@ -18,9 +18,9 @@
     extraLuaConfig = ''
       vim.opt.runtimpath = vim.opt.runtimepath + "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}"
     '';
-    extraPython3Packages = with pkgs.python311Packages; [
-      libtmux
-      pynvim
+    extraPython3Packages = ps: [
+      ps.libtmux
+      ps.pynvim
     ];
     extraPackages = with pkgs; [
       silicon # code screenshots
