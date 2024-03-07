@@ -6,6 +6,7 @@
     gnome.gnome-boxes
     gnome.seahorse
     slack
+    vesktop # Discord fork
     virt-manager
     wezterm
     gnome-text-editor
