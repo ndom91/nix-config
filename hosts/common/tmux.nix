@@ -1,4 +1,21 @@
-{ pkgs, input, ... }:
+{ pkgs, unstablePkgs, input, ... }:
+let
+  tmux-window-name = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "tmux-window-name";
+    version = "2024-03-08";
+    src = pkgs.fetchFromGitHub {
+      owner = "ofirgall";
+      repo = "tmux-window-name";
+      rev = "34026b6f442ceb07628bf25ae1b04a0cd475e9ae";
+      sha256 = "sha256-BNgxLk/BkaQkGlB4g2WKVs39y4VHL1Y2TdTEoBy7yo0=";
+    };
+    postInstall = ''
+      # sed -i -e 's|python3 |${pkgs.python311Full}/bin/python3 |g' tmux_window_name.tmux
+      find $target -type f -print0 | xargs -0 sed -i -e 's|python3 |${pkgs.python3}/bin/python3 |g'
+    '';
+    rtpFilePath = "tmux_window_name.tmux";
+  };
+in
 {
   programs.tmux = {
     enable = true;
@@ -7,15 +24,15 @@
     newSession = true;
     historyLimit = 10000;
     prefix = "C-a";
-    plugins = with pkgs.tmuxPlugins; [
+    plugins = [
       {
-        plugin = mode-indicator;
+        plugin = tmux-window-name;
       }
-      # "ofirgall/tmux-window-name"
-      #   Not in nixpkgs.tmuxPlugins
-      #   Manual installation: https://github.com/ofirgall/tmux-window-name#manual-installation
       {
-        plugin = catppuccin;
+        plugin = pkgs.tmuxPlugins.mode-indicator;
+      }
+      {
+        plugin = pkgs.tmuxPlugins.catppuccin;
         extraConfig = ''
           set -g @catppuccin_flavour 'mocha'
 
@@ -42,13 +59,12 @@
           set -g @catppuccin_status_connect_separator "no"
         '';
       }
-      {
-        plugin = tmux-thumbs;
-        # run-shell ~/.config/tmux/plugins/tmux-thumbs/tmux-thumbs.tmux
-        extraConfig = ''
-          set -g @thumbs-command 'echo -n {} | wl-copy'
-        '';
-      }
+      # {
+      #   plugin = pkgs.tmuxPlugins.tmux-thumbs;
+      #   extraConfig = ''
+      #     set -g @thumbs-command 'echo -n {} | wl-copy'
+      #   '';
+      # }
     ];
     extraConfig = ''
       # Quick escape back to insert mode in nvim
