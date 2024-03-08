@@ -191,7 +191,14 @@ in
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    vivaldi = {
+      proprietaryCodecs = true;
+      enableWidevine = true;
+    };
+  };
+
   nixpkgs.overlays = overlays;
 
   programs.hyprland.enable = true;
