@@ -8,6 +8,8 @@
     nclean = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +3";
     nrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#$(hostname)";
     ndiff = "nix store diff-closures $(ls -d  /nix/var/nix/profiles/* | tail -2 | awk '{ print $1 }')";
+    nhistory = "nix profile diff-closures --profile /nix/var/nix/profiles/system";
+    nvddiff = "nvd diff $(ls -d  /nix/var/nix/profiles/* | tail -2 | awk '{ print $1 }' | xargs)";
 
     # coreutils
     ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";
