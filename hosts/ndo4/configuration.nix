@@ -69,6 +69,10 @@ in
         };
       };
     };
+    defaultGateway = {
+      address = "10.0.0.1";
+      interface = "enp42s0";
+    };
 
     firewall = {
       enable = false;
@@ -182,7 +186,13 @@ in
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    vivaldi = {
+      proprietaryCodecs = true;
+      enableWidevine = true;
+    };
+  };
   nixpkgs.overlays = overlays;
 
   programs.hyprland.enable = true;

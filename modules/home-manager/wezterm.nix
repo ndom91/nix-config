@@ -28,9 +28,9 @@
         config.window_background_opacity = 0.92
 
         config.font = wezterm.font_with_fallback {
+          { family = 'Operator Mono Light', harfbuzz_features = { 'liga=1' } },
           'FiraCode Nerd Font',
           'Ubuntu Mono',
-          -- { family = 'Operator Mono Light', harfbuzz_features = { 'liga=1' } },
         }
         config.font_size = 10.0
 

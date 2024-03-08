@@ -87,7 +87,7 @@
         }
         {
           timeout = 300;
-          command = "${pkgs.swaylock}/bin/swaylock";
+          command = "${config.programs.swaylock.package}/bin/swaylock";
         }
         {
           timeout = 360;
@@ -98,7 +98,7 @@
       events = [
         {
           event = "before-sleep";
-          command = "${pkgs.swaylock}/bin/swaylock";
+          command = "${config.programs.swaylock.package}/bin/swaylock";
         }
       ];
     };
@@ -123,6 +123,11 @@
   programs.gh.enable = true;
   programs.git.diff-so-fancy.enable = true;
   programs.home-manager.enable = true;
-  programs.zoxide.enable = true;
   programs.bash.enable = true;
+  programs.zoxide = {
+    enable = true;
+    options = [
+      "--cmd cd"
+    ];
+  };
 }

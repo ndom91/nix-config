@@ -36,6 +36,7 @@
     mesa
     neofetch
     nmap
+    ntfs3g
     ouch
     pasystray
     pavucontrol

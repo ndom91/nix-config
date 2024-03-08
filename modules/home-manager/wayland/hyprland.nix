@@ -309,7 +309,7 @@
         "$mainMod, O, togglesplit, # dwindle layout"
         "$mainMod, S, exec, '$HOME/.config/rofi/bin/screenshot'"
         "$mainMod SHIFT, S, exec, pkill --signal SIGINT wf-recorder && notify-send \"Stopped Recording\" || wf-recorder -g \"$(slurp)\" -f ~/Videos/wfrecording_$(date +\"%Y-%m-%d_%H:%M:%S.mp4\") & notify-send \"Started Recording\" # start/stop video recording"
-        "$mainMod, C, exec, \"$HOME/.config/rofi/bin/cliphist\""
+        "$mainMod, C, exec, \"$HOME/.config/rofi/bin/cliphist-img\""
         "CTRL SHIFT, L, exec, swaylock -f"
 
         # notifications mako
@@ -344,11 +344,6 @@
         ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
 
-        # ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-        # ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        # ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        # ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-
         ",XF86AudioPlay, exec, playerctl play-pause"
         ",XF86AudioNext, exec, playerctl next"
         ",XF86AudioPrev, exec, playerctl previous"
@@ -381,7 +376,7 @@
           10)
       );
       bindn = [
-        # 1Password Quick Search - NOT WORKING
+        # 1Password Quick Search
         "CTRL SHIFT, Period, exec, 1password --quick-access"
       ];
       bindm = [
