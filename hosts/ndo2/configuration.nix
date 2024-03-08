@@ -248,10 +248,12 @@ in
       nssmdns = true;
     };
 
+    flatpak.enable = true;
     fprintd.enable = true;
     printing.enable = true;
-    flatpak.enable = true;
     fstrim.enable = true;
+    smartd.enable = true;
+    irqbalance.enable = true;
   };
 
   powerManagement.enable = true;
@@ -269,6 +271,7 @@ in
     libvirtd = {
       enable = true;
       onBoot = "ignore";
+      onShutdown = "shutdown";
     };
     # spiceUSBRedirection.enable = true;
     docker = {

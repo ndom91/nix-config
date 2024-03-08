@@ -139,6 +139,13 @@ in
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.systemd-networkd-wait-online.enable = false;
 
+  # SuspendEstimationSec defeaults to 1h; 
+  # HibernateDelaySec defaults to 2h
+  # See: https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html#Description
+  systemd.sleep.extraConfig = ''
+    AllowSuspendThenHibernate=yes
+  '';
+
   sound = {
     enable = false;
     mediaKeys = {
@@ -217,6 +224,7 @@ in
   # here, NOT in environment.systemPackages
   # ];
 
+  # System Services
   services = {
     openssh = {
       enable = true;
@@ -249,6 +257,8 @@ in
     flatpak.enable = true;
     printing.enable = true;
     fstrim.enable = true;
+    smartd.enable = true;
+    irqbalance.enable = true;
   };
 
   programs = {
@@ -263,6 +273,7 @@ in
     libvirtd = {
       enable = true;
       onBoot = "ignore";
+      onShutdown = "shutdown";
     };
     # spiceUSBRedirection.enable = true;
     docker = {

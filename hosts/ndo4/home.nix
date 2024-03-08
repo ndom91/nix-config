@@ -71,6 +71,7 @@
   fonts.fontconfig.enable = true;
 
   services = {
+    network-manager-applet.enable = true;
     syncthing = {
       enable = true;
       # extraOptions = [ "--wait" ];

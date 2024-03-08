@@ -17,7 +17,6 @@
   };
 
   boot.initrd.luks.devices."luks-e5348a59-5d74-4aa4-ae7c-fa45614a94a7".device = "/dev/disk/by-uuid/e5348a59-5d74-4aa4-ae7c-fa45614a94a7";
-  boot.initrd.luks.devices."swap".device = "/dev/disk/by-uuid/1a147134-a384-4c9f-adc0-85b3f7198c96";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/C142-3835";
@@ -25,7 +24,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/1a147134-a384-4c9f-adc0-85b3f7198c96"; }
+    { device = "/dev/disk/by-uuid/37076c27-af0d-40e1-b86d-a6548072d226"; }
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
