@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstablePkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     alacritty
@@ -64,7 +64,8 @@
     xorg.xprop
 
     # Fonts
-    (nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
+    (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
+    fira
     noto-fonts-color-emoji
   ];
 

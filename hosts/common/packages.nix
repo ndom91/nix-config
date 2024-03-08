@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstablePkgs, ... }:
 {
 
   home.packages = with pkgs; [
@@ -46,9 +46,10 @@
     cliphist
     nvd
 
-    # Fonts
-    (nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
-    noto-fonts-color-emoji
+    # Fonts - Only installed in `system.nix`
+    # (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
+    # fira
+    # noto-fonts-color-emoji
 
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
