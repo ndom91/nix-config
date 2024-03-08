@@ -6,7 +6,7 @@
   home.shellAliases = {
     # nix
     nclean = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +3";
-    nrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#ndo2";
+    nrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#$(hostname)";
     ndiff = "nix store diff-closures $(ls -d  /nix/var/nix/profiles/* | tail -2 | awk '{ print $1 }')";
 
     # coreutils
