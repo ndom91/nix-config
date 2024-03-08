@@ -64,7 +64,7 @@
     xorg.xprop
 
     # Fonts
-    (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
+    (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Ubuntu" "UbuntuMono" ]; })
     fira
     noto-fonts-color-emoji
   ];

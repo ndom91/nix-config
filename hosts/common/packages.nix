@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     # Graphical Applications
     vivaldi
+    floorp
     gnome.gnome-boxes
     gnome.seahorse
     slack
@@ -26,6 +27,9 @@
     sqlite
     mitmproxy
 
+    # Nix Tools
+    nvd
+
     # Hardware Tools
     btop # system process monitor
     bottom # not top
@@ -47,9 +51,9 @@
     nvd
 
     # Fonts - Only installed in `system.nix`
-    # (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "CodeNewRoman" "FantasqueSansMono" "Iosevka" "ShareTechMono" "Hermit" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Hasklig" "Ubuntu" "UbuntuMono" ]; })
-    # fira
-    # noto-fonts-color-emoji
+    (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Ubuntu" "UbuntuMono" ]; })
+    fira
+    noto-fonts-color-emoji
 
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
