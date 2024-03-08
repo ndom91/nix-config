@@ -59,16 +59,15 @@ in
       "10.0.0.1"
     ];
     interfaces = {
-			enp42s0 = {
-				name = "eth0";
-				useDHCP = false;
-				ipv4 = {
-					addresses = [{
-						address = "10.0.0.10";
-						prefixLength = 24;
-					}];
-				};
-			};
+      enp42s0 = {
+        useDHCP = false;
+        ipv4 = {
+          addresses = [{
+            address = "10.0.0.10";
+            prefixLength = 24;
+          }];
+        };
+      };
     };
 
     firewall = {
@@ -107,12 +106,13 @@ in
       defaultSession = "hyprland";
       sddm = {
         enable = true;
-        theme = "tokyo-night-sddm";
+        theme = "corners";
         wayland.enable = true;
         settings = {
           Theme = {
+            Font = "Ubuntu Nerd Font";
+            EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
-            # CursorTheme = "Bibata-Modern-Classic";
           };
         };
       };
@@ -235,9 +235,8 @@ in
       nssmdns = true;
     };
 
-    # enable fingerprint sensor
     fprintd.enable = true;
-
+    flatpak.enable = true;
     printing.enable = true;
     fstrim.enable = true;
   };

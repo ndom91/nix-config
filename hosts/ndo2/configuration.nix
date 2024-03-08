@@ -105,7 +105,6 @@ in
   #   cp /etc/nixos/dotfiles/.face.icon /run/current-system/sw/share/sddm/faces/ndo.face.icon
   # '';
 
-  # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     displayManager = {
@@ -119,7 +118,6 @@ in
             Font = "Ubuntu Nerd Font";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
-            # CursorTheme = "Bibata-Modern-Classic";
           };
         };
       };
@@ -201,6 +199,12 @@ in
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
+  programs._1password = { enable = true; };
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "ndo" ];
+  };
+
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
     corners-sddm
@@ -246,9 +250,9 @@ in
       nssmdns = true;
     };
 
-    printing.enable = true;
-    # flatpak.enable = true;
     fprintd.enable = true;
+    printing.enable = true;
+    flatpak.enable = true;
     fstrim.enable = true;
   };
 

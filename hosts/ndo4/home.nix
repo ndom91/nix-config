@@ -1,6 +1,6 @@
-{ lib, inputs, config, pkgs, ... }:
+{ rose-pine-cursor, lib, inputs, config, pkgs, unstablePkgs, ... }:
 {
-  imports = with pkgs inputs; [
+  imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     # nix-colors.homeManagerModules.default
 
     # Common
