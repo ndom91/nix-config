@@ -60,7 +60,7 @@
 
         "swaync"
         "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
-        "nm-applet --indicator"
+        # "nm-applet --indicator"
         "swaybg -m fill -i ~/.config/hypr/wallpapers/dark-purple-space-01.png"
         # "swayidle -w"
         # "mkchromecast -t"
