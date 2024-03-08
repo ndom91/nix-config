@@ -10,7 +10,7 @@
     slack
     vesktop # Discord fork
     virt-manager
-    wezterm
+    # wezterm
     gnome-text-editor
     cinnamon.nemo
     vlc

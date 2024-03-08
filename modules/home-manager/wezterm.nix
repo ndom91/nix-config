@@ -1,7 +1,8 @@
-{ input, ... }:
+{ input, unstablePkgs, ... }:
 {
   programs.wezterm = {
     enable = true;
+    package = unstablePkgs.wezterm;
     enableBashIntegration = false;
     enableZshIntegration = false;
     extraConfig = ''
