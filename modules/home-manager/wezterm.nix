@@ -15,7 +15,7 @@
 
         config.warn_about_missing_glyphs = false
 
-        config.enable_wayland = false
+        config.enable_wayland = true
 
         config.default_prog = { 'tmux', 'new-session' }
 
@@ -29,6 +29,7 @@
 
         config.font = wezterm.font_with_fallback {
           { family = 'Operator Mono Light', harfbuzz_features = { 'liga=1' } },
+          { family = 'GeistMono Nerd Font' },
           'FiraCode Nerd Font',
           'Ubuntu Mono',
         }
