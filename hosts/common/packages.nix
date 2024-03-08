@@ -29,6 +29,7 @@
 
     # Nix Tools
     nvd
+    unstablePkgs.nh
 
     # Hardware Tools
     btop # system process monitor
@@ -48,7 +49,6 @@
     whois
     jq
     cliphist
-    nvd
 
     # Fonts - Only installed in `system.nix`
     (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Ubuntu" "UbuntuMono" ]; })
@@ -59,4 +59,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs.bash.sessionVariables.FLAKE = "/etc/nixos";
 }
