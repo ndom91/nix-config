@@ -205,6 +205,8 @@ in
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
+  programs.direnv.enable = true;
+
   programs._1password = { enable = true; };
   programs._1password-gui = {
     enable = true;
