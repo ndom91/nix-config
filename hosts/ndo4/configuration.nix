@@ -3,6 +3,7 @@ let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../modules/packages/rose-pine-cursor/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/corners-sddm/default.nix { };
+  gimp-devel = pkgs.callPackage ../../modules/packages/gimp-devel/default.nix { };
 in
 {
   imports = with pkgs; [
@@ -173,8 +174,10 @@ in
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
     opengl = {
       enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
       ## amdvlk: an open-source Vulkan driver from AMD
-      extraPackages = [ pkgs.amdvlk ];
+      # extraPackages = [ pkgs.amdvlk ];
     };
 
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -222,6 +225,7 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
+    gimp-devel
   ];
 
   # FOR LATER: dynamically-linked binaries work-around
