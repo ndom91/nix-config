@@ -71,11 +71,12 @@ let
     "idle_inhibitor" = {
       format = "{icon}";
       format-icons = {
-        activated = "";
-        deactivated = "󰾪";
+        activated = "󰛊";
+        deactivated = "󰾫";
       };
       tooltip = true;
-      tooltip-format = "Idle Inhibitor {status}";
+      tooltip-format-activated = "Idle Inhibitor {status}";
+      tooltip-format-deactivated = "Idle Inhibitor {status}";
     };
     "custom/notification" = {
       tooltip = false;
@@ -92,7 +93,8 @@ let
       };
       return-type = "json";
       exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
-      on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t";
+      on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+      on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
       escape = true;
     };
     "hyprland/window" = {
@@ -129,7 +131,7 @@ let
       tooltip-format = "{device_alias}";
       tooltip-format-connected = " {device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
-      on-click = "${pkgs.blueberry}/bin/blueberry";
+      on-click-right = "${pkgs.blueberry}/bin/blueberry";
     };
     tray = {
       icon-size = 16;
@@ -209,15 +211,37 @@ let
       "custom/weather"
       "network"
       "wireplumber"
+      "custom/notification"
       "tray"
     ];
     "idle_inhibitor" = {
       format = "{icon}";
       format-icons = {
-        activated = "";
-        deactivated = "";
+        activated = "󰛊";
+        deactivated = "󰾫";
       };
       tooltip = true;
+      tooltip-format-activated = "Idle Inhibitor {status}";
+      tooltip-format-deactivated = "Idle Inhibitor {status}";
+    };
+    "custom/notification" = {
+      tooltip = false;
+      format = "{icon} {}";
+      format-icons = {
+        notification = "<span foreground='red'><sup></sup></span>";
+        none = "";
+        dnd-notification = "<span foreground='red'><sup></sup></span>";
+        dnd-none = "";
+        inhibited-notification = "<span foreground='red'><sup></sup></span>";
+        inhibited-none = "";
+        dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+        dnd-inhibited-none = "";
+      };
+      return-type = "json";
+      exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
+      on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+      on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
+      escape = true;
     };
     "wlr/workspaces" = {
       format = "{icon}";
@@ -321,7 +345,7 @@ let
       tooltip-format = "{device_alias}";
       tooltip-format-connected = " {device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
-      on-click = "${pkgs.blueberry}/bin/blueberry";
+      on-click-right = "${pkgs.blueberry}/bin/blueberry";
     };
     tray = {
       icon-size = 16;
@@ -339,7 +363,8 @@ let
     wireplumber = {
       format = "<span font='12' rise='-2pt'></span> {volume}";
       format-muted = "<span font='12' rise='-2pt'></span>";
-      on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+      on-click = "${pkgs.pamixer}/bin/pamixer -t";
+      on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
     };
     pulseaudio = {
       format = "<span font='15' rise='-2pt'></span>  {volume}";
