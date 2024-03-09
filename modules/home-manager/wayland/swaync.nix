@@ -21,9 +21,9 @@ in
             "timeout-critical": 0,
             "fit-to-screen": false,
             "control-center-width": 500,
-            "control-center-height": 1025,
+            "control-center-height": 1200,
             "notification-window-width": 500,
-            "keyboard-shortcuts": true,
+            "keyboard-shortcuts": false,
             "image-visibility": "when-available",
             "transition-time": 200,
             "hide-on-clear": false,
@@ -31,8 +31,6 @@ in
             "script-fail-notify": true,
             "widgets": [
                 "title",
-                "buttons-grid",
-                "mpris",
                 "volume",
                 "backlight",
                 "dnd",
@@ -51,60 +49,12 @@ in
                     "max-lines": 1,
                     "text": "Notification Center"
                 },
-                "mpris": {
-                    "image-size": 96,
-                    "image-radius": 7
-                },
                 "volume": {
                     "label": "󰕾"
                 },
                 "backlight": {
                     "label": "󰃟"
                 },
-                "buttons-grid": {
-                    "actions": [
-                        {
-                            "label": "⏹️",
-                            "command": "systemctl poweroff"
-                        },
-                        {
-                            "label": "🔄",
-                            "command": "systemctl reboot"
-                        },
-                        {
-                            "label": "🚪",
-                            "command": "hyprctl dispatch exit"
-                        },
-                        {
-                            "label": "🗃️",
-                            "command": "thunar"
-                        },
-                        {
-                            "label": "📸",
-                            "command": "gimp"
-                        },
-                        {
-                            "label": "📣",
-                            "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-                        },
-                        {
-                            "label": "🎙️",
-                            "command": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-                        },
-                        {
-                            "label": "🎮",
-                            "command": "steam"
-                        },
-                        {
-                            "label": "🌏",
-                            "command": "firefox"
-                        },
-                        {
-                            "label": "📹",
-                            "command": "obs"
-                        }
-                    ]
-                }
         }
     }
   '';
