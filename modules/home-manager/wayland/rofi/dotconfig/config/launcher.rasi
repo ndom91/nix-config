@@ -8,7 +8,6 @@ configuration {
   location:                       0;
 }
 
-@import "font.rasi"
 @import "colors/rose-pine.rasi"
 
 window {

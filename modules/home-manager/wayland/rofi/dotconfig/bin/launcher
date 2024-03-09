@@ -8,4 +8,4 @@ rofi \
   -drun-display-format "{name}" \
   -no-drun-show-actions \
   -terminal alacritty \
-  -theme "$HOME"/.config/rofi/config/launcher.rasi
+  -theme "$HOME"/.config/rofi/config/launcher2.rasi

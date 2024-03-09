@@ -1,3 +1,11 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
 
 /*****----- Configuration -----*****/
 configuration {
@@ -24,7 +32,7 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               8px;
+    border-radius:               12px;
     border-color:                @selected;
     background-color:            @background;
     cursor:                      "default";
@@ -36,9 +44,9 @@ mainbox {
     spacing:                     0px;
     margin:                      0px;
     padding:                     0px;
-    border:                      2px solid;
-    border-radius:               8px;
-    border-color:                #242424FF;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    border-color:                @selected;
     background-color:            transparent;
     children:                    [ "inputbar", "listview" ];
 }
@@ -51,19 +59,19 @@ inputbar {
     padding:                     15px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                #242424FF;
-    background-color:            @background-input;
-    text-color:                  @selected;
-    children:                    [ "entry" ];
+    border-color:                @selected;
+    background-color:            @selected;
+    text-color:                  @background;
+    children:                    [ "prompt", "entry" ];
 }
 
 prompt {
     enabled:                     true;
-    background-color:            transparent;
+    background-color:            inherit;
     text-color:                  inherit;
 }
 textbox-prompt-colon {
-    enabled:                     transparent;
+    enabled:                     true;
     expand:                      false;
     str:                         "::";
     background-color:            inherit;
@@ -71,10 +79,10 @@ textbox-prompt-colon {
 }
 entry {
     enabled:                     true;
-    background-color:            transparent;
+    background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search clipboard...";
+    placeholder:                 "Search...";
     placeholder-color:           inherit;
 }
 
