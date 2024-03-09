@@ -288,17 +288,12 @@
         "noinitialfocus,class:^(xwaylandvideobridge)$"
       ];
       bind = [
-        "$mainMod, D, exec, \"$HOME/.config/rofi/bin/launcher\""
-        "$mainMod, M, exec, \"$HOME/.config/rofi/bin/emoji/\"" # TODO: Find rofi-emoji alternative
-        # "$mainMod, M, exec, flemozi" # TODO: Find rofi-emoji alternative
         # "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
         # "$mainMod, Y, hy3:changegroup, opposite"
         "$mainMod, Q, killactive"
         # "$mainMod, Q, hy3:killactive,"
-        # "$mainMod, Return, exec, alacritty
+        "CTRL SHIFT, L, exec, swaylock -f"
         "$mainMod, Return, exec, wezterm"
-        "ALT, P, exec, wezterm"
-        "ALT, D, exec, \"$HOME/.config/rofi/bin/launcher\""
         "$mainMod SHIFT, R, exec, hyprctl reload"
         "$mainMod SHIFT, F, exec, nemo"
         "$mainMod SHIFT, Q, exec, wlogout --protocol layer-shell"
@@ -307,10 +302,11 @@
         "$mainMod, F, fullscreen, 1 # fullscreen type 1"
         "$mainMod, P, pseudo, # dwindle layout"
         "$mainMod, O, togglesplit, # dwindle layout"
-        "$mainMod, S, exec, '$HOME/.config/rofi/bin/screenshot'"
-        "$mainMod SHIFT, S, exec, pkill --signal SIGINT wf-recorder && notify-send \"Stopped Recording\" || wf-recorder -g \"$(slurp)\" -f ~/Videos/wfrecording_$(date +\"%Y-%m-%d_%H:%M:%S.mp4\") & notify-send \"Started Recording\" # start/stop video recording"
+        "$mainMod, D, exec, \"$HOME/.config/rofi/bin/launcher\""
+        "$mainMod, M, exec, \"$HOME/.config/rofi/bin/emoji/\""
         "$mainMod, C, exec, \"$HOME/.config/rofi/bin/cliphist-img\""
-        "CTRL SHIFT, L, exec, swaylock -f"
+        "$mainMod, S, exec, \"$HOME/.config/rofi/bin/screenshot\""
+        "$mainMod SHIFT, S, exec, pkill --signal SIGINT wf-recorder && notify-send \"Stopped Recording\" || wf-recorder -g \"$(slurp)\" -f ~/Videos/wfrecording_$(date +\"%Y-%m-%d_%H:%M:%S.mp4\") & notify-send \"Started Recording\" # start/stop video recording"
 
         # notifications mako
         # "CTRL, `, exec, makoctl restore
