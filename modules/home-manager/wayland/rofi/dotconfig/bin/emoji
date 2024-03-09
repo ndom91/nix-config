@@ -5,10 +5,15 @@ chosen=$(cat /etc/nixos/dotfiles/emojis | rofi \
   -window-title 'Emoji' \
   -i \
   -dmenu \
+  -drun-match-fields all \
+  -drun-display-format "{name}" \
+  -no-drun-show-actions \
   -scroll-method 0 \
   -theme "$HOME"/.config/rofi/config/launcher2.rasi)
 
 # Exit if none chosen
 [ -z "$chosen" ] && exit
 
-wl-copy "$chosen"
+# Copy only first character before space (i.e. the emoji, not the description)
+chosenArray=($chosen)
+wl-copy ${chosenArray[0]}

@@ -303,7 +303,7 @@
         "$mainMod, P, pseudo, # dwindle layout"
         "$mainMod, O, togglesplit, # dwindle layout"
         "$mainMod, D, exec, \"$HOME/.config/rofi/bin/launcher\""
-        "$mainMod, M, exec, \"$HOME/.config/rofi/bin/emoji/\""
+        "$mainMod, M, exec, \"$HOME/.config/rofi/bin/emoji\""
         "$mainMod, C, exec, \"$HOME/.config/rofi/bin/cliphist-img\""
         "$mainMod, S, exec, \"$HOME/.config/rofi/bin/screenshot\""
         "$mainMod SHIFT, S, exec, pkill --signal SIGINT wf-recorder && notify-send \"Stopped Recording\" || wf-recorder -g \"$(slurp)\" -f ~/Videos/wfrecording_$(date +\"%Y-%m-%d_%H:%M:%S.mp4\") & notify-send \"Started Recording\" # start/stop video recording"
