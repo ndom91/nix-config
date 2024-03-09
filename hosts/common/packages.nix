@@ -30,6 +30,7 @@
     # Nix Tools
     nvd
     unstablePkgs.nh
+    comma # Run commands in a nix-shell with comma prefix
 
     # Hardware Tools
     btop # system process monitor

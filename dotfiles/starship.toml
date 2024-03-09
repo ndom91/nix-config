@@ -3,6 +3,7 @@ $username\
 $hostname\
 $directory\
 $nodejs\
+$nix_shell\
 $python\
 $git_branch\
 $git_state\
@@ -10,6 +11,9 @@ $git_status\
 $cmd_duration\
 $line_break\
 $character"""
+
+[nix_shell]
+format = "[${pad.left}](fg:white)[ ](bg:white fg:black)[${pad.right}](fg:white) "
 
 [directory]
 truncation_length = 2
