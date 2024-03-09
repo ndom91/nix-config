@@ -75,6 +75,7 @@ let
         deactivated = "󰾪";
       };
       tooltip = true;
+      tooltip-format = "Idle Inhibitor {status}";
     };
     "custom/notification" = {
       tooltip = false;
@@ -91,12 +92,12 @@ let
       };
       return-type = "json";
       exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
-      on-click = "sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t";
+      on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t";
       escape = true;
     };
     "hyprland/window" = {
       format = "{}";
-      max-length = 40;
+      max-length = 80;
       separate-outputs = true;
     };
     "hyprland/submap" = {
@@ -113,7 +114,7 @@ let
       format-disconnected = "󱛅 Disconnected";
       format-disabled = "󰖪 Disabled";
       tooltip-format = "󰀂 {ifname} via {gwaddr}";
-      on-click-right = "nm-connection-editor";
+      on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
     };
     "custom/weather" = {
       tooltip = true;
@@ -146,8 +147,8 @@ let
     wireplumber = {
       format = "<span font='12' rise='-2pt'></span> {volume}";
       format-muted = "<span font='12' rise='-2pt'></span>";
-      on-click = "sleep 0.1 && ${pkgs.pamixer}/bin/pamixer -t";
-      on-click-right = "sleep 0.1 && ${pkgs.pavucontrol}/bin/pavucontrol";
+      on-click = "${pkgs.pamixer}/bin/pamixer -t";
+      on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
     };
     pulseaudio = {
       format = "<span font='15' rise='-2pt'></span>  {volume}";
@@ -169,7 +170,7 @@ let
         ];
       };
       scroll-step = 5;
-      on-click = "pamixer -t";
+      on-click = "${pkgs.pamixer}/bin/pamixer -t";
       on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
       on-scroll-up = "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
       on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
@@ -287,6 +288,7 @@ let
     };
     "hyprland/window" = {
       format = "{}";
+      max-length = 80;
       separate-outputs = true;
     };
     "hyprland/submap" = {
@@ -303,7 +305,7 @@ let
       format-disconnected = "󱛅 Disconnected";
       format-disabled = "󰖪 Disabled";
       tooltip-format = "󰀂 {ifname} via {gwaddr}";
-      on-click-right = "nm-connection-editor";
+      on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
     };
     "custom/weather" = {
       tooltip = true;
@@ -319,7 +321,7 @@ let
       tooltip-format = "{device_alias}";
       tooltip-format-connected = " {device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
-      on-click = "sleep 0.1 && blueberry";
+      on-click = "${pkgs.blueberry}/bin/blueberry";
     };
     tray = {
       icon-size = 16;
@@ -337,7 +339,7 @@ let
     wireplumber = {
       format = "<span font='12' rise='-2pt'></span> {volume}";
       format-muted = "<span font='12' rise='-2pt'></span>";
-      on-click = "sleep 0.1 && pavucontrol";
+      on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
     };
     pulseaudio = {
       format = "<span font='15' rise='-2pt'></span>  {volume}";
@@ -359,8 +361,8 @@ let
         ];
       };
       scroll-step = 5;
-      on-click = "pamixer -t";
-      on-click-right = "pavucontrol";
+      on-click = "${pkgs.pamixer}/bin/pamixer -t";
+      on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
       on-scroll-up = "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
       on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
       smooth-scrolling-threshold = 1;
