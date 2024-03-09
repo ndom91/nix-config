@@ -166,6 +166,13 @@ in
     };
   };
 
+  environment.variables = {
+    # VAAPI and VDPAU config for accelerated video.
+    # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
+    VDPAU_DRIVER = "radeonsi";
+    LIBVA_DRIVER_NAME = "radeonsi";
+  };
+
   hardware = {
     enableAllFirmware = true;
     # enableRedistributableFirmware = true;
@@ -178,8 +185,11 @@ in
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      ## amdvlk: an open-source Vulkan driver from AMD
-      # extraPackages = [ pkgs.amdvlk ];
+      extraPackages = with pkgs; [
+        # amdvlk # Using default radv instead
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
     };
 
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -42,6 +42,7 @@
     doggo # DNS client for humans
     duf # Disk Usage/Free Utility - a better 'df' alternative
     ncdu # analyzer your disk usage Interactively, via TUI(replacement of `du`)
+    gpu-viewer
 
     # Terminal Apps
     lazygit
