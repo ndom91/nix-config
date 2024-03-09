@@ -21,7 +21,7 @@
     };
   };
 
-  outputs = { self, unstable, nixpkgs, ... } @inputs:
+  outputs = { self, unstable, nix-colors, nixpkgs, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -34,13 +34,13 @@
       formatter.${system} = pkgs.nixpkgs-fmt;
       nixosConfigurations = {
         ndo4 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs unstablePkgs overlays; };
+          specialArgs = { inherit inputs unstablePkgs overlays nix-colors; };
           modules = [
             ./hosts/ndo4/configuration.nix
           ];
         };
         ndo2 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs unstablePkgs overlays; };
+          specialArgs = { inherit inputs unstablePkgs overlays nix-colors; };
           modules = [
             ./hosts/ndo2/configuration.nix
           ];

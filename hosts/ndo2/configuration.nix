@@ -1,4 +1,4 @@
-{ lib, inputs, unstablePkgs, overlays, config, pkgs, ... }:
+{ lib, nix-colors, inputs, unstablePkgs, overlays, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/corners-sddm/default.nix { };
@@ -185,7 +185,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit rose-pine-cursor inputs unstablePkgs; };
+    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs; };
     # useUserPackages = true;
     useGlobalPkgs = true;
     users = {

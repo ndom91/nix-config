@@ -5,100 +5,119 @@ let
 in
 {
   home.file.".config/swaync/config.json".text = ''
-        {
-            "$schema": "/etc/xdg/swaync/configSchema.json",
-            "positionX": "right",
-            "positionY": "top",
-            "control-center-margin-top": 10,
-            "control-center-margin-bottom": 10,
-            "control-center-margin-right": 10,
-            "control-center-margin-left": 10,
-            "notification-icon-size": 64,
-            "notification-body-image-height": 100,
-            "notification-body-image-width": 200,
-            "timeout": 10,
-            "timeout-low": 5,
-            "timeout-critical": 0,
-            "fit-to-screen": false,
-            "control-center-width": 500,
-            "control-center-height": 1200,
-            "notification-window-width": 500,
-            "keyboard-shortcuts": false,
-            "image-visibility": "when-available",
-            "transition-time": 200,
-            "hide-on-clear": false,
-            "hide-on-action": true,
-            "script-fail-notify": true,
-            "widgets": [
-                "title",
-                "volume",
-                "backlight",
-                "dnd",
-                "notifications"
-            ],
-            "widget-config": {
-                "title": {
-                    "text": "Notification Center",
-                    "clear-all-button": true,
-                    "button-text": "󰆴 Clear All"
-                },
-                "dnd": {
-                    "text": "Do Not Disturb"
-                },
-                "label": {
-                    "max-lines": 1,
-                    "text": "Notification Center"
-                },
-                "volume": {
-                    "label": "󰕾"
-                },
-                "backlight": {
-                    "label": "󰃟"
-                },
-        }
+    {
+      "$schema": "${pkgs.swaynotificationcenter}/etc/xdg/swaync/configSchema.json",
+      "positionX": "right",
+      "positionY": "top",
+      "control-center-margin-top": 10,
+      "control-center-margin-bottom": 10,
+      "control-center-margin-right": 10,
+      "control-center-margin-left": 10,
+      "notification-2fa-action": true,
+      "notification-inline-replies": true,
+      "notification-icon-size": 64,
+      "notification-body-image-height": 100,
+      "notification-body-image-width": 200,
+      "timeout": 10,
+      "timeout-low": 5,
+      "timeout-critical": 0,
+      "fit-to-screen": true,
+      "control-center-width": 500,
+      "notification-window-width": 500,
+      "keyboard-shortcuts": false,
+      "image-visibility": "when-available",
+      "transition-time": 200,
+      "hide-on-clear": false,
+      "hide-on-action": true,
+      "script-fail-notify": true,
+      "widgets": [
+        "title",
+        "volume",
+        "backlight",
+        "dnd",
+        "notifications"
+      ],
+      "widget-config": {
+        "title": {
+            "text": "Notification Center",
+            "clear-all-button": true,
+            "button-text": "󰆴 Clear All"
+        },
+        "dnd": {
+            "text": "Do Not Disturb"
+        },
+        "label": {
+            "max-lines": 1,
+            "text": "Notification Center"
+        },
+        "volume": {
+            "label": "󰕾"
+        },
+        "backlight": {
+            "label": "󰃟"
+        },
+      }
     }
   '';
 
   home.file.".config/swaync/style.css".text = ''
     * {
-        font-family: Ubuntu;
-        font-weight: bolder;
+        font-family: FiraSans;
     }
 
-    .control-center .notification-row:focus,
-    .control-center .notification-row:hover {
-        opacity: 0.9;
-        background: #${palette.base00}
-    }
 
     .notification-row {
         outline: none;
         margin: 10px;
+        font-weight: 300;
         padding: 0;
+        border: none;
+        background: transparent;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
     }
 
     .notification {
         background: transparent;
         padding: 0;
+        border: none;
         margin: 0px;
     }
 
+    .notification-background {
+        background: transparent;
+        border: none;
+    }
+
+    .notification-default-action,
     .notification-content {
-        background: #${palette.base00};
+        background: #${palette.base01};
+        outline: none;
         padding: 10px;
-        border-radius: 5px;
-        border: 2px solid #${palette.base0D};
+        font-weight: 300;
+        border: none;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
         margin: 0;
     }
 
-    .notification-default-action {
-        margin: 0;
-        padding: 0;
-        border-radius: 5px;
+
+    .notification-row:hover .notification-default-action,
+    .notification-row:hover .notification-content {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+
+    .notification:hover,
+    .notification-background:hover,
+    .notification-default-action:hover,
+    .notification-content:hover {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
     }
 
     .close-button {
-        background: #${palette.base08};
+        background: #${palette.base0D};
         color: #${palette.base00};
         text-shadow: none;
         padding: 0;
@@ -109,96 +128,86 @@ in
 
     .close-button:hover {
         box-shadow: none;
-        background: #${palette.base0D};
-        transition: all .15s ease-in-out;
-        border: none
+        background: #${palette.base08};
+        transition: all 300ms ease-in-out;
+        border: none;
     }
-
 
     .notification-action {
-        border: 2px solid #${palette.base0D};
-        border-top: none;
-        border-radius: 5px;
+        border: none;
+        background: #${palette.base00};
+        transition: all 300ms ease-in-out;
     }
 
-
-    .notification-default-action:hover,
     .notification-action:hover {
-        color: #${palette.base0B};
-        background: #${palette.base0B}
-    }
-
-    .notification-default-action {
-        border-radius: 5px;
-        margin: 0px;
-    }
-
-    .notification-default-action:not(:only-child) {
-        border-bottom-left-radius: 7px;
-        border-bottom-right-radius: 7px
+        color: #${palette.base0D};
+        background: #${palette.base01};
     }
 
     .notification-action:first-child {
-        border-bottom-left-radius: 10px;
-        background: #${palette.base00}
+        border-bottom-left-radius: 5px;
+        border: none;
+        border-image-width: 0;
+        box-shadow: none;
+        outline: none;
     }
 
     .notification-action:last-child {
-        border-bottom-right-radius: 10px;
-        background: #${palette.base00}
+        border-bottom-right-radius: 5px;
+        border: none;
+        box-shadow: none;
+        outline: none;
     }
 
     .inline-reply {
-        margin-top: 8px
+        margin-top: 8px;
     }
 
     .inline-reply-entry {
         background: #${palette.base00};
         color: #${palette.base05};
         caret-color: #${palette.base05};
-        border: 1px solid #${palette.base09};
-        border-radius: 5px
+        border-radius: 5px;
     }
 
     .inline-reply-button {
         margin-left: 4px;
         background: #${palette.base00};
-        border: 1px solid #${palette.base09};
         border-radius: 5px;
-        color: #${palette.base05}
+        color: #${palette.base05};
     }
 
     .inline-reply-button:disabled {
         background: initial;
         color: #${palette.base03};
-        border: 1px solid transparent
+        border: none;
     }
 
     .inline-reply-button:hover {
-        background: #${palette.base00}
+        background: #${palette.base00};
     }
 
     .body-image {
         margin-top: 6px;
         background-color: #${palette.base05};
-        border-radius: 5px
+        border-radius: 5px;
     }
 
     .summary {
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 400;
         background: transparent;
         color: rgba(158, 206, 106, 1);
-        text-shadow: none
+        text-shadow: none;
     }
 
     .time {
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 400;
         background: transparent;
         color: #${palette.base05};
         text-shadow: none;
-        margin-right: 18px
+        margin-right: 18px;
     }
 
     .body {
@@ -206,36 +215,44 @@ in
         font-weight: 400;
         background: transparent;
         color: #${palette.base05};
-        text-shadow: none
+        text-shadow: none;
     }
 
     .control-center {
         background: #${palette.base00};
-        border: 2px solid #${palette.base0C};
+        border: none;
+        box-shadow:
+            0 3px 2px -2px #00000099,
+            0 7px 5px -2px #00000099,
+            0 12px 10px -2px #00000099,
+            0 22px 18px -2px #00000099,
+            0 41px 33px -2px #00000099,
+            0 100px 80px -2px #00000099;
         border-radius: 5px;
     }
 
     .control-center-list {
-        background: transparent
+        background: transparent;
     }
 
     .control-center-list-placeholder {
-        opacity: .5
+        opacity: .5;
     }
 
     .floating-notifications {
-        background: transparent
+        background: transparent;
     }
 
     .blank-window {
-        background: alpha(black, 0)
+        background: alpha(black, 0);
     }
 
     .widget-title {
-        color: #${palette.base0B};
+        color: #${palette.base04};
         background: #${palette.base00};
         padding: 5px 10px;
         margin: 10px 10px 5px 10px;
+        font-weight: 300;
         font-size: 1.5rem;
         border-radius: 5px;
     }
@@ -247,6 +264,7 @@ in
         background: #${palette.base00};
         box-shadow: none;
         border-radius: 5px;
+        transition: all 300ms ease-in-out;
     }
 
     .widget-title>button:hover {
@@ -260,13 +278,14 @@ in
         margin: 10px 10px 5px 10px;
         border-radius: 5px;
         font-size: large;
-        color: #${palette.base0B};
+        font-weight: 300;
+        color: #${palette.base04};
     }
 
     .widget-dnd>switch {
         border-radius: 5px;
-        /* border: 1px solid #${palette.base0B}; */
-        background: #${palette.base0B};
+        background: #${palette.base0D};
+        transition: all 300ms ease-in-out;
     }
 
     .widget-dnd>switch:checked {
@@ -276,12 +295,12 @@ in
 
     .widget-dnd>switch slider {
         background: #${palette.base00};
-        border-radius: 5px
+        border-radius: 5px;
     }
 
     .widget-dnd>switch:checked slider {
         background: #${palette.base00};
-        border-radius: 5px
+        border-radius: 5px;
     }
 
     .widget-label {
@@ -307,16 +326,16 @@ in
 
     .widget-mpris-player {
         padding: 5px 10px;
-        margin: 10px
+        margin: 10px;
     }
 
     .widget-mpris-title {
         font-weight: 700;
-        font-size: 1.25rem
+        font-size: 1.25rem;
     }
 
     .widget-mpris-subtitle {
-        font-size: 1.1rem
+        font-size: 1.1rem;
     }
 
     .widget-buttons-grid {
@@ -341,12 +360,12 @@ in
 
     .widget-menubar>box>.menu-button-bar>button {
         border: none;
-        background: transparent
+        background: transparent;
     }
 
     .topbar-buttons>button {
         border: none;
-        background: transparent
+        background: transparent;
     }
 
     .widget-volume {
@@ -360,7 +379,7 @@ in
 
     .widget-volume>box>button {
         background: #${palette.base0B};
-        border: none
+        border: none;
     }
 
     .per-app-volume {
@@ -376,7 +395,7 @@ in
         margin: 10px 10px 5px 10px;
         border-radius: 5px;
         font-size: x-large;
-        color: #${palette.base05}
+        color: #${palette.base05};
     }
   '';
 }

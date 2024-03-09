@@ -1,7 +1,7 @@
-{ rose-pine-cursor, lib, inputs, config, pkgs, unstablePkgs, ... }:
+{ rose-pine-cursor, nix-colors, lib, inputs, config, pkgs, unstablePkgs, ... }:
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
-    # nix-colors.homeManagerModules.default
+    nix-colors.homeManagerModules.default
 
     # Common
     ../common/packages.nix
@@ -28,6 +28,9 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   systemd.user.sessionVariables = config.home.sessionVariables;
+
+  # Themes - https://github.com/tinted-theming/base16-schemes
+  colorScheme = nix-colors.colorSchemes.rose-pine;
 
   # ndo2 overrides
   wayland.windowManager.hyprland = {
