@@ -1,5 +1,6 @@
 { pkgs, rose-pine-cursor, inputs, ... }:
 {
+  xdg.configFile."hypr/movefocus.sh".source = ./hy3-movefocus.sh;
 
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix

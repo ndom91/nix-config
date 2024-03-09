@@ -1,7 +1,7 @@
 { rose-pine-cursor, unstablePkgs, inputs, pkgs, ... }:
 {
   imports = with rose-pine-cursor pkgs inputs; [
-    ./hyprland.nix
+    ./hyprland/default.nix
     ./swaylock.nix
     ./wlogout.nix
     ./waybar/default.nix
