@@ -375,6 +375,9 @@ let
   ];
 in
 {
+
+  xdg.configFile."waybar/scripts/waybar-wttr.py".source = ../../../../dotfiles/waybar/scripts/waybar-wttr.py;
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;

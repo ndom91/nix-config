@@ -59,26 +59,19 @@
         # "gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-RosePine-Linux'"
         # "gsettings set org.gnome.desktop.interface cursor-size 24"
 
+        # "mkchromecast -t"
         "swaync"
         "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
-        # "nm-applet --indicator"
-        "swaybg -m fill -i ~/.config/hypr/wallpapers/dark-purple-space-01.png"
-        # "swayidle -w"
-        # "mkchromecast -t"
+        "swaybg -m fill -i ~/.config/hypr/wallpaper.png"
         "swayosd-server"
         "wl-paste --watch cliphist store"
         "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
         "blueberry-tray"
-        # "${startupScript}/bin/start"
-        # "/nix/store/$(ls -la /nix/store | grep polkit_gnome | grep '^d' | awk '{print $9}')/libexec/polkit-gnome-authentication-agent-1"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
-        # "xrdb -merge ~/.Xresources"
-        # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        # "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
-        "xsetroot -xcf ${rose-pine-cursor}/BreezeX-RosePine-Linux/cursors/left_ptr 24"
 
+        "xsetroot -xcf ${rose-pine-cursor}/BreezeX-RosePine-Linux/cursors/left_ptr 24"
         "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
       # plugin = {

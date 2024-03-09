@@ -45,27 +45,18 @@
   };
 
   home.file = {
-    "./.config/nvim/" = {
-      source = ../../dotfiles/nvim;
-      recursive = true;
-    };
-    "./.ripgreprc".source = ../../dotfiles/.ripgreprc;
-    "./.config/starship.toml".source = ../../dotfiles/starship.toml;
+    ".ripgreprc".source = ../../dotfiles/.ripgreprc;
+
+    ".config/starship.toml".source = ../../dotfiles/starship.toml;
+    ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
+
     "/run/current-system/sw/share/sddm/faces/ndo.face.icon".source = ../../dotfiles/.face.icon;
-    "./.config/hypr/wallpapers/dark-purple-space-01.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
-    "./.face.icon".source = ../../dotfiles/.face.icon;
+    ".face.icon".source = ../../dotfiles/.face.icon;
 
-    "./.config/waybar/scripts/waybar-wttr.py".source = ../../dotfiles/waybar/scripts/waybar-wttr.py;
-
-    "./.config/vivaldi-stable.conf".source = ../../dotfiles/vivaldi-stable.conf;
-    "./.config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
-    "./.config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
-    "./.config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
-
-    "./.dotfiles/colorscripts/" = {
-      source = ../../dotfiles/colorscripts;
-      recursive = true;
-    };
+    ".config/vivaldi-stable.conf".source = ../../dotfiles/vivaldi-stable.conf;
+    ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
+    ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
+    ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
   };
 
   fonts.fontconfig.enable = true;

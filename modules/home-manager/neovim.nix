@@ -4,6 +4,12 @@
   # Example with LSP installs via nix: https://github.com/ryan4yin/nix-config/blob/main/home/base/desktop/editors/neovim/astronvim_user/init.lua
   # https://github.com/b-src/lazy-nix-helper.nvim
   # https://github.com/mrjones2014/dotfiles/blob/master/home-manager/modules/nvim.nix
+
+  xdg.configFile."nvim/" = {
+    source = ../../dotfiles/nvim;
+    recursive = true;
+  };
+
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
