@@ -414,8 +414,19 @@ let
       "hyprland/window"
     ];
     modules-right = [
-      "tray"
+      "network"
     ];
+    network = {
+      interval = 5;
+      format-wifi = "<span font='12' rise='-2pt'>󱚿</span> {ipaddr}";
+      format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
+      format-alt = "<span font='12' rise='-2pt'>󰲐</span> {ipaddr}/{cidr}";
+      format-linked = "󰖪 {ifname} (No IP)";
+      format-disconnected = "󱛅 Disconnected";
+      format-disabled = "󰖪 Disabled";
+      tooltip-format = "󰀂 {ifname} via {gwaddr}";
+      on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+    };
     tray = {
       "icon-size" = 16;
       spacing = 10;
