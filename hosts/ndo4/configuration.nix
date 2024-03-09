@@ -125,7 +125,7 @@ in
         wayland = true;
       };
     };
-    # videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "amdgpu" ];
     xkb = {
       layout = "us";
       variant = "";
@@ -174,7 +174,7 @@ in
     opengl = {
       enable = true;
       ## amdvlk: an open-source Vulkan driver from AMD
-      # extraPackages = [ pkgs.amdvlk ];
+      extraPackages = [ pkgs.amdvlk ];
     };
 
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
