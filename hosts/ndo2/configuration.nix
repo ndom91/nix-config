@@ -124,7 +124,6 @@ in
         wayland = true;
       };
     };
-    # videoDrivers = [ "amdgpu" ];
     xkb = {
       layout = "us";
       variant = "";

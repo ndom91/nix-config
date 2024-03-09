@@ -169,8 +169,13 @@ in
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
-    opengl.enable = true;
+
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
+    opengl = {
+      enable = true;
+      ## amdvlk: an open-source Vulkan driver from AMD
+      # extraPackages = [ pkgs.amdvlk ];
+    };
 
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };

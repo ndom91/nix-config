@@ -25,11 +25,6 @@
         force_zero_scaling = true;
       };
       monitor = ",preferred,auto,auto";
-      # monitor = ",highres,auto,1.7";
-      # monitor = [
-      #   "DP-1,3440x1440,1080x480,1"
-      #   "DP-2,1920x1080,0x0,1,transform,3"
-      # ];
 
       env = [
         "XCURSOR_SIZE,24"
@@ -71,7 +66,7 @@
 
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
 
-        "xsetroot -xcf ${rose-pine-cursor}/BreezeX-RosePine-Linux/cursors/left_ptr 24"
+        # "xsetroot -xcf ${rose-pine-cursor}/BreezeX-RosePine-Linux/cursors/left_ptr 24"
         "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
       # plugin = {
