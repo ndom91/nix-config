@@ -6,7 +6,7 @@ in
 {
   home.file.".config/swaync/config.json".text = ''
     {
-      "$schema": "${pkgs.swaynotificationcenter}/etc/xdg/swaync/configSchema.json",
+      "$schema": "/etc/xdg/swaync/configSchema.json",
       "positionX": "right",
       "positionY": "top",
       "control-center-margin-top": 10,
@@ -21,9 +21,11 @@ in
       "timeout": 10,
       "timeout-low": 5,
       "timeout-critical": 0,
-      "fit-to-screen": true,
+      "fit-to-screen": false,
       "control-center-width": 500,
+      "control-center-height": 1025,
       "notification-window-width": 500,
+
       "keyboard-shortcuts": false,
       "image-visibility": "when-available",
       "transition-time": 200,
@@ -65,6 +67,28 @@ in
         font-family: FiraSans;
     }
 
+    .control-center {
+      margin-top: 10px;
+      margin-right: 10px;
+      margin-bottom: 20px;
+    }
+
+    .notification-group.collapsed:focus {
+      border: none;
+    }
+
+    .notification-group .collapsed .notification-row .notification {
+       background-color: #${palette.base01};
+    }
+
+    .notification-group.collapsed .notification-row:not(:last-child) .notification-action,
+    .notification-group.collapsed .notification-row:not(:last-child) .notification-default-action {
+      opacity: 0;
+    }
+
+    .notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
+      background-color: #${palette.base02};
+    }
 
     .notification-row {
         outline: none;
@@ -75,10 +99,14 @@ in
         background: transparent;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
     }
 
     .notification {
         background: transparent;
+        box-shadow: none;
+        outline: none;
         padding: 0;
         border: none;
         margin: 0px;
@@ -87,6 +115,7 @@ in
     .notification-background {
         background: transparent;
         border: none;
+        outline: none;
     }
 
     .notification-default-action,
@@ -96,8 +125,11 @@ in
         padding: 10px;
         font-weight: 300;
         border: none;
+        box-shadow: none;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
         margin: 0;
     }
 
@@ -135,6 +167,7 @@ in
 
     .notification-action {
         border: none;
+        outline: none;
         background: #${palette.base00};
         transition: all 300ms ease-in-out;
     }
@@ -149,14 +182,12 @@ in
         border: none;
         border-image-width: 0;
         box-shadow: none;
-        outline: none;
     }
 
     .notification-action:last-child {
         border-bottom-right-radius: 5px;
         border: none;
         box-shadow: none;
-        outline: none;
     }
 
     .inline-reply {
@@ -197,7 +228,7 @@ in
         font-size: 16px;
         font-weight: 400;
         background: transparent;
-        color: rgba(158, 206, 106, 1);
+        color: #${palette.base06};
         text-shadow: none;
     }
 

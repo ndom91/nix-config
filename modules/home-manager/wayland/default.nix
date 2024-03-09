@@ -33,7 +33,7 @@
     networkmanagerapplet
     playerctl
     swaybg
-    swaynotificationcenter
+    unstablePkgs.swaynotificationcenter
     unstablePkgs.swayosd
     wf-recorder
     wl-clipboard

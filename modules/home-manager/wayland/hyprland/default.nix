@@ -1,13 +1,13 @@
-{ pkgs, rose-pine-cursor, inputs, ... }:
+{ pkgs, unstablePkgs, rose-pine-cursor, inputs, ... }:
 {
   xdg.configFile."hypr/movefocus.sh".source = ./hy3-movefocus.sh;
 
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
-    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    package = unstablePkgs.hyprland;
     enable = true;
-    package = pkgs.hyprland;
+    # package = pkgs.hyprland;
     # systemd.enable = true;
 
     # reloadConfig = true;
