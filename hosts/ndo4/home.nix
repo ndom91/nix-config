@@ -1,7 +1,7 @@
 { rose-pine-cursor, lib, inputs, config, pkgs, unstablePkgs, ... }:
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
-    # nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
 
     # Common
     ../common/packages.nix
@@ -27,6 +27,9 @@
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  # Themes - https://github.com/tinted-theming/base16-schemes
+  colorScheme = inputs.nix-colors.colorSchemes.rose-pine;
+
   systemd.user.sessionVariables = config.home.sessionVariables;
 
   # ndo4 overrides
@@ -36,7 +39,6 @@
         "DP-1,3440x1440,1080x480,1"
         "DP-2,1920x1080,0x0,1,transform,3"
       ];
-      # monitor = lib.mkForce "eDP-1,highres,auto,1.7";
       env = [
         "GDK_SCALE,1.5"
         "XCURSOR_SIZE,24"
@@ -52,6 +54,7 @@
 
     "/run/current-system/sw/share/sddm/faces/ndo.face.icon".source = ../../dotfiles/.face.icon;
     ".face.icon".source = ../../dotfiles/.face.icon;
+    ".face".source = ../../dotfiles/.face.icon;
 
     ".config/vivaldi-stable.conf".source = ../../dotfiles/vivaldi-stable.conf;
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;

@@ -3,6 +3,7 @@
   imports = with rose-pine-cursor pkgs inputs; [
     ./hyprland/default.nix
     ./swaylock.nix
+    ./swaync.nix
     ./wlogout.nix
     ./waybar/default.nix
     ./rofi/default.nix

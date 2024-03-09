@@ -25,10 +25,12 @@ let
       "hyprland/window"
     ];
     modules-right = [
+      "idle_inhibitor"
       "bluetooth"
       "custom/weather"
       "network"
-      "pulseaudio"
+      "wireplumber"
+      "custom/notification"
       "tray"
     ];
     "wlr/workspaces" = {
@@ -66,8 +68,35 @@ let
       interval = 10;
       format = "<span font='13' rise='-1pt'></span> {percentage}%";
     };
+    "idle_inhibitor" = {
+      format = "{icon}";
+      format-icons = {
+        activated = "";
+        deactivated = "󰾪";
+      };
+      tooltip = true;
+    };
+    "custom/notification" = {
+      tooltip = false;
+      format = "{icon} {}";
+      format-icons = {
+        notification = "<span foreground='red'><sup></sup></span>";
+        none = "";
+        dnd-notification = "<span foreground='red'><sup></sup></span>";
+        dnd-none = "";
+        inhibited-notification = "<span foreground='red'><sup></sup></span>";
+        inhibited-none = "";
+        dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+        dnd-inhibited-none = "";
+      };
+      return-type = "json";
+      exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
+      on-click = "sleep 0.1 && ${pkgs.swaynotificationcenter}/bin/swaync-client -t";
+      escape = true;
+    };
     "hyprland/window" = {
       format = "{}";
+      max-length = 40;
       separate-outputs = true;
     };
     "hyprland/submap" = {
@@ -99,7 +128,7 @@ let
       tooltip-format = "{device_alias}";
       tooltip-format-connected = " {device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
-      on-click = "blueberry";
+      on-click = "${pkgs.blueberry}/bin/blueberry";
     };
     tray = {
       icon-size = 16;
@@ -117,7 +146,8 @@ let
     wireplumber = {
       format = "<span font='12' rise='-2pt'></span> {volume}";
       format-muted = "<span font='12' rise='-2pt'></span>";
-      on-click = "pavucontrol";
+      on-click = "sleep 0.1 && ${pkgs.pamixer}/bin/pamixer -t";
+      on-click-right = "sleep 0.1 && ${pkgs.pavucontrol}/bin/pavucontrol";
     };
     pulseaudio = {
       format = "<span font='15' rise='-2pt'></span>  {volume}";
@@ -140,7 +170,7 @@ let
       };
       scroll-step = 5;
       on-click = "pamixer -t";
-      on-click-right = "pavucontrol";
+      on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
       on-scroll-up = "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
       on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
       smooth-scrolling-threshold = 1;
@@ -173,12 +203,21 @@ let
       "hyprland/window"
     ];
     modules-right = [
+      "idle_inhibitor"
       "bluetooth"
       "custom/weather"
       "network"
-      "pulseaudio"
+      "wireplumber"
       "tray"
     ];
+    "idle_inhibitor" = {
+      format = "{icon}";
+      format-icons = {
+        activated = "";
+        deactivated = "";
+      };
+      tooltip = true;
+    };
     "wlr/workspaces" = {
       format = "{icon}";
       on-click = "activate";
@@ -280,7 +319,7 @@ let
       tooltip-format = "{device_alias}";
       tooltip-format-connected = " {device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
-      on-click = "blueberry";
+      on-click = "sleep 0.1 && blueberry";
     };
     tray = {
       icon-size = 16;
@@ -298,7 +337,7 @@ let
     wireplumber = {
       format = "<span font='12' rise='-2pt'></span> {volume}";
       format-muted = "<span font='12' rise='-2pt'></span>";
-      on-click = "pavucontrol";
+      on-click = "sleep 0.1 && pavucontrol";
     };
     pulseaudio = {
       format = "<span font='15' rise='-2pt'></span>  {volume}";
