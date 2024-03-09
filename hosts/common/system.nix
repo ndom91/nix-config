@@ -1,18 +1,21 @@
 { pkgs, unstablePkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    # bottles # wine manager
+    # zig
     alacritty
     appimage-run
     bat
     bluez
     brightnessctl
     catppuccin-gtk
+    cmake
     coreutils
     dconf
     difftastic
     docker-compose
-    dracula-theme
     dracula-icon-theme
+    dracula-theme
     dua
     eza
     fd
@@ -23,14 +26,14 @@
     git
     gnumake
     gnupg
-    cmake
     htop
-    ipmitool
-    inotify-tools
     imv
+    inotify-tools
+    ipmitool
     jq
-    libnotify
+    killall
     libcamera
+    libnotify
     lm_sensors
     lshw
     mesa
@@ -38,9 +41,9 @@
     nmap
     ntfs3g
     ouch
+    pamixer
     pasystray
     pavucontrol
-    pamixer
     python311Packages.requests
     qemu
     rclone
@@ -54,7 +57,6 @@
     watch
     wget
     zip
-    # zig
     zoxide
 
     # sddm

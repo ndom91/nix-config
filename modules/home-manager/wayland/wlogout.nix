@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   xdg.configFile."wlogout" = {
-    source = ../../../dotfiles/wlogout/icons;
+    source = ../../../dotfiles/wlogout;
     recursive = true;
   };
 
