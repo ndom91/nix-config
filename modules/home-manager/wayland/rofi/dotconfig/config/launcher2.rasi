@@ -5,6 +5,7 @@
  * 
  * Rofi Theme File
  * Rofi Version: 1.7.3
+ * Modified from: https://github.com/adi1090x/rofi/blob/master/files/launchers/type-2/style-1.rasi
  **/
 
 /*****----- Configuration -----*****/
@@ -16,7 +17,11 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "colors/zinc.rasi"
+@import                          "colors/catppuccin.rasi"
+
+* {
+    font: "FiraSans, FiraCode Nerd Font, Light 12";
+}
 
 /*****----- Main Window -----*****/
 window {
@@ -67,19 +72,19 @@ inputbar {
 
 prompt {
     enabled:                     true;
-    background-color:            inherit;
+    background-color:            @transparent;
     text-color:                  inherit;
 }
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     str:                         "::";
-    background-color:            inherit;
+    background-color:            @selected;
     text-color:                  inherit;
 }
 entry {
     enabled:                     true;
-    background-color:            inherit;
+    background-color:            @transparent;
     text-color:                  inherit;
     cursor:                      text;
     placeholder:                 "Search...";
