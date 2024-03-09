@@ -3,7 +3,9 @@ let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../modules/packages/rose-pine-cursor/default.nix { };
-  gimp-devel = pkgs.callPackage ../../modules/packages/gimp-devel/default.nix { };
+  # gimp-devel = pkgs.callPackage ../../modules/packages/gimp-devel {
+  #   lcms = pkgs.lcms2;
+  # };
 in
 {
   imports = with pkgs; [
@@ -216,7 +218,7 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
-    gimp-devel
+    # gimp-devel
   ];
 
   # FOR LATER: dynamically-linked binaries work-around
