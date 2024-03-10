@@ -73,12 +73,21 @@ in
       margin-bottom: 20px;
     }
 
+    .control-center-list:focus,
     .notification-group.collapsed:focus {
+      outline: none;
+    }
+
+    .notification-group.collapsed:focus .notification-row .notification {
+      transition: all 300ms ease-in-out;
+      outline: none;
       border: none;
     }
 
-    .notification-group .collapsed .notification-row .notification {
-       background-color: #${palette.base01};
+    .notification-group.collapsed .notification-row .notification {
+      background-color: #${palette.base02};
+      outline: none;
+      border: none;
     }
 
     .notification-group.collapsed .notification-row:not(:last-child) .notification-action,
@@ -133,6 +142,13 @@ in
         margin: 0;
     }
 
+    /* Broken */
+    .notification:not(.notification-action) .notification-default-action,
+    .notification:not(.notification-action) .notification-content {
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+
 
     .notification-row:hover .notification-default-action,
     .notification-row:hover .notification-content {
@@ -169,6 +185,7 @@ in
         border: none;
         outline: none;
         background: #${palette.base00};
+        opacity: 0.9;
         transition: all 300ms ease-in-out;
     }
 
@@ -243,7 +260,7 @@ in
 
     .body {
         font-size: 15px;
-        font-weight: 400;
+        font-weight: 300;
         background: transparent;
         color: #${palette.base05};
         text-shadow: none;
@@ -251,7 +268,7 @@ in
 
     .control-center {
         background: #${palette.base00};
-        border: none;
+        border: 1px solid #${palette.base01};
         box-shadow:
             0 3px 2px -2px #00000099,
             0 7px 5px -2px #00000099,

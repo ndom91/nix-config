@@ -33,6 +33,7 @@
     jq
     killall
     libcamera
+    libfprint-2-tod1-elan
     libnotify
     lm_sensors
     lshw

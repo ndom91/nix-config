@@ -2,20 +2,19 @@
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     nix-colors.homeManagerModules.default
+    # User Packages
+    ../../modules/home-manager/user-packages.nix
+    # Programming Lanaguages
+    ../../modules/home-manager/languages/node.nix
+    ../../modules/home-manager/languages/rust.nix
     # Common
-    ../common/packages.nix
-    ../common/gitconfig.nix
-    ../common/tmux.nix
-    ../common/user-dirs.nix
-    ../common/ssh.nix
-    ../common/sh.nix
-    ../common/mimeApps.nix
-    ../common/languages/node.nix
-    ../common/languages/rust.nix
-    # ../common/languages/python.nix
-
-    # Modules
-    ../../modules/home-manager/gtk.nix
+    ../../modules/home-manager/gitconfig.nix
+    ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/user-dirs.nix
+    ../../modules/home-manager/ssh.nix
+    ../../modules/home-manager/bash.nix
+    ../../modules/home-manager/mimeApps.nix
+    ../../modules/home-manager/gtk/default.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/neovim.nix
     ../../modules/home-manager/zathura.nix

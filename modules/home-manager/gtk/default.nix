@@ -5,7 +5,7 @@
   # };
 
   imports = [
-    ./catppuccin-gtk-4.0.nix
+    ./catppuccin.nix
   ];
 
   home.pointerCursor = {
