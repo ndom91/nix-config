@@ -1,8 +1,8 @@
 { lib, nix-colors, inputs, unstablePkgs, overlays, config, pkgs, ... }:
 let
-  tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/tokyo-night-sddm/default.nix { };
-  corners-sddm = pkgs.libsForQt5.callPackage ../../modules/packages/corners-sddm/default.nix { };
-  rose-pine-cursor = pkgs.callPackage ../../modules/packages/rose-pine-cursor/default.nix { };
+  tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
+  corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
+  rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   # gimp-devel = pkgs.callPackage ../../modules/packages/gimp-devel {
   #   lcms = pkgs.lcms2;
   # };
