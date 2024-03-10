@@ -61,7 +61,6 @@ chosen=$(echo -e "$options" | rofi \
   -i \
   -scroll-method 1 \
   -theme "$HOME/.config/rofi/config/screenshot.rasi")
-# -theme /etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/screenshot.rasi)
 
 case $chosen in
   "$area")

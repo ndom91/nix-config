@@ -6,7 +6,7 @@
 save_dir=$HOME/Pictures/Screenshots
 save_filename_format=swappy-%Y%m%d-%H%M%S.png
 show_panel=true
-line_size=10
+line_size=8
 text_size=24
 text_font=sans-serif
 paint_mode=brush
@@ -305,7 +305,7 @@ fill_shape=false
         "$mainMod, O, togglesplit, # dwindle layout"
         "$mainMod, D, exec, \"$HOME/.config/rofi/bin/launcher\""
         "$mainMod, M, exec, \"$HOME/.config/rofi/bin/emoji\""
-        "$mainMod, C, exec, \"$HOME/.config/rofi/bin/cliphist-img\""
+        "$mainMod, C, exec, \"$HOME/.config/rofi/bin/cliphist\""
         "$mainMod, S, exec, \"$HOME/.config/rofi/bin/screenshot\""
         "$mainMod SHIFT, S, exec, pkill --signal SIGINT wf-recorder && notify-send \"Stopped Recording\" || wf-recorder -g \"$(slurp)\" -f ~/Videos/wfrecording_$(date +\"%Y-%m-%d_%H:%M:%S.mp4\") & notify-send \"Started Recording\" # start/stop video recording"
 
