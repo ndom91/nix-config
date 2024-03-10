@@ -3,6 +3,7 @@ let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
+  flameshot = pkgs.callPackage ../../packages/flameshot/default.nix { };
   # gimp-devel = pkgs.callPackage ../../packages/gimp-devel {
   #   lcms = pkgs.lcms2;
   # };
@@ -237,6 +238,7 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
+    flameshot
     # gimp-devel
   ];
 

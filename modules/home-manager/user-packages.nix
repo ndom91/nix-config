@@ -15,6 +15,7 @@
     cinnamon.nemo
     vlc
     protonvpn-gui
+    # flameshot
 
     # System Tools
     qdirstat
