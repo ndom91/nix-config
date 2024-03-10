@@ -4,6 +4,8 @@ let
   palette = config.colorScheme.palette;
 in
 {
+  # Example theme: https://github.com/ErikReider/SwayNotificationCenter/blob/main/data/style/style.scss
+
   home.file.".config/swaync/config.json".text = ''
     {
       "$schema": "/etc/xdg/swaync/configSchema.json",
@@ -204,6 +206,19 @@ in
     .notification-action:last-child {
         border-bottom-right-radius: 5px;
         border: none;
+        box-shadow: none;
+    }
+    
+    .blank-window {
+      /* Window behind control center and on all other monitors */
+      background: transparent;
+    }
+
+    .floating-notifications {
+      background: transparent;
+    }
+
+   .floating-notifications  .notification {
         box-shadow: none;
     }
 
