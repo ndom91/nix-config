@@ -2,16 +2,16 @@
 {
   xdg.configFile."hypr/movefocus.sh".source = ./hy3-movefocus.sh;
   xdg.configFile."swappy/config".text = ''
-[Default]
-save_dir=$HOME/Pictures/Screenshots
-save_filename_format=swappy-%Y%m%d-%H%M%S.png
-show_panel=true
-line_size=8
-text_size=24
-text_font=sans-serif
-paint_mode=brush
-early_exit=true
-fill_shape=false
+    [Default]
+    save_dir=$HOME/Pictures/Screenshots
+    save_filename_format=swappy-%Y%m%d-%H%M%S.png
+    show_panel=true
+    line_size=8
+    text_size=24
+    text_font=sans-serif
+    paint_mode=brush
+    early_exit=true
+    fill_shape=false
   '';
 
   wayland.windowManager.hyprland = {
@@ -21,10 +21,9 @@ fill_shape=false
     enable = true;
     xwayland.enable = true;
 
-    # hy3 not included in hyprland-plugins flake yet, see: https://github.com/hyprwm/hyprland-plugins
-    # plugins = [
-    #   inputs.hyprland-plugins.packages."${pkgs.system}".hy3
-    # ];
+    plugins = [
+      unstablePkgs.hyprlandPlugins.hy3
+    ];
 
     settings = {
       xwayland = {
@@ -67,21 +66,21 @@ fill_shape=false
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
-      # plugin = {
-      #   hy3 = {
-      #     tabs = {
-      #       height = 5;
-      #       padding = 8;
-      #       render_text = false;
-      #       col.active = "rgb(8a8dcc)";
-      #     };
-      #     autotile = {
-      #       enable = true;
-      #       trigger_width = 800;
-      #       trigger_height = 500;
-      #     };
-      #   };
-      # };
+      plugin = {
+        hy3 = {
+          tabs = {
+            height = 5;
+            padding = 8;
+            render_text = false;
+            col.active = "rgb(8a8dcc)";
+          };
+          autotile = {
+            enable = true;
+            trigger_width = 800;
+            trigger_height = 500;
+          };
+        };
+      };
       general = {
         gaps_in = 10;
         gaps_out = 20;
@@ -89,7 +88,7 @@ fill_shape=false
         "col.active_border" = "rgb(11111b) rgb(181825) 45deg";
         "col.inactive_border" = "rgba(f5e0dc20)";
 
-        # layout = "hy3";
+        layout = "hy3";
         resize_on_border = true;
       };
       decoration = {
