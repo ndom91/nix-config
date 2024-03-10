@@ -4,7 +4,7 @@ configuration {
     drun-display-format:            "{icon} {name}";
     disable-history:                false;
     click-to-exit: 		            true;
-    location:                       0;
+    location:                       1;
 }
 
 /*****----- Global Properties -----*****/
@@ -92,7 +92,7 @@ listview {
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
-    fixed-height:                true;
+    fixed-height:                false;
     fixed-columns:               true;
     
     spacing:                     5px;

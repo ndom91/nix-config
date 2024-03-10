@@ -1,29 +1,19 @@
 #!/usr/bin/env bash
 
-set -ex
-
-# rofi_command="rofi -theme $HOME/.config/rofi/config/screenshot.rasi"
-rofi_command="rofi \
--theme /etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/screenshot.rasi \
--p '' \
--dmenu \
--drun-display-format '{icon} {name}' \
--selected-row 0"
-
-time=$(date +%Y-%m-%d-%I-%M-%S)
-activeMonitorId=$(hyprctl activeworkspace -j | jq .monitorID)
-height=$(hyprctl monitors -j | jq ".[] | select(.id==${activeMonitorId}).height")
-width=$(hyprctl monitors -j | jq ".[] | select(.id==${activeMonitorId})".width)
-geometry="${width}x${height}"
+# activeMonitorId=$(hyprctl activeworkspace -j | jq .monitorID)
+# height=$(hyprctl monitors -j | jq ".[] | select(.id==${activeMonitorId}).height")
+# width=$(hyprctl monitors -j | jq ".[] | select(.id==${activeMonitorId})".width)
+# geometry="${width}x${height}"
 dir="$(xdg-user-dir PICTURES)/Screenshots"
-file="Screenshot_${time}_${geometry}.png"
+time=$(date +%Y-%m-%d-%I-%M-%S)
+file="Screenshot_${time}.png"
 
 # Buttons
-screen="󰹑 Capture Desktop"
-area=" Capture Area"
-window="󱣵 Capture Window"
-infive="󰔝 Take in 3s"
-inten="󰔜 Take in 10s"
+screen="󰹑   Capture Desktop"
+area="   Capture Area"
+window="󱣵   Capture Window"
+infive="󰔝   Take in 3s"
+inten="󰔜   Take in 10s"
 
 # countdown
 countdown() {
@@ -74,8 +64,13 @@ fi
 # Variable passed to rofi
 options="$area\n$screen\n$window\n$infive\n$inten"
 
-# chosen=$(echo -e "$options" | "${rofi_command[@]}")
-chosen=$(echo -e "$options" | "$($rofi_command)")
+chosen=$(echo -e "$options" | rofi \
+  -dmenu \
+  -p '' \
+  -l 5 \
+  -selected-row 0 \
+  -theme /etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/screenshot.rasi)
+
 case $chosen in
   "$area")
     shotarea
