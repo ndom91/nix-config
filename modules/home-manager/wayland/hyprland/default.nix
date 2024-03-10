@@ -17,6 +17,7 @@
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
+    # package = unstablePkgs.hyprland;
     package = unstablePkgs.hyprland;
     enable = true;
     xwayland.enable = true;
@@ -54,13 +55,9 @@
       };
       exec-once = [
         # "mkchromecast -t"
-        # "swaync"
         "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
-        "swaybg -m fill -i ~/.config/hypr/wallpaper.png"
-        # "swayosd-server"
-        # "wl-paste --watch cliphist store"
-        # "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
         "blueberry-tray"
+        "swaybg -m fill -i ~/.config/hypr/wallpaper.png"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"

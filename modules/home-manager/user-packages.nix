@@ -1,9 +1,10 @@
-{ pkgs, unstablePkgs, ... }:
+{ config, unstablePkgs, pkgs, ... }:
 {
 
   home.packages = with pkgs; [
     # Graphical Applications
-    vivaldi
+    unstablePkgs.vivaldi
+    unstablePkgs.vivaldi-ffmpeg-codecs
     floorp
     gnome.gnome-boxes
     gnome.seahorse

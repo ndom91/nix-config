@@ -1,4 +1,4 @@
-{ input, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   # kickstart-nix.nvim: https://github.com/mrcjkb/kickstart-nix.nvim
   # Example with LSP installs via nix: https://github.com/ryan4yin/nix-config/blob/main/home/base/desktop/editors/neovim/astronvim_user/init.lua
@@ -12,7 +12,7 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    package = inputs.neovim-nightly-overlay.packages.x86_64-linux.neovim;
 
     viAlias = true;
     vimAlias = true;

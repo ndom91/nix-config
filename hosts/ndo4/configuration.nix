@@ -234,17 +234,25 @@ in
     };
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    vivaldi = {
-      proprietaryCodecs = true;
-      enableWidevine = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      vivaldi = {
+        proprietaryCodecs = true;
+        enableWidevine = true;
+      };
+      # packageOverrides = pkgs: {
+      #   unstablePkgs = import <unstable> {
+      #     config = config.nixpkgs.config;
+      #   };
+      # };
+      overlays = overlays;
     };
   };
-  nixpkgs.overlays = overlays;
 
   programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  programs.hyprland.package = unstablePkgs.hyprland;
 
   programs.direnv.enable = true;
 
