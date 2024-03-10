@@ -1,44 +1,33 @@
 #!/usr/bin/env bash
 
-rofi_command="rofi -theme $HOME/.config/rofi/config/screenshot.rasi"
+set -ex
+
+# rofi_command="rofi -theme $HOME/.config/rofi/config/screenshot.rasi"
+rofi_command="rofi \
+-theme /etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/screenshot.rasi \
+-p '' \
+-dmenu \
+-drun-display-format '{icon} {name}' \
+-selected-row 0"
 
 time=$(date +%Y-%m-%d-%I-%M-%S)
-# geometry=$(xrandr | head -n1 | cut -d',' -f2 | tr -d '[:blank:],current')
-height=$(wlr-randr --json | jq .[0].modes[0].height)
-width=$(wlr-randr --json | jq .[0].modes[0].width)
+activeMonitorId=$(hyprctl activeworkspace -j | jq .monitorID)
+height=$(hyprctl monitors -j | jq ".[] | select(.id==${activeMonitorId}).height")
+width=$(hyprctl monitors -j | jq ".[] | select(.id==${activeMonitorId})".width)
 geometry="${width}x${height}"
 dir="$(xdg-user-dir PICTURES)/Screenshots"
 file="Screenshot_${time}_${geometry}.png"
 
-# Icons
-icon1="$HOME/.config/dunst/icons/collections.svg"
-icon2="$HOME/.config/dunst/icons/timer.svg"
-
 # Buttons
-screen=" Capture Desktop"
-area=" Capture Area"
-window="缾 Capture Window"
-infive="靖 Take in 3s"
-inten="福 Take in 10s"
-
-# Notify and view screenshot
-notify_view() {
-  notify-send -u low -i "$icon1" "Copied to clipboard."
-  imv "${dir}/$file"
-
-  if [[ -e "$dir/$file" ]]; then
-    notify-send -u low -i "$icon1" "Screenshot Saved."
-  else
-    notify-send -u low -i "$icon1" "Screenshot Deleted."
-  fi
-}
+screen="󰹑 Capture Desktop"
+area=" Capture Area"
+window="󱣵 Capture Window"
+infive="󰔝 Take in 3s"
+inten="󰔜 Take in 10s"
 
 # countdown
 countdown() {
-  for sec in $(seq "$1" -1 1); do
-    notify-send -t 1000 -i "$icon2" "Taking shot in : $sec"
-    sleep 1
-  done
+  sleep "$1"
 }
 
 # take shots
@@ -47,7 +36,7 @@ shotnow() {
   notify_view
 }
 
-shot5() {
+shot3() {
   coords=$(slurp)
   countdown '3'
   # grim -c -g "$coords" - | satty --copy-command wl-copy --early-exit --output-filename "$dir/$file" --filename -
@@ -85,7 +74,8 @@ fi
 # Variable passed to rofi
 options="$area\n$screen\n$window\n$infive\n$inten"
 
-chosen="$(echo -e "$options" | $rofi_command -p 'Screenshot' -dmenu -selected-row 0)"
+# chosen=$(echo -e "$options" | "${rofi_command[@]}")
+chosen=$(echo -e "$options" | "$($rofi_command)")
 case $chosen in
   "$area")
     shotarea
@@ -97,7 +87,7 @@ case $chosen in
     shotwin
     ;;
   "$infive")
-    shot5
+    shot3
     ;;
   "$inten")
     shot10

@@ -6,4 +6,5 @@ rofi \
   -drun-match-fields all \
   -drun-display-format "{name}" \
   -no-drun-show-actions \
-  -theme "$HOME"/.config/rofi/config/launcher2.rasi
+  -theme "/etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/launcher.rasi"
+# -theme "$HOME"/.config/rofi/config/launcher.rasi
