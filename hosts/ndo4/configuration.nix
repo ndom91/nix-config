@@ -187,6 +187,12 @@ in
     };
   };
 
+  xdg.portal = {
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
   environment.variables = {
     # VAAPI and VDPAU config for accelerated video.
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration

@@ -35,7 +35,13 @@
             inherit inputs;
             inherit nix-colors;
             unstablePkgs = import unstable {
-              config.allowUnfree = true;
+              config = {
+                allowUnfree = true;
+                vivaldi = {
+                  proprietaryCodecs = true;
+                  enableWidevine = true;
+                };
+              };
               localSystem = { inherit system; };
             };
           };

@@ -59,6 +59,8 @@
     watch
     wget
     xdg-user-dirs
+    libva-utils
+    vulkan-tools
     zip
     zoxide
 
