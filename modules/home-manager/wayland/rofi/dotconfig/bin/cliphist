@@ -7,6 +7,6 @@ cliphist list |
     -i \
     -dmenu \
     -scroll-method 0 \
-    -theme "$HOME"/.config/rofi/config/launcher.rasi |
+    -theme "$HOME/.config/rofi/config/launcher.rasi" |
   cliphist decode |
   wl-copy

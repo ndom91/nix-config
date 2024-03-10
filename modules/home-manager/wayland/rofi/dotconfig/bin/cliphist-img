@@ -27,6 +27,6 @@ cliphist list | gawk "$prog" |
     -i \
     -dmenu \
     -scroll-method 1 \
-    -theme "$HOME"/.config/rofi/config/cliphist.rasi |
+    -theme "$HOME/.config/rofi/config/cliphist.rasi" |
   cliphist decode |
   wl-copy

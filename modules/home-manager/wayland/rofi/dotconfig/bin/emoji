@@ -9,8 +9,8 @@ chosen=$(cat /etc/nixos/dotfiles/emojis2.txt | rofi \
   -i \
   -matching glob \
   -scroll-method 1 \
-  -theme "/etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/emoji.rasi")
-# -theme "$HOME"/.config/rofi/config/emoji.rasi)
+  -theme "$HOME/.config/rofi/config/emoji.rasi")
+# -theme "/etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/emoji.rasi")
 
 # Exit if none chosen
 [ -z "$chosen" ] && exit
