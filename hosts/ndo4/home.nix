@@ -25,6 +25,10 @@
   home.homeDirectory = "/home/ndo";
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  home.packages = [
+    inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
+  ];
+
   systemd.user.sessionVariables = config.home.sessionVariables;
 
   # Themes - https://github.com/tinted-theming/base16-schemes
@@ -38,7 +42,7 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       cursor-theme = "BreezeX-RosePine-Linux";
-      font-name = "Ubuntu Nerd Font";
+      # font-name = "Ubuntu Nerd Font";
       gtk-theme = "Catppuccin-Mocha-Standard-Maroon-Dark";
       icon-theme = "Dracula";
     };

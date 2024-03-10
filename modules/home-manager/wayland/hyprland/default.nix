@@ -62,12 +62,8 @@ fill_shape=false
         sensitivity = 0;
       };
       exec-once = [
-        # "${pkgs.waybar}/bin/.waybar-wrapped"
-        # "gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-RosePine-Linux'"
-        # "gsettings set org.gnome.desktop.interface cursor-size 24"
-
         # "mkchromecast -t"
-        "swaync"
+        # "swaync"
         "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
         "swaybg -m fill -i ~/.config/hypr/wallpaper.png"
         "swayosd-server"
@@ -77,8 +73,6 @@ fill_shape=false
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
-
-        # "xsetroot -xcf ${rose-pine-cursor}/BreezeX-RosePine-Linux/cursors/left_ptr 24"
         "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
       # plugin = {
@@ -304,7 +298,7 @@ fill_shape=false
         "$mainMod, P, pseudo, # dwindle layout"
         "$mainMod, O, togglesplit, # dwindle layout"
         "$mainMod, D, exec, \"$HOME/.config/rofi/bin/launcher\""
-        "$mainMod, M, exec, \"$HOME/.config/rofi/bin/emoji\""
+        "$mainMod, E, exec, \"$HOME/.config/rofi/bin/emoji\""
         "$mainMod, C, exec, \"$HOME/.config/rofi/bin/cliphist\""
         "$mainMod, S, exec, \"$HOME/.config/rofi/bin/screenshot\""
         "$mainMod SHIFT, S, exec, pkill --signal SIGINT wf-recorder && notify-send \"Stopped Recording\" || wf-recorder -g \"$(slurp)\" -f ~/Videos/wfrecording_$(date +\"%Y-%m-%d_%H:%M:%S.mp4\") & notify-send \"Started Recording\" # start/stop video recording"

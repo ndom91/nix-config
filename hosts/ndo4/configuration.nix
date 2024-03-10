@@ -143,6 +143,9 @@ in
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.systemd-networkd-wait-online.enable = false;
 
+  # Hyprland swaynotificationcenter service
+  systemd.services.swaync.enable = true;
+
   # SuspendEstimationSec defeaults to 1h; 
   # HibernateDelaySec defaults to 2h
   # See: https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html#Description

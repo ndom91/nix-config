@@ -15,6 +15,8 @@
     ndiff = "nix store diff-closures $(ls -d  /nix/var/nix/profiles/* | tail -2 | awk '{ print $1 }')";
     nhistory = "nix profile diff-closures --profile /nix/var/nix/profiles/system";
     nvddiff = "nvd diff $(ls -d  /nix/var/nix/profiles/system-*-link | tail -2 | awk '{ print $1 }' | xargs)";
+    # nix hm
+    hmswitch = "home-manager switch";
 
     # coreutils
     ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";

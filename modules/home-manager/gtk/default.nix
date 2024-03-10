@@ -1,9 +1,5 @@
 { pkgs, rose-pine-cursor, config, ... }:
 {
-  # home.file = {
-  #   ".local/share/icons/GruvboxPlus".source = "${gruvboxPlus}";
-  # };
-
   imports = [
     ./catppuccin.nix
   ];
@@ -12,27 +8,18 @@
     gtk.enable = true;
     x11.enable = true;
     package = rose-pine-cursor;
-    # package = pkgs.bibata-cursors-translucent;
     name = "BreezeX-RosePine-Linux";
     size = 24;
   };
 
   gtk = {
     enable = true;
-    font.name = "Ubuntu Nerd Font";
+    font.name = "FiraSans";
 
-    # theme = {
-    #   package = pkgs.catppuccin-gtk;
-    #   name = "Catppuccin-Mocha-Standard-Maroon-Dark";
-    # };
-
-    # gtk.cursorTheme.package = pkgs.catppuccin-cursors;
-    # gtk.cursorTheme.name = "mochaDark";
     cursorTheme = {
       package = rose-pine-cursor;
       name = "BreezeX-RosePine-Linux";
-      # package = pkgs.bibata-cursors;
-      # name = "Bibata-Modern-Classic";
+      size = 24;
     };
 
     iconTheme = {
@@ -40,21 +27,29 @@
       name = "Dracula";
     };
 
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+    gtk2.extraConfig = ''
+      "gtk-application-prefer-dark-theme = 1"
+    '';
+
+    gtk3 = {
+      bookmarks = [
+        "file:///home/ndo/Downloads Downloads"
+        "file:///home/ndo/Pictures Pictures"
+        "file:///home/ndo/Documents Documents"
+        "file:///home/ndo/Videos Videos"
+        "file:///opt/nextauthjs authjs"
+        "file:///opt/ndomino ndomino"
+        "file:///opt opt"
+        "file:///mnt mnt"
+      ];
+      extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
     };
 
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
-
-    # xdg.configFile."gtk-4.0/gtk.css" = {
-    #   text = cssContent;
-    # };
-    #
-    # xdg.configFile."gtk-3.0/gtk.css" = {
-    #   text = cssContent;
-    # };
   };
 
   services.xsettingsd = {
@@ -63,6 +58,5 @@
       "Net/ThemeName" = "Catppuccin-Mocha-Standard-Maroon-Dark";
       "Net/IconThemeName" = "Dracula";
     };
-
   };
 }
