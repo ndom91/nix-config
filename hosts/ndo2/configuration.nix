@@ -73,6 +73,9 @@ in
       "10.0.0.1"
     ];
 
+    timeServers = [
+      "10.0.0.1"
+    ];
     firewall = {
       enable = false;
       allowedTCPPorts = [

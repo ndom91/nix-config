@@ -99,34 +99,6 @@
       #   enable = true;
       # };
     };
-    swayidle = {
-      enable = true;
-      timeouts = [
-        {
-          timeout = 295;
-          command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-        }
-        {
-          timeout = 300;
-          command = "${config.programs.swaylock.package}/bin/swaylock";
-        }
-        {
-          timeout = 360;
-          command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-          resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-        }
-        {
-          timeout = 3600;
-          command = "systemctl suspend-then-hibernate";
-        }
-      ];
-      events = [
-        {
-          event = "before-sleep";
-          command = "${config.programs.swaylock.package}/bin/swaylock";
-        }
-      ];
-    };
   };
 
   programs.atuin = {

@@ -42,7 +42,7 @@ in
   boot = {
     loader.systemd-boot = {
       enable = true;
-      configurationLimit = 10;
+      configurationLimit = 20;
       netbootxyz.enable = true;
     };
 
@@ -52,12 +52,16 @@ in
     kernel.sysctl = {
       "net.ipv4.ip_forward" = 1;
       "net.ipv6.conf.all.forwarding" = 1;
+
+      # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
+      "fs.inotify.max_queued_events" = 16384;
+      "fs.inotify.max_user_instances" = 8192;
+      "fs.inotify.max_user_watches" = 524288;
     };
   };
 
   networking = {
     hostName = "ndo4";
-    # useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
     nameservers = [
       "10.0.0.1"
@@ -77,6 +81,9 @@ in
       address = "10.0.0.1";
       interface = "enp42s0";
     };
+    timeServers = [
+      "10.0.0.1"
+    ];
 
     firewall = {
       enable = false;
@@ -118,7 +125,8 @@ in
         wayland.enable = true;
         settings = {
           Theme = {
-            Font = "Ubuntu Nerd Font";
+            Font = "Fira Sans";
+            # Font = "Ubuntu Nerd Font";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
           };
@@ -138,13 +146,22 @@ in
     # desktopManager.gnome.enable = false;
   };
 
+  # Hyprland swaynotificationcenter service
+  systemd.services.swaync.enable = true;
+
   # systemd services
   systemd.services.systemd-udevd.restartIfChanged = false;
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.systemd-networkd-wait-online.enable = false;
 
-  # Hyprland swaynotificationcenter service
-  systemd.services.swaync.enable = true;
+  # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
+# # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
+  systemd.user.extraConfig = ''
+    DefaultLimitNOFILE=524288
+  '';
+  systemd.extraConfig = ''
+    DefaultLimitNOFILE=524288
+  '';
 
   # SuspendEstimationSec defeaults to 1h; 
   # HibernateDelaySec defaults to 2h

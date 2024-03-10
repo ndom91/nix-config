@@ -1,4 +1,4 @@
-{ rose-pine-cursor, unstablePkgs, inputs, pkgs, ... }:
+{ rose-pine-cursor, config, unstablePkgs, inputs, pkgs, ... }:
 {
   imports = with rose-pine-cursor pkgs inputs; [
     ./hyprland/default.nix
@@ -29,11 +29,14 @@
 
   services = {
     cliphist.enable = true;
-    swayosd.enable = true;
+    swayosd = {
+      package = unstablePkgs.swayosd;
+      enable = true;
+    };
     wlsunset = {
       enable = true;
-      latitude = 52.52;
-      longitude = 13.40;
+      latitude = "52.52";
+      longitude = "13.40";
       temperature = {
         day = 6500;
         night = 4500;
@@ -76,11 +79,10 @@
     playerctl
     swaybg
     unstablePkgs.swaynotificationcenter
-    unstablePkgs.swayosd
     wf-recorder
     wl-clipboard
     wlr-randr
-    wlsunset
+    # wlsunset
 
     # Screenshot
     grim
