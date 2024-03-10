@@ -62,21 +62,6 @@
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
-      plugin = {
-        hy3 = {
-          tabs = {
-            height = 5;
-            padding = 8;
-            render_text = false;
-            col.active = "rgb(8a8dcc)";
-          };
-          autotile = {
-            enable = true;
-            trigger_width = 800;
-            trigger_height = 500;
-          };
-        };
-      };
       general = {
         gaps_in = 10;
         gaps_out = 20;
@@ -340,6 +325,22 @@
       binde = , J, resizeactive, 0 40
       bind = , escape, submap, reset
       submap = reset
+
+      plugin {
+        hy3 {
+          tabs {
+            height = 5
+            padding = 8
+            render_text = false
+            col.active = rgb(8a8dcc)
+          }
+          autotile {
+            enable = true
+            trigger_width = 800
+            trigger_height = 500
+          }
+        }
+      }
     '';
   };
 }
