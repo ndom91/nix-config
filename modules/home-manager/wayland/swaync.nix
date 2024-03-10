@@ -65,11 +65,13 @@ in
          font-family: FiraSans;
      }
 
+     /*
+     top-level control-center-margin working now
      .control-center {
        margin-top: 10px;
        margin-right: 10px;
        margin-bottom: 20px;
-     }
+     }*/
 
      .control-center-list:focus,
      .notification-group.collapsed:focus {
