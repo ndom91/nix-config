@@ -1,14 +1,25 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ * Modified from: https://github.com/adi1090x/rofi/blob/master/files/launchers/type-2/style-1.rasi
+ **/
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun";
-    show-icons:                 true;
-    display-drun:               "";
-	drun-display-format:        "{name}";
+	modi:                       "dmenu";
+  show-icons:                 true;
 }
 
 /*****----- Global Properties -----*****/
-@import                          "colors/zinc.rasi"
+@import                          "colors/catppuccin.rasi"
+
+* {
+    font: "FiraSans, FiraCode Nerd Font, Light 12";
+}
 
 /*****----- Main Window -----*****/
 window {
@@ -23,9 +34,9 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
-    border-radius:               8px;
-    border-color:                @selected;
+    border:                      1px solid;
+    border-radius:               12px;
+    border-color:                @background-alt;
     background-color:            @background;
     cursor:                      "default";
 }
@@ -36,9 +47,9 @@ mainbox {
     spacing:                     0px;
     margin:                      0px;
     padding:                     0px;
-    border:                      2px solid;
-    border-radius:               8px;
-    border-color:                #242424FF;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    border-color:                @selected;
     background-color:            transparent;
     children:                    [ "inputbar", "listview" ];
 }
@@ -51,31 +62,31 @@ inputbar {
     padding:                     15px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                #242424FF;
-    background-color:            @background-input;
-    text-color:                  @selected;
-    children:                    [ "entry" ];
+    border-color:                @selected;
+    background-color:            @selected;
+    text-color:                  @background;
+    children:                    [ "prompt", "entry" ];
 }
 
 prompt {
     enabled:                     true;
-    background-color:            transparent;
+    background-color:            @transparent;
     text-color:                  inherit;
 }
 textbox-prompt-colon {
-    enabled:                     transparent;
+    enabled:                     true;
     expand:                      false;
     str:                         "::";
-    background-color:            inherit;
+    background-color:            @selected;
     text-color:                  inherit;
 }
 entry {
     enabled:                     true;
-    background-color:            transparent;
+    background-color:            @transparent;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search clipboard...";
-    placeholder-color:           inherit;
+    placeholder:                 "Search...";
+    placeholder-color:           #28283980;
 }
 
 /*****----- Listview -----*****/
@@ -132,7 +143,7 @@ element selected.normal {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        32px;
+    size:                        24px;
     cursor:                      inherit;
 }
 element-text {

@@ -4,8 +4,7 @@
 
 chosen=$(cat /etc/nixos/dotfiles/emojis2.txt | rofi \
   -dmenu \
-  -p ' ' \
-  -window-title 'Emoji' \
+  -p '' \
   -i \
   -matching glob \
   -scroll-method 1 \
@@ -17,4 +16,4 @@ chosen=$(cat /etc/nixos/dotfiles/emojis2.txt | rofi \
 
 # Copy only first character before space (i.e. the emoji, not the description)
 chosenArray=($chosen)
-wl-copy ${chosenArray[0]}
+wl-copy "${chosenArray[0]}"

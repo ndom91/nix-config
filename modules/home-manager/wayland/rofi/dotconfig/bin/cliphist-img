@@ -22,11 +22,11 @@ EOF
 
 cliphist list | gawk "$prog" |
   rofi \
-    -p ' ' \
-    -window-title 'Cliphist' \
+    -p '󰆏' \
     -i \
     -dmenu \
     -scroll-method 1 \
     -theme "$HOME/.config/rofi/config/cliphist.rasi" |
   cliphist decode |
   wl-copy
+# -theme "/etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/cliphist.rasi" |

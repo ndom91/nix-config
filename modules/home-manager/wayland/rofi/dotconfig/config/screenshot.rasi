@@ -79,7 +79,7 @@ entry {
     text-color:                  inherit;
     cursor:                      text;
     placeholder:                 "Method";
-    placeholder-color:           inherit;
+    placeholder-color:           #28283980;
 }
 
 /*****----- Listview -----*****/

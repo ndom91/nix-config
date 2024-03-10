@@ -50,14 +50,16 @@ if [[ ! -d "$dir" ]]; then
   mkdir -p "$dir"
 fi
 
-# Variable passed to rofi
-options="$area\n$screen\n$window\n$infive\n$inten"
+# window temp disabled - need to figure out how to do the same with hyprctl
+# options="$area\n$screen\n$window\n$infive\n$inten"
+options="$area\n$screen\n$infive\n$inten"
 
 chosen=$(echo -e "$options" | rofi \
   -dmenu \
   -p '' \
-  -l 5 \
-  -selected-row 0 \
+  -l 4 \
+  -i \
+  -scroll-method 1 \
   -theme "$HOME/.config/rofi/config/screenshot.rasi")
 # -theme /etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/screenshot.rasi)
 

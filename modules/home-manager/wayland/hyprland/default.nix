@@ -1,6 +1,18 @@
 { pkgs, unstablePkgs, rose-pine-cursor, inputs, ... }:
 {
   xdg.configFile."hypr/movefocus.sh".source = ./hy3-movefocus.sh;
+  xdg.configFile."swappy/config".text = ''
+[Default]
+save_dir=$HOME/Pictures/Screenshots
+save_filename_format=swappy-%Y%m%d-%H%M%S.png
+show_panel=true
+line_size=10
+text_size=24
+text_font=sans-serif
+paint_mode=brush
+early_exit=true
+fill_shape=false
+  '';
 
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix

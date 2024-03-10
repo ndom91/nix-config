@@ -88,7 +88,7 @@ entry {
     text-color:                  inherit;
     cursor:                      text;
     placeholder:                 "Search...";
-    placeholder-color:           inherit;
+    placeholder-color:           #28283980;
 }
 
 /*****----- Listview -----*****/

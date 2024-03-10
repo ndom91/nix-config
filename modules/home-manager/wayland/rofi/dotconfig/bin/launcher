@@ -2,7 +2,7 @@
 
 rofi \
   -show drun \
-  -scroll-method 0 \
+  -scroll-method 1 \
   -drun-match-fields all \
   -drun-display-format "{name}" \
   -no-drun-show-actions \
