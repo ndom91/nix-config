@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
-chosen=$(cat /etc/nixos/dotfiles/emojis | rofi \
+# Emoji List: https://github.com/Mange/rofi-emoji/raw/master/all_emojis.txt
+
+chosen=$(cat /etc/nixos/dotfiles/emojis2.txt | rofi \
   -p ' ' \
   -window-title 'Emoji' \
   -i \
   -dmenu \
+  -matching glob \
+  -format "s" \
   -drun-match-fields all \
   -drun-display-format "{name}" \
   -no-drun-show-actions \
   -scroll-method 0 \
-  -theme "$HOME"/.config/rofi/config/launcher2.rasi)
+  -theme "/etc/nixos/modules/home-manager/wayland/rofi/dotconfig/config/emoji.rasi")
+# -theme "$HOME"/.config/rofi/config/emoji.rasi)
 
 # Exit if none chosen
 [ -z "$chosen" ] && exit

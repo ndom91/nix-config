@@ -57,6 +57,7 @@
     unzip
     watch
     wget
+    xdg-user-dirs
     zip
     zoxide
 
