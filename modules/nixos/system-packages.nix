@@ -4,6 +4,7 @@
     # bottles # wine manager
     # zig
     alacritty
+    amdgpu_top
     appimage-run
     bat
     bluez
@@ -60,6 +61,7 @@
     wget
     xdg-user-dirs
     libva-utils
+    vdpauinfo
     vulkan-tools
     zip
     zoxide
