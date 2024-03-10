@@ -42,7 +42,6 @@
         kb_layout = "us";
         kb_options = "caps:escape";
 
-        # focus follow mouse
         follow_mouse = 2;
         accel_profile = "flat";
 
@@ -241,10 +240,10 @@
       ];
       bind = [
         # hy3
-        # "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
-        # "$mainMod, Y, hy3:changegroup, opposite"
-        # "$mainMod, Q, hy3:killactive,"
-        "$mainMod, Q, killactive"
+        "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
+        "$mainMod, Y, hy3:changegroup, opposite"
+        "$mainMod, Q, hy3:killactive,"
+        # "$mainMod, Q, killactive"
         "CTRL SHIFT, L, exec, swaylock -f"
         "$mainMod, Return, exec, wezterm"
         "$mainMod SHIFT, R, exec, hyprctl reload"
@@ -266,24 +265,24 @@
         "CTRL SHIFT, Space, exec, swaync-client -C -sw"
 
         # Move focus with mainMod + arrow keys
-        "$mainMod, H, movefocus, l"
-        "$mainMod, L, movefocus, r"
-        "$mainMod, K, movefocus, u"
-        "$mainMod, J, movefocus, d"
-        "$mainMod SHIFT, H, movewindow, l"
-        "$mainMod SHIFT, L, movewindow, r"
-        "$mainMod SHIFT, K, movewindow, u"
-        "$mainMod SHIFT, J, movewindow, d"
+        # "$mainMod, H, movefocus, l"
+        # "$mainMod, L, movefocus, r"
+        # "$mainMod, K, movefocus, u"
+        # "$mainMod, J, movefocus, d"
+        # "$mainMod SHIFT, H, movewindow, l"
+        # "$mainMod SHIFT, L, movewindow, r"
+        # "$mainMod SHIFT, K, movewindow, u"
+        # "$mainMod SHIFT, J, movewindow, d"
 
         # hy3 - Move focus with mainMod + arrow keys
-        # "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
-        # "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
-        # "$mainMod, K, hy3:movefocus, u"
-        # "$mainMod, J, hy3:movefocus, d"
-        # "$mainMod SHIFT, H, hy3:movewindow, l"
-        # "$mainMod SHIFT, L, hy3:movewindow, r"
-        # "$mainMod SHIFT, K, hy3:movewindow, u"
-        # "$mainMod SHIFT, J, hy3:movewindow, d"
+        "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
+        "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
+        "$mainMod, K, hy3:movefocus, u"
+        "$mainMod, J, hy3:movefocus, d"
+        "$mainMod SHIFT, H, hy3:movewindow, l"
+        "$mainMod SHIFT, L, hy3:movewindow, r"
+        "$mainMod SHIFT, K, hy3:movewindow, u"
+        "$mainMod SHIFT, J, hy3:movewindow, d"
 
         # Special Keys
         ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
