@@ -41,6 +41,7 @@
     neofetch
     nmap
     ntfs3g
+    ntp
     ouch
     pamixer
     pasystray
