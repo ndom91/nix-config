@@ -296,6 +296,7 @@ in
     avahi = {
       enable = true;
       nssmdns = true;
+      openFirewall = true;
     };
 
     fprintd.enable = true;

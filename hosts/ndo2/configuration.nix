@@ -261,6 +261,7 @@ in
     avahi = {
       enable = true;
       nssmdns = true;
+      openFirewall = true;
     };
 
     flatpak.enable = true;
