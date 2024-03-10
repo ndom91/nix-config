@@ -30,6 +30,31 @@
   # Themes - https://github.com/tinted-theming/base16-schemes
   colorScheme = nix-colors.colorSchemes.rose-pine;
 
+  dconf.settings = {
+    "org/gnome/TextEditor" = {
+      style-variant = "dark";
+    };
+
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      cursor-theme = "BreezeX-RosePine-Linux";
+      font-name = "Ubuntu Nerd Font";
+      gtk-theme = "Catppuccin-Mocha-Standard-Maroon-Dark";
+      icon-theme = "Dracula";
+    };
+
+    "org/nemo/preferences" = {
+      date-format = "iso";
+      default-folder-viewer = "list-view";
+      default-sort-in-reverse-order = true;
+      default-sort-order = "mtime";
+      inherit-folder-viewer = true;
+      show-full-path-titles = true;
+      show-hidden-files = true;
+      show-new-folder-icon-toolbar = true;
+    };
+  };
+
   # ndo4 overrides
   wayland.windowManager.hyprland = {
     settings = {
@@ -50,7 +75,6 @@
     ".config/starship.toml".source = ../../dotfiles/starship.toml;
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
-    "/run/current-system/sw/share/sddm/faces/ndo.face.icon".source = ../../dotfiles/.face.icon;
     ".face.icon".source = ../../dotfiles/.face.icon;
     ".face".source = ../../dotfiles/.face.icon;
 

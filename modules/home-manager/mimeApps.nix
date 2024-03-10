@@ -18,6 +18,7 @@ in
 
         ### TEXT ###
         "gnome-text-editor" = [
+          "empty"
           "text/markdown"
           "text/x-log"
           "text/plain"

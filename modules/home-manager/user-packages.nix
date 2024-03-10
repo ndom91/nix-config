@@ -10,12 +10,10 @@
     slack
     vesktop # Discord fork
     virt-manager
-    # wezterm
     gnome-text-editor
     cinnamon.nemo
     vlc
     protonvpn-gui
-    # flameshot
 
     # System Tools
     qdirstat
