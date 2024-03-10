@@ -23,38 +23,27 @@ countdown() {
 # take shots
 shotnow() {
   cd "${dir}" && sleep 0.5 && grim -c | tee "$file" | wl-copy --primary --type image/png
-  notify_view
 }
 
 shot3() {
   coords=$(slurp)
   countdown '3'
-  # grim -c -g "$coords" - | satty --copy-command wl-copy --early-exit --output-filename "$dir/$file" --filename -
-  # grim -c -g "$coords" - | annotator -i
   grim -c -g "$coords" - | swappy -f -
 }
 
 shot10() {
   coords=$(slurp)
   countdown '10'
-  # grim -c -g "$coords" - | satty --copy-command wl-copy --early-exit --filename -
-  # grim -c -g "$coords" - | annotator -i
   grim -c -g "$coords" - | swappy -f -
-  notify_view
 }
 
 shotwin() {
   cd "${dir}" && grim -c -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee "$file" | wl-copy --primary --type image/png
-  notify_view
 }
 
 shotarea() {
   coords=$(slurp -d)
-  # grim -c -g "$coords" - | satty --copy-command wl-copy --early-exit --output-filename "$dir/$file" --filename -
-  # grim -c -g "$coords" - | annotator -i
-
   grim -c -g "$coords" - | swappy -f -
-  # notify_view
 }
 
 if [[ ! -d "$dir" ]]; then
