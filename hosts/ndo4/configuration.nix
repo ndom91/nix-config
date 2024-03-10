@@ -147,7 +147,7 @@ in
   };
 
   # Hyprland swaynotificationcenter service
-  systemd.services.swaync.enable = true;
+  systemd.user.units.swaync.enable = true;
 
   # systemd services
   systemd.services.systemd-udevd.restartIfChanged = false;
@@ -155,7 +155,7 @@ in
   systemd.services.systemd-networkd-wait-online.enable = false;
 
   # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
-# # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
+  # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
   systemd.user.extraConfig = ''
     DefaultLimitNOFILE=524288
   '';
