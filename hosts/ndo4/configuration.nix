@@ -246,7 +246,7 @@ in
       #     config = config.nixpkgs.config;
       #   };
       # };
-      overlays = overlays;
+      # overlays = overlays;
     };
   };
 

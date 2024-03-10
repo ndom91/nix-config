@@ -18,8 +18,8 @@
     vimAlias = true;
 
     # plugins = [ ];
-    extraConfig = ''
-    '';
+    # extraConfig = ''
+    # '';
     extraLuaConfig = ''
       vim.opt.runtimpath = vim.opt.runtimepath + "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}"
     '';

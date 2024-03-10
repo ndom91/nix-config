@@ -26,9 +26,6 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       unstablePkgs = unstable.legacyPackages.${system};
-      overlays = [
-        inputs.neovim-nightly-overlay.overlay
-      ];
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
@@ -36,19 +33,25 @@
         ndo4 = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
+            inherit nix-colors;
             unstablePkgs = import unstable {
               config.allowUnfree = true;
               localSystem = { inherit system; };
             };
-            inherit overlays;
-            inherit nix-colors;
           };
           modules = [
             ./hosts/ndo4/configuration.nix
           ];
         };
         ndo2 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs unstablePkgs overlays nix-colors; };
+          specialArgs = {
+            inherit inputs;
+            inherit nix-colors;
+            unstablePkgs = import unstable {
+              config.allowUnfree = true;
+              localSystem = { inherit system; };
+            };
+          };
           modules = [
             ./hosts/ndo2/configuration.nix
           ];

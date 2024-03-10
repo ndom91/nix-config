@@ -1,4 +1,4 @@
-{ lib, nix-colors, inputs, unstablePkgs, overlays, config, pkgs, ... }:
+{ lib, nix-colors, inputs, unstablePkgs, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
@@ -203,8 +203,6 @@ in
       enableWidevine = true;
     };
   };
-
-  nixpkgs.overlays = overlays;
 
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
