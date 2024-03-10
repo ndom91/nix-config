@@ -19,14 +19,8 @@ fill_shape=false
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
     package = unstablePkgs.hyprland;
     enable = true;
-    # package = pkgs.hyprland;
-    # systemd.enable = true;
-
-    # reloadConfig = true;
-    # systemdIntegration = true;
-    # recommendedEnvironment = true;
-
     xwayland.enable = true;
+
     # hy3 not included in hyprland-plugins flake yet, see: https://github.com/hyprwm/hyprland-plugins
     # plugins = [
     #   inputs.hyprland-plugins.packages."${pkgs.system}".hy3
@@ -43,8 +37,6 @@ fill_shape=false
         "MOZ_ENABLE_WAYLAND,1"
         "XDG_SESSION_TYPE,wayland"
         "QT_QPA_PLATFORM,wayland"
-        # "VDPAU_DRIVER,radeonsi"
-        # "LIBVA_DRIVER_NAME,radeonsi"
       ];
       input = {
         kb_layout = "us";
@@ -66,9 +58,9 @@ fill_shape=false
         # "swaync"
         "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
         "swaybg -m fill -i ~/.config/hypr/wallpaper.png"
-        "swayosd-server"
-        "wl-paste --watch cliphist store"
-        "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
+        # "swayosd-server"
+        # "wl-paste --watch cliphist store"
+        # "wlsunset -l 52.50 -L 12.76 -t 4500 -T 6500"
         "blueberry-tray"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
@@ -155,8 +147,8 @@ fill_shape=false
         "float, title:Open File"
         "float, title:branchdialog"
         "float, Lxappearance"
-        "float,viewnior"
-        "float,feh"
+        "float, viewnior"
+        "float, feh"
         "float, pavucontrol-qt"
         "float, pavucontrol"
         "float, file-roller"
@@ -165,39 +157,25 @@ fill_shape=false
         "float, title:wlogout"
         "float, title:Annotator"
         "fullscreen, title:wlogout"
-
         "noshadow, floating:1"
-        "noshadow, class:flemozi"
-        "noborder, class:flemozi"
-        "noblur, class:flemozi"
 
         # idle inhibit while watching videos
-        "idleinhibit focus, class:^(brave-browser)$, title:^(.*YouTube.*)$"
-        "idleinhibit fullscreen, class:^(brave-browser)$"
-
-        # Trufflehog Chrome extension
-        "float, title:Trufflehog"
+        "idleinhibit focus, class:^(vivaldi)$, title:^(.*YouTube.*)$"
+        "idleinhibit fullscreen, class:^(vivaldi)$"
 
         # float/slidein nemo file manager
         "animation slide, class:nemo"
         "float, class:nemo"
-        # "size 30% 40%, class:nemo
         "center, class:nemo"
-
-        # float/slidein Flemoji
-        "animation slide, title:Flemoji"
-        "float, title:Flemoji"
 
         # float/slidein pavucontrol
         "animation slide, class:pavucontrol"
         "float, class:pavucontrol"
-        "size 30% 30%, class:pavucontrol"
         "center, class:pavucontrol"
 
         # float/slidein blueberry
         "animation slide, class:^(.*blueberry.*)$"
         "float, class:^(.*blueberry.*)$"
-        # "size 20% 40%, class:^(.*blueberry.*)$
         "center, class:^(.*blueberry.*)$"
 
         # float/slidein blueman-manager
@@ -219,32 +197,14 @@ fill_shape=false
         # float/slidein network-manager-editor
         "animation slide, class:nm-connection-editor"
         "float, class:nm-connection-editor"
-        # "size 20% 30%, class:nm-connection-editor
         "center, class:nm-connection-editor"
 
-        # float/slidein wofi
-        "animation slide, class:wofi"
-        "float, class:wofi"
-        # "size 20% 30%, class:wofi
-        # "noshadow, class:wofi
-        "noborder, class:wofi"
-        "noblur, class:wofi"
-        "move 1430 50, class:wofi"
-        "dimaround, title:Search..."
-
+        # opensnitch
         "float, class:^(opensnitch_ui)$"
         "dimaround, class:^(opensnitch_ui)$"
-        "float, class:^(org.kde.polkit-kde-authentication-agent-1)$"
-        "dimaround, class:^(org.kde.polkit-kde-authentication-agent-1)$"
-        "float, class:^(gcr-prompter)$"
-        "dimaround, class:^(gcr-prompter)$"
-        "float, class:^(org.freedesktop.impl.portal.desktop.kde)$"
-        "size 1000 700, class:^(org.freedesktop.impl.portal.desktop.kde)$"
-        "center, class:^(org.freedesktop.impl.portal.desktop.kde)$"
-        "dimaround, class:^(org.freedesktop.impl.portal.desktop.kde)$"
 
         # DevTools
-        "float, class:brave-browser, title:^(DevTools.*)$"
+        "float, class:vivaldi, title:^(DevTools.*)$"
         "float, title:^(DevTools.*)$"
 
         # Winetricks
@@ -252,9 +212,6 @@ fill_shape=false
 
         # Lutris
         "float, class:lutris"
-
-        # YAD (Fusion360)
-        "float, class:yad"
 
         # Beekeeper-Studio
         "float, class:beekeeper-studio"
@@ -268,13 +225,17 @@ fill_shape=false
         "float, title:^.*(sharing your screen).*$"
         "move 50% 100%-100, title:^(.*sharing your screen.*)$"
 
-        "dimaround, class:^(gcr-prompter)$"
+        # polkit
         "dimaround, class:^(xdg-desktop-portal-gtk)$"
         "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
-
-        # fix xwayland apps
-        "rounding 0, xwayland:1"
-        "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
+        "float, class:^(gcr-prompter)$"
+        "dimaround, class:^(gcr-prompter)$"
+        "float, class:^(org.freedesktop.impl.portal.desktop.kde)$"
+        "size 1000 700, class:^(org.freedesktop.impl.portal.desktop.kde)$"
+        "center, class:^(org.freedesktop.impl.portal.desktop.kde)$"
+        "dimaround, class:^(org.freedesktop.impl.portal.desktop.kde)$"
+        "float, class:^(org.kde.polkit-kde-authentication-agent-1)$"
+        "dimaround, class:^(org.kde.polkit-kde-authentication-agent-1)$"
 
         # xwaylandvideobridge - https://wiki.hyprland.org/Useful-Utilities/Screen-Sharing/#xwayland
         "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
@@ -283,10 +244,11 @@ fill_shape=false
         "noinitialfocus,class:^(xwaylandvideobridge)$"
       ];
       bind = [
+        # hy3
         # "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
         # "$mainMod, Y, hy3:changegroup, opposite"
-        "$mainMod, Q, killactive"
         # "$mainMod, Q, hy3:killactive,"
+        "$mainMod, Q, killactive"
         "CTRL SHIFT, L, exec, swaylock -f"
         "$mainMod, Return, exec, wezterm"
         "$mainMod SHIFT, R, exec, hyprctl reload"
@@ -303,12 +265,7 @@ fill_shape=false
         "$mainMod, S, exec, \"$HOME/.config/rofi/bin/screenshot\""
         "$mainMod SHIFT, S, exec, pkill --signal SIGINT wf-recorder && notify-send \"Stopped Recording\" || wf-recorder -g \"$(slurp)\" -f ~/Videos/wfrecording_$(date +\"%Y-%m-%d_%H:%M:%S.mp4\") & notify-send \"Started Recording\" # start/stop video recording"
 
-        # notifications mako
-        # "CTRL, `, exec, makoctl restore
-        # "CTRL SHIFT, Space, exec, makoctl dismiss -a
-        # "CTRL, Space, exec, makoctl dismiss
-
-        # notifications swaync
+        # swaynotificationcenter
         "CTRL, Space, exec, swaync-client -t -sw"
         "CTRL SHIFT, Space, exec, swaync-client -C -sw"
 
@@ -317,19 +274,20 @@ fill_shape=false
         "$mainMod, L, movefocus, r"
         "$mainMod, K, movefocus, u"
         "$mainMod, J, movefocus, d"
-        # "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
-        # "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
-        # "$mainMod, K, hy3:movefocus, u"
-        # "$mainMod, J, hy3:movefocus, d"
-
-        # "$mainMod SHIFT, H, hy3:movewindow, l"
-        # "$mainMod SHIFT, L, hy3:movewindow, r"
-        # "$mainMod SHIFT, K, hy3:movewindow, u"
-        # "$mainMod SHIFT, J, hy3:movewindow, d"
         "$mainMod SHIFT, H, movewindow, l"
         "$mainMod SHIFT, L, movewindow, r"
         "$mainMod SHIFT, K, movewindow, u"
         "$mainMod SHIFT, J, movewindow, d"
+
+        # hy3 - Move focus with mainMod + arrow keys
+        # "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
+        # "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
+        # "$mainMod, K, hy3:movefocus, u"
+        # "$mainMod, J, hy3:movefocus, d"
+        # "$mainMod SHIFT, H, hy3:movewindow, l"
+        # "$mainMod SHIFT, L, hy3:movewindow, r"
+        # "$mainMod SHIFT, K, hy3:movewindow, u"
+        # "$mainMod SHIFT, J, hy3:movewindow, d"
 
         # Special Keys
         ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"

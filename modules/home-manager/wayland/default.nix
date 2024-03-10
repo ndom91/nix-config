@@ -27,6 +27,48 @@
     _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd";
   };
 
+  services = {
+    cliphist.enable = true;
+    swayosd.enable = true;
+    wlsunset = {
+      enable = true;
+      latitude = 52.52;
+      longitude = 13.40;
+      temperature = {
+        day = 6500;
+        night = 4500;
+      };
+    };
+    swayidle = {
+      enable = true;
+      timeouts = [
+        {
+          timeout = 295;
+          command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
+        }
+        {
+          timeout = 300;
+          command = "${config.programs.swaylock.package}/bin/swaylock";
+        }
+        {
+          timeout = 360;
+          command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+          resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 3600;
+          command = "systemctl suspend-then-hibernate";
+        }
+      ];
+      events = [
+        {
+          event = "before-sleep";
+          command = "${config.programs.swaylock.package}/bin/swaylock";
+        }
+      ];
+    };
+  };
+
   home.packages = with pkgs; [
     blueberry
     mkchromecast
