@@ -1,10 +1,10 @@
-{ pkgs, agenix, unstablePkgs, ... }:
+{ pkgs, inputs, unstablePkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # bottles # wine manager
     # zig
     alacritty
-    agenix.packages.x86_64-linux.default
+    inputs.agenix.packages.x86_64-linux.default
     amdgpu_top
     appimage-run
     bat
