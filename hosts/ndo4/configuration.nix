@@ -12,9 +12,16 @@ in
   imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
+    ../../modules/nixos/nginx.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
   ];
+
+  age.identityPaths = [
+    "/home/ndo/.ssh/id_ndo4"
+    "/etc/ssh/ssh_host_ed25519_key"
+  ];
+  age.secrets.secret1.file = ./../../secrets/secret1.age;
 
   nix = {
     settings = {
