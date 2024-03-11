@@ -118,11 +118,6 @@ in
     };
   };
 
-  # Copy .face.icon to sddm /faces dir. Broken due to read-only fs
-  # system.activationScripts.script.text = ''
-  #   cp /etc/nixos/dotfiles/.face.icon /run/current-system/sw/share/sddm/faces/ndo.face.icon
-  # '';
-
   services.xserver = {
     enable = true;
     displayManager = {

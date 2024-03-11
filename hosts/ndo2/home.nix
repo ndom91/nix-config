@@ -22,18 +22,37 @@
   ];
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.stateVersion = "23.11";
+  home.packages = [
+    inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
+  ];
 
   systemd.user.sessionVariables = config.home.sessionVariables;
 
   # Themes - https://github.com/tinted-theming/base16-schemes
   colorScheme = nix-colors.colorSchemes.rose-pine;
 
+  dconf.settings = {
+    "org/gnome/TextEditor" = {
+      style-variant = "dark";
+    };
+
+    "org/nemo/preferences" = {
+      date-format = "iso";
+      default-folder-viewer = "list-view";
+      default-sort-in-reverse-order = true;
+      default-sort-order = "mtime";
+      inherit-folder-viewer = true;
+      show-full-path-titles = true;
+      show-hidden-files = true;
+      show-new-folder-icon-toolbar = true;
+    };
+  };
+
   # ndo2 overrides
   wayland.windowManager.hyprland = {
     settings = {
       monitor = lib.mkForce "eDP-1,preferred,auto,1.7";
-      # monitor = lib.mkForce "eDP-1,highres,auto,1.7";
       env = [
         "GDK_SCALE,1.7"
         "XCURSOR_SIZE,32"
@@ -60,8 +79,9 @@
     ".config/starship.toml".source = ../../dotfiles/starship.toml;
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
-    "/run/current-system/sw/share/sddm/faces/ndo.face.icon".source = ../../dotfiles/.face.icon;
+    # Still broken in sddm current theme :(
     ".face.icon".source = ../../dotfiles/.face.icon;
+    ".face".source = ../../dotfiles/.face.icon;
 
     ".config/vivaldi-stable.conf".source = ../../dotfiles/vivaldi-stable.conf;
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
@@ -73,37 +93,7 @@
 
   services = {
     network-manager-applet.enable = true;
-    syncthing = {
-      enable = true;
-      # extraOptions = [ "--wait" ];
-      # tray = {
-      #   enable = true;
-      # };
-    };
-    swayidle = {
-      enable = true;
-      timeouts = [
-        {
-          timeout = 295;
-          command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-        }
-        {
-          timeout = 300;
-          command = "${config.programs.swaylock.package}/bin/swaylock";
-        }
-        {
-          timeout = 360;
-          command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-          resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-        }
-      ];
-      events = [
-        {
-          event = "before-sleep";
-          command = "${config.programs.swaylock.package}/bin/swaylock";
-        }
-      ];
-    };
+    syncthing.enable = true;
   };
 
   programs.atuin = {

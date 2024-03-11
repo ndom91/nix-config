@@ -22,8 +22,7 @@
   ];
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
-  home.stateVersion = "23.11"; # Please read the comment before changing.
-
+  home.stateVersion = "23.11";
   home.packages = [
     inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
   ];
@@ -38,13 +37,14 @@
       style-variant = "dark";
     };
 
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      cursor-theme = "BreezeX-RosePine-Linux";
-      # font-name = "Ubuntu Nerd Font";
-      gtk-theme = "Catppuccin-Mocha-Standard-Maroon-Dark";
-      icon-theme = "Dracula";
-    };
+    # Set by other gtk settings
+    # "org/gnome/desktop/interface" = {
+    #   color-scheme = "prefer-dark";
+    #   cursor-theme = "BreezeX-RosePine-Linux";
+    #   # font-name = "Ubuntu Nerd Font";
+    #   gtk-theme = "Catppuccin-Mocha-Standard-Maroon-Dark";
+    #   icon-theme = "Dracula";
+    # };
 
     "org/nemo/preferences" = {
       date-format = "iso";
@@ -78,6 +78,7 @@
     ".config/starship.toml".source = ../../dotfiles/starship.toml;
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
+    # Still broken in sddm current theme :(
     ".face.icon".source = ../../dotfiles/.face.icon;
     ".face".source = ../../dotfiles/.face.icon;
 
@@ -91,13 +92,7 @@
 
   services = {
     network-manager-applet.enable = true;
-    syncthing = {
-      enable = true;
-      # extraOptions = [ "--wait" ];
-      # tray = {
-      #   enable = true;
-      # };
-    };
+    syncthing.enable = true;
   };
 
   programs.atuin = {
