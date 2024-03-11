@@ -1,4 +1,4 @@
-{ lib, nix-colors, inputs, unstablePkgs, config, pkgs, ... }:
+{ lib, agenix, nix-colors, inputs, unstablePkgs, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
@@ -8,12 +8,23 @@ let
   # };
 in
 {
-  imports = with pkgs; [
+  imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
   ];
+
+  age.identityPaths = [
+    "${config.users.users.ndo.home}/.ssh/id_ndo4"
+  ];
+  age.secrets.ssh = {
+    file = ./../../secrets/ssh.age;
+    path = "${config.users.users.ndo.home}/.ssh/config";
+    owner = "ndo";
+    group = "users";
+    mode = "644";
+  };
 
   nix = {
     settings = {

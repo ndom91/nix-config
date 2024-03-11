@@ -18,7 +18,7 @@ in
   ];
 
   age.identityPaths = [
-    "/home/ndo/.ssh/id_ndo4"
+    "${config.users.users.ndo.home}/.ssh/id_ndo4"
   ];
   age.secrets.ssh = {
     file = ./../../secrets/ssh.age;
