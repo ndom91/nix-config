@@ -1,0 +1,42 @@
+set guicursor=""    " Default block cursor
+set relativenumber  " Relative line numbers
+set number          " Line numbers
+set autoindent      " Indenation
+set tabstop=2       " Tab = 2 spaces
+set shiftwidth=2    " Shift over = 2 spaces
+set expandtab       " Expand tabs->spaces
+syntax on           " Syntax highlighting
+filetype plugin indent on " Enable filetype/indent rules on load
+
+set ignorecase  " Do case insensitive matching
+set smartcase		" Do smart case matching
+set smartindent " Do smart indenting
+set showmatch   " Show matching brackets
+set wrap        " Enable word wrapping
+set noswapfile  " Disable swapfile
+set nobackup    " Disable file backups
+set undodir="/home/ndo/.vim/undodir"
+
+set hlsearch    " Highlight search results
+set incsearch   " Incremental search results
+
+set mouse=a     " Enable mouse usage (all modes)
+set showcmd     " Show (partial) command in status line
+set scrolloff=8 " Keep 8 lines on top/bottom
+
+" <Enter> to disable search result highlight
+nnoremap <silent> <CR> :<C-u>nohlsearch<CR><C-l> 
+
+" Enable nginx syntaxhighlighting
+au BufRead,BufNewFile *.nginx set ft=nginx
+au BufRead,BufNewFile */etc/nginx/* set ft=nginx
+au BufRead,BufNewFile */usr/local/nginx/conf/* set ft=nginx
+au BufRead,BufNewFile nginx.conf set ft=nginx
+
+" Move lines up and down
+nnoremap <C-k> :m .-2<CR>==
+nnoremap <C-j> :m .+1<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
