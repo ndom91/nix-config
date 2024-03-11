@@ -84,8 +84,8 @@ in
       # allowedUDPPorts = [];
     };
     hosts = {
-      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten.puff.lan" ];
-      "10.0.0.25" = [ "checkly.pi" ];
+      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" "db.puff.lan" ];
+      "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
     };
   };
 
@@ -186,7 +186,7 @@ in
     description = "ndo";
     extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
     openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRAbAylECwZpvAOEq69apq5J1OAAF3ka TebhuqOps2O7WoJCCylqzu7rrPAun2tE3tsjeqwEdFMjSXYxBQowp5b0HiAT6w1Mtwy6Pg jnQW5/VOsTYpg1dl3hw1ZiRYa1yUT+xfVba4+POEKXizpMjL8xlkW/ugnj2WL8O85QplqI GRRIsSAa4jBsZ3d1j88iSv0ZFpTXdTuf9EISNFBrIXq7f+JyhtGZqaj4m67CNoxPiadfyX 7XrgVKra8/SaYa00RebI4V+tp6NDhJL6LZN8rX2O1a7O6NCUhZ1avYw4aY00kMyGqx2bR5 5ml7jN9k/edaKqHJInff8cPefa45ub ndo@ndo4"
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRAbAylECwZpvAOEq69apq5J1OAAF3ka TebhuqOps2O7WoJCCylqzu7rrPAun2tE3tsjeqwEdFMjSXYxBQowp5b0HiAT6w1Mtwy6Pg jnQW5/VOsTYpg1dl3hw1ZiRYa1yUT+xfVba4+POEKXizpMjL8xlkW/ugnj2WL8O85QplqI GRRIsSAa4jBsZ3d1j88iSv0ZFpTXdTuf9EISNFBrIXq7f+JyhtGZqaj4m67CNoxPiadfyX 7XrgVKra8/SaYa00RebI4V+tp6NDhJL6LZN8rX2O1a7O6NCUhZ1avYw4aY00kMyGqx2bR5 5ml7jN9k/edaKqHJInff8cPefa45ub ndo@ndo2"
     ];
   };
 
@@ -235,8 +235,10 @@ in
   services = {
     openssh = {
       enable = true;
-      settings.PasswordAuthentication = true;
-      settings.PermitRootLogin = "yes";
+      settings = {
+        PasswordAuthentication = true;
+        PermitRootLogin = "yes";
+      };
     };
     gnome.gnome-keyring.enable = true;
 

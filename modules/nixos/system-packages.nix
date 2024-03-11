@@ -53,6 +53,8 @@
     qemu
     rclone
     ripgrep
+    openssh
+    sshfs
     smartmontools
     system-config-printer
     tmux

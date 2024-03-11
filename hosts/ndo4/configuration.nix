@@ -19,9 +19,14 @@ in
 
   age.identityPaths = [
     "/home/ndo/.ssh/id_ndo4"
-    "/etc/ssh/ssh_host_ed25519_key"
   ];
-  age.secrets.secret1.file = ./../../secrets/secret1.age;
+  age.secrets.ssh = {
+    file = ./../../secrets/ssh.age;
+    path = "${config.home.homeDirectory}/.ssh/config";
+    owner = "ndo";
+    group = "users";
+    mode = "660";
+  };
 
   nix = {
     settings = {
@@ -100,15 +105,13 @@ in
       # allowedUDPPorts = [];
     };
     hosts = {
-      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" ];
+      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" "db.puff.lan" ];
       "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
     };
   };
 
-  # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -301,8 +304,10 @@ in
   services = {
     openssh = {
       enable = true;
-      settings.PasswordAuthentication = true;
-      settings.PermitRootLogin = "yes";
+      settings = {
+        PasswordAuthentication = true;
+        PermitRootLogin = "yes";
+      };
     };
     gnome.gnome-keyring.enable = true;
 

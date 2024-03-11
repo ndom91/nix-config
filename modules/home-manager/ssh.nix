@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, osConfig, ... }:
 {
   programs.ssh = {
     enable = true;
@@ -6,7 +6,8 @@
       Host *
         StrictHostKeyChecking no
         SetEnv TERM=xterm-256color
+
+      `$(cat "${osConfig.age.secrets.secret1.path}")`
     '';
-    matchBlocks = config.age.secrets.secret1.path;
   };
 }
