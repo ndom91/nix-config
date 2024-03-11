@@ -185,6 +185,10 @@ in
         auth include login
       '';
     };
+    pki.certificateFiles = [
+      ./../../dotfiles/certs/puff.lan.crt
+      ./../../dotfiles/certs/nextdns.crt
+    ];
   };
 
   xdg.portal = {
