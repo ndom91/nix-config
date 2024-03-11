@@ -1,4 +1,4 @@
-{ lib, nix-colors, inputs, unstablePkgs, overlays, config, pkgs, ... }:
+{ lib, agenix, nix-colors, inputs, unstablePkgs, overlays, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
@@ -9,7 +9,7 @@ let
   # };
 in
 {
-  imports = with pkgs; [
+  imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
     ../../modules/home-manager/languages/python.nix
@@ -93,8 +93,8 @@ in
       # allowedUDPPorts = [];
     };
     hosts = {
-      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten.puff.lan" ];
-      "10.0.0.25" = [ "checkly.pi" ];
+      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" ];
+      "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
     };
   };
 
@@ -318,6 +318,7 @@ in
       enable = true;
       nssmdns = true;
       openFirewall = true;
+      publish.domain = true;
     };
 
     fprintd.enable = true;

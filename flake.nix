@@ -4,6 +4,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     hyprland.url = "github:hyprwm/hyprland";
     # hyprland-contrib = {
     #   url = "github:hyprwm/contrib";
@@ -15,13 +16,18 @@
     # };
 
     nix-colors.url = "github:misterio77/nix-colors";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, unstable, nix-colors, nixpkgs, ... } @inputs:
+  outputs = { self, unstable, agenix, nix-colors, nixpkgs, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -47,6 +53,7 @@
           };
           modules = [
             ./hosts/ndo4/configuration.nix
+            agenix.nixosModules.default
           ];
         };
         ndo2 = nixpkgs.lib.nixosSystem {
@@ -54,12 +61,19 @@
             inherit inputs;
             inherit nix-colors;
             unstablePkgs = import unstable {
-              config.allowUnfree = true;
+              config = {
+                allowUnfree = true;
+                vivaldi = {
+                  proprietaryCodecs = true;
+                  enableWidevine = true;
+                };
+              };
               localSystem = { inherit system; };
             };
           };
           modules = [
             ./hosts/ndo2/configuration.nix
+            agenix.nixosModules.default
           ];
         };
       };
