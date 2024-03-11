@@ -72,7 +72,6 @@ in
     nameservers = [
       "10.0.0.1"
     ];
-
     timeServers = [
       "10.0.0.1"
     ];
@@ -83,6 +82,10 @@ in
         443
       ];
       # allowedUDPPorts = [];
+    };
+    hosts = {
+      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten.puff.lan" ];
+      "10.0.0.25" = [ "checkly.pi" ];
     };
   };
 
