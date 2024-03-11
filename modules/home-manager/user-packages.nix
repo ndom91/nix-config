@@ -3,6 +3,7 @@
 
   home.packages = with pkgs; [
     # Graphical Applications
+    unstablePkgs.xpipe
     unstablePkgs.vivaldi
     unstablePkgs.vivaldi-ffmpeg-codecs
     floorp
