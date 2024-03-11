@@ -22,10 +22,10 @@ in
   ];
   age.secrets.ssh = {
     file = ./../../secrets/ssh.age;
-    path = "${config.home.homeDirectory}/.ssh/config";
+    path = "${config.users.users.ndo.home}/.ssh/config";
     owner = "ndo";
     group = "users";
-    mode = "660";
+    mode = "644";
   };
 
   nix = {
