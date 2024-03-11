@@ -13,6 +13,7 @@
     cmake
     coreutils
     dconf
+    dig
     difftastic
     docker-compose
     dracula-icon-theme
