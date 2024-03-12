@@ -1,13 +1,6 @@
 local function goto_next_error() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity[1] }) end
 local function goto_prev_error() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity[1] }) end
 
--- local icons = {
---   [vim.diagnostic.severity.ERROR] = " ",
---   [vim.diagnostic.severity.WARN] = " ",
---   [vim.diagnostic.severity.INFO] = " ",
---   [vim.diagnostic.severity.HINT] = "",
--- }
-
 return {
   {
     "williamboman/mason.nvim",
@@ -154,15 +147,11 @@ return {
           vim.keymap.set("n", "gr", builtin.lsp_references, options)
           vim.keymap.set("n", "gi", builtin.lsp_implementations, options)
           vim.keymap.set("n", "gD", builtin.lsp_type_definitions, options)
-          -- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, options)
-          -- vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, options)
           vim.keymap.set("n", "gd", definitions, options)
-          -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, options)
 
           vim.keymap.set("n", "K", vim.lsp.buf.hover, options)
           vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, options)
           vim.keymap.set("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", options)
-          -- vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, options)
           vim.keymap.set("n", "<space>re", vim.lsp.buf.rename, options)
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)

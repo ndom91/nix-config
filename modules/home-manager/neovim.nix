@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, unstablePkgs, ... }:
 {
   # kickstart-nix.nvim: https://github.com/mrcjkb/kickstart-nix.nvim
   # Example with LSP installs via nix: https://github.com/ryan4yin/nix-config/blob/main/home/base/desktop/editors/neovim/astronvim_user/init.lua
@@ -28,13 +28,21 @@
       ps.pynvim
     ];
     extraPackages = with pkgs; [
-      silicon # code screenshots
-      shfmt
+      nixfmt
+      prettierd
       eslint_d
-      stylua
-      lua-language-server
-      pkgs.vimPlugins.telescope-fzf-native-nvim
-      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+      unstablePkgs.rustywind
+
+      shellcheck
+      vscode-langservers-extracted # eslint, css, html, json, markdown
+      unstablePkgs.shfmt
+      unstablePkgs.silicon # code screenshots
+      unstablePkgs.stylua
+      unstablePkgs.lua-language-server
+      unstablePkgs.nodePackages_latest.typescript-language-server
+
+      vimPlugins.telescope-fzf-native-nvim
+      vimPlugins.nvim-treesitter.withAllGrammars
 
       # # for compiling Treesitter parsers
       # gcc
