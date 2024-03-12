@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-./result/bin/run-ndo4-vm
+# Options
+# -nographic - run in current terminal
+
+./result/bin/run-ndo4-vm "$@"
