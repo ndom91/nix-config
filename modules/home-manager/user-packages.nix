@@ -14,6 +14,7 @@
     virt-manager
     gnome-text-editor
     cinnamon.nemo
+    gnome.file-roller
     vlc
     protonvpn-gui
 
