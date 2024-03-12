@@ -112,6 +112,20 @@
       enter_accept = true;
     };
   };
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
+
+  # Mostly for use with comma
+  # nix-index = {
+  #   enable = true;
+  #   enableBashIntegration = true;
+  #   package = pkgs.nix-index;
+  # };
+
   programs.starship.enable = true;
   programs.gh.enable = true;
   programs.git.diff-so-fancy.enable = true;

@@ -292,19 +292,6 @@ in
   # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   programs.hyprland.package = unstablePkgs.hyprland;
 
-  programs.direnv = {
-    enable = true;
-    enableBashIntegration = true;
-    nix-direnv.enable = true;
-  };
-
-  # Mostly for use with comma
-  # nix-index = {
-  #   enable = true;
-  #   enableBashIntegration = true;
-  #   package = pkgs.nix-index;
-  # };
-
   programs._1password = { enable = true; };
   programs._1password-gui = {
     enable = true;
