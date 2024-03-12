@@ -3,6 +3,7 @@ let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
+  rose-pine-cursor-hyprcursor = pkgs.callPackage ../../packages/rose-pine-cursor-hyprcursor/default.nix { };
   # flameshot = pkgs.callPackage ../../packages/flameshot/default.nix { };
   # gimp-devel = pkgs.callPackage ../../packages/gimp-devel {
   #   lcms = pkgs.lcms2;
@@ -291,7 +292,18 @@ in
   # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   programs.hyprland.package = unstablePkgs.hyprland;
 
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
+
+  # Mostly for use with comma
+  # nix-index = {
+  #   enable = true;
+  #   enableBashIntegration = true;
+  #   package = pkgs.nix-index;
+  # };
 
   programs._1password = { enable = true; };
   programs._1password-gui = {
@@ -303,6 +315,7 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
+    # rose-pine-cursor-hyprcursor
     # flameshot
     # gimp-devel
   ];

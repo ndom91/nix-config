@@ -18,6 +18,27 @@
     nupdate = "nix flake lock --update-input ";
     # nix hm
     hmswitch = "home-manager switch";
+    "," = "comma";
+
+    # Nix stuff. Inspired by: 
+    # - https://alexfedoseev.com/blog/post/nix-time.
+    # - https://github.com/the-nix-way/nome
+
+    # Direnv helpers
+    da = "direnv allow";
+    dr = "direnv reload";
+    dk = "direnv revoke";
+
+    # Run Nix garbage collection
+    xgc = "nix store gc -v";
+
+    # Nix flake helpers
+    nfc = "nix flake check";
+    nfca = "nix flake check --all-systems";
+    nfs = "nix flake show";
+    nfu = "nix flake update";
+    ndc = "nix develop --command";
+    nsn = "nix search nixpkgs";
 
     # coreutils
     ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";
@@ -147,6 +168,9 @@
       # done
       nix-collect-garbage -d
     }
+    
+    # Suppress direnv log output (which is super verbose and not that useful)
+    # export DIRENV_LOG_FORMAT=
   '';
 }
 

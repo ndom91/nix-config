@@ -57,6 +57,7 @@
     sshfs
     smartmontools
     system-config-printer
+    tailspin
     tmux
     tree
     tree
