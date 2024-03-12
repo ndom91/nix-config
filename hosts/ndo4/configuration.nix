@@ -320,7 +320,7 @@ in
       enable = true;
       settings = {
         PasswordAuthentication = true;
-        PermitRootLogin = "yes";
+        PermitRootLogin = "no";
       };
     };
     gnome.gnome-keyring.enable = true;
