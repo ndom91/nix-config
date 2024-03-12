@@ -97,7 +97,7 @@ return {
         preview = {
           filesize_limit = 10, -- MB
         },
-        prompt_prefix = "  ",
+        prompt_prefix = "  ",
         selection_caret = " ",
         entry_prefix = "  ",
         set_env = { ["COLORTERM"] = "truecolor" },
