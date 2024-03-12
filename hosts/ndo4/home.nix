@@ -74,6 +74,10 @@
 
   home.file = {
     ".ripgreprc".source = ../../dotfiles/.ripgreprc;
+    ".local/share/fonts" = {
+      recursive = true;
+      source = ./../../dotfiles/fonts;
+    };
 
     ".config/starship.toml".source = ../../dotfiles/starship.toml;
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
@@ -87,8 +91,6 @@
     ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
   };
-
-  fonts.fontconfig.enable = true;
 
   services = {
     network-manager-applet.enable = true;

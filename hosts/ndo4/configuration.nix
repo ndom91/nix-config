@@ -257,6 +257,26 @@ in
     };
   };
 
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        sansSerif = [
+          "Fira Sans"
+          "sans-serif"
+        ];
+        monospace = [
+          "Operator Mono Light"
+        ];
+        emoji = [
+          "Noto Color Emoji"
+
+        ];
+      };
+    };
+    fontDir.enable = true;
+  };
+
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -264,12 +284,6 @@ in
         proprietaryCodecs = true;
         enableWidevine = true;
       };
-      # packageOverrides = pkgs: {
-      #   unstablePkgs = import <unstable> {
-      #     config = config.nixpkgs.config;
-      #   };
-      # };
-      # overlays = overlays;
     };
   };
 
