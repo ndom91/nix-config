@@ -43,23 +43,17 @@
         kb_options = "caps:escape";
 
         follow_mouse = 2;
-        accel_profile = "flat";
-
-        touchpad = {
-          natural_scroll = false;
-          clickfinger_behavior = true;
-        };
-
-        sensitivity = 0;
+        accel_profile = "adaptive";
+        # sensitivity = 0;
       };
       exec-once = [
         # "mkchromecast -t"
-        "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --socket=wayland --silent"
+        "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
         "blueberry-tray"
         "swaybg -m fill -i ~/.config/hypr/wallpaper.png"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
-        "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
+        "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
       general = {
@@ -68,6 +62,8 @@
         border_size = 6;
         "col.active_border" = "rgb(11111b) rgb(181825) 45deg";
         "col.inactive_border" = "rgba(f5e0dc20)";
+
+        no_focus_fallback = true;
 
         layout = "hy3";
         resize_on_border = true;
@@ -138,6 +134,15 @@
         "float, title:Annotator"
         "fullscreen, title:wlogout"
         "noshadow, floating:1"
+
+        # 1Password
+        # "noinitialfocus,title:Quick Access - 1Password,floating"
+        # "stayfocused,title:Quick Access - 1Password,floating"
+        "forceinput,title:Quick Access - 1Password,floating"
+        # "dimaround, title:Quick Access - 1Password, floating"
+
+        # "center, class:^(1Password)$"
+        # "stayfocused,class:^(1Password)$"
 
         # idle inhibit while watching videos
         "idleinhibit focus, class:^(vivaldi)$, title:^(.*YouTube.*)$"
@@ -306,7 +311,7 @@
       );
       bindn = [
         # 1Password Quick Search
-        "CTRL SHIFT, Period, exec, 1password --quick-access"
+        "CTRL SHIFT, Period, exec, 1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
       ];
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging

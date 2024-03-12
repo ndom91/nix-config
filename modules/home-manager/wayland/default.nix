@@ -60,7 +60,7 @@
         }
         {
           timeout = 3600;
-          command = "systemctl suspend-then-hibernate";
+          command = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
         }
       ];
       events = [
