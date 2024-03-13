@@ -64,9 +64,6 @@ in
   # };
 
   boot = {
-    plymouth = {
-      enable = true;
-    };
     loader.systemd-boot = {
       enable = true;
       configurationLimit = 20;
@@ -322,7 +319,6 @@ in
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
     corners-sddm
-    protonvpn-wg
     rose-pine-cursor
     # rose-pine-cursor-hyprcursor
     # flameshot

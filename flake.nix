@@ -32,8 +32,6 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       unstablePkgs = unstable.legacyPackages.${system};
-
-      # nixosModules.protonvpn = import ./packages/protonvpn-wg-quick/default.nix;
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
