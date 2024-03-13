@@ -37,6 +37,10 @@
       style-variant = "dark";
     };
 
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+
     "org/nemo/preferences" = {
       date-format = "iso";
       default-folder-viewer = "list-view";

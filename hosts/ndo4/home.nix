@@ -37,9 +37,10 @@
       style-variant = "dark";
     };
 
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
     # Set by other gtk settings
-    # "org/gnome/desktop/interface" = {
-    #   color-scheme = "prefer-dark";
     #   cursor-theme = "BreezeX-RosePine-Linux";
     #   # font-name = "Ubuntu Nerd Font";
     #   gtk-theme = "Catppuccin-Mocha-Standard-Maroon-Dark";
