@@ -26,8 +26,8 @@ in
         };
 
         ip = mkOption {
-          default = "10.2.0.2/32";
-          example = "10.2.0.2/32";
+          default = "10.3.0.2/32";
+          example = "10.3.0.2/32";
           type = types.str;
           description = "The IP address of the interface. See your Wireguard certificate.";
         };
@@ -54,8 +54,8 @@ in
           };
 
           ip = mkOption {
-            default = "10.2.0.1";
-            example = "10.2.0.1";
+            default = "10.3.0.1";
+            example = "10.3.0.1";
             type = types.str;
             description = "The IP address of the DNS provided by the VPN. See your Wireguard certificate.";
           };
