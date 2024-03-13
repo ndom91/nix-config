@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     nodejs_20
     unstablePkgs.nodePackages.pnpm
+    unstablePkgs.bun
     openssl
     prisma-engines
   ];
