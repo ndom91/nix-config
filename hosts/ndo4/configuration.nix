@@ -52,7 +52,20 @@ in
     };
   };
 
+  # Allow auto-upgrades to happen every day
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   flake = "github:Daru-san/Snowflake-dots";
+  #   flags = ["--update-input" "nixpkgs" "--impure"];
+  #   operation = "boot";
+  #   dates = "00:00";
+  #   randomizedDelaySec = "180min";
+  # };
+
   boot = {
+    plymouth = {
+      enable = true;
+    };
     loader.systemd-boot = {
       enable = true;
       configurationLimit = 20;
