@@ -137,9 +137,9 @@
 
         # 1Password
         # "noinitialfocus,title:Quick Access - 1Password,floating"
-        # "stayfocused,title:Quick Access - 1Password,floating"
-        "forceinput,title:Quick Access - 1Password,floating"
-        # "dimaround, title:Quick Access - 1Password, floating"
+        "stayfocused,title:Quick Access - 1Password,floating:1"
+        "forceinput,title:Quick Access - 1Password,floating:1"
+        "dimaround,title:Quick Access - 1Password,floating:1"
 
         # "center, class:^(1Password)$"
         # "stayfocused,class:^(1Password)$"

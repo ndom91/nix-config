@@ -83,8 +83,8 @@
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
     # Still broken in sddm current theme :(
-    ".face.icon".source = ../../dotfiles/.face.icon;
-    ".face".source = ../../dotfiles/.face.icon;
+    ".face.icon".source = ../../dotfiles/face.jpg;
+    ".face".source = ../../dotfiles/face.jpg;
 
     ".config/vivaldi-stable.conf".source = ../../dotfiles/vivaldi-stable.conf;
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
