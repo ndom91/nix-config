@@ -10,10 +10,6 @@
       url = "github:pyt0xic/hyprfocus";
       inputs.hyprland.follows = "hyprland";
     };
-    # hyprland-contrib = {
-    #   url = "github:hyprwm/contrib";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     # hyprland-plugins = {
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
@@ -36,6 +32,8 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       unstablePkgs = unstable.legacyPackages.${system};
+
+      # nixosModules.protonvpn = import ./packages/protonvpn-wg-quick/default.nix;
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
@@ -53,6 +51,7 @@
           };
           modules = [
             ./hosts/ndo4/configuration.nix
+            ./packages/protonvpn-wg-quick/default.nix
             agenix.nixosModules.default
           ];
         };

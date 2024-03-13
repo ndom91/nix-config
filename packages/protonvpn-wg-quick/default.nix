@@ -1,9 +1,7 @@
 # https://github.com/emmanuelrosa/erosanix/blob/master/modules/protonvpn.nix
-{ config, pkgs, lib, ... }:
-
-with lib;
-
-let cfg = config.services.protonvpn;
+{ config, pkgs, lib, ... }: with lib;
+let
+  cfg = config.services.protonvpn;
 in
 {
   options = {
@@ -19,15 +17,15 @@ in
 
       interface = {
         name = mkOption {
-          default = "protonvpn";
+          default = "wg0";
           example = "wg0";
           type = types.str;
           description = "The name of the Wireguard network interface to create. Go to https://account.protonmail.com/u/0/vpn/WireGuard to create a Linux Wireguard certificate and download it. You'll need it's content to set the options for this module.";
         };
 
         ip = mkOption {
-          default = "10.3.0.2/32";
-          example = "10.3.0.2/32";
+          default = "10.2.0.2/32";
+          example = "10.2.0.2/32";
           type = types.str;
           description = "The IP address of the interface. See your Wireguard certificate.";
         };
@@ -54,8 +52,8 @@ in
           };
 
           ip = mkOption {
-            default = "10.3.0.1";
-            example = "10.3.0.1";
+            default = "10.2.0.1";
+            example = "10.2.0.1";
             type = types.str;
             description = "The IP address of the DNS provided by the VPN. See your Wireguard certificate.";
           };
