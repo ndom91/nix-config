@@ -18,12 +18,14 @@
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
     # package = unstablePkgs.hyprland;
-    package = unstablePkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
     xwayland.enable = true;
 
     plugins = [
-      unstablePkgs.hyprlandPlugins.hy3
+      (unstablePkgs.hyprlandPlugins.hy3.override {
+        hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      })
       inputs.hyprfocus.packages.${pkgs.system}.hyprfocus
     ];
 
@@ -349,8 +351,8 @@
         hyprfocus {
           enabled = yes
 
-          keyboard_focus_animation = flash
-          mouse_focus_animation = flash
+          keyboard_focus_animation = shrink
+          mouse_focus_animation = shrink
 
           bezier = bezIn, 0.5,0.0,1.0,0.5
           bezier = bezOut, 0.0,0.5,0.5,1.0
@@ -366,7 +368,7 @@
           }
 
           shrink {
-            shrink_percentage = 0.8
+            shrink_percentage = 0.9
 
             in_bezier = bezIn
             in_speed = 0.5

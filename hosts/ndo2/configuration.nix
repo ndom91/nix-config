@@ -249,7 +249,8 @@ in
   };
 
   programs.hyprland.enable = true;
-  programs.hyprland.package = unstablePkgs.hyprland;
+  # programs.hyprland.package = unstablePkgs.hyprland;
+  programs.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
   programs._1password = { enable = true; };
   programs._1password-gui = {
