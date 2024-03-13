@@ -22,10 +22,12 @@ in
           "text/markdown"
           "text/x-log"
           "text/plain"
+          "application/txt"
+          "application/md"
         ];
 
         ### WEB BROWSER ###
-        "vivaldi-stable" = [
+        "vivaldi" = [
           "text/html"
           "x-scheme-handler/http"
           "x-scheme-handler/https"
@@ -44,7 +46,7 @@ in
         ];
 
         ### DISCORD ###
-        # "webcord" = [ "x-scheme-handler/discord" ];
+        "vesktop" = [ "x-scheme-handler/discord" ];
 
         ### SLACK ###
         "slack" = [ "x-scheme-handler/slack" ];
@@ -55,17 +57,15 @@ in
           "application/epub"
           "application/djvu"
           "application/mobi"
-          # "application/x-chm"
-          # "application/comicbook"
-          # "application/dvi"
-          # "application/fax"
-          # "application/fb"
-          # "application/ghostview"
-          # "application/md"
-          # "application/plucker"
-          # "application/tiff"
-          # "application/txt"
-          # "application/xps"
+          "application/x-chm"
+          "application/comicbook"
+          "application/dvi"
+          "application/fax"
+          "application/fb"
+          "application/ghostview"
+          "application/plucker"
+          "application/tiff"
+          "application/xps"
         ];
 
         ### MEDIA PLAYER ###
