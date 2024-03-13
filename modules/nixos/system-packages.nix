@@ -6,6 +6,7 @@
     alacritty
     inputs.agenix.packages.x86_64-linux.default
     amdgpu_top
+    nvtop-amd
     appimage-run
     bat
     bluez
