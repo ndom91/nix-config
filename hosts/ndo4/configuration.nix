@@ -288,6 +288,7 @@ in
 
   nixpkgs = {
     config = {
+      permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
       allowUnfree = true;
       vivaldi = {
         proprietaryCodecs = true;

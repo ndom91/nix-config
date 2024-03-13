@@ -7,7 +7,6 @@
     (unstablePkgs.vivaldi.override {
       proprietaryCodecs = true;
       enableWidevine = true;
-      isSnapshot = true;
     })
     floorp
     gnome.gnome-boxes
