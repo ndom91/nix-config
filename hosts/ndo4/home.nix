@@ -40,12 +40,6 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
-    # Set by other gtk settings
-    #   cursor-theme = "BreezeX-RosePine-Linux";
-    #   # font-name = "Ubuntu Nerd Font";
-    #   gtk-theme = "Catppuccin-Mocha-Standard-Maroon-Dark";
-    #   icon-theme = "Dracula";
-    # };
 
     "org/nemo/preferences" = {
       date-format = "iso";
@@ -65,10 +59,6 @@
       monitor = lib.mkForce [
         "DP-1,3440x1440,1080x480,1"
         "DP-2,1920x1080,0x0,1,transform,3"
-      ];
-      env = [
-        # "GDK_SCALE,1.5"
-        "XCURSOR_SIZE,24"
       ];
     };
   };

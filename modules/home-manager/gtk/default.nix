@@ -1,4 +1,4 @@
-{ pkgs, rose-pine-cursor, config, ... }:
+{ pkgs, lib, osConfig, rose-pine-cursor, config, ... }:
 let
   colloidIconTheme = pkgs.colloid-icon-theme.override {
     schemeVariants = [ "nord" ];
@@ -15,7 +15,10 @@ in
     x11.enable = true;
     package = rose-pine-cursor;
     name = "BreezeX-RosePine-Linux";
-    size = 24;
+    size = lib.mkMerge [
+      (lib.mkIf (osConfig.networking.hostName == "ndo4") 24)
+      (lib.mkIf (osConfig.networking.hostName == "ndo2") 32)
+    ];
   };
 
   gtk = {
@@ -25,7 +28,10 @@ in
     cursorTheme = {
       package = rose-pine-cursor;
       name = "BreezeX-RosePine-Linux";
-      size = 24;
+      size = lib.mkMerge [
+        (lib.mkIf (osConfig.networking.hostName == "ndo4") 24)
+        (lib.mkIf (osConfig.networking.hostName == "ndo2") 32)
+      ];
     };
 
     iconTheme = {

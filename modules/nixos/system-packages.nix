@@ -18,8 +18,6 @@
     dig
     difftastic
     docker-compose
-    # dracula-icon-theme
-    # dracula-theme
     dua
     eza
     fd

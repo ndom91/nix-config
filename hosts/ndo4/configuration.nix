@@ -140,7 +140,6 @@ in
         settings = {
           Theme = {
             Font = "Fira Sans";
-            # Font = "Ubuntu Nerd Font";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
           };
@@ -298,7 +297,6 @@ in
   };
 
   programs.hyprland.enable = true;
-  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   programs.hyprland.package = unstablePkgs.hyprland;
 
   programs._1password = { enable = true; };
