@@ -18,6 +18,7 @@ in
   age.identityPaths = [
     "${config.users.users.ndo.home}/.ssh/id_ndo4"
   ];
+  age.secrets.pvpn.file = ../../secrets/pvpn.age;
   age.secrets.ssh = {
     file = ./../../secrets/ssh.age;
     path = "${config.users.users.ndo.home}/.ssh/config";
@@ -241,6 +242,7 @@ in
   };
 
   nixpkgs.config = {
+    permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
     allowUnfree = true;
     vivaldi = {
       proprietaryCodecs = true;
@@ -249,7 +251,6 @@ in
   };
 
   programs.hyprland.enable = true;
-  # programs.hyprland.package = unstablePkgs.hyprland;
   programs.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
   programs._1password = { enable = true; };

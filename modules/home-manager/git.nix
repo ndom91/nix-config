@@ -1,5 +1,6 @@
 { input, ... }:
 {
+  programs.gh.enable = true;
   programs.git = {
     enable = true;
     userName = "ndom91";
@@ -8,7 +9,7 @@
       key = "~/.ssh/id_ndo4.pub";
       signByDefault = true;
     };
-    diff-so-fancy.enable = true;
+    difftastic.enable = true;
     extraConfig = {
       init = {
         defaultBranch = "main";

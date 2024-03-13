@@ -21,6 +21,7 @@ in
   age.identityPaths = [
     "${config.users.users.ndo.home}/.ssh/id_ndo4"
   ];
+  age.secrets.pvpn.file = ../../secrets/pvpn.age;
   age.secrets.ssh = {
     file = ./../../secrets/ssh.age;
     path = "${config.users.users.ndo.home}/.ssh/config";
@@ -241,7 +242,6 @@ in
 
   hardware = {
     enableAllFirmware = true;
-    # enableRedistributableFirmware = true;
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
@@ -311,7 +311,6 @@ in
   };
 
   programs.hyprland.enable = true;
-  # programs.hyprland.package = unstablePkgs.hyprland;
   programs.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
   programs._1password = { enable = true; };
@@ -323,6 +322,7 @@ in
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
     corners-sddm
+    protonvpn-wg
     rose-pine-cursor
     # rose-pine-cursor-hyprcursor
     # flameshot
@@ -375,6 +375,19 @@ in
     fstrim.enable = true;
     smartd.enable = true;
     irqbalance.enable = true;
+
+    protonvpn = {
+      enable = true;
+      autostart = false;
+      interface = {
+        dns.enable = false;
+        privateKeyFile = config.age.secrets.pvpn.path;
+      };
+      endpoint = {
+        publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
+        ip = "77.247.178.58";
+      };
+    };
   };
 
   programs = {

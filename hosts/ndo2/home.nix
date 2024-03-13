@@ -8,7 +8,7 @@
     ../../modules/home-manager/languages/node.nix
     ../../modules/home-manager/languages/rust.nix
     # Common
-    ../../modules/home-manager/gitconfig.nix
+    ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/user-dirs.nix
     ../../modules/home-manager/bash.nix
@@ -128,8 +128,6 @@
   #   package = pkgs.nix-index;
   # };
   programs.starship.enable = true;
-  programs.gh.enable = true;
-  programs.git.diff-so-fancy.enable = true;
   programs.home-manager.enable = true;
   programs.bash.enable = true;
   programs.zoxide = {
