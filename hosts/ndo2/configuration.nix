@@ -128,7 +128,7 @@ in
         wayland.enable = true;
         settings = {
           Theme = {
-            Font = "Ubuntu Nerd Font";
+            Font = "Fira Sans";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
           };
@@ -220,6 +220,26 @@ in
     };
   };
 
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        sansSerif = [
+          "Fira Sans"
+          "sans-serif"
+        ];
+        monospace = [
+          "Operator Mono Light"
+        ];
+        emoji = [
+          "Noto Color Emoji"
+
+        ];
+      };
+    };
+    fontDir.enable = true;
+  };
+
   nixpkgs.config = {
     allowUnfree = true;
     vivaldi = {
@@ -229,7 +249,7 @@ in
   };
 
   programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  programs.hyprland.package = unstablePkgs.hyprland;
 
   programs._1password = { enable = true; };
   programs._1password-gui = {

@@ -59,7 +59,6 @@
       monitor = lib.mkForce "eDP-1,preferred,auto,1.7";
       env = [
         "GDK_SCALE,1.7"
-        "XCURSOR_SIZE,32"
       ];
 
       "device:MSFT0001:00 04F3:31EB Touchpad" = {
