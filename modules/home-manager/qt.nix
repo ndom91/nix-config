@@ -7,10 +7,10 @@
 
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme = "gtk3";
     style = {
-      name = "gtk2";
-      package = pkgs.qt6Packages.qt6gtk2;
+      name = "adwaita-dark";
+      # package = pkgs.qt6Packages.qt6gtk2;
     };
   };
 }

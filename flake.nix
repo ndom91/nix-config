@@ -43,10 +43,7 @@
             unstablePkgs = import unstable {
               config = {
                 allowUnfree = true;
-                vivaldi = {
-                  proprietaryCodecs = true;
-                  enableWidevine = true;
-                };
+                permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
               };
               localSystem = { inherit system; };
             };
@@ -63,10 +60,7 @@
             unstablePkgs = import unstable {
               config = {
                 allowUnfree = true;
-                vivaldi = {
-                  proprietaryCodecs = true;
-                  enableWidevine = true;
-                };
+                permittedInsecurePackages = [ "electron-25.9.0" ];
               };
               localSystem = { inherit system; };
             };

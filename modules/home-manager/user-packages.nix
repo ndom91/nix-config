@@ -4,8 +4,11 @@
   home.packages = with pkgs; [
     # Graphical Applications
     unstablePkgs.xpipe
-    unstablePkgs.vivaldi
-    unstablePkgs.vivaldi-ffmpeg-codecs
+    (unstablePkgs.vivaldi.override {
+      proprietaryCodecs = true;
+      enableWidevine = true;
+      isSnapshot = true;
+    })
     floorp
     gnome.gnome-boxes
     gnome.seahorse
@@ -16,8 +19,10 @@
     cinnamon.nemo
     gnome.file-roller
     vlc
-    protonvpn-gui
+    unstablePkgs.protonvpn-gui
+
     rustdesk
+    obsidian
 
     # System Tools
     qdirstat
@@ -56,6 +61,7 @@
     cliphist
     irssi
     parted
+    ranger
 
     # Fonts
     (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Ubuntu" "UbuntuMono" ]; })
@@ -67,6 +73,7 @@
     # '')
   ];
 
+  # All Chromium command line switches: https://peter.sh/experiments/chromium-command-line-switches/
   xdg.desktopEntries = {
     vivaldi = {
       name = "Vivaldi Wayland";
