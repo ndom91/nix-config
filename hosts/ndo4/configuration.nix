@@ -374,7 +374,7 @@ in
 
     protonvpn = {
       enable = true;
-      autostart = true;
+      autostart = false;
       interface = {
         name = "pvpn-wg-nl256";
         dns.enable = false;

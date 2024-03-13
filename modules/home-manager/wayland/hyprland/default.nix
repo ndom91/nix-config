@@ -70,38 +70,95 @@
         layout = "hy3";
         resize_on_border = true;
       };
+      # decoration = {
+      #   rounding = "1";
+      #   drop_shadow = false;
+      #   active_opacity = "0.95";
+      #   inactive_opacity = "0.80";
+      #   fullscreen_opacity = "1.00";
+      #   blur = {
+      #     enabled = true;
+      #     new_optimizations = true;
+      #     xray = false;
+      #     ignore_opacity = true;
+      #     passes = 2;
+      #     size = 5;
+      #   };
+      # };
+
       decoration = {
-        rounding = "1";
+        rounding = 4;
+        active_opacity = "0.96";
+        inactive_opacity = "0.90";
+        fullscreen_opacity = "1.0";
+
+        dim_inactive = true;
+        dim_strength = "0.05";
+
         drop_shadow = false;
-        active_opacity = "0.95";
-        inactive_opacity = "0.80";
-        fullscreen_opacity = "1.00";
+
         blur = {
           enabled = true;
-          new_optimizations = true;
-          xray = false;
-          ignore_opacity = true;
-          passes = 2;
+          xray = true;
           size = 5;
+          passes = 2;
+          ignore_opacity = true;
+          new_optimizations = true;
+        };
+      };
+
+      group = {
+        "col.border_active" = "rgb(11111b) rgb(181825) 45deg";
+        "col.border_inactive" = "rgba(f5e0dc20)";
+
+        groupbar = {
+          render_titles = false;
+          height = 2;
+          "col.active" = "rgb(181825)";
+          "col.inactive" = "rgba(f5e0dc20)";
         };
       };
       animations = {
         enabled = "yes";
+        # bezier = [
+        #   "smoothIn, 0.25, 1, 0.5, 1"
+        #   "overshot, 0.05, 0.9, 0.1, 1.05"
+        #   "smoothOut, 0.36, 0, 0.66, -0.56"
+        #   "smoothIn, 0.25, 1, 0.5, 1"
+        # ];
+        #
+        # animation = [
+        #   "windows, 1, 3, overshot"
+        #   "windowsOut, 1, 4, smoothOut, slide"
+        #   "border, 1, 10, default"
+        #   "borderangle, 1, 8, default"
+        #   "fade, 1, 10, smoothIn"
+        #   "fadeDim, 1, 10, smoothIn"
+        #   "workspaces, 1, 6, default"
+        # ];
+
         bezier = [
-          "smoothIn, 0.25, 1, 0.5, 1"
-          "overshot, 0.05, 0.9, 0.1, 1.05"
-          "smoothOut, 0.36, 0, 0.66, -0.56"
-          "smoothIn, 0.25, 1, 0.5, 1"
+          "myBezier, 0.05, 0.9, 0.1, 1.05"
+          "linear, 0.0, 0.0, 1.0, 1.0"
+          "wind, 0.05, 0.9, 0.1, 1.05"
+          "winIn, 0.1, 1.1, 0.1, 1.1"
+          "winOut, 0.3, -0.3, 0, 1"
+          "slow, 0, 0.85, 0.3, 1"
+          "overshot, 0.7, 0.6, 0.1, 1.1"
+          "bounce, 1.1, 1.6, 0.1, 0.85"
+          "sligshot, 1, -1, 0.15, 1.25"
+          "nice, 0, 6.9, 0.5, -4.20"
         ];
 
         animation = [
-          "windows, 1, 3, overshot"
-          "windowsOut, 1, 4, smoothOut, slide"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 10, smoothIn"
-          "fadeDim, 1, 10, smoothIn"
-          "workspaces, 1, 6, default"
+          "windowsIn, 1, 5, slow, popin"
+          "windowsOut, 1, 5, winOut, popin"
+          "windowsMove, 1, 5, wind, slide"
+          "border, 1, 10, linear"
+          "borderangle, 1, 180, linear, loop #used by rainbow borders and rotating colors"
+          "fade, 1, 5, overshot"
+          "workspaces, 1, 5, wind"
+          "windows, 1, 5, bounce, popin"
         ];
       };
       master = {
@@ -112,6 +169,7 @@
         animate_manual_resizes = true;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
+        focus_on_activate = true;
       };
       windowrule = [
         "float, file_progress"
@@ -232,9 +290,12 @@
       ];
       bind = [
         # hy3
-        "$mainMod, T, hy3:makegroup, tab, force_ephemeral"
+        "$mainMod, G, hy3:makegroup, tab, force_ephemeral"
         "$mainMod, Y, hy3:changegroup, opposite"
         "$mainMod, Q, hy3:killactive,"
+        # "$mainMod, G, togglegroup,"
+        # "$mainMod, U, changegroupactive,b"
+        # "$mainMod, I, changegroupactive,f"
         # "$mainMod, Q, killactive"
         "CTRL SHIFT, L, exec, swaylock -f"
         "$mainMod, Return, exec, wezterm"
@@ -261,10 +322,10 @@
         # "$mainMod, L, movefocus, r"
         # "$mainMod, K, movefocus, u"
         # "$mainMod, J, movefocus, d"
-        # "$mainMod SHIFT, H, movewindow, l"
-        # "$mainMod SHIFT, L, movewindow, r"
-        # "$mainMod SHIFT, K, movewindow, u"
-        # "$mainMod SHIFT, J, movewindow, d"
+        # "$mainMod SHIFT, H, movewindoworgroup, l"
+        # "$mainMod SHIFT, L, movewindoworgroup, r"
+        # "$mainMod SHIFT, K, movewindoworgroup, u"
+        # "$mainMod SHIFT, J, movewindoworgroup, d"
 
         # hy3 - Move focus with mainMod + arrow keys
         "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
@@ -350,30 +411,29 @@
         hyprfocus {
           enabled = yes
 
-          keyboard_focus_animation = shrink
-          mouse_focus_animation = shrink
+          focus_animation = shrink
 
           bezier = bezIn, 0.5,0.0,1.0,0.5
           bezier = bezOut, 0.0,0.5,0.5,1.0
 
           flash {
-            flash_opacity = 0.7
+              flash_opacity = 0.8
 
-            in_bezier = bezIn
-            in_speed = 0.5
+              in_bezier = bezIn
+              in_speed = 0.5
 
-            out_bezier = bezOut
-            out_speed = 3
+              out_bezier = bezOut
+              out_speed = 3
           }
 
           shrink {
-            shrink_percentage = 0.9
+            shrink_percentage = 0.995
 
             in_bezier = bezIn
-            in_speed = 0.5
+            in_speed = 0.25
 
             out_bezier = bezOut
-            out_speed = 3
+            out_speed = 1
           }
         }
       }
