@@ -374,8 +374,9 @@ in
 
     protonvpn = {
       enable = true;
-      autostart = false;
+      autostart = true;
       interface = {
+        name = "pvpn-wg-nl256";
         dns.enable = false;
         privateKeyFile = config.age.secrets.pvpn.path;
       };
