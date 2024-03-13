@@ -1,4 +1,10 @@
 { pkgs, rose-pine-cursor, config, ... }:
+let
+  colloidIconTheme = pkgs.colloid-icon-theme.override {
+    schemeVariants = [ "nord" ];
+    colorVariants = [ "grey" ];
+  };
+in
 {
   imports = [
     ./catppuccin.nix
@@ -23,8 +29,8 @@
     };
 
     iconTheme = {
-      package = pkgs.colloid-icon-theme;
-      name = "Colloid-Nord-Grey";
+      package = colloidIconTheme;
+      name = "Colloid-grey-nord-dark";
     };
 
     gtk2.extraConfig = ''
@@ -52,11 +58,11 @@
     };
   };
 
-  services.xsettingsd = {
-    enable = true;
-    settings = {
-      "Net/ThemeName" = "Catppuccin-Mocha-Standard-Maroon-Dark";
-      "Net/IconThemeName" = "Dracula";
-    };
-  };
+  # services.xsettingsd = {
+  #   enable = true;
+  #   settings = {
+  #     "Net/ThemeName" = "Catppuccin-Mocha-Standard-Maroon-Dark";
+  #     "Net/IconThemeName" = "Dracula";
+  #   };
+  # };
 }
