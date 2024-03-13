@@ -57,7 +57,7 @@
     nightmode = "echo 900 > /sys/class/backlight/intel_backlight/brightness > /dev/null & sct 3100 > /dev/null";
     daymode = "echo 3000 > /sys/class/backlight/intel_backlight/brightness > /dev/null & sct 4500 > /dev/null";
     xc = "wl-copy";
-    vivaldi = "${unstablePkgs.vivaldi}/bin/vivaldi --disable-vulkan-surface --use-gl=angle --use-angle=gl --ignore-gpu-blacklist --enable-gpu-rasterization --enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoDecoder,VaapiVideoEncoder,RawDraw,CanvasOopRasterization --enable-gpu-rasterization --enable-zero-copy --enable-hardware-overlays --enable-native-gpu-memory-buffers --enable-webrtc-pipewire-capturer";
+    # vivaldi = "${unstablePkgs.vivaldi}/bin/vivaldi --disable-vulkan-surface --use-gl=angle --use-angle=gl --ignore-gpu-blacklist --enable-gpu-rasterization --enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoDecoder,VaapiVideoEncoder,RawDraw,CanvasOopRasterization --enable-gpu-rasterization --enable-zero-copy --enable-hardware-overlays --enable-native-gpu-memory-buffers --enable-webrtc-pipewire-capturer";
 
     # Git
     gs = "git status";

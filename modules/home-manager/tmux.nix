@@ -19,6 +19,7 @@ in
 {
   programs.tmux = {
     enable = true;
+    package = unstablePkgs.tmux;
     clock24 = true;
     keyMode = "vi";
     newSession = true;

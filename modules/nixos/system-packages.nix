@@ -18,8 +18,8 @@
     dig
     difftastic
     docker-compose
-    dracula-icon-theme
-    dracula-theme
+    # dracula-icon-theme
+    # dracula-theme
     dua
     eza
     fd
@@ -63,6 +63,7 @@
     tree
     tree
     unzip
+    usbutils
     watch
     wget
     xdg-user-dirs

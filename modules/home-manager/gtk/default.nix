@@ -23,8 +23,8 @@
     };
 
     iconTheme = {
-      package = pkgs.dracula-icon-theme;
-      name = "Dracula";
+      package = pkgs.colloid-icon-theme;
+      name = "Colloid-Nord-Grey";
     };
 
     gtk2.extraConfig = ''

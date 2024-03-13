@@ -17,6 +17,7 @@
     gnome.file-roller
     vlc
     protonvpn-gui
+    rustdesk
 
     # System Tools
     qdirstat
@@ -53,6 +54,8 @@
     whois
     jq
     cliphist
+    irssi
+    parted
 
     # Fonts - Only installed in `system.nix`
     (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Ubuntu" "UbuntuMono" ]; })
@@ -64,5 +67,31 @@
     # '')
   ];
 
-  programs.bash.sessionVariables.FLAKE = "/etc/nixos";
+  xdg.desktopEntries = {
+    vivaldi = {
+      name = "Vivaldi Wayland";
+      exec = "${unstablePkgs.vivaldi}/bin/vivaldi --disable-vulkan-surface --use-gl=angle --use-angle=gl --ignore-gpu-blacklist --enable-gpu-rasterization --enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoDecoder,VaapiVideoEncoder,RawDraw,CanvasOopRasterization --enable-gpu-rasterization --enable-zero-copy --enable-hardware-overlays --enable-native-gpu-memory-buffers --enable-webrtc-pipewire-capturer %U";
+      genericName = "Web Browser";
+      startupNotify = true;
+      terminal = false;
+      icon = "vivaldi";
+      type = "Application";
+      categories = [ "Network" "WebBrowser" ];
+      mimeType = [
+        "application/rdf+xml"
+        "application/rss+xml"
+        "application/xhtml+xml"
+        "application/xhtml_xml"
+        "application/xml"
+        "text/html"
+        "text/xml"
+        "x-scheme-handler/ftp"
+        "x-scheme-handler/http"
+        "x-scheme-handler/https"
+        "x-scheme-handler/mailto"
+      ];
+    };
+  };
+
+  programs.bash.sessionVariables.FLAKE = "/etc/nixos$(hostname)";
 }
