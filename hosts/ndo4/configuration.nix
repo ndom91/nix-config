@@ -56,11 +56,11 @@ in
   # Allow auto-upgrades to happen every day
   # system.autoUpgrade = {
   #   enable = true;
-  #   flake = "github:Daru-san/Snowflake-dots";
-  #   flags = ["--update-input" "nixpkgs" "--impure"];
-  #   operation = "boot";
-  #   dates = "00:00";
-  #   randomizedDelaySec = "180min";
+  #   flake = "${config.users.users.hadi.home}/.config/nixos";
+  #   flags = ["--update-input" "nixpkgs" "--commit-lock-file"];
+  #   # operation = "boot";
+  #   dates = "12:00";
+  #   allowReboot = false;
   # };
 
   boot = {

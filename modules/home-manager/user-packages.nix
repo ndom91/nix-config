@@ -33,6 +33,7 @@
     beekeeper-studio
     sqlite
     mitmproxy
+    unstablePkgs.nodePackages_latest.wrangler
 
     # Nix Tools
     nvd
