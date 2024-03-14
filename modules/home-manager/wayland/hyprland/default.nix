@@ -39,6 +39,7 @@
         "MOZ_ENABLE_WAYLAND,1"
         "XDG_SESSION_TYPE,wayland"
         "QT_QPA_PLATFORM,wayland"
+        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
       ];
       input = {
         kb_layout = "us";
