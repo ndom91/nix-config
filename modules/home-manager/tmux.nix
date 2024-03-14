@@ -9,11 +9,20 @@ let
       rev = "34026b6f442ceb07628bf25ae1b04a0cd475e9ae";
       sha256 = "sha256-BNgxLk/BkaQkGlB4g2WKVs39y4VHL1Y2TdTEoBy7yo0=";
     };
-    postInstall = ''
-      # sed -i -e 's|python3 |${pkgs.python311Full}/bin/python3 |g' tmux_window_name.tmux
-      find $target -type f -print0 | xargs -0 sed -i -e 's|python3 |${pkgs.python3}/bin/python3 |g'
-    '';
     rtpFilePath = "tmux_window_name.tmux";
+    buildInputs = with pkgs; [
+      python311Full
+      (python311.withPackages (ps:
+        with ps; [
+          pip
+          libtmux
+          requests
+        ]
+      ))
+    ];
+    postInstall = ''
+      sed -i -e 's|python3 |${pkgs.python311Full}/bin/python3 |g' tmux_window_name.tmux
+    '';
   };
 in
 {
