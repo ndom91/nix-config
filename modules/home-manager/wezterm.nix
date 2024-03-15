@@ -29,10 +29,11 @@
         config.window_background_opacity = 0.92
 
         config.font = wezterm.font_with_fallback {
+          { family = 'Operator Mono Light', harfbuzz_features = { 'liga=1' } },
           -- TODO Buy when have job - https://berkeleygraphics.com/typefaces/berkeley-mono/
           -- { family = 'Berkeley Mono Trial', weight = 'Light' },
-          { family = 'Operator Mono Light', harfbuzz_features = { 'liga=1' } },
-          { family = 'GeistMono Nerd Font' },
+          -- { family = 'SFMono Nerd Font', weight = 'Light' },
+          -- { family = 'GeistMono Nerd Font Mono', weight = 'Light' },
           'FiraCode Nerd Font',
           'Ubuntu Mono',
         }

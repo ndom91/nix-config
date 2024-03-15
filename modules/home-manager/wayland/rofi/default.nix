@@ -9,7 +9,6 @@
     enable = true;
     package = pkgs.rofi-wayland;
     font = "FiraSans Light 12";
-    # font = "FiraCode Nerd Font 12";
     terminal = lib.getExe pkgs.wezterm;
     cycle = true;
   };

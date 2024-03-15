@@ -1,7 +1,5 @@
 { unstablePkgs, ... }:
 {
-  # https://nix-community.github.io/home-manager/options.xhtml#opt-home.sessionPath
-  # home.sessionPath = [];
   home.file.".dotfiles/colorscripts/" = {
     source = ../../dotfiles/colorscripts;
     recursive = true;

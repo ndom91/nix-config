@@ -62,7 +62,7 @@ in
 
   home.file.".config/swaync/style.css".text = ''
      * {
-         font-family: FiraSans;
+         font-family: SFProDisplay Nerd Font;
      }
 
      /*

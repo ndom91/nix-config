@@ -23,7 +23,7 @@ in
 
   gtk = {
     enable = true;
-    font.name = "FiraSans";
+    font.name = "SFProDisplay Nerd Font";
 
     cursorTheme = {
       package = rose-pine-cursor;

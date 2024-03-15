@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   xdg.configFile."wlogout" = {
     source = ../../../dotfiles/wlogout;
@@ -10,31 +10,31 @@
     layout = [
       {
         "label" = "lock";
-        "action" = "swaylock";
+        "action" = "${config.programs.swaylock.package}/bin/swaylock";
         "text" = "Lock";
         "keybind" = "l";
       }
       {
         "label" = "reboot";
-        "action" = "systemctl reboot";
+        "action" = "${pkgs.systemd}/bin/systemctl reboot";
         "text" = "Reboot";
         "keybind" = "r";
       }
       {
         "label" = "shutdown";
-        "action" = "systemctl poweroff";
+        "action" = "${pkgs.systemd}/bin/systemctl poweroff";
         "text" = "Shutdown";
         "keybind" = "s";
       }
       {
         "label" = "logout";
-        "action" = "hyprctl dispatch exit 0";
+        "action" = "${pkgs.hyprland}/bin/hyprctl dispatch exit 0";
         "text" = "Logout";
         "keybind" = "e";
       }
       {
         "label" = "suspend";
-        "action" = "systemctl suspend";
+        "action" = "${pkgs.systemd}/bin/systemctl suspend";
         "text" = "Suspend";
         "keybind" = "u";
       }

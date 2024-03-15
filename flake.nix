@@ -11,6 +11,8 @@
       inputs.hyprland.follows = "hyprland";
     };
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+
     # hyprland-plugins = {
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";

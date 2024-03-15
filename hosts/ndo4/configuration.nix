@@ -150,7 +150,7 @@ in
         wayland.enable = true;
         settings = {
           Theme = {
-            Font = "Fira Sans";
+            Font = "SFProDisplay Nerd Font";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
           };
@@ -281,7 +281,7 @@ in
       enable = true;
       defaultFonts = {
         sansSerif = [
-          "Fira Sans"
+          "SFProDisplay Nerd Font"
           "sans-serif"
         ];
         monospace = [
@@ -289,7 +289,6 @@ in
         ];
         emoji = [
           "Noto Color Emoji"
-
         ];
       };
     };
