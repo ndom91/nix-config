@@ -289,10 +289,6 @@ in
       daemon.enable = true;
       updater.enable = true;
     };
-    logind = {
-      lidSwitch = "suspend";
-      extraConfig = "IdleAction=lock";
-    };
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -314,6 +310,13 @@ in
     fstrim.enable = true;
     smartd.enable = true;
     irqbalance.enable = true;
+
+    # Laptop Specific
+    logind = {
+      lidSwitch = "suspend";
+      extraConfig = "IdleAction=lock";
+    };
+    thermald.enable = true;
   };
 
   powerManagement.enable = true;
