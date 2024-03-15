@@ -35,10 +35,6 @@
       monitor = ",preferred,auto,auto";
 
       env = [
-        "XCURSOR_SIZE,24"
-        "MOZ_ENABLE_WAYLAND,1"
-        "XDG_SESSION_TYPE,wayland"
-        "QT_QPA_PLATFORM,wayland"
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
       ];
       input = {
@@ -57,7 +53,7 @@
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
         "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
-        "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
+        # "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
       general = {
         gaps_in = 10;
