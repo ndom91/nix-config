@@ -3,6 +3,7 @@ let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
+  fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
   # rose-pine-cursor-hyprcursor = pkgs.callPackage ../../packages/rose-pine-cursor-hyprcursor/default.nix { };
   # flameshot = pkgs.callPackage ../../packages/flameshot/default.nix { };
   # gimp-devel = pkgs.callPackage ../../packages/gimp-devel {
@@ -319,16 +320,15 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
+    fira-sans-nerd-font
     # flameshot
     # gimp-devel
   ];
 
-  # FOR LATER: dynamically-linked binaries work-around
-  # programs.nix-ld.enable = true;
-  # programs.nix-ld.libraries with pkgs; [
-  # Add any missing dynamic libraries for unpackaged programs
-  # here, NOT in environment.systemPackages
-  # ];
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    nodePackages.wrangler
+  ];
 
   # System Services
   services = {
