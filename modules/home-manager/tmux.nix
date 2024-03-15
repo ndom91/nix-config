@@ -1,5 +1,9 @@
-{ pkgs, unstablePkgs, input, ... }:
+{ pkgs, config, lib, unstablePkgs, input, ... }:
 let
+  pythonInputs = (pkgs.python3.withPackages (p: with p; [
+    libtmux
+    pip
+  ]));
   tmux-window-name = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "tmux-window-name";
     version = "2024-03-08";
@@ -9,19 +13,14 @@ let
       rev = "34026b6f442ceb07628bf25ae1b04a0cd475e9ae";
       sha256 = "sha256-BNgxLk/BkaQkGlB4g2WKVs39y4VHL1Y2TdTEoBy7yo0=";
     };
+    nativeBuildInputs = [ pkgs.makeWrapper ];
     rtpFilePath = "tmux_window_name.tmux";
-    buildInputs = with pkgs; [
-      python311Full
-      (python311.withPackages (ps:
-        with ps; [
-          pip
-          libtmux
-          requests
-        ]
-      ))
-    ];
     postInstall = ''
-      sed -i -e 's|python3 |${pkgs.python311Full}/bin/python3 |g' tmux_window_name.tmux
+      sed -i "s|^USR_BIN_REMOVER.*|USR_BIN_REMOVER = (r\'^/home/${config.home.username}/.nix-profile/bin/(.+)( --.*)?\', r\'\\\g<1>\')|" $target/scripts/rename_session_windows.py
+      for f in tmux_window_name.tmux scripts/rename_session_windows.py; do
+        wrapProgram $target/$f \
+          --prefix PATH : ${lib.makeBinPath [pythonInputs]}
+      done
     '';
   };
 in
@@ -35,12 +34,8 @@ in
     historyLimit = 10000;
     prefix = "C-a";
     plugins = [
-      {
-        plugin = tmux-window-name;
-      }
-      {
-        plugin = pkgs.tmuxPlugins.mode-indicator;
-      }
+      tmux-window-name
+      pkgs.tmuxPlugins.mode-indicator
       {
         plugin = pkgs.tmuxPlugins.catppuccin;
         extraConfig = ''
@@ -67,6 +62,10 @@ in
           set -g @catppuccin_status_right_separator_inverse "no"
           set -g @catppuccin_status_fill "all"
           set -g @catppuccin_status_connect_separator "no"
+
+          set -g @tmux_window_name_log_level "'DEBUG'"
+          set -g @tmux_window_name_dir_substitute_sets "[('/home/${config.home.username}/.nix-profile/bin/(.+) --.*', '\\g<1>')]"
+          set -g @tmux_window_dir_programs "['nvim', 'vim', 'vi', 'git', '/home/${config.home.username}/.nix-profile/bin/nvim']"
         '';
       }
       # {
