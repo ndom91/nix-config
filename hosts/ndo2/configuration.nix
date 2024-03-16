@@ -317,6 +317,7 @@ in
       extraConfig = "IdleAction=lock";
     };
     thermald.enable = true;
+    tlp.enable = true;
   };
 
   powerManagement.enable = true;
@@ -346,8 +347,6 @@ in
     };
   };
 
-
-  # DO NOT TOUCH #
   system.stateVersion = "23.11";
 }
 

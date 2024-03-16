@@ -67,22 +67,6 @@
         layout = "hy3";
         resize_on_border = true;
       };
-      # decoration = {
-      #   rounding = "1";
-      #   drop_shadow = false;
-      #   active_opacity = "0.95";
-      #   inactive_opacity = "0.80";
-      #   fullscreen_opacity = "1.00";
-      #   blur = {
-      #     enabled = true;
-      #     new_optimizations = true;
-      #     xray = false;
-      #     ignore_opacity = true;
-      #     passes = 2;
-      #     size = 5;
-      #   };
-      # };
-
       decoration = {
         rounding = 4;
         active_opacity = "0.96";
@@ -103,7 +87,11 @@
           new_optimizations = true;
         };
       };
-
+      workspace = [
+        "1,monitor:DP-2,default:true"
+        "2,monitor:DP-1,default:true"
+        "3,monitor:DP-1"
+      ];
       group = {
         "col.border_active" = "rgb(11111b) rgb(181825) 45deg";
         "col.border_inactive" = "rgba(f5e0dc20)";
@@ -117,23 +105,6 @@
       };
       animations = {
         enabled = "yes";
-        # bezier = [
-        #   "smoothIn, 0.25, 1, 0.5, 1"
-        #   "overshot, 0.05, 0.9, 0.1, 1.05"
-        #   "smoothOut, 0.36, 0, 0.66, -0.56"
-        #   "smoothIn, 0.25, 1, 0.5, 1"
-        # ];
-        #
-        # animation = [
-        #   "windows, 1, 3, overshot"
-        #   "windowsOut, 1, 4, smoothOut, slide"
-        #   "border, 1, 10, default"
-        #   "borderangle, 1, 8, default"
-        #   "fade, 1, 10, smoothIn"
-        #   "fadeDim, 1, 10, smoothIn"
-        #   "workspaces, 1, 6, default"
-        # ];
-
         bezier = [
           "myBezier, 0.05, 0.9, 0.1, 1.05"
           "linear, 0.0, 0.0, 1.0, 1.0"
@@ -350,8 +321,6 @@
         ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
       ]
       ++ (
-        # workspaces
-        # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
         builtins.concatLists (builtins.genList
           (
             x:
