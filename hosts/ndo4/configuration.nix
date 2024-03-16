@@ -269,7 +269,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs; };
+    extraSpecialArgs = { inherit fira-sans-nerd-font nix-colors rose-pine-cursor inputs unstablePkgs; };
     # useUserPackages = true;
     useGlobalPkgs = true;
     users = {
@@ -320,7 +320,6 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
-    fira-sans-nerd-font
     # flameshot
     # gimp-devel
   ];
