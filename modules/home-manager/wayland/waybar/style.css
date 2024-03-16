@@ -1,19 +1,78 @@
+/**
+ * rose-pine theme colors
+ * https://rosepinetheme.com/palette/ingredients/
+ **/
+@define-color primary-bg #191724;
+@define-color surface #1f1d2e;
+@define-color overlay #26233a;
+@define-color muted #6e6a86;
+@define-color subtle #908caa;
+@define-color text #e0def4;
+@define-color love #eb6f92;
+@define-color gold #f6c177;
+@define-color rose #ebbcba;
+@define-color pine #31748f;
+@define-color foam #9ccfd8;
+@define-color iris #c4a7e7;
+@define-color hl-low #21202e;
+@define-color hl-med #403d52;
+@define-color hl-high #524f67;
+@define-color transparent rgba(0, 0, 0, 0);
+
 * {
-  /* font-family: 'UbuntuMono Nerd Font Mono'; */
-  font-family: "FiraCode Nerd Font";
-  font-size: 12px;
+  border: none;
+  border-radius: 0;
+  font-family: "Fira Sans";
+  font-weight: 200;
+  font-size: 14px;
 }
 
 window#waybar {
-  background: rgba(0, 0, 0, 0);
+  background: @transparent;
   transition-property: background-color;
   transition-duration: 0.5s;
+  border-radius: 12px;
 }
 
-tooltip {
-  background-color: #26233a;
+.modules-left,
+.modules-center,
+.modules-right {
+  border-radius: 12px;
+  background-color: @primary-bg;
+  padding: 2px 6px;
+}
+
+window#waybar.hidden {
+  opacity: 0.5;
+}
+
+#workspaces button {
+  all: initial;
+  /* Remove GTK theme values (waybar #1351) */
+  min-width: 0;
+  /* Fix weird spacing in materia (waybar #450) */
+  box-shadow: inset 0 -3px transparent;
+  /* Use box-shadow instead of border so the text isn't offset */
+  padding: 2px 6px;
   border-radius: 4px;
-  padding: 8px;
+
+  background-color: @surface;
+  color: @text;
+}
+
+#workspaces button.active {
+  color: @text;
+  background-color: @primary-bg;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  opacity: 0.8;
+}
+
+#workspaces button.urgent {
+  background-color: @love;
 }
 
 #backlight,
@@ -26,70 +85,41 @@ tooltip {
 #wireplumber,
 #pulseaudio,
 #bluetooth,
-#custom-menu,
-#custom-power,
 #custom-weather,
-#custom-updater,
-#custom-keybindings,
 #custom-notification,
 #idle_inhibitor,
 #temperature,
-#custom-cycle_wall,
 #workspaces,
-#network,
 #submap,
-#window {
-  border-radius: 6px;
-  padding: 0px 12px;
-  margin: 0 2px;
-  background-color: #191724;
-  /*border: 2px solid #1e1e2e */
-  font-family: "FiraCode Nerd Font";
-  font-size: 12px;
+#network {
+  border-radius: 9px;
+  margin: 6px 3px;
+  padding: 6px 12px;
+
+  background-color: @surface;
+  color: @text;
 }
 
 #submap {
-  background-color: #eb6f92;
-  color: #e0def4;
+  background-color: @love;
 }
 
 #window {
-  color: #cad3f5;
-}
-
-#temperature {
-  color: #eb6f92;
-}
-
-#bluetooth {
-  color: #89b4fa;
-}
-
-#backlight {
-  color: #94e2d5;
-}
-
-#custom-updater {
-  color: #eb6f92;
-}
-
-#wireplumber {
-  color: #f9e2af;
-}
-
-#battery {
-  color: #f9e2af;
+  background-color: @transparent;
 }
 
 @keyframes blink {
   to {
-    color: #000000;
+    background-color: @love;
+    color: @primary-bg;
   }
 }
 
-#battery.critical:not(.charging) {
-  background-color: #f38ba8;
-  color: #f38ba8;
+#battery.warning:not(.charging),
+#battery.critical:not(.charging),
+#battery.urgent:not(.charging) {
+  background-color: @love;
+  color: @surface;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -97,86 +127,23 @@ tooltip {
   animation-direction: alternate;
 }
 
-#clock {
-  color: #a6e3a1;
+#battery.charging {
+  background-color: @surface;
+  color: @text;
+  animation: none;
 }
 
-#cpu {
-  color: #89dceb;
-}
-
-#memory {
-  color: #fab387;
-}
-
-#disk {
-  color: #cba6f7;
-}
-
-#tray {
-  color: #89dceb;
-}
-
-#tray>.passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray>.needs-attention {
-  -gtk-icon-effect: highlight;
-}
-
-#tray {
-  background-color: #191724;
-}
-
-#workspaces button {
-  all: initial;
-  color: #494d64;
-  padding: 4px 8px;
-  transition: 0.25s linear;
-}
-
-#workspaces button:first-child {
-  border-radius: 10px 0 0 10px;
-}
-
-#workspaces button:last-child {
-  border-radius: 0 10px 10px 0;
-}
-
-#workspaces button:only-child {
+tooltip {
   border-radius: 10px;
+  padding: 15px;
+
+  background-color: @transparent;
 }
 
-#workspaces button.active {
-  color: #cad3f5;
-}
+tooltip label {
+  padding: 5px;
+  border-radius: 10px;
 
-#custom-weather {
-  color: #cba6f7;
-}
-
-#custom-cycle_wall {
-  color: #eed49f;
-}
-
-#pulseaudio {
-  color: #fab387;
-}
-
-#pulseaudio.bluetooth {
-  color: #c6a0f6;
-}
-
-#pulseaudio.muted {
-  color: #cad3f5;
-}
-
-#network {
-  color: #b4befe;
-}
-
-#network.disconnected,
-#network.disabled {
-  color: #cad3f5;
+  background-color: @surface;
+  color: @text;
 }

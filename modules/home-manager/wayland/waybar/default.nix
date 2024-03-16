@@ -12,7 +12,6 @@ let
     margin-right = 5;
     margin-top = 5;
     margin-bottom = 0;
-    height = 35;
     modules-left = [
       "clock"
       "cpu"
@@ -33,7 +32,7 @@ let
       "custom/notification"
       "tray"
     ];
-    "wlr/workspaces" = {
+    "hyprland/workspaces" = {
       format = "{icon}";
       on-click = "activate";
       format-icons = {
@@ -48,10 +47,13 @@ let
         "9" = "9";
         "10" = "10";
         urgent = "";
-        active = "";
-        default = "";
+        # active = "";
+        # default = "";
       };
-      persistent_workspaces = "{'1','2','3','4','5'}";
+      persistent-workspaces = {
+        "DP-1" = [ 2 3 ];
+        "DP-2" = [ 1 ];
+      };
       on-scroll-down = "hyprctl dispatch workspace e-1";
       on-scroll-up = "hyprctl dispatch workspace e+1";
       all-outputs = false;
@@ -62,11 +64,11 @@ let
     };
     disk = {
       interval = 120;
-      format = "<span font='15' rise='-1pt'>󰋊</span> {free}";
+      format = "<span font='14' rise='-1pt'>󰋊</span> {free}";
     };
     memory = {
       interval = 10;
-      format = "<span font='13' rise='-1pt'></span> {percentage}%";
+      format = "<span font='12' rise='0pt'></span> {percentage}%";
     };
     "idle_inhibitor" = {
       format = "{icon}";
@@ -82,13 +84,13 @@ let
       tooltip = false;
       format = "{icon} {}";
       format-icons = {
-        notification = "<span foreground='red'><sup></sup></span>";
+        notification = "<span font='8' foreground='red'></span>";
         none = "";
-        dnd-notification = "<span foreground='red'><sup></sup></span>";
+        dnd-notification = "<span font='8' foreground='red'></span>";
         dnd-none = "";
-        inhibited-notification = "<span foreground='red'><sup></sup></span>";
+        inhibited-notification = "<span font='8' foreground='red'></span>";
         inhibited-none = "";
-        dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+        dnd-inhibited-notification = "<span font='8' foreground='red'></span>";
         dnd-inhibited-none = "";
       };
       return-type = "json";
@@ -192,7 +194,6 @@ let
     margin-right = 5;
     margin-top = 5;
     margin-bottom = 0;
-    height = 35;
     modules-left = [
       "clock"
       "battery"
@@ -243,7 +244,7 @@ let
       on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
       escape = true;
     };
-    "wlr/workspaces" = {
+    "hyprland/workspaces" = {
       format = "{icon}";
       on-click = "activate";
       format-icons = {
@@ -258,10 +259,9 @@ let
         "9" = "9";
         "10" = "10";
         urgent = "";
-        active = "";
-        default = "";
+        # active = "";
+        # default = "";
       };
-      persistent_workspaces = "{'1','2','3','4','5'}";
       on-scroll-down = "hyprctl dispatch workspace e-1";
       on-scroll-up = "hyprctl dispatch workspace e+1";
       all-outputs = false;
@@ -304,11 +304,11 @@ let
     };
     disk = {
       interval = 120;
-      format = "<span font='15' rise='-1pt'>󰋊</span> {free}";
+      format = "<span font='14' rise='-1pt'>󰋊</span> {free}";
     };
     memory = {
       interval = 10;
-      format = "<span font='13' rise='-1pt'></span> {percentage}%";
+      format = "<span font='13' rise='-2pt'></span> {percentage}%";
     };
     "hyprland/window" = {
       format = "{}";
@@ -406,9 +406,9 @@ let
     margin-right = 5;
     margin-top = 5;
     margin-bottom = 0;
-    height = 35;
     modules-left = [
       "clock"
+      "hyprland/workspaces"
     ];
     modules-center = [
       "hyprland/window"
@@ -428,7 +428,7 @@ let
       on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
     };
     tray = {
-      "icon-size" = 16;
+      icon-size = 16;
       spacing = 10;
     };
     clock = {
@@ -438,6 +438,32 @@ let
       format = "{:%H:%M | %a %b %d}";
       "format-alt" = " {:%a %b %d}";
       "tooltip-format" = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+    };
+    "hyprland/workspaces" = {
+      format = "{icon}";
+      on-click = "activate";
+      format-icons = {
+        "1" = "1";
+        "2" = "2";
+        "3" = "3";
+        "4" = "4";
+        "5" = "5";
+        "6" = "6";
+        "7" = "7";
+        "8" = "8";
+        "9" = "9";
+        "10" = "10";
+        urgent = "";
+        # active = "";
+        # default = "";
+      };
+      persistent-workspaces = {
+        "DP-1" = [ 2 3 ];
+        "DP-2" = [ 1 ];
+      };
+      on-scroll-down = "hyprctl dispatch workspace e-1";
+      on-scroll-up = "hyprctl dispatch workspace e+1";
+      all-outputs = false;
     };
   };
 
