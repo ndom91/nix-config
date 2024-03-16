@@ -1,4 +1,4 @@
-{ rose-pine-cursor, config, unstablePkgs, inputs, pkgs, ... }:
+{ rose-pine-cursor, config, lib, unstablePkgs, inputs, pkgs, ... }:
 {
   imports = with rose-pine-cursor pkgs inputs; [
     ./hyprland/default.nix
@@ -36,10 +36,17 @@
 
   services = {
     cliphist.enable = true;
-    swayosd = {
-      package = unstablePkgs.swayosd;
-      enable = true;
-    };
+    # swayosd = {
+    #   package = unstablePkgs.swayosd;
+    #   enable = true;
+    #   override = {
+    #     config = {
+    #       startup = [
+    #         { command = lib.getExe' pkgs.swayosd "swayosd-server"; }
+    #       ];
+    #     };
+    #   };
+    # };
     wlsunset = {
       enable = true;
       latitude = "52.52";
@@ -53,15 +60,15 @@
       enable = true;
       timeouts = [
         {
-          timeout = 295;
+          timeout = 595;
           command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
         }
         {
-          timeout = 300;
+          timeout = 600;
           command = "${config.programs.swaylock.package}/bin/swaylock";
         }
         {
-          timeout = 360;
+          timeout = 660;
           command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
           resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
         }
@@ -89,7 +96,8 @@
     wf-recorder
     wl-clipboard
     wlr-randr
-    # wlsunset
+    wev
+    unstablePkgs.swayosd
 
     # Screenshot
     grim

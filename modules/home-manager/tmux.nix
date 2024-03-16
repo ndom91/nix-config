@@ -83,8 +83,8 @@ in
     extraConfig = ''
       # tmux-window-name
       set -g @tmux_window_name_log_level "'DEBUG'"
-      # set -g @tmux_window_name_substitute_sets "[('/home/${config.home.username}/.nix-profile/bin/(.+) --.*', '\\g<1>')]"
-      # set -g @tmux_window_name_dir_programs "['nvim', 'vim', 'vi', 'git', '/home/${config.home.username}/.nix-profile/bin/nvim']"
+      set -g @tmux_window_name_substitute_sets "[('/home/${config.home.username}/.nix-profile/bin/(.+) --.*', '\\g<1>')]"
+      set -g @tmux_window_name_dir_programs "['nvim', 'vim', 'vi', 'git', '/home/${config.home.username}/.nix-profile/bin/nvim']"
 
       # Quick escape back to insert mode in nvim
       set -sg escape-time 10

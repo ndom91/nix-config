@@ -29,6 +29,9 @@
     ];
 
     settings = {
+      debug = {
+        disable_logs = true;
+      };
       xwayland = {
         force_zero_scaling = true;
       };
@@ -45,14 +48,17 @@
         accel_profile = "adaptive";
         # sensitivity = 0;
       };
+      exec = [
+        "${unstablePkgs.swayosd}/bin/swayosd-server"
+      ];
       exec-once = [
         # "mkchromecast -t"
         "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
-        "blueberry-tray"
-        "swaybg -m fill -i ~/.config/hypr/wallpaper.png"
+        "${pkgs.blueberry}/bin/blueberry-tray"
+        "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
-        "xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
+        "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         # "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
       general = {
@@ -313,6 +319,10 @@
         ",XF86AudioNext, exec, playerctl next"
         ",XF86AudioPrev, exec, playerctl previous"
         ",XF86AudioStop, exec, playerctl stop"
+
+        ",code:115, exec, swayosd-client --output-volume raise"
+        ",code:114, exec, swayosd-client --output-volume lower"
+        ",code:113, exec, swayosd-client --output-volume mute-toggle"
 
         # SwayOSD + AudioControl
         ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
