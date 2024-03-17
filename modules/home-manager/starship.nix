@@ -25,13 +25,11 @@
 
       directory = {
         truncation_length = 2;
+        truncate_to_repo = false;
+        style = "#d5a8e3";
       };
 
-      truncate_to_repo = false;
-      style = "#d5a8e3";
-
       character = {
-
         success_symbol = "[▲](bright-pink)";
         error_symbol = "[▼](bright-red)";
         vicmd_symbol = "[❮](green)";
@@ -73,7 +71,7 @@
       nodejs = {
         format = "[$symbol($version)]($style) ";
         style = "#88C0D0";
-        version_format = "${raw}";
+        version_format = "\${raw}";
       };
 
       aws = {
