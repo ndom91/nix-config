@@ -15,7 +15,7 @@
     nvddiff = "nvd diff $(ls -d  /nix/var/nix/profiles/system-*-link | tail -2 | awk '{ print $1 }' | xargs)";
     nupdate = "nix flake lock --update-input ";
     # nix hm
-    hmswitch = "home-manager switch";
+    hmswitch = "home-manager switch --flake /etc/nixos";
     "," = "comma";
 
     # Nix stuff. Inspired by: 
