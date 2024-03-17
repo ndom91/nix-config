@@ -73,7 +73,6 @@
       source = ./../../dotfiles/fonts;
     };
 
-    # ".config/starship.toml".source = ../../dotfiles/starship.toml;
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
     # Still broken in sddm current theme :(
@@ -120,7 +119,6 @@
   #   package = pkgs.nix-index;
   # };
 
-  # programs.starship.enable = true;
   programs.home-manager.enable = true;
   programs.bash.enable = true;
   programs.zoxide = {

@@ -149,10 +149,29 @@ in
     # desktopManager.gnome.enable = false;
   };
 
+  # Hyprland swaynotificationcenter service
+  systemd.user.units.swaync.enable = true;
+
   # systemd services
   systemd.services.systemd-udevd.restartIfChanged = false;
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.systemd-networkd-wait-online.enable = false;
+
+  # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
+  # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
+  systemd.user.extraConfig = ''
+    DefaultLimitNOFILE=524288
+  '';
+  systemd.extraConfig = ''
+    DefaultLimitNOFILE=524288
+  '';
+
+  # SuspendEstimationSec defeaults to 1h; 
+  # HibernateDelaySec defaults to 2h
+  # See: https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html#Description
+  systemd.sleep.extraConfig = ''
+    AllowSuspendThenHibernate=yes
+  '';
 
   sound = {
     enable = false;
@@ -169,6 +188,10 @@ in
         auth include login
       '';
     };
+    pki.certificateFiles = [
+      ./../../dotfiles/certs/puff.lan.crt
+      ./../../dotfiles/certs/nextdns.crt
+    ];
   };
 
   xdg.portal = {
@@ -195,14 +218,14 @@ in
 
     # Intel Hardware Acceleration
     opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
       extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl ];
     };
-    # opengl.enable = true;
-    # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
 
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
-
 
   users.users.ndo = {
     isNormalUser = true;
@@ -214,7 +237,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs; };
+    extraSpecialArgs = { inherit fira-sans-nerd-font nix-colors rose-pine-cursor inputs unstablePkgs; };
     # useUserPackages = true;
     useGlobalPkgs = true;
     users = {
@@ -235,7 +258,6 @@ in
         ];
         emoji = [
           "Noto Color Emoji"
-
         ];
       };
     };
@@ -273,6 +295,7 @@ in
     nodePackages.wrangler
   ];
 
+  # System Services
   services = {
     openssh = {
       enable = true;
@@ -310,6 +333,20 @@ in
     fstrim.enable = true;
     smartd.enable = true;
     irqbalance.enable = true;
+
+    protonvpn = {
+      enable = true;
+      autostart = false;
+      interface = {
+        name = "pvpn-wg-nl256";
+        dns.enable = false;
+        privateKeyFile = config.age.secrets.pvpn.path;
+      };
+      endpoint = {
+        publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
+        ip = "77.247.178.58";
+      };
+    };
 
     # Laptop Specific
     logind = {
