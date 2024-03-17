@@ -85,96 +85,98 @@
         };
       };
       colors = {
-        # transparent_background_colors = true;
         draw_bold_text_with_bright_colors = true;
         primary = {
-          background = "#11111B"; # base
-          foreground = "#CDD6F4"; # text
+          background = "#11111B";
+          foreground = "#e0def4";
+
           # Bright and dim foreground colors
-          dim_foreground = "#CDD6F4"; # text
-          bright_foreground = "#CDD6F4"; # text
+          dim_foreground = "#e0def4";
+          bright_foreground = "#e0def4";
         };
 
         # Cursor colors
         cursor = {
-          text = "#11111B"; # base
-          cursor = "#CDD6F4"; # text
+          text = "#191724";
+          cursor = "#e0def4";
         };
         vi_mode_cursor = {
-          text = "#11111B"; # base
-          cursor = "#B4BEFE"; # lavender
+          text = "#191724";
+          cursor = "#908caa";
         };
 
         # Search colors
         search = {
           matches = {
-            foreground = "#11111B"; # base
-            background = "#A6ADC8"; # subtext0
+            foreground = "#191724";
+            background = "#908caa";
           };
           focused_match = {
-            foreground = "#11111B"; # base
-            # background = "#A6E3A1"; # green
-            background = "#F5C2E7"; # pink
+            foreground = "#191724";
+            # background = "#9ccfd8";
+            background = "#F38BA8";
           };
           footer_bar = {
-            foreground = "#11111B"; # base
-            background = "#A6ADC8"; # subtext0
+            foreground = "#191724";
+            background = "#908caa";
           };
         };
 
         # Keyboard regex hints
         hints = {
           start = {
-            foreground = "#11111B"; # base
-            background = "#F9E2AF"; # yellow
+            foreground = "#191724";
+            background = "#f6c177";
           };
           end = {
-            foreground = "#11111B"; # base
-            background = "#A6ADC8"; # subtext0
+            foreground = "#191724";
+            background = "#908caa";
           };
         };
 
         # Selection colors
         selection = {
-          text = "#11111B"; # base
-          background = "#F5E0DC"; # rosewater
+          text = "#191724";
+          background = "#ebbcba";
         };
 
         # Normal colors
+        # Rose Pine - https://rosepinetheme.com/palette/ingredients/
         normal = {
-          black = "#45475A"; # surface1
-          red = "#F38BA8"; # red
-          green = "#286983"; # pine
-          yellow = "#F9E2AF"; # yellow
-          blue = "#89B4FA"; # blue
-          magenta = "#F5C2E7"; # pink
-          cyan = "#94E2D5"; # teal
-          white = "#BAC2DE"; # subtext1
+          black = "#191724"; # Base
+          red = "#F38BA8"; # Love
+          green = "#31748f"; # Pine
+          yellow = "#f6c177"; # Gold
+          blue = "#6e6a86"; # Muted
+          magenta = "#c4a7e7"; # Iris
+          cyan = "#9ccfd8"; # Foam
+          white = "#e0def4"; # Text
         };
 
         # Bright colors
+        # Rose Pine Moon - https://rosepinetheme.com/palette/ingredients/
         bright = {
-          black = "#585B70"; # surface2
-          red = "#F38BA8"; # red
-          green = "#3e8fb0"; # pine
-          yellow = "#F9E2AF"; # yellow
-          blue = "#89B4FA"; # blue
-          magenta = "#F5C2E7"; # pink
-          cyan = "#94E2D5"; # teal
-          white = "#A6ADC8"; # subtext0
+          black = "#232136"; # Base
+          red = "#eb6f92"; # Love
+          green = "#3e8fb0"; # Pine
+          yellow = "#f6c177"; # Gold
+          blue = "#6e6a86"; # Muted
+          magenta = "#c4a7e7"; # Iris
+          cyan = "#9ccfd8"; # Foam
+          white = "#e0def4"; # Text
         };
 
         # Dim colors
-        dim = {
-          black = "#45475A"; # surface1
-          red = "#F38BA8"; # red
-          green = "#31748f"; # pine
-          yellow = "#F9E2AF"; # yellow
-          blue = "#89B4FA"; # blue
-          magenta = "#F5C2E7"; # pink
-          cyan = "#94E2D5"; # teal
-          white = "#BAC2DE"; # subtext1
-        };
+        # dim = {
+        #   black = "#45475A";
+        #   red = "#F38BA8";
+        #   green = "#31748f";
+        #   yellow = "#F9E2AF";
+        #   blue = "#89B4FA";
+        #   magenta = "#F5C2E7";
+        #   cyan = "#94E2D5";
+        #   white = "#BAC2DE";
+        # };
       };
     };
   };
