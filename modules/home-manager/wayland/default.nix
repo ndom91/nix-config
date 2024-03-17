@@ -97,6 +97,7 @@
     wl-clipboard
     wlr-randr
     wev
+    evtest
     unstablePkgs.swayosd
 
     # Screenshot
