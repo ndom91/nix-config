@@ -1,4 +1,4 @@
-<img align="right" src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake.svg" width="196px" />
+<img align="right" src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake.svg" width="128px" />
 
 # NixOS Configs
 
@@ -21,14 +21,10 @@ Some configured packages include:
 
 ## 📂 Directories
 
-- `modules/home-manager` - Configuration for my user(s) home dir and xdg config (`~/.config`) settings
-- `hosts/common` - Common system packages, system configs like shell aliases and tmux config
+- `flake.nix` - Entrypoint
+- `modules/home-manager` - User applications, configuration, and packages
+- `modules/nixos` - System-wide modules and configuration
 - `hosts/*` - Host specific configurations
-- `flake.nix` - Starting point for the flake
-
-## 📓 Notes
-
-- Hyprland-nix author - https://github.com/spikespaz/dotfiles
 
 ## 📝 License
 
