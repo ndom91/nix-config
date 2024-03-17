@@ -6,7 +6,7 @@
 
 Consists mostly of a rebuild of my [dotfiles](https://github.com/ndom91/dotfiles) into a flake and a few other nixos related configurations.
 
-![](./dotfiles/desktop.png)
+![](./dotfiles/screenshot.png)
 
 ## 📦 Packages
 
