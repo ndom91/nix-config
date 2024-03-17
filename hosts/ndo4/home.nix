@@ -15,6 +15,7 @@
     ../../modules/home-manager/mimeApps.nix
     ../../modules/home-manager/gtk/default.nix
     ../../modules/home-manager/qt.nix
+    ../../modules/home-manager/starship.nix
     ../../modules/home-manager/neovim.nix
     ../../modules/home-manager/zathura.nix
     ../../modules/home-manager/wezterm.nix
@@ -72,7 +73,7 @@
       source = ./../../dotfiles/fonts;
     };
 
-    ".config/starship.toml".source = ../../dotfiles/starship.toml;
+    # ".config/starship.toml".source = ../../dotfiles/starship.toml;
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
     # Still broken in sddm current theme :(
@@ -119,7 +120,7 @@
   #   package = pkgs.nix-index;
   # };
 
-  programs.starship.enable = true;
+  # programs.starship.enable = true;
   programs.home-manager.enable = true;
   programs.bash.enable = true;
   programs.zoxide = {
