@@ -4,20 +4,9 @@
 
 ## 🏗️Overview
 
-Consists mostly of a rebuild of my [dotfiles](https://github.com/ndom91/dotfiles) into a flake and a few other nixos related configurations.
+This repository started off with my preexisting [dotfiles](https://github.com/ndom91/dotfiles) and then morphed into a flake containing the applications and configuration of all of my personal machines.
 
 ![](./dotfiles/screenshot.png)
-
-## 📦 Packages
-
-Some configured packages include:
-
-- hyprland
-- vivaldi
-- wezterm
-- slack
-- neovim
-- tmux
 
 ## 📂 Directories
 
