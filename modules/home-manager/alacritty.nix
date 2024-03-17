@@ -42,6 +42,20 @@
       #   }];
       # };
 
+      live_config_reload = true;
+
+      env = {
+        TERM = "alacritty";
+      };
+
+      scrolling = {
+        history = 100000;
+      };
+
+      selection = {
+        save_to_clipboard = true;
+      };
+
       key_bindings = [
         {
           action = "Paste";
@@ -58,8 +72,6 @@
         program = "bash";
         args = [ "-l" "-c" "tmux new-session" ];
       };
-      live_config_reload = true;
-      tabspaces = 2;
       window = {
         dynamic_title = true;
         opacity = 0.8;
@@ -73,6 +85,8 @@
         };
       };
       colors = {
+        # transparent_background_colors = true;
+        draw_bold_text_with_bright_colors = true;
         primary = {
           background = "#11111B"; # base
           foreground = "#CDD6F4"; # text
@@ -84,7 +98,7 @@
         # Cursor colors
         cursor = {
           text = "#11111B"; # base
-          cursor = "#F5E0DC"; # rosewater
+          cursor = "#CDD6F4"; # text
         };
         vi_mode_cursor = {
           text = "#11111B"; # base
@@ -118,59 +132,48 @@
             foreground = "#11111B"; # base
             background = "#A6ADC8"; # subtext0
           };
+        };
 
-          # Selection colors
-          selection = {
-            text = "#11111B"; # base
-            background = "#F5E0DC"; # rosewater
-          };
+        # Selection colors
+        selection = {
+          text = "#11111B"; # base
+          background = "#F5E0DC"; # rosewater
+        };
 
-          # Normal colors
-          normal = {
-            black = "#45475A"; # surface1
-            red = "#F38BA8"; # red
-            green = "#94E2D5"; # teal
-            yellow = "#F9E2AF"; # yellow
-            blue = "#89B4FA"; # blue
-            magenta = "#F5C2E7"; # pink
-            cyan = "#94E2D5"; # teal
-            white = "#BAC2DE"; # subtext1
-          };
+        # Normal colors
+        normal = {
+          black = "#45475A"; # surface1
+          red = "#F38BA8"; # red
+          green = "#286983"; # pine
+          yellow = "#F9E2AF"; # yellow
+          blue = "#89B4FA"; # blue
+          magenta = "#F5C2E7"; # pink
+          cyan = "#94E2D5"; # teal
+          white = "#BAC2DE"; # subtext1
+        };
 
-          # Bright colors
-          bright = {
-            black = "#585B70"; # surface2
-            red = "#F38BA8"; # red
-            green = "#94E2D5"; # teal
-            yellow = "#F9E2AF"; # yellow
-            blue = "#89B4FA"; # blue
-            magenta = "#F5C2E7"; # pink
-            cyan = "#94E2D5"; # teal
-            white = "#A6ADC8"; # subtext0
-          };
+        # Bright colors
+        bright = {
+          black = "#585B70"; # surface2
+          red = "#F38BA8"; # red
+          green = "#3e8fb0"; # pine
+          yellow = "#F9E2AF"; # yellow
+          blue = "#89B4FA"; # blue
+          magenta = "#F5C2E7"; # pink
+          cyan = "#94E2D5"; # teal
+          white = "#A6ADC8"; # subtext0
+        };
 
-          # Dim colors
-          dim = {
-            black = "#45475A"; # surface1
-            red = "#F38BA8"; # red
-            green = "#94E2D5"; # teal
-            yellow = "#F9E2AF"; # yellow
-            blue = "#89B4FA"; # blue
-            magenta = "#F5C2E7"; # pink
-            cyan = "#94E2D5"; # teal
-            white = "#BAC2DE"; # subtext1
-          };
-
-          indexed_colors = [
-            {
-              index = 16;
-              color = "#FAB387";
-            }
-            {
-              index = 17;
-              color = "#F5E0DC";
-            }
-          ];
+        # Dim colors
+        dim = {
+          black = "#45475A"; # surface1
+          red = "#F38BA8"; # red
+          green = "#31748f"; # pine
+          yellow = "#F9E2AF"; # yellow
+          blue = "#89B4FA"; # blue
+          magenta = "#F5C2E7"; # pink
+          cyan = "#94E2D5"; # teal
+          white = "#BAC2DE"; # subtext1
         };
       };
     };
