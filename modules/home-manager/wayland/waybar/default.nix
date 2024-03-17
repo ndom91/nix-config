@@ -8,9 +8,9 @@ let
     position = "top";
     fixed-center = true;
     ipc = true;
-    margin-left = 5;
-    margin-right = 5;
-    margin-top = 5;
+    margin-left = 20;
+    margin-right = 20;
+    margin-top = 10;
     margin-bottom = 0;
     modules-left = [
       "clock"
@@ -190,9 +190,9 @@ let
     position = "top";
     fixed-center = true;
     ipc = true;
-    margin-left = 5;
-    margin-right = 5;
-    margin-top = 5;
+    margin-left = 20;
+    margin-right = 20;
+    margin-top = 10;
     margin-bottom = 0;
     modules-left = [
       "clock"
@@ -402,9 +402,9 @@ let
     position = "top";
     fixed-center = true;
     ipc = true;
-    margin-left = 5;
-    margin-right = 5;
-    margin-top = 5;
+    margin-left = 20;
+    margin-right = 20;
+    margin-top = 10;
     margin-bottom = 0;
     modules-left = [
       "clock"

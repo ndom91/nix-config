@@ -144,7 +144,7 @@
         animate_manual_resizes = true;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
-        focus_on_activate = true;
+        # focus_on_activate = true;
       };
       windowrule = [
         "float, file_progress"
@@ -298,10 +298,11 @@
         "$mainMod, L, movefocus, r"
         "$mainMod, K, movefocus, u"
         "$mainMod, J, movefocus, d"
-        "$mainMod SHIFT, H, movewindoworgroup, l"
-        "$mainMod SHIFT, L, movewindoworgroup, r"
-        "$mainMod SHIFT, K, movewindoworgroup, u"
-        "$mainMod SHIFT, J, movewindoworgroup, d"
+        "$mainMod SHIFT, H, movewindow, l"
+        "$mainMod SHIFT, L, movewindow, r"
+        "$mainMod SHIFT, K, movewindow, u"
+        "$mainMod SHIFT, J, movewindow, d"
+        # "$mainMod SHIFT, J, movewindoworgroup, d"
 
         # hy3 - Move focus with mainMod + arrow keys
         # "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
