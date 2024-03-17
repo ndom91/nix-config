@@ -316,6 +316,7 @@ in
       padding: 5px 10px;
       margin: 10px 10px 5px 10px;
       font-size: 1.5rem;
+      letter-spacing: -1px;
       font-weight: 300;
       border-radius: 5px;
     }
@@ -325,6 +326,7 @@ in
       color: #${palette.base05};
       text-shadow: none;
       background: #${palette.base00};
+      letter-spacing: 0px;
       box-shadow: none;
       border-radius: 5px;
       transition: all 300ms ease-in-out;
@@ -341,6 +343,7 @@ in
       margin: 10px 10px 5px 10px;
       border-radius: 5px;
       font-size: large;
+      letter-spacing: -1px;
       font-weight: 300;
       color: #${palette.base04};
     }

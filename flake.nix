@@ -17,6 +17,7 @@
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
     # };
+    # nix-gaming.url = "github:fufexan/nix-gaming";
 
     nix-colors.url = "github:misterio77/nix-colors";
     agenix = {
