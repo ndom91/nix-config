@@ -16,7 +16,7 @@
 
         config.warn_about_missing_glyphs = false
 
-        config.enable_wayland = true
+        config.enable_wayland = false
 
         config.default_prog = { 'tmux', 'new-session' }
 

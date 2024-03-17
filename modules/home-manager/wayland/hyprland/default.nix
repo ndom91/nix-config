@@ -322,9 +322,9 @@
         ",XF86AudioPrev, exec, playerctl previous"
         ",XF86AudioStop, exec, playerctl stop"
 
-        ",code:115, exec, swayosd-client --output-volume raise"
-        ",code:114, exec, swayosd-client --output-volume lower"
-        ",code:113, exec, swayosd-client --output-volume mute-toggle"
+        # ",code:115, exec, swayosd-client --output-volume raise"
+        # ",code:114, exec, swayosd-client --output-volume lower"
+        # ",code:113, exec, swayosd-client --output-volume mute-toggle"
 
         # SwayOSD + AudioControl
         ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
