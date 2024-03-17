@@ -62,7 +62,7 @@ in
 
   home.file.".config/swaync/style.css".text = ''
      * {
-         font-family: FiraSans Nerd Font;
+       font-family: FiraSans Nerd Font;
      }
 
      /*
@@ -100,46 +100,46 @@ in
      }
 
      .notification-row {
-         outline: none;
-         margin: 10px;
-         font-weight: 300;
-         padding: 0;
-         border: none;
-         background: transparent;
-         border-top-right-radius: 5px;
-         border-top-left-radius: 5px;
-         border-bottom-right-radius: 5px;
-         border-bottom-left-radius: 5px;
+       outline: none;
+       margin: 10px;
+       font-weight: 300;
+       padding: 0;
+       border: none;
+       background: transparent;
+       border-top-right-radius: 5px;
+       border-top-left-radius: 5px;
+       border-bottom-right-radius: 5px;
+       border-bottom-left-radius: 5px;
      }
 
      .notification {
-         background: transparent;
-         box-shadow: none;
-         outline: none;
-         padding: 0;
-         border: none;
-         margin: 0px;
+       background: transparent;
+       box-shadow: none;
+       outline: none;
+       padding: 0;
+       border: none;
+       margin: 0px;
      }
 
      .notification-background {
-         background: transparent;
-         border: none;
-         outline: none;
+       background: transparent;
+       border: none;
+       outline: none;
      }
 
      .notification-default-action,
      .notification-content {
-         background: #${palette.base01};
-         outline: none;
-         padding: 10px;
-         font-weight: 300;
-         border: none;
-         box-shadow: none;
-         border-top-right-radius: 5px;
-         border-top-left-radius: 5px;
-         border-bottom-right-radius: 5px;
-         border-bottom-left-radius: 5px;
-         margin: 0;
+       background: #${palette.base01};
+       outline: none;
+       padding: 10px;
+       font-weight: 300;
+       border: none;
+       box-shadow: none;
+       border-top-right-radius: 5px;
+       border-top-left-radius: 5px;
+       border-bottom-right-radius: 5px;
+       border-bottom-left-radius: 5px;
+       margin: 0;
      }
 
      /* Broken */
@@ -152,59 +152,59 @@ in
 
      .notification-row:hover .notification-default-action,
      .notification-row:hover .notification-content {
-         border-top-right-radius: 5px;
-         border-top-left-radius: 5px;
+       border-top-right-radius: 5px;
+       border-top-left-radius: 5px;
      }
 
      .notification:hover,
      .notification-background:hover,
      .notification-default-action:hover,
      .notification-content:hover {
-         border-top-right-radius: 5px;
-         border-top-left-radius: 5px;
+       border-top-right-radius: 5px;
+       border-top-left-radius: 5px;
      }
 
      .close-button {
-         background: #${palette.base0D};
-         color: #${palette.base00};
-         text-shadow: none;
-         padding: 0;
-         border-radius: 5px;
-         margin-top: 5px;
-         margin-right: 5px;
+       background: #${palette.base0D};
+       color: #${palette.base00};
+       text-shadow: none;
+       padding: 0;
+       border-radius: 5px;
+       margin-top: 5px;
+       margin-right: 5px;
      }
 
      .close-button:hover {
-         box-shadow: none;
-         background: #${palette.base08};
-         transition: all 300ms ease-in-out;
-         border: none;
+       box-shadow: none;
+       background: #${palette.base08};
+       transition: all 300ms ease-in-out;
+       border: none;
      }
 
      .notification-action {
-         border: none;
-         outline: none;
-         background: #${palette.base00};
-         opacity: 0.9;
-         transition: all 300ms ease-in-out;
+       border: none;
+       outline: none;
+       background: #${palette.base00};
+       opacity: 0.9;
+       transition: all 300ms ease-in-out;
      }
 
      .notification-action:hover {
-         color: #${palette.base0D};
-         background: #${palette.base01};
+       color: #${palette.base0D};
+       background: #${palette.base01};
      }
 
      .notification-action:first-child {
-         border-bottom-left-radius: 5px;
-         border: none;
-         border-image-width: 0;
-         box-shadow: none;
+       border-bottom-left-radius: 5px;
+       border: none;
+       border-image-width: 0;
+       box-shadow: none;
      }
 
      .notification-action:last-child {
-         border-bottom-right-radius: 5px;
-         border: none;
-         box-shadow: none;
+       border-bottom-right-radius: 5px;
+       border: none;
+       box-shadow: none;
      }
     
      .blank-window {
@@ -217,246 +217,218 @@ in
      }
 
     .floating-notifications  .notification {
-         box-shadow: none;
+       box-shadow: none;
      }
 
      .inline-reply {
-         margin-top: 8px;
+       margin-top: 8px;
      }
 
      .inline-reply-entry {
-         background: #${palette.base00};
-         color: #${palette.base05};
-         caret-color: #${palette.base05};
-         border-radius: 5px;
+       background: #${palette.base00};
+       color: #${palette.base05};
+       caret-color: #${palette.base05};
+       border-radius: 5px;
      }
 
      .inline-reply-button {
-         margin-left: 4px;
-         background: #${palette.base00};
-         border-radius: 5px;
-         color: #${palette.base05};
+       margin-left: 4px;
+       background: #${palette.base00};
+       border-radius: 5px;
+       color: #${palette.base05};
      }
 
      .inline-reply-button:disabled {
-         background: initial;
-         color: #${palette.base03};
-         border: none;
+       background: initial;
+       color: #${palette.base03};
+       border: none;
      }
 
      .inline-reply-button:hover {
-         background: #${palette.base00};
+       background: #${palette.base00};
      }
 
      .body-image {
-         margin-top: 6px;
-         background-color: #${palette.base05};
-         border-radius: 5px;
+       margin-top: 6px;
+       background-color: #${palette.base05};
+       border-radius: 5px;
      }
 
      .summary {
-         font-size: 16px;
-         font-weight: 400;
-         background: transparent;
-         color: #${palette.base06};
-         text-shadow: none;
+       font-size: 16px;
+       font-weight: 400;
+       background: transparent;
+       color: #${palette.base06};
+       text-shadow: none;
      }
 
      .time {
-         font-size: 16px;
-         font-weight: 400;
-         background: transparent;
-         color: #${palette.base05};
-         text-shadow: none;
-         margin-right: 18px;
+       font-size: 16px;
+       font-weight: 400;
+       background: transparent;
+       color: #${palette.base05};
+       text-shadow: none;
+       margin-right: 18px;
      }
 
      .body {
-         font-size: 15px;
-         font-weight: 300;
-         background: transparent;
-         color: #${palette.base05};
-         text-shadow: none;
+       font-size: 15px;
+       font-weight: 300;
+       background: transparent;
+       color: #${palette.base05};
+       text-shadow: none;
      }
 
      .control-center {
-         background: #${palette.base00};
-         border: 1px solid #${palette.base01};
-         box-shadow:
-             0 3px 2px -2px #00000099,
-             0 7px 5px -2px #00000099,
-             0 12px 10px -2px #00000099,
-             0 22px 18px -2px #00000099,
-             0 41px 33px -2px #00000099,
-             0 100px 80px -2px #00000099;
-         border-radius: 5px;
+       background: #${palette.base00};
+       border: 1px solid #${palette.base01};
+       box-shadow:
+           0 3px 2px -2px #00000099,
+           0 7px 5px -2px #00000099,
+           0 12px 10px -2px #00000099,
+           0 22px 18px -2px #00000099,
+           0 41px 33px -2px #00000099,
+           0 100px 80px -2px #00000099;
+       border-radius: 5px;
      }
 
      .control-center-list {
-         background: transparent;
+       background: transparent;
      }
 
      .control-center-list-placeholder {
-         opacity: .5;
+       opacity: .5;
      }
 
      .floating-notifications {
-         background: transparent;
+       background: transparent;
      }
 
      .blank-window {
-         background: alpha(black, 0);
+       background: alpha(black, 0);
      }
 
      .widget-title {
-         color: #${palette.base04};
-         background: #${palette.base00};
-         padding: 5px 10px;
-         margin: 10px 10px 5px 10px;
-         font-weight: 300;
-         font-size: 1.5rem;
-         border-radius: 5px;
+       color: #${palette.base04};
+       background: #${palette.base00};
+       padding: 5px 10px;
+       margin: 10px 10px 5px 10px;
+       font-size: 1.5rem;
+       border-radius: 5px;
      }
 
      .widget-title>button {
-         font-size: 1rem;
-         color: #${palette.base05};
-         text-shadow: none;
-         background: #${palette.base00};
-         box-shadow: none;
-         border-radius: 5px;
-         transition: all 300ms ease-in-out;
+       font-size: 1rem;
+       color: #${palette.base05};
+       text-shadow: none;
+       background: #${palette.base00};
+       box-shadow: none;
+       border-radius: 5px;
+       transition: all 300ms ease-in-out;
      }
 
      .widget-title>button:hover {
-         background: #${palette.base08};
-         color: #${palette.base00};
+       background: #${palette.base08};
+       color: #${palette.base00};
      }
 
      .widget-dnd {
-         background: #${palette.base00};
-         padding: 5px 10px;
-         margin: 10px 10px 5px 10px;
-         border-radius: 5px;
-         font-size: large;
-         font-weight: 300;
-         color: #${palette.base04};
+       background: #${palette.base00};
+       padding: 5px 10px;
+       margin: 10px 10px 5px 10px;
+       border-radius: 5px;
+       font-size: large;
+       color: #${palette.base04};
      }
 
      .widget-dnd>switch {
-         border-radius: 5px;
-         background: #${palette.base0D};
-         transition: all 300ms ease-in-out;
+       border-radius: 5px;
+       background: #${palette.base0D};
+       transition: all 300ms ease-in-out;
      }
 
      .widget-dnd>switch:checked {
-         background: #${palette.base08};
-         border: 1px solid #${palette.base08};
+       background: #${palette.base08};
+       border: 1px solid #${palette.base08};
      }
 
      .widget-dnd>switch slider {
-         background: #${palette.base00};
-         border-radius: 5px;
+       background: #${palette.base00};
+       border-radius: 5px;
      }
 
      .widget-dnd>switch:checked slider {
-         background: #${palette.base00};
-         border-radius: 5px;
+       background: #${palette.base00};
+       border-radius: 5px;
      }
 
      .widget-label {
-         margin: 10px 10px 5px 10px;
+       margin: 10px 10px 5px 10px;
      }
 
      .widget-label>label {
-         font-size: 1rem;
-         color: #${palette.base05};
-     }
-
-     .widget-mpris {
-         color: #${palette.base05};
-         background: #${palette.base00};
-         padding: 5px 10px;
-         margin: 10px 10px 5px 10px;
-         border-radius: 5px;
-     }
-
-     .widget-mpris > box > button {
-         border-radius: 5px;
-     }
-
-     .widget-mpris-player {
-         padding: 5px 10px;
-         margin: 10px;
-     }
-
-     .widget-mpris-title {
-         font-weight: 700;
-         font-size: 1.25rem;
-     }
-
-     .widget-mpris-subtitle {
-         font-size: 1.1rem;
+       font-size: 1rem;
+       color: #${palette.base05};
      }
 
      .widget-buttons-grid {
-         font-size: x-large;
-         padding: 5px;
-         margin: 10px 10px 5px 10px;
-         border-radius: 5px;
-         background: #${palette.base01};
+       font-size: x-large;
+       padding: 5px;
+       margin: 10px 10px 5px 10px;
+       border-radius: 5px;
+       background: #${palette.base01};
      }
 
      .widget-buttons-grid>flowbox>flowboxchild>button {
-         margin: 3px;
-         background: #${palette.base00};
-         border-radius: 5px;
-         color: #${palette.base05};
+       margin: 3px;
+       background: #${palette.base00};
+       border-radius: 5px;
+       color: #${palette.base05};
      }
 
      .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-         background: rgba(122, 162, 247, 1);
-         color: #${palette.base00};
+       background: rgba(122, 162, 247, 1);
+       color: #${palette.base00};
      }
 
      .widget-menubar>box>.menu-button-bar>button {
-         border: none;
-         background: transparent;
+       border: none;
+       background: transparent;
      }
 
      .topbar-buttons>button {
-         border: none;
-         background: transparent;
+       border: none;
+       background: transparent;
      }
 
      .widget-volume {
-         background: #${palette.base01};
-         padding: 5px;
-         margin: 10px 10px 5px 10px;
-         border-radius: 5px;
-         font-size: x-large;
-         color: #${palette.base05};
+       background: #${palette.base01};
+       padding: 5px;
+       margin: 10px 10px 5px 10px;
+       border-radius: 5px;
+       font-size: x-large;
+       color: #${palette.base05};
      }
 
      .widget-volume>box>button {
-         background: #${palette.base0B};
-         border: none;
+       background: #${palette.base0B};
+       border: none;
      }
 
      .per-app-volume {
-         background-color: #${palette.base00};
-         padding: 4px 8px 8px;
-         margin: 0 8px 8px;
-         border-radius: 5px;
+       background-color: #${palette.base00};
+       padding: 4px 8px 8px;
+       margin: 0 8px 8px;
+       border-radius: 5px;
      }
 
      .widget-backlight {
-         background: #${palette.base01};
-         padding: 5px;
-         margin: 10px 10px 5px 10px;
-         border-radius: 5px;
-         font-size: x-large;
-         color: #${palette.base05};
+       background: #${palette.base01};
+       padding: 5px;
+       margin: 10px 10px 5px 10px;
+       border-radius: 5px;
+       font-size: x-large;
+       color: #${palette.base05};
      }
   '';
 }
