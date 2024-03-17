@@ -3,7 +3,6 @@
   environment.systemPackages = with pkgs; [
     # bottles # wine manager
     # zig
-    alacritty
     inputs.agenix.packages.x86_64-linux.default
     amdgpu_top
     nvtop-amd

@@ -22,10 +22,10 @@
     xwayland.enable = true;
 
     plugins = [
-      (unstablePkgs.hyprlandPlugins.hy3.override {
-        hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      })
-      inputs.hyprfocus.packages.${pkgs.system}.hyprfocus
+      # (unstablePkgs.hyprlandPlugins.hy3.override {
+      #   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      # })
+      # inputs.hyprfocus.packages.${pkgs.system}.hyprfocus
     ];
 
     settings = {
@@ -70,7 +70,8 @@
 
         no_focus_fallback = true;
 
-        layout = "hy3";
+        layout = "master";
+        # layout = "hy3";
         resize_on_border = true;
       };
       decoration = {
@@ -264,13 +265,14 @@
       ];
       bind = [
         # hy3
-        "$mainMod, G, hy3:makegroup, tab, force_ephemeral"
-        "$mainMod, Y, hy3:changegroup, opposite"
-        "$mainMod, Q, hy3:killactive,"
+        # "$mainMod, G, hy3:makegroup, tab, force_ephemeral"
+        # "$mainMod, Y, hy3:changegroup, opposite"
+        # "$mainMod, Q, hy3:killactive,"
+
         # "$mainMod, G, togglegroup,"
         # "$mainMod, U, changegroupactive,b"
         # "$mainMod, I, changegroupactive,f"
-        # "$mainMod, Q, killactive"
+        "$mainMod, Q, killactive"
         "CTRL SHIFT, L, exec, swaylock -f"
         "$mainMod, Return, exec, wezterm"
         "$mainMod SHIFT, R, exec, hyprctl reload"
@@ -292,24 +294,24 @@
         "CTRL SHIFT, Space, exec, swaync-client -C -sw"
 
         # Move focus with mainMod + arrow keys
-        # "$mainMod, H, movefocus, l"
-        # "$mainMod, L, movefocus, r"
-        # "$mainMod, K, movefocus, u"
-        # "$mainMod, J, movefocus, d"
-        # "$mainMod SHIFT, H, movewindoworgroup, l"
-        # "$mainMod SHIFT, L, movewindoworgroup, r"
-        # "$mainMod SHIFT, K, movewindoworgroup, u"
-        # "$mainMod SHIFT, J, movewindoworgroup, d"
+        "$mainMod, H, movefocus, l"
+        "$mainMod, L, movefocus, r"
+        "$mainMod, K, movefocus, u"
+        "$mainMod, J, movefocus, d"
+        "$mainMod SHIFT, H, movewindoworgroup, l"
+        "$mainMod SHIFT, L, movewindoworgroup, r"
+        "$mainMod SHIFT, K, movewindoworgroup, u"
+        "$mainMod SHIFT, J, movewindoworgroup, d"
 
         # hy3 - Move focus with mainMod + arrow keys
-        "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
-        "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
-        "$mainMod, K, hy3:movefocus, u"
-        "$mainMod, J, hy3:movefocus, d"
-        "$mainMod SHIFT, H, hy3:movewindow, l"
-        "$mainMod SHIFT, L, hy3:movewindow, r"
-        "$mainMod SHIFT, K, hy3:movewindow, u"
-        "$mainMod SHIFT, J, hy3:movewindow, d"
+        # "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
+        # "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
+        # "$mainMod, K, hy3:movefocus, u"
+        # "$mainMod, J, hy3:movefocus, d"
+        # "$mainMod SHIFT, H, hy3:movewindow, l"
+        # "$mainMod SHIFT, L, hy3:movewindow, r"
+        # "$mainMod SHIFT, K, hy3:movewindow, u"
+        # "$mainMod SHIFT, J, hy3:movewindow, d"
 
         # Special Keys
         ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
@@ -371,47 +373,47 @@
       submap = reset
 
       plugin {
-        hy3 {
-          tabs {
-            height = 5
-            padding = 8
-            render_text = false
-            col.active = rgb(8a8dcc)
-          }
-          autotile {
-            enable = true
-            trigger_width = 800
-            trigger_height = 500
-          }
-        }
-        hyprfocus {
-          enabled = yes
-
-          focus_animation = shrink
-
-          bezier = bezIn, 0.5,0.0,1.0,0.5
-          bezier = bezOut, 0.0,0.5,0.5,1.0
-
-          flash {
-              flash_opacity = 0.8
-
-              in_bezier = bezIn
-              in_speed = 0.5
-
-              out_bezier = bezOut
-              out_speed = 3
-          }
-
-          shrink {
-            shrink_percentage = 0.995
-
-            in_bezier = bezIn
-            in_speed = 0.25
-
-            out_bezier = bezOut
-            out_speed = 1
-          }
-        }
+        # hy3 {
+        #   tabs {
+        #     height = 5
+        #     padding = 8
+        #     render_text = false
+        #     col.active = rgb(8a8dcc)
+        #   }
+        #   autotile {
+        #     enable = true
+        #     trigger_width = 800
+        #     trigger_height = 500
+        #   }
+        # }
+        # hyprfocus {
+        #   enabled = yes
+        #
+        #   focus_animation = shrink
+        #
+        #   bezier = bezIn, 0.5,0.0,1.0,0.5
+        #   bezier = bezOut, 0.0,0.5,0.5,1.0
+        #
+        #   flash {
+        #       flash_opacity = 0.8
+        #
+        #       in_bezier = bezIn
+        #       in_speed = 0.5
+        #
+        #       out_bezier = bezOut
+        #       out_speed = 3
+        #   }
+        #
+        #   shrink {
+        #     shrink_percentage = 0.995
+        #
+        #     in_bezier = bezIn
+        #     in_speed = 0.25
+        #
+        #     out_bezier = bezOut
+        #     out_speed = 1
+        #   }
+        # }
       }
     '';
   };
