@@ -18,6 +18,7 @@
     difftastic
     docker-compose
     dua
+    dumb-init
     eza
     fd
     ffmpeg
