@@ -5,6 +5,8 @@
     unstablePkgs.nodePackages.pnpm
     unstablePkgs.bun
     openssl
+    pkg-config
+    vips # for sharp
     prisma-engines
   ];
 

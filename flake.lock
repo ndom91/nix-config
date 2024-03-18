@@ -595,11 +595,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1710432953,
-        "narHash": "sha256-Ag9TuId/SZ26W6gPDu2NkGXYViMNc9E1kQI45Bf4XeM=",
+        "lastModified": 1710761021,
+        "narHash": "sha256-LUz6AxDQb2iGEDRl3c1a2h02jqijt2IA5qXGGCuGtlU=",
         "owner": "ndom91",
         "repo": "rose-pine-hyprcursor",
-        "rev": "4412f93949ce10a94b302d4fb68b1238f89f61e9",
+        "rev": "4964ae8a189c9cacf842ba3f4c22263394aa295d",
         "type": "github"
       },
       "original": {

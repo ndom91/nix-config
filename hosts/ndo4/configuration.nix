@@ -324,10 +324,12 @@ in
     # gimp-devel
   ];
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    nodePackages.wrangler
-  ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+    ];
+  };
 
   # System Services
   services = {

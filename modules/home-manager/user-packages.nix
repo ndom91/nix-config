@@ -71,6 +71,8 @@
     fira
     noto-fonts-color-emoji
 
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
