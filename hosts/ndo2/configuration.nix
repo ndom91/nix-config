@@ -19,6 +19,7 @@ in
   age.identityPaths = [
     "${config.users.users.ndo.home}/.ssh/id_ndo4"
   ];
+  # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
   age.secrets.pvpn.file = ../../secrets/pvpn.age;
   age.secrets.ssh = {
     file = ./../../secrets/ssh.age;
@@ -100,6 +101,19 @@ in
       "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" "db.puff.lan" ];
       "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
     };
+    wireless.networks."c-base-crew" = {
+      hidden = true;
+      auth = ''
+        ssid="c-base-crew"
+        key_mgmt=WPA-EAP
+        eap=PEAP
+        identity="ndo"
+        ca_cert="/etc/ssl/certs/ca-bundie.crt"
+        subject_match="/CN=radius.cbrp3.c-base.org"
+        phase2="auth=MSCHAPV2"
+      '';
+    };
+    wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
   };
 
   time.timeZone = "Europe/Berlin";
@@ -334,19 +348,19 @@ in
     smartd.enable = true;
     irqbalance.enable = true;
 
-    protonvpn = {
-      enable = true;
-      autostart = false;
-      interface = {
-        name = "pvpn-wg-nl256";
-        dns.enable = false;
-        privateKeyFile = config.age.secrets.pvpn.path;
-      };
-      endpoint = {
-        publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
-        ip = "77.247.178.58";
-      };
-    };
+    # protonvpn = {
+    #   enable = true;
+    #   autostart = false;
+    #   interface = {
+    #     name = "pvpn-wg-nl256";
+    #     dns.enable = false;
+    #     privateKeyFile = config.age.secrets.pvpn.path;
+    #   };
+    #   endpoint = {
+    #     publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
+    #     ip = "77.247.178.58";
+    #   };
+    # };
 
     # Laptop Specific
     logind = {
