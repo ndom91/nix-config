@@ -94,11 +94,6 @@
           new_optimizations = true;
         };
       };
-      workspace = [
-        "1,monitor:DP-2,default:true"
-        "2,monitor:DP-1,default:true"
-        "3,monitor:DP-1"
-      ];
       group = {
         "col.border_active" = "rgb(11111b) rgb(181825) 45deg";
         "col.border_inactive" = "rgba(f5e0dc20)";

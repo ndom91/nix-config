@@ -63,6 +63,11 @@
         "DP-1,3440x1440,1080x480,1"
         "DP-2,1920x1080,0x0,1,transform,3"
       ];
+      workspace = lib.mkMerge [
+        "1,monitor:DP-2,default:true"
+        "2,monitor:DP-1,default:true"
+        "3,monitor:DP-1"
+      ];
     };
   };
 
