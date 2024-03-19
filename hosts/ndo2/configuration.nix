@@ -300,7 +300,7 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
-    fira-sans-nerd-font
+    # fira-sans-nerd-font
     # gimp-devel
   ];
 
