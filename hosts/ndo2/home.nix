@@ -58,9 +58,9 @@
   # ndo2 overrides
   wayland.windowManager.hyprland = {
     settings = {
-      monitor = lib.mkForce "eDP-1,preferred,auto,1.5";
+      monitor = lib.mkForce "eDP-1,preferred,auto,1.4";
       env = [
-        "GDK_SCALE,1.5"
+        "GDK_SCALE,1.4"
       ];
 
       # "device:MSFT0001:00 04F3:31EB Touchpad" = {

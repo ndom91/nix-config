@@ -116,10 +116,10 @@
             # background = "#9ccfd8";
             background = "#F38BA8";
           };
-          footer_bar = {
-            foreground = "#191724";
-            background = "#908caa";
-          };
+          # footer_bar = {
+          #   foreground = "#191724";
+          #   background = "#908caa";
+          # };
         };
 
         # Keyboard regex hints

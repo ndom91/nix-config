@@ -279,8 +279,8 @@ let
       design-capacity = false;
       states = {
         good = 95;
-        warning = 30;
-        critical = 15;
+        warning = 20;
+        critical = 10;
       };
       format = "{icon} {capacity}%";
       format-charging = " {capacity}%";
