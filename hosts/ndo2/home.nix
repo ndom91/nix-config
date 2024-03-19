@@ -58,16 +58,16 @@
   # ndo2 overrides
   wayland.windowManager.hyprland = {
     settings = {
-      monitor = lib.mkForce "eDP-1,preferred,auto,1.7";
+      monitor = lib.mkForce "eDP-1,preferred,auto,1.5";
       env = [
-        "GDK_SCALE,1.7"
+        "GDK_SCALE,1.5"
       ];
 
-      "device:MSFT0001:00 04F3:31EB Touchpad" = {
-        accel_profile = "adaptive";
-        natural_scroll = true;
-        sensitivity = 0.1;
-      };
+      # "device:MSFT0001:00 04F3:31EB Touchpad" = {
+      #   accel_profile = "adaptive";
+      #   natural_scroll = true;
+      #   sensitivity = 0.1;
+      # };
 
       gestures = {
         workspace_swipe = true;

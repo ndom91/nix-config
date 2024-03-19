@@ -20,7 +20,7 @@
     vlc
     unstablePkgs.protonvpn-gui
 
-    rustdesk
+    # rustdesk
     obsidian
 
     # System Tools
