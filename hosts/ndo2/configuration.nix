@@ -277,7 +277,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs; };
+    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font; };
     # useUserPackages = true;
     useGlobalPkgs = true;
     users = {
