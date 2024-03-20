@@ -338,6 +338,12 @@ in
       ];
     };
     command-not-found.enable = true;
+    fuse.userAllowOther = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    nix-index.enable = true;
   };
 
   # System Services
@@ -390,14 +396,6 @@ in
         publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
         ip = "77.247.178.58";
       };
-    };
-  };
-
-  programs = {
-    fuse.userAllowOther = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
     };
   };
 

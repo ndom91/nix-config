@@ -40,7 +40,7 @@
     libnotify
     lm_sensors
     lshw
-    mesa
+    unstablePkgs.mesa
     neofetch
     nmap
     ntfs3g
