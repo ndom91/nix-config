@@ -49,6 +49,7 @@
     pamixer
     pasystray
     pavucontrol
+    powertop
     python311Packages.requests
     qemu
     rclone

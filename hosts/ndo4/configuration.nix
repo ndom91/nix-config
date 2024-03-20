@@ -337,13 +337,11 @@ in
         stdenv.cc.cc.lib
       ];
     };
-    command-not-found.enable = true;
     fuse.userAllowOther = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
-    nix-index.enable = true;
   };
 
   # System Services
