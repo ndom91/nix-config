@@ -100,7 +100,12 @@
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "libvirtd" ];
-    openssh.authorizedKeys.keys = [ (builtins.readFile ../../modules/users/brian.pub) ];
+    openssh.authorizedKeys.keys = [
+      (builtins.readFile (builtins.fetchurl {
+        url = "https://github.com/ndom91.keys";
+        sha256 = "PfSNkhnNXUR9BTD2+0An2ugQAv2eYipQOFxQ3j8XD5Y=";
+      }))
+    ];
   };
 
 }
