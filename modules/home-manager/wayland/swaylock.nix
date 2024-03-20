@@ -11,7 +11,7 @@
       effect-scale = "0.75";
       effect-pixelate = "10";
       color = "1f1d2e80";
-      font = "Ubuntu Mono";
+      font = "Fira Sans Nerd Font";
       grace = "0";
       datestr = "%d.%m.%y";
       fade-in = "1";

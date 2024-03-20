@@ -20,7 +20,7 @@
     vlc
     unstablePkgs.protonvpn-gui
 
-    # rustdesk
+    rustdesk
     obsidian
 
     # System Tools
@@ -66,8 +66,8 @@
 
     # Fonts
     (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Ubuntu" "UbuntuMono" ]; })
-    # inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
-    # inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
+    inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
+    inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
     fira
     noto-fonts-color-emoji
 

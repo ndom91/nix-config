@@ -58,7 +58,7 @@
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
-        "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
+        # "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         # "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
       general = {

@@ -155,6 +155,7 @@ in
         wayland = true;
       };
     };
+    videoDrivers = [ "intel" ];
     xkb = {
       layout = "us";
       variant = "";
@@ -212,6 +213,13 @@ in
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
+  };
+
+  environment.variables = {
+    # VAAPI and VDPAU config for accelerated video.
+    # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
+    VDPAU_DRIVER = "i965";
+    LIBVA_DRIVER_NAME = "i965";
   };
 
   environment.etc = {
@@ -300,7 +308,7 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
-    # fira-sans-nerd-font
+    fira-sans-nerd-font
     # gimp-devel
   ];
 
