@@ -411,6 +411,7 @@ in
       extraConfig = "IdleAction=lock";
     };
     thermald.enable = true;
+    upower.enable = true;
 
     tlp = {
       enable = true;
