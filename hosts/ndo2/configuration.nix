@@ -219,8 +219,8 @@ in
     # VAAPI and VDPAU config for accelerated video.
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
     VDPAU_DRIVER = "va_gl";
-    # LIBVA_DRIVER_NAME = "i965";
-    LIBVA_DRIVER_NAME = "iHD";
+    LIBVA_DRIVER_NAME = "i965";
+    # LIBVA_DRIVER_NAME = "iHD";
   };
 
   environment.etc = {
@@ -242,6 +242,7 @@ in
     # Intel Hardware Acceleration
     opengl = {
       enable = true;
+      package = unstablePkgs.mesa.drivers;
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
@@ -252,9 +253,9 @@ in
         intel-ocl # up to 7thgen
         intel-compute-runtime # 8th gen + 
 
-        amdvlk
-        vulkan-validation-layers
-        intel-gmmlib # ?
+        # amdvlk
+        # vulkan-validation-layers
+        # intel-gmmlib # ?
         # intel-vaapi-driver # ?
 
         vaapiVdpau
