@@ -123,11 +123,11 @@
   };
 
   # Mostly for use with comma
-  # nix-index = {
-  #   enable = true;
-  #   enableBashIntegration = true;
-  #   package = pkgs.nix-index;
-  # };
+  programs.nix-index = {
+    enable = true;
+    enableBashIntegration = true;
+    package = pkgs.nix-index;
+  };
   programs.home-manager.enable = true;
   programs.bash.enable = true;
   programs.zoxide = {
