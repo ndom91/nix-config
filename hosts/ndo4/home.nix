@@ -1,4 +1,4 @@
-{ fira-sans-nerd-font, rose-pine-cursor, nix-colors, lib, inputs, config, pkgs, unstablePkgs, ... }:
+{ rose-pine-cursor, nix-colors, lib, inputs, config, pkgs, unstablePkgs, ... }:
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     nix-colors.homeManagerModules.default
@@ -27,7 +27,6 @@
   home.stateVersion = "23.11";
   home.packages = [
     inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
-    fira-sans-nerd-font
   ];
 
   systemd.user.sessionVariables = config.home.sessionVariables;

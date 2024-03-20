@@ -168,7 +168,6 @@ in
       variant = "";
       options = "caps:escape";
     };
-    # desktopManager.gnome.enable = false;
   };
 
   # Hyprland swaynotificationcenter service
@@ -270,7 +269,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit fira-sans-nerd-font nix-colors rose-pine-cursor inputs unstablePkgs; };
+    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs; };
     # useUserPackages = true;
     useGlobalPkgs = true;
     users = {
@@ -297,28 +296,25 @@ in
     fontDir.enable = true;
   };
 
-  nixpkgs = {
-    config = {
-      permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
-      allowUnfree = true;
-      vivaldi = {
-        proprietaryCodecs = true;
-        enableWidevine = true;
-      };
-    };
+  nixpkgs.config = {
+    permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
+    allowUnfree = true;
+    # vivaldi = {
+    #   proprietaryCodecs = true;
+    #   enableWidevine = true;
+    # };
   };
 
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
+    fira-sans-nerd-font
     # flameshot
     # gimp-devel
   ];
 
-
   programs = {
-
     hyprland.enable = true;
     hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
@@ -334,6 +330,7 @@ in
         stdenv.cc.cc.lib
       ];
     };
+    command-not-found.enable = true;
   };
 
   # System Services
@@ -360,8 +357,6 @@ in
       pulse.enable = true;
       wireplumber.enable = true;
     };
-    # Gnome Remote Desktop support via pipewire
-    # gnome.gnome-remote-desktop.enable = true;
     avahi = {
       enable = true;
       nssmdns = true;
