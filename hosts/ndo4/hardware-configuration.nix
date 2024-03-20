@@ -1,10 +1,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -14,6 +13,10 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/31113345-8fa1-43bc-b86b-0b761476e364";
     fsType = "ext4";
+    options = [
+      "noatime"
+      "nodiratime"
+    ];
   };
 
   boot.initrd.luks.devices."luks-e5348a59-5d74-4aa4-ae7c-fa45614a94a7".device = "/dev/disk/by-uuid/e5348a59-5d74-4aa4-ae7c-fa45614a94a7";
