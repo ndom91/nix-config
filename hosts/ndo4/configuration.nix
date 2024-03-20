@@ -4,11 +4,6 @@ let
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
-  # rose-pine-cursor-hyprcursor = pkgs.callPackage ../../packages/rose-pine-cursor-hyprcursor/default.nix { };
-  # flameshot = pkgs.callPackage ../../packages/flameshot/default.nix { };
-  # gimp-devel = pkgs.callPackage ../../packages/gimp-devel {
-  #   lcms = pkgs.lcms2;
-  # };
 in
 {
   imports = with agenix pkgs; [
@@ -307,10 +302,6 @@ in
   nixpkgs.config = {
     permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
     allowUnfree = true;
-    # vivaldi = {
-    #   proprietaryCodecs = true;
-    #   enableWidevine = true;
-    # };
   };
 
   environment.systemPackages = with pkgs; [
@@ -318,8 +309,6 @@ in
     corners-sddm
     rose-pine-cursor
     fira-sans-nerd-font
-    # flameshot
-    # gimp-devel
   ];
 
   programs = {
