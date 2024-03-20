@@ -56,18 +56,20 @@
         save_to_clipboard = true;
       };
 
-      key_bindings = [
-        {
-          action = "Paste";
-          key = "V";
-          mods = "Control|Shift";
-        }
-        {
-          action = "Copy";
-          key = "C";
-          mods = "Control|Shift";
-        }
-      ];
+      keyboard = {
+        bindings = [
+          {
+            action = "Paste";
+            key = "V";
+            mods = "Control|Shift";
+          }
+          {
+            action = "Copy";
+            key = "C";
+            mods = "Control|Shift";
+          }
+        ];
+      };
       shell = {
         program = "bash";
         args = [ "-l" "-c" "tmux new-session" ];
