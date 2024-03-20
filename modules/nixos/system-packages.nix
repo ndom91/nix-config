@@ -26,6 +26,7 @@
     fzf
     gcc
     git
+    gnome.gnome-disk-utility
     gnumake
     gnupg
     htop

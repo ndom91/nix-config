@@ -155,13 +155,12 @@ in
         wayland = true;
       };
     };
-    # videoDrivers = [ "intel" ];
+    videoDrivers = [ "intel" ];
     xkb = {
       layout = "us";
       variant = "";
       options = "caps:escape";
     };
-    # desktopManager.gnome.enable = false;
   };
 
   # Hyprland swaynotificationcenter service
@@ -244,11 +243,17 @@ in
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
-        # vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl ];
+        # intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        # For 8th gen:
+        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+
         intel-ocl # up to 7thgen
         intel-compute-runtime # 8th gen + 
+
+        amdvlk
         # intel-vaapi-driver # ?
-        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        # intel-gmmlib ?
+
         vaapiVdpau
         libvdpau-va-gl
       ];
@@ -267,7 +272,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit fira-sans-nerd-font nix-colors rose-pine-cursor inputs unstablePkgs; };
+    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs; };
     # useUserPackages = true;
     useGlobalPkgs = true;
     users = {
@@ -297,13 +302,18 @@ in
   nixpkgs.config = {
     permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
     allowUnfree = true;
-    vivaldi = {
-      proprietaryCodecs = true;
-      enableWidevine = true;
+    # vivaldi = {
+    #   proprietaryCodecs = true;
+    #   enableWidevine = true;
+    # };
+    packageOverrides = pkgs: {
+      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     };
   };
 
   environment.systemPackages = with pkgs; [
+    cpupower-gui
+    powerstat
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
@@ -327,6 +337,7 @@ in
         stdenv.cc.cc.lib
       ];
     };
+    command-not-found.enable = true;
   };
 
   # System Services
@@ -353,8 +364,6 @@ in
       pulse.enable = true;
       wireplumber.enable = true;
     };
-    # Gnome Remote Desktop support via pipewire
-    # gnome.gnome-remote-desktop.enable = true;
     avahi = {
       enable = true;
       nssmdns = true;
@@ -388,7 +397,18 @@ in
       extraConfig = "IdleAction=lock";
     };
     thermald.enable = true;
-    tlp.enable = true;
+
+    tlp = {
+      enable = true;
+      # ---------------------------------------------------------------------
+      # Use this instead if laptop runs HOT under tlp
+      # Tell tlp to always run in battery mode
+      # ---------------------------------------------------------------------
+      #  settings = {
+      #    TLP_DEFAULT_MODE = "BAT";
+      #    TLP_PERSISTENT_DEFAULT = 1;
+      #  };
+    };
   };
 
   powerManagement.enable = true;
