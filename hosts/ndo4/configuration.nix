@@ -250,7 +250,8 @@ in
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
-        # amdvlk # Using default radv instead
+        amdvlk # Using default radv instead
+        libglvnd
         vaapiVdpau
         libvdpau-va-gl
       ];
@@ -307,15 +308,6 @@ in
     };
   };
 
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-
-  programs._1password = { enable = true; };
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "ndo" ];
-  };
-
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
     corners-sddm
@@ -324,11 +316,24 @@ in
     # gimp-devel
   ];
 
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc.lib
-    ];
+
+  programs = {
+
+    hyprland.enable = true;
+    hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+
+    _1password = { enable = true; };
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "ndo" ];
+    };
+
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib
+      ];
+    };
   };
 
   # System Services

@@ -303,15 +303,6 @@ in
     };
   };
 
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-
-  programs._1password = { enable = true; };
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "ndo" ];
-  };
-
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
     corners-sddm
@@ -320,10 +311,23 @@ in
     # gimp-devel
   ];
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    nodePackages.wrangler
-  ];
+  programs = {
+    hyprland.enable = true;
+    hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+
+    _1password = { enable = true; };
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "ndo" ];
+    };
+
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib
+      ];
+    };
+  };
 
   # System Services
   services = {
