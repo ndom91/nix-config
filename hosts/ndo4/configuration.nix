@@ -246,6 +246,7 @@ in
 
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
     opengl = {
+      package = unstablePkgs.mesa.drivers;
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
