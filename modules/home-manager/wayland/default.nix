@@ -99,6 +99,7 @@
     wev
     wf-recorder
     wl-clipboard
+    wl-mirror
     wlr-randr
 
     # Screenshot
