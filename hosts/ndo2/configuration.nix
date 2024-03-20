@@ -147,7 +147,7 @@ in
             Font = "SFProDisplay Nerd Font";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
-            FacesDir = /etc/nixos/dotfiles/faces;
+            FacesDir = "/etc/nixos/dotfiles/faces";
           };
         };
       };
@@ -219,7 +219,8 @@ in
     # VAAPI and VDPAU config for accelerated video.
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
     VDPAU_DRIVER = "va_gl";
-    LIBVA_DRIVER_NAME = "i965";
+    # LIBVA_DRIVER_NAME = "i965";
+    LIBVA_DRIVER_NAME = "iHD";
   };
 
   environment.etc = {
@@ -244,7 +245,7 @@ in
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
-        # intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
         # For 8th gen:
         vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
 
@@ -269,6 +270,9 @@ in
     extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRAbAylECwZpvAOEq69apq5J1OAAF3ka TebhuqOps2O7WoJCCylqzu7rrPAun2tE3tsjeqwEdFMjSXYxBQowp5b0HiAT6w1Mtwy6Pg jnQW5/VOsTYpg1dl3hw1ZiRYa1yUT+xfVba4+POEKXizpMjL8xlkW/ugnj2WL8O85QplqI GRRIsSAa4jBsZ3d1j88iSv0ZFpTXdTuf9EISNFBrIXq7f+JyhtGZqaj4m67CNoxPiadfyX 7XrgVKra8/SaYa00RebI4V+tp6NDhJL6LZN8rX2O1a7O6NCUhZ1avYw4aY00kMyGqx2bR5 5ml7jN9k/edaKqHJInff8cPefa45ub ndo@ndo2"
+    ];
+    packages = [
+      fira-sans-nerd-font
     ];
   };
 
