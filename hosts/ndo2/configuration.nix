@@ -253,8 +253,9 @@ in
         intel-compute-runtime # 8th gen + 
 
         amdvlk
+        vulkan-validation-layers
+        intel-gmmlib # ?
         # intel-vaapi-driver # ?
-        # intel-gmmlib ?
 
         vaapiVdpau
         libvdpau-va-gl

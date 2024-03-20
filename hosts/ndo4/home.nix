@@ -44,6 +44,10 @@
       color-scheme = "prefer-dark";
     };
 
+    "org/freedesktop/appearance" = {
+      color-scheme = 1;
+    };
+
     "org/nemo/preferences" = {
       date-format = "iso";
       default-folder-viewer = "list-view";
