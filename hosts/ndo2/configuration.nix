@@ -147,6 +147,7 @@ in
             Font = "SFProDisplay Nerd Font";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
+            FacesDir = /etc/nixos/dotfiles/faces;
           };
         };
       };
