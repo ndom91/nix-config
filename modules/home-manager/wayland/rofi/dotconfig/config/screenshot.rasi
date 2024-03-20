@@ -11,7 +11,7 @@ configuration {
 @import                          "colors/catppuccin.rasi"
 
 * {
-    font: "FiraSans Nerd Font Light 12";
+  font: "FiraSans Nerd Font Light 12";
 }
 
 /*****----- Main Window -----*****/
