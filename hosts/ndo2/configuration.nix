@@ -155,7 +155,7 @@ in
         wayland = true;
       };
     };
-    videoDrivers = [ "intel" ];
+    # videoDrivers = [ "intel" ];
     xkb = {
       layout = "us";
       variant = "";
@@ -218,7 +218,7 @@ in
   environment.variables = {
     # VAAPI and VDPAU config for accelerated video.
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
-    VDPAU_DRIVER = "i965";
+    VDPAU_DRIVER = "va_gl";
     LIBVA_DRIVER_NAME = "i965";
   };
 
@@ -243,7 +243,15 @@ in
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl ];
+      extraPackages = with pkgs; [
+        # vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl ];
+        intel-ocl # up to 7thgen
+        intel-compute-runtime # 8th gen + 
+        # intel-vaapi-driver # ?
+        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
     };
 
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

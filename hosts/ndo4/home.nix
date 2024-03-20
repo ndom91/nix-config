@@ -87,7 +87,6 @@
     ".face.icon".source = ../../dotfiles/face.jpg;
     ".face".source = ../../dotfiles/face.jpg;
 
-    ".config/vivaldi-stable.conf".source = ../../dotfiles/vivaldi-stable.conf;
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
     ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
