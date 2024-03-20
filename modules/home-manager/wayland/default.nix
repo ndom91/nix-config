@@ -88,17 +88,18 @@
 
   home.packages = with pkgs; [
     blueberry
+    evtest
     mkchromecast
     networkmanagerapplet
     playerctl
     swaybg
     unstablePkgs.swaynotificationcenter
+    unstablePkgs.swayosd
+    wdisplays
+    wev
     wf-recorder
     wl-clipboard
     wlr-randr
-    wev
-    evtest
-    unstablePkgs.swayosd
 
     # Screenshot
     grim
