@@ -10,18 +10,17 @@
       commandLineArgs = [
         # "--ozone-platform=wayland"
         # "--enable-features=VaapiVideoDecoder"
-        "--use-gl=egl"
+        # "--use-gl=egl"
 
-        # "--use-gl=angle "
-        # "--use-angle=gl "
-        "--ignore-gpu-blacklist "
-        "--enable-gpu-rasterization "
-        "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,RawDraw,CanvasOopRasterization "
-        "--enable-gpu-rasterization "
-        "--enable-zero-copy "
-        "--enable-hardware-overlays "
-        "--enable-native-gpu-memory-buffers "
-        "--enable-webrtc-pipewire-capturer "
+        "--use-gl=angle"
+        "--use-angle=gl"
+        "--ignore-gpu-blacklist"
+        "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,RawDraw,CanvasOopRasterization"
+        "--enable-gpu-rasterization"
+        "--enable-zero-copy"
+        "--enable-hardware-overlays"
+        "--enable-native-gpu-memory-buffers"
+        "--enable-webrtc-pipewire-capturer"
       ];
     })
     floorp
