@@ -12,6 +12,7 @@ in
     ../../modules/nixos/nginx.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
+    inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
   age.identityPaths = [
@@ -366,7 +367,6 @@ in
     };
 
     fprintd.enable = true;
-    flatpak.enable = true;
     printing.enable = true;
     fstrim.enable = true;
     smartd.enable = true;
@@ -384,6 +384,18 @@ in
         publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
         ip = "77.247.178.58";
       };
+    };
+
+    flatpak = {
+      enable = true;
+      # uninstallUnmanagedPackages = true;
+      remotes = lib.mkOptionDefault [{
+        name = "flathub-beta";
+        location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
+      }];
+      packages = [
+        { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
+      ];
     };
   };
 

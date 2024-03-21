@@ -178,6 +178,10 @@
         "idleinhibit focus, class:^(vivaldi)$, title:^(.*YouTube.*)$"
         "idleinhibit fullscreen, class:^(vivaldi)$"
 
+        # float/slidein gnome-text-editor
+        "animation slide, class:org.gnome.TextEditor"
+        "float, class:org.gnome.TextEditor"
+
         # float/slidein nemo file manager
         "animation slide, class:nemo"
         "float, class:nemo"

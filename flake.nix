@@ -29,6 +29,7 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
   };
 
   outputs = { self, unstable, agenix, nix-colors, nixpkgs, ... } @inputs:
