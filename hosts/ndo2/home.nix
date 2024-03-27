@@ -71,6 +71,11 @@
       exec-once = [
         "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1.5"
       ];
+      input = {
+        touchpad = {
+          clickfinger_behavior= true;
+        };
+      };
 
       # "device:MSFT0001:00 04F3:31EB Touchpad" = {
       #   accel_profile = "adaptive";

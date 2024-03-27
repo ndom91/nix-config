@@ -11,6 +11,7 @@ in
     ../../modules/nixos/system-packages.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
+    inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
   age.identityPaths = [
@@ -158,6 +159,9 @@ in
       layout = "us";
       variant = "";
       options = "caps:escape";
+    };
+    libinput.touchpad = {
+      tappingButtonMap = "lrm";
     };
   };
 
@@ -377,7 +381,6 @@ in
       openFirewall = true;
     };
 
-    flatpak.enable = true;
     fprintd.enable = true;
     printing.enable = true;
     fstrim.enable = true;
@@ -416,6 +419,17 @@ in
       #    TLP_DEFAULT_MODE = "BAT";
       #    TLP_PERSISTENT_DEFAULT = 1;
       #  };
+    };
+    flatpak = {
+      enable = true;
+      # uninstallUnmanagedPackages = true;
+      remotes = lib.mkOptionDefault [{
+        name = "flathub-beta";
+        location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
+      }];
+      packages = [
+        { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
+      ];
     };
   };
 
