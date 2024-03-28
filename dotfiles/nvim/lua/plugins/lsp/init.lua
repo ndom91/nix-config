@@ -45,6 +45,7 @@ return {
         "js-debug-adapter",
         "shellcheck",
         "shfmt",
+        "pretty-php",
       },
       auto_update = true,
       run_on_start = true,
@@ -191,14 +192,14 @@ return {
 
           -- Fix treesitter ts-autotag diagnostics fix - https://github.com/windwp/nvim-ts-autotag#enable-update-on-insert
           vim.lsp.handlers["textDocument/publishDiagnostics"] =
-            vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-              underline = true,
-              virtual_text = {
-                spacing = 5,
-                min = vim.diagnostic.severity.WARNING,
-              },
-              update_in_insert = true,
-            })
+              vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+                underline = true,
+                virtual_text = {
+                  spacing = 5,
+                  min = vim.diagnostic.severity.WARNING,
+                },
+                update_in_insert = true,
+              })
         end,
       })
 
@@ -210,6 +211,7 @@ return {
       require("plugins.lsp.langs.yaml")
       require("plugins.lsp.langs.css")
       require("plugins.lsp.langs.html")
+      require("plugins.lsp.langs.php")
       require("plugins.lsp.langs.tailwindcss")
       require("plugins.lsp.langs.svelte")
     end,
