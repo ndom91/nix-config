@@ -211,7 +211,6 @@ return {
       require("plugins.lsp.langs.yaml")
       require("plugins.lsp.langs.css")
       require("plugins.lsp.langs.html")
-      require("plugins.lsp.langs.php")
       require("plugins.lsp.langs.tailwindcss")
       require("plugins.lsp.langs.svelte")
     end,
