@@ -223,8 +223,10 @@
         "dimaround, class:^(opensnitch_ui)$"
 
         # DevTools
-        "float, class:vivaldi, title:^(DevTools.*)$"
         "float, title:^(DevTools.*)$"
+        "float, title:^(DevTools.*)$"
+        "float, title:^(Developer Tools.*)$"
+        "float, title:^(Developer Tools.*)$"
 
         # Winetricks
         "float, title:^(Winetricks.*)$"
