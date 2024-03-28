@@ -255,11 +255,11 @@
         "nix-filter": "nix-filter"
       },
       "locked": {
-        "lastModified": 1709729203,
-        "narHash": "sha256-cR44ytd8qH7IqhkiidPOwvyF/j1NB2Y9A6/oaRA1UyI=",
+        "lastModified": 1711023053,
+        "narHash": "sha256-Jn/XD0PMOnYiEeNRoEgKD7WAEKsuwD0NNOsj/JfwXXY=",
         "owner": "pyt0xic",
         "repo": "hyprfocus",
-        "rev": "2af0c1e87e3cdcef3c8f9c7def918982312d0b75",
+        "rev": "4fc2883261f61e1ac93e174b6d61b5565a3b9c1b",
         "type": "github"
       },
       "original": {
@@ -612,11 +612,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1710761021,
-        "narHash": "sha256-LUz6AxDQb2iGEDRl3c1a2h02jqijt2IA5qXGGCuGtlU=",
+        "lastModified": 1711302328,
+        "narHash": "sha256-wLuFLI6S5DOretqJN05+kvrs8cbnZKfVLXrJ4hvI/Tg=",
         "owner": "ndom91",
         "repo": "rose-pine-hyprcursor",
-        "rev": "4964ae8a189c9cacf842ba3f4c22263394aa295d",
+        "rev": "7e0473876f0e6d2308813a78fe84a6c6430b112b",
         "type": "github"
       },
       "original": {

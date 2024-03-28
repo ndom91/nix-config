@@ -5,6 +5,8 @@ local symbol_map = {
   hint = "",
 }
 
+local path = require("plenary.path")
+
 return {
   "akinsho/bufferline.nvim",
   version = "v4.*",
@@ -16,7 +18,7 @@ return {
       desc = "Bufferline Close",
       silent = true,
     },
-    { "<Tab>", ":bnext<CR>", silent = true },
+    { "<Tab>",   ":bnext<CR>", silent = true },
     { "<S-Tab>", ":bprev<CR>", silent = true },
   },
   opts = {
@@ -29,10 +31,9 @@ return {
       left_trunc_marker = "",
       right_trunc_marker = "",
       right_mouse_command = "bdelete! %d",
-      max_name_length = 20,
-      max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+      max_name_length = 25,
       truncate_names = true,
-      tab_size = 18,
+      tab_size = 25,
       diagnostics = false, -- "nvim_lsp",
       -- diagnostics_indicator = function(total_count, level, diagnostics_dict)
       --   local s = ""
@@ -49,11 +50,22 @@ return {
           separator = false,
         },
       },
-      hover = {
-        enabled = false,
-        delay = 200,
-        reveal = { "close" },
-      },
+      -- name_formatter = function(buf)
+      --   if buf.bufnr == vim.api.nvim_get_current_buf() then
+      --     local name = vim.fn.expand("%:p")
+      --     local shortened_name = vim.fn.pathshorten(path:new(name):make_relative(vim.fn.getcwd()), 2)
+      --     if shortened_name:len() > 25 then return "..." .. string.sub(shortened_name, -50) end
+      --     return shortened_name
+      --   end
+      --   return buf.name
+      -- end,
+      -- name_formatter = function(buf)
+      --   buf.bufnr == vim.api.nvim_get_current_buf()
+      --   -- Hack to get the filepath relative to cwd
+      --   local shortened_name = vim.fn.pathshorten(path:new(buf.path):make_relative(vim.fn.getcwd()), 2)
+      --   if shortened_name:len() > 25 then return string.sub(shortened_name, -25) end
+      --   -- return path:new(buf.path):make_relative(vim.fn.getcwd())
+      -- end,
       numbers = function(opts)
         -- Show harpoon index numbers in bufferline tabs
         local items = require("harpoon"):list().items

@@ -15,7 +15,8 @@ set showmatch   " Show matching brackets
 set wrap        " Enable word wrapping
 set noswapfile  " Disable swapfile
 set nobackup    " Disable file backups
-set undodir="/home/ndo/.vim/undodir"
+set undofile    " Enable undo file
+set undodir="/home/ndo/.config/nvim/undodir"
 
 set hlsearch    " Highlight search results
 set incsearch   " Incremental search results
