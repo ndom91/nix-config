@@ -139,7 +139,7 @@ in
       sddm = {
         enable = true;
         theme = "corners";
-        wayland.enable = true;
+        wayland.enable = false;
         settings = {
           Theme = {
             Font = "SFProDisplay Nerd Font";
@@ -245,8 +245,9 @@ in
       enable = true;
       package = unstablePkgs.mesa.drivers;
       driSupport = true;
+      package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
+      extraPackages = with unstablePkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
         # For 8th gen:
         vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
@@ -381,7 +382,7 @@ in
       openFirewall = true;
     };
 
-    fprintd.enable = true;
+    # fprintd.enable = true;
     printing.enable = true;
     fstrim.enable = true;
     smartd.enable = true;
