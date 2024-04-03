@@ -3,32 +3,47 @@
   services.nginx = {
     enable = true;
 
-    recommendedGzipSettings = true;
     recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
+    # recommendedGzipSettings = true;
+    # recommendedProxySettings = true;
+    # recommendedTlsSettings = true;
 
-    upstreams = {
-      dockerPostgres = {
-        servers = {
-          "http://docker-pi.puff.lan:5432" = { };
-        };
-      };
-    };
+    streamConfig = ''
+      server {
+        listen 127.0.0.1:5432;
+        proxy_connect_timeout 60s;
+        proxy_socket_keepalive on;
+        proxy_pass docker-pi.puff.lan:5432;
+      }
+    '';
 
-    virtualHosts."db.puff.lan" = {
-      listen = [{
-        addr = "127.0.0.1";
-        port = 5432;
-      }];
-      locations."/" = {
-        proxyPass = "dockerPostgres";
-      };
-    };
+    # upstreams = {
+    #   dockerPostgres = {
+    #     servers = {
+    #       "docker-pi.puff.lan:5432" = {
+    #         extraConfig = ''
+    #           proxy_connect_timeout 60s;
+    #           proxy_socket_keepalive on;
+    #         '';
+    #       };
+    #     };
+    #   };
+    # };
+
+    # virtualHosts."db.puff.lan" = {
+    #   listen = [{
+    #     addr = "127.0.0.1";
+    #     port = 5432;
+    #   }];
+    #   locations."/" = {
+    #     proxyPass = "dockerPostgres";
+    #   };
+    # };
   };
 
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "yo@ndo.dev";
-  };
+  # Unnecessary for local domains
+  # security.acme = {
+  #   acceptTerms = true;
+  #   defaults.email = "yo@ndo.dev";
+  # };
 }
