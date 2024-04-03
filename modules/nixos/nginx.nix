@@ -9,7 +9,7 @@
     recommendedTlsSettings = true;
 
     upstreams = {
-      docker-postgres = {
+      dockerPostgres = {
         servers = {
           "docker-pi.puff.lan:5432" = { };
         };
@@ -22,7 +22,7 @@
         port = 5432;
       }];
       locations."/" = {
-        proxyPass = "docker-postgres";
+        proxyPass = "dockerPostgres";
       };
     };
   };

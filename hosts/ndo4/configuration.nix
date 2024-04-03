@@ -144,7 +144,7 @@ in
       sddm = {
         enable = true;
         theme = "corners";
-        wayland.enable = true;
+        wayland.enable = false;
         settings = {
           Theme = {
             Font = "SFProDisplay Nerd Font";
