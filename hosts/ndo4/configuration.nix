@@ -250,13 +250,13 @@ in
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
       extraPackages = with pkgs; [
-        unstablePkgs.amdvlk # Using default radv instead
+        # unstablePkgs.amdvlk # Using default radv instead
         libglvnd
         vaapiVdpau
         libvdpau-va-gl
       ];
       extraPackages32 = with pkgs; [
-        unstablePkgs.driversi686Linux.amdvlk
+        # unstablePkgs.driversi686Linux.amdvlk
       ];
     };
 
