@@ -209,6 +209,11 @@
         "size 30% 40%, class:engrampa"
         "center, class:engrampa"
 
+        # gtk file chooser
+        "float, class:xdg-desktop-portal-gtk, title:All Files"
+        "size 30% 50%, class:xdg-desktop-portal-gtk, title:All Files"
+        "center, class:xdg-desktop-portal-gtk, title:All Files"
+
         # float imv
         "animation slide, class:imv"
         "float, class:imv"
@@ -227,6 +232,8 @@
         "float, title:^(DevTools.*)$"
         "float, title:^(Developer Tools.*)$"
         "float, title:^(Developer Tools.*)$"
+        "size 30% 60%, title:^(DevTools.*)$"
+        "size 30% 60%, title:^(Developer Tools.*)$"
 
         # Winetricks
         "float, title:^(Winetricks.*)$"

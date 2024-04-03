@@ -8,6 +8,7 @@
     pkg-config
     vips # for sharp
     prisma-engines
+    unstablePkgs.chromium
   ];
 
   # Prisma:
