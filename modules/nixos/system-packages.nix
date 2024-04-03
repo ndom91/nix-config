@@ -36,11 +36,10 @@
     jq
     killall
     libcamera
-    libfprint-2-tod1-elan
+    # libfprint-2-tod1-elan
     libnotify
     lm_sensors
     lshw
-    unstablePkgs.mesa
     neofetch
     nmap
     ntfs3g
