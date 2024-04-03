@@ -242,15 +242,19 @@ in
 
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
     opengl = {
-      package = unstablePkgs.mesa.drivers;
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
+      package = unstablePkgs.mesa.drivers;
+      package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
       extraPackages = with pkgs; [
-        amdvlk # Using default radv instead
+        unstablePkgs.amdvlk # Using default radv instead
         libglvnd
         vaapiVdpau
         libvdpau-va-gl
+      ];
+      extraPackages32 = with pkgs; [
+        unstablePkgs.driversi686Linux.amdvlk
       ];
     };
 
