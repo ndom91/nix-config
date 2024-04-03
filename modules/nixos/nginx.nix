@@ -11,7 +11,7 @@
     upstreams = {
       dockerPostgres = {
         servers = {
-          "docker-pi.puff.lan:5432" = { };
+          "http://docker-pi.puff.lan:5432" = { };
         };
       };
     };
