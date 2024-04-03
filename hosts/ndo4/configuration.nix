@@ -143,8 +143,9 @@ in
       defaultSession = "hyprland";
       sddm = {
         enable = true;
+        # package = unstablePkgs.kdePackages.sddm;
         theme = "corners";
-        wayland.enable = false;
+        wayland.enable = true;
         settings = {
           Theme = {
             Font = "SFProDisplay Nerd Font";
@@ -232,8 +233,8 @@ in
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
     VDPAU_DRIVER = "radeonsi";
     LIBVA_DRIVER_NAME = "radeonsi";
-    AMD_VULKAN_ICD = "RADV"; # "RADV" | "AMDVLK(?)"
-    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+    # AMD_VULKAN_ICD = "RADV"; # "RADV" | "AMDVLK(?)"
+    # VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
   };
 
   hardware = {
@@ -249,14 +250,14 @@ in
       driSupport32Bit = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
-      extraPackages = with pkgs; [
-        # unstablePkgs.amdvlk # Using default radv instead
+      extraPackages = with unstablePkgs; [
+        amdvlk # Using default radv instead
         libglvnd
         vaapiVdpau
         libvdpau-va-gl
       ];
       extraPackages32 = with pkgs; [
-        # unstablePkgs.driversi686Linux.amdvlk
+        unstablePkgs.driversi686Linux.amdvlk
       ];
     };
 
