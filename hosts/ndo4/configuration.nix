@@ -320,6 +320,7 @@ in
     corners-sddm
     rose-pine-cursor
     fira-sans-nerd-font
+    logitech-udev-rules
   ];
 
   programs = {
