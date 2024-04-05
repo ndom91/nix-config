@@ -7,7 +7,8 @@
     openssl
     pkg-config
     vips # for sharp
-    prisma-engines
+    unstablePkgs.prisma-engines
+    unstablePkgs.chromium
   ];
 
   # Prisma:

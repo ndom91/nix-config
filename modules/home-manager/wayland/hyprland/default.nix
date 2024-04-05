@@ -25,7 +25,8 @@
       # (unstablePkgs.hyprlandPlugins.hy3.override {
       #   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
       # })
-      inputs.hyprfocus.packages.${pkgs.system}.hyprfocus
+      # Hyprfocus compilation broken until: https://github.com/pyt0xic/hyprfocus/pull/1 merged
+      # inputs.hyprfocus.packages.${pkgs.system}.hyprfocus
     ];
 
     settings = {
@@ -209,6 +210,11 @@
         "size 30% 40%, class:engrampa"
         "center, class:engrampa"
 
+        # gtk file chooser
+        "float, class:xdg-desktop-portal-gtk, title:All Files"
+        "size 30% 50%, class:xdg-desktop-portal-gtk, title:All Files"
+        "center, class:xdg-desktop-portal-gtk, title:All Files"
+
         # float imv
         "animation slide, class:imv"
         "float, class:imv"
@@ -227,6 +233,8 @@
         "float, title:^(DevTools.*)$"
         "float, title:^(Developer Tools.*)$"
         "float, title:^(Developer Tools.*)$"
+        "size 30% 60%, title:^(DevTools.*)$"
+        "size 30% 60%, title:^(Developer Tools.*)$"
 
         # Winetricks
         "float, title:^(Winetricks.*)$"
@@ -388,34 +396,34 @@
         #     trigger_height = 500
         #   }
         # }
-        hyprfocus {
-          enabled = yes
-
-          focus_animation = shrink
-
-          bezier = bezIn, 0.5,0.0,1.0,0.5
-          bezier = bezOut, 0.0,0.5,0.5,1.0
-
-          flash {
-              flash_opacity = 0.8
-
-              in_bezier = bezIn
-              in_speed = 0.5
-
-              out_bezier = bezOut
-              out_speed = 3
-          }
-
-          shrink {
-            shrink_percentage = 0.995
-
-            in_bezier = bezIn
-            in_speed = 0.25
-
-            out_bezier = bezOut
-            out_speed = 1
-          }
-        }
+        # hyprfocus {
+        #   enabled = yes
+        #
+        #   focus_animation = shrink
+        #
+        #   bezier = bezIn, 0.5,0.0,1.0,0.5
+        #   bezier = bezOut, 0.0,0.5,0.5,1.0
+        #
+        #   flash {
+        #       flash_opacity = 0.8
+        #
+        #       in_bezier = bezIn
+        #       in_speed = 0.5
+        #
+        #       out_bezier = bezOut
+        #       out_speed = 3
+        #   }
+        #
+        #   shrink {
+        #     shrink_percentage = 0.995
+        #
+        #     in_bezier = bezIn
+        #     in_speed = 0.25
+        #
+        #     out_bezier = bezOut
+        #     out_speed = 1
+        #   }
+        # }
       }
     '';
   };

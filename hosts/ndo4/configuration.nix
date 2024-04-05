@@ -143,8 +143,9 @@ in
       defaultSession = "hyprland";
       sddm = {
         enable = true;
+        # package = unstablePkgs.kdePackages.sddm;
         theme = "corners";
-        wayland.enable = true;
+        wayland.enable = false;
         settings = {
           Theme = {
             Font = "SFProDisplay Nerd Font";
@@ -216,6 +217,9 @@ in
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
+    configPackages = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   environment.etc = {
@@ -232,6 +236,8 @@ in
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
     VDPAU_DRIVER = "radeonsi";
     LIBVA_DRIVER_NAME = "radeonsi";
+    # AMD_VULKAN_ICD = "RADV"; # "RADV" | "AMDVLK(?)"
+    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
   };
 
   hardware = {
@@ -242,15 +248,19 @@ in
 
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
     opengl = {
-      package = unstablePkgs.mesa.drivers;
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        amdvlk # Using default radv instead
+      package = unstablePkgs.mesa.drivers;
+      package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
+      extraPackages = with unstablePkgs; [
+        # amdvlk # Using default radv instead
         libglvnd
         vaapiVdpau
         libvdpau-va-gl
+      ];
+      extraPackages32 = with pkgs; [
+        # unstablePkgs.driversi686Linux.amdvlk
       ];
     };
 
@@ -310,11 +320,17 @@ in
     corners-sddm
     rose-pine-cursor
     fira-sans-nerd-font
+    logitech-udev-rules
   ];
 
   programs = {
-    hyprland.enable = true;
-    hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland.override {
+        inherit (unstablePkgs) mesa;
+      };
+    };
 
     _1password = { enable = true; };
     _1password-gui = {
