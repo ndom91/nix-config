@@ -34,7 +34,7 @@
         default = "current";
       };
       push = {
-        default = "current";
+        default = "upstream";
         autoSetupRemote = true;
       };
       remote = {
@@ -42,6 +42,7 @@
       };
       branch = {
         autoSetupMerge = "simple";
+        autoSetupRebase = "remote";
         sort = "-committerdate";
       };
       url = {
