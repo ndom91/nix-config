@@ -25,6 +25,10 @@
         conflictStyle = "zdiff3";
         tool = "nvim";
       };
+      status = {
+        short = true;
+        branch = true;
+      };
       pull = {
         rebase = false;
         default = "current";
@@ -37,7 +41,7 @@
         pushDefault = "origin";
       };
       branch = {
-        autosetupmerge = "always";
+        autoSetupMerge = "simple";
         sort = "-committerdate";
       };
       url = {
