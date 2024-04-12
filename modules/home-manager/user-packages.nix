@@ -129,6 +129,13 @@
         "x-scheme-handler/mailto"
       ];
     };
+    beeper = {
+      name = "Beeper";
+      exec = "/home/ndo/Downloads/beeper-3.102.16x86_64.AppImage";
+      icon = "beeper";
+      type = "Application";
+      categories = [ "Network" "WebBrowser" ];
+    };
   };
 
   programs.bash.sessionVariables.FLAKE = "/etc/nixos$(hostname)";
