@@ -6,7 +6,7 @@
     unstablePkgs.bun
     openssl
     pkg-config
-    playwright-driver
+    unstablePkgs.playwright-driver
     vips # for sharp
     unstablePkgs.prisma-engines
     unstablePkgs.chromium
@@ -20,7 +20,7 @@
     PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING = "1";
 
     # Playwright
-    PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
+    PLAYWRIGHT_BROWSERS_PATH = unstablePkgs.playwright-driver.browsers;
     PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = true;
   };
 }
