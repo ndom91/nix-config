@@ -6,14 +6,21 @@
     unstablePkgs.bun
     openssl
     pkg-config
+    playwright-driver
     vips # for sharp
     unstablePkgs.prisma-engines
     unstablePkgs.chromium
   ];
 
-  # Prisma:
-  programs.bash.sessionVariables.PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
-  programs.bash.sessionVariables.PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
-  programs.bash.sessionVariables.PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
-  programs.bash.sessionVariables.PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING = "1";
+  programs.bash.sessionVariables = {
+    # Prisma:
+    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+    PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
+    PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
+    PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING = "1";
+
+    # Playwright
+    PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
+    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = true;
+  };
 }
