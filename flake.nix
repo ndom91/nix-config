@@ -5,7 +5,7 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    hyprland.url = "github:hyprwm/hyprland/v0.38.1";
+    hyprland.url = "github:hyprwm/hyprland/v0.39.1";
     hyprfocus = {
       url = "github:pyt0xic/hyprfocus";
       inputs.hyprland.follows = "hyprland";
@@ -30,6 +30,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
+    # superfile = {
+    #   url = "github:MHNightCat/superfile";
+    # };
   };
 
   outputs = { self, unstable, agenix, nix-colors, nixpkgs, ... } @inputs:
