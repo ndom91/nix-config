@@ -79,8 +79,9 @@
     parted
     ranger
     kondo
-    # inputs.superfile.packages.${system}.default
+    unstablePkgs.netscanner
     unstablePkgs.termscp
+    # inputs.superfile.packages.${system}.default
 
     # Fonts
     (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Ubuntu" "UbuntuMono" ]; })

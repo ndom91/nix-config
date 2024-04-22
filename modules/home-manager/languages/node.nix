@@ -2,7 +2,8 @@
 {
   home.packages = with pkgs; [
     nodejs_20
-    unstablePkgs.nodePackages.pnpm
+    # unstablePkgs.nodePackages.pnpm
+    unstablePkgs.corepack_21
     unstablePkgs.bun
     openssl
     pkg-config
