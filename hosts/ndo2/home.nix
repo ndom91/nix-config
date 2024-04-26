@@ -10,6 +10,7 @@
     # Common
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/neofetch.nix
     ../../modules/home-manager/user-dirs.nix
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/mimeApps.nix

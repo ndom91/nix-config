@@ -40,7 +40,6 @@
     libnotify
     lm_sensors
     lshw
-    neofetch
     nmap
     ntfs3g
     ntp

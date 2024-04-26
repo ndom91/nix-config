@@ -31,6 +31,7 @@
 
           font = wezterm.font_with_fallback {
             { family = 'Operator Mono Light', harfbuzz_features = { 'liga=1' } },
+            -- { family = 'Berkeley Mono Variable', weight = 'Light' },
             -- TODO Buy when have job - https://berkeleygraphics.com/typefaces/berkeley-mono/
             -- { family = 'Berkeley Mono Trial', weight = 'Light' },
             -- { family = 'SFMono Nerd Font', weight = 'Light' },
