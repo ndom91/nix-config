@@ -8,17 +8,17 @@ return {
     "nvim-telescope/telescope-ui-select.nvim",
   },
   keys = {
-    { "<leader>.", require("telescope.builtin").find_files, desc = "Find Files" },
+    { "<leader>.",  require("telescope.builtin").find_files,      desc = "Find Files" },
     {
       "<leader>,",
       function() require("telescope.builtin").buffers({ show_all_buffers = true }) end,
       desc = "Find Buffers",
     },
-    { "<leader>/", require("telescope.builtin").live_grep, desc = "Live Grep" },
-    { "<leader>:", require("telescope.builtin").command_history, desc = "Command History" },
-    { "<leader>r", require("telescope.builtin").oldfiles, desc = "Old Files" },
-    { "<leader>ft", require("telescope.builtin").builtin, desc = "[F]ind [B]uiltin" },
-    { "<leader>fh", require("telescope.builtin").help_tags, desc = "[F]ind [H]elp Tags" },
+    { "<leader>/",  require("telescope.builtin").live_grep,       desc = "Live Grep" },
+    { "<leader>:",  require("telescope.builtin").command_history, desc = "Command History" },
+    { "<leader>r",  require("telescope.builtin").oldfiles,        desc = "Old Files" },
+    { "<leader>ft", require("telescope.builtin").builtin,         desc = "[F]ind [B]uiltin" },
+    { "<leader>fh", require("telescope.builtin").help_tags,       desc = "[F]ind [H]elp Tags" },
     {
       "<leader>fws",
       require("telescope.builtin").lsp_dynamic_workspace_symbols,
@@ -35,7 +35,7 @@ return {
       function() require("telescope.builtin").diagnostics({ severity = 0 }) end,
       desc = "[F]ind [E]rrors",
     },
-    { "<leader>km", require("telescope.builtin").keymaps, desc = "[K]ey[m]aps" },
+    { "<leader>km", require("telescope.builtin").keymaps,     desc = "[K]ey[m]aps" },
     {
       "<leader>fb",
       function()
@@ -63,9 +63,9 @@ return {
       end,
       desc = "[F]ind [O]pen [F]iles",
     },
-    { "<leader>gc", require("telescope.builtin").git_commits, desc = "[G]it [C]ommits" },
+    { "<leader>gc",  require("telescope.builtin").git_commits,  desc = "[G]it [C]ommits" },
     { "<leader>gfh", require("telescope.builtin").git_bcommits, desc = "[G]it [F]ile [H]istory" },
-    { "<leader>gb", require("telescope.builtin").git_branches, desc = "[G]it [B]ranches" },
+    { "<leader>gb",  require("telescope.builtin").git_branches, desc = "[G]it [B]ranches" },
   },
   config = function()
     local actions = require("telescope.actions")
@@ -102,7 +102,9 @@ return {
         entry_prefix = "  ",
         set_env = { ["COLORTERM"] = "truecolor" },
         color_devicons = true,
-        -- path_display = { shorten = 2 },
+        path_display = {
+          "filename_first",
+        },
         -- path_display = function(_, path)
         --   local filename = path:gsub(vim.pesc(vim.loop.cwd()) .. '/', ''):gsub(vim.pesc(vim.fn.expand '$HOME'), '~')
         --   local tail = require('telescope.utils').path_tail(filename)
@@ -184,10 +186,10 @@ return {
           require("telescope.themes").get_dropdown({}),
         },
         fzf = {
-          fuzzy = true, -- false will only do exact matching
+          fuzzy = true,                   -- false will only do exact matching
           override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+          override_file_sorter = true,    -- override the file sorter
+          case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
         },
       },
     })
