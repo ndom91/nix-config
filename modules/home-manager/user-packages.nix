@@ -75,12 +75,13 @@
     whois
     jq
     cliphist
-    irssi
-    parted
-    ranger
-    kondo
-    unstablePkgs.netscanner
-    unstablePkgs.termscp
+    irssi # IRC Client
+    parted # GParted Terminal
+    ranger # TUI File Manager
+    kondo # Multi-language vendor file cleaner (node_modules, vendor, etc)
+    unstablePkgs.netscanner # TUI Subnet Scanner
+    unstablePkgs.termscp # TUI S3/SFTP/etc client
+    unstablePkgs.oha # HTML Load Tester
     # inputs.superfile.packages.${system}.default
 
     # Fonts
@@ -91,10 +92,6 @@
     noto-fonts-color-emoji
 
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
 
   # All Chromium command line switches: https://peter.sh/experiments/chromium-command-line-switches/
