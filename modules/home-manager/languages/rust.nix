@@ -1,7 +1,10 @@
-{ pkgs, input, ... }:
+{ unstablePkgs, pkgs, input, ... }:
 {
-  home.packages = with pkgs; [
+  home.packages = with unstablePkgs; [
     rustc
     cargo
+
+    # for building gitbutler
+    libsoup
   ];
 }
