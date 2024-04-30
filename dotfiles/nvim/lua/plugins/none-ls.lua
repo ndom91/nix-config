@@ -4,9 +4,9 @@ local read_package_json = require("utils").read_package_json
 
 return {
   "nvimtools/none-ls.nvim",
-  dependencies = { 
+  dependencies = {
     "mason.nvim",
-    "nvimtools/none-ls-extras.nvim"
+    "nvimtools/none-ls-extras.nvim",
   },
   opts = function(_, opts)
     local nls = require("null-ls")
@@ -16,35 +16,34 @@ return {
       -- nls.builtins.formatting.deno_fmt,
       nls.builtins.formatting.prettierd.with({
         filetypes = {
-          "svelte",
+          -- "svelte",
           "javascript",
           "javascriptreact",
           "typescript",
           "typescriptreact",
+          "tsx",
+          -- "vue",
           "json",
           "yaml",
           "markdown",
           "jsx",
-          "tsx",
           "html",
           "css",
           "graphql",
-          "vue",
           "toml",
         },
         -- condition = function(_utils)
         --   local package_json = read_package_json()
-        --   if not package_json then
-        --     return false
-        --   end
-        --   if package_json.devDependencies and package_json.devDependencies['eslint-config-prettier'] then
+        --   if not package_json then return true end
+        --   if package_json.devDependencies and package_json.devDependencies["eslint-config-prettier"] then
         --     return false
         --   end
         --   return true
-        -- end
+        -- end,
       }),
       -- nls.builtins.formatting.biome,
       -- nls.builtins.formatting.eslint_d.with({
+      -- require("none-ls.formatting.eslint_d").with({
       --   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
       -- }),
       nls.builtins.formatting.stylua,

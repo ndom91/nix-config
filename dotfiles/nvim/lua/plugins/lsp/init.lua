@@ -45,7 +45,6 @@ return {
         "js-debug-adapter",
         "shellcheck",
         "shfmt",
-        "pretty-php",
       },
       auto_update = true,
       run_on_start = true,
@@ -94,7 +93,7 @@ return {
         if client ~= nil then
           if not client.server_capabilities.documentFormattingProvider then return end
 
-          if client.name == "tsserver" then return end
+          -- if client.name == "tsserver" then return end
 
           vim.lsp.buf.format({
             client_id = client_id,
@@ -106,7 +105,7 @@ return {
 
       -- Whenever an LSP attaches to a buffer, add a BufWritePre autocmd
       vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("kickstart-lsp-attach-format", { clear = true }),
+        group = vim.api.nvim_create_augroup("lsp-attach-format", { clear = true }),
         callback = function(event)
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           vim.api.nvim_create_autocmd("BufWritePre", {
@@ -192,19 +191,19 @@ return {
 
           -- Fix treesitter ts-autotag diagnostics fix - https://github.com/windwp/nvim-ts-autotag#enable-update-on-insert
           vim.lsp.handlers["textDocument/publishDiagnostics"] =
-              vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                underline = true,
-                virtual_text = {
-                  spacing = 5,
-                  min = vim.diagnostic.severity.WARNING,
-                },
-                update_in_insert = true,
-              })
+            vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+              underline = true,
+              virtual_text = {
+                spacing = 5,
+                min = vim.diagnostic.severity.WARNING,
+              },
+              update_in_insert = true,
+            })
         end,
       })
 
       -- Temporarily Disabled
-      -- require("plugins.lsp.langs.eslint")
+      require("plugins.lsp.langs.eslint")
       require("plugins.lsp.langs.typescript")
       require("plugins.lsp.langs.vue")
       -- require("plugins.lsp.langs.json")
