@@ -286,7 +286,7 @@
         "$mainMod, Return, exec, wezterm"
         "$mainMod SHIFT, R, exec, hyprctl reload"
         "$mainMod SHIFT, F, exec, nemo"
-        "$mainMod SHIFT, Q, exec, wlogout --protocol layer-shell"
+        "$mainMod SHIFT, Q, exec, wlogout -b 5 -c 0 -r 0 -m 0 --protocol layer-shell"
         "$mainMod SHIFT, Space, togglefloating,"
         "$mainMod, Space, cyclenext # hack to focus floating windows"
         "$mainMod, F, fullscreen, 1 # fullscreen type 1"

@@ -118,7 +118,6 @@
     enable = true;
     package = unstablePkgs.vscodium;
     extensions = with unstablePkgs.vscode-extensions; [
-      dracula-theme.theme-dracula
       mvllow.rose-pine
       vscodevim.vim
       esbenp.prettier-vscode
