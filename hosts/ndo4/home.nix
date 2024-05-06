@@ -89,7 +89,7 @@
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
-    ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
+    # ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
   };
 
@@ -112,6 +112,19 @@
       secrets_filter = true;
       enter_accept = true;
     };
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = unstablePkgs.vscodium;
+    extensions = with unstablePkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      mvllow.rose-pine
+      vscodevim.vim
+      esbenp.prettier-vscode
+      svelte.svelte-vscode
+      rust-lang.rust-analyzer
+    ];
   };
 
   programs.direnv = {
