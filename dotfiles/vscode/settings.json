@@ -1,0 +1,26 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontWeight": "300",
+  "editor.fontSize": 13,
+  "editor.fontFamily": "'Operator Mono', 'monospace', monospace",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "extensions.autoUpdate": false,
+  "security.workspace.trust.enabled": false,
+  "security.workspace.trust.startupPrompt": "never",
+  "security.workspace.trust.untrustedFiles": "newWindow",
+  "svelte.enable-ts-plugin": true,
+  "telemetry.telemetryLevel": "off",
+  "terminal.explorerKind": "both",
+  "terminal.external.linuxExec": "wezterm",
+  "terminal.sourceControlRepositoriesKind": "both",
+  "window.menuBarVisibility": "toggle",
+  "workbench.colorTheme": "Rosé Pine",
+  "workbench.iconTheme": "rose-pine-icons",
+  "workbench.startupEditor": "none",
+  "vim.smartRelativeLine": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
