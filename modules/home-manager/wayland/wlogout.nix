@@ -111,48 +111,46 @@
       }
 
       window {
-          background-color: transparent;
+          background: transparent;
           padding: 128px;
       }
 
       button {
           color: white;
           background-color: #11111b;
+          opacity: 0.9;
           outline-style: none;
           border: none;
           border-width: 0px;
           background-repeat: no-repeat;
           background-position: center;
           background-size: 20%;
-          border-radius: 8px;
+          border-radius: 0px;
           box-shadow: none;
           text-shadow: none;
           animation: gradient_f 20s ease-in infinite;
-          margin : 256px 0px 256px 0px;
-      }
-
-      button:focus {
-          background-color: #a6adc8;
-          background-size: 30%;
+          margin : 384px 0px 384px 0px;
       }
 
       button:hover {
           color: black;
           background-color: #f5c2e7;
-          background-size: 40%;
-          opacity: 0.9;
-          border-radius: 16px;
+          background-size: 35%;
+          opacity: 0.95;
+          border-radius: 32px;
           animation: gradient_f 20s ease-in infinite;
           transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
-          margin : 190px 0px 190px 0px;
+          margin : 326px 0px 326px 0px;
       }
 
       #lock {
           background-image: image(url("./icons/lock.png"));
           margin-left: 256px;
+          border-radius: 16px 0px 0px 16px;
       }
       #lock:hover {
           background-image: image(url("./icons/lock-hover.png"));
+          border-radius: 32px;
       }
 
       #logout {
@@ -165,9 +163,11 @@
       #suspend {
           background-image: image(url("./icons/sleep.png"));
           margin-right: 256px;
+          border-radius: 0px 16px 16px 0px;
       }
       #suspend:hover {
           background-image: image(url("./icons/sleep-hover.png"));
+          border-radius: 32px;
       }
 
       #shutdown {
