@@ -30,9 +30,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
-    # superfile = {
-    #   url = "github:MHNightCat/superfile";
-    # };
+    superfile = {
+      url = "github:MHNightCat/superfile";
+    };
   };
 
   outputs = { self, unstable, agenix, nix-colors, nixpkgs, ... } @inputs:
