@@ -9,6 +9,9 @@
       key = "~/.ssh/id_ndo4.pub";
       signByDefault = true;
     };
+    aliases = {
+      pr = "pull --rebase";
+    };
     difftastic.enable = true;
     extraConfig = {
       init = {
