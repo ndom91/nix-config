@@ -364,7 +364,10 @@ in
     gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      package = unstablePkgs.tailscale;
+    };
     clamav = {
       daemon.enable = true;
       updater.enable = true;
