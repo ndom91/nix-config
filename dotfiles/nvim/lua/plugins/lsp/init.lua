@@ -17,7 +17,7 @@ return {
         "tsserver",
         "bashls",
         "cssls",
-        -- "eslint",
+        "eslint",
         "html",
         "svelte",
         "tailwindcss",
@@ -88,16 +88,17 @@ return {
 
       -- Format function
       local function format(client_id, bufnr)
-        -- vim.notify("id: " .. client_id .. "| buf: " .. bufnr)
         local client = vim.lsp.get_client_by_id(client_id)
         if client ~= nil then
           if not client.server_capabilities.documentFormattingProvider then return end
+          -- vim.notify("name: " .. client.name .. "| buf: " .. bufnr)
 
           -- if client.name == "tsserver" then return end
 
           vim.lsp.buf.format({
             client_id = client_id,
             async = false,
+            filter = function(formatClient) return formatClient.name ~= "tsserver" end,
             -- filter = function(c) return c.id == client.id end,
           })
         end
@@ -202,7 +203,6 @@ return {
         end,
       })
 
-      -- Temporarily Disabled
       require("plugins.lsp.langs.eslint")
       require("plugins.lsp.langs.typescript")
       require("plugins.lsp.langs.vue")

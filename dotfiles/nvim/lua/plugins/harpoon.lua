@@ -5,7 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   keys = {
-    { "<leader>a", function() require("harpoon"):list():append() end, "n", desc = "[A]dd" },
+    { "<leader>a", function() require("harpoon"):list():add() end, "n", desc = "[A]dd" },
     {
       "<leader>h",
       function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end,

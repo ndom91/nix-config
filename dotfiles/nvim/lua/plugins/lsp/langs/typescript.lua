@@ -10,7 +10,7 @@ if not have_vue then
       client.server_capabilities.document_formatting = false
       -- null-ls messes with formatexpr for some reason, which messes up `gq`
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
-      -- vim.bo[bufnr].formatexpr = nil
+      vim.bo[bufnr].formatexpr = nil
     end,
     handlers = {
       -- Go right to first result if there is more than 1

@@ -7,9 +7,11 @@ local symbol_map = {
 
 local path = require("plenary.path")
 
+-- "akinsho/bufferline.nvim",
 return {
-  "akinsho/bufferline.nvim",
-  version = "v4.*",
+  "Theyashsawarkar/bufferline.nvim",
+  -- version = "v4.*",
+  -- branch = "v4.5.2",
   event = "VimEnter",
   keys = {
     {
@@ -18,7 +20,7 @@ return {
       desc = "Bufferline Close",
       silent = true,
     },
-    { "<Tab>",   ":bnext<CR>", silent = true },
+    { "<Tab>", ":bnext<CR>", silent = true },
     { "<S-Tab>", ":bprev<CR>", silent = true },
   },
   opts = {
