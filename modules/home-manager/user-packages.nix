@@ -4,6 +4,8 @@
   home.packages = with pkgs; [
     # Graphical Applications
     unstablePkgs.xpipe
+
+    # Chromium
     (unstablePkgs.vivaldi.override {
       proprietaryCodecs = true;
       enableWidevine = true;
@@ -23,37 +25,38 @@
         "--enable-webrtc-pipewire-capturer"
       ];
     })
-    floorp
-    gnome.gnome-boxes
-    gnome.seahorse
-    slack
-    vesktop # Discord fork
-    virt-manager
-    gnome-text-editor
-    cinnamon.nemo
-    gnome.file-roller
-    vlc
-    unstablePkgs.protonvpn-gui
 
-    rustdesk
-    obsidian
+    floorp # Firefox
+    gnome.gnome-boxes # VM Manager
+    gnome.seahorse # GPG Key Manager
+    slack # Chat
+    vesktop # Discord fork
+    virt-manager # VM Manager
+    gnome-text-editor # Plain Text Editor
+    cinnamon.nemo # GUI File Manager
+    gnome.file-roller # GUI Archive Manager
+    vlc # Media Player
+    unstablePkgs.protonvpn-gui # VPN Client
+
+    rustdesk # Remote Desktop
+    obsidian # Note Taking
 
     # System Tools
-    qdirstat
-    gparted
-    libsecret
-    polkit_gnome
+    qdirstat # Disk Usage Analyzer
+    gparted # Partition Manager
+    libsecret # Secret Service
+    polkit_gnome # Polkit Agent
 
     # Dev Tools
-    beekeeper-studio
-    sqlite
-    mitmproxy
+    beekeeper-studio # SQL Client
+    sqlite # Database
+    mitmproxy # Proxy
     # unstablePkgs.nodePackages.wrangler
     (builtins.getFlake "github:NixOS/nixpkgs/8dfad603247387df1df4826b8bea58efc5d012d8").legacyPackages.${pkgs.system}.nodePackages.wrangler
 
     # Nix Tools
-    nvd
-    unstablePkgs.nh
+    nvd # Nix Visual Diff
+    unstablePkgs.nh # Nix History
     comma # Run commands in a nix-shell with comma prefix
 
     # Hardware Tools
@@ -66,15 +69,15 @@
     doggo # DNS client for humans
     duf # Disk Usage/Free Utility - a better 'df' alternative
     ncdu # analyzer your disk usage Interactively, via TUI(replacement of `du`)
-    gpu-viewer
+    gpu-viewer # GPU htop
 
     # Terminal Apps
-    lazygit
-    lazydocker
-    starship
+    lazygit # TUI Git Client
+    lazydocker # TUI Docker
+    starship # Terminal Prompt
     whois
-    jq
-    cliphist
+    jq # CLI JSON Client
+    cliphist # Clipboard History
     irssi # IRC Client
     parted # GParted Terminal
     ranger # TUI File Manager
