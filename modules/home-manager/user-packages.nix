@@ -9,21 +9,21 @@
     (unstablePkgs.vivaldi.override {
       proprietaryCodecs = true;
       enableWidevine = true;
-      commandLineArgs = [
-        # "--ozone-platform=wayland"
-        # "--enable-features=VaapiVideoDecoder"
-        # "--use-gl=egl"
-
-        "--use-gl=angle"
-        "--use-angle=gl"
-        "--ignore-gpu-blacklist"
-        "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,RawDraw,CanvasOopRasterization"
-        "--enable-gpu-rasterization"
-        "--enable-zero-copy"
-        "--enable-hardware-overlays"
-        "--enable-native-gpu-memory-buffers"
-        "--enable-webrtc-pipewire-capturer"
-      ];
+      # commandLineArgs = [
+      #   # "--ozone-platform=wayland"
+      #   # "--enable-features=VaapiVideoDecoder"
+      #   # "--use-gl=egl"
+      #
+      #   "--use-gl=angle"
+      #   "--use-angle=gl"
+      #   "--ignore-gpu-blacklist"
+      #   "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,RawDraw,CanvasOopRasterization"
+      #   "--enable-gpu-rasterization"
+      #   "--enable-zero-copy"
+      #   "--enable-hardware-overlays"
+      #   "--enable-native-gpu-memory-buffers"
+      #   "--enable-webrtc-pipewire-capturer"
+      # ];
     })
 
     floorp # Firefox
@@ -102,17 +102,20 @@
     vivaldi = {
       name = "Vivaldi Wayland";
       exec = "${unstablePkgs.vivaldi}/bin/vivaldi " +
-        "--use-gl=angle " +
-        "--use-angle=gl " +
-        "--ignore-gpu-blacklist " +
-        "--enable-gpu-rasterization " +
-        "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,RawDraw,CanvasOopRasterization " +
-        "--enable-gpu-rasterization " +
-        "--enable-zero-copy " +
-        "--enable-hardware-overlays " +
-        "--enable-native-gpu-memory-buffers " +
-        "--enable-webrtc-pipewire-capturer " +
+        "--enable-features=UseOzonePlatform " +
+        "--ozone-platform=wayland" +
         "%U";
+
+      # "--use-gl=angle " +
+      # "--use-angle=gl " +
+      # "--ignore-gpu-blacklist " +
+      # "--enable-gpu-rasterization " +
+      # "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,RawDraw,CanvasOopRasterization,UseOzonePlatform " +
+      # "--enable-gpu-rasterization " +
+      # "--enable-zero-copy " +
+      # "--enable-hardware-overlays " +
+      # "--enable-native-gpu-memory-buffers " +
+      # "--enable-webrtc-pipewire-capturer " +
       genericName = "Web Browser";
       startupNotify = true;
       terminal = false;
