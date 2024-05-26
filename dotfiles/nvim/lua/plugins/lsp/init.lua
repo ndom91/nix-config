@@ -41,7 +41,7 @@ return {
         "prettierd",
         "rustywind",
         -- "biome",
-        "eslint_d",
+        -- "eslint_d",
         "js-debug-adapter",
         "shellcheck",
         "shfmt",
