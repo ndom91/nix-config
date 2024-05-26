@@ -1,0 +1,22 @@
+[Unit]
+Description=Watch Ultra Mount
+After=network.target rclone.service
+Wants=network-online.target
+
+[Service]
+Restart=always
+Type=simple
+ExecStart=/usr/local/bin/watchexec \
+  --timings \
+  --debounce=10s \
+  --delay-run=30s \
+  --print-events \
+  --fs-events=create \
+  -w /mnt/media/ultra \
+  /opt/scripts/moveMedia.sh
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=watchexec
+
+[Install]
+WantedBy=multi-user.target
