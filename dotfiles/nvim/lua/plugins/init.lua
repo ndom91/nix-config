@@ -251,7 +251,14 @@ return {
       "nvim-lua/plenary.nvim",
     },
   },
-  "segeljakt/vim-silicon",
+  {
+    "segeljakt/vim-silicon",
+    enabled = false,
+  },
+  {
+    "ndom91/freeze",
+    dev = true,
+  },
   {
     "tpope/vim-surround",
     enabled = false,
