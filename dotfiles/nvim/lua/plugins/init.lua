@@ -256,9 +256,36 @@ return {
     enabled = false,
   },
   {
-    "ndom91/freeze",
-    dev = true,
+    "ndom91/freeze.nvim",
+    enabled = true,
+    lazy = false,
+    keys = {
+      {
+        "<leader>f",
+        function() require("freeze").exec() end,
+        mode = { "n", "v" },
+        desc = "[F]reeze",
+        noremap = true,
+      },
+    },
   },
+  -- {
+  --   dir = "/opt/ndomino/nvim/freeze.nvim",
+  --   enabled = true,
+  --   lazy = false,
+  --   opts = {
+  --     theme = "dracula",
+  --   },
+  --   keys = {
+  --     {
+  --       "<leader>f",
+  --       function() require("freeze").exec() end,
+  --       mode = { "n", "v" },
+  --       desc = "[F]reeze",
+  --       noremap = true,
+  --     },
+  --   },
+  -- },
   {
     "tpope/vim-surround",
     enabled = false,
