@@ -7,9 +7,9 @@ local symbol_map = {
 
 local path = require("plenary.path")
 
--- "akinsho/bufferline.nvim",
 return {
-  "Theyashsawarkar/bufferline.nvim",
+  "akinsho/bufferline.nvim",
+  -- "Theyashsawarkar/bufferline.nvim",
   -- version = "v4.*",
   -- branch = "v4.5.2",
   event = "VimEnter",

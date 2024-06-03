@@ -114,9 +114,8 @@ in
       # allowedUDPPorts = [];
     };
     hosts = {
-      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" "db.puff.lan" ];
+      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" ];
       "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
-      # "10.0.0.52" = [ "netbox.puff.lan" "paperless.puff.lan" ];
     };
   };
 

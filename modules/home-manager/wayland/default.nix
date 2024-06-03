@@ -36,17 +36,6 @@
 
   services = {
     cliphist.enable = true;
-    # swayosd = {
-    #   package = unstablePkgs.swayosd;
-    #   enable = true;
-    #   override = {
-    #     config = {
-    #       startup = [
-    #         { command = lib.getExe' pkgs.swayosd "swayosd-server"; }
-    #       ];
-    #     };
-    #   };
-    # };
     wlsunset = {
       enable = true;
       latitude = "52.52";
@@ -69,8 +58,8 @@
         }
         {
           timeout = 660;
-          command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-          resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+          command = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
+          resumeCommand = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
         }
         {
           timeout = 3600;

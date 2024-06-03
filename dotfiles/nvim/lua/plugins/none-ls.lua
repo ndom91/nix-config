@@ -45,9 +45,9 @@ return {
       }),
       -- nls.builtins.formatting.biome,
       -- nls.builtins.formatting.eslint_d.with({
-      require("none-ls.formatting.eslint_d").with({
-        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
-      }),
+      -- require("none-ls.formatting.eslint_d").with({
+      --   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
+      -- }),
       nls.builtins.formatting.stylua,
       nls.builtins.formatting.rustywind, -- Organise Tailwind Classes
       -- nls.builtins.formatting.lua_format,

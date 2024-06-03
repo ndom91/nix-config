@@ -60,15 +60,15 @@ let
     };
     cpu = {
       interval = 2;
-      format = "<span font='15' rise='-1pt'>󰻠</span> {usage}%";
+      format = "<span font='15' rise='-1pt'>󰻠</span>  {usage}%";
     };
     disk = {
       interval = 120;
-      format = "<span font='14' rise='-1pt'>󰋊</span> {free}";
+      format = "<span font='14' rise='-1pt'>󰋊</span>  {free}";
     };
     memory = {
       interval = 10;
-      format = "<span font='12' rise='0pt'></span> {percentage}%";
+      format = "<span font='12' rise='0pt'></span>   {percentage}%";
     };
     "idle_inhibitor" = {
       format = "{icon}";
@@ -82,15 +82,15 @@ let
     };
     "custom/notification" = {
       tooltip = false;
-      format = "{icon} {}";
+      format = "{icon}   {}";
       format-icons = {
-        notification = "<span font='8' foreground='red'></span>";
+        notification = "<span font='8' foreground='red'> </span>";
         none = "";
-        dnd-notification = "<span font='8' foreground='red'></span>";
+        dnd-notification = "<span font='8' foreground='red'> </span>";
         dnd-none = "";
-        inhibited-notification = "<span font='8' foreground='red'></span>";
+        inhibited-notification = "<span font='8' foreground='red'> </span>";
         inhibited-none = "";
-        dnd-inhibited-notification = "<span font='8' foreground='red'></span>";
+        dnd-inhibited-notification = "<span font='8' foreground='red'> </span>";
         dnd-inhibited-none = "";
       };
       return-type = "json";
@@ -149,7 +149,7 @@ let
       tooltip-format = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
     };
     wireplumber = {
-      format = "<span font='12' rise='-2pt'></span> {volume}";
+      format = "<span font='12' rise='-2pt'></span>    {volume}";
       format-muted = "<span font='12' rise='-2pt'></span>";
       on-click = "${pkgs.pamixer}/bin/pamixer -t";
       on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
