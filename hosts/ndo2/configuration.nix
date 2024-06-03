@@ -19,6 +19,7 @@ in
   ];
   # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
   age.secrets.pvpn.file = ../../secrets/pvpn.age;
+  age.secrets.derpyKey.file = ../../secrets/derpyKey.age;
   age.secrets.ssh = {
     file = ./../../secrets/ssh.age;
     path = "${config.users.users.ndo.home}/.ssh/config";
@@ -80,7 +81,30 @@ in
   networking = {
     hostName = "ndo2";
     useDHCP = lib.mkDefault true;
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      ensureProfiles.profiles = {
+        "gitbutler-wifi" = {
+          connection = {
+            id = "gitbutler-wifi";
+            type = "wifi";
+          };
+          ipv4 = {
+            method = "auto";
+            nameserver = "192.168.188.1";
+            dns-search = "";
+          };
+          wifi = {
+            mode = "infrastructure";
+            ssid = "Derpy Dino Bronx";
+          };
+          wifi-security = {
+            key-mgmt = "wpa-psk";
+            psk = config.age.secrets.derpyKey.path;
+          };
+        };
+      };
+    };
     nameservers = [
       "10.0.0.1"
     ];
@@ -112,6 +136,9 @@ in
       '';
     };
     wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
+    # wireless.networks."Derpy Dino Bronx" = {
+    #   psk = config.age.secrets.derpyKey.path;
+    # };
   };
 
   time.timeZone = "Europe/Berlin";

@@ -1,4 +1,4 @@
-{ lib, pkgs, osConfig, ... }:
+{ lib, unstablePkgs, pkgs, osConfig, ... }:
 let
   ndo4Main = {
     output = "DP-1";
@@ -467,6 +467,79 @@ let
     };
   };
 
+  gitButler = {
+    output = "DP-1";
+    layer = "top";
+    exclusive = true;
+    passthrough = false;
+    position = "top";
+    fixed-center = true;
+    ipc = true;
+    margin-left = 20;
+    margin-right = 20;
+    margin-top = 10;
+    margin-bottom = 0;
+    modules-left = [
+      "clock"
+      "hyprland/workspaces"
+    ];
+    modules-center = [
+      "hyprland/window"
+    ];
+    modules-right = [
+      "network"
+    ];
+    network = {
+      interval = 5;
+      format-wifi = "<span font='12' rise='-2pt'>󱚿</span> {ipaddr}";
+      format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
+      format-alt = "<span font='12' rise='-2pt'>󰲐</span> {ipaddr}/{cidr}";
+      format-linked = "󰖪 {ifname} (No IP)";
+      format-disconnected = "󱛅 Disconnected";
+      format-disabled = "󰖪 Disabled";
+      tooltip-format = "󰀂 {ifname} via {gwaddr}";
+      on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+    };
+    tray = {
+      icon-size = 16;
+      spacing = 10;
+    };
+    clock = {
+      interval = 60;
+      align = 0;
+      rotate = 0;
+      format = "{:%H:%M | %a %b %d}";
+      "format-alt" = " {:%a %b %d}";
+      "tooltip-format" = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+    };
+    "hyprland/workspaces" = {
+      format = "{icon}";
+      on-click = "activate";
+      format-icons = {
+        "1" = "1";
+        "2" = "2";
+        "3" = "3";
+        "4" = "4";
+        "5" = "5";
+        "6" = "6";
+        "7" = "7";
+        "8" = "8";
+        "9" = "9";
+        "10" = "10";
+        urgent = "";
+        # active = "";
+        # default = "";
+      };
+      persistent-workspaces = {
+        "DP-1" = [ 2 3 ];
+        "DP-2" = [ 1 ];
+      };
+      on-scroll-down = "hyprctl dispatch workspace e-1";
+      on-scroll-up = "hyprctl dispatch workspace e+1";
+      all-outputs = false;
+    };
+  };
+
   bars = lib.mkMerge [
     (lib.mkIf (osConfig.networking.hostName == "ndo4") {
       one = ndo4Main;
@@ -474,6 +547,7 @@ let
     })
     (lib.mkIf (osConfig.networking.hostName == "ndo2") {
       one = ndo2Main;
+      two = gitButler;
     })
   ];
 in
@@ -484,7 +558,7 @@ in
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+    package = unstablePkgs.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     });
     style = ./style.css;
