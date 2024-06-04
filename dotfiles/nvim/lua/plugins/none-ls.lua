@@ -18,11 +18,11 @@ return {
       -- nls.builtins.formatting.deno_fmt,
       nls.builtins.formatting.prettierd.with({
         filetypes = {
-          -- "svelte",
-          -- "javascript",
-          -- "javascriptreact",
-          -- "typescript",
-          -- "typescriptreact",
+          "svelte",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
           -- "vue",
           "tsx",
           "json",

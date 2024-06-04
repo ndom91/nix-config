@@ -166,6 +166,9 @@
         "fullscreen, title:wlogout"
         "noshadow, floating:1"
 
+        # GitButler Float
+        "float, class:^(^git-butler.*)$"
+
         # 1Password
         # "noinitialfocus,title:Quick Access - 1Password,floating"
         "stayfocused,title:Quick Access - 1Password,floating:1"
