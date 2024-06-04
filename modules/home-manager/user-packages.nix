@@ -139,7 +139,7 @@
     };
     beeper = {
       name = "Beeper";
-      exec = "/home/ndo/Downloads/beeper-3.102.16x86_64.AppImage";
+      exec = "/home/ndo/Downloads/beeper-3.105.2x86_64.AppImage";
       icon = "beeper";
       type = "Application";
       categories = [ "Network" "WebBrowser" ];
