@@ -64,7 +64,6 @@
   # ndo2 overrides
   wayland.windowManager.hyprland = {
     settings = {
-      # monitor = lib.mkForce "eDP-1,preferred,auto,1.333333";
       monitor = lib.mkForce "eDP-1,preferred,auto,1.6";
       env = lib.mkForce [
         "GDK_SCALE,1.6"
@@ -86,6 +85,13 @@
       #   natural_scroll = true;
       #   sensitivity = 0.1;
       # };
+
+      workspace = [
+        "1,monitor:eDP-1,default:true"
+        "2,monitor:eDP-1"
+        "3,monitor:DP-1"
+        "4,monitor:DP-1"
+      ];
 
       gestures = {
         workspace_swipe = true;

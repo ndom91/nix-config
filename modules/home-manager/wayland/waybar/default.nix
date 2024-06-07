@@ -262,6 +262,9 @@ let
         # active = "";
         # default = "";
       };
+      persistent-workspaces = {
+        "eDP-1" = [ 1 2 ]; # Laptop Monitor
+      };
       on-scroll-down = "hyprctl dispatch workspace e-1";
       on-scroll-up = "hyprctl dispatch workspace e+1";
       all-outputs = false;
@@ -531,8 +534,7 @@ let
         # default = "";
       };
       persistent-workspaces = {
-        "DP-1" = [ 2 3 ];
-        "DP-2" = [ 1 ];
+        "DP-1" = [ 3 4 ]; # ndo4 vertical
       };
       on-scroll-down = "hyprctl dispatch workspace e-1";
       on-scroll-up = "hyprctl dispatch workspace e+1";

@@ -167,7 +167,7 @@
         "noshadow, floating:1"
 
         # GitButler Float
-        "float, class:^(^git-butler.*)$"
+        "float, class:^(git-butler.*)$"
 
         # 1Password
         # "noinitialfocus,title:Quick Access - 1Password,floating"
