@@ -8,6 +8,7 @@ return {
     "mason.nvim",
     "nvimtools/none-ls-extras.nvim",
   },
+  enabled = false,
   opts = function(_, opts)
     local nls = require("null-ls")
 

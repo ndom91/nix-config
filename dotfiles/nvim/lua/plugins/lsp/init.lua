@@ -75,47 +75,47 @@ return {
       -- Create an augroup that is used for managing our formatting autocmds.
       --      We need one augroup per client to make sure that multiple clients
       --      can attach to the same buffer without interfering with each other.
-      local _augroups = {}
-      local get_augroup = function(client)
-        if not _augroups[client.id] then
-          local group_name = "kickstart-lsp-format-" .. client.name
-          local id = vim.api.nvim_create_augroup(group_name, { clear = true })
-          _augroups[client.id] = id
-        end
-
-        return _augroups[client.id]
-      end
+      -- local _augroups = {}
+      -- local get_augroup = function(client)
+      --   if not _augroups[client.id] then
+      --     local group_name = "kickstart-lsp-format-" .. client.name
+      --     local id = vim.api.nvim_create_augroup(group_name, { clear = true })
+      --     _augroups[client.id] = id
+      --   end
+      --
+      --   return _augroups[client.id]
+      -- end
 
       -- Format function
-      local function format(client_id, bufnr)
-        local client = vim.lsp.get_client_by_id(client_id)
-        if client ~= nil then
-          if not client.server_capabilities.documentFormattingProvider then return end
-          -- vim.notify("name: " .. client.name .. "| buf: " .. bufnr)
-
-          -- if client.name == "tsserver" then return end
-
-          vim.lsp.buf.format({
-            client_id = client_id,
-            async = false,
-            filter = function(formatClient) return formatClient.name ~= "tsserver" end,
-            -- filter = function(c) return c.id == client.id end,
-          })
-        end
-      end
+      -- local function format(client_id, bufnr)
+      --   local client = vim.lsp.get_client_by_id(client_id)
+      --   if client ~= nil then
+      --     if not client.server_capabilities.documentFormattingProvider then return end
+      --     -- vim.notify("name: " .. client.name .. "| buf: " .. bufnr)
+      --
+      --     -- if client.name == "tsserver" then return end
+      --
+      --     vim.lsp.buf.format({
+      --       client_id = client_id,
+      --       async = false,
+      --       filter = function(formatClient) return formatClient.name ~= "tsserver" end,
+      --       -- filter = function(c) return c.id == client.id end,
+      --     })
+      --   end
+      -- end
 
       -- Whenever an LSP attaches to a buffer, add a BufWritePre autocmd
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("lsp-attach-format", { clear = true }),
-        callback = function(event)
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = get_augroup(client),
-            buffer = event.buf,
-            callback = function() format(event.data.client_id, event.buf) end,
-          })
-        end,
-      })
+      -- vim.api.nvim_create_autocmd("LspAttach", {
+      --   group = vim.api.nvim_create_augroup("lsp-attach-format", { clear = true }),
+      --   callback = function(event)
+      --     local client = vim.lsp.get_client_by_id(event.data.client_id)
+      --     vim.api.nvim_create_autocmd("BufWritePre", {
+      --       group = get_augroup(client),
+      --       buffer = event.buf,
+      --       callback = function() format(event.data.client_id, event.buf) end,
+      --     })
+      --   end,
+      -- })
 
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
       vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
@@ -159,14 +159,15 @@ return {
 
           if client ~= nil then
             -- Formatting keymap handler
-            local function attachFormatKeymap()
-              if not client.server_capabilities.documentFormattingProvider then return end
-
-              if client.name == "tsserver" then return end
-
-              vim.keymap.set("n", "<Leader>lf", function() format(client.id, event.buf) end, options)
-            end
-            attachFormatKeymap()
+            -- local function attachFormatKeymap()
+            --   if not client.server_capabilities.documentFormattingProvider then return end
+            --
+            --   if client.name == "tsserver" then return end
+            --
+            --   -- vim.keymap.set("n", "<Leader>lf", function() format(client.id, event.buf) end, options)
+            --   vim.keymap.set("n", "<Leader>lf", function() format(client.id, event.buf) end, options)
+            -- end
+            -- attachFormatKeymap()
 
             -- Highlight symbol references on hover
             if client.server_capabilities.documentHighlightProvider then
@@ -205,7 +206,7 @@ return {
 
       require("plugins.lsp.langs.eslint")
       require("plugins.lsp.langs.typescript")
-      require("plugins.lsp.langs.vue")
+      -- require("plugins.lsp.langs.vue")
       -- require("plugins.lsp.langs.json")
       require("plugins.lsp.langs.yaml")
       require("plugins.lsp.langs.css")
@@ -221,6 +222,91 @@ return {
     config = function()
       require("neodev").setup({})
       require("plugins.lsp.langs.lua")
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
+    -- enabled = true,
+    -- lazy = false,
+    keys = {
+      {
+        "<leader>lf",
+        function() require("conform").format({ lsp_fallback = true, async = true }) end,
+        desc = "[F]ormat",
+      },
+    },
+    config = function()
+      local conform = require("conform")
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+      conform.setup({
+        formatters_by_ft = {
+          sh = { "shfmt" },
+          lua = { "stylua" },
+          -- Conform will run multiple formatters sequentially
+          -- python = { "isort", "black" },
+          -- Use a sub-list to run only the first available formatter
+          javascript = { { "prettierd", "prettier" } },
+          typescript = { { "prettierd", "prettier" } },
+          javascriptreact = { { "prettierd", "prettier" } },
+          typescriptreact = { { "prettierd", "prettier" } },
+          svelte = { { "prettierd", "prettier" } },
+          ["_"] = { "trim_whitespace" },
+        },
+        -- Conform will notify you when a formatter errors
+        notify_on_error = true,
+        format_on_save = {
+          -- These options will be passed to conform.format()
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
+      })
+
+      conform.formatters = {
+        prettier = {
+          condition = function()
+            if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
+          end,
+          require_cwd = true,
+          cwd = require("conform.util").root_file({
+            ".prettierrc",
+            ".prettierrc.json",
+            ".prettierrc.yml",
+            ".prettierrc.yaml",
+            ".prettierrc.json5",
+            ".prettierrc.js",
+            ".prettierrc.cjs",
+            ".prettierrc.mjs",
+            ".prettierrc.toml",
+            "prettier.config.js",
+            "prettier.config.cjs",
+            "prettier.config.mjs",
+          }),
+        },
+        prettierd = {
+          condition = function()
+            if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
+          end,
+          require_cwd = true,
+          cwd = require("conform.util").root_file({
+            ".prettierrc",
+            ".prettierrc.json",
+            ".prettierrc.yml",
+            ".prettierrc.yaml",
+            ".prettierrc.json5",
+            ".prettierrc.js",
+            ".prettierrc.cjs",
+            ".prettierrc.mjs",
+            ".prettierrc.toml",
+            "prettier.config.js",
+            "prettier.config.cjs",
+            "prettier.config.mjs",
+          }),
+        },
+        shfmt = {
+          prepend_args = { "-i", "2" },
+        },
+      }
     end,
   },
   {
@@ -240,10 +326,6 @@ return {
   },
   {
     "sbdchd/neoformat",
-    enabled = false,
-  },
-  {
-    "stevearc/conform.nvim",
     enabled = false,
   },
   {
