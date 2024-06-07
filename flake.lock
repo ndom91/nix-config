@@ -342,6 +342,26 @@
         "type": "github"
       }
     },
+    "hy3": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716550464,
+        "narHash": "sha256-N7dwsaZZckzAD5OHpygt7g3TYNK0iTjKebmjAS8PSG8=",
+        "owner": "outfoxxed",
+        "repo": "hy3",
+        "rev": "3025a015ea21a1fda84a5a5c847ca31e699fd237",
+        "type": "github"
+      },
+      "original": {
+        "owner": "outfoxxed",
+        "repo": "hy3",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -733,6 +753,7 @@
         "agenix": "agenix",
         "apple-fonts": "apple-fonts",
         "home-manager": "home-manager_2",
+        "hy3": "hy3",
         "hyprfocus": "hyprfocus",
         "hyprland": "hyprland",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

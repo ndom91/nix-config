@@ -22,6 +22,8 @@
     xwayland.enable = true;
 
     plugins = [
+      inputs.hy3.packages.${pkgs.system}.hy3
+      # unstablePkgs.hyprlandPlugins.hy3
       # (unstablePkgs.hyprlandPlugins.hy3.override {
       #   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
       # })
@@ -71,8 +73,8 @@
 
         no_focus_fallback = true;
 
-        layout = "master";
-        # layout = "hy3";
+        # layout = "master";
+        layout = "hy3";
         resize_on_border = true;
       };
       decoration = {
@@ -277,9 +279,9 @@
       ];
       bind = [
         # hy3
-        # "$mainMod, G, hy3:makegroup, tab, force_ephemeral"
-        # "$mainMod, Y, hy3:changegroup, opposite"
-        # "$mainMod, Q, hy3:killactive,"
+        "$mainMod, G, hy3:makegroup, tab, force_ephemeral"
+        "$mainMod, Y, hy3:changegroup, opposite"
+        "$mainMod, Q, hy3:killactive,"
 
         # "$mainMod, G, togglegroup,"
         # "$mainMod, U, changegroupactive,b"
@@ -306,25 +308,25 @@
         "CTRL SHIFT, Space, exec, swaync-client -C -sw"
 
         # Move focus with mainMod + arrow keys
-        "$mainMod, H, movefocus, l"
-        "$mainMod, L, movefocus, r"
-        "$mainMod, K, movefocus, u"
-        "$mainMod, J, movefocus, d"
-        "$mainMod SHIFT, H, movewindow, l"
-        "$mainMod SHIFT, L, movewindow, r"
-        "$mainMod SHIFT, K, movewindow, u"
-        "$mainMod SHIFT, J, movewindow, d"
+        # "$mainMod, H, movefocus, l"
+        # "$mainMod, L, movefocus, r"
+        # "$mainMod, K, movefocus, u"
+        # "$mainMod, J, movefocus, d"
+        # "$mainMod SHIFT, H, movewindow, l"
+        # "$mainMod SHIFT, L, movewindow, r"
+        # "$mainMod SHIFT, K, movewindow, u"
+        # "$mainMod SHIFT, J, movewindow, d"
         # "$mainMod SHIFT, J, movewindoworgroup, d"
 
         # hy3 - Move focus with mainMod + arrow keys
-        # "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
-        # "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
-        # "$mainMod, K, hy3:movefocus, u"
-        # "$mainMod, J, hy3:movefocus, d"
-        # "$mainMod SHIFT, H, hy3:movewindow, l"
-        # "$mainMod SHIFT, L, hy3:movewindow, r"
-        # "$mainMod SHIFT, K, hy3:movewindow, u"
-        # "$mainMod SHIFT, J, hy3:movewindow, d"
+        "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
+        "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
+        "$mainMod, K, hy3:movefocus, u"
+        "$mainMod, J, hy3:movefocus, d"
+        "$mainMod SHIFT, H, hy3:movewindow, l"
+        "$mainMod SHIFT, L, hy3:movewindow, r"
+        "$mainMod SHIFT, K, hy3:movewindow, u"
+        "$mainMod SHIFT, J, hy3:movewindow, d"
 
         # Special Keys
         ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
@@ -378,27 +380,27 @@
       # Resize
       bind = $mainMod, R, submap, resize
       submap = resize
-      binde = , H, resizeactive, -40 0
-      binde = , L, resizeactive, 40 0
+      binde = , H, resizeactive, 40 0
+      binde = , L, resizeactive, -40 0
       binde = , K, resizeactive, 0 -40
       binde = , J, resizeactive, 0 40
       bind = , escape, submap, reset
       submap = reset
 
       plugin {
-        # hy3 {
-        #   tabs {
-        #     height = 5
-        #     padding = 8
-        #     render_text = false
-        #     col.active = rgb(8a8dcc)
-        #   }
-        #   autotile {
-        #     enable = true
-        #     trigger_width = 800
-        #     trigger_height = 500
-        #   }
-        # }
+        hy3 {
+          tabs {
+            height = 5
+            padding = 8
+            render_text = false
+            col.active = rgb(8a8dcc)
+          }
+          autotile {
+            enable = true
+            trigger_width = 800
+            trigger_height = 500
+          }
+        }
         # hyprfocus {
         #   enabled = yes
         #

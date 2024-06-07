@@ -50,8 +50,8 @@ in
         extraConfig = ''
           set -g @catppuccin_flavour 'mocha'
 
-          set -g @catppuccin_user off
-          set -g @catppuccin_host off
+          # set -g @catppuccin_user off
+          # set -g @catppuccin_host off
           set -g @catppuccin_date_time "%Y-%m-%d %H:%M"
 
           set -g @catppuccin_window_left_separator "█"
@@ -64,8 +64,8 @@ in
           set -g @catppuccin_window_current_fill "number"
           set -g @catppuccin_window_current_text "#W"
 
-          set -g @catppuccin_status_modules_left "application date_time"
-          set -g @catppuccin_status_modules_right "prefix_highlight"
+          set -g @catppuccin_status_modules_left ""
+          set -g @catppuccin_status_modules_right "host prefix_highlight"
           set -g @catppuccin_status_left_separator "█"
           set -g @catppuccin_status_right_separator "█ "
           set -g @catppuccin_status_right_separator_inverse "no"
