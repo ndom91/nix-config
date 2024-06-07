@@ -231,7 +231,7 @@ return {
     keys = {
       {
         "<leader>lf",
-        function() require("conform").format({ lsp_fallback = true, async = true }) end,
+        function() require("conform").format({ lsp_fallback = "always", async = true }) end,
         desc = "[F]ormat",
       },
     },
@@ -258,15 +258,15 @@ return {
         format_on_save = {
           -- These options will be passed to conform.format()
           timeout_ms = 500,
-          lsp_fallback = true,
+          lsp_fallback = "always",
         },
       })
 
       conform.formatters = {
         prettier = {
-          condition = function()
-            if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
-          end,
+          -- condition = function()
+          --   if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
+          -- end,
           require_cwd = true,
           cwd = require("conform.util").root_file({
             ".prettierrc",
@@ -284,9 +284,9 @@ return {
           }),
         },
         prettierd = {
-          condition = function()
-            if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
-          end,
+          -- condition = function()
+          --   if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
+          -- end,
           require_cwd = true,
           cwd = require("conform.util").root_file({
             ".prettierrc",
