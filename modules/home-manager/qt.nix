@@ -7,7 +7,9 @@
 
   qt = {
     enable = true;
-    platformTheme = "gtk3";
+    platformTheme = {
+      name = "gtk3";
+    };
     style = {
       name = "adwaita-dark";
       # package = pkgs.qt6Packages.qt6gtk2;

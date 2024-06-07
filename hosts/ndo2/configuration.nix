@@ -159,8 +159,7 @@ in
     };
   };
 
-  services.xserver = {
-    enable = true;
+  services = {
     displayManager = {
       defaultSession = "hyprland";
       sddm = {
@@ -176,16 +175,21 @@ in
           };
         };
       };
-      gdm = {
-        enable = false;
-        wayland = true;
-      };
     };
-    videoDrivers = [ "intel" ];
-    xkb = {
-      layout = "us";
-      variant = "";
-      options = "caps:escape";
+    xserver = {
+      videoDrivers = [ "intel" ];
+      enable = true;
+      displayManager = {
+        gdm = {
+          enable = false;
+          wayland = true;
+        };
+      };
+      xkb = {
+        layout = "us";
+        variant = "";
+        options = "caps:escape";
+      };
     };
     libinput.touchpad = {
       tappingButtonMap = "lrm";
@@ -405,7 +409,7 @@ in
     };
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       openFirewall = true;
     };
 

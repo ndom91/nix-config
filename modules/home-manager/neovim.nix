@@ -28,7 +28,7 @@
       ps.pynvim
     ];
     extraPackages = with pkgs; [
-      nixfmt
+      nixfmt-classic
       prettierd
       eslint_d
       unstablePkgs.rustywind

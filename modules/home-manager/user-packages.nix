@@ -140,7 +140,7 @@
     };
     beeper = {
       name = "Beeper";
-      exec = "/home/ndo/Downloads/beeper-3.105.2x86_64.AppImage";
+      exec = "/opt/appimages/beeper.AppImage";
       icon = "beeper";
       type = "Application";
       categories = [ "Network" "WebBrowser" ];

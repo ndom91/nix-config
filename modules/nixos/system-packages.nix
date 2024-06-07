@@ -5,7 +5,7 @@
     # zig
     inputs.agenix.packages.x86_64-linux.default
     amdgpu_top
-    nvtop-amd
+    nvtopPackages.amd
     appimage-run
     bat
     bluez

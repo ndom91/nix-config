@@ -137,8 +137,7 @@ in
     };
   };
 
-  services.xserver = {
-    enable = true;
+  services = {
     displayManager = {
       defaultSession = "hyprland";
       sddm = {
@@ -155,16 +154,21 @@ in
           };
         };
       };
-      gdm = {
-        enable = false;
-        wayland = true;
-      };
     };
-    videoDrivers = [ "amdgpu" ];
-    xkb = {
-      layout = "us";
-      variant = "";
-      options = "caps:escape";
+    xserver = {
+      videoDrivers = [ "amdgpu" ];
+      enable = true;
+      displayManager = {
+        gdm = {
+          enable = false;
+          wayland = true;
+        };
+      };
+      xkb = {
+        layout = "us";
+        variant = "";
+        options = "caps:escape";
+      };
     };
   };
 
@@ -380,7 +384,7 @@ in
     };
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       openFirewall = true;
       publish.domain = true;
     };
