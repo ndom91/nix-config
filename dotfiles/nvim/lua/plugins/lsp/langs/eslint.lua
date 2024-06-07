@@ -1,4 +1,5 @@
 -- https://github.com/Microsoft/vscode-eslint
+
 require("lspconfig").eslint.setup({
   filetypes = {
     "javascript",
