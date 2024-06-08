@@ -2,15 +2,34 @@
 #
 # Move found media from /mnt/media/ultra mount to /mnt/media/{tv/movies}
 # Date: 26.06.24
+#
+# Debugging
+# set -x
 
-if [ ! -z "$(/usr/bin/ls -A /mnt/media/ultra/movies/)" ]; then
-  echo "Moving Movie files.."
-  rsync -avz --remove-source-files /mnt/media/ultra/movies/* /mnt/media/movies/
+read input
+
+fileType=$(echo $input | jq -r .tags[2].filetype)
+
+if [ "$fileType" !=  "file" ]; then
+  echo "Event not for file, exiting"
+  exit 0
 fi
 
-if [ ! -z "$(/usr/bin/ls -A /mnt/media/ultra/tv/)" ]; then
-  echo "Moving TV files.."
-  rsync -avz --remove-source-files /mnt/media/ultra/tv/* /mnt/media/tv/
+filePath=$(echo $input | jq -r .tags[2].absolute)
+targetPath=$(echo "$filePath" | sed 's|/ultra/|/|')
+
+# echo "filePath: $filePath"
+# echo "targetPath: $targetPath"
+
+if [[ -z $targetPath && -z $filePath ]]; then
+  echo "Missing paths, exiting"
+  exit 0
 fi
 
-echo "Complete
+echo "Ensuring path exists - $targetPath"
+filePathDir=$(dirname "$targetPath")
+# echo "filePathDir: $filePathDir"
+mkdir -p "$filePathDir"
+
+echo "Moving file - $filePath"
+rsync -avz --remove-source-files "$filePath" "$targetPath"
