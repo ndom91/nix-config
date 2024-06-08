@@ -213,7 +213,7 @@ in
     DefaultLimitNOFILE=524288
   '';
 
-  # SuspendEstimationSec defeaults to 1h; 
+  # SuspendEstimationSec defeaults to 1h;
   # HibernateDelaySec defaults to 2h
   # See: https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html#Description
   systemd.sleep.extraConfig = ''
@@ -284,7 +284,7 @@ in
         vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
 
         intel-ocl # up to 7thgen
-        intel-compute-runtime # 8th gen + 
+        intel-compute-runtime # 8th gen +
 
         # amdvlk
         # vulkan-validation-layers
@@ -483,7 +483,7 @@ in
     };
   };
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }
 
 
