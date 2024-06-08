@@ -189,7 +189,7 @@ in
     DefaultLimitNOFILE=524288
   '';
 
-  # SuspendEstimationSec defeaults to 1h; 
+  # SuspendEstimationSec defeaults to 1h;
   # HibernateDelaySec defaults to 2h
   # See: https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html#Description
   systemd.sleep.extraConfig = ''
@@ -389,7 +389,8 @@ in
       publish.domain = true;
     };
 
-    fprintd.enable = true;
+    # My Elan reader still not supported
+    fprintd.enable = false;
     printing.enable = true;
     fstrim.enable = true;
     smartd.enable = true;
