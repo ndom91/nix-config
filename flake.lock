@@ -748,6 +748,22 @@
         "url": "https://devimages-cdn.apple.com/design/resources/download/NY.dmg"
       }
     },
+    "playwright": {
+      "locked": {
+        "lastModified": 1717860541,
+        "narHash": "sha256-pkGf1nGKZb3Q/mp74U8ednodYpuxqGIdiSdq2w715mo=",
+        "owner": "kalekseev",
+        "repo": "nixpkgs",
+        "rev": "279e7aff4b56aa554019c3ce7333d4829cbd99c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kalekseev",
+        "ref": "playwright-core",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -760,6 +776,7 @@
         "nix-colors": "nix-colors",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_4",
+        "playwright": "playwright",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "superfile": "superfile",
         "unstable": "unstable"
