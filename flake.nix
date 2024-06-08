@@ -35,7 +35,7 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
     superfile.url = "github:MHNightCat/superfile";
     playwright.url = "github:kalekseev/nixpkgs/playwright-core";
   };
