@@ -68,6 +68,7 @@
     libva-utils
     vdpauinfo
     vulkan-tools
+    wireguard-tools
     zip
     zoxide
 
