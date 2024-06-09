@@ -160,8 +160,6 @@ in
     };
   };
 
-  systemd.additionalUpstreamSystemUnits = [ "systemd-networkd-wait-online@.service" ];
-  systemd.services."systemd-networkd-wait-online@enp42s0".enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
   systemd.network = {
@@ -181,49 +179,6 @@ in
       # make the routes on this interface a dependency for network-online.target
       linkConfig.RequiredForOnline = "routable";
     };
-
-    # netdevs = {
-    #   "11-wg0" = {
-    #     netdevConfig = {
-    #       Kind = "wireguard";
-    #       Name = "pvpn-wg-nl256";
-    #       MTUBytes = "1300";
-    #     };
-    #     wireguardConfig = {
-    #       PrivateKeyFile = config.age.secrets.pvpn.path;
-    #       ListenPort = 9918;
-    #     };
-    #     wireguardPeers = [
-    #       {
-    #         wireguardPeerConfig = {
-    #           PublicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
-    #           AllowedIPs = [ "0.0.0.0/5" "8.0.0.0/7" "10.0.4.0/22" "10.0.8.0/21" "10.0.16.0/20" "10.0.32.0/19" "10.0.64.0/18" "10.0.128.0/17" "10.1.0.0/16" "10.2.0.0/15" "10.4.0.0/14" "10.8.0.0/15" "10.10.1.0/24" "10.10.2.0/23" "10.10.4.0/22" "10.10.8.0/21" "10.10.16.0/20" "10.10.32.0/19" "10.10.64.0/18" "10.10.128.0/17" "10.11.0.0/16" "10.12.0.0/14" "10.16.0.0/12" "10.32.0.0/11" "10.64.0.0/10" "10.128.0.0/9" "11.0.0.0/8" "12.0.0.0/6" "16.0.0.0/4" "32.0.0.0/3" "64.0.0.0/3" "96.0.0.0/6" "100.0.0.0/10" "100.128.0.0/9" "101.0.0.0/8" "102.0.0.0/7" "104.0.0.0/5" "112.0.0.0/4" "128.0.0.0/1" ];
-    #
-    #           Endpoint = "77.247.178.58:51820";
-    #         };
-    #       }
-    #     ];
-    #   };
-    # };
-    #
-    # networks.pvpn-wg-nl256 = {
-    #   # See also man systemd.network
-    #   matchConfig.Name = "pvpn-wg-nl256";
-    #   # IP addresses the client interface will have
-    #   address = [
-    #     "10.2.0.2/32"
-    #   ];
-    #   DHCP = "yes";
-    #   dns = [ "10.2.0.1" ];
-    #   # ntp = [ "fc00::123" ];
-    #   # gateway = [
-    #   #   "fc00::1"
-    #   #   "10.100.0.1"
-    #   # ];
-    #   networkConfig = {
-    #     IPv6AcceptRA = false;
-    #   };
-    # };
   };
 
   # Hyprland swaynotificationcenter service
