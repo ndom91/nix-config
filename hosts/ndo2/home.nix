@@ -28,7 +28,7 @@
   home.stateVersion = "24.05";
   home.packages = [
     inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
-    networkmanagerapplet
+    # networkmanagerapplet
     fira-sans-nerd-font
   ];
 

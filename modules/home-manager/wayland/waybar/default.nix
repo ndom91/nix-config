@@ -271,7 +271,7 @@ let
     };
     cpu = {
       interval = 2;
-      format = "<span font='15' rise='-1pt'>󰻠</span> {usage}%";
+      format = "<span font='15' rise='-3pt'>󰻠</span> {usage}%";
       # format = "<span font='15' rise='-1pt'>󰻠</span> {usage =>2}%";
     };
     battery = {
