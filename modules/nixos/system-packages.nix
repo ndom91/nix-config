@@ -8,7 +8,7 @@
     nvtopPackages.amd
     appimage-run
     bat
-    bluez
+    # bluez
     brightnessctl
     catppuccin-gtk
     cmake

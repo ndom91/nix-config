@@ -76,10 +76,9 @@
   };
 
   home.packages = with pkgs; [
-    blueberry
+    # blueberry
     evtest
     mkchromecast
-    networkmanagerapplet
     playerctl
     swaybg
     unstablePkgs.swaynotificationcenter

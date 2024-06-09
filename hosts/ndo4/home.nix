@@ -25,7 +25,7 @@
   ];
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
   home.packages = [
     inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
     fira-sans-nerd-font
@@ -89,12 +89,14 @@
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
-    # ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
+    # ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
   };
 
+  fonts.fontconfig.enable = true;
+
   services = {
-    network-manager-applet.enable = true;
+    network-manager-applet.enable = false;
     syncthing.enable = true;
   };
 

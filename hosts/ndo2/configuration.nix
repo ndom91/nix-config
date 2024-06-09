@@ -418,39 +418,26 @@ in
     fstrim.enable = true;
     smartd.enable = true;
     irqbalance.enable = true;
-
-    # protonvpn = {
-    #   enable = true;
-    #   autostart = false;
-    #   interface = {
-    #     name = "pvpn-wg-nl256";
-    #     dns.enable = false;
-    #     privateKeyFile = config.age.secrets.pvpn.path;
-    #   };
-    #   endpoint = {
-    #     publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
-    #     ip = "77.247.178.58";
-    #   };
-    # };
+    blueman.enable = true;
 
     # Laptop Specific
     logind = {
-      lidSwitch = "suspend";
-      extraConfig = "IdleAction=lock";
+      lidSwitch = "suspend-then-hibernate";
     };
     thermald.enable = true;
     upower.enable = true;
 
     tlp = {
       enable = true;
-      # ---------------------------------------------------------------------
-      # Use this instead if laptop runs HOT under tlp
-      # Tell tlp to always run in battery mode
-      # ---------------------------------------------------------------------
-      #  settings = {
-      #    TLP_DEFAULT_MODE = "BAT";
-      #    TLP_PERSISTENT_DEFAULT = 1;
-      #  };
+      settings = {
+        CPU_BOOST_ON_BAT = 0;
+        CPU_SCALING_GOVERNOR_ON_BATTERY = "powersave";
+        START_CHARGE_THRESH_BAT0 = 90;
+        STOP_CHARGE_THRESH_BAT0 = 97;
+        # Tell tlp to always run in battery mode
+        TLP_DEFAULT_MODE = "BAT";
+        TLP_PERSISTENT_DEFAULT = 1;
+      };
     };
     flatpak = {
       enable = true;

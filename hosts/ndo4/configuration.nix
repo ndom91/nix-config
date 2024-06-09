@@ -152,8 +152,10 @@ in
         80
         443
       ];
-      # allowedUDPPorts = [];
     };
+    timeServers = [
+      "time.puff.lan"
+    ];
     hosts = {
       "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" ];
       "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
@@ -199,6 +201,8 @@ in
   # See: https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html#Description
   systemd.sleep.extraConfig = ''
     AllowSuspendThenHibernate=yes
+    SuspendState=mem
+    HibernateDelaySec=1h
   '';
 
   sound = {
@@ -252,8 +256,15 @@ in
   hardware = {
     enableAllFirmware = true;
 
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      # settings = {
+      #   General = {
+      #     Experimental = true;
+      #   };
+      # };
+    };
 
     # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
     opengl = {
@@ -382,10 +393,20 @@ in
     };
     pipewire = {
       enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
+      # alsa.enable = true;
+      # alsa.support32Bit = true;
       pulse.enable = true;
       wireplumber.enable = true;
+      wireplumber.extraConfig = {
+        "monitor.bluez.properties" = {
+          "bluez5.enable-sbc-xq" = true;
+          "bluez5.enable-msbc" = true;
+          "bluez5.enable-hw-volume" = true;
+          "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+        };
+        # "bluez5.codecs" = "[sbc sbc_xq]";
+        # "bluez5.roles" = [ "a2dp_sink" "a2dp_source" "bap_sink" "bap_source" "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
+      };
     };
     avahi = {
       enable = true;
@@ -400,20 +421,7 @@ in
     fstrim.enable = true;
     smartd.enable = true;
     irqbalance.enable = true;
-
-    # protonvpn = {
-    #   enable = true;
-    #   autostart = false;
-    #   interface = {
-    #     name = "pvpn-wg-nl256";
-    #     dns.enable = false;
-    #     privateKeyFile = config.age.secrets.pvpn.path;
-    #   };
-    #   endpoint = {
-    #     publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
-    #     ip = "77.247.178.58";
-    #   };
-    # };
+    blueman.enable = true;
 
     flatpak = {
       enable = true;

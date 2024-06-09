@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, rose-pine-cursor, inputs, ... }:
+{ pkgs, unstablePkgs, config, rose-pine-cursor, inputs, ... }:
 {
   xdg.configFile."hypr/movefocus.sh".source = ./hy3-movefocus.sh;
   xdg.configFile."swappy/config".text = ''
@@ -57,7 +57,8 @@
       exec-once = [
         # "mkchromecast -t"
         "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
-        "${pkgs.blueberry}/bin/blueberry-tray"
+        # "${pkgs.blueberry}/bin/blueberry-tray"
+        "${pkgs.blueman}/bin/blueman-applet"
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
@@ -204,10 +205,9 @@
         "center, class:^(.*blueberry.*)$"
 
         # float/slidein blueman-manager
-        "animation slide, class:^(blueman-.*)$"
-        "float, class:^(blueman-.*)$"
-        "size 20% 40%, class:^(blueman-.*)$"
-        "center, class:^(blueman-.*)$"
+        "animation slide, class:^(.*blueman-.*)$"
+        "float, class:^(.*blueman-.*)$"
+        "center, class:^(.*blueman-.*)$"
 
         # float/slidein engrampa
         "animation slide, class:engrampa"

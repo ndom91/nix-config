@@ -25,9 +25,10 @@
   ];
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
   home.packages = [
     inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
+    networkmanagerapplet
     fira-sans-nerd-font
   ];
 
@@ -104,12 +105,16 @@
 
   home.file = {
     ".ripgreprc".source = ../../dotfiles/.ripgreprc;
+    ".local/share/fonts" = {
+      recursive = true;
+      source = ./../../dotfiles/fonts;
+    };
 
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
 
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
-    ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
+    # ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
   };
 
   fonts.fontconfig.enable = true;
@@ -135,6 +140,18 @@
     };
   };
 
+  programs.vscode = {
+    enable = true;
+    package = unstablePkgs.vscodium;
+    extensions = with unstablePkgs.vscode-extensions; [
+      mvllow.rose-pine
+      vscodevim.vim
+      esbenp.prettier-vscode
+      svelte.svelte-vscode
+      rust-lang.rust-analyzer
+    ];
+  };
+
   programs.direnv = {
     enable = true;
     enableBashIntegration = true;
@@ -147,6 +164,7 @@
     enableBashIntegration = true;
     package = pkgs.nix-index;
   };
+
   programs.home-manager.enable = true;
   programs.bash.enable = true;
   programs.zoxide = {

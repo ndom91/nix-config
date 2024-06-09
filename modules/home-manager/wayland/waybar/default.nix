@@ -25,7 +25,6 @@ let
     ];
     modules-right = [
       "idle_inhibitor"
-      "bluetooth"
       "custom/weather"
       "network"
       "wireplumber"
@@ -118,7 +117,7 @@ let
       format-disconnected = "󱛅 Disconnected";
       format-disabled = "󰖪 Disabled";
       tooltip-format = "󰀂 {ifname} via {gwaddr}";
-      on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+      # on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
     };
     "custom/weather" = {
       tooltip = true;
@@ -131,9 +130,10 @@ let
       format = "";
       format-connected = " {num_connections}";
       tooltip-format = "{device_alias}";
-      tooltip-format-connected = " {device_enumerate}";
+      tooltip-format-connected = " {device_enumerate} {device_battery_percentage}%";
       tooltip-format-enumerate-connected = "{device_alias}";
-      on-click-right = "${pkgs.blueberry}/bin/blueberry";
+      # on-click-right = "${pkgs.blueberry}/bin/blueberry";
+      on-click-right = "blueman-manager";
     };
     tray = {
       icon-size = 16;
@@ -428,7 +428,7 @@ let
       format-disconnected = "󱛅 Disconnected";
       format-disabled = "󰖪 Disabled";
       tooltip-format = "󰀂 {ifname} via {gwaddr}";
-      on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+      # on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
     };
     tray = {
       icon-size = 16;
