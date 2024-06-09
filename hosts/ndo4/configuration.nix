@@ -81,44 +81,6 @@ in
     };
   };
 
-  networking = {
-    hostName = "ndo4";
-    networkmanager.enable = true;
-    nameservers = [
-      "10.0.0.1"
-    ];
-    interfaces = {
-      enp42s0 = {
-        useDHCP = false;
-        ipv4 = {
-          addresses = [{
-            address = "10.0.0.10";
-            prefixLength = 24;
-          }];
-        };
-      };
-    };
-    defaultGateway = {
-      address = "10.0.0.1";
-      interface = "enp42s0";
-    };
-    timeServers = [
-      "10.0.0.1"
-    ];
-    firewall = {
-      enable = false;
-      allowedTCPPorts = [
-        80
-        443
-      ];
-      # allowedUDPPorts = [];
-    };
-    hosts = {
-      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" ];
-      "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
-    };
-  };
-
   time.timeZone = "Europe/Berlin";
 
   i18n = {
@@ -172,13 +134,50 @@ in
     };
   };
 
+  # Networking
+  networking = {
+    hostName = "ndo4";
+    useNetworkd = true;
+    useDHCP = false;
+    # networkmanager.enable = true;
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [
+        80
+        443
+      ];
+      # allowedUDPPorts = [];
+    };
+    hosts = {
+      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" ];
+      "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
+    };
+  };
+
+  systemd.additionalUpstreamSystemUnits = [ "systemd-networkd-wait-online@.service" ];
+  systemd.services."systemd-networkd-wait-online@enp42s0".enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false;
+
+  systemd.network.enable = true;
+  systemd.network.networks."10-wan" = {
+    matchConfig.Name = "enp42s0";
+    address = [
+      "10.0.0.10/24"
+    ];
+    dns = [ "10.0.0.1" ];
+    gateway = [ "10.0.0.1" ];
+    ntp = [ "10.0.0.1" ];
+    domains = [ "puff.lan" ];
+    routes = [
+      { routeConfig.Gateway = "10.0.0.1"; }
+    ];
+    # make the routes on this interface a dependency for network-online.target
+    linkConfig.RequiredForOnline = "routable";
+  };
+
   # Hyprland swaynotificationcenter service
   systemd.user.units.swaync.enable = true;
-
-  # systemd services
   systemd.services.systemd-udevd.restartIfChanged = false;
-  systemd.services.NetworkManager-wait-online.enable = false;
-  systemd.services.systemd-networkd-wait-online.enable = false;
 
   # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
   # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
