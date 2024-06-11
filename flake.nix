@@ -12,7 +12,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     hy3 = {
-      url = "github:outfoxxed/hy3";
+      url = "github:outfoxxed/hy3?tag=hl0.41.0";
       # url = "github:outfoxxed/hy3?ref=hl{version}"; # where {version} is the hyprland release version
       inputs.hyprland.follows = "hyprland";
     };
