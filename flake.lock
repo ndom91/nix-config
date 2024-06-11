@@ -358,6 +358,7 @@
       },
       "original": {
         "owner": "outfoxxed",
+        "ref": "hl0.41.0",
         "repo": "hy3",
         "type": "github"
       }
