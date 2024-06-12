@@ -1,6 +1,6 @@
 { pkgs, config, lib, unstablePkgs, input, ... }:
 let
-  pythonInputs = (pkgs.python3.withPackages (p: with p; [
+  pythonInputs = (unstablePkgs.python311.withPackages (p: with p; [
     libtmux
     pip
   ]));
@@ -43,10 +43,9 @@ in
     historyLimit = 10000;
     prefix = "C-a";
     plugins = [
-      tmux-window-name
-      pkgs.tmuxPlugins.mode-indicator
+      # tmux-window-name
       {
-        plugin = pkgs.tmuxPlugins.catppuccin;
+        plugin = unstablePkgs.tmuxPlugins.catppuccin;
         extraConfig = ''
           set -g @catppuccin_flavour 'mocha'
 
@@ -71,6 +70,37 @@ in
           set -g @catppuccin_status_right_separator_inverse "no"
           set -g @catppuccin_status_fill "all"
           set -g @catppuccin_status_connect_separator "no"
+        '';
+      }
+      {
+        plugin = unstablePkgs.tmuxPlugins.rose-pine;
+        extraConfig = ''
+          set -g @rose_pine_variant 'main'
+          set -g @rose_pine_bar_bg_disable 'on'
+          set -g @rose_pine_bar_bg_disabled_color_option 'default'
+          set -g @rose_pine_status_right_append_section '#{tmux_mode_indicator}'
+
+          set -g @rose_pine_disable_active_window_menu 'on'
+          set -g @rose_pine_show_current_program 'on'
+          set -g @rose_pine_show_pane_directory 'on'
+        '';
+      }
+      unstablePkgs.tmuxPlugins.prefix-highlight
+      unstablePkgs.tmuxPlugins.mode-indicator
+      {
+        plugin = unstablePkgs.tmuxPlugins.resurrect;
+        extraConfig = ''
+          # set -g @resurrect-strategy-vim 'session'
+          # set -g @resurrect-strategy-nvim 'session'
+          set -g @resurrect-capture-pane-contents 'on'
+        '';
+      }
+      {
+        plugin = unstablePkgs.tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-boot 'on'
+          set -g @continuum-save-interval '10'
         '';
       }
       # {
@@ -100,7 +130,7 @@ in
 
       # for nested tmux sessions
       set -g prefix C-a
-      bind-key a send-prefix 
+      bind-key a send-prefix
 
       setw -g aggressive-resize on
 
