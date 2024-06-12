@@ -5,7 +5,8 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.41.0";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=ea2501d4556f84d3de86a4ae2f4b22a474555b9f";
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.41.0";
     # "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=cba1ade848feac44b2eda677503900639581c3f4";
     hyprfocus = {
       url = "github:pyt0xic/hyprfocus";

@@ -26,6 +26,9 @@
       # ];
     })
 
+    # Experimental
+    unstablePkgs.flameshot
+
     floorp # Firefox
     gnome.gnome-boxes # VM Manager
     gnome.seahorse # GPG Key Manager
