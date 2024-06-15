@@ -43,7 +43,7 @@ in
     historyLimit = 10000;
     prefix = "C-a";
     plugins = [
-      # tmux-window-name
+      tmux-window-name
       # {
       #   plugin = unstablePkgs.tmuxPlugins.catppuccin;
       #   extraConfig = ''
@@ -77,15 +77,22 @@ in
         extraConfig = ''
           set -g @rose_pine_variant 'main'
           set -g @rose_pine_bar_bg_disable 'on'
-          set -g @rose_pine_bar_bg_disabled_color_option 'default'
-          set -g @rose_pine_status_right_append_section '#{tmux_mode_indicator}'
+          set -g @rose_pine_date_time "%d.%m. %H:%M"
+          set -g @rose_pine_directory 'off'
+          # set -g @rose_pine_bar_bg_disabled_color_option 'default'
+          # set -g @rose_pine_status_right_append_section '#{tmux_mode_indicator}'
 
+          # set -g @rose_pine_default_window_behavior 'on'
+  
           set -g @rose_pine_disable_active_window_menu 'on'
           set -g @rose_pine_show_current_program 'on'
           set -g @rose_pine_show_pane_directory 'on'
+
+          set -g @rose_pine_left_separator ":"
+          set -g @rose_pine_right_separator " "
+          set -g @rose_pine_window_status_separator " | "
         '';
       }
-      unstablePkgs.tmuxPlugins.prefix-highlight
       unstablePkgs.tmuxPlugins.mode-indicator
       {
         plugin = unstablePkgs.tmuxPlugins.resurrect;
@@ -112,7 +119,7 @@ in
     ];
     extraConfig = ''
       # tmux-window-name
-      set -g @tmux_window_name_log_level "'DEBUG'"
+      # set -g @tmux_window_name_log_level "'DEBUG'"
       set -g @tmux_window_name_substitute_sets "[('/home/${config.home.username}/.nix-profile/bin/(.+) --.*', '\\g<1>')]"
       set -g @tmux_window_name_dir_programs "['nvim', 'vim', 'vi', 'git', '/home/${config.home.username}/.nix-profile/bin/nvim']"
 
