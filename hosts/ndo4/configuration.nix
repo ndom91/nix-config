@@ -202,7 +202,6 @@ in
   systemd.sleep.extraConfig = ''
     AllowSuspendThenHibernate=yes
     SuspendState=mem
-    HibernateDelaySec=1h
   '';
 
   sound = {
