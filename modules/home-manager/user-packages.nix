@@ -80,6 +80,7 @@
     lazygit # TUI Git Client
     lazydocker # TUI Docker
     starship # Terminal Prompt
+    hwatch # Interactive 'watch' alternative
     whois
     jq # CLI JSON Client
     cliphist # Clipboard History
