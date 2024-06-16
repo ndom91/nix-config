@@ -59,6 +59,8 @@
 , commandLineArgs ? [
     "--enable-features=UseOzonePlatform"
     "--ozone-platform=wayland"
+    "--enable-unsafe-webgpu"
+    "--enable-vulkan"
   ]
 , pulseSupport ? stdenv.isLinux
 , libpulseaudio
