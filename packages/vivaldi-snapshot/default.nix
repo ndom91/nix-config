@@ -83,6 +83,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://downloads.vivaldi.com/${branch}/vivaldi-${branch}_${version}-1_${suffix}.deb";
+    # Update hash: nix hash to-sri --type sha256 $(nix-prefetch-url --type sha256 "$url")
     hash = {
       aarch64-linux = "sha256-jDAairYILLLiMssBvct+hZ1D2sqTsvV43IxF1UdlwpQ=";
       x86_64-linux = "sha256-Pxvcia7CzpwZpXUeABORb3VVX+f2tH3N0i5tv6bhFfc=";
