@@ -56,6 +56,7 @@ in
     gparted # Partition Manager
     libsecret # Secret Service
     polkit_gnome # Polkit Agent
+    unstablePkgs.rclone # cloud storage client
 
     # Dev Tools
     beekeeper-studio # SQL Client
