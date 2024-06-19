@@ -2,7 +2,7 @@
 
 require("lspconfig").tailwindcss.setup({
   capabilities = require("plugins.lsp.capabilities"),
-  root_dir = require("lspconfig/util").root_pattern("tailwind.config.js", "tailwind.config.ts", "tailwind.config.cjs"),
+  root_dir = require("lspconfig.util").root_pattern("tailwind.config.js", "tailwind.config.ts", "tailwind.config.cjs"),
   settings = {
     tailwindCSS = {
       lint = {

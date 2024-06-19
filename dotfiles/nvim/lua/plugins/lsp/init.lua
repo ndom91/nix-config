@@ -1,5 +1,9 @@
-local function goto_next_error() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity[1] }) end
-local function goto_prev_error() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity[1] }) end
+local function goto_next_error()
+  vim.diagnostic.goto_next({ severity = vim.diagnostic.severity[1] })
+end
+local function goto_prev_error()
+  vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity[1] })
+end
 
 return {
   {
@@ -230,7 +234,10 @@ return {
     keys = {
       {
         "<leader>lf",
-        function() require("conform").format({ lsp_fallback = "always", async = true }) end,
+        function()
+          require("conform").format({ lsp_format = "fallback", async = true })
+        end,
+        mode = "",
         desc = "[F]ormat",
       },
     },
@@ -238,6 +245,18 @@ return {
       local conform = require("conform")
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
+      vim.api.nvim_create_user_command("Format", function(args)
+        local range = nil
+        if args.count ~= -1 then
+          local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+          range = {
+            start = { args.line1, 0 },
+            ["end"] = { args.line2, end_line:len() },
+          }
+        end
+
+        conform.format({ async = true, lsp_format = "fallback", range = range })
+      end, { range = true })
       conform.setup({
         formatters_by_ft = {
           sh = { "shfmt" },
@@ -245,67 +264,70 @@ return {
           -- Conform will run multiple formatters sequentially
           -- python = { "isort", "black" },
           -- Use a sub-list to run only the first available formatter
-          javascript = { { "prettierd", "prettier" } },
-          typescript = { { "prettierd", "prettier" } },
-          javascriptreact = { { "prettierd", "prettier" } },
-          typescriptreact = { { "prettierd", "prettier" } },
-          svelte = { { "prettierd", "prettier" } },
+          -- javascript = { { "prettierd", "prettier" } },
+          javascript = { { "prettierd" } },
+          typescript = { { "prettierd" } },
+          javascriptreact = { { "prettierd" } },
+          typescriptreact = { { "prettierd" } },
+          svelte = { { "prettierd" } },
           ["_"] = { "trim_whitespace" },
         },
-        -- Conform will notify you when a formatter errors
         notify_on_error = true,
         format_on_save = {
           -- These options will be passed to conform.format()
-          timeout_ms = 1000,
-          lsp_fallback = "always",
+          timeout_ms = 500,
+          async = false,
+          lsp_format = "fallback",
+        },
+        formatters = {
+          prettier = {
+            -- condition = function()
+            --   if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
+            -- end,
+            require_cwd = true,
+            cwd = require("conform.util").root_file({
+              ".prettierrc",
+              ".prettierrc.json",
+              ".prettierrc.yml",
+              ".prettierrc.yaml",
+              ".prettierrc.json5",
+              ".prettierrc.js",
+              ".prettierrc.cjs",
+              ".prettierrc.mjs",
+              ".prettierrc.toml",
+              "prettier.config.js",
+              "prettier.config.cjs",
+              "prettier.config.mjs",
+            }),
+          },
+          prettierd = {
+            env = {
+              PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
+            },
+            -- condition = function()
+            --   if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
+            -- end,
+            require_cwd = true,
+            cwd = require("conform.util").root_file({
+              ".prettierrc",
+              ".prettierrc.json",
+              ".prettierrc.yml",
+              ".prettierrc.yaml",
+              ".prettierrc.json5",
+              ".prettierrc.js",
+              ".prettierrc.cjs",
+              ".prettierrc.mjs",
+              ".prettierrc.toml",
+              "prettier.config.js",
+              "prettier.config.cjs",
+              "prettier.config.mjs",
+            }),
+          },
+          shfmt = {
+            prepend_args = { "-i", "2" },
+          },
         },
       })
-
-      conform.formatters = {
-        prettier = {
-          -- condition = function()
-          --   if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
-          -- end,
-          require_cwd = true,
-          cwd = require("conform.util").root_file({
-            ".prettierrc",
-            ".prettierrc.json",
-            ".prettierrc.yml",
-            ".prettierrc.yaml",
-            ".prettierrc.json5",
-            ".prettierrc.js",
-            ".prettierrc.cjs",
-            ".prettierrc.mjs",
-            ".prettierrc.toml",
-            "prettier.config.js",
-            "prettier.config.cjs",
-            "prettier.config.mjs",
-          }),
-        },
-        prettierd = {
-          -- condition = function()
-          --   if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
-          -- end,
-          require_cwd = true,
-          cwd = require("conform.util").root_file({
-            ".prettierrc",
-            ".prettierrc.json",
-            ".prettierrc.yml",
-            ".prettierrc.yaml",
-            ".prettierrc.json5",
-            ".prettierrc.js",
-            ".prettierrc.cjs",
-            ".prettierrc.mjs",
-            ".prettierrc.toml",
-            "prettier.config.js",
-            "prettier.config.cjs",
-            "prettier.config.mjs",
-          }),
-        },
-        shfmt = {
-          prepend_args = { "-i", "2" },
-        },
-      }
     end,
   },
   {

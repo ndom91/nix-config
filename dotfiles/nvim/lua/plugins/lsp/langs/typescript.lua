@@ -23,7 +23,7 @@ if not have_vue then
         return vim.lsp.handlers["textDocument/definition"](err, result, ctx, ...)
       end,
     },
-    -- root_dir = require("lspconfig/util").root_pattern("tsconfig.json"),
+    -- root_dir = require("lspconfig.util").root_pattern("tsconfig.json"),
     settings = {
       documentFormatting = false,
       -- taken from https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration
