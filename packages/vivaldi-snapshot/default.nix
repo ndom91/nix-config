@@ -51,17 +51,18 @@
 , makeWrapper
 , wayland
 , pipewire
-, isSnapshot ? true
+  # Toggle between Snapshot / Stable
+, isSnapshot ? false
 , proprietaryCodecs ? true
 , vivaldi-ffmpeg-codecs ? null
 , enableWidevine ? true
 , widevine-cdm ? null
-, commandLineArgs ? [
-    "--enable-features=UseOzonePlatform"
-    "--ozone-platform=wayland"
-    "--enable-unsafe-webgpu"
-    "--enable-vulkan"
-  ]
+, commandLineArgs ? null # [
+  # "--enable-features=UseOzonePlatform"
+  # "--ozone-platform=wayland"
+  # "--enable-unsafe-webgpu"
+  # "--enable-vulkan"
+  # ]
 , pulseSupport ? stdenv.isLinux
 , libpulseaudio
 , kerberosSupport ? true
@@ -73,8 +74,13 @@ let
   vivaldiName = if isSnapshot then "vivaldi-snapshot" else "vivaldi";
 in
 stdenv.mkDerivation rec {
-  pname = "vivaldi-snapshot";
-  version = "6.8.3381.34";
+  # Latest Snapshot
+  # pname = "vivaldi-snapshot";
+  # version = "6.8.3381.34";
+
+  # Latest Stable
+  pname = "vivaldi";
+  version = "6.7.3329.41";
 
   suffix = {
     aarch64-linux = "arm64";
@@ -86,7 +92,12 @@ stdenv.mkDerivation rec {
     # Update hash: nix hash to-sri --type sha256 $(nix-prefetch-url --type sha256 "$url")
     hash = {
       aarch64-linux = "sha256-jDAairYILLLiMssBvct+hZ1D2sqTsvV43IxF1UdlwpQ=";
-      x86_64-linux = "sha256-Pxvcia7CzpwZpXUeABORb3VVX+f2tH3N0i5tv6bhFfc=";
+
+      # Stable 6.7.3329.41
+      x86_64-linux = "sha256-nipvNDc+iHIupUdl2kQIDJhUyVP/dFAUJiAN5jBY38M=";
+
+      # Snapshot 6.8.3381.41
+      # x86_64-linux = "sha256-Pxvcia7CzpwZpXUeABORb3VVX+f2tH3N0i5tv6bhFfc=";
     }.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
   };
 

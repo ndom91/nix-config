@@ -29,14 +29,14 @@
     ];
     extraPackages = with pkgs; [
       nixfmt-classic
-      prettierd
+      # prettierd
       eslint_d
       unstablePkgs.rustywind
 
       shellcheck
       vscode-langservers-extracted # eslint, css, html, json, markdown
       unstablePkgs.shfmt
-      unstablePkgs.silicon # code screenshots
+      unstablePkgs.charm-freeze # code screenshots
       unstablePkgs.stylua
       unstablePkgs.lua-language-server
       unstablePkgs.nodePackages_latest.typescript-language-server
