@@ -43,7 +43,15 @@ in
     historyLimit = 10000;
     prefix = "C-a";
     plugins = [
-      tmux-window-name
+      {
+        plugin = tmux-window-name;
+        extraConfig = ''
+          # tmux-window-name
+          # set -g @tmux_window_name_log_level "'DEBUG'"
+          set -g @tmux_window_name_substitute_sets "[('/home/${config.home.username}/.nix-profile/bin/(.+) --.*', '\\g<1>')]"
+          set -g @tmux_window_name_dir_programs "['nvim', 'vim', 'vi', 'git', '/home/${config.home.username}/.nix-profile/bin/nvim']"
+        '';
+      }
       # {
       #   plugin = unstablePkgs.tmuxPlugins.catppuccin;
       #   extraConfig = ''
@@ -94,23 +102,8 @@ in
         '';
       }
       unstablePkgs.tmuxPlugins.mode-indicator
-      {
-        plugin = unstablePkgs.tmuxPlugins.resurrect;
-        extraConfig = ''
-          # set -g @resurrect-strategy-vim 'session'
-          # set -g @resurrect-strategy-nvim 'session'
-          set -g @resurrect-capture-pane-contents 'on'
-        '';
-      }
-      {
-        plugin = unstablePkgs.tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-boot 'on'
-          set -g @continuum-save-interval '10'
-        '';
-      }
       # {
+      #   # Not necessary due to WezTerm's builtin URL highlighting / copying
       #   plugin = pkgs.tmuxPlugins.tmux-thumbs;
       #   extraConfig = ''
       #     set -g @thumbs-command 'echo -n {} | wl-copy'
@@ -118,11 +111,6 @@ in
       # }
     ];
     extraConfig = ''
-      # tmux-window-name
-      # set -g @tmux_window_name_log_level "'DEBUG'"
-      set -g @tmux_window_name_substitute_sets "[('/home/${config.home.username}/.nix-profile/bin/(.+) --.*', '\\g<1>')]"
-      set -g @tmux_window_name_dir_programs "['nvim', 'vim', 'vi', 'git', '/home/${config.home.username}/.nix-profile/bin/nvim']"
-
       # Quick escape back to insert mode in nvim
       set -sg escape-time 10
 
