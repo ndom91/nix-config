@@ -217,6 +217,7 @@ return {
       require("plugins.lsp.langs.html")
       require("plugins.lsp.langs.tailwindcss")
       require("plugins.lsp.langs.svelte")
+      require("plugins.lsp.langs.rust")
     end,
   },
   {
