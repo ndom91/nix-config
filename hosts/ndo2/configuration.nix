@@ -110,6 +110,8 @@ in
     ];
     timeServers = [
       "10.0.0.1"
+      "0.nixos.pool.ntp.org"
+      "1.nixos.pool.ntp.org"
     ];
     firewall = {
       enable = false;

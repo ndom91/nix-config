@@ -42,7 +42,7 @@
       unstablePkgs.nodePackages_latest.typescript-language-server
 
       vimPlugins.telescope-fzf-native-nvim
-      vimPlugins.nvim-treesitter.withAllGrammars
+      # vimPlugins.nvim-treesitter.withAllGrammars
 
       # # for compiling Treesitter parsers
       # gcc
