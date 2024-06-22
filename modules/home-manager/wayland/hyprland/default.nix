@@ -186,7 +186,9 @@
         "idleinhibit fullscreen, class:^(vivaldi)$"
 
         # float/slidein Beeper AppImage
-        "animation slide, class:Beeper"
+        "animation fadeIn, class:Beeper"
+        "size 1200 800, class:Beeper"
+        "center, class:Beeper"
         "float, class:Beeper"
 
         # float/slidein gnome-text-editor
