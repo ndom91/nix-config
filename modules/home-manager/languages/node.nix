@@ -1,7 +1,7 @@
 { pkgs, inputs, unstablePkgs, ... }:
 {
   home.packages = with pkgs; [
-    nodejs_20
+    nodejs_22
     # unstablePkgs.nodePackages.pnpm
     unstablePkgs.corepack_22
     unstablePkgs.bun
