@@ -5,6 +5,7 @@
     # zig
     inputs.agenix.packages.x86_64-linux.default
     amdgpu_top
+    appimagekit
     nvtopPackages.amd
     appimage-run
     bat

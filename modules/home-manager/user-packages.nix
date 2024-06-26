@@ -165,7 +165,7 @@ in
       icon = "/opt/gitbutler/gitbutler-docs/public/fav/fav-32.png";
       terminal = false;
       type = "Application";
-      categories = [ "Application" "Languages" ];
+      categories = [ "Development" "Application" ];
     };
   };
 
