@@ -155,9 +155,17 @@ in
     beeper = {
       name = "Beeper";
       exec = "/opt/appimages/beeper.AppImage";
-      icon = "beeper";
+      icon = "/home/ndo/Pictures/beeperLogo.png";
       type = "Application";
       categories = [ "Network" "WebBrowser" ];
+    };
+    gitbutler-nightly = {
+      name = "GitButler (nightly)";
+      exec = "/opt/appimages/git-butler-nightly_latest.AppImage";
+      icon = "/opt/gitbutler/gitbutler-docs/public/fav/fav-32.png";
+      terminal = false;
+      type = "Application";
+      categories = [ "Application" "Languages" ];
     };
   };
 
