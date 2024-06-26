@@ -49,8 +49,9 @@ in
         "file:///home/ndo/Pictures Pictures"
         "file:///home/ndo/Documents Documents"
         "file:///home/ndo/Videos Videos"
-        "file:///opt/nextauthjs authjs"
         "file:///opt/ndomino ndomino"
+        "file:///opt/gitbutler gitbutler"
+        "file:///opt/nextauthjs authjs"
         "file:///opt opt"
         "file:///mnt mnt"
       ];
