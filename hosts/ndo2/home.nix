@@ -67,22 +67,22 @@
     settings = {
       # monitor = lib.mkForce "eDP-1,preferred,auto, 1.600000";
       monitor = lib.mkForce [
-        "eDP-1,preferred,auto,1.600000"
-        "DP-1,preferred,auto,1"
+        "eDP-1,preferred,auto-left,1.600000"
+        "DP-2,preferred,auto,1"
       ];
       env = lib.mkForce [
         "GDK_SCALE,1.6"
       ];
-      debug = {
-        disable_scale_checks = true;
-      };
+      # debug = {
+      #   disable_scale_checks = true;
+      # };
       exec-once = [
         "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1.6"
       ];
       bindl = [
         # trigger when the switch is turning on
-        "switch:on:Lid Switch,exec,hyprctl keyword monitor 'eDP-1, disable'"
-        "switch:off:Lid Switch,exec,hyprctl keyword monitor 'eDP-1,preferred,auto,1.600000'"
+        ",switch:on:Lid Switch,exec,hyprctl keyword monitor 'eDP-1,disable'"
+        ",switch:off:Lid Switch,exec,hyprctl keyword monitor 'eDP-1,preferred,auto,1.600000'"
       ];
       input = {
         touchpad = {

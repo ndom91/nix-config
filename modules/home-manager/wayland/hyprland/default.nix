@@ -20,6 +20,7 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
     xwayland.enable = true;
+    systemd.variables = ["--all"];
 
     plugins = [
       inputs.hy3.packages.${pkgs.system}.hy3
