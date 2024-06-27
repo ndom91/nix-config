@@ -65,7 +65,11 @@
   # ndo2 overrides
   wayland.windowManager.hyprland = {
     settings = {
-      monitor = lib.mkForce "eDP-1,preferred,auto,1.6";
+      # monitor = lib.mkForce "eDP-1,preferred,auto, 1.600000";
+      monitor = lib.mkForce [
+        "eDP-1,preferred,auto,1.600000"
+        "DP-1,preferred,auto,1"
+      ];
       env = lib.mkForce [
         "GDK_SCALE,1.6"
       ];
@@ -74,6 +78,11 @@
       };
       exec-once = [
         "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1.6"
+      ];
+      bindl = [
+        # trigger when the switch is turning on
+        "switch:on:Lid Switch,exec,hyprctl keyword monitor 'eDP-1, disable'"
+        "switch:off:Lid Switch,exec,hyprctl keyword monitor 'eDP-1,preferred,auto,1.600000'"
       ];
       input = {
         touchpad = {
@@ -87,12 +96,12 @@
       #   sensitivity = 0.1;
       # };
 
-      workspace = [
-        "1,monitor:eDP-1,default:true"
-        "2,monitor:eDP-1"
-        "3,monitor:DP-1"
-        "4,monitor:DP-1"
-      ];
+      # workspace = [
+      #   "1,monitor:eDP-1,default:true"
+      #   "2,monitor:eDP-1"
+      #   "3,monitor:DP-1"
+      #   "4,monitor:DP-1"
+      # ];
 
       gestures = {
         workspace_swipe = true;

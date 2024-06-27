@@ -435,7 +435,7 @@ in
         CPU_BOOST_ON_BAT = 0;
         CPU_SCALING_GOVERNOR_ON_BATTERY = "powersave";
         START_CHARGE_THRESH_BAT0 = 90;
-        STOP_CHARGE_THRESH_BAT0 = 97;
+        STOP_CHARGE_THRESH_BAT0 = 95;
         # Tell tlp to always run in battery mode
         TLP_DEFAULT_MODE = "BAT";
         TLP_PERSISTENT_DEFAULT = 1;

@@ -549,7 +549,7 @@ let
     })
     (lib.mkIf (osConfig.networking.hostName == "ndo2") {
       one = ndo2Main;
-      two = gitButler;
+      # two = gitButler;
     })
   ];
 in
