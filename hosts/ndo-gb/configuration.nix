@@ -55,7 +55,10 @@ in
   };
 
   boot = {
-    plymouth.enable = false;
+    plymouth = {
+      enable = true;
+      theme = "breeze";
+    };
     loader.systemd-boot = {
       enable = true;
       configurationLimit = 10;
