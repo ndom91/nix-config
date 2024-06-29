@@ -9,6 +9,7 @@ in
   imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
+    ../../modules/nixos/services/polkit-agent.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
     inputs.nix-flatpak.nixosModules.nix-flatpak
@@ -125,6 +126,8 @@ in
       "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" "db.puff.lan" ];
       "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
     };
+
+    # TODO: Test Crew Wifi Config
     wireless.networks."c-base-crew" = {
       hidden = true;
       auth = ''
@@ -138,9 +141,6 @@ in
       '';
     };
     wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
-    # wireless.networks."Derpy Dino Bronx" = {
-    #   psk = config.age.secrets.derpyKey.path;
-    # };
   };
 
   time.timeZone = "Europe/Berlin";
@@ -180,13 +180,6 @@ in
     };
     xserver = {
       videoDrivers = [ "intel" ];
-      enable = true;
-      displayManager = {
-        gdm = {
-          enable = false;
-          wayland = true;
-        };
-      };
       xkb = {
         layout = "us";
         variant = "";
@@ -204,7 +197,6 @@ in
   # systemd services
   systemd.services.systemd-udevd.restartIfChanged = false;
   systemd.services.NetworkManager-wait-online.enable = false;
-  systemd.services.systemd-networkd-wait-online.enable = false;
 
   # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
   # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
@@ -222,30 +214,13 @@ in
     AllowSuspendThenHibernate=yes
   '';
 
-  sound = {
-    enable = false;
-    mediaKeys = {
-      enable = true;
-    };
-  };
-
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.swaylock = {
-      text = ''
-        auth include login
-      '';
-    };
+    pam.services.swaylock.text = "auth include login";
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
-    ];
-  };
-
-  xdg.portal = {
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
     ];
   };
 

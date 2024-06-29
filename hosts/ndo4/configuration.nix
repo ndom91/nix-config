@@ -9,6 +9,7 @@ in
   imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
+    ../../modules/nixos/services/polkit-agent.nix
     ../../modules/nixos/nginx.nix
     ../../modules/nixos/wireguard.nix
     ../../modules/home-manager/languages/python.nix
@@ -162,6 +163,7 @@ in
     };
   };
 
+  systemd.services.systemd-udevd.restartIfChanged = false;
   systemd.services.NetworkManager-wait-online.enable = false;
 
   systemd.network = {
@@ -185,7 +187,6 @@ in
 
   # Hyprland swaynotificationcenter service
   systemd.user.units.swaync.enable = true;
-  systemd.services.systemd-udevd.restartIfChanged = false;
 
   # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
   # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
@@ -204,33 +205,13 @@ in
     SuspendState=mem
   '';
 
-  sound = {
-    enable = false;
-    mediaKeys = {
-      enable = true;
-    };
-  };
-
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.swaylock = {
-      text = ''
-        auth include login
-      '';
-    };
+    pam.services.swaylock.text = "auth include login";
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
-    ];
-  };
-
-  xdg.portal = {
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    configPackages = [
-      pkgs.xdg-desktop-portal-gtk
     ];
   };
 
