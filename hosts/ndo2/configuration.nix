@@ -181,6 +181,13 @@ in
         enable = true;
         theme = "corners";
         wayland.enable = true;
+        setupScript = ''
+          for next in $(xrandr --listmonitors | grep -E " *[0-9]+:.*" | cut -d" " -f6); do
+            [ -z "$current" ] && current=$next && continue
+            xrandr --output $current --auto --output $next --auto --right-of $current
+            current=$next
+          done
+        '';
         settings = {
           Theme = {
             Font = "Noto Sans";
