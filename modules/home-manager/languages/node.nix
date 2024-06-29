@@ -11,7 +11,6 @@
     pkgs.playwright-driver
     vips # for sharp
     unstablePkgs.prisma-engines
-    unstablePkgs.chromium
   ];
 
   programs.bash.sessionVariables = {

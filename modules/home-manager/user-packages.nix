@@ -36,6 +36,7 @@ in
     # Experimental
     unstablePkgs.flameshot
 
+    unstablePkgs.chromium # Browser
     floorp # Firefox
     gnome.gnome-boxes # VM Manager
     gnome.seahorse # GPG Key Manager
