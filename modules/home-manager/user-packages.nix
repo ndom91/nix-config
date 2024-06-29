@@ -48,6 +48,7 @@ in
     gnome.file-roller # GUI Archive Manager
     vlc # Media Player
     unstablePkgs.protonvpn-gui # VPN Client
+    loupe # Image Viewer
 
     rustdesk # Remote Desktop
     obsidian # Note Taking

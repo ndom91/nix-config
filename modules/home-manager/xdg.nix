@@ -214,7 +214,7 @@ in
           ];
 
           ### IMAGE VIEWER ###
-          "imv" = [
+          "loupe" = [
             "image/bmp"
             "image/gif"
             "image/jpeg"

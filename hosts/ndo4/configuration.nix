@@ -69,6 +69,7 @@ in
   # };
 
   boot = {
+    plymouth.enable = true;
     loader.systemd-boot = {
       enable = true;
       configurationLimit = 20;
@@ -77,8 +78,8 @@ in
 
     loader.efi.canTouchEfiVariables = true;
 
-    # used by tailscale for exit node
     kernel.sysctl = {
+      # used by tailscale for exit node
       "net.ipv4.ip_forward" = 1;
       "net.ipv6.conf.all.forwarding" = 1;
 
@@ -334,10 +335,23 @@ in
     openssh = {
       enable = true;
       settings = {
+        UseDns = true;
         PasswordAuthentication = true;
         PermitRootLogin = "no";
       };
     };
+
+    resolved = {
+      enable = true;
+      domains = [
+        "puff.lan"
+      ];
+      fallbackDns = [
+        "1.1.1.1"
+        "1.0.0.1"
+      ];
+    };
+
     gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
@@ -368,13 +382,22 @@ in
     };
     avahi = {
       enable = true;
+      domainName = "puff.lan";
+      browseDomains = [
+        "local"
+        "puff.lan"
+      ];
       nssmdns4 = true;
-      openFirewall = true;
-      publish.domain = true;
+      # openFirewall = true;
+      publish = {
+        enable = true;
+        domain = true;
+        userServices = true;
+      };
     };
 
     # My Elan reader still not supported
-    fprintd.enable = false;
+    # fprintd.enable = true;
     printing.enable = true;
     fstrim.enable = true;
     smartd.enable = true;

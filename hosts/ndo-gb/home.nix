@@ -11,9 +11,8 @@
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/neofetch.nix
-    ../../modules/home-manager/user-dirs.nix
     ../../modules/home-manager/bash.nix
-    ../../modules/home-manager/mimeApps.nix
+    ../../modules/home-manager/xdg.nix
     ../../modules/home-manager/gtk/default.nix
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/neovim.nix

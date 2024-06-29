@@ -54,6 +54,7 @@ in
   };
 
   boot = {
+    plymouth.enable = true;
     loader.systemd-boot = {
       enable = true;
       configurationLimit = 10;
@@ -68,6 +69,13 @@ in
 
     # Disable Nvidia GPU
     blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+
+    kernel.sysctl = {
+      # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
+      "fs.inotify.max_queued_events" = 16384;
+      "fs.inotify.max_user_instances" = 8192;
+      "fs.inotify.max_user_watches" = 524288;
+    };
   };
   services.udev.extraRules = ''
     # Remove NVIDIA USB xHCI Host Controller devices, if present
@@ -85,6 +93,7 @@ in
     useDHCP = lib.mkDefault true;
     networkmanager = {
       enable = true;
+      dns = "systemd-resolved";
       ensureProfiles.profiles = {
         "gitbutler-wifi" = {
           connection = {
@@ -346,6 +355,18 @@ in
         PermitRootLogin = "no";
       };
     };
+
+    resolved = {
+      enable = true;
+      domains = [
+        "puff.lan"
+      ];
+      fallbackDns = [
+        "1.1.1.1"
+        "1.0.0.1"
+      ];
+    };
+
     gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
@@ -365,6 +386,11 @@ in
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
+      domainName = "puff.lan";
+      browseDomains = [
+        "local"
+        "puff.lan"
+      ];
     };
 
     # fprintd.enable = true;

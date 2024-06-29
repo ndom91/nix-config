@@ -54,6 +54,7 @@ in
   };
 
   boot = {
+    plymouth.enable = true;
     loader.systemd-boot = {
       enable = true;
       configurationLimit = 10;
@@ -65,6 +66,13 @@ in
     extraModprobeConfig = ''
       options snd_hda_intel model=headset-mode
     '';
+
+    kernel.sysctl = {
+      # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
+      "fs.inotify.max_queued_events" = 16384;
+      "fs.inotify.max_user_instances" = 8192;
+      "fs.inotify.max_user_watches" = 524288;
+    };
   };
 
   networking = {
@@ -72,6 +80,7 @@ in
     useDHCP = lib.mkDefault true;
     networkmanager = {
       enable = true;
+      dns = "systemd-resolved";
       ensureProfiles.profiles = {
         "gitbutler-wifi" = {
           connection = {
@@ -280,6 +289,7 @@ in
   };
 
   nixpkgs.config = {
+    permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
     allowUnfree = true;
     packageOverrides = pkgs: {
       vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
@@ -327,6 +337,18 @@ in
         PermitRootLogin = "no";
       };
     };
+
+    resolved = {
+      enable = true;
+      domains = [
+        "puff.lan"
+      ];
+      fallbackDns = [
+        "1.1.1.1"
+        "1.0.0.1"
+      ];
+    };
+
     gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
@@ -346,6 +368,11 @@ in
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
+      domainName = "puff.lan";
+      browseDomains = [
+        "local"
+        "puff.lan"
+      ];
     };
 
     # fprintd.enable = true;
