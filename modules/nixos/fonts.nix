@@ -23,7 +23,7 @@
     fontconfig.defaultFonts = {
       serif = [ "Noto Serif" ];
       sansSerif = [
-        "Fira Sans"
+        "Noto Sans"
         "sans-serif"
       ];
       monospace = [
