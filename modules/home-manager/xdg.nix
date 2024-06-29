@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   flipAssocs = assocs:
     lib.pipe assocs [
