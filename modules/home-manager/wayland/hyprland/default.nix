@@ -1,5 +1,17 @@
 { pkgs, unstablePkgs, config, rose-pine-cursor, inputs, ... }:
 {
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
+    };
+
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
   xdg.configFile."hypr/movefocus.sh".source = ./hy3-movefocus.sh;
   xdg.configFile."swappy/config".text = ''
     [Default]
@@ -20,7 +32,7 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
     xwayland.enable = true;
-    systemd.variables = ["--all"];
+    systemd.variables = [ "--all" ];
 
     plugins = [
       inputs.hy3.packages.${pkgs.system}.hy3
@@ -61,7 +73,7 @@
         # "${pkgs.blueberry}/bin/blueberry-tray"
         "${pkgs.blueman}/bin/blueman-applet"
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        # "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 
         # "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
         # "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
@@ -169,6 +181,13 @@
         "float, title:Annotator"
         "fullscreen, title:wlogout"
         "noshadow, floating:1"
+        "dimaround, class:^(gcr-prompter)$"
+        "dimaround, class:^(xdg-desktop-portal-gtk)$"
+        "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
+
+        # throw sharing indicators away
+        "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+        "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
         # GitButler Float
         "float, class:^(git-butler.*)$"
