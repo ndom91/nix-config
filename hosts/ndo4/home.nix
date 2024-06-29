@@ -15,7 +15,6 @@
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/mimeApps.nix
     ../../modules/home-manager/gtk/default.nix
-    ../../modules/home-manager/qt.nix
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/neovim.nix
     ../../modules/home-manager/zathura.nix
@@ -94,8 +93,6 @@
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
     # ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
   };
-
-  fonts.fontconfig.enable = true;
 
   services = {
     network-manager-applet.enable = false;

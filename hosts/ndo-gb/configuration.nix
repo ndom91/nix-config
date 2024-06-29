@@ -9,6 +9,8 @@ in
   imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
+    ../../modules/nixos/fonts.nix
+    ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
     inputs.nix-flatpak.nixosModules.nix-flatpak
@@ -277,27 +279,7 @@ in
     };
   };
 
-  fonts = {
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        sansSerif = [
-          "SFProDisplay Nerd Font"
-          "sans-serif"
-        ];
-        monospace = [
-          "Operator Mono Light"
-        ];
-        emoji = [
-          "Noto Color Emoji"
-        ];
-      };
-    };
-    fontDir.enable = true;
-  };
-
   nixpkgs.config = {
-    permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
     allowUnfree = true;
     packageOverrides = pkgs: {
       vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };

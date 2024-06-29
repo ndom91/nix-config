@@ -103,14 +103,6 @@ in
     unstablePkgs.termscp # TUI S3/SFTP/etc client
     unstablePkgs.oha # HTML Load Tester
     inputs.superfile.packages.${system}.default # TUI File Manager
-
-    # Fonts
-    (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Ubuntu" "UbuntuMono" ]; })
-    inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
-    inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
-    fira
-    noto-fonts-color-emoji
-
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 

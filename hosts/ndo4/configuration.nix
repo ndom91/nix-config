@@ -9,8 +9,10 @@ in
   imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
+    ../../modules/nixos/fonts.nix
     ../../modules/nixos/nginx.nix
     ../../modules/nixos/wireguard.nix
+    ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
     inputs.nix-flatpak.nixosModules.nix-flatpak
@@ -285,25 +287,6 @@ in
     users = {
       "ndo" = import ./home.nix;
     };
-  };
-
-  fonts = {
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        sansSerif = [
-          "SFProDisplay Nerd Font"
-          "sans-serif"
-        ];
-        monospace = [
-          "Operator Mono Light"
-        ];
-        emoji = [
-          "Noto Color Emoji"
-        ];
-      };
-    };
-    fontDir.enable = true;
   };
 
   nixpkgs.config = {

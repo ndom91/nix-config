@@ -3,17 +3,17 @@
   fonts = {
     fontDir.enable = true;
 
-    packages = [
+    packages = with pkgs; [
       # (unstablePkgs.nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "FiraCode" "FiraMono" "GeistMono" "Hack" "Ubuntu" "UbuntuMono" ]; })
 
-      # Sans(Serif) fonts
-      fira
+      # Sans Serif
+      unstablePkgs.fira
       noto-fonts
       noto-fonts-color-emoji
       roboto
       (google-fonts.override { fonts = [ "Inter" ]; })
 
-      # monospace fonts
+      # monospace
       # jetbrains-mono
 
       # nerdfonts
