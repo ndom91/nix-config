@@ -9,7 +9,6 @@ in
   imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
-    ../../modules/nixos/services/polkit-agent.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
     inputs.nix-flatpak.nixosModules.nix-flatpak
@@ -199,7 +198,6 @@ in
 
   security = {
     rtkit.enable = true;
-    polkit.enable = true;
     pam.services.swaylock.text = "auth include login";
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
@@ -249,14 +247,14 @@ in
         # amdvlk
         # vulkan-validation-layers
         # intel-gmmlib # ?
-        # intel-vaapi-driver # ?
 
         vaapiVdpau
         libvdpau-va-gl
       ];
     };
 
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    enableRedistributableFirmware = true;
+    cpu.intel.updateMicrocode = true;
   };
 
   users.users.ndo = {
@@ -269,14 +267,10 @@ in
         sha256 = "PfSNkhnNXUR9BTD2+0An2ugQAv2eYipQOFxQ3j8XD5Y=";
       }))
     ];
-    packages = [
-      fira-sans-nerd-font
-    ];
   };
 
   home-manager = {
     extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font; };
-    # useUserPackages = true;
     useGlobalPkgs = true;
     users = {
       "ndo" = import ./home.nix;
@@ -316,7 +310,6 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
-    fira-sans-nerd-font
   ];
 
   programs = {

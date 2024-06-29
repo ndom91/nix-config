@@ -6,9 +6,12 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelParams = [ "amd_pstate=active" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-amd" "zenpower" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
+
+  boot.blacklistedKernelModules = [ "k10temp" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/31113345-8fa1-43bc-b86b-0b761476e364";
@@ -31,5 +34,4 @@
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
