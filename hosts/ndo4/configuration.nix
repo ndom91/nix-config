@@ -115,10 +115,10 @@ in
         enable = true;
         # package = unstablePkgs.kdePackages.sddm;
         theme = "corners";
-        wayland.enable = false;
+        wayland.enable = true;
         settings = {
           Theme = {
-            Font = "SFProDisplay Nerd Font";
+            Font = "Noto Sans";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
             FacesDir = "/etc/nixos/dotfiles/faces";
@@ -128,13 +128,6 @@ in
     };
     xserver = {
       videoDrivers = [ "amdgpu" ];
-      enable = true;
-      displayManager = {
-        gdm = {
-          enable = false;
-          wayland = true;
-        };
-      };
       xkb = {
         layout = "us";
         variant = "";

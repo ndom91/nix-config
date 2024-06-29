@@ -164,10 +164,10 @@ in
       sddm = {
         enable = true;
         theme = "corners";
-        wayland.enable = false;
+        wayland.enable = true;
         settings = {
           Theme = {
-            Font = "SFProDisplay Nerd Font";
+            Font = "Noto Sans";
             EnableAvatars = true;
             CursorTheme = "BreezeX-RosePine-Linux";
             FacesDir = "/etc/nixos/dotfiles/faces";
