@@ -20,8 +20,6 @@
     ../../modules/home-manager/wezterm.nix
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/wayland/default.nix
-    # Services
-    ../../modules/nixos/services/polkit-agent.nix
   ];
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";

@@ -11,6 +11,7 @@ in
     ../../modules/nixos/system-packages.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/nginx.nix
+    ../../modules/nixos/services/polkit-agent.nix
     ../../modules/nixos/wireguard.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix

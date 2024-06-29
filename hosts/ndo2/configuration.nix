@@ -10,6 +10,7 @@ in
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
     ../../modules/nixos/fonts.nix
+    ../../modules/nixos/services/polkit-agent.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
