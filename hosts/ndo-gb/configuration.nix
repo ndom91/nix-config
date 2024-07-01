@@ -253,18 +253,14 @@ in
       driSupport32Bit = true;
       extraPackages = with unstablePkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        # For 8th gen:
-        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        vaapiVdpau
+        libvdpau-va-gl
 
-        intel-ocl # up to 7thgen
         intel-compute-runtime # 8th gen +
 
         # amdvlk
         # vulkan-validation-layers
         # intel-gmmlib # ?
-
-        vaapiVdpau
-        libvdpau-va-gl
       ];
     };
 

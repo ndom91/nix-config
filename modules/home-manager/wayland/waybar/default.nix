@@ -762,6 +762,10 @@ let
       two = ndo2Wide;
       # two = gitButler;
     })
+    (lib.mkIf (osConfig.networking.hostName == "ndo-gb") {
+      one = ndo2Main;
+      # two = gitButler;
+    })
   ];
 in
 {

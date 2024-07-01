@@ -30,7 +30,7 @@
     # };
     "zathura/catppuccin-mocha".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/catppuccin/zathura/main/src/catppuccin-mocha";
-      hash = "sha256-QZypNMfVlTzMRaQ286DDWL9dAvQZ8INkllzo8t0aHf4=";
+      hash = "sha256-POxMpm77Pd0qywy/jYzZBXF/uAKHSQ0hwtXD4wl8S2Q=";
     };
   };
 }

@@ -79,6 +79,23 @@
             agenix.nixosModules.default
           ];
         };
+        ndo-gb = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            inherit nix-colors;
+            unstablePkgs = import unstable {
+              config = {
+                allowUnfree = true;
+              };
+              localSystem = { inherit system; };
+            };
+          };
+          modules = [
+            ./hosts/ndo-gb/configuration.nix
+            ./packages/protonvpn-wg-quick/default.nix
+            agenix.nixosModules.default
+          ];
+        };
         ndo2 = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
