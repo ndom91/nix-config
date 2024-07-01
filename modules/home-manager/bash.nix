@@ -150,6 +150,8 @@
       eval "$(fnm env --shell bash --use-on-cd --version-file-strategy recursive)"      eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
     fi
 
+    export PATH="$HOME/.radicle/bin:$PATH"
+
     # AWS
     export AWS_DEFAULT_REGION=eu-central-1
     export AWS_REGION=eu-central-1

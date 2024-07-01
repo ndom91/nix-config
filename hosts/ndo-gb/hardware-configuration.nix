@@ -12,6 +12,8 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "xe" "acpi_call" ]; # FORCE 'xe' INTEL DRIVER
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelParams = [ "i915.force_probe=!7d55" ];
+  boot.kernelParams = [ "xe.force_probe=7d55" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
 
