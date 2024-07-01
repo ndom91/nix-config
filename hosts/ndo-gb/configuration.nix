@@ -22,6 +22,7 @@ in
   ];
   # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
   age.secrets.pvpn.file = ../../secrets/pvpn.age;
+  age.secrets.wutang.file = ../../secrets/wutang.age;
   age.secrets.derpyKey.file = ../../secrets/derpyKey.age;
   age.secrets.ssh = {
     file = ./../../secrets/ssh.age;
@@ -142,6 +143,7 @@ in
       '';
     };
     wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
+    wireless.networks."WutangLAN".psk = config.age.secrets.wutang.path;
   };
 
   time.timeZone = "Europe/Berlin";
@@ -224,8 +226,7 @@ in
     # VAAPI and VDPAU config for accelerated video.
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
     VDPAU_DRIVER = "va_gl";
-    LIBVA_DRIVER_NAME = "i965";
-    # LIBVA_DRIVER_NAME = "iHD";
+    LIBVA_DRIVER_NAME = "iHD";
   };
 
   environment.etc = {
@@ -255,12 +256,7 @@ in
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
         vaapiVdpau
         libvdpau-va-gl
-
         intel-compute-runtime # 8th gen +
-
-        # amdvlk
-        # vulkan-validation-layers
-        # intel-gmmlib # ?
       ];
     };
 
@@ -375,7 +371,7 @@ in
       ];
     };
 
-    # fprintd.enable = true;
+    fprintd.enable = true;
     printing.enable = true;
     fstrim.enable = true;
     smartd.enable = true;

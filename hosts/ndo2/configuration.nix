@@ -22,6 +22,7 @@ in
   ];
   # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
   age.secrets.pvpn.file = ../../secrets/pvpn.age;
+  age.secrets.wutang.file = ../../secrets/wutang.age;
   age.secrets.derpyKey.file = ../../secrets/derpyKey.age;
   age.secrets.ssh = {
     file = ./../../secrets/ssh.age;
@@ -155,6 +156,7 @@ in
       '';
     };
     wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
+    wireless.networks."WutangLAN".psk = config.age.secrets.wutang.path;
   };
 
   time.timeZone = "Europe/Berlin";
