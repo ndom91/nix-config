@@ -90,6 +90,8 @@ window#waybar.hidden {
 #idle_inhibitor,
 #temperature,
 #workspaces,
+#user,
+#privacy,
 #submap,
 #network {
   border-radius: 9px;
@@ -106,6 +108,10 @@ window#waybar.hidden {
 
 #window {
   background-color: @transparent;
+}
+
+#user .avatar {
+  border-radius: 50%;
 }
 
 @keyframes blink {

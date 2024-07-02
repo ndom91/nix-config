@@ -273,6 +273,7 @@ let
       "cpu"
       "memory"
       "disk"
+      "temperature"
       "hyprland/workspaces"
       "hyprland/submap"
     ];
@@ -316,6 +317,11 @@ let
       on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
       on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
       escape = true;
+    };
+    temperature = {
+      "hwmon-path" = "/sys/class/hwmon/hwmon2/temp1_input";
+      "critical-threshold" = 80;
+      format = " {temperatureC}°C";
     };
     "hyprland/workspaces" = {
       format = "{icon}";
@@ -697,6 +703,7 @@ let
       "cpu"
       "memory"
       "disk"
+      "temperature"
       "hyprland/workspaces"
       "hyprland/submap"
     ];
@@ -704,6 +711,7 @@ let
       "hyprland/window"
     ];
     modules-right = [
+      "privacy"
       "idle_inhibitor"
       "bluetooth"
       "custom/weather"
@@ -712,6 +720,11 @@ let
       "custom/notification"
       "tray"
     ];
+    temperature = {
+      "hwmon-path" = "/sys/class/hwmon/hwmon2/temp1_input";
+      "critical-threshold" = 80;
+      format = " {temperatureC}°C";
+    };
     "hyprland/window" = {
       format = "{}";
       max-length = 80;
@@ -773,7 +786,7 @@ let
     };
     cpu = {
       interval = 2;
-      format = "<span font='15' rise='-3pt'>󰻠</span> {usage}%";
+      format = "<span font='15' rise='-3pt'>󰻠 </span> {usage}%";
     };
     battery = {
       interval = 10;
@@ -787,8 +800,8 @@ let
         critical = 10;
       };
       format = "{icon} {capacity}%";
-      format-charging = " {capacity}%";
-      format-plugged = " {capacity}%";
+      format-charging = "  {capacity}%";
+      format-plugged = "  {capacity}%";
       format-full = "{icon} Full";
       format-alt = "{icon} {time}";
       format-icons = [
@@ -808,16 +821,11 @@ let
     };
     disk = {
       interval = 120;
-      format = "<span font='14' rise='-1pt'>󰋊</span> {free}";
+      format = "<span font='14' rise='-1pt'>󰋊 </span> {free}";
     };
     memory = {
       interval = 10;
-      format = "<span font='13' rise='-2pt'></span> {percentage}%";
-    };
-    "hyprland/window" = {
-      format = "{}";
-      max-length = 80;
-      separate-outputs = true;
+      format = "<span font='13' rise='-2pt'> </span> {percentage}%";
     };
     "hyprland/submap" = {
       format = "{}";
@@ -826,9 +834,9 @@ let
     };
     network = {
       interval = 5;
-      format-wifi = "<span font='12' rise='-2pt'>󱚿</span> {ipaddr}";
+      format-wifi = " {bandwidthUpBits} |  {bandwidthDownBits}";
       format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
-      format-alt = "<span font='12' rise='-2pt'>󰲐</span> {ipaddr}/{cidr}";
+      format-alt = "<span font='12' rise='-2pt'>󰲐 </span> {ipaddr}/{cidr}";
       format-linked = "󰖪 {ifname} (No IP)";
       format-disconnected = "󱛅 Disconnected";
       format-disabled = "󰖪 Disabled";
@@ -861,11 +869,10 @@ let
       align = 0;
       rotate = 0;
       format = "{:%H:%M | %a %b %d}";
-      format-alt = " {:%a %b %d}";
       tooltip-format = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
     };
     wireplumber = {
-      format = "<span font='12' rise='-2pt'></span> {volume}";
+      format = "<span font='12' rise='-2pt'> </span> {volume}";
       format-muted = "<span font='12' rise='-2pt'></span>";
       on-click = "${pkgs.pamixer}/bin/pamixer -t";
       on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
@@ -896,6 +903,28 @@ let
       on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
       smooth-scrolling-threshold = 1;
     };
+    privacy = {
+      icon-spacing = 4;
+      icon-size = 18;
+      transition-duration = 250;
+      modules = [
+        {
+          type = "screenshare";
+          tooltip = true;
+          tooltip-icon-size = 24;
+        }
+        {
+          type = "audio-out";
+          tooltip = true;
+          tooltip-icon-size = 24;
+        }
+        {
+          type = "audio-in";
+          tooltip = true;
+          tooltip-icon-size = 2;
+        }
+      ];
+    };
   };
 
   ndoGbWide = {
@@ -919,12 +948,21 @@ let
     ];
     modules-right = [
       "network"
+      "user"
     ];
     "hyprland/window" = {
       format = "{}";
       max-length = 200;
       icon = true;
       separate-outputs = true;
+    };
+    user = {
+      format = "{avatar} (↑ {work_H}:{work_M})";
+      avatar = "/etc/nixos/dotfiles/faces/ndo.face.icon";
+      interval = 60;
+      height = 24;
+      width = 24;
+      icon = true;
     };
     network = {
       interval = 5;
