@@ -395,7 +395,7 @@ let
     };
     network = {
       interval = 5;
-      format-wifi = "<span font='12' rise='-2pt'>󱚿</span> {ipaddr}";
+      format-wifi = " {bandwidthUpBits} |  {bandwidthDownBits}";
       format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
       format-alt = "<span font='12' rise='-2pt'>󰲐</span> {ipaddr}/{cidr}";
       format-linked = "󰖪 {ifname} (No IP)";
@@ -607,7 +607,7 @@ let
     };
     network = {
       interval = 5;
-      format-wifi = "<span font='12' rise='-2pt'>󱚿</span> {ipaddr}";
+      format-wifi = " {bandwidthUpBits} |  {bandwidthDownBits}";
       format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
       format-alt = "<span font='12' rise='-2pt'>󰲐</span> {ipaddr}/{cidr}";
       format-linked = "󰖪 {ifname} (No IP)";
@@ -768,7 +768,7 @@ let
     };
     cpu = {
       interval = 2;
-      format = "<span font='15' rise='-3pt'>󰻠</span> {usage}%";
+      format = "<span font='15' rise='-3pt'>󰻠 </span> {usage}%";
     };
     battery = {
       interval = 10;
@@ -781,7 +781,7 @@ let
         warning = 20;
         critical = 10;
       };
-      format = "{icon} {capacity}%";
+      format = "{icon}  {capacity}%";
       format-charging = " {capacity}%";
       format-plugged = " {capacity}%";
       format-full = "{icon} Full";
@@ -803,11 +803,11 @@ let
     };
     disk = {
       interval = 120;
-      format = "<span font='14' rise='-1pt'>󰋊</span> {free}";
+      format = "<span font='14' rise='-1pt'>󰋊 </span> {free}";
     };
     memory = {
       interval = 10;
-      format = "<span font='13' rise='-2pt'></span> {percentage}%";
+      format = "<span font='13' rise='-2pt'> </span> {percentage}%";
     };
     "hyprland/window" = {
       format = "{}";
@@ -821,9 +821,9 @@ let
     };
     network = {
       interval = 5;
-      format-wifi = "<span font='12' rise='-2pt'>󱚿</span> {ipaddr}";
+      format-wifi = " {bandwidthUpBits} |  {bandwidthDownBits}";
       format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
-      format-alt = "<span font='12' rise='-2pt'>󰲐</span> {ipaddr}/{cidr}";
+      format-alt = "<span font='12' rise='-2pt'>󰲐 </span> {ipaddr}/{cidr}";
       format-linked = "󰖪 {ifname} (No IP)";
       format-disconnected = "󱛅 Disconnected";
       format-disabled = "󰖪 Disabled";
@@ -856,11 +856,10 @@ let
       align = 0;
       rotate = 0;
       format = "{:%H:%M | %a %b %d}";
-      format-alt = " {:%a %b %d}";
       tooltip-format = "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
     };
     wireplumber = {
-      format = "<span font='12' rise='-2pt'></span> {volume}";
+      format = "<span font='12' rise='-2pt'> </span> {volume}";
       format-muted = "<span font='12' rise='-2pt'></span>";
       on-click = "${pkgs.pamixer}/bin/pamixer -t";
       on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
@@ -922,9 +921,9 @@ let
     };
     network = {
       interval = 5;
-      format-wifi = "<span font='12' rise='-2pt'>󱚿</span> {ipaddr}";
+      format-wifi = " {bandwidthUpBits} |  {bandwidthDownBits}";
       format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
-      format-alt = "<span font='12' rise='-2pt'>󰲐</span> {ipaddr}/{cidr}";
+      format-alt = "<span font='12' rise='-2pt'>󰲐 </span> {ipaddr}/{cidr}";
       format-linked = "󰖪 {ifname} (No IP)";
       format-disconnected = "󱛅 Disconnected";
       format-disabled = "󰖪 Disabled";
