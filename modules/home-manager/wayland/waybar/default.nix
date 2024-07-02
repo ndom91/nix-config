@@ -953,7 +953,6 @@ let
     "hyprland/window" = {
       format = "{}";
       max-length = 200;
-      icon = true;
       separate-outputs = true;
     };
     user = {
