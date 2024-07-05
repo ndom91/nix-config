@@ -4,13 +4,13 @@ let
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
+  lenovo-wwan = pkgs.callPackage ../../packages/lenovo-wwan/default.nix { };
 in
 {
   imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
     ../../modules/nixos/fonts.nix
-    ../../modules/nixos/lenovo_wwan.nix
     ../../modules/nixos/services/polkit-agent.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
@@ -336,6 +336,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    lenovo-wwan
     # Quectel RM520N-GL 
     modemmanager
     modem-manager-gui
