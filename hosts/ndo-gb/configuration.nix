@@ -442,6 +442,11 @@ in
         # Tell tlp to always run in battery mode
         TLP_DEFAULT_MODE = "BAT";
         TLP_PERSISTENT_DEFAULT = 1;
+
+        # Don't autosuspend USB devices (Dell Monitor -> Input Devices)
+        # https://discourse.nixos.org/t/nixos-power-management-help-usb-doesnt-work/9933/2
+        # USB_AUTOSUSPEND = 0;
+        # RUNTIME_PM_BLACKLIST = "06:00.3 06:00.4";
       };
     };
     flatpak = {
