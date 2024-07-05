@@ -82,6 +82,9 @@
         ",switch:on:Lid Switch,exec,hyprctl keyword monitor 'eDP-1,disable'"
         ",switch:off:Lid Switch,exec,hyprctl keyword monitor 'eDP-1,preferred,auto,1'"
       ];
+      bind = [
+        ",XF86Launch2, exec, /home/ndo/.config/rofi/bin/screenshot"
+      ];
       input = {
         touchpad = {
           clickfinger_behavior = true;

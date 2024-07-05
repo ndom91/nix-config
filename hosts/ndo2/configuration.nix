@@ -119,6 +119,44 @@ in
             psk = config.age.secrets.derpyKey.path;
           };
         };
+        "WutangLAN" = {
+          connection = {
+            id = "WutangLAN";
+            type = "wifi";
+          };
+          ipv4 = {
+            method = "auto";
+            nameserver = "10.0.0.1";
+            dns-search = "puff.lan";
+          };
+          wifi = {
+            mode = "infrastructure";
+            ssid = "WutangLAN";
+          };
+          wifi-security = {
+            key-mgmt = "wpa-psk";
+            psk = config.age.secrets.wutang.path;
+          };
+        };
+        # "c-base-crew" = {
+        #   connection = {
+        #     id = "c-base-crew";
+        #     type = "wifi";
+        #   };
+        #   ipv4 = {
+        #     method = "auto";
+        #     nameserver = "10.0.0.1";
+        #     dns-search = "puff.lan";
+        #   };
+        #   wifi = {
+        #     mode = "infrastructure";
+        #     ssid = "c-base-crew";
+        #   };
+        #   wifi-security = {
+        #     key-mgmt = "wpa-eap";
+        #     psk = config.age.secrets.cbaseKey.path;
+        #   };
+        # };
       };
     };
     nameservers = [
@@ -142,21 +180,21 @@ in
       "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
     };
 
-    # TODO: Test Crew Wifi Config
-    wireless.networks."c-base-crew" = {
-      hidden = true;
-      auth = ''
-        ssid="c-base-crew"
-        key_mgmt=WPA-EAP
-        eap=PEAP
-        identity="ndo"
-        ca_cert="/etc/ssl/certs/ca-bundie.crt"
-        subject_match="/CN=radius.cbrp3.c-base.org"
-        phase2="auth=MSCHAPV2"
-      '';
-    };
-    wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
     wireless.networks."WutangLAN".psk = config.age.secrets.wutang.path;
+    # TODO: Test Crew Wifi Config
+    # wireless.networks."c-base-crew" = {
+    #   hidden = true;
+    #   auth = ''
+    #     ssid="c-base-crew"
+    #     key_mgmt=WPA-EAP
+    #     eap=PEAP
+    #     identity="ndo"
+    #     ca_cert="/etc/ssl/certs/ca-bundie.crt"
+    #     subject_match="/CN=radius.cbrp3.c-base.org"
+    #     phase2="auth=MSCHAPV2"
+    #   '';
+    # };
+    # wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
   };
 
   time.timeZone = "Europe/Berlin";

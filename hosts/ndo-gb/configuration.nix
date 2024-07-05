@@ -106,10 +106,49 @@ in
             psk = config.age.secrets.derpyKey.path;
           };
         };
+        "WutangLAN" = {
+          connection = {
+            id = "WutangLAN";
+            type = "wifi";
+          };
+          ipv4 = {
+            method = "auto";
+            nameserver = "10.0.0.1";
+            dns-search = "puff.lan";
+          };
+          wifi = {
+            mode = "infrastructure";
+            ssid = "WutangLAN";
+          };
+          wifi-security = {
+            key-mgmt = "wpa-psk";
+            psk = config.age.secrets.wutang.path;
+          };
+        };
+        # "c-base-crew" = {
+        #   connection = {
+        #     id = "c-base-crew";
+        #     type = "wifi";
+        #   };
+        #   ipv4 = {
+        #     method = "auto";
+        #     nameserver = "10.0.0.1";
+        #     dns-search = "puff.lan";
+        #   };
+        #   wifi = {
+        #     mode = "infrastructure";
+        #     ssid = "c-base-crew";
+        #   };
+        #   wifi-security = {
+        #     key-mgmt = "wpa-eap";
+        #     psk = config.age.secrets.cbaseKey.path;
+        #   };
+        # };
       };
     };
     nameservers = [
       "10.0.0.1"
+      "1.1.1.1"
     ];
     timeServers = [
       "10.0.0.1"
@@ -142,8 +181,7 @@ in
         phase2="auth=MSCHAPV2"
       '';
     };
-    wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
-    wireless.networks."WutangLAN".psk = config.age.secrets.wutang.path;
+    # wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
   };
 
   time.timeZone = "Europe/Berlin";
@@ -169,6 +207,7 @@ in
       defaultSession = "hyprland";
       sddm = {
         enable = true;
+        # package = unstablePkgs.libsForQt5.sddm;
         theme = "corners";
         wayland.enable = true;
         settings = {
@@ -182,7 +221,8 @@ in
       };
     };
     xserver = {
-      videoDrivers = [ "intel" ];
+      # enable = true;
+      videoDrivers = [ "xe" "intel" ];
       xkb = {
         layout = "us";
         variant = "";
@@ -248,15 +288,15 @@ in
     # Intel Hardware Acceleration
     opengl = {
       enable = true;
-      package = unstablePkgs.mesa.drivers;
+      package = pkgs.mesa.drivers;
+      package32 = pkgs.pkgsi686Linux.mesa.drivers;
       driSupport = true;
-      package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
       driSupport32Bit = true;
       extraPackages = with unstablePkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
         vaapiVdpau
         libvdpau-va-gl
-        intel-compute-runtime # 8th gen +
+        # intel-compute-runtime # 8th gen +
       ];
     };
 
@@ -293,6 +333,13 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    # Quectel RM520N-GL 
+    modemmanager
+    modem-manager-gui
+    libqmi
+    uqmi
+    libmbim
+
     cpupower-gui
     powerstat
     tokyo-night-sddm

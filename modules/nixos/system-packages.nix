@@ -49,6 +49,7 @@
     pamixer
     pasystray
     pavucontrol
+    pciutils
     powertop
     python311Packages.requests
     qemu
