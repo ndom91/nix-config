@@ -6,10 +6,10 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
   # boot.initrd.kernelModules = [ "xe" "mhi" "mhi_pci_generic" "qmi_wwan" "cdc-mbim" "usbnet" "wwan" "mhi_wwan_mbim" "mhi_net" "mhi_wwan_ctrl" "mhi" "qrtr-mhi" "wwan_hwsim" "usbserial" ];
-  boot.initrd.kernelModules = [ "xe" "mhi_pci_generic" "wwan" "wwan_hwsim" "usbserial" "qcserial" ];
+  boot.initrd.kernelModules = [ "xe" "mhi_pci_generic" "wwan" "wwan_hwsim" "usbserial" "qcserial" "qmi_wwan" "option" "cdc_mbim" "mhi_net" "quatech2" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.blacklistedKernelModules = [ "btusb" ];
-  # boot.kernelParams = [ "xe.force_probe=7d45" "mhi_pci_generic.force_probe=2c7c" ];
+  # boot.kernelParams = [ "xe.force_probe=7d45" "mhi_pci_generic.force_probe=2c7c"  "mhi_pci_generic.force_probe=0801" ];
   boot.kernelParams = [ "xe.force_probe=7d45" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];

@@ -169,18 +169,18 @@ in
     };
 
     # TODO: Test Crew Wifi Config
-    wireless.networks."c-base-crew" = {
-      hidden = true;
-      auth = ''
-        ssid="c-base-crew"
-        key_mgmt=WPA-EAP
-        eap=PEAP
-        identity="ndo"
-        ca_cert="/etc/ssl/certs/ca-bundie.crt"
-        subject_match="/CN=radius.cbrp3.c-base.org"
-        phase2="auth=MSCHAPV2"
-      '';
-    };
+    # wireless.networks."c-base-crew" = {
+    #   hidden = true;
+    #   auth = ''
+    #     ssid="c-base-crew"
+    #     key_mgmt=WPA-EAP
+    #     eap=PEAP
+    #     identity="ndo"
+    #     ca_cert="/etc/ssl/certs/ca-bundie.crt"
+    #     subject_match="/CN=radius.cbrp3.c-base.org"
+    #     phase2="auth=MSCHAPV2"
+    #   '';
+    # };
     # wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
   };
 
@@ -250,7 +250,9 @@ in
   # HibernateDelaySec defaults to 2h
   # See: https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html#Description
   systemd.sleep.extraConfig = ''
-    AllowSuspendThenHibernate=yes
+    AllowHiberation=yes
+    # Currently on s2idle supported; see `cat /sys/power/mem_sleep`
+    # AllowSuspendThenHibernate=yes
   '';
 
   security = {
@@ -293,7 +295,7 @@ in
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with unstablePkgs; [
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        intel-media-driver
         vaapiVdpau
         libvdpau-va-gl
         # intel-compute-runtime # 8th gen +
@@ -430,7 +432,7 @@ in
       lidSwitch = "suspend-then-hibernate";
     };
     thermald.enable = true;
-    upower.enable = true;
+    # upower.enable = true;
 
     tlp = {
       enable = true;
