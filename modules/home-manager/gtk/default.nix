@@ -4,12 +4,16 @@ let
     schemeVariants = [ "nord" ];
     colorVariants = [ "grey" ];
   };
+
+  catppuccin_name = "catppuccin-mocha-maroon-standard+normal";
+  catppuccin = pkgs.catppuccin-gtk.override {
+    accents = [ "maroon" ];
+    size = "standard";
+    tweaks = [ "normal" ];
+    variant = "mocha";
+  };
 in
 {
-  imports = [
-    ./catppuccin.nix
-  ];
-
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -25,10 +29,16 @@ in
     enable = true;
     font.name = "SFProDisplay Nerd Font";
 
+    theme = {
+      name = catppuccin_name;
+      package = catppuccin;
+    };
+
     cursorTheme = {
       package = rose-pine-cursor;
       name = "BreezeX-RosePine-Linux";
       size = lib.mkMerge [
+        (lib.mkIf (osConfig.networking.hostName == "ndo4") 24)
         (lib.mkIf (osConfig.networking.hostName == "ndo4") 24)
         (lib.mkIf (osConfig.networking.hostName == "ndo2") 32)
       ];
@@ -63,6 +73,12 @@ in
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
+  };
+
+  home.file.".config/gtk-4.0/gtk-dark.css".source = "${catppuccin}/share/themes/${catppuccin_name}/gtk-4.0/gtk-dark.css";
+  home.file.".config/gtk-4.0/assets" = {
+    recursive = true;
+    source = "${catppuccin}/share/themes/${catppuccin_name}/gtk-4.0/assets";
   };
 
   # services.xsettingsd = {
