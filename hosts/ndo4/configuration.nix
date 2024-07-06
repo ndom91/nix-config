@@ -303,9 +303,6 @@ in
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland.override {
-        inherit (unstablePkgs) mesa;
-      };
     };
 
     _1password = { enable = true; };
