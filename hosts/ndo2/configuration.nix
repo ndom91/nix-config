@@ -178,6 +178,7 @@ in
     hosts = {
       "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" "db.puff.lan" ];
       "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
+      "172.18.1.110" = [ "www.iceportal.de" "iceportal.de" ];
     };
 
     wireless.networks."WutangLAN".psk = config.age.secrets.wutang.path;

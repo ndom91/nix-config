@@ -167,6 +167,7 @@ in
     hosts = {
       "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" "db.puff.lan" ];
       "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
+      "172.18.1.110" = [ "www.iceportal.de" "iceportal.de" ];
     };
 
     # TODO: Test Crew Wifi Config
@@ -336,13 +337,11 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    lenovo-wwan
     # Quectel RM520N-GL 
-    modemmanager
-    modem-manager-gui
-    libqmi
-    uqmi
-    libmbim
+    # lenovo-wwan
+    # modemmanager
+    # modem-manager-gui
+    # libmbim
 
     cpupower-gui
     powerstat
@@ -467,6 +466,9 @@ in
       packages = [
         { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
       ];
+    };
+    picosnitch = {
+      enable = false;
     };
   };
 
