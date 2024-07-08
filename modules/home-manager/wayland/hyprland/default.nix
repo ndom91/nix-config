@@ -149,15 +149,12 @@
           "windows, 1, 5, bounce, popin"
         ];
       };
-      master = {
-        new_is_master = true;
-      };
       misc = {
         disable_hyprland_logo = true;
         animate_manual_resizes = true;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
-        # focus_on_activate = true;
+        focus_on_activate = true;
       };
       windowrule = [
         "float, file_progress"
