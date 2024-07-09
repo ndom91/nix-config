@@ -127,6 +127,7 @@ in
       terminal = false;
       icon = "vivaldi";
       type = "Application";
+      noDisplay = true;
       categories = [ "Network" "WebBrowser" ];
       mimeType = [
         "application/rdf+xml"
@@ -151,7 +152,7 @@ in
     };
     gitbutler-nightly = {
       name = "GitButler (nightly)";
-      exec = "/opt/appimages/git-butler-nightly_latest.AppImage";
+      exec = "env APPIMAGE_GTK_THEME=Adwaita:dark /opt/appimages/git-butler-nightly_latest.AppImage %U";
       icon = "/opt/gitbutler/gitbutler-docs/public/fav/fav-32.png";
       terminal = false;
       type = "Application";

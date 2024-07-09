@@ -188,7 +188,7 @@
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
         # GitButler Float
-        "float, class:^(git-butler.*)$"
+        "float, class:^((g|G)it-(b|B)utler.*)$"
 
         # 1Password
         # "noinitialfocus,title:Quick Access - 1Password,floating"
