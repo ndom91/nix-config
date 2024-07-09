@@ -2,57 +2,25 @@ return {
   "lewis6991/gitsigns.nvim", -- gutter git signs + git blame virtual text
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
-    -- 'signs.add.hl' is now deprecated, please define highlight 'GitSignsAdd'
-    -- 'signs.add.linehl' is now deprecated, please define highlight 'GitSignsAddLn'
-    -- 'signs.add.numhl' is now deprecated, please define highlight 'GitSignsAddNr'
-    -- 'signs.change.hl' is now deprecated, please define highlight 'GitSignsChange'
-    -- 'signs.change.linehl' is now deprecated, please define highlight 'GitSignsChangeLn'
-    -- 'signs.change.numhl' is now deprecated, please define highlight 'GitSignsChangeNr'
-    -- 'signs.changedelete.hl' is now deprecated, please define highlight 'GitSignsChangedelete'
-    -- 'signs.changedelete.linehl' is now deprecated, please define highlight 'GitSignsChangedeleteLn'
-    -- 'signs.changedelete.numhl' is now deprecated, please define highlight 'GitSignsChangedeleteNr'
-    -- 'signs.delete.hl' is now deprecated, please define highlight 'GitSignsDelete'
-    -- 'signs.delete.linehl' is now deprecated, please define highlight 'GitSignsDeleteLn'
-    -- 'signs.delete.numhl' is now deprecated, please define highlight 'GitSignsDeleteNr'
-    -- 'signs.topdelete.hl' is now deprecated, please define highlight 'GitSignsTopdelete'
-    -- 'signs.topdelete.linehl' is now deprecated, please define highlight 'GitSignsTopdeleteLn'
-    -- 'signs.topdelete.numhl' is now deprecated, please define highlight 'GitSignsTopdeleteNr'
-    -- vim.fn.sign_define("GitSignsTopdelete", { text = "", texthl = "DiagnosticSignHint" })
+    vim.api.nvim_set_hl(0, "GitSignsAdd", {})
+    vim.api.nvim_set_hl(0, "GitSignsAddNr", { link = "GitSignAdd" })
+    vim.api.nvim_set_hl(0, "GitSignsAddLn", { link = "GitSignAdd" })
+    vim.api.nvim_set_hl(0, "GitSignsChange", {})
+    vim.api.nvim_set_hl(0, "GitSignsChangeNr", { link = "GitSignsChange" })
+    vim.api.nvim_set_hl(0, "GitSignsChangeLn", { link = "GitSignsChange" })
+    vim.api.nvim_set_hl(0, "GitSignsDelete", {})
+    vim.api.nvim_set_hl(0, "GitSignsDeleteNr", { link = "GitSignsDelete" })
+    vim.api.nvim_set_hl(0, "GitSignsDeleteLn", { link = "GitSignsDelete" })
+    vim.api.nvim_set_hl(0, "GitSignsTopdelete", { link = "GitSignsDelete" })
+    vim.api.nvim_set_hl(0, "GitSignsTopdeleteNr", { link = "GitSignsDelete" })
+    vim.api.nvim_set_hl(0, "GitSignsTopdeleteLn", { link = "GitSignsDelete" })
+    vim.api.nvim_set_hl(0, "GitSignsChangedelete", { link = "GitSignsChange" })
+    vim.api.nvim_set_hl(0, "GitSignsChangedeleteLn", { link = "GitSignsChange" })
+    vim.api.nvim_set_hl(0, "GitSignsChangedeleteNr", { link = "GitSignsChange" })
+
+    require("gitsigns").setup({
+      numhl = true,
+      current_line_blame = true,
+    })
   end,
-  opts = {
-    signs = {
-      add = {
-        hl = "GitSignsAdd",
-        text = "│",
-        numhl = "GitSignsAddNr",
-        linehl = "GitSignsAddLn",
-      },
-      change = {
-        hl = "GitSignsChange",
-        text = "│",
-        numhl = "GitSignsChangeNr",
-        linehl = "GitSignsChangeLn",
-      },
-      delete = {
-        hl = "GitSignsDelete",
-        text = "_",
-        numhl = "GitSignsDeleteNr",
-        linehl = "GitSignsDeleteLn",
-      },
-      topdelete = {
-        hl = "GitSignsDelete",
-        text = "‾",
-        numhl = "GitSignsDeleteNr",
-        linehl = "GitSignsDeleteLn",
-      },
-      changedelete = {
-        hl = "GitSignsChange",
-        text = "~",
-        numhl = "GitSignsChangeNr",
-        linehl = "GitSignsChangeLn",
-      },
-    },
-    numhl = true,
-    current_line_blame = true,
-  },
 }
