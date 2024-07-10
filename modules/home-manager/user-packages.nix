@@ -7,7 +7,7 @@
 
     # Chromium
     (unstablePkgs.vivaldi.override {
-      isSnapshot = true;
+      # isSnapshot = true;
       proprietaryCodecs = true;
       enableWidevine = true;
       commandLineArgs = [
