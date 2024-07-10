@@ -1,37 +1,33 @@
 { inputs, config, unstablePkgs, pkgs, ... }:
-let
-  vivaldi-snapshot = pkgs.callPackage ../../packages/vivaldi-snapshot/default.nix { };
-in
 {
 
   home.packages = with pkgs; [
     # Graphical Applications
     unstablePkgs.xpipe
 
-    vivaldi-snapshot
     # Chromium
-    # (unstablePkgs.vivaldi.override {
-    #   isSnapshot = true;
-    #   proprietaryCodecs = true;
-    #   enableWidevine = true;
-    #   commandLineArgs = [
-    #     "--enable-features=UseOzonePlatform"
-    #     "--ozone-platform=wayland"
-    #     #   "--ozone-platform=wayland"
-    #     #   "--enable-features=VaapiVideoDecoder"
-    #     #   "--use-gl=egl"
-    #     #
-    #     #   "--use-gl=angle"
-    #     #   "--use-angle=gl"
-    #     #   "--ignore-gpu-blacklist"
-    #     #   "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,RawDraw,CanvasOopRasterization"
-    #     #   "--enable-gpu-rasterization"
-    #     #   "--enable-zero-copy"
-    #     #   "--enable-hardware-overlays"
-    #     #   "--enable-native-gpu-memory-buffers"
-    #     #   "--enable-webrtc-pipewire-capturer"
-    #   ];
-    # })
+    (unstablePkgs.vivaldi.override {
+      isSnapshot = true;
+      proprietaryCodecs = true;
+      enableWidevine = true;
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+        #   "--ozone-platform=wayland"
+        #   "--enable-features=VaapiVideoDecoder"
+        #   "--use-gl=egl"
+        #
+        #   "--use-gl=angle"
+        #   "--use-angle=gl"
+        #   "--ignore-gpu-blacklist"
+        #   "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,RawDraw,CanvasOopRasterization"
+        #   "--enable-gpu-rasterization"
+        #   "--enable-zero-copy"
+        #   "--enable-hardware-overlays"
+        #   "--enable-native-gpu-memory-buffers"
+        #   "--enable-webrtc-pipewire-capturer"
+      ];
+    })
 
     # Experimental
     unstablePkgs.flameshot
