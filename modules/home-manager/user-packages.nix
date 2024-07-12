@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     # Graphical Applications
     unstablePkgs.xpipe
+    unstablePkgs.zed-editor
 
     # Chromium
     (unstablePkgs.vivaldi.override {
@@ -123,7 +124,6 @@
       terminal = false;
       icon = "vivaldi";
       type = "Application";
-      noDisplay = true;
       categories = [ "Network" "WebBrowser" ];
       mimeType = [
         "application/rdf+xml"

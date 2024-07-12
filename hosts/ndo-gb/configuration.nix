@@ -209,7 +209,7 @@ in
       defaultSession = "hyprland";
       sddm = {
         enable = true;
-        # package = unstablePkgs.libsForQt5.sddm;
+        package = unstablePkgs.kdePackages.sddm;
         theme = "corners";
         wayland.enable = true;
         settings = {
@@ -292,8 +292,8 @@ in
     # Intel Hardware Acceleration
     opengl = {
       enable = true;
-      package = pkgs.mesa.drivers;
-      package32 = pkgs.pkgsi686Linux.mesa.drivers;
+      package = unstablePkgs.mesa.drivers;
+      package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
       driSupport = true;
       driSupport32Bit = true;
       extraPackages = with unstablePkgs; [

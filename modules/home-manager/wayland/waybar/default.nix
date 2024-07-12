@@ -941,14 +941,26 @@ let
     margin-bottom = 0;
     modules-left = [
       "clock"
+      "battery"
+      "cpu"
+      "memory"
+      "disk"
+      "temperature"
       "hyprland/workspaces"
+      "hyprland/submap"
     ];
     modules-center = [
       "hyprland/window"
     ];
     modules-right = [
+      "privacy"
+      "idle_inhibitor"
+      "bluetooth"
+      "custom/weather"
       "network"
-      "user"
+      "wireplumber"
+      "custom/notification"
+      "tray"
     ];
     "hyprland/window" = {
       format = "{}";
@@ -1003,6 +1015,153 @@ let
         urgent = "";
         # active = "";
         # default = "";
+      };
+      "custom/notification" = {
+        tooltip = false;
+        format = "{icon} {}";
+        format-icons = {
+          notification = "<span foreground='red'><sup></sup></span>";
+          none = "";
+          dnd-notification = "<span foreground='red'><sup></sup></span>";
+          dnd-none = "";
+          inhibited-notification = "<span foreground='red'><sup></sup></span>";
+          inhibited-none = "";
+          dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+          dnd-inhibited-none = "";
+        };
+        return-type = "json";
+        exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
+        on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+        on-click-right = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
+        escape = true;
+      };
+      cpu = {
+        interval = 2;
+        format = "<span font='15' rise='-3pt'>󰻠 </span> {usage}%";
+      };
+      battery = {
+        interval = 10;
+        align = 0;
+        rotate = 0;
+        full-at = 95;
+        design-capacity = false;
+        states = {
+          good = 95;
+          warning = 20;
+          critical = 10;
+        };
+        format = "{icon} {capacity}%";
+        format-charging = "  {capacity}%";
+        format-plugged = "  {capacity}%";
+        format-full = "{icon} Full";
+        format-alt = "{icon} {time}";
+        format-icons = [
+          "<span font='12' rise='-2pt'>󰁺</span>"
+          "<span font='12' rise='-2pt'>󰁻</span>"
+          "<span font='12' rise='-2pt'>󰁼</span>"
+          "<span font='12' rise='-2pt'>󰁽</span>"
+          "<span font='12' rise='-2pt'>󰁾</span>"
+          "<span font='12' rise='-2pt'>󰁿</span>"
+          "<span font='12' rise='-2pt'>󰂀</span>"
+          "<span font='12' rise='-2pt'>󰂁</span>"
+          "<span font='12' rise='-2pt'>󰂂</span>"
+          "<span font='12' rise='-2pt'>󰂄</span>"
+        ];
+        format-time = "{H}h {M}min";
+        tooltip = true;
+      };
+      disk = {
+        interval = 120;
+        format = "<span font='14' rise='-1pt'>󰋊 </span> {free}";
+      };
+      memory = {
+        interval = 10;
+        format = "<span font='13' rise='-2pt'> </span> {percentage}%";
+      };
+      "hyprland/submap" = {
+        format = "{}";
+        max-length = 8;
+        tooltip = false;
+      };
+      network = {
+        interval = 5;
+        format-wifi = " {bandwidthUpBits} |  {bandwidthDownBits}";
+        format-ethernet = " {bandwidthUpBits} |  {bandwidthDownBits}";
+        format-alt = "<span font='12' rise='-2pt'>󰲐 </span> {ipaddr}/{cidr}";
+        format-linked = "󰖪 {ifname} (No IP)";
+        format-disconnected = "󱛅 Disconnected";
+        format-disabled = "󰖪 Disabled";
+        tooltip-format = "󰀂 {ifname} via {gwaddr}";
+        on-click-right = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+      };
+      "custom/weather" = {
+        tooltip = true;
+        format = "{}";
+        interval = 30;
+        exec = "~/.config/waybar/scripts/waybar-wttr.py";
+        return-type = "json";
+      };
+      bluetooth = {
+        format = "";
+        format-disabled = "";
+        format-connected = " {num_connections}";
+        tooltip-format = "{device_alias}";
+        tooltip-format-connected = " {device_enumerate}";
+        tooltip-format-enumerate-connected = "{device_alias}";
+        on-click-right = "${pkgs.blueberry}/bin/blueberry";
+      };
+      tray = {
+        icon-size = 16;
+        show-passive-items = true;
+        spacing = 10;
+      };
+      wireplumber = {
+        format = "<span font='12' rise='-2pt'> </span> {volume}";
+        format-muted = "<span font='12' rise='-2pt'></span>";
+        on-click = "${pkgs.pamixer}/bin/pamixer -t";
+        on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
+      };
+      privacy = {
+        icon-spacing = 4;
+        icon-size = 18;
+        transition-duration = 250;
+        modules = [
+          {
+            type = "screenshare";
+            tooltip = true;
+            tooltip-icon-size = 24;
+          }
+          {
+            type = "audio-out";
+            tooltip = true;
+            tooltip-icon-size = 24;
+          }
+          {
+            type = "audio-in";
+            tooltip = true;
+            tooltip-icon-size = 2;
+          }
+        ];
+      };
+      temperature = {
+        "hwmon-path" = "/sys/class/hwmon/hwmon2/temp1_input";
+        "critical-threshold" = 80;
+        format = " {temperatureC}°C";
+      };
+      "hyprland/window" = {
+        format = "{}";
+        max-length = 80;
+        separate-outputs = true;
+      };
+      "idle_inhibitor" = {
+        format = "{icon}";
+        format-icons = {
+          activated = "󰛊";
+          deactivated = "󰾫";
+        };
+        tooltip = true;
+        tooltip-format-activated = "Idle Inhibitor {status}";
+        tooltip-format-deactivated = "Idle Inhibitor {status}";
       };
       persistent-workspaces = {
         "DP-1" = [ 3 4 ];
