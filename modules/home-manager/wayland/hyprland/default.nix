@@ -12,6 +12,7 @@
       pkgs.xdg-desktop-portal-gtk
     ];
   };
+
   xdg.configFile."hypr/movefocus.sh".source = ./hy3-movefocus.sh;
   xdg.configFile."swappy/config".text = ''
     [Default]
@@ -63,7 +64,6 @@
 
         follow_mouse = 2;
         accel_profile = "adaptive";
-        # sensitivity = 0;
       };
       exec = [
         "${unstablePkgs.swayosd}/bin/swayosd-server"
@@ -74,10 +74,6 @@
         # "${pkgs.blueberry}/bin/blueberry-tray"
         "${pkgs.blueman}/bin/blueman-applet"
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
-        # "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-
-        # "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2"
-        # "hyprctl setcursor \"BreezeX-RosePine-Linux\" 24"
       ];
       general = {
         gaps_in = 10;
@@ -94,31 +90,34 @@
       };
       decoration = {
         rounding = 4;
-        active_opacity = "0.96";
-        inactive_opacity = "0.90";
+        active_opacity = "0.94";
+        inactive_opacity = "0.85";
         fullscreen_opacity = "1.0";
 
         dim_inactive = true;
-        dim_strength = "0.05";
+        dim_strength = "0.075";
 
         drop_shadow = false;
 
         blur = {
           enabled = true;
           xray = true;
-          size = 5;
+          size = 8;
           passes = 2;
           ignore_opacity = true;
+          popups = true;
           new_optimizations = true;
         };
       };
       group = {
-        "col.border_active" = "rgb(11111b) rgb(181825) 45deg";
+        "col.border_active" = "rgb(181825)";
         "col.border_inactive" = "rgba(f5e0dc20)";
 
         groupbar = {
-          render_titles = false;
-          height = 2;
+          render_titles = true;
+          font_family = "Fira Sans Light";
+          font_size = 8;
+          height = 22;
           "col.active" = "rgb(181825)";
           "col.inactive" = "rgba(f5e0dc20)";
         };
@@ -361,10 +360,6 @@
         ",XF86AudioNext, exec, playerctl next"
         ",XF86AudioPrev, exec, playerctl previous"
         ",XF86AudioStop, exec, playerctl stop"
-
-        # ",code:115, exec, swayosd-client --output-volume raise"
-        # ",code:114, exec, swayosd-client --output-volume lower"
-        # ",code:113, exec, swayosd-client --output-volume mute-toggle"
 
         # SwayOSD + AudioControl
         ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
