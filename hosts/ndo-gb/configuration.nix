@@ -231,6 +231,7 @@ in
         options = "caps:escape";
       };
     };
+    envfs.enable = true;
     libinput.touchpad = {
       tappingButtonMap = "lrm";
     };
@@ -362,6 +363,7 @@ in
 
     nix-ld = {
       enable = true;
+      package = pkgs.nix-ld-rs;
       libraries = with pkgs; [
         stdenv.cc.cc.lib
       ];
