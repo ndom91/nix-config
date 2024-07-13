@@ -31,6 +31,7 @@
   ];
 
   systemd.user.sessionVariables = config.home.sessionVariables;
+  systemd.user.startServices = "sd-switch";
 
   # Themes - https://github.com/tinted-theming/base16-schemes
   colorScheme = nix-colors.colorSchemes.rose-pine;
