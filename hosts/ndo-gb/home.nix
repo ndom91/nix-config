@@ -13,6 +13,7 @@
     ../../modules/home-manager/neofetch.nix
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/xdg.nix
+    ../../modules/home-manager/dconf.nix
     ../../modules/home-manager/gtk/default.nix
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/neovim.nix
@@ -33,31 +34,6 @@
 
   # Themes - https://github.com/tinted-theming/base16-schemes
   colorScheme = nix-colors.colorSchemes.rose-pine;
-
-  dconf.settings = {
-    "org/gnome/TextEditor" = {
-      style-variant = "dark";
-    };
-
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-
-    "org/freedesktop/appearance" = {
-      color-scheme = 1;
-    };
-
-    "org/nemo/preferences" = {
-      date-format = "iso";
-      default-folder-viewer = "list-view";
-      default-sort-in-reverse-order = true;
-      default-sort-order = "mtime";
-      inherit-folder-viewer = true;
-      show-full-path-titles = true;
-      show-hidden-files = true;
-      show-new-folder-icon-toolbar = true;
-    };
-  };
 
   # ndo-gb overrides
   wayland.windowManager.hyprland = {
