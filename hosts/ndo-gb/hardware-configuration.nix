@@ -9,7 +9,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "xe.force_probe=7d45" ];
   boot.kernelModules = [ "kvm-intel" ];
-  # boot.kernelModules = [ "kvm-intel" "mhi_pci_generic" "wwan" "wwan_hwsim" "usbserial" "option" "mhi_net" "iosm" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {

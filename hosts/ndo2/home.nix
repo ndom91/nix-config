@@ -26,7 +26,6 @@
   home.stateVersion = "24.05";
   home.packages = [
     inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
-    # networkmanagerapplet
     fira-sans-nerd-font
   ];
 
@@ -87,19 +86,11 @@
           clickfinger_behavior = true;
         };
       };
-
       # "device:MSFT0001:00 04F3:31EB Touchpad" = {
       #   accel_profile = "adaptive";
       #   natural_scroll = true;
       #   sensitivity = 0.1;
       # };
-
-      # workspace = [
-      #   "1,monitor:eDP-1,default:true"
-      #   "2,monitor:eDP-1"
-      #   "3,monitor:DP-1"
-      #   "4,monitor:DP-1"
-      # ];
 
       gestures = {
         workspace_swipe = true;
@@ -121,7 +112,6 @@
 
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
-    # ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
   };
 
   services = {

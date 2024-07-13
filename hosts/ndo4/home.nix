@@ -88,7 +88,6 @@
 
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
-    # ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
   };
 
   services = {
@@ -97,7 +96,7 @@
   };
 
   programs.atuin = {
-    enable = false;
+    enable = true;
     settings = {
       auto_sync = false;
       style = "compact";

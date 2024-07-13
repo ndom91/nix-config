@@ -26,7 +26,6 @@
   home.stateVersion = "24.05";
   home.packages = [
     inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
-    # networkmanagerapplet
     fira-sans-nerd-font
   ];
 
@@ -60,20 +59,18 @@
     };
   };
 
-  # ndo2 overrides
+  # ndo-gb overrides
   wayland.windowManager.hyprland = {
     settings = {
-      # monitor = lib.mkForce "eDP-1,preferred,auto, 1.600000";
       monitor = lib.mkForce [
         "eDP-1,preferred,auto,1"
         "DP-2,preferred,auto,1"
       ];
-      # env = lib.mkForce [
-      #   "GDK_SCALE,1.6"
-      # ];
-      # debug = {
-      #   disable_scale_checks = true;
-      # };
+      workspace = [
+        "1,monitor:eDP-1,default:true"
+        "2,monitor:eDP-1"
+        "3,monitor:DP-2,default:true"
+      ];
       exec-once = [
         "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1.5"
       ];
@@ -90,20 +87,6 @@
           clickfinger_behavior = true;
         };
       };
-
-      # "device:MSFT0001:00 04F3:31EB Touchpad" = {
-      #   accel_profile = "adaptive";
-      #   natural_scroll = true;
-      #   sensitivity = 0.1;
-      # };
-
-      # workspace = [
-      #   "1,monitor:eDP-1,default:true"
-      #   "2,monitor:eDP-1"
-      #   "3,monitor:DP-1"
-      #   "4,monitor:DP-1"
-      # ];
-
       gestures = {
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
@@ -124,7 +107,6 @@
 
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
-    # ".config/code-flags.conf".source = ../../dotfiles/code-flags.conf;
   };
 
   services = {
@@ -133,7 +115,7 @@
   };
 
   programs.atuin = {
-    enable = false;
+    enable = true;
     settings = {
       auto_sync = false;
       style = "compact";
