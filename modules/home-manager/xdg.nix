@@ -1,5 +1,14 @@
 { config, pkgs, lib, ... }:
 let
+  file-browser = "nemo";
+  text-editor = "gnome-text-editor";
+  web-browser = "vivaldi";
+  discord = "vesktop";
+  slack = "slack";
+  document-viewer = "org.pwmt.zathura";
+  media-player = "vlc";
+  image-viewer = "org.gnome.Loupe";
+
   flipAssocs = assocs:
     lib.pipe assocs [
       (lib.mapAttrsToList mapMimeListToXDGAttrs)
@@ -28,11 +37,9 @@ in
     mimeApps =
       let
         associations = flipAssocs {
-          ### FILE BROWSER ###
-          "nemo" = [ "inode/directory" "x-directory/normal" ];
+          "${file-browser}" = [ "inode/directory" "x-directory/normal" ];
 
-          ### TEXT ###
-          "gnome-text-editor" = [
+          "${text-editor}" = [
             "empty"
             "text/markdown"
             "text/x-log"
@@ -41,8 +48,7 @@ in
             "application/md"
           ];
 
-          ### WEB BROWSER ###
-          "vivaldi" = [
+          "${web-browser}" = [
             "text/html"
             "text/xml"
             "x-scheme-handler/ftp"
@@ -66,14 +72,11 @@ in
             "application/x-extension-xht"
           ];
 
-          ### DISCORD ###
-          "vesktop" = [ "x-scheme-handler/discord" ];
+          "${discord}" = [ "x-scheme-handler/discord" ];
 
-          ### SLACK ###
-          "slack" = [ "x-scheme-handler/slack" ];
+          "${slack}" = [ "x-scheme-handler/slack" ];
 
-          ### DOCUMENT VIEWER ###
-          "org.pwmt.zathura" = [
+          "${document-viewer}" = [
             "application/pdf"
             "application/epub"
             "application/djvu"
@@ -89,8 +92,7 @@ in
             "application/xps"
           ];
 
-          ### MEDIA PLAYER ###
-          "vlc" = [
+          "${media-player}" = [
             "application/ogg"
             "application/x-ogg"
             "application/mxf"
@@ -213,13 +215,13 @@ in
             "audio/m3u"
           ];
 
-          ### IMAGE VIEWER ###
-          "loupe" = [
+          "${image-viewer}" = [
             "image/bmp"
             "image/gif"
             "image/jpeg"
             "image/jpg"
             "image/png"
+            "image/webp"
             "image/tiff"
             "image/x-bmp"
             "image/x-pcx"

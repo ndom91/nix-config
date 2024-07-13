@@ -5,6 +5,7 @@
     # Graphical Applications
     unstablePkgs.xpipe
     unstablePkgs.zed-editor
+    github-desktop
 
     # Chromium
     (unstablePkgs.vivaldi.override {

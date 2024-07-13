@@ -186,6 +186,9 @@
         "workspace special silent, title:^(Firefox — Sharing Indicator)$"
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
+        # Loupe Float
+        "float, class:org.gnome.Loupe"
+
         # GitButler Float
         "float, class:^((g|G)it-(b|B)utler.*)$"
 

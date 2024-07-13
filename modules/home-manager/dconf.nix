@@ -2,6 +2,12 @@
   dconf.settings = {
     "org/gnome/TextEditor" = {
       style-variant = "dark";
+      style-scheme = "classic-dark";
+      show-line-numbers = true;
+      show-map = true;
+      highlight-current-line = true;
+      use-system-font = true;
+      indent-style = "space";
     };
 
     "org/gnome/desktop/interface" = {
@@ -26,6 +32,10 @@
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
       uris = [ "qemu:///system" ];
+    };
+
+    "system/locale" = {
+      region = "en_US.UTF-8";
     };
   };
 }
