@@ -1,7 +1,14 @@
-{ config, unstablePkgs, ... }: {
+{ config, pkgs, unstablePkgs, ... }: {
+  environment.systemPackages = with unstablePkgs; [ trayscale ];
+
   services.tailscale = {
     enable = true;
     package = unstablePkgs.tailscale;
+    extraUpFlags = [
+      "--accept-routes"
+      "--operator=ndo"
+      "--ssh"
+    ];
   };
 
   networking = {
