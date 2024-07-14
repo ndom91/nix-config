@@ -16,6 +16,7 @@ in
     ../../modules/nixos/services/ssh.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
+    ../../modules/home-manager/languages/node.nix
     inputs.home-manager.nixosModules.default
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];

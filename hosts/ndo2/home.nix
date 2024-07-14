@@ -2,7 +2,7 @@
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     nix-colors.homeManagerModules.default
-    ../../modules/home-manager/default.nix
+    ../../modules/home-manager
   ];
 
   home = {

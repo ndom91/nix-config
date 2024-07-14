@@ -1,9 +1,7 @@
 { pkgs, inputs, unstablePkgs, ... }:
 {
-  # home.packages = with pkgs; [
   environment.systemPackages = with pkgs; [
     nodejs_22
-    # unstablePkgs.nodePackages.pnpm
     unstablePkgs.corepack_22
     unstablePkgs.bun
     openssl
@@ -24,7 +22,7 @@
     # Playwright
     PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
     PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1;
-    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = true;
+    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
   };
 
   # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
