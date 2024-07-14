@@ -69,7 +69,8 @@
 
     nh = {
       enable = true;
-      flake = "/etc/nixos#${config.networking.hostName}";
+      flake = "/etc/nixos";
+      # flake = "/etc/nixos#${config.networking.hostName}";
     };
   };
 

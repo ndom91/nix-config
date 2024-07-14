@@ -31,7 +31,7 @@
           "Noto Sans"
         ];
         monospace = [
-          "Operator Mono Light"
+          "Operator Mono Book"
         ];
         emoji = [
           "Noto Color Emoji"
