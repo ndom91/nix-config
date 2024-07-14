@@ -9,10 +9,11 @@ in
 {
   imports = with agenix pkgs; [
     ./hardware-configuration.nix
-    ../../modules/nixos/system-packages.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/nixos.nix
+    ../../modules/nixos/system-packages.nix
     ../../modules/nixos/services/polkit-agent.nix
+    ../../modules/nixos/services/tailscale.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
@@ -330,7 +331,6 @@ in
     gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
-    tailscale.enable = true;
     clamav = {
       daemon.enable = true;
       updater.enable = true;
