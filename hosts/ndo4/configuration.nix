@@ -15,6 +15,7 @@ in
     ../../modules/nixos/services/nginx.nix
     ../../modules/nixos/services/tailscale.nix
     ../../modules/nixos/services/ssh.nix
+    ../../modules/nixos/services/v4l2loopback.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
     ../../modules/home-manager/languages/node.nix
