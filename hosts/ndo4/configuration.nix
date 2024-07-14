@@ -1,4 +1,4 @@
-{ lib, agenix, nix-colors, inputs, unstablePkgs, overlays, config, pkgs, ... }:
+{ lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, overlays, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
@@ -13,8 +13,8 @@ in
     ../../modules/nixos/nginx.nix
     ../../modules/nixos/services/polkit-agent.nix
     ../../modules/nixos/wireguard.nix
+    ../../modules/nixos/nixos.nix
     ../../modules/home-manager/qt.nix
-    ../../modules/home-manager/nixos.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
     inputs.nix-flatpak.nixosModules.nix-flatpak
@@ -205,7 +205,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font; };
+    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font stateVersion; };
     useGlobalPkgs = true;
     users = {
       "ndo" = import ./home.nix;
@@ -358,5 +358,5 @@ in
     };
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = stateVersion;
 }

@@ -1,4 +1,4 @@
-{ lib, agenix, nix-colors, inputs, unstablePkgs, config, pkgs, ... }:
+{ lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, config, pkgs, ... }:
 let
   tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
@@ -11,6 +11,7 @@ in
     ./hardware-configuration.nix
     ../../modules/nixos/system-packages.nix
     ../../modules/nixos/fonts.nix
+    ../../modules/nixos/nixos.nix
     ../../modules/nixos/services/polkit-agent.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
@@ -18,43 +19,9 @@ in
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
-  age.identityPaths = [
-    "${config.users.users.ndo.home}/.ssh/id_ndo4"
-  ];
   # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
-  age.secrets.pvpn.file = ../../secrets/pvpn.age;
   age.secrets.wutang.file = ../../secrets/wutang.age;
   age.secrets.derpyKey.file = ../../secrets/derpyKey.age;
-  age.secrets.ssh = {
-    file = ./../../secrets/ssh.age;
-    path = "${config.users.users.ndo.home}/.ssh/config";
-    owner = "ndo";
-    group = "users";
-    mode = "644";
-  };
-
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-      substituters = [
-        "https://cache.nixos.org?priority=10"
-        "https://hyprland.cachix.org"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-      experimental-features = [ "nix-command" "flakes" ];
-      warn-dirty = false;
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 5d";
-    };
-  };
 
   boot = {
     plymouth = {
@@ -186,24 +153,6 @@ in
     # wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
   };
 
-  time.timeZone = "Europe/Berlin";
-
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ALL = "en_US.UTF-8";
-      LC_ADDRESS = "de_DE.UTF-8";
-      LC_IDENTIFICATION = "de_DE.UTF-8";
-      LC_MEASUREMENT = "de_DE.UTF-8";
-      LC_MONETARY = "de_DE.UTF-8";
-      LC_NAME = "de_DE.UTF-8";
-      LC_NUMERIC = "de_DE.UTF-8";
-      LC_PAPER = "de_DE.UTF-8";
-      LC_TELEPHONE = "de_DE.UTF-8";
-      LC_TIME = "de_DE.UTF-8";
-    };
-  };
-
   services = {
     displayManager = {
       defaultSession = "hyprland";
@@ -274,15 +223,6 @@ in
     LIBVA_DRIVER_NAME = "iHD";
   };
 
-  environment.etc = {
-    "1password/custom_allowed_browsers" = {
-      text = ''
-        vivaldi-bin
-      '';
-      mode = "0755";
-    };
-  };
-
   hardware = {
     enableAllFirmware = true;
     acpilight.enable = true;
@@ -322,18 +262,10 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font; };
+    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font stateVersion; };
     useGlobalPkgs = true;
     users = {
       "ndo" = import ./home.nix;
-    };
-  };
-
-  nixpkgs.config = {
-    permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
-    allowUnfree = true;
-    packageOverrides = pkgs: {
-      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     };
   };
 
@@ -378,6 +310,18 @@ in
 
   # System Services
   services = {
+    protonvpn = {
+      enable = true;
+      autostart = false;
+      interface = {
+        ip = "10.2.0.2/32";
+        privateKeyFile = config.age.secrets.pvpn.path;
+      };
+      endpoint = {
+        ip = "77.247.178.58";
+        publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
+      };
+    };
     openssh = {
       enable = true;
       settings = {
@@ -476,23 +420,7 @@ in
 
   powerManagement.enable = true;
 
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-      onBoot = "ignore";
-      onShutdown = "shutdown";
-    };
-    # spiceUSBRedirection.enable = true;
-    docker = {
-      enable = true;
-      autoPrune = {
-        enable = true;
-        dates = "weekly";
-      };
-    };
-  };
-
-  system.stateVersion = "24.05";
+  system.stateVersion = stateVersion;
 }
 
 

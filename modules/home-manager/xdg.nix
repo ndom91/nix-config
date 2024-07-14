@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, unstablePkgs, pkgs, lib, ... }:
 let
   file-browser = "nemo";
   text-editor = "gnome-text-editor";
@@ -241,5 +241,57 @@ in
         associations.added = associations;
         defaultApplications = associations;
       };
+
+    # All Chromium command line switches: https://peter.sh/experiments/chromium-command-line-switches/
+    desktopEntries = {
+      vivaldi = {
+        name = "Vivaldi";
+        exec = "${unstablePkgs.vivaldi}/bin/vivaldi %U";
+        # "--use-gl=angle " +
+        # "--use-angle=gl " +
+        # "--ignore-gpu-blacklist " +
+        # "--enable-gpu-rasterization " +
+        # "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,RawDraw,CanvasOopRasterization,UseOzonePlatform " +
+        # "--enable-gpu-rasterization " +
+        # "--enable-zero-copy " +
+        # "--enable-hardware-overlays " +
+        # "--enable-native-gpu-memory-buffers " +
+        # "--enable-webrtc-pipewire-capturer "
+        genericName = "Web Browser";
+        startupNotify = true;
+        terminal = false;
+        icon = "vivaldi";
+        type = "Application";
+        categories = [ "Network" "WebBrowser" ];
+        mimeType = [
+          "application/rdf+xml"
+          "application/rss+xml"
+          "application/xhtml+xml"
+          "application/xhtml_xml"
+          "application/xml"
+          "text/html"
+          "text/xml"
+          "x-scheme-handler/ftp"
+          "x-scheme-handler/http"
+          "x-scheme-handler/https"
+          "x-scheme-handler/mailto"
+        ];
+      };
+      beeper = {
+        name = "Beeper";
+        exec = "/opt/appimages/beeper.AppImage";
+        icon = "/home/ndo/Pictures/beeperLogo.png";
+        type = "Application";
+        categories = [ "Network" "WebBrowser" ];
+      };
+      gitbutler-nightly = {
+        name = "GitButler (nightly)";
+        exec = "env APPIMAGE_GTK_THEME=Adwaita:dark /opt/appimages/git-butler-nightly_latest.AppImage %U";
+        icon = "/opt/gitbutler/gitbutler-docs/public/fav/fav-32.png";
+        terminal = false;
+        type = "Application";
+        categories = [ "Development" "Application" ];
+      };
+    };
   };
 }

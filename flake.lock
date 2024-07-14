@@ -557,6 +557,26 @@
         "type": "github"
       }
     },
+    "nixos-needtoreboot": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1715010630,
+        "narHash": "sha256-zOMZDSAd3w1Dd5Jcs3nYae7aNomb3qfMJmCQl2ucZok=",
+        "owner": "thefossguy",
+        "repo": "nixos-needsreboot",
+        "rev": "8a3f64cc3c246cc6311485ad96ee9db0989c1377",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thefossguy",
+        "repo": "nixos-needsreboot",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1719075281,
@@ -676,6 +696,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-colors": "nix-colors",
         "nix-flatpak": "nix-flatpak",
+        "nixos-needtoreboot": "nixos-needtoreboot",
         "nixpkgs": "nixpkgs_3",
         "playwright": "playwright",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",

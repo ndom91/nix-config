@@ -1,4 +1,4 @@
-{ fira-sans-nerd-font, rose-pine-cursor, nix-colors, lib, inputs, config, pkgs, unstablePkgs, ... }:
+{ fira-sans-nerd-font, rose-pine-cursor, nix-colors, lib, inputs, stateVersion, config, pkgs, unstablePkgs, ... }:
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     nix-colors.homeManagerModules.default
@@ -24,13 +24,13 @@
   ];
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
-  home.stateVersion = "24.05";
+  home.stateVersion = stateVersion;
   home.packages = [
     inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
     fira-sans-nerd-font
   ];
 
-  systemd.user.sessionVariables = config.home.sessionVariables;
+  # systemd.user.sessionVariables = config.home.sessionVariables;
   systemd.user.startServices = "sd-switch";
 
   # Themes - https://github.com/tinted-theming/base16-schemes
