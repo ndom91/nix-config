@@ -281,31 +281,16 @@ in
     tokyo-night-sddm
     corners-sddm
     rose-pine-cursor
+    inputs.nixos-needtoreboot.packages.${pkgs.system}.default
   ];
 
   programs = {
-    hyprland.enable = true;
-    hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-
-    _1password = { enable = true; };
-    _1password-gui = {
+    hyprland = {
       enable = true;
-      polkitPolicyOwners = [ "ndo" ];
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
 
-    nix-ld = {
-      enable = true;
-      package = pkgs.nix-ld-rs;
-      libraries = with pkgs; [
-        stdenv.cc.cc.lib
-      ];
-    };
-    fuse.userAllowOther = true;
     light.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
   };
 
   # System Services

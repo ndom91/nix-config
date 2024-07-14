@@ -22,6 +22,7 @@
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/wayland/default.nix
   ];
+
   home.username = "ndo";
   home.homeDirectory = "/home/ndo";
   home.stateVersion = stateVersion;

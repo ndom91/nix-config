@@ -37,6 +37,31 @@
   #   allowReboot = false;
   # };
 
+  programs = {
+    command-not-found.enable = false;
+    nix-index-database.comma.enable = true;
+
+    _1password = { enable = true; };
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "ndo" ];
+    };
+
+    nix-ld = {
+      enable = true;
+      package = pkgs.nix-ld-rs;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib
+      ];
+    };
+    fuse.userAllowOther = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+  };
+
+
   time.timeZone = "Europe/Berlin";
 
   i18n = {
@@ -96,5 +121,13 @@
         dates = "weekly";
       };
     };
+    # podman = {
+    #   defaultNetwork.settings = {
+    #     dns_enabled = true;
+    #   };
+    #   dockerCompat = true;
+    #   dockerSocket.enable = true;
+    #   enable = true;
+    # };
   };
 }

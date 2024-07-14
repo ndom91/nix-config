@@ -24,6 +24,7 @@ This repository started off with my preexisting [dotfiles](https://github.com/nd
 - `modules/home-manager` - User applications, configuration, and packages
 - `modules/nixos` - System-wide modules and configuration
 - `packages` - Custom packages
+- `dotfiles/*` - Various other not yet migrated to Nix configs, like `nvim`
 
 ## ☑️ Post Install
 
