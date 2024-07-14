@@ -14,3 +14,4 @@ First, you need to build the VM image. Ensure the `.result/bin` directory exists
 ## 📝 Notes
 
 - https://nix.dev/tutorials/nixos/nixos-configuration-on-vm.html
+- https://github.com/nh2/nixos-vm-examples
