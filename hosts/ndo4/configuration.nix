@@ -99,6 +99,7 @@ in
   };
 
   systemd.services.systemd-udevd.restartIfChanged = false;
+  # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
   systemd.services.NetworkManager-wait-online.enable = false;
 
   systemd.network = {
@@ -172,16 +173,17 @@ in
       # };
     };
 
-    # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
+    amdgpu = { opencl.enable = true; }; # ROCM Support
+
     opengl = {
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
+      # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
       extraPackages = with unstablePkgs; [
-        # amdvlk # Using default radv instead
-        libglvnd
+        # libglvnd
         vaapiVdpau
         libvdpau-va-gl
       ];
@@ -189,6 +191,13 @@ in
         # unstablePkgs.driversi686Linux.amdvlk
       ];
     };
+    # TODO: Change to this for >= 24.11
+    #hardware
+    #  graphics = {
+    #    enable = true;
+    #    enable32Bit = true;
+    #  };
+    #};
 
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
@@ -197,7 +206,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
+    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" "video" ];
   };
 
   home-manager = {
@@ -209,10 +218,11 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    tokyo-night-sddm
-    corners-sddm
-    rose-pine-cursor
-    logitech-udev-rules
+    tokyo-night-sddm # SDDM Theme
+    corners-sddm # SDDM Theme
+    rose-pine-cursor # Hyprcursor rose-pine theme
+    logitech-udev-rules # Solaar
+    lact # AMDGPU Controller
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
   ];
 

@@ -209,6 +209,7 @@ in
 
   # systemd services
   systemd.services.systemd-udevd.restartIfChanged = false;
+  # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
   systemd.services.NetworkManager-wait-online.enable = false;
 
   # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
@@ -261,20 +262,22 @@ in
       driSupport32Bit = true;
       extraPackages = with unstablePkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        # For 8th gen:
-        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-
-        intel-ocl # up to 7thgen
         intel-compute-runtime # 8th gen +
+        intel-ocl # up to 7thgen
 
-        # amdvlk
-        # vulkan-validation-layers
-        # intel-gmmlib # ?
-
+        # For 8th gen:
+        # vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
         vaapiVdpau
         libvdpau-va-gl
       ];
     };
+    # TODO: Change to this for >= 24.11
+    #hardware
+    #  graphics = {
+    #    enable = true;
+    #    enable32Bit = lib.mkForce isInstall;
+    #  };
+    #};
 
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
@@ -283,7 +286,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
+    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" "video" ];
   };
 
   home-manager = {
@@ -294,11 +297,11 @@ in
     };
   };
 
-  nixpkgs.config = {
-    packageOverrides = pkgs: {
-      vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-    };
-  };
+  # nixpkgs.config = {
+  #   packageOverrides = pkgs: {
+  #     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  #   };
+  # };
 
   environment.systemPackages = with pkgs; [
     cpupower-gui

@@ -242,11 +242,19 @@ in
       driSupport32Bit = true;
       extraPackages = with unstablePkgs; [
         intel-media-driver
+        intel-compute-runtime
+
         vaapiVdpau
         libvdpau-va-gl
-        # intel-compute-runtime # 8th gen +
       ];
     };
+    # TODO: Change to this for >= 24.11
+    #hardware
+    #  graphics = {
+    #    enable = true;
+    #    enable32Bit = lib.mkForce isInstall;
+    #  };
+    #};
 
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
@@ -255,7 +263,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
+    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" "video" ];
   };
 
   home-manager = {
