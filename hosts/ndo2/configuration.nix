@@ -13,6 +13,7 @@ in
     ../../modules/nixos/system-packages.nix
     ../../modules/nixos/services/polkit-agent.nix
     ../../modules/nixos/services/tailscale.nix
+    ../../modules/nixos/services/ssh.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
@@ -283,12 +284,6 @@ in
     isNormalUser = true;
     description = "ndo";
     extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" ];
-    openssh.authorizedKeys.keys = [
-      (builtins.readFile (builtins.fetchurl {
-        url = "https://github.com/ndom91.keys";
-        sha256 = "PfSNkhnNXUR9BTD2+0An2ugQAv2eYipQOFxQ3j8XD5Y=";
-      }))
-    ];
   };
 
   home-manager = {
@@ -325,14 +320,6 @@ in
 
   # System Services
   services = {
-    openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = true;
-        PermitRootLogin = "no";
-      };
-    };
-
     resolved = {
       enable = true;
       domains = [
