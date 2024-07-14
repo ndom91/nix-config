@@ -18,6 +18,7 @@ in
     ../../modules/nixos/services/ssh.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
+    ../../modules/home-manager/languages/node.nix
     inputs.home-manager.nixosModules.default
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
@@ -39,11 +40,6 @@ in
       # used by tailscale for exit node
       "net.ipv4.ip_forward" = 1;
       "net.ipv6.conf.all.forwarding" = 1;
-
-      # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
-      "fs.inotify.max_queued_events" = 16384;
-      "fs.inotify.max_user_instances" = 8192;
-      "fs.inotify.max_user_watches" = 524288;
     };
   };
 
@@ -123,15 +119,6 @@ in
 
   # Hyprland swaynotificationcenter service
   systemd.user.units.swaync.enable = true;
-
-  # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
-  # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
-  systemd.user.extraConfig = ''
-    DefaultLimitNOFILE=524288
-  '';
-  systemd.extraConfig = ''
-    DefaultLimitNOFILE=524288
-  '';
 
   # SuspendEstimationSec defeaults to 1h;
   # HibernateDelaySec defaults to 2h

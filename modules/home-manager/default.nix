@@ -4,7 +4,6 @@
     # User Packages
     ../../modules/home-manager/user-packages.nix
     # Programming Lanaguages
-    ../../modules/home-manager/languages/node.nix
     ../../modules/home-manager/languages/rust.nix
     # Common
     ../../modules/home-manager/git.nix
@@ -13,7 +12,7 @@
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/xdg.nix
     ../../modules/home-manager/dconf.nix
-    ../../modules/home-manager/gtk/default.nix
+    ../../modules/home-manager/gtk.nix
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/neovim.nix
     ../../modules/home-manager/zathura.nix

@@ -41,13 +41,6 @@ in
     extraModprobeConfig = ''
       options snd_hda_intel model=headset-mode
     '';
-
-    kernel.sysctl = {
-      # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
-      "fs.inotify.max_queued_events" = 16384;
-      "fs.inotify.max_user_instances" = 8192;
-      "fs.inotify.max_user_watches" = 524288;
-    };
   };
 
   networking = {
@@ -190,15 +183,6 @@ in
 
   # Hyprland swaynotificationcenter service
   systemd.user.units.swaync.enable = true;
-
-  # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
-  # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
-  systemd.user.extraConfig = ''
-    DefaultLimitNOFILE=524288
-  '';
-  systemd.extraConfig = ''
-    DefaultLimitNOFILE=524288
-  '';
 
   # SuspendEstimationSec defeaults to 1h;
   # HibernateDelaySec defaults to 2h

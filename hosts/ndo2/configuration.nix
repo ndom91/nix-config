@@ -43,14 +43,8 @@ in
 
     # Disable Nvidia GPU
     blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
-
-    kernel.sysctl = {
-      # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
-      "fs.inotify.max_queued_events" = 16384;
-      "fs.inotify.max_user_instances" = 8192;
-      "fs.inotify.max_user_watches" = 524288;
-    };
   };
+
   services.udev.extraRules = ''
     # Remove NVIDIA USB xHCI Host Controller devices, if present
     ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
@@ -211,15 +205,6 @@ in
   systemd.services.systemd-udevd.restartIfChanged = false;
   # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
   systemd.services.NetworkManager-wait-online.enable = false;
-
-  # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
-  # See also: https://github.com/NixOS/nixpkgs/issues/159964#issuecomment-1252682060
-  systemd.user.extraConfig = ''
-    DefaultLimitNOFILE=524288
-  '';
-  systemd.extraConfig = ''
-    DefaultLimitNOFILE=524288
-  '';
 
   # SuspendEstimationSec defeaults to 1h;
   # HibernateDelaySec defaults to 2h
