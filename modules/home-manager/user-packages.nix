@@ -67,7 +67,6 @@
 
     # Nix Tools
     nvd # Nix Visual Diff
-    unstablePkgs.nh # Nix History
     comma # Run commands in a nix-shell with comma prefix
 
     # Hardware Tools

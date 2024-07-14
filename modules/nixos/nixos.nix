@@ -54,10 +54,22 @@
         stdenv.cc.cc.lib
       ];
     };
+
     fuse.userAllowOther = true;
+
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
+    };
+
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
+
+    nh = {
+      enable = true;
+      flake = "/etc/nixos#${config.networking.hostName}";
     };
   };
 

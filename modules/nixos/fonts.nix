@@ -1,6 +1,7 @@
 { inputs, unstablePkgs, pkgs, ... }:
 {
   fonts = {
+    enableDefaultPackages = false;
     fontDir.enable = true;
 
     packages = with pkgs; [
@@ -8,30 +9,44 @@
 
       # Sans Serif
       unstablePkgs.fira
+      source-serif
       noto-fonts
       noto-fonts-color-emoji
       roboto
       (google-fonts.override { fonts = [ "Inter" ]; })
 
-      # monospace
-      # jetbrains-mono
-
       # nerdfonts
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     ];
 
-    fontconfig.defaultFonts = {
-      serif = [ "Noto Serif" ];
-      sansSerif = [
-        "Noto Sans"
-        "sans-serif"
-      ];
-      monospace = [
-        "Operator Mono Light"
-      ];
-      emoji = [
-        "Noto Color Emoji"
-      ];
+    fontconfig = {
+      antialias = true;
+      defaultFonts = {
+        serif = [
+          "Source Serif"
+          "Noto Serif"
+        ];
+        sansSerif = [
+          "Fira Sans"
+          "Noto Sans"
+        ];
+        monospace = [
+          "Operator Mono Light"
+        ];
+        emoji = [
+          "Noto Color Emoji"
+        ];
+      };
+      enable = true;
+      hinting = {
+        autohint = false;
+        enable = true;
+        style = "slight";
+      };
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "light";
+      };
     };
   };
 }

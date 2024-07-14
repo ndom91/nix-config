@@ -149,6 +149,7 @@ in
 
   hardware = {
     enableAllFirmware = true;
+    keyboard.qmk.enable = true;
 
     bluetooth = {
       enable = true;
