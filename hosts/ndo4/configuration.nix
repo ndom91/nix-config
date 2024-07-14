@@ -14,60 +14,11 @@ in
     ../../modules/nixos/services/polkit-agent.nix
     ../../modules/nixos/wireguard.nix
     ../../modules/home-manager/qt.nix
+    ../../modules/home-manager/nixos.nix
     ../../modules/home-manager/languages/python.nix
     inputs.home-manager.nixosModules.default
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
-
-  age.identityPaths = [
-    "${config.users.users.ndo.home}/.ssh/id_ndo4"
-  ];
-  age.secrets.pvpn = {
-    file = ../../secrets/pvpn.age;
-    owner = "ndo";
-    group = "users";
-    mode = "644";
-  };
-  age.secrets.ssh = {
-    file = ./../../secrets/ssh.age;
-    path = "${config.users.users.ndo.home}/.ssh/config";
-    owner = "ndo";
-    group = "users";
-    mode = "644";
-  };
-
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-      substituters = [
-        "https://cache.nixos.org?priority=10"
-        "https://hyprland.cachix.org"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-      experimental-features = [ "nix-command" "flakes" ];
-      warn-dirty = false;
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
-
-  # Allow auto-upgrades to happen every day
-  # system.autoUpgrade = {
-  #   enable = true;
-  #   flake = "${config.users.users.hadi.home}/.config/nixos";
-  #   flags = ["--update-input" "nixpkgs" "--commit-lock-file"];
-  #   # operation = "boot";
-  #   dates = "12:00";
-  #   allowReboot = false;
-  # };
 
   boot = {
     plymouth = {
@@ -91,24 +42,6 @@ in
       "fs.inotify.max_queued_events" = 16384;
       "fs.inotify.max_user_instances" = 8192;
       "fs.inotify.max_user_watches" = 524288;
-    };
-  };
-
-  time.timeZone = "Europe/Berlin";
-
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ALL = "en_US.UTF-8";
-      LC_ADDRESS = "de_DE.UTF-8";
-      LC_IDENTIFICATION = "de_DE.UTF-8";
-      LC_MEASUREMENT = "de_DE.UTF-8";
-      LC_MONETARY = "de_DE.UTF-8";
-      LC_NAME = "de_DE.UTF-8";
-      LC_NUMERIC = "de_DE.UTF-8";
-      LC_PAPER = "de_DE.UTF-8";
-      LC_TELEPHONE = "de_DE.UTF-8";
-      LC_TIME = "de_DE.UTF-8";
     };
   };
 
@@ -215,15 +148,6 @@ in
     ];
   };
 
-  environment.etc = {
-    "1password/custom_allowed_browsers" = {
-      text = ''
-        vivaldi-bin
-      '';
-      mode = "0755";
-    };
-  };
-
   environment.variables = {
     # VAAPI and VDPAU config for accelerated video.
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
@@ -288,11 +212,6 @@ in
     };
   };
 
-  nixpkgs.config = {
-    permittedInsecurePackages = [ "electron-25.9.0" ]; # For `unstablePkgs.protonvpn-gui`
-    allowUnfree = true;
-  };
-
   environment.systemPackages = with pkgs; [
     tokyo-night-sddm
     corners-sddm
@@ -328,6 +247,18 @@ in
 
   # System Services
   services = {
+    protonvpn = {
+      enable = true;
+      autostart = false;
+      interface = {
+        ip = "10.2.0.2/32";
+        privateKeyFile = config.age.secrets.pvpn.path;
+      };
+      endpoint = {
+        ip = "77.247.178.58";
+        publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
+      };
+    };
     openssh = {
       enable = true;
       settings = {
@@ -423,22 +354,6 @@ in
             GTK_THEME = "Adwaita:dark";
           };
         };
-      };
-    };
-  };
-
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-      onBoot = "ignore";
-      onShutdown = "shutdown";
-    };
-    # spiceUSBRedirection.enable = true;
-    docker = {
-      enable = true;
-      autoPrune = {
-        enable = true;
-        dates = "weekly";
       };
     };
   };
