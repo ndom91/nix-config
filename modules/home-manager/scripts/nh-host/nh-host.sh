@@ -19,4 +19,4 @@ fi
 all_cores=$(nproc)
 build_cores=$(printf "%.0f" "$(echo "${all_cores} * 0.75" | bc)")
 echo "${1^}ing NixOS ❄️ with ${build_cores} cores"
-nh os "${1}" "${HOME}/Zero/nix-config/" -- --cores "${build_cores}"
+nh os "${1}" /etc/nixos -- --cores "${build_cores}"

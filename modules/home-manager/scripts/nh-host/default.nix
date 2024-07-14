@@ -11,8 +11,8 @@ let
   };
 in
 {
-  environment.systemPackages = with pkgs; [ nh-host ];
-  programs.fish.shellAliases = {
+  home.packages = with pkgs; [ nh-host ];
+  programs.bash.shellAliases = {
     build-host = "nh-host build";
     switch-host = "nh-host switch";
   };
