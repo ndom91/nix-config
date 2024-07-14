@@ -23,7 +23,7 @@ in
   ];
 
   # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
-  age.secrets.wutang.file = ../../secrets/wutang.age;
+  age.secrets.wutangKey.file = ../../secrets/wutangKey.age;
   age.secrets.derpyKey.file = ../../secrets/derpyKey.age;
 
   boot = {
@@ -86,7 +86,7 @@ in
           };
           wifi-security = {
             key-mgmt = "wpa-psk";
-            psk = config.age.secrets.wutang.path;
+            psk = config.age.secrets.wutangKey.path;
           };
         };
         # "c-base-crew" = {
@@ -292,7 +292,7 @@ in
       autostart = false;
       interface = {
         ip = "10.2.0.2/32";
-        privateKeyFile = config.age.secrets.pvpn.path;
+        privateKeyFile = config.age.secrets.pvpnKey.path;
       };
       endpoint = {
         ip = "77.247.178.58";

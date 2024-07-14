@@ -106,14 +106,14 @@
   age.identityPaths = [
     "${config.users.users.ndo.home}/.ssh/id_ndo4"
   ];
-  age.secrets.pvpn = {
-    file = ../../secrets/pvpn.age;
+  age.secrets.pvpnKey = {
+    file = ../../secrets/pvpnKey.age;
     owner = "ndo";
     group = "users";
     mode = "644";
   };
-  age.secrets.ssh = {
-    file = ./../../secrets/ssh.age;
+  age.secrets.sshHosts = {
+    file = ./../../secrets/sshHosts.age;
     path = "${config.users.users.ndo.home}/.ssh/config";
     owner = "ndo";
     group = "users";
