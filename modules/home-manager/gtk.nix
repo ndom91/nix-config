@@ -20,6 +20,7 @@ in
     package = rose-pine-cursor;
     name = "BreezeX-RosePine-Linux";
     size = lib.mkMerge [
+      (lib.mkIf (osConfig.networking.hostName == "ndo-gb") 24)
       (lib.mkIf (osConfig.networking.hostName == "ndo4") 24)
       (lib.mkIf (osConfig.networking.hostName == "ndo2") 32)
     ];
@@ -38,7 +39,7 @@ in
       package = rose-pine-cursor;
       name = "BreezeX-RosePine-Linux";
       size = lib.mkMerge [
-        (lib.mkIf (osConfig.networking.hostName == "ndo4") 24)
+        (lib.mkIf (osConfig.networking.hostName == "ndo-gb") 24)
         (lib.mkIf (osConfig.networking.hostName == "ndo4") 24)
         (lib.mkIf (osConfig.networking.hostName == "ndo2") 32)
       ];

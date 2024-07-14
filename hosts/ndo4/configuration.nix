@@ -9,7 +9,6 @@ in
   imports = with agenix pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/fonts.nix
-    # ../../modules/nixos/wireguard.nix
     ../../modules/nixos/nixos.nix
     ../../modules/nixos/system-packages.nix
     ../../modules/nixos/services/polkit-agent.nix
