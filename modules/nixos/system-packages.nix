@@ -80,6 +80,18 @@
     xorg.xrdb
     xorg.xsetroot
     xorg.xprop
+
+    # Theme
+    (colloid-icon-theme.override {
+      schemeVariants = [ "nord" ];
+      colorVariants = [ "grey" ];
+    })
+    (catppuccin-gtk.override {
+      accents = [ "maroon" ];
+      size = "standard";
+      tweaks = [ "normal" ];
+      variant = "mocha";
+    })
   ];
 
   # Register AppImages as binary format

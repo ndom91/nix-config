@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
 let
   # tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
 in
@@ -6,11 +6,15 @@ in
   services.greetd = {
     enable = true;
     settings = {
-      default_session = {
-        # command = "${tuigreet} --time --remember --cmd Hyprland";
-        command = "Hyprland";
+      terminal.vt = 1;
+      initial_session = {
+        command = "${lib.getExe config.programs.hyprland.package}";
         user = "ndo";
       };
+      # default_session = {
+      #   command = "${lib.getExe config.programs.hyprland.package}";
+      #   user = "ndo";
+      # };
     };
   };
 
@@ -18,7 +22,7 @@ in
     enable = true;
     settings = {
       background = {
-        path = "/home/ndo/.config/greetd/wallpaper.png";
+        path = /home/ndo/.config/greetd/wallpaper.png;
         fit = "Cover";
       };
       GTK = {

@@ -1,17 +1,6 @@
 { pkgs, lib, osConfig, rose-pine-cursor, config, ... }:
 let
-  colloidIconTheme = pkgs.colloid-icon-theme.override {
-    schemeVariants = [ "nord" ];
-    colorVariants = [ "grey" ];
-  };
-
   catppuccin_name = "catppuccin-mocha-maroon-standard+normal";
-  catppuccin = pkgs.catppuccin-gtk.override {
-    accents = [ "maroon" ];
-    size = "standard";
-    tweaks = [ "normal" ];
-    variant = "mocha";
-  };
 in
 {
   home.pointerCursor = {
@@ -28,15 +17,15 @@ in
 
   gtk = {
     enable = true;
-    font.name = "SFProDisplay Nerd Font";
+    font.name = "Fira Sans";
 
     theme = {
       name = catppuccin_name;
-      package = catppuccin;
+      package = pkgs.catppuccin-gtk;
     };
 
     cursorTheme = {
-      package = rose-pine-cursor;
+      # package = rose-pine-cursor;
       name = "BreezeX-RosePine-Linux";
       size = lib.mkMerge [
         (lib.mkIf (osConfig.networking.hostName == "ndo-gb") 24)
@@ -46,7 +35,7 @@ in
     };
 
     iconTheme = {
-      package = colloidIconTheme;
+      # package = colloidIconTheme;
       name = "Colloid-grey-nord-dark";
     };
 
@@ -76,11 +65,11 @@ in
     };
   };
 
-  home.file.".config/gtk-4.0/gtk-dark.css".source = "${catppuccin}/share/themes/${catppuccin_name}/gtk-4.0/gtk-dark.css";
-  home.file.".config/gtk-4.0/assets" = {
-    recursive = true;
-    source = "${catppuccin}/share/themes/${catppuccin_name}/gtk-4.0/assets";
-  };
+  home.file.".config/gtk-4.0/gtk-dark.css".source = "${pkgs.catppuccin-gtk}/share/themes/${catppuccin_name}/gtk-4.0/gtk-dark.css";
+  # home.file.".config/gtk-4.0/assets" = {
+  #   recursive = true;
+  #   source = "${pkgs.catppuccin-gtk}/share/themes/${catppuccin_name}/gtk-4.0/assets";
+  # };
 
   # services.xsettingsd = {
   #   enable = true;

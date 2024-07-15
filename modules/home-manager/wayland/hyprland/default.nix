@@ -70,7 +70,8 @@
       ];
       exec-once = [
         # "mkchromecast -t"
-        "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
+        # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
+        "1password  --silent"
         # "${pkgs.blueberry}/bin/blueberry-tray"
         "${pkgs.blueman}/bin/blueman-applet"
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
