@@ -15,6 +15,7 @@ in
     ../../modules/nixos/services/polkit-agent.nix
     ../../modules/nixos/services/tailscale.nix
     ../../modules/nixos/services/ssh.nix
+    ../../modules/nixos/services/greetd.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
     ../../modules/home-manager/languages/node.nix
@@ -152,30 +153,30 @@ in
   services = {
     displayManager = {
       defaultSession = "hyprland";
-      sddm = {
-        enable = true;
-        package = unstablePkgs.kdePackages.sddm;
-        theme = "corners";
-        wayland.enable = true;
-        settings = {
-          Theme = {
-            Font = "Noto Sans";
-            EnableAvatars = true;
-            CursorTheme = "BreezeX-RosePine-Linux";
-            FacesDir = "/etc/nixos/dotfiles/faces";
-          };
-        };
-      };
+      # sddm = {
+      #   enable = true;
+      #   package = unstablePkgs.kdePackages.sddm;
+      #   theme = "corners";
+      #   wayland.enable = true;
+      #   settings = {
+      #     Theme = {
+      #       Font = "Noto Sans";
+      #       EnableAvatars = true;
+      #       CursorTheme = "BreezeX-RosePine-Linux";
+      #       FacesDir = "/etc/nixos/dotfiles/faces";
+      #     };
+      #   };
+      # };
     };
-    xserver = {
-      # enable = true;
-      videoDrivers = [ "xe" "intel" ];
-      xkb = {
-        layout = "us";
-        variant = "";
-        options = "caps:escape";
-      };
-    };
+    # xserver = {
+    #   # enable = true;
+    #   videoDrivers = [ "xe" "intel" ];
+    #   xkb = {
+    #     layout = "us";
+    #     variant = "";
+    #     options = "caps:escape";
+    #   };
+    # };
     envfs.enable = true;
     libinput.touchpad = {
       tappingButtonMap = "lrm";
