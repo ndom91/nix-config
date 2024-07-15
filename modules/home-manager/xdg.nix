@@ -245,7 +245,7 @@ in
     # All Chromium command line switches: https://peter.sh/experiments/chromium-command-line-switches/
     desktopEntries = {
       vivaldi = {
-        name = "Vivaldi";
+        name = "Vivaldi ndo";
         exec = "${unstablePkgs.vivaldi}/bin/vivaldi %U";
         # "--use-gl=angle " +
         # "--use-angle=gl " +

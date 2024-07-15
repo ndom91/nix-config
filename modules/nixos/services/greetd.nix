@@ -1,19 +1,37 @@
 { pkgs, ... }:
 let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  # tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
 in
 {
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --time --remember --cmd Hyprland";
-        user = "greeter";
+        # command = "${tuigreet} --time --remember --cmd Hyprland";
+        command = "Hyprland";
+        user = "ndo";
       };
     };
   };
-  security.pam.services.greetd.enableGnomeKeyring = true;
 
+  programs.regreet = {
+    enable = true;
+    settings = {
+      background = {
+        path = "/home/ndo/.config/greetd/wallpaper.png";
+        fit = "Cover";
+      };
+      GTK = {
+        cursor_theme_name = "BreezeX-RosePine-Linux";
+        font_name = "Fira Sans";
+        icon_theme_name = "Colloid-grey-nord-dark";
+        theme_name = "catppuccin-mocha-maroon-standard+normal";
+      };
+    };
+    cageArgs = [ "-s" "-m" "last" ];
+  };
+
+  # security.pam.services.greetd.enableGnomeKeyring = true;
 
   # this is a life saver.
   # literally no documentation about this anywhere.
