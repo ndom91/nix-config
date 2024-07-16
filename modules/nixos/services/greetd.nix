@@ -6,12 +6,12 @@ in
   services.greetd = {
     enable = true;
     settings = {
-      terminal.vt = 1;
-      initial_session = {
+      default_session = {
         command = "${lib.getExe config.programs.hyprland.package}";
         user = "ndo";
       };
-      # default_session = {
+      # terminal.vt = 1;
+      # initial_session = {
       #   command = "${lib.getExe config.programs.hyprland.package}";
       #   user = "ndo";
       # };

@@ -31,6 +31,7 @@
 
     ".config/hypr/wallpaper.png".source = ../../dotfiles/wallpapers/dark-purple-space-01.png;
     ".config/greetd/wallpaper.png".source = ../../dotfiles/wallpapers/glacier.png;
+    ".config/alacritty/rose-pine.toml".source = ../../dotfiles/alacritty-rose-pine.toml;
 
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;

@@ -1,9 +1,13 @@
 { input, unstablePkgs, ... }:
 {
+
   programs.alacritty = {
     enable = true;
     package = unstablePkgs.alacritty;
     settings = {
+      import = [
+        /home/ndo/.config/alacritty/rose-pine.toml
+      ];
       font = {
         size = 10;
         bold_italic = {
@@ -86,100 +90,100 @@
           y = 0;
         };
       };
-      colors = {
-        draw_bold_text_with_bright_colors = true;
-        primary = {
-          background = "#11111B";
-          foreground = "#e0def4";
-
-          # Bright and dim foreground colors
-          dim_foreground = "#e0def4";
-          bright_foreground = "#e0def4";
-        };
-
-        # Cursor colors
-        cursor = {
-          text = "#191724";
-          cursor = "#e0def4";
-        };
-        vi_mode_cursor = {
-          text = "#191724";
-          cursor = "#908caa";
-        };
-
-        # Search colors
-        search = {
-          matches = {
-            foreground = "#191724";
-            background = "#908caa";
-          };
-          focused_match = {
-            foreground = "#191724";
-            # background = "#9ccfd8";
-            background = "#F38BA8";
-          };
-          # footer_bar = {
-          #   foreground = "#191724";
-          #   background = "#908caa";
-          # };
-        };
-
-        # Keyboard regex hints
-        hints = {
-          start = {
-            foreground = "#191724";
-            background = "#f6c177";
-          };
-          end = {
-            foreground = "#191724";
-            background = "#908caa";
-          };
-        };
-
-        # Selection colors
-        selection = {
-          text = "#191724";
-          background = "#ebbcba";
-        };
-
-        # Normal colors
-        # Rose Pine - https://rosepinetheme.com/palette/ingredients/
-        normal = {
-          black = "#191724"; # Base
-          red = "#F38BA8"; # Love
-          green = "#31748f"; # Pine
-          yellow = "#f6c177"; # Gold
-          blue = "#6e6a86"; # Muted
-          magenta = "#c4a7e7"; # Iris
-          cyan = "#9ccfd8"; # Foam
-          white = "#e0def4"; # Text
-        };
-
-        # Bright colors
-        # Rose Pine Moon - https://rosepinetheme.com/palette/ingredients/
-        bright = {
-          black = "#232136"; # Base
-          red = "#eb6f92"; # Love
-          green = "#3e8fb0"; # Pine
-          yellow = "#f6c177"; # Gold
-          blue = "#6e6a86"; # Muted
-          magenta = "#c4a7e7"; # Iris
-          cyan = "#9ccfd8"; # Foam
-          white = "#e0def4"; # Text
-        };
-
-        # Dim colors
-        # dim = {
-        #   black = "#45475A";
-        #   red = "#F38BA8";
-        #   green = "#31748f";
-        #   yellow = "#F9E2AF";
-        #   blue = "#89B4FA";
-        #   magenta = "#F5C2E7";
-        #   cyan = "#94E2D5";
-        #   white = "#BAC2DE";
-        # };
-      };
+      # colors = {
+      #   draw_bold_text_with_bright_colors = true;
+      #   # primary = {
+      #     # background = "#11111B";
+      #     # foreground = "#e0def4";
+      #
+      #     # Bright and dim foreground colors
+      #     # dim_foreground = "#e0def4";
+      #     # bright_foreground = "#e0def4";
+      #     # };
+      #
+      #   # Cursor colors
+      #   cursor = {
+      #     text = "#21202e";
+      #     cursor = "#e0def4";
+      #   };
+      #   vi_mode_cursor = {
+      #     text = "#21202e";
+      #     cursor = "#908caa";
+      #   };
+      #
+      #   # Search colors
+      #   search = {
+      #     matches = {
+      #       foreground = "#21202e";
+      #       background = "#908caa";
+      #     };
+      #     focused_match = {
+      #       foreground = "#21202e";
+      #       # background = "#9ccfd8";
+      #       background = "#F38BA8";
+      #     };
+      #     # footer_bar = {
+      #     #   foreground = "#191724";
+      #     #   background = "#908caa";
+      #     # };
+      #   };
+      #
+      #   # Keyboard regex hints
+      #   hints = {
+      #     start = {
+      #       foreground = "#21202e";
+      #       background = "#f6c177";
+      #     };
+      #     end = {
+      #       foreground = "#21202e";
+      #       background = "#908caa";
+      #     };
+      #   };
+      #
+      #   # Selection colors
+      #   selection = {
+      #     text = "#21202e";
+      #     background = "#ebbcba";
+      #   };
+      #
+      #   # Normal colors
+      #   # Rose Pine - https://rosepinetheme.com/palette/ingredients/
+      #   normal = {
+      #     black = "#191724"; # Base
+      #     red = "#F38BA8"; # Love
+      #     green = "#31748f"; # Pine
+      #     yellow = "#f6c177"; # Gold
+      #     blue = "#6e6a86"; # Muted
+      #     magenta = "#c4a7e7"; # Iris
+      #     cyan = "#9ccfd8"; # Foam
+      #     white = "#e0def4"; # Text
+      #   };
+      #
+      #   # Bright colors
+      #   # Rose Pine Moon - https://rosepinetheme.com/palette/ingredients/
+      #   bright = {
+      #     black = "#232136"; # Base
+      #     red = "#eb6f92"; # Love
+      #     green = "#3e8fb0"; # Pine
+      #     yellow = "#f6c177"; # Gold
+      #     blue = "#6e6a86"; # Muted
+      #     magenta = "#c4a7e7"; # Iris
+      #     cyan = "#9ccfd8"; # Foam
+      #     white = "#e0def4"; # Text
+      #   };
+      #
+      #   # Dim colors
+      #   # dim = {
+      #   #   black = "#45475A";
+      #   #   red = "#F38BA8";
+      #   #   green = "#31748f";
+      #   #   yellow = "#F9E2AF";
+      #   #   blue = "#89B4FA";
+      #   #   magenta = "#F5C2E7";
+      #   #   cyan = "#94E2D5";
+      #   #   white = "#BAC2DE";
+      #   # };
+      # };
     };
   };
 }

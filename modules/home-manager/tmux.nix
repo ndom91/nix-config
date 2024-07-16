@@ -102,13 +102,13 @@ in
         '';
       }
       unstablePkgs.tmuxPlugins.mode-indicator
-      # {
-      #   # Not necessary due to WezTerm's builtin URL highlighting / copying
-      #   plugin = pkgs.tmuxPlugins.tmux-thumbs;
-      #   extraConfig = ''
-      #     set -g @thumbs-command 'echo -n {} | wl-copy'
-      #   '';
-      # }
+      {
+        # Not necessary due to WezTerm's builtin URL highlighting / copying
+        plugin = pkgs.tmuxPlugins.tmux-thumbs;
+        extraConfig = ''
+          set -g @thumbs-command 'echo -n {} | wl-copy'
+        '';
+      }
     ];
     extraConfig = ''
       # Quick escape back to insert mode in nvim
