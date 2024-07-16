@@ -175,12 +175,8 @@
       ];
       windowrulev2 = [
         "float, title:wlogout"
-        "float, title:Annotator"
         "fullscreen, title:wlogout"
-        "noshadow, floating:1"
-        "dimaround, class:^(gcr-prompter)$"
-        "dimaround, class:^(xdg-desktop-portal-gtk)$"
-        "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
+        # "noshadow, floating:1"
 
         # throw sharing indicators away
         "workspace special silent, title:^(Firefox — Sharing Indicator)$"
@@ -196,7 +192,6 @@
         # "noinitialfocus,title:Quick Access - 1Password,floating"
         "stayfocused,title:Quick Access - 1Password,floating:1"
         "forceinput,title:Quick Access - 1Password,floating:1"
-        "dimaround,title:Quick Access - 1Password,floating:1"
 
         # "center, class:^(1Password)$"
         # "stayfocused,class:^(1Password)$"
@@ -207,8 +202,6 @@
 
         # float/slidein Beeper AppImage
         "animation fadeIn, class:Beeper"
-        "size 1200 800, class:Beeper"
-        "center, class:Beeper"
         "float, class:Beeper"
 
         # float/slidein gnome-text-editor
@@ -241,11 +234,6 @@
         "size 30% 40%, class:engrampa"
         "center, class:engrampa"
 
-        # gtk file chooser
-        "float, class:xdg-desktop-portal-gtk, title:All Files"
-        "size 30% 50%, class:xdg-desktop-portal-gtk, title:All Files"
-        "center, class:xdg-desktop-portal-gtk, title:All Files"
-
         # float imv
         "animation slide, class:imv"
         "float, class:imv"
@@ -257,15 +245,12 @@
 
         # opensnitch
         "float, class:^(opensnitch_ui)$"
-        "dimaround, class:^(opensnitch_ui)$"
 
         # DevTools
         "float, title:^(DevTools.*)$"
         "float, title:^(DevTools.*)$"
         "float, title:^(Developer Tools.*)$"
         "float, title:^(Developer Tools.*)$"
-        "size 30% 60%, title:^(DevTools.*)$"
-        "size 30% 60%, title:^(Developer Tools.*)$"
 
         # Winetricks
         "float, title:^(Winetricks.*)$"
@@ -285,17 +270,13 @@
         "float, title:^.*(sharing your screen).*$"
         "move 50% 100%-100, title:^(.*sharing your screen.*)$"
 
-        # polkit
+        # portal / polkit
         "dimaround, class:^(xdg-desktop-portal-gtk)$"
+        "float, class:^(xdg-desktop-portal-gtk)$"
         "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
-        "float, class:^(gcr-prompter)$"
+        "float, class:^(polkit-gnome-authentication-agent-1)$"
         "dimaround, class:^(gcr-prompter)$"
-        "float, class:^(org.freedesktop.impl.portal.desktop.kde)$"
-        "size 1000 700, class:^(org.freedesktop.impl.portal.desktop.kde)$"
-        "center, class:^(org.freedesktop.impl.portal.desktop.kde)$"
-        "dimaround, class:^(org.freedesktop.impl.portal.desktop.kde)$"
-        "float, class:^(org.kde.polkit-kde-authentication-agent-1)$"
-        "dimaround, class:^(org.kde.polkit-kde-authentication-agent-1)$"
+        "float, class:^(gcr-prompter)$"
 
         # xwaylandvideobridge - https://wiki.hyprland.org/Useful-Utilities/Screen-Sharing/#xwayland
         "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
