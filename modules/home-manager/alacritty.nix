@@ -5,9 +5,9 @@
     enable = true;
     package = unstablePkgs.alacritty;
     settings = {
-      import = [
-        /home/ndo/.config/alacritty-rose-pine.toml
-      ];
+      # import = [
+      #   /home/ndo/.config/alacritty-rose-pine.toml
+      # ];
       font = {
         size = 10;
         bold_italic = {
