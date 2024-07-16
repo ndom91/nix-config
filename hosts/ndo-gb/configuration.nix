@@ -15,6 +15,7 @@ in
     ../../modules/nixos/services/polkit-agent.nix
     ../../modules/nixos/services/tailscale.nix
     ../../modules/nixos/services/ssh.nix
+    ../../modules/nixos/services/greetd.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
     ../../modules/home-manager/languages/node.nix
@@ -152,30 +153,30 @@ in
   services = {
     displayManager = {
       defaultSession = "hyprland";
-      sddm = {
-        enable = true;
-        package = unstablePkgs.kdePackages.sddm;
-        theme = "corners";
-        wayland.enable = true;
-        settings = {
-          Theme = {
-            Font = "Noto Sans";
-            EnableAvatars = true;
-            CursorTheme = "BreezeX-RosePine-Linux";
-            FacesDir = "/etc/nixos/dotfiles/faces";
-          };
-        };
-      };
+      # sddm = {
+      #   enable = true;
+      #   package = unstablePkgs.kdePackages.sddm;
+      #   theme = "corners";
+      #   wayland.enable = true;
+      #   settings = {
+      #     Theme = {
+      #       Font = "Noto Sans";
+      #       EnableAvatars = true;
+      #       CursorTheme = "BreezeX-RosePine-Linux";
+      #       FacesDir = "/etc/nixos/dotfiles/faces";
+      #     };
+      #   };
+      # };
     };
-    xserver = {
-      # enable = true;
-      videoDrivers = [ "xe" "intel" ];
-      xkb = {
-        layout = "us";
-        variant = "";
-        options = "caps:escape";
-      };
-    };
+    # xserver = {
+    #   # enable = true;
+    #   videoDrivers = [ "xe" "intel" ];
+    #   xkb = {
+    #     layout = "us";
+    #     variant = "";
+    #     options = "caps:escape";
+    #   };
+    # };
     envfs.enable = true;
     libinput.touchpad = {
       tappingButtonMap = "lrm";
@@ -197,6 +198,7 @@ in
   security = {
     rtkit.enable = true;
     polkit.enable = true;
+    pam.services.greetd.enableGnomeKeyring = true;
     pam.services.swaylock.text = "auth include login";
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
@@ -353,22 +355,30 @@ in
     tlp = {
       enable = true;
       settings = {
-        CPU_BOOST_ON_BAT = 0;
+        # https://discourse.nixos.org/t/nixos-power-management-help-usb-doesnt-work/9933/2
+        # sudo tlp-stat to see current and possbile values
+
+        # CPU_BOOST_ON_BAT = 0;
         CPU_SCALING_GOVERNOR_ON_BATTERY = "powersave";
-        START_CHARGE_THRESH_BAT0 = 90;
+        START_CHARGE_THRESH_BAT0 = 80;
         STOP_CHARGE_THRESH_BAT0 = 95;
-        # Tell tlp to always run in battery mode
         TLP_DEFAULT_MODE = "BAT";
-        TLP_PERSISTENT_DEFAULT = 1;
+        # Tell tlp to always run in default mode
+        # TLP_PERSISTENT_DEFAULT = 1;
+        INTEL_GPU_MIN_FREQ_ON_AC = 500;
+        INTEL_GPU_MIN_FREQ_ON_BAT = 500;
+
+        PLATFORM_PROFILE_ON_AC = "balanced";
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+        CPU_HWP_DYN_BOOST_ON_AC = 1;
+        CPU_HWP_DYN_BOOST_ON_BAT = 0;
 
         # Don't autosuspend USB devices (Dell Monitor -> Input Devices)
         USB_AUTOSUSPEND = 0;
-        USB_EXCLUDE_WWAN = 1;
-
-        # Don't autosuspend USB devices (Dell Monitor -> Input Devices)
-        # https://discourse.nixos.org/t/nixos-power-management-help-usb-doesnt-work/9933/2
-        # USB_AUTOSUSPEND = 0;
-        # RUNTIME_PM_BLACKLIST = "06:00.3 06:00.4";
+        # USB_EXCLUDE_WWAN = 1;
+        USB_DENYLIST = "3434:0820 046d:c548"; # Keychron Q2 Max + Logitech Bolt Receiver
       };
     };
     flatpak = {

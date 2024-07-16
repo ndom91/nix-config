@@ -10,6 +10,7 @@
     recursive = true;
   };
 
+  # https://github.com/BirdeeHub/nixCats-nvim
   programs.neovim = {
     enable = true;
     package = inputs.neovim-nightly-overlay.packages.x86_64-linux.neovim;
