@@ -18,6 +18,7 @@
     ../../modules/home-manager/zathura.nix
     ../../modules/home-manager/wezterm.nix
     ../../modules/home-manager/alacritty.nix
+    ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/wayland
     ../../modules/home-manager/scripts
   ];
