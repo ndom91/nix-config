@@ -6,7 +6,7 @@
     package = unstablePkgs.alacritty;
     settings = {
       import = [
-        /home/ndo/.config/alacritty/rose-pine.toml
+        /home/ndo/.config/alacritty-rose-pine.toml
       ];
       font = {
         size = 10;
