@@ -64,12 +64,44 @@
     enable = true;
     package = unstablePkgs.vscodium;
     extensions = with unstablePkgs.vscode-extensions; [
+      # Theme
       mvllow.rose-pine
-      vscodevim.vim
+      # General
+      asvetliakov.vscode-neovim
+      # vscodevim.vim
+      github.copilot
+      eamodio.gitlens
+      # Languages
       esbenp.prettier-vscode
-      svelte.svelte-vscode
       rust-lang.rust-analyzer
+      svelte.svelte-vscode
     ];
+    userSettings = {
+      "editor.scrollbar.vertical" = "hidden";
+      "editor.scrollbar.verticalScrollbarSize" = 0;
+      "security.workspace.trust.untrustedFiles" = "newWindow";
+      "security.workspace.trust.startupPrompt" = "never";
+      "security.workspace.trust.enabled" = false;
+      "editor.fontFamily" = "'Operator Mono', 'monospace', monospace";
+      "extensions.autoUpdate" = false;
+      "terminal.external.linuxExec" = "kitty";
+      "telemetry.telemetryLevel" = "off";
+      "window.menuBarVisibility" = "toggle";
+      "[typescript]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
+      "svelte.enable-ts-plugin" = true;
+      "[svelte]" = {
+        "editor.defaultFormatter" = "svelte.svelte-vscode";
+      };
+      "editor.formatOnSave" = true;
+      "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "editor.fontWeight" = "300";
+      "editor.fontSize" = 13;
+      "vim.smartRelativeLine" = true;
+      "workbench.iconTheme" = "rose-pine-icons";
+      "workbench.colorTheme" = "Rosé Pine";
+    };
   };
 
   programs.direnv = {
