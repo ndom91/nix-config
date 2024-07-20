@@ -31,7 +31,6 @@
     gnumake
     gnupg
     htop
-    imv
     inotify-tools
     ipmitool
     jq
