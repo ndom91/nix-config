@@ -1,7 +1,7 @@
 { lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, config, pkgs, ... }:
 let
-  tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
-  corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
+  # tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
+  # corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
 in
@@ -271,10 +271,10 @@ in
   # };
 
   environment.systemPackages = with pkgs; [
+    # tokyo-night-sddm
+    # corners-sddm
     cpupower-gui
     powerstat
-    tokyo-night-sddm
-    corners-sddm
     rose-pine-cursor
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
   ];

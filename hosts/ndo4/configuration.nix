@@ -1,7 +1,7 @@
 { lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, overlays, config, pkgs, ... }:
 let
-  tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
-  corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
+  # tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
+  # corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
 in
@@ -193,8 +193,8 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    tokyo-night-sddm # SDDM Theme
-    corners-sddm # SDDM Theme
+    # tokyo-night-sddm # SDDM Theme
+    # corners-sddm # SDDM Theme
     rose-pine-cursor # Hyprcursor rose-pine theme
     logitech-udev-rules # Solaar
     lact # AMDGPU Controller
@@ -276,7 +276,7 @@ in
 
     # My Elan reader still not supported
     fprintd = {
-      enable = true;
+      enable = false;
       tod = {
         enable = true;
         driver = pkgs.libfprint-2-tod1-elan;

@@ -66,10 +66,8 @@
         "${unstablePkgs.swayosd}/bin/swayosd-server"
       ];
       exec-once = [
-        # "mkchromecast -t"
         # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
         "1password  --silent"
-        # "${pkgs.blueberry}/bin/blueberry-tray"
         "${pkgs.blueman}/bin/blueman-applet"
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
       ];
@@ -204,6 +202,8 @@
         "workspace special silent, title:^.*(Sharing Indicator)$"
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
+
+
         # Loupe Float
         "float, class:org.gnome.Loupe"
 
@@ -214,6 +214,7 @@
         # "noinitialfocus,title:Quick Access - 1Password,floating"
         "stayfocused,title:Quick Access - 1Password,floating:1"
         "forceinput,title:Quick Access - 1Password,floating:1"
+        "monitor DP-1,title:.*(1Password)"
         # "center, class:^(1Password)$"
         # "stayfocused,class:^(1Password)$"
 

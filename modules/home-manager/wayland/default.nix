@@ -61,7 +61,7 @@
           {
             # Alert that lock is incoming
             timeout = 590;
-            command = "${pkgs.libnotify}/bin/notify-send 'Locking in 10 seconds' -t 10000";
+            on-timeout = "${pkgs.libnotify}/bin/notify-send 'Locking in 10 seconds' -t 10000";
           }
           {
             # Lock the screen
