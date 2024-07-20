@@ -165,35 +165,16 @@ in
   services = {
     displayManager = {
       defaultSession = "hyprland";
-      sddm = {
-        enable = true;
-        theme = "corners";
-        wayland.enable = true;
-        setupScript = ''
-          for next in $(xrandr --listmonitors | grep -E " *[0-9]+:.*" | cut -d" " -f6); do
-            [ -z "$current" ] && current=$next && continue
-            xrandr --output $current --auto --output $next --auto --right-of $current
-            current=$next
-          done
-        '';
-        settings = {
-          Theme = {
-            Font = "Noto Sans";
-            EnableAvatars = true;
-            CursorTheme = "BreezeX-RosePine-Linux";
-            FacesDir = "/etc/nixos/dotfiles/faces";
-          };
-        };
-      };
     };
-    xserver = {
-      videoDrivers = [ "intel" ];
-      xkb = {
-        layout = "us";
-        variant = "";
-        options = "caps:escape";
-      };
-    };
+    # xserver = {
+    #   videoDrivers = [ "intel" ];
+    #   xkb = {
+    #     layout = "us";
+    #     variant = "";
+    #     options = "caps:escape";
+    #   };
+    # };
+    envfs.enable = true;
     libinput.touchpad = {
       tappingButtonMap = "lrm";
     };
@@ -217,8 +198,7 @@ in
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.swaylock.text = "auth include login";
-    pam.services.hyprlock = { };
+    pam.services.hyprlock.text = "auth include login";
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt

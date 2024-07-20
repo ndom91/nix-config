@@ -15,6 +15,7 @@ in
     ../../modules/nixos/services/nginx.nix
     ../../modules/nixos/services/tailscale.nix
     ../../modules/nixos/services/ssh.nix
+    ../../modules/nixos/services/greetd.nix
     ../../modules/nixos/services/v4l2loopback.nix
     ../../modules/home-manager/qt.nix
     ../../modules/home-manager/languages/python.nix
@@ -46,29 +47,15 @@ in
   services = {
     displayManager = {
       defaultSession = "hyprland";
-      sddm = {
-        enable = true;
-        # package = unstablePkgs.kdePackages.sddm;
-        theme = "corners";
-        wayland.enable = true;
-        settings = {
-          Theme = {
-            Font = "Noto Sans";
-            EnableAvatars = true;
-            CursorTheme = "BreezeX-RosePine-Linux";
-            FacesDir = "/etc/nixos/dotfiles/faces";
-          };
-        };
-      };
     };
-    xserver = {
-      videoDrivers = [ "amdgpu" ];
-      xkb = {
-        layout = "us";
-        variant = "";
-        options = "caps:escape";
-      };
-    };
+    # xserver = {
+    #   videoDrivers = [ "amdgpu" ];
+    #   xkb = {
+    #     layout = "us";
+    #     variant = "";
+    #     options = "caps:escape";
+    #   };
+    # };
     envfs.enable = true;
   };
 
@@ -131,8 +118,7 @@ in
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.swaylock.text = "auth include login";
-    pam.services.hyprlock = { };
+    pam.services.hyprlock.text = "auth include login";
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
@@ -289,7 +275,13 @@ in
     };
 
     # My Elan reader still not supported
-    # fprintd.enable = true;
+    fprintd = {
+      enable = true;
+      tod = {
+        enable = true;
+        driver = pkgs.libfprint-2-tod1-elan;
+      };
+    };
     printing.enable = true;
     fstrim.enable = true;
     smartd.enable = true;

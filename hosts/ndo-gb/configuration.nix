@@ -153,20 +153,6 @@ in
   services = {
     displayManager = {
       defaultSession = "hyprland";
-      # sddm = {
-      #   enable = true;
-      #   package = unstablePkgs.kdePackages.sddm;
-      #   theme = "corners";
-      #   wayland.enable = true;
-      #   settings = {
-      #     Theme = {
-      #       Font = "Noto Sans";
-      #       EnableAvatars = true;
-      #       CursorTheme = "BreezeX-RosePine-Linux";
-      #       FacesDir = "/etc/nixos/dotfiles/faces";
-      #     };
-      #   };
-      # };
     };
     # xserver = {
     #   # enable = true;
@@ -198,9 +184,7 @@ in
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.greetd.enableGnomeKeyring = true;
-    pam.services.swaylock.text = "auth include login";
-    pam.services.hyprlock = { };
+    pam.services.hyprlock.text = "auth include login";
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
