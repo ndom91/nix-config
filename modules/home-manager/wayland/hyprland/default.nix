@@ -35,8 +35,6 @@
     systemd.variables = [ "--all" ];
 
     plugins = [
-      # inputs.hy3.packages.${pkgs.system}.hy3
-
       # unstablePkgs.hyprlandPlugins.hy3
       # (unstablePkgs.hyprlandPlugins.hy3.override {
       #   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -85,7 +83,6 @@
         no_focus_fallback = true;
 
         layout = "master";
-        # layout = "hy3";
         resize_on_border = true;
       };
       decoration = {
@@ -179,6 +176,7 @@
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
         focus_on_activate = true;
+        allow_session_lock_restore = true;
       };
       windowrule = [
         "float, file_progress"
@@ -282,17 +280,12 @@
         "noinitialfocus,class:^(xwaylandvideobridge)$"
       ];
       bind = [
-        # hy3
-        # "$mainMod, G, hy3:makegroup, tab, force_ephemeral"
-        # "$mainMod, Y, hy3:changegroup, opposite"
-        # "$mainMod, Q, hy3:killactive,"
-
         "$mainMod, G, togglegroup,"
         "$mainMod, U, changegroupactive,b"
         "$mainMod, I, changegroupactive,f"
 
         "$mainMod, Q, killactive"
-        "CTRL SHIFT, L, exec, swaylock -f"
+        "CTRL SHIFT, L, exec, hyprlock"
         "$mainMod, Return, exec, wezterm"
         "$mainMod SHIFT, R, exec, hyprctl reload"
         "$mainMod SHIFT, F, exec, nemo"
@@ -322,16 +315,6 @@
         "$mainMod SHIFT, K, movewindoworgroup, u"
         "$mainMod SHIFT, J, movewindoworgroup, d"
         # "$mainMod SHIFT, J, movewindow, d"
-
-        # hy3 - Move focus with mainMod + arrow keys
-        # "$mainMod, H, exec, /home/ndo/.config/hypr/movefocus.sh l"
-        # "$mainMod, L, exec, /home/ndo/.config/hypr/movefocus.sh r"
-        # "$mainMod, K, hy3:movefocus, u"
-        # "$mainMod, J, hy3:movefocus, d"
-        # "$mainMod SHIFT, H, hy3:movewindow, l"
-        # "$mainMod SHIFT, L, hy3:movewindow, r"
-        # "$mainMod SHIFT, K, hy3:movewindow, u"
-        # "$mainMod SHIFT, J, hy3:movewindow, d"
 
         # Special Keys
         ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
@@ -390,19 +373,6 @@
       submap = reset
 
       plugin {
-        # hy3 {
-        #   tabs {
-        #     height = 5
-        #     padding = 8
-        #     render_text = false
-        #     col.active = rgb(8a8dcc)
-        #   }
-        #   autotile {
-        #     enable = true
-        #     trigger_width = 800
-        #     trigger_height = 500
-        #   }
-        # }
         # hyprfocus {
         #   enabled = yes
         #

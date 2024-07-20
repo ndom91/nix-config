@@ -4,7 +4,6 @@
     ./hyprland/default.nix
     ./waybar/default.nix
     ./rofi/default.nix
-    # ./swaylock.nix
     ./hyprlock.nix
     ./swaync.nix
     ./wlogout.nix
@@ -12,22 +11,23 @@
 
   home.sessionVariables = {
     # WLR_RENDERER_ALLOW_SOFTWARE = "1"; # Required for VMs
-    SDL_VIDEODRIVER = "wayland";
 
-    # XDG_SESSION_TYPE = "wayland";
-    # XDG_CURRENT_DESKTOP = "Hyprland";
-    # XDG_SESSION_DESKTOP = "Hyprland";
-
-    # HYPRLAND_LOG_WLR = "1";
-    # GDK_BACKEND = "wayland,x11";
-
-    # XCURSOR_SIZE = "24";
-
-    # NixOS force Wayland for some apps
-    # NIXOS_OZONE_WL = "1";
-    MOZ_ENABLE_WAYLAND = "1";
     # Make qt apps expect wayland
     QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
+
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+
+    HYPRLAND_LOG_WLR = "1";
+    GDK_BACKEND = "wayland,x11";
+
+    XCURSOR_SIZE = "24";
+
+    # NixOS force Wayland for some apps
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
 
     # fix modals from being attached on tiling wms
     _JAVA_AWT_WM_NONREPARENTING = "1";
@@ -45,34 +45,6 @@
         day = 6500;
         night = 4500;
       };
-    };
-    swayidle = {
-      enable = false;
-      timeouts = [
-        {
-          timeout = 595;
-          command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-        }
-        {
-          timeout = 600;
-          command = "${config.programs.swaylock.package}/bin/swaylock";
-        }
-        {
-          timeout = 660;
-          command = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
-          resumeCommand = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
-        }
-        {
-          timeout = 3600;
-          command = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
-        }
-      ];
-      events = [
-        {
-          event = "before-sleep";
-          command = "${config.programs.swaylock.package}/bin/swaylock";
-        }
-      ];
     };
     hypridle = {
       enable = true;
