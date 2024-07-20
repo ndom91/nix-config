@@ -9,11 +9,11 @@
     };
 
     extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
   };
 
-  xdg.configFile."hypr/movefocus.sh".source = ./hy3-movefocus.sh;
   xdg.configFile."swappy/config".text = ''
     [Default]
     save_dir=$HOME/Pictures/Screenshots
@@ -212,8 +212,8 @@
 
         # 1Password
         # "noinitialfocus,title:Quick Access - 1Password,floating"
-        "stayfocused,title:Quick Access - 1Password,floating:1"
-        "forceinput,title:Quick Access - 1Password,floating:1"
+        "stayfocused,title:^(Quick Access - 1Password)"
+        # "forceinput,title:^(Quick Access - 1Password)"
         "monitor DP-1,title:.*(1Password)"
         # "center, class:^(1Password)$"
         # "stayfocused,class:^(1Password)$"

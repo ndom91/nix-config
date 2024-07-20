@@ -39,7 +39,7 @@ in
           placeholder_text = ''<span font_family="${font_family}" foreground='##cad3f5'>Password...</span>'';
           fail_color = "rgb(204, 34, 34)";
           fail_text = "$FAIL <b>($ATTEMPTS)</b>";
-          fail_transition = 1500;
+          fail_transition = 500;
         }
       ];
 
