@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, config, rose-pine-cursor, inputs, ... }:
+{ pkgs, lib, unstablePkgs, config, rose-pine-cursor, inputs, ... }:
 {
   xdg.portal = {
     enable = true;
@@ -67,7 +67,7 @@
       ];
       exec-once = [
         # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
-        "1password  --silent"
+        "${lib.getExe pkgs._1password-gui} --silent"
         "${pkgs.blueman}/bin/blueman-applet"
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
       ];
@@ -210,13 +210,16 @@
         # GitButler Float
         "float, class:^((g|G)it-(b|B)utler.*)$"
 
-        # 1Password
-        # "noinitialfocus,title:Quick Access - 1Password,floating"
+        # 1Password Quick Access
         "stayfocused,title:^(Quick Access - 1Password)"
+        "monitor DP-1,title:^(Quick Access - 1Password)"
+        # "noinitialfocus,title:Quick Access - 1Password,floating"
         # "forceinput,title:^(Quick Access - 1Password)"
-        "monitor DP-1,title:.*(1Password)"
-        # "center, class:^(1Password)$"
-        # "stayfocused,class:^(1Password)$"
+
+        # 1Password GUI
+        "monitor DP-1,class:^(1Password)$"
+        "center, class:^(1Password)$"
+        "float, class:^(1Password)$"
 
         # idle inhibit while watching videos
         "idleinhibit focus, class:^(vivaldi)$, title:^(.*YouTube.*)$"
@@ -352,7 +355,7 @@
       );
       bindn = [
         # 1Password Quick Search
-        "CTRL SHIFT, Period, exec, 1password --quick-access"
+        "CTRL SHIFT, Period, exec, ${lib.getExe pkgs._1password-gui} --quick-access"
         # "CTRL SHIFT, Period, exec, 1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
       ];
       bindm = [

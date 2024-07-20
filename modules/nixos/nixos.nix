@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, unstablePkgs, ... }:
 {
   nixpkgs.config = {
     allowUnfree = true;
@@ -44,6 +44,7 @@
     _1password = { enable = true; };
     _1password-gui = {
       enable = true;
+      package = unstablePkgs._1password-gui-beta;
       polkitPolicyOwners = [ "ndo" ];
     };
 
