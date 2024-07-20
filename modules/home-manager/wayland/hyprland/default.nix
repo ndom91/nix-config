@@ -116,8 +116,8 @@
         groupbar = {
           render_titles = true;
           font_family = "Fira Sans Light";
-          font_size = 8;
-          height = 22;
+          font_size = 9;
+          height = 24;
           "col.active" = "rgb(181825)";
           "col.inactive" = "rgba(f5e0dc20)";
         };
@@ -135,6 +135,20 @@
           "bounce, 1.1, 1.6, 0.1, 0.85"
           "sligshot, 1, -1, 0.15, 1.25"
           "nice, 0, 6.9, 0.5, -4.20"
+
+          "linear, 0, 0, 1, 1"
+          "md3_standard, 0.2, 0, 0, 1"
+          "md3_decel, 0.05, 0.7, 0.1, 1"
+          "md3_accel, 0.3, 0, 0.8, 0.15"
+          "overshot, 0.05, 0.9, 0.1, 1.1"
+          "crazyshot, 0.1, 1.5, 0.76, 0.92 "
+          "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
+          "menu_decel, 0.1, 1, 0, 1"
+          "menu_accel, 0.38, 0.04, 1, 0.07"
+          "easeInOutCirc, 0.85, 0, 0.15, 1"
+          "easeOutCirc, 0, 0.55, 0.45, 1"
+          "easeOutExpo, 0.16, 1, 0.3, 1"
+          "softAcDecel, 0.26, 0.26, 0.15, 1"
         ];
 
         animation = [
@@ -142,10 +156,21 @@
           "windowsOut, 1, 5, winOut, popin"
           "windowsMove, 1, 5, wind, slide"
           "border, 1, 10, linear"
-          "borderangle, 1, 180, linear, loop #used by rainbow borders and rotating colors"
           "fade, 1, 5, overshot"
           "workspaces, 1, 5, wind"
           "windows, 1, 5, bounce, popin"
+
+          "windows, 1, 3, md3_decel, popin 60%"
+          "windowsIn, 1, 3, md3_decel, popin 60%"
+          "windowsOut, 1, 3, md3_accel, popin 60%"
+          "border, 1, 10, default"
+          "fade, 1, 3, md3_decel"
+          "layers, 1, 2, md3_decel, slide"
+          "layersIn, 1, 3, menu_decel, slide"
+          "layersOut, 1, 1.6, menu_accel"
+          "fadeLayersIn, 1, 2, menu_decel"
+          "fadeLayersOut, 1, 4.5, menu_accel"
+          "workspaces, 1, 7, menu_decel, slide"
         ];
       };
       misc = {
@@ -164,22 +189,21 @@
         "float, error"
         "float, splash"
         "float, confirmreset"
-        "float, title:Open File"
-        "float, title:branchdialog"
-        "float, Lxappearance"
-        "float, viewnior"
-        "float, feh"
-        "float, pavucontrol-qt"
-        "float, pavucontrol"
-        "float, file-roller"
       ];
       windowrulev2 = [
+        # General
+        "animation fade, floating:1"
+
+        # File-Roller
+        "float, class:org.gnome.FileRoller"
+
+        # wlogout
         "float, title:wlogout"
         "fullscreen, title:wlogout"
-        # "noshadow, floating:1"
 
         # throw sharing indicators away
         "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+        "workspace special silent, title:^.*(Sharing Indicator)$"
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
         # Loupe Float
@@ -192,7 +216,6 @@
         # "noinitialfocus,title:Quick Access - 1Password,floating"
         "stayfocused,title:Quick Access - 1Password,floating:1"
         "forceinput,title:Quick Access - 1Password,floating:1"
-
         # "center, class:^(1Password)$"
         # "stayfocused,class:^(1Password)$"
 
@@ -200,46 +223,29 @@
         "idleinhibit focus, class:^(vivaldi)$, title:^(.*YouTube.*)$"
         "idleinhibit fullscreen, class:^(vivaldi)$"
 
-        # float/slidein Beeper AppImage
-        "animation fadeIn, class:Beeper"
+        # float Beeper AppImage
         "float, class:Beeper"
 
-        # float/slidein gnome-text-editor
-        "animation slide, class:org.gnome.TextEditor"
+        # float gnome-text-editor
         "float, class:org.gnome.TextEditor"
 
-        # float/slidein nemo file manager
-        "animation slide, class:nemo"
+        # float nemo file manager
         "float, class:nemo"
         "center, class:nemo"
 
-        # float/slidein pavucontrol
-        "animation slide, class:pavucontrol"
+        # float pavucontrol
         "float, class:pavucontrol"
         "center, class:pavucontrol"
 
-        # float/slidein blueberry
-        "animation slide, class:^(.*blueberry.*)$"
+        # float blueberry
         "float, class:^(.*blueberry.*)$"
         "center, class:^(.*blueberry.*)$"
 
-        # float/slidein blueman-manager
-        "animation slide, class:^(.*blueman-.*)$"
+        # float blueman-manager
         "float, class:^(.*blueman-.*)$"
         "center, class:^(.*blueman-.*)$"
 
-        # float/slidein engrampa
-        "animation slide, class:engrampa"
-        "float, class:engrampa"
-        "size 30% 40%, class:engrampa"
-        "center, class:engrampa"
-
-        # float imv
-        "animation slide, class:imv"
-        "float, class:imv"
-
-        # float/slidein network-manager-editor
-        "animation slide, class:nm-connection-editor"
+        # float network-manager-editor
         "float, class:nm-connection-editor"
         "center, class:nm-connection-editor"
 
@@ -260,15 +266,6 @@
 
         # Beekeeper-Studio
         "float, class:beekeeper-studio"
-
-        # Sharing indicator
-        "animation slide, title:^.*(Sharing Indicator).*$"
-        "float, title:^.*(Sharing Indicator).*$"
-        "move 50% 100%-100, title:^.*(Sharing Indicator).*$"
-
-        "animation slide, title:^.*(sharing your screen).*$"
-        "float, title:^.*(sharing your screen).*$"
-        "move 50% 100%-100, title:^(.*sharing your screen.*)$"
 
         # portal / polkit
         "dimaround, class:^(xdg-desktop-portal-gtk)$"
@@ -371,7 +368,8 @@
       );
       bindn = [
         # 1Password Quick Search
-        "CTRL SHIFT, Period, exec, 1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
+        "CTRL SHIFT, Period, exec, 1password --quick-access"
+        # "CTRL SHIFT, Period, exec, 1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
       ];
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging

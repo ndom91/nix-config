@@ -132,6 +132,7 @@ in
     rtkit.enable = true;
     polkit.enable = true;
     pam.services.swaylock.text = "auth include login";
+    pam.services.hyprlock = { };
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
