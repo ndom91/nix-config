@@ -286,7 +286,7 @@
 
         "$mainMod, Q, killactive"
         "CTRL SHIFT, L, exec, hyprlock"
-        "$mainMod, Return, exec, wezterm"
+        "$mainMod, Return, exec, kitty"
         "$mainMod SHIFT, R, exec, hyprctl reload"
         "$mainMod SHIFT, F, exec, nemo"
         "$mainMod SHIFT, Q, exec, wlogout -b 5 -c 0 -r 0 -m 0 --protocol layer-shell"
