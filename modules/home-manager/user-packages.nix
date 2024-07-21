@@ -46,7 +46,8 @@
     vlc # Media Player
     loupe # Image Viewer
 
-    rustdesk # Remote Desktop
+    # Build currently broken - https://github.com/NixOS/nixpkgs/issues/328884
+    # rustdesk # Remote Desktop
     obsidian # Note Taking
 
     # System Tools
