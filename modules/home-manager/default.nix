@@ -101,6 +101,10 @@
       "vim.smartRelativeLine" = true;
       "workbench.iconTheme" = "rose-pine-icons";
       "workbench.colorTheme" = "Rosé Pine";
+      "extensions.experimental.affinity" = {
+        "asvetliakov.vscode-neovim" =  1;
+      };
+      "vscode-neovim.neovimClean" = true;
     };
   };
 

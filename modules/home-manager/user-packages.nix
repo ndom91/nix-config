@@ -46,7 +46,8 @@
     vlc # Media Player
     loupe # Image Viewer
 
-    rustdesk # Remote Desktop
+    # Build currently broken - https://github.com/NixOS/nixpkgs/issues/328884
+    # rustdesk # Remote Desktop
     obsidian # Note Taking
 
     # System Tools
@@ -95,6 +96,7 @@
     parted # GParted Terminal
     ranger # TUI File Manager
     kondo # Multi-language vendor file cleaner (node_modules, vendor, etc)
+    speedtest-rs # Speedtest CLI
     unstablePkgs.netscanner # TUI Subnet Scanner
     unstablePkgs.termscp # TUI S3/SFTP/etc client
     unstablePkgs.oha # HTML Load Tester

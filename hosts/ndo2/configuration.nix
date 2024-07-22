@@ -1,7 +1,7 @@
 { lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, config, pkgs, ... }:
 let
-  tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
-  corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
+  # tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
+  # corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
 in
@@ -165,35 +165,16 @@ in
   services = {
     displayManager = {
       defaultSession = "hyprland";
-      sddm = {
-        enable = true;
-        theme = "corners";
-        wayland.enable = true;
-        setupScript = ''
-          for next in $(xrandr --listmonitors | grep -E " *[0-9]+:.*" | cut -d" " -f6); do
-            [ -z "$current" ] && current=$next && continue
-            xrandr --output $current --auto --output $next --auto --right-of $current
-            current=$next
-          done
-        '';
-        settings = {
-          Theme = {
-            Font = "Noto Sans";
-            EnableAvatars = true;
-            CursorTheme = "BreezeX-RosePine-Linux";
-            FacesDir = "/etc/nixos/dotfiles/faces";
-          };
-        };
-      };
     };
-    xserver = {
-      videoDrivers = [ "intel" ];
-      xkb = {
-        layout = "us";
-        variant = "";
-        options = "caps:escape";
-      };
-    };
+    # xserver = {
+    #   videoDrivers = [ "intel" ];
+    #   xkb = {
+    #     layout = "us";
+    #     variant = "";
+    #     options = "caps:escape";
+    #   };
+    # };
+    envfs.enable = true;
     libinput.touchpad = {
       tappingButtonMap = "lrm";
     };
@@ -217,7 +198,7 @@ in
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.swaylock.text = "auth include login";
+    pam.services.hyprlock.text = "auth include login";
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
@@ -290,10 +271,10 @@ in
   # };
 
   environment.systemPackages = with pkgs; [
+    # tokyo-night-sddm
+    # corners-sddm
     cpupower-gui
     powerstat
-    tokyo-night-sddm
-    corners-sddm
     rose-pine-cursor
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
   ];

@@ -1,7 +1,10 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, unstablePkgs, ... }:
 {
   nixpkgs.config = {
     allowUnfree = true;
+    permittedInsecurePackages = [
+      "python3.11-youtube-dl-2021.12.17"
+    ];
   };
 
   nix = {
@@ -44,6 +47,7 @@
     _1password = { enable = true; };
     _1password-gui = {
       enable = true;
+      package = unstablePkgs._1password-gui-beta;
       polkitPolicyOwners = [ "ndo" ];
     };
 

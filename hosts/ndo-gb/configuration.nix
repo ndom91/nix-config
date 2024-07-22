@@ -1,7 +1,7 @@
 { lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, config, pkgs, ... }:
 let
-  tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
-  corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
+  # tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
+  # corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
   lenovo-wwan = pkgs.callPackage ../../packages/lenovo-wwan/default.nix { };
@@ -153,20 +153,6 @@ in
   services = {
     displayManager = {
       defaultSession = "hyprland";
-      # sddm = {
-      #   enable = true;
-      #   package = unstablePkgs.kdePackages.sddm;
-      #   theme = "corners";
-      #   wayland.enable = true;
-      #   settings = {
-      #     Theme = {
-      #       Font = "Noto Sans";
-      #       EnableAvatars = true;
-      #       CursorTheme = "BreezeX-RosePine-Linux";
-      #       FacesDir = "/etc/nixos/dotfiles/faces";
-      #     };
-      #   };
-      # };
     };
     # xserver = {
     #   # enable = true;
@@ -199,8 +185,7 @@ in
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.greetd.enableGnomeKeyring = true;
-    pam.services.swaylock.text = "auth include login";
+    pam.services.hyprlock.text = "auth include login";
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
@@ -271,10 +256,10 @@ in
     # modem-manager-gui
     # libmbim
 
+    # tokyo-night-sddm
+    # corners-sddm
     cpupower-gui
     powerstat
-    tokyo-night-sddm
-    corners-sddm
     rose-pine-cursor
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
   ];

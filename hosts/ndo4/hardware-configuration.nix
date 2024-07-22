@@ -11,7 +11,7 @@
   boot.kernelModules = [ "kvm-amd" "zenpower" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
-  boot.blacklistedKernelModules = [ "k10temp" ];
+  boot.blacklistedKernelModules = [ "k10temp" "iwlwifi" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/31113345-8fa1-43bc-b86b-0b761476e364";
