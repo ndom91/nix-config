@@ -167,6 +167,7 @@ in
     libinput.touchpad = {
       tappingButtonMap = "lrm";
     };
+    dbus.implementation = "broker";
   };
 
   # Hyprland swaynotificationcenter service

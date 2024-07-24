@@ -60,6 +60,10 @@
 
   services = {
     network-manager-applet.enable = true;
+    gnome-keyring = {
+      enable = true;
+      components = [ "pkcs11" "secrets" "ssh" ];
+    };
   };
 
   programs.home-manager.enable = true;
