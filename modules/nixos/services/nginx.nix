@@ -13,7 +13,7 @@
         listen 127.0.0.1:5432;
         proxy_connect_timeout 60s;
         proxy_socket_keepalive on;
-        proxy_pass docker-pi.puff.lan:5432;
+        proxy_pass 10.0.0.25:5432;
       }
     '';
 
