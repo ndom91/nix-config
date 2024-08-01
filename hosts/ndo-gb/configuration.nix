@@ -278,6 +278,7 @@ in
 
   # System Services
   services = {
+    opensnitch.enable = true;
     protonvpn = {
       enable = true;
       autostart = false;
