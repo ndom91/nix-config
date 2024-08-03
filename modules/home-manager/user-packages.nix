@@ -32,6 +32,7 @@
 
     # Experimental
     unstablePkgs.flameshot
+    unstablePkgs.zed-editor
 
     unstablePkgs.chromium # Browser
     floorp # Firefox
