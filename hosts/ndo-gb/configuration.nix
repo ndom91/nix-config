@@ -262,6 +262,9 @@ in
     powerstat
     rose-pine-cursor
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
+
+    opensnitch
+    opensnitch-ui
   ];
 
   programs = {
@@ -275,6 +278,7 @@ in
 
   # System Services
   services = {
+    opensnitch.enable = true;
     protonvpn = {
       enable = true;
       autostart = false;
@@ -351,8 +355,8 @@ in
         TLP_DEFAULT_MODE = "BAT";
         # Tell tlp to always run in default mode
         # TLP_PERSISTENT_DEFAULT = 1;
-        INTEL_GPU_MIN_FREQ_ON_AC = 500;
-        INTEL_GPU_MIN_FREQ_ON_BAT = 500;
+        # INTEL_GPU_MIN_FREQ_ON_AC = 500;
+        # INTEL_GPU_MIN_FREQ_ON_BAT = 500;
 
         PLATFORM_PROFILE_ON_AC = "balanced";
         PLATFORM_PROFILE_ON_BAT = "low-power";
