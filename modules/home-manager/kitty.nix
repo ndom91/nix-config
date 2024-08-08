@@ -1,7 +1,8 @@
-{ input, pkgs, ... }:
+{ unstablePkgs, ... }:
 {
   programs.kitty = {
     enable = true;
+    package = unstablePkgs.kitty;
     # Pick "name" from https://github.com/kovidgoyal/kitty-themes/blob/master/themes.json
     theme = "Rosé Pine";
     shellIntegration = {
