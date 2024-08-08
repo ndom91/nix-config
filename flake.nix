@@ -1,5 +1,5 @@
 {
-  description = "ndom91 config flake";
+  description = "ndom91 flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -19,7 +19,7 @@
     nixos-needtoreboot.url = "github:thefossguy/nixos-needsreboot";
     nixos-needtoreboot.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.41.2";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.42.0";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nix-colors.url = "github:misterio77/nix-colors";
 
