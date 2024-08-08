@@ -209,6 +209,7 @@
 
         # GitButler Float
         "float, class:^((g|G)it-(b|B)utler.*)$"
+        "monitor DP-1, class:^((g|G)it-(b|B)utler.*)$"
 
         # 1Password Quick Access
         "stayfocused,title:^(Quick Access - 1Password)"
