@@ -23,7 +23,7 @@
       scrollback_lines = 10000;
       copy_on_select = "clipboard";
       enable_audio_bell = false;
-      shell = "${pkgs.tmux}/bin/tmux";
+      shell = "${unstablePkgs.tmux}/bin/tmux";
       confirm_os_window_close = 0;
     };
   };

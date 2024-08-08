@@ -195,7 +195,7 @@ in
   environment.systemPackages = with pkgs; [
     # tokyo-night-sddm # SDDM Theme
     # corners-sddm # SDDM Theme
-    # rose-pine-cursor # Hyprcursor rose-pine theme
+    rose-pine-cursor # Hyprcursor rose-pine theme
     logitech-udev-rules # Solaar
     lact # AMDGPU Controller
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
