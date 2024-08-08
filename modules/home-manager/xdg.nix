@@ -284,6 +284,13 @@ in
         type = "Application";
         categories = [ "Network" "WebBrowser" ];
       };
+      heynote = {
+        name = "HeyNote";
+        exec = "/opt/appimages/Heynote.AppImage";
+        icon = "/home/ndo/Pictures/heynote-logo.png";
+        type = "Application";
+        categories = [ "Development" "Utility" ];
+      };
       gitbutler-nightly = {
         name = "GitButler (nightly)";
         exec = "env APPIMAGE_GTK_THEME=Adwaita:dark /opt/appimages/git-butler-nightly_latest.AppImage %U";
