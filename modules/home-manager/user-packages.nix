@@ -39,7 +39,7 @@
     gnome.gnome-boxes # VM Manager
     gnome.seahorse # GPG Key Manager
     slack # Chat
-    vesktop # Discord fork
+    unstablePkgs.vesktop # Discord fork
     virt-manager # VM Manager
     gnome-text-editor # Plain Text Editor
     cinnamon.nemo # GUI File Manager
