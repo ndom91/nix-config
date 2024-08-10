@@ -1,8 +1,10 @@
 local function goto_next_error()
-  vim.diagnostic.goto_next({ severity = vim.diagnostic.severity[1] })
+  vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity[1] })
+  -- vim.diagnostic.goto_next({ severity = vim.diagnostic.severity[1] })
 end
 local function goto_prev_error()
-  vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity[1] })
+  vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity[1] })
+  -- vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity[1] })
 end
 
 return {
@@ -121,8 +123,10 @@ return {
       --   end,
       -- })
 
-      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-      vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+      vim.diagnostic.config({ jump = { float = true } })
+
+      -- vim.keymap.set("n", "[d", vim.diagnostic.jump({ count = -1, float = true }))
+      -- vim.keymap.set("n", "]d", vim.diagnostic.jump({ count = 1, float = true }))
       vim.keymap.set("n", "]e", goto_next_error)
       vim.keymap.set("n", "[e", goto_prev_error)
 

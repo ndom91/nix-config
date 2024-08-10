@@ -29,7 +29,7 @@ require("lspconfig").eslint.setup({
   -- experimental = {
   --   useFlatConfig = false,
   -- },
-  format = false,
+  format = true,
   nodePath = "",
   onIgnoredFiles = "off",
   packageManager = "pnpm",
