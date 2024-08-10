@@ -10,6 +10,7 @@ if not have_vue then
       client.server_capabilities.document_formatting = false
       -- null-ls messes with formatexpr for some reason, which messes up `gq`
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
+      -- update: no longer using null-ls (none-ls) atm
       vim.bo[bufnr].formatexpr = nil
     end,
     handlers = {
@@ -23,7 +24,6 @@ if not have_vue then
         return vim.lsp.handlers["textDocument/definition"](err, result, ctx, ...)
       end,
     },
-    -- root_dir = require("lspconfig.util").root_pattern("tsconfig.json"),
     settings = {
       documentFormatting = false,
       -- taken from https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration

@@ -240,7 +240,7 @@ return {
       {
         "<leader>lf",
         function()
-          require("conform").format({ lsp_format = "fallback", async = true })
+          vim.cmd("Format")
         end,
         mode = "",
         desc = "[F]ormat",
@@ -260,21 +260,17 @@ return {
           }
         end
 
-        conform.format({ async = true, lsp_format = "fallback", range = range })
+        conform.format({ async = false, lsp_format = "fallback", range = range })
       end, { range = true })
       conform.setup({
         formatters_by_ft = {
           sh = { "shfmt" },
           lua = { "stylua" },
-          -- Conform will run multiple formatters sequentially
-          -- python = { "isort", "black" },
-          -- Use a sub-list to run only the first available formatter
-          -- javascript = { { "prettierd", "prettier" } },
-          javascript = { { "prettierd" } },
-          typescript = { { "prettierd" } },
-          javascriptreact = { { "prettierd" } },
-          typescriptreact = { { "prettierd" } },
-          svelte = { { "prettierd" } },
+          javascript = { "prettierd" },
+          typescript = { "prettierd" },
+          javascriptreact = { "prettierd" },
+          typescriptreact = { "prettierd" },
+          svelte = { "prettierd" },
           ["_"] = { "trim_whitespace" },
         },
         notify_on_error = true,
@@ -285,33 +281,16 @@ return {
           lsp_format = "fallback",
         },
         formatters = {
-          prettier = {
-            -- condition = function()
-            --   if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
-            -- end,
-            require_cwd = true,
-            cwd = require("conform.util").root_file({
-              ".prettierrc",
-              ".prettierrc.json",
-              ".prettierrc.yml",
-              ".prettierrc.yaml",
-              ".prettierrc.json5",
-              ".prettierrc.js",
-              ".prettierrc.cjs",
-              ".prettierrc.mjs",
-              ".prettierrc.toml",
-              "prettier.config.js",
-              "prettier.config.cjs",
-              "prettier.config.mjs",
-            }),
-          },
           prettierd = {
             env = {
               PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
             },
-            -- condition = function()
-            --   if next(vim.lsp.get_clients({ name = "eslint" })) then return false end
-            -- end,
+            condition = function()
+              -- Use eslint/eslint_d lsp if available
+              if next(vim.lsp.get_clients({ name = "eslint" })) then
+                return false
+              end
+            end,
             require_cwd = true,
             cwd = require("conform.util").root_file({
               ".prettierrc",
