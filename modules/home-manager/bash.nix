@@ -42,6 +42,7 @@
     ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";
     ls = "eza --icons --group-directories-first --classify";
     tree = "eza --long --tree --time-style long-iso --icons --group";
+    less = "less --incsearch -JN --line-num-width=2 --use-color";
 
     # Commands
     vim = "nvim";
