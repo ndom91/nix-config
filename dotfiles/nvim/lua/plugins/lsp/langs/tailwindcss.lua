@@ -5,6 +5,26 @@ require("lspconfig").tailwindcss.setup({
   root_dir = require("lspconfig.util").root_pattern("tailwind.config.js", "tailwind.config.ts", "tailwind.config.cjs"),
   settings = {
     tailwindCSS = {
+      includeLanguages = {
+        "astro",
+        "astro-markdown",
+        "html",
+        "markdown",
+        "mdx",
+        "css",
+        "less",
+        "postcss",
+        "sass",
+        "scss",
+        "javascript",
+        "javascriptreact",
+        "tsx",
+        "jsx",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "svelte",
+      },
       lint = {
         cssConflict = "warning",
         invalidApply = "error",

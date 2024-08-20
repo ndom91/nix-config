@@ -262,6 +262,7 @@ return {
 
         conform.format({ async = false, lsp_format = "fallback", range = range })
       end, { range = true })
+
       conform.setup({
         formatters_by_ft = {
           sh = { "shfmt" },
@@ -285,12 +286,12 @@ return {
             env = {
               PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
             },
-            condition = function()
-              -- Use eslint/eslint_d lsp if available
-              if next(vim.lsp.get_clients({ name = "eslint" })) then
-                return false
-              end
-            end,
+            -- condition = function()
+            --   -- Use eslint/eslint_d lsp if available
+            --   if next(vim.lsp.get_clients({ name = "eslint" })) then
+            --     return false
+            --   end
+            -- end,
             require_cwd = true,
             cwd = require("conform.util").root_file({
               ".prettierrc",
