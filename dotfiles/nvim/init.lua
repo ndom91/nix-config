@@ -18,15 +18,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", {
+require("lazy").setup({
+  spec = {
+    -- import your plugins
+    { import = "plugins" },
+  },
   install = {
     -- install missing plugins on startup. This doesn't increase startup time.
     missing = true,
     -- try to load one of these colorschemes when starting an installation during startup
     colorscheme = { "catppuccin" },
-    dev = {
-      path = "/opt/ndomino/nvim/",
-    },
+  },
+  dev = {
+    path = "/opt/ndomino/nvim/",
   },
 })
 require("mappings")

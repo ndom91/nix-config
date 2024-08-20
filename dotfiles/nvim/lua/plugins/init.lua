@@ -12,7 +12,9 @@ return {
     enabled = true,
     opts = {
       hint_enable = true,
-      hint_inline = function() return false end,
+      hint_inline = function()
+        return false
+      end,
       floating_window = false,
       bind = true,
     },
@@ -47,20 +49,32 @@ return {
     config = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-      { "<leader>tr", function() require("trouble").toggle() end, desc = "[T]oggle [T]rouble" },
+      {
+        "<leader>tr",
+        function()
+          require("trouble").toggle()
+        end,
+        desc = "[T]oggle [T]rouble",
+      },
       {
         "<leader>trw",
-        function() require("trouble").toggle("workspace_diagnostics") end,
+        function()
+          require("trouble").toggle("workspace_diagnostics")
+        end,
         desc = "[Tr]ouble [W]orkspace",
       },
       {
         "<leader>trd",
-        function() require("trouble").toggle("lsp_type_definitions") end,
+        function()
+          require("trouble").toggle("lsp_type_definitions")
+        end,
         desc = "[Tr]ouble Type [D]efinitions",
       },
       {
         "<leader>trr",
-        function() require("trouble").toggle("lsp_references") end,
+        function()
+          require("trouble").toggle("lsp_references")
+        end,
         desc = "[Tr]ouble [R]eferences",
       },
     },
@@ -146,7 +160,9 @@ return {
           limit = 8,
           icon = " ",
           label = "",
-          action = function(path) vim.cmd("Telescope find_files cwd=" .. path) end,
+          action = function(path)
+            vim.cmd("Telescope find_files cwd=" .. path)
+          end,
         },
         mru = { limit = 10, label = "Most Recent", cwd_only = true },
         shortcut = {
@@ -161,7 +177,9 @@ return {
             icon_hl = "@variable",
             desc = "Files",
             group = "Label",
-            action = function(path) vim.cmd("Telescope find_files cwd=" .. path) end,
+            action = function(path)
+              vim.cmd("Telescope find_files cwd=" .. path)
+            end,
             key = "f",
           },
           {
@@ -213,23 +231,43 @@ return {
     enabled = false,
     opts = {},
     keys = {
-      { "s", function() require("flash").jump() end, { "n", "x", "o" }, desc = "Flash Jump" },
+      {
+        "s",
+        function()
+          require("flash").jump()
+        end,
+        { "n", "x", "o" },
+        desc = "Flash Jump",
+      },
       {
         "S",
         mode = { "n", "x", "o" },
-        function() require("flash").treesitter() end,
+        function()
+          require("flash").treesitter()
+        end,
         desc = "Flash Treesitter",
       },
-      { "r", function() require("flash").remote() end, "o", desc = "Remote Flash" },
+      {
+        "r",
+        function()
+          require("flash").remote()
+        end,
+        "o",
+        desc = "Remote Flash",
+      },
       {
         "R",
-        function() require("flash").treesitter_search() end,
+        function()
+          require("flash").treesitter_search()
+        end,
         { "o", "x" },
         desc = "Flash Treesitter Search",
       },
       {
         "<c-s>",
-        function() require("flash").toggle() end,
+        function()
+          require("flash").toggle()
+        end,
         { "c" },
         desc = "Flash Toggle",
       },
@@ -262,7 +300,9 @@ return {
     keys = {
       {
         "<leader>f",
-        function() require("freeze").exec() end,
+        function()
+          require("freeze").exec()
+        end,
         mode = { "n", "v" },
         desc = "[F]reeze",
         noremap = true,
@@ -291,4 +331,13 @@ return {
     enabled = false,
   },
   { "tpope/vim-repeat" },
+
+  {
+    "notes-nvim",
+    dependencies = { "nvim-neotest/nvim-nio" },
+    dev = true,
+    opts = {
+      rootDir = "/home/ndo/Documents/notebook",
+    },
+  },
 }
