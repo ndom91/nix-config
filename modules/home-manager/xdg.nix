@@ -293,8 +293,8 @@ in
       };
       gitbutler-nightly = {
         name = "GitButler (nightly)";
-        exec = "env APPIMAGE_GTK_THEME=Adwaita:dark /opt/appimages/git-butler-nightly_latest.AppImage %U";
-        icon = "/opt/gitbutler/gitbutler-docs/public/fav/fav-32.png";
+        exec = "env APPIMAGE=/opt/appimages/git-butler-nightly_latest.AppImage APPIMAGE_GTK_THEME=Adwaita:dark /opt/appimages/git-butler-nightly_latest.AppImage %U";
+        icon = "/home/ndo/Pictures/git-butler-nightly.png";
         terminal = false;
         type = "Application";
         categories = [ "Development" "Application" ];
