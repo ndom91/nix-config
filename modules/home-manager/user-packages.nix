@@ -98,6 +98,7 @@
     ranger # TUI File Manager
     kondo # Multi-language vendor file cleaner (node_modules, vendor, etc)
     speedtest-rs # Speedtest CLI
+    unstablePkgs.yazi # Terminal File Manager
     unstablePkgs.netscanner # TUI Subnet Scanner
     unstablePkgs.termscp # TUI S3/SFTP/etc client
     unstablePkgs.oha # HTML Load Tester
