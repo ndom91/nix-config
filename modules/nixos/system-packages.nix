@@ -60,6 +60,7 @@
     system-config-printer
     tailspin
     tmux
+    tracexec
     tree
     tree
     unzip
