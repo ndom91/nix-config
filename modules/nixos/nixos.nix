@@ -107,9 +107,14 @@
     };
   };
 
+  environment.variables = {
+    OPENAI_API_KEY = config.age.secrets.openai.path;
+  };
+
   age.identityPaths = [
     "${config.users.users.ndo.home}/.ssh/id_ndo4"
   ];
+  age.secrets.openai.file = ../../secrets/openai.age;
   age.secrets.pvpnKey = {
     file = ../../secrets/pvpnKey.age;
     owner = "ndo";

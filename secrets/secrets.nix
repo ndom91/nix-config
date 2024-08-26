@@ -8,4 +8,5 @@ in
   "pvpnKey.age".publicKeys = [ ndo ];
   "cbaseKey.age".publicKeys = [ ndo ];
   "derpyKey.age".publicKeys = [ ndo ];
+  "openai.age".publicKeys = [ ndo ];
 }
