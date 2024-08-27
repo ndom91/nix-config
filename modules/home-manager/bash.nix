@@ -126,9 +126,14 @@
   # programs.bat.theme = "Coldark-Dark";
 
   programs.bash.initExtra = ''
+    if [ -f /run/agenix/openai ]; then
+      export OPENAI_API_KEY=$(cat /run/agenix/openai)
+    fi
+
     if [ -f "$HOME/.dotfiles/colorscripts/blocks.sh" ]; then
       "$HOME/.dotfiles/colorscripts/blocks.sh"
     fi
+
     # PNPM
     if [ -d "$HOME/.pnpm-global" ]; then
       export PATH="$HOME/.pnpm-global:$PATH"
@@ -148,7 +153,8 @@
 
     # fnm
     if [ "$(command -v fnm)" ]; then
-      eval "$(fnm env --shell bash --use-on-cd --version-file-strategy recursive)"      eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
+      eval "$(fnm env --shell bash --use-on-cd --version-file-strategy recursive)"
+      eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
     fi
 
     export PATH="$HOME/.radicle/bin:$PATH"
