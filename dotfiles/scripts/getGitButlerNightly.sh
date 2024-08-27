@@ -9,6 +9,7 @@ NC="\e[0m"
 
 # Default URL to latest AppImage
 URL=$(curl -sk https://app.gitbutler.com/releases/nightly | jq '.platforms."linux-x86_64".url' | sed 's|\"||g')
+FILENAME=$(basename -s .tar.gz "$URL")
 
 # Allow overriding via first argument
 if [[ $1 ]]; then
@@ -22,6 +23,12 @@ APPIMAGE_FILENAME=$(basename --suffix=".tar.gz"  "$URL")
 echo -e "\n  ${BOLDCYAN}⧑${NC}  ${CYANBG} GitButler ${NC} Nightly Downloader\n"
 
 cd "$TARGET_DIR" || return
+
+if [ -f "$FILENAME" ]; then
+  echo -e "[${CYAN}*${NC}] You're already on the latest version - ${CYAN}$FILENAME${NC}"
+  echo -e "[${CYAN}*${NC}] Exiting"
+  exit 0
+fi
 
 echo -e "[${CYAN}*${NC}] Downloading ${CYAN}$TARBALL_FILENAME${NC}"
 
