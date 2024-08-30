@@ -356,7 +356,7 @@ return {
     enabled = false,
   },
   { "tpope/vim-repeat" },
-
+  { "tpope/vim-sleuth" },
   {
     "notes-nvim",
     dependencies = { "nvim-neotest/nvim-nio" },
