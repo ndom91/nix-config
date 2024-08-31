@@ -6,6 +6,7 @@
   ];
 
   xdg.configFile."neofetch/config.conf" = {
+    force = true;
     source = ../../dotfiles/neofetch.conf;
   };
 }

@@ -76,8 +76,7 @@ in
       "time.puff.lan"
     ];
     hosts = {
-      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" ];
-      "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
+      "127.0.0.1" = [ "ndo4.puff.lan" "ndo4" "localhost" "sveltekasten" ];
     };
   };
 
@@ -118,7 +117,7 @@ in
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.hyprlock = {};
+    pam.services.hyprlock = { };
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
