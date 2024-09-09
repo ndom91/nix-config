@@ -293,7 +293,7 @@ in
       };
       gitbutler-nightly = {
         name = "GitButler (nightly)";
-        exec = "env GDK_BACKEND=wayland APPIMAGE=/opt/appimages/git-butler-nightly_latest.AppImage APPIMAGE_GTK_THEME=Adwaita:dark /opt/appimages/git-butler-nightly_latest.AppImage %U";
+        exec = "env RUST_LOG=debug GDK_BACKEND=wayland APPIMAGE=/opt/appimages/git-butler-nightly_latest.AppImage APPIMAGE_GTK_THEME=Adwaita:dark /opt/appimages/git-butler-nightly_latest.AppImage %U";
         icon = "/home/ndo/Pictures/git-butler-nightly.png";
         terminal = false;
         type = "Application";

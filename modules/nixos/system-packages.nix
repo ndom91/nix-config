@@ -58,7 +58,6 @@
     sshfs
     smartmontools
     system-config-printer
-    tailspin
     tmux
     tracexec
     tree

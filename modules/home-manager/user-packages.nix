@@ -66,6 +66,8 @@
     # unstablePkgs.nodePackages.wrangler
     (builtins.getFlake "github:NixOS/nixpkgs/8dfad603247387df1df4826b8bea58efc5d012d8").legacyPackages.${pkgs.system}.nodePackages.wrangler
     unstablePkgs.tree-sitter
+    unstablePkgs.toolong # CLI to tail log files
+    unstablePkgs.tailspin # Log file highlighter
 
     # Nix Tools
     nvd # Nix Visual Diff
