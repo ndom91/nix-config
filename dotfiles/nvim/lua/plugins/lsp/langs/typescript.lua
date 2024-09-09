@@ -4,7 +4,7 @@ local is_npm_package_installed = require("utils").is_npm_package_installed
 local have_vue = is_npm_package_installed("vue")
 
 if not have_vue then
-  require("lspconfig").tsserver.setup({
+  require("lspconfig").ts_ls.setup({
     capabilities = require("plugins.lsp.capabilities"),
     on_attach = function(client, bufnr)
       client.server_capabilities.document_formatting = false
