@@ -19,13 +19,14 @@
     nixos-needtoreboot.url = "github:thefossguy/nixos-needsreboot";
     nixos-needtoreboot.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.42.0";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.43.0";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nix-colors.url = "github:misterio77/nix-colors";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     superfile.url = "github:MHNightCat/superfile";
     playwright.url = "github:kalekseev/nixpkgs/playwright-core";
+    tsui.url = "github:guibou/tsui/fix_nix_run";
   };
 
   outputs = { self, unstable, agenix, nix-colors, nixpkgs, nix-index-database, ... } @inputs:
