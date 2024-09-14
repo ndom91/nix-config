@@ -20,7 +20,7 @@ return {
       ensure_installed = {
         "rnix",
         "lua_ls",
-        "tsserver",
+        "ts_ls", -- typescript_languageserver
         "bashls",
         "cssls",
         "eslint",

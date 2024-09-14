@@ -11,3 +11,5 @@ cmd "autocmd BufNewFile,BufRead *.mdx set filetype=tsx"
 
 -- lsp-zero Format onSave
 -- cmd "autocmd! BufWritePost * LspZeroFormat"
+
+cmd "autocmd FileType markdown setlocal textwidth=80"
