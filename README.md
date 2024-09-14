@@ -37,6 +37,7 @@ This repository started off with my preexisting [dotfiles](https://github.com/nd
 
 - [Wimpy's nix-config](https://github.com/wimpysworld/nix-config)
 - [fufexan's dotfiles](https://github.com/fufexan/dotfiles)
+- [piyoki nixos-config](https://github.com/piyoki/nixos-config)
 
 ## 📝 License
 

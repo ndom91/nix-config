@@ -40,6 +40,7 @@
     libnotify
     lm_sensors
     lshw
+    lsof
     mlocate
     nmap
     ntfs3g
