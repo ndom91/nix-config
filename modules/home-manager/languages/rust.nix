@@ -2,6 +2,7 @@
 {
   home.packages = with unstablePkgs; [
     rustc
+    rustup
     cargo
 
     # for building gitbutler
