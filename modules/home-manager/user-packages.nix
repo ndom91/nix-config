@@ -68,6 +68,7 @@
     unstablePkgs.tree-sitter
     unstablePkgs.toolong # CLI to tail log files
     unstablePkgs.tailspin # Log file highlighter
+    unstablePkgs.lnav # Log file navigator
 
     # Nix Tools
     nvd # Nix Visual Diff
