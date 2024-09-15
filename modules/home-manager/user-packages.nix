@@ -47,8 +47,8 @@
     vlc # Media Player
     loupe # Image Viewer
 
-    # Build currently broken - https://github.com/NixOS/nixpkgs/issues/328884
-    # rustdesk # Remote Desktop
+    # rustdesk - sciter ui lib is deprecated, using flutter version instead
+    rustdesk-flutter # Remote Desktop
     obsidian # Note Taking
 
     # System Tools
@@ -69,6 +69,7 @@
     unstablePkgs.toolong # CLI to tail log files
     unstablePkgs.tailspin # Log file highlighter
     unstablePkgs.lnav # Log file navigator
+    git-trim # Trim your branches whose remote refs are merged or gone
 
     # Nix Tools
     nvd # Nix Visual Diff
@@ -105,6 +106,7 @@
     unstablePkgs.netscanner # TUI Subnet Scanner
     unstablePkgs.termscp # TUI S3/SFTP/etc client
     unstablePkgs.oha # HTML Load Tester
+    inputs.tsui.packages.${system}.tsui # Tailscale TUI Client
     inputs.superfile.packages.${system}.default # TUI File Manager
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];

@@ -202,14 +202,14 @@
         "workspace special silent, title:^.*(Sharing Indicator)$"
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
-
-
         # Loupe Float
         "float, class:org.gnome.Loupe"
 
         # GitButler Float
         "float, class:^((g|G)it-(b|B)utler.*)$"
         "monitor DP-1, class:^((g|G)it-(b|B)utler.*)$"
+        "float, class:^((g|G)it(b|B)utler.*)$"
+        "monitor DP-1, class:^((g|G)it(b|B)utler.*)$"
 
         # 1Password Quick Access
         "stayfocused,title:^(Quick Access - 1Password)"
