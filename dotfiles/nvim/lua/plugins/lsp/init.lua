@@ -317,7 +317,7 @@ return {
   },
   {
     "laytan/tailwind-sorter.nvim",
-    enabled = true,
+    enabled = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
