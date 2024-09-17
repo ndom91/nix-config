@@ -262,6 +262,7 @@ in
     rose-pine-cursor
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
 
+    wirelesstools
     opensnitch
     opensnitch-ui
   ];
