@@ -70,6 +70,7 @@
     unstablePkgs.tailspin # Log file highlighter
     unstablePkgs.lnav # Log file navigator
     git-trim # Trim your branches whose remote refs are merged or gone
+    graphviz # Generate graphs on CLI
 
     # Nix Tools
     nvd # Nix Visual Diff
