@@ -129,6 +129,9 @@
     if [ -f /run/agenix/openai ]; then
       export OPENAI_API_KEY=$(cat /run/agenix/openai)
     fi
+    if [ -f /run/agenix/anthropic ]; then
+      export ANTHROPIC_API_KEY=$(cat /run/agenix/anthropic)
+    fi
 
     if [ -f "$HOME/.dotfiles/colorscripts/blocks.sh" ]; then
       "$HOME/.dotfiles/colorscripts/blocks.sh"

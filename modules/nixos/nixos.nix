@@ -116,6 +116,12 @@
     group = "users";
     mode = "644";
   };
+  age.secrets.anthropic = {
+    file = ../../secrets/anthropic.age;
+    owner = "ndo";
+    group = "users";
+    mode = "644";
+  };
   age.secrets.pvpnKey = {
     file = ../../secrets/pvpnKey.age;
     owner = "ndo";
