@@ -1,9 +1,9 @@
 { unstablePkgs, pkgs, input, ... }:
 {
   home.packages = with unstablePkgs; [
-    rustc
+    # rustc
+    # cargo
     rustup
-    cargo
 
     # for building gitbutler
     libsoup
