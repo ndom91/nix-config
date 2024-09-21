@@ -4,8 +4,7 @@
     # rustc
     # cargo
     rustup
-
-    # for building gitbutler
-    libsoup
+    # rustc
+    # cargo
   ];
 }
