@@ -7,9 +7,11 @@
     openssl
     pkg-config
 
-    pkgs.playwright-driver
-    vips # for sharp
+    unstablePkgs.playwright
+    unstablePkgs.playwright-driver
+    unstablePkgs.playwright-test
     unstablePkgs.prisma-engines
+    vips # for sharp
   ];
 
   environment.variables = {
