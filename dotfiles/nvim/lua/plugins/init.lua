@@ -127,9 +127,16 @@ return {
     event = "VeryLazy",
     build = "make",
     opts = {
-      provider = "openai",
+      provider = "claude",
+      -- provider = "openai",
       openai = {
         model = "gpt-4o-2024-08-06",
+      },
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-5-sonnet-20240620",
+        temperature = 0,
+        max_tokens = 4096,
       },
     },
     dependencies = {
