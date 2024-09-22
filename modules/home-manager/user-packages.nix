@@ -71,6 +71,7 @@
     unstablePkgs.lnav # Log file navigator
     git-trim # Trim your branches whose remote refs are merged or gone
     graphviz # Generate graphs on CLI
+    unstablePkgs.serie # Git Log output
 
     # Nix Tools
     nvd # Nix Visual Diff
