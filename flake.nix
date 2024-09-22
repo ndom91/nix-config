@@ -25,24 +25,16 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     superfile.url = "github:MHNightCat/superfile";
-    playwright.url = "github:kalekseev/nixpkgs/playwright-core";
     tsui.url = "github:guibou/tsui/fix_nix_run";
   };
 
   outputs = { self, unstable, agenix, nix-colors, nixpkgs, nix-index-database, ... } @inputs:
     let
-      # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       stateVersion = "24.05";
       system = "x86_64-linux";
 
-      playwrightOverlay = final: prev: {
-        inherit (inputs.playwright.packages.${prev.system})
-          playwright-driver playwright-test;
-      };
-
       pkgs = import nixpkgs {
         system = system;
-        overlays = [ playwrightOverlay ];
       };
       unstablePkgs = import unstable {
         config = {
