@@ -727,22 +727,6 @@
         "type": "github"
       }
     },
-    "playwright": {
-      "locked": {
-        "lastModified": 1725559315,
-        "narHash": "sha256-58eFmvGjhFxTF0qyQcQ97uDSvHtvsOeVaWdstCZppEk=",
-        "owner": "kalekseev",
-        "repo": "nixpkgs",
-        "rev": "0f740aafd8bfc182be8ea0e90b4e52e36cada388",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kalekseev",
-        "ref": "playwright-core",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -754,7 +738,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-needtoreboot": "nixos-needtoreboot",
         "nixpkgs": "nixpkgs_3",
-        "playwright": "playwright",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "superfile": "superfile",
         "tsui": "tsui",
