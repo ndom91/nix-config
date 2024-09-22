@@ -172,6 +172,9 @@ in
   # Hyprland swaynotificationcenter service
   systemd.user.units.swaync.enable = true;
 
+  # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # SuspendEstimationSec defeaults to 1h;
   # HibernateDelaySec defaults to 2h
   # See: https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html#Description
