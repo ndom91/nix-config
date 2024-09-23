@@ -6,7 +6,8 @@
       settings = {
         general = {
           # avoid starting multiple hyprlock instances.
-          lock_cmd = "pidof hyprlock || ${config.programs.hyprlock.package}/bin/hyprlock";
+          # lock_cmd = "pidof hyprlock || ${config.programs.hyprlock.package}/bin/hyprlock";
+          lock_cmd = "pidof ${config.programs.hyprlock.package}/bin/hyprlock || ${config.programs.hyprlock.package}/bin/hyprlock";
           # lock before suspend.
           before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
           # to avoid having to press a key twice to turn on the display.

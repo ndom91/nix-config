@@ -51,6 +51,7 @@
         force_zero_scaling = true;
       };
       monitor = ",preferred,auto,auto";
+      # Test multi-monitor: https://github.com/MatthiasBenaets/nix-config/blob/master/modules/desktops/hyprland.nix#L257
 
       env = [
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"

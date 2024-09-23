@@ -117,7 +117,9 @@ in
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.hyprlock = { };
+    pam.services.hyprlock = {
+      enableGnomeKeyring = true;
+    };
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
