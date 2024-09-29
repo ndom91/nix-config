@@ -22,13 +22,14 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.43.0";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nix-colors.url = "github:misterio77/nix-colors";
+    catppuccin.url = "github:catppuccin/nix";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     superfile.url = "github:MHNightCat/superfile";
     tsui.url = "github:guibou/tsui/fix_nix_run";
   };
 
-  outputs = { self, unstable, agenix, nix-colors, nixpkgs, nix-index-database, ... } @inputs:
+  outputs = { self, unstable, catppuccin, agenix, nix-colors, nixpkgs, nix-index-database, ... } @inputs:
     let
       stateVersion = "24.05";
       system = "x86_64-linux";
@@ -55,6 +56,7 @@
             ./packages/protonvpn-wg-quick/default.nix
             nix-index-database.nixosModules.nix-index
             agenix.nixosModules.default
+            catppuccin.nixosModules.catppuccin
           ];
         };
         ndo-gb = nixpkgs.lib.nixosSystem {
@@ -66,6 +68,7 @@
             ./packages/protonvpn-wg-quick/default.nix
             nix-index-database.nixosModules.nix-index
             agenix.nixosModules.default
+            catppuccin.nixosModules.catppuccin
           ];
         };
         ndo2 = nixpkgs.lib.nixosSystem {
@@ -76,6 +79,7 @@
             ./hosts/ndo2/configuration.nix
             nix-index-database.nixosModules.nix-index
             agenix.nixosModules.default
+            catppuccin.nixosModules.catppuccin
           ];
         };
       };

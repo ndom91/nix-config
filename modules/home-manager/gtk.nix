@@ -1,7 +1,4 @@
 { pkgs, lib, osConfig, rose-pine-cursor, config, ... }:
-let
-  catppuccin_name = "catppuccin-mocha-maroon-standard+normal";
-in
 {
   home.pointerCursor = {
     gtk.enable = true;
@@ -15,14 +12,21 @@ in
     ];
   };
 
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "maroon";
+  };
+
   gtk = {
     enable = true;
     font.name = "Fira Sans";
+    catppuccin.enable = true;
 
-    theme = {
-      name = catppuccin_name;
-      package = pkgs.catppuccin-gtk;
-    };
+    # theme = {
+    #   name = catppuccin_name;
+    #   package = pkgs.catppuccin-gtk;
+    # };
 
     cursorTheme = {
       # package = rose-pine-cursor;
@@ -65,7 +69,7 @@ in
     };
   };
 
-  home.file.".config/gtk-4.0/gtk-dark.css".source = "${pkgs.catppuccin-gtk}/share/themes/${catppuccin_name}/gtk-4.0/gtk-dark.css";
+  # home.file.".config/gtk-4.0/gtk-dark.css".source = "${pkgs.catppuccin-gtk}/share/themes/${catppuccin_name}/gtk-4.0/gtk-dark.css";
   # home.file.".config/gtk-4.0/assets" = {
   #   recursive = true;
   #   source = "${pkgs.catppuccin-gtk}/share/themes/${catppuccin_name}/gtk-4.0/assets";

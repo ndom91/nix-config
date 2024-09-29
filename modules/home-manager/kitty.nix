@@ -1,5 +1,6 @@
 { unstablePkgs, ... }:
 {
+  programs.kitty.catppuccin.enable = false;
   programs.kitty = {
     enable = true;
     package = unstablePkgs.kitty;
