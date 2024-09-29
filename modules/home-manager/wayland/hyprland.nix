@@ -194,6 +194,9 @@
         # File-Roller
         "float, class:org.gnome.FileRoller"
 
+        # Rustcast
+        "float, class:org.ndom91.rustcast"
+
         # wlogout
         "float, title:wlogout"
         "fullscreen, title:wlogout"
