@@ -5,6 +5,7 @@
     unstablePkgs.xpipe
     unstablePkgs.zed-editor
     github-desktop
+    unstablePkgs.mission-center
 
     # Chromium
     (unstablePkgs.vivaldi.override {
