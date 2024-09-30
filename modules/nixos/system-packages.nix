@@ -71,6 +71,8 @@
     libva-utils
     vdpauinfo
     vulkan-tools
+    way-displays
+    wlay
     wireguard-tools
     zip
     zoxide

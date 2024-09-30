@@ -1,6 +1,7 @@
 { fira-sans-nerd-font, rose-pine-cursor, nix-colors, lib, inputs, config, pkgs, stateVersion, unstablePkgs, ... }:
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
+    inputs.catppuccin.homeManagerModules.catppuccin
     nix-colors.homeManagerModules.default
     ../../modules/home-manager
   ];
