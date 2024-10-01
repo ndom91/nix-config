@@ -1172,6 +1172,7 @@ in
   xdg.configFile."waybar/scripts/waybar-wttr.py".source = ../../../../dotfiles/waybar/scripts/waybar-wttr.py;
 
   programs.waybar = {
+    catppuccin.enable = false;
     enable = true;
     systemd.enable = true;
     package = unstablePkgs.waybar.overrideAttrs (oldAttrs: {

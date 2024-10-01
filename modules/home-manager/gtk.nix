@@ -12,7 +12,6 @@
     ];
   };
 
-  programs.waybar.catppuccin.enable = false;
   catppuccin = {
     enable = true;
     flavor = "mocha";

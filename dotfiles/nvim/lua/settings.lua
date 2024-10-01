@@ -26,6 +26,12 @@ vim.filetype.add({
     mdx = "jsx",
   },
 })
+-- Treesitter synonyms
+vim.treesitter.language.register('bash', 'sh')
+vim.treesitter.language.register('bash', 'shell')
+vim.treesitter.language.register('bash', 'text')
+vim.treesitter.language.register('bash', 'fallback')
+
 
 opt.completeopt = "menu,menuone,noselect"
 opt.clipboard = "unnamedplus"
