@@ -1,0 +1,36 @@
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  stdenv,
+}:
+rustPlatform.buildRustPackage rec {
+  pname = "binsider";
+  version = "0.2.0";
+
+  src = fetchFromGitHub {
+    owner = "orhun";
+    repo = "binsider";
+    rev = "v${version}";
+    hash = "sha256-000";
+  };
+
+  cargoHash = "sha256-000";
+
+  # Tests need the executable in target/debug/
+  preCheck = ''
+    cargo build
+  '';
+
+  meta = with lib; {
+    description = "Analyzer of executables using a terminal user interface";
+    homepage = "https://github.com/orhun/binsider";
+    license = with licenses; [
+      asl20 # or
+      mit
+    ];
+    maintainers = with maintainers; [ samueltardieu ];
+    mainProgram = "binsider";
+    broken = stdenv.hostPlatform.isDarwin || stdenv.hostPlatform.isAarch64;
+  };
+}
