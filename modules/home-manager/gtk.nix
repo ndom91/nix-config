@@ -21,7 +21,12 @@
   gtk = {
     enable = true;
     font.name = "Fira Sans";
-    catppuccin.enable = true;
+    catppuccin = {
+      enable = true;
+      flavor = "mocha";
+      accent = "maroon";
+      gnomeShellTheme = true;
+    };
 
     # theme = {
     #   name = catppuccin_name;
