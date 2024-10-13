@@ -12,6 +12,7 @@ rustPlatform.buildRustPackage rec {
     owner = "orhun";
     repo = "binsider";
     rev = "v${version}";
+    # TODO: Fix SHA
     hash = lib.fakeSha256;
   };
 
@@ -19,6 +20,7 @@ rustPlatform.buildRustPackage rec {
   # cargoLock = {
   #   lockFile = ./Cargo.lock;
   # };
+  # TODO: Fix SHA
   cargoSha256 = lib.fakeSha256;
 
   # Tests need the executable in target/debug/

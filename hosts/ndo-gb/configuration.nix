@@ -263,7 +263,7 @@ in
 
     # tokyo-night-sddm
     # corners-sddm
-    binsider # ELF bin analyzer
+    # binsider # ELF bin analyzer
     cpupower-gui
     powerstat
     rose-pine-cursor
