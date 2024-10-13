@@ -2,9 +2,10 @@
 let
   # tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   # corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
+  # lenovo-wwan = pkgs.callPackage ../../packages/lenovo-wwan/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
-  lenovo-wwan = pkgs.callPackage ../../packages/lenovo-wwan/default.nix { };
+  binsider = pkgs.callPackage ../../packages/binsider/default.nix { };
 in
 {
   imports = with agenix pkgs; [
@@ -262,6 +263,7 @@ in
 
     # tokyo-night-sddm
     # corners-sddm
+    binsider # ELF bin analyzer
     cpupower-gui
     powerstat
     rose-pine-cursor

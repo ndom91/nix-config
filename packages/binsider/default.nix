@@ -1,8 +1,8 @@
-{
-  lib,
-  rustPlatform,
-  fetchFromGitHub,
-  stdenv,
+{ lib
+, rustPlatform
+, fetchFromGitHub
+, stdenv
+,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "binsider";
@@ -12,10 +12,14 @@ rustPlatform.buildRustPackage rec {
     owner = "orhun";
     repo = "binsider";
     rev = "v${version}";
-    hash = "sha256-000";
+    hash = lib.fakeSha256;
   };
 
-  cargoHash = "sha256-000";
+  # cargoHash = lib.fakeHash;
+  # cargoLock = {
+  #   lockFile = ./Cargo.lock;
+  # };
+  cargoSha256 = lib.fakeSha256;
 
   # Tests need the executable in target/debug/
   preCheck = ''
