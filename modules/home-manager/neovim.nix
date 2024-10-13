@@ -36,7 +36,7 @@
       unstablePkgs.rustywind
 
       shellcheck
-      vscode-langservers-extracted # eslint, css, html, json, markdown
+      unstablePkgs.vscode-langservers-extracted # eslint, css, html, json, markdown
       unstablePkgs.shfmt
       unstablePkgs.charm-freeze # code screenshots
       unstablePkgs.stylua
