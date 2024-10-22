@@ -6,6 +6,7 @@
     unstablePkgs.zed-editor
     github-desktop
     unstablePkgs.mission-center
+    unstablePkgs.meld
 
     # Chromium
     (unstablePkgs.vivaldi.override {
