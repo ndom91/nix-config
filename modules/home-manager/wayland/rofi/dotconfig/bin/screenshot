@@ -26,13 +26,13 @@ shotnow() {
 }
 
 shot3() {
-  coords=$(slurp)
+  coords=$(slurp -d -b 00000000 -c 00000000 -s 00000010)
   countdown '3'
   grim -c -g "$coords" - | swappy -f -
 }
 
 shot10() {
-  coords=$(slurp)
+  coords=$(slurp -d -b 00000000 -c 00000000 -s 00000010)
   countdown '10'
   grim -c -g "$coords" - | swappy -f -
 }
@@ -42,7 +42,7 @@ shotwin() {
 }
 
 shotarea() {
-  coords=$(slurp -d)
+  coords=$(slurp -d -b 00000000 -c 00000000 -s 00000010)
   grim -c -g "$coords" - | swappy -f -
 }
 
