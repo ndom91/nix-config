@@ -23,7 +23,7 @@
     # extraConfig = ''
     # '';
     extraLuaConfig = ''
-      vim.opt.runtimpath = vim.opt.runtimepath + "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}"
+      vim.opt.runtimpath = vim.opt.runtimepath + "${unstablePkgs.vimPlugins.nvim-treesitter.withAllGrammars}"
     '';
     extraPython3Packages = ps: [
       ps.libtmux
@@ -44,7 +44,7 @@
       unstablePkgs.nodePackages_latest.typescript-language-server
 
       vimPlugins.telescope-fzf-native-nvim
-      # vimPlugins.nvim-treesitter.withAllGrammars
+      unstablePkgs.vimPlugins.nvim-treesitter.withAllGrammars
 
       # # for compiling Treesitter parsers
       # gcc

@@ -10,7 +10,7 @@
     unstablePkgs.playwright
     unstablePkgs.playwright-driver
     unstablePkgs.playwright-test
-    unstablePkgs.prisma-engines
+    pkgs.prisma-engines
     vips # for sharp
   ];
 
