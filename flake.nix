@@ -19,7 +19,9 @@
     nixos-needtoreboot.url = "github:thefossguy/nixos-needsreboot";
     nixos-needtoreboot.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.43.0";
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.44.1";
+    };
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nix-colors.url = "github:misterio77/nix-colors";
     catppuccin.url = "github:catppuccin/nix";
@@ -36,7 +38,9 @@
 
       pkgs = import nixpkgs {
         system = system;
+        overlays = [ (self: super: { utillinux = super.util-linux; }) ];
       };
+
       unstablePkgs = import unstable {
         config = {
           allowUnfree = true;

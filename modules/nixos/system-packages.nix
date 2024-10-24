@@ -72,6 +72,8 @@
     vdpauinfo
     vulkan-tools
     way-displays
+    unstablePkgs.webkitgtk_4_0
+    unstablePkgs.webkitgtk_4_1
     wlay
     wireguard-tools
     zip
