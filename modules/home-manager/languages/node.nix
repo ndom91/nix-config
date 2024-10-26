@@ -22,7 +22,7 @@
     PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING = "1";
 
     # Playwright
-    PLAYWRIGHT_BROWSERS_PATH = pkgs.playwright-driver.browsers;
+    PLAYWRIGHT_BROWSERS_PATH = unstablePkgs.playwright-driver.browsers;
     PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = 1;
     PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
   };
