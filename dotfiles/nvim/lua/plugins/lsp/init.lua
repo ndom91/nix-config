@@ -13,50 +13,51 @@ return {
     lazy = false,
     opts = {},
   },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    opts = {
-      automatic_installation = true,
-      ensure_installed = {
-        "rnix",
-        "lua_ls",
-        "ts_ls", -- typescript_languageserver
-        "bashls",
-        "cssls",
-        "eslint",
-        "html",
-        "svelte",
-        "tailwindcss",
-        "volar",
-      },
-      handlers = {
-        -- The first entry (without a key) will be the default handler
-        -- and will be called for each installed server that doesn't have
-        -- a dedicated handler.
-        function(server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup({})
-        end,
-      },
-    },
-  },
-  {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    opts = {
-      ensure_installed = {
-        "nixpkgs-fmt",
-        "prettierd",
-        "rustywind",
-        -- "biome",
-        -- "eslint_d",
-        "js-debug-adapter",
-        "shellcheck",
-        "shfmt",
-      },
-      auto_update = true,
-      run_on_start = true,
-      debounce_hours = 12,
-    },
-  },
+  -- {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   opts = {
+  --     automatic_installation = true,
+  --     ensure_installed = {
+  --       "rnix",
+  --       "lua_ls",
+  --       "ts_ls", -- typescript_languageserver
+  --       "bashls",
+  --       "cssls",
+  --       "eslint",
+  --       "html",
+  --       "svelte",
+  --       "tailwindcss",
+  --       -- "rust_analyzer",
+  --       "volar",
+  --     },
+  --     handlers = {
+  --       -- The first entry (without a key) will be the default handler
+  --       -- and will be called for each installed server that doesn't have
+  --       -- a dedicated handler.
+  --       -- function(server_name) -- default handler (optional)
+  --       --   require("lspconfig")[server_name].setup({})
+  --       -- end,
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "WhoIsSethDaniel/mason-tool-installer.nvim",
+  --   opts = {
+  --     ensure_installed = {
+  --       "nixpkgs-fmt",
+  --       "prettierd",
+  --       "rustywind",
+  --       -- "biome",
+  --       -- "eslint_d",
+  --       "js-debug-adapter",
+  --       "shellcheck",
+  --       "shfmt",
+  --     },
+  --     auto_update = true,
+  --     run_on_start = true,
+  --     debounce_hours = 12,
+  --   },
+  -- },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -205,7 +206,7 @@ return {
               underline = true,
               virtual_text = {
                 spacing = 5,
-                min = vim.diagnostic.severity.WARNING,
+                min = vim.diagnostic.severity.WARN,
               },
               update_in_insert = true,
             })

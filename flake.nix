@@ -19,14 +19,12 @@
     nixos-needtoreboot.url = "github:thefossguy/nixos-needsreboot";
     nixos-needtoreboot.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.44.1";
-    };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.44.1";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nix-colors.url = "github:misterio77/nix-colors";
     catppuccin.url = "github:catppuccin/nix";
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     superfile.url = "github:MHNightCat/superfile";
     tsui.url = "github:guibou/tsui/fix_nix_run";
   };

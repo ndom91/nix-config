@@ -6,6 +6,9 @@ require("lspconfig").rust_analyzer.setup({
       --     -- path = '/Users/feniljain/Projects/rust-projects/rust-analyzer/fix_enum_completion/target/release/rust-analyzer',
       --     -- path = '~/Projects/rust-projects/rust-analyzer/fix_enum_completion/target/release/rust-analyzer',
       -- },
+      cargo = {
+        targetDir = ".rust-analyzer/target",
+      },
       check = {
         command = "clippy",
         allTargets = true,
