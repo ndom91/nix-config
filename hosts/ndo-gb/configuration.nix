@@ -207,11 +207,17 @@ in
   hardware = {
     enableAllFirmware = true;
     acpilight.enable = true;
-
     keyboard.qmk.enable = true;
 
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      # settings = {
+      #   General = {
+      #     Experimental = true;
+      #   };
+      # };
+    };
 
     # Intel Hardware Acceleration
     opengl = {
@@ -229,7 +235,7 @@ in
       ];
     };
     # TODO: Change to this for >= 24.11
-    #hardware
+    #hardware = {
     #  graphics = {
     #    enable = true;
     #    enable32Bit = lib.mkForce isInstall;
@@ -243,7 +249,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" "video" ];
+    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" "video" "render" ];
   };
 
   home-manager = {
@@ -281,6 +287,8 @@ in
     };
 
     light.enable = true;
+
+    adb.enable = true;
   };
 
   # System Services
