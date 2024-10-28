@@ -53,7 +53,7 @@
 
     nix-ld = {
       enable = true;
-      package = pkgs.nix-ld-rs;
+      package = unstablePkgs.nix-ld;
       libraries = with pkgs; [
         stdenv.cc.cc.lib
       ];

@@ -114,7 +114,6 @@ in
     };
     nameservers = [
       "10.0.0.1"
-      "1.1.1.1"
     ];
     timeServers = [
       "10.0.0.1"
@@ -261,7 +260,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    # Quectel RM520N-GL 
+    # Quectel RM520N-GL
     # lenovo-wwan
     # modemmanager
     # modem-manager-gui
@@ -278,6 +277,8 @@ in
     wirelesstools
     opensnitch
     opensnitch-ui
+
+    quickemu # Download preconfiged VM qemu configs and ISOs
   ];
 
   programs = {
