@@ -2,10 +2,18 @@
 
 # set -x
 CYAN="\e[0;96m"
+BLACK="\e[1;30m"
 BOLDCYAN="\e[1;96m"
 CYANBG="\e[46;1m"
 RED="\e[0;91m"
 NC="\e[0m"
+
+replace_first() {
+  local string="$1"
+  local search="$2"
+  local replace="$3"
+  echo "${string/$search/$replace}"
+}
 
 # Default URL to latest AppImage
 URL=$(curl -sk https://app.gitbutler.com/releases/nightly | jq '.platforms."linux-x86_64".url' | sed 's|\"||g')
@@ -13,14 +21,21 @@ FILENAME=$(basename -s .tar.gz "$URL")
 
 # Allow overriding via first argument
 if [[ $1 ]]; then
- URL="$1"
+  URL="$1"
 fi
 
 TARGET_DIR="/opt/appimages/"
 TARBALL_FILENAME=$(basename "$URL")
-APPIMAGE_FILENAME=$(basename --suffix=".tar.gz"  "$URL")
 
-echo -e "\n  ${BOLDCYAN}⧑${NC}  ${CYANBG} GitButler ${NC} Nightly Downloader\n"
+if [[ "$FILENAME" == *"GitButler_Nightly"* ]]; then
+  # Tauri v2
+  APPIMAGE_FILENAME=$(replace_first "$(basename -s .tar.gz "$URL")" "_" " ")
+else
+  # Tauri v1
+  APPIMAGE_FILENAME=$(basename --suffix=".tar.gz" "$URL")
+fi
+
+echo -e "\n  ${BOLDCYAN}⧑${NC}  ${CYANBG}${BLACK} GitButler ${NC} Nightly Downloader\n"
 
 cd "$TARGET_DIR" || return
 
