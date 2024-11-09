@@ -35,6 +35,8 @@
     # Experimental
     unstablePkgs.flameshot
     unstablePkgs.zed-editor
+    unstablePkgs.mqttui
+    unstablePkgs.tabiew # TUI Table Viewer (CSV, TSV, Parquet, etc.)
 
     unstablePkgs.chromium # Browser
     floorp # Firefox
@@ -69,7 +71,7 @@
     (builtins.getFlake "github:NixOS/nixpkgs/8dfad603247387df1df4826b8bea58efc5d012d8").legacyPackages.${pkgs.system}.nodePackages.wrangler
     unstablePkgs.tree-sitter
     unstablePkgs.toolong # CLI to tail log files
-    unstablePkgs.tailspin # Log file highlighter
+    # unstablePkgs.tailspin # Log file highlighter
     unstablePkgs.lnav # Log file navigator
     git-trim # Trim your branches whose remote refs are merged or gone
     graphviz # Generate graphs on CLI
@@ -108,10 +110,10 @@
     speedtest-rs # Speedtest CLI
     unstablePkgs.yazi # Terminal File Manager
     unstablePkgs.netscanner # TUI Subnet Scanner
-    unstablePkgs.termscp # TUI S3/SFTP/etc client
+    # unstablePkgs.termscp # TUI S3/SFTP/etc client
     unstablePkgs.oha # HTML Load Tester
-    inputs.tsui.packages.${system}.tsui # Tailscale TUI Client
-    inputs.superfile.packages.${system}.default # TUI File Manager
+    inputs.tsui.packages.${pkgs.system}.tsui # Tailscale TUI Client
+    inputs.superfile.packages.${pkgs.system}.default # TUI File Manager
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 }

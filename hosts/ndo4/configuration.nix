@@ -202,11 +202,25 @@ in
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
   ];
 
-  programs = {
-    hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
     };
+
+    extraPortals = [
+      unstablePkgs.xdg-desktop-portal-hyprland
+      unstablePkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
+  programs = {
+    # hyprland = {
+    #   enable = true;
+    #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # };
   };
 
   # System Services

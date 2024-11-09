@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, config, ... }:
+{ inputs, pkgs, unstablePkgs, config, ... }:
 {
   xdg.configFile."wlogout" = {
     source = ../../../dotfiles/wlogout;
@@ -28,7 +28,7 @@
       }
       {
         "label" = "logout";
-        "action" = "${unstablePkgs.hyprland}/bin/hyprctl dispatch exit 0";
+        "action" = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch exit 0";
         "text" = "Logout";
         "keybind" = "e";
       }
