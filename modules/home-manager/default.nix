@@ -60,6 +60,19 @@
     };
   };
 
+  programs.lazygit = {
+    enable = true;
+    package = unstablePkgs.lazygit;
+    settings = {
+      git = {
+        paging = {
+          colorArg = "always";
+          externalDiffCommand = "${pkgs.difftastic}/bin/difft --color=always";
+        };
+      };
+    };
+  };
+
   programs.vscode = {
     enable = true;
     package = unstablePkgs.vscodium;

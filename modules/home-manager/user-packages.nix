@@ -96,7 +96,6 @@
 
     # Terminal Apps
     unstablePkgs.charm-freeze # Code Screenshots
-    lazygit # TUI Git Client
     lazydocker # TUI Docker
     starship # Terminal Prompt
     hwatch # Interactive 'watch' alternative

@@ -109,18 +109,5 @@
   #   magicOrExtension = ''\x7fELF....AI\x02'';
   # };
   # Replaced with programs.appimage.binfmt in 24.05
-
-  programs.lazygit = {
-    enable = true;
-    package = unstablePkgs.lazygit;
-    settings = {
-      git= {
-        paging = {
-          colorArg = "always";
-          pager = "difft";
-        };
-      };
-    };
-  };
 }
 
