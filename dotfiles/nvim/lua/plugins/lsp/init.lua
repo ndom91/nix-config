@@ -223,6 +223,7 @@ return {
       require("plugins.lsp.langs.tailwindcss")
       require("plugins.lsp.langs.svelte")
       require("plugins.lsp.langs.rust")
+      require("plugins.lsp.langs.rnix")
     end,
   },
   {
