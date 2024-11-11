@@ -207,20 +207,20 @@ in
     xdgOpenUsePortal = true;
     config = {
       common.default = [ "gtk" ];
-      hyprland.default = [ "gtk" "hyprland" ];
+      # hyprland.default = [ "gtk" "hyprland" ];
     };
 
     extraPortals = [
-      unstablePkgs.xdg-desktop-portal-hyprland
+      # unstablePkgs.xdg-desktop-portal-hyprland
       unstablePkgs.xdg-desktop-portal-gtk
     ];
   };
 
   programs = {
-    # hyprland = {
-    #   enable = true;
-    #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    # };
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    };
   };
 
   # System Services

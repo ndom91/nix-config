@@ -191,6 +191,7 @@ in
       enableGnomeKeyring = true;
     };
     pki.certificateFiles = [
+      # "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
     ];
@@ -288,20 +289,19 @@ in
     xdgOpenUsePortal = true;
     config = {
       common.default = [ "gtk" ];
-      hyprland.default = [ "gtk" "hyprland" ];
+      # hyprland.default = [ "gtk" "hyprland" ];
     };
 
     extraPortals = [
-      unstablePkgs.xdg-desktop-portal-hyprland
       unstablePkgs.xdg-desktop-portal-gtk
     ];
   };
 
   programs = {
-    # hyprland = {
-    #   enable = true;
-    #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    # };
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    };
 
     light.enable = true;
     adb.enable = true;
