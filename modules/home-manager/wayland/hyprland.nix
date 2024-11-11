@@ -80,7 +80,9 @@
         dim_inactive = true;
         dim_strength = "0.075";
 
-        drop_shadow = false;
+        shadow = {
+          enabled = false;
+        };
 
         blur = {
           enabled = true;
