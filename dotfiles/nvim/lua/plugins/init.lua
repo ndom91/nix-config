@@ -122,6 +122,12 @@ return {
       },
     },
   },
+  -- first-party github copilot plugin
+  {
+    "github/copilot.vim",
+    event = "InsertEnter",
+    enabled = false,
+  },
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
@@ -153,12 +159,6 @@ return {
       --   ft = { "markdown", "Avante" },
       -- },
     },
-  },
-  -- first-party github copilot plugin
-  {
-    "github/copilot.vim",
-    event = "InsertEnter",
-    enabled = false,
   },
   {
     "RRethy/nvim-base16",

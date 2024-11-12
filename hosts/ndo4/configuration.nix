@@ -45,6 +45,7 @@ in
   };
 
   services = {
+    # opensnitch.enable = true;
     displayManager = {
       defaultSession = "hyprland";
     };
@@ -105,6 +106,11 @@ in
 
   # Hyprland swaynotificationcenter service
   systemd.user.units.swaync.enable = true;
+  systemd.services."flatpak-managed-install" = {
+    serviceConfig = {
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
+    };
+  };
 
   # SuspendEstimationSec defeaults to 1h;
   # HibernateDelaySec defaults to 2h
@@ -200,6 +206,9 @@ in
     logitech-udev-rules # Solaar
     lact # AMDGPU Controller
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
+
+    opensnitch
+    opensnitch-ui
   ];
 
   programs = {
@@ -234,6 +243,9 @@ in
         "1.0.0.1"
       ];
     };
+
+    # picosnitch.enable = true;
+    opensnitch.enable = true;
 
     gnome.gnome-keyring.enable = true;
 

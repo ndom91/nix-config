@@ -21,6 +21,7 @@
   gtk = {
     enable = true;
     font.name = "Fira Sans";
+
     catppuccin = {
       enable = true;
       flavor = "mocha";

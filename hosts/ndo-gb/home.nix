@@ -65,6 +65,7 @@
       enable = true;
       components = [ "pkcs11" "secrets" "ssh" ];
     };
+    opensnitch-ui.enable = true;
   };
 
   programs.home-manager.enable = true;

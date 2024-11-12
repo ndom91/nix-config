@@ -26,7 +26,7 @@ return {
       },
     },
   },
-  ---@type TSConfig
+  -- -@type TSConfig
   ---@diagnostic disable-next-line: missing-fields
   opts = {
     highlight = { enable = true },

@@ -166,7 +166,7 @@ in
     libinput.touchpad = {
       tappingButtonMap = "lrm";
     };
-    dbus.implementation = "broker";
+    # dbus.implementation = "broker";
   };
 
   # Hyprland swaynotificationcenter service
@@ -174,6 +174,12 @@ in
 
   # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
   systemd.services.NetworkManager-wait-online.enable = false;
+
+  systemd.services."flatpak-managed-install" = {
+    serviceConfig = {
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
+    };
+  };
 
   # SuspendEstimationSec defeaults to 1h;
   # HibernateDelaySec defaults to 2h
