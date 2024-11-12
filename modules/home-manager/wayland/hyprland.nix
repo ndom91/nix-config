@@ -1,18 +1,5 @@
 { pkgs, lib, unstablePkgs, config, rose-pine-cursor, inputs, ... }:
 {
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    config = {
-      common.default = [ "gtk" ];
-      hyprland.default = [ "gtk" "hyprland" ];
-    };
-
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
-    ];
-  };
 
   xdg.configFile."swappy/config".text = ''
     [Default]
@@ -93,7 +80,9 @@
         dim_inactive = true;
         dim_strength = "0.075";
 
-        drop_shadow = false;
+        shadow = {
+          enabled = false;
+        };
 
         blur = {
           enabled = true;

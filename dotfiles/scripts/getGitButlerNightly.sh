@@ -39,7 +39,7 @@ echo -e "\n  ${BOLDCYAN}⧑${NC}  ${CYANBG}${BLACK} GitButler ${NC} Nightly Down
 
 cd "$TARGET_DIR" || return
 
-if [ -f "$FILENAME" ]; then
+if [ -f "$APPIMAGE_FILENAME" ]; then
   echo -e "[${CYAN}*${NC}] You're already on the latest version - ${CYAN}$FILENAME${NC}"
   echo -e "[${CYAN}*${NC}] Exiting"
   exit 0

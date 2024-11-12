@@ -197,6 +197,7 @@ in
       enableGnomeKeyring = true;
     };
     pki.certificateFiles = [
+      # "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
     ];
@@ -287,6 +288,21 @@ in
     quickemu # Download preconfiged VM qemu configs and ISOs
   ];
 
+  # Needed to load here before flatpak. Probably belongs in window-manager
+  # nix file like 'hyprland.nix'.
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = [ "gtk" ];
+      # hyprland.default = [ "gtk" "hyprland" ];
+    };
+
+    extraPortals = [
+      unstablePkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
   programs = {
     hyprland = {
       enable = true;
@@ -294,13 +310,14 @@ in
     };
 
     light.enable = true;
-
     adb.enable = true;
   };
 
   # System Services
   services = {
     opensnitch.enable = true;
+    picosnitch.enable = false;
+
     protonvpn = {
       enable = true;
       autostart = false;
@@ -403,9 +420,6 @@ in
       packages = [
         { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
       ];
-    };
-    picosnitch = {
-      enable = false;
     };
   };
 

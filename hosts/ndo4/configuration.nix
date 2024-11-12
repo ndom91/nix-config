@@ -211,6 +211,20 @@ in
     opensnitch-ui
   ];
 
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = [ "gtk" ];
+      # hyprland.default = [ "gtk" "hyprland" ];
+    };
+
+    extraPortals = [
+      # unstablePkgs.xdg-desktop-portal-hyprland
+      unstablePkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
   programs = {
     hyprland = {
       enable = true;
