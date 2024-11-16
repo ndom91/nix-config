@@ -8,6 +8,6 @@
 
   home.file.".cargo/config.toml" = {
     force = true;
-    source = ../../dotfiles/programming/cargo/config.toml;
+    source = ../../../dotfiles/programming/cargo/config.toml;
   };
 }

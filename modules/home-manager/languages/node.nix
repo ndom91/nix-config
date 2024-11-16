@@ -7,7 +7,7 @@
     openssl
     pkg-config
 
-    unstablePkgs.playwright
+    # unstablePkgs.playwright
     unstablePkgs.playwright-driver
     unstablePkgs.playwright-test
     pkgs.prisma-engines
