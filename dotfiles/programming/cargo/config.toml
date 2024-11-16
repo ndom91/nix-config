@@ -2,6 +2,6 @@
 debug = 0
 strip = "debuginfo"
 
-[target.x86_64-unknown-linux-gnu]
-linker = "/usr/bin/clang-15"
-rustflags = ["-C", "link-arg=--ld-path=/home/ndo/.nix-profile/bin/mold"]
+# [target.x86_64-unknown-linux-gnu]
+# linker = "/home/ndo/.nix-profile/bin/clang"
+# rustflags = ["-C", "link-arg=-fuse-ld=/home/ndo/.nix-profile/bin/mold"]

@@ -2,6 +2,7 @@
 {
   home.packages = with unstablePkgs; [
     rustup
+    # clang_18
     # rustc
     # cargo
   ];
