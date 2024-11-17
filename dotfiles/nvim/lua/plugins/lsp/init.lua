@@ -1,10 +1,8 @@
 local function goto_next_error()
   vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity[1] })
-  -- vim.diagnostic.goto_next({ severity = vim.diagnostic.severity[1] })
 end
 local function goto_prev_error()
   vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity[1] })
-  -- vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity[1] })
 end
 
 return {
@@ -213,17 +211,17 @@ return {
         end,
       })
 
-      require("plugins.lsp.langs.eslint")
-      require("plugins.lsp.langs.typescript")
-      -- require("plugins.lsp.langs.vue")
-      -- require("plugins.lsp.langs.json")
-      require("plugins.lsp.langs.yaml")
       require("plugins.lsp.langs.css")
+      require("plugins.lsp.langs.eslint")
       require("plugins.lsp.langs.html")
-      require("plugins.lsp.langs.tailwindcss")
-      require("plugins.lsp.langs.svelte")
-      require("plugins.lsp.langs.rust")
+      require("plugins.lsp.langs.json")
       require("plugins.lsp.langs.rnix")
+      require("plugins.lsp.langs.rust")
+      require("plugins.lsp.langs.svelte")
+      require("plugins.lsp.langs.tailwindcss")
+      require("plugins.lsp.langs.typescript")
+      require("plugins.lsp.langs.yaml")
+      -- require("plugins.lsp.langs.vue")
     end,
   },
   {

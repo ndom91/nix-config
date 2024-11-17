@@ -77,6 +77,9 @@
     git-trim # Trim your branches whose remote refs are merged or gone
     graphviz # Generate graphs on CLI
     unstablePkgs.serie # Git Log output
+    unstablePkgs.mold # Faster Linker
+    unstablePkgs.terraformer # Terraform Introspection Tool
+    unstablePkgs.terraform # IaaC
 
     # Nix Tools
     nvd # Nix Visual Diff

@@ -1,12 +1,16 @@
 -- https://github.com/vscode-langservers/vscode-json-languageserver
-require("lspconfig").yamlls.setup {
-  capabilities = require "plugins.lsp.capabilities",
+require("lspconfig").yamlls.setup({
+  capabilities = require("plugins.lsp.capabilities"),
   settings = {
     yaml = {
       schemaStore = {
-        url = "https://www.schemastore.org/api/json/catalog.json",
-        enable = true,
+        -- You must disable built-in schemaStore support if you want to use
+        -- this plugin and its advanced options like `ignore`.
+        enable = false,
+        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+        url = "",
       },
+      schemas = require("schemastore").yaml.schemas(),
     },
   },
-}
+})
