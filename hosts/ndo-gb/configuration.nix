@@ -323,7 +323,7 @@ in
       autostart = false;
       interface = {
         ip = "10.2.0.2/32";
-        privateKeyFile = config.age.secrets.pvpnKey.path;
+        privateKeyFile = config.age.secrets.pvpn_mx.path;
       };
       endpoint = {
         ip = "77.247.178.58";
