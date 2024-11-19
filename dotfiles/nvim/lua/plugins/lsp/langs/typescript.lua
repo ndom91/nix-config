@@ -11,17 +11,17 @@ if not have_vue then
       -- null-ls messes with formatexpr for some reason, which messes up `gq`
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
       -- update: no longer using null-ls (none-ls) atm
-      vim.bo[bufnr].formatexpr = nil
+      -- vim.bo[bufnr].formatexpr = nil
     end,
     handlers = {
       -- Go right to first result if there is more than 1
-      ["textDocument/definition"] = function(err, result, ctx, ...)
+      ["textDocument/definition"] = function(err, result, ctx)
         if #result > 1 then
           result = { result[1] }
-          return vim.lsp.handlers["textDocument/definition"](err, result, ctx, ...)
+          return vim.lsp.handlers["textDocument/definition"](err, result, ctx)
         end
 
-        return vim.lsp.handlers["textDocument/definition"](err, result, ctx, ...)
+        return vim.lsp.handlers["textDocument/definition"](err, result, ctx)
       end,
     },
     settings = {
