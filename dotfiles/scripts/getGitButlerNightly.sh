@@ -25,7 +25,7 @@ FILENAME=$(basename -s .tar.gz "$URL")
 
 TARGET_DIR="/opt/appimages/"
 TARBALL_FILENAME=$(basename "$URL")
-APPIMAGE_FILENAME=$(replace_first "$(basename -s .tar.gz "$URL")" "_" " ")
+APPIMAGE_FILENAME=$(basename -s .tar.gz "$URL")
 
 echo -e "\n  ${BOLDCYAN}⧑${NC}  ${CYANBG}${BLACK} GitButler ${NC} Downloader\n"
 
