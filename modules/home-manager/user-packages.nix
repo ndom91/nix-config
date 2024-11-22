@@ -80,6 +80,7 @@
     unstablePkgs.mold # Faster Linker
     unstablePkgs.terraformer # Terraform Introspection Tool
     unstablePkgs.terraform # IaaC
+    unstablePkgs.awscli2 # aws-cli
 
     # Nix Tools
     nvd # Nix Visual Diff
