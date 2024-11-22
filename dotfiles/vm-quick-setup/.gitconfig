@@ -1,0 +1,36 @@
+[merge]
+	conflictStyle = "zdiff3"
+	tool = "nvim"
+
+[protocol]
+	version = 2
+
+[pull]
+	default = "current"
+	rebase = false
+
+[push]
+	autoSetupRemote = true
+	default = "current"
+
+[remote]
+	pushDefault = "origin"
+
+[rerere]
+	autoupdate = true
+	enabled = true
+
+[status]
+	branch = true
+	short = true
+
+[tag]
+	gpgSign = true
+
+[url "git@github.com:"]
+	insteadOf = "https://github.com/"
+
+[user]
+	email = "yo@ndo.dev"
+	name = "ndom91"
+	signingKey = "~/.ssh/id_ndo4.pub"
