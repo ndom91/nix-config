@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
+set -xeo pipefail
 
 CYAN="\e[0;96m"
 BLACK="\e[1;30m"
@@ -25,7 +25,7 @@ FILENAME=$(basename -s .tar.gz "$URL")
 
 TARGET_DIR="/opt/appimages/"
 TARBALL_FILENAME=$(basename "$URL")
-APPIMAGE_FILENAME=$(basename -s .tar.gz "$URL")
+APPIMAGE_FILENAME=$(basename -s .tar.gz "$URL" | sed 's| |_|g')
 
 echo -e "\n  ${BOLDCYAN}⧑${NC}  ${CYANBG}${BLACK} GitButler ${NC} Downloader\n"
 
@@ -46,7 +46,10 @@ fi
 
 echo -e "[${CYAN}*${NC}] Extracting ${CYAN}$TARBALL_FILENAME${NC}"
 
+TAR_CONTENTS=$(tar --list --file "$TARBALL_FILENAME")
+
 tar -xf "$TARBALL_FILENAME"
+mv "$TAR_CONTENTS" "$APPIMAGE_FILENAME"
 
 echo -e "[${CYAN}*${NC}] Cleaning up"
 
