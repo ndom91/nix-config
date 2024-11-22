@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-# set -x
+set -xeo pipefail
+
 CYAN="\e[0;96m"
 BLACK="\e[1;30m"
 BOLDCYAN="\e[1;96m"
 CYANBG="\e[46;1m"
 RED="\e[0;91m"
 NC="\e[0m"
+
+RELEASE_TYPE=${1-nightly}
 
 replace_first() {
   local string="$1"
@@ -16,26 +19,15 @@ replace_first() {
 }
 
 # Default URL to latest AppImage
-URL=$(curl -sk https://app.gitbutler.com/releases/nightly | jq '.platforms."linux-x86_64".url' | sed 's|\"||g')
-FILENAME=$(basename -s .tar.gz "$URL")
+URL=$(curl -sk "https://app.gitbutler.com/releases/$RELEASE_TYPE" | jq '.platforms."linux-x86_64".url' | sed 's|\"||g')
 
-# Allow overriding via first argument
-if [[ $1 ]]; then
-  URL="$1"
-fi
+FILENAME=$(basename -s .tar.gz "$URL")
 
 TARGET_DIR="/opt/appimages/"
 TARBALL_FILENAME=$(basename "$URL")
+APPIMAGE_FILENAME=$(basename -s .tar.gz "$URL" | sed 's| |_|g')
 
-if [[ "$FILENAME" == *"GitButler_Nightly"* ]]; then
-  # Tauri v2
-  APPIMAGE_FILENAME=$(replace_first "$(basename -s .tar.gz "$URL")" "_" " ")
-else
-  # Tauri v1
-  APPIMAGE_FILENAME=$(basename --suffix=".tar.gz" "$URL")
-fi
-
-echo -e "\n  ${BOLDCYAN}⧑${NC}  ${CYANBG}${BLACK} GitButler ${NC} Nightly Downloader\n"
+echo -e "\n  ${BOLDCYAN}⧑${NC}  ${CYANBG}${BLACK} GitButler ${NC} Downloader\n"
 
 cd "$TARGET_DIR" || return
 
@@ -54,7 +46,10 @@ fi
 
 echo -e "[${CYAN}*${NC}] Extracting ${CYAN}$TARBALL_FILENAME${NC}"
 
+TAR_CONTENTS=$(tar --list --file "$TARBALL_FILENAME")
+
 tar -xf "$TARBALL_FILENAME"
+mv "$TAR_CONTENTS" "$APPIMAGE_FILENAME"
 
 echo -e "[${CYAN}*${NC}] Cleaning up"
 

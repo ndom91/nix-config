@@ -154,13 +154,16 @@ return {
           vim.keymap.set("n", "<Leader>e", builtin.diagnostics, options)
           vim.keymap.set("n", "gr", builtin.lsp_references, options)
           vim.keymap.set("n", "gi", builtin.lsp_implementations, options)
-          vim.keymap.set("n", "gD", builtin.lsp_type_definitions, options)
-          vim.keymap.set("n", "gd", definitions, options)
+          -- vim.keymap.set("n", "gD", builtin.lsp_type_definitions, options)
+          vim.keymap.set("n", "gD", definitions, options)
+          vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", options)
+          vim.keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", options)
 
           vim.keymap.set("n", "K", vim.lsp.buf.hover, options)
-          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, options)
           vim.keymap.set("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", options)
           vim.keymap.set("n", "<space>re", vim.lsp.buf.rename, options)
+
+          vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, options)
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
 
@@ -216,6 +219,7 @@ return {
       require("plugins.lsp.langs.html")
       require("plugins.lsp.langs.json")
       require("plugins.lsp.langs.rnix")
+      require("plugins.lsp.langs.terraform")
       require("plugins.lsp.langs.rust")
       require("plugins.lsp.langs.svelte")
       require("plugins.lsp.langs.tailwindcss")

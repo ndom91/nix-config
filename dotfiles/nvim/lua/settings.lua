@@ -21,21 +21,16 @@ vim.api.nvim_set_var("markdown_fenced_languages", {
   "typescript",
   "yaml",
 })
+
 vim.filetype.add({
   extension = {
     mdx = "jsx",
+    tf = "terraform",
   },
 })
 -- Treesitter synonyms
-vim.treesitter.language.register('bash', 'sh')
-vim.treesitter.language.register('bash', 'shell')
-vim.treesitter.language.register('bash', 'text')
-vim.treesitter.language.register('bash', 'robots')
-vim.treesitter.language.register('bash', 'fallback')
-vim.treesitter.language.register('bash', 'pem')
-vim.treesitter.language.register('bash', 'xml')
-vim.treesitter.language.register('bash', 'tmux')
-
+vim.treesitter.language.register("bash", { "sh", "shell", "text", "robots", "fallback", "pem", "tmux" })
+vim.treesitter.language.register("svelte", "svelte")
 
 opt.completeopt = "menu,menuone,noselect"
 opt.clipboard = "unnamedplus"

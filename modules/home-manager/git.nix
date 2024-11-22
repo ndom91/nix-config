@@ -47,11 +47,11 @@
         autoSetupMerge = "simple";
         sort = "-committerdate";
       };
-      url = {
-        "git@github.com:" = {
-          insteadOf = "https://github.com/";
-        };
-      };
+      # url = {
+      #   "git@github.com:" = {
+      #     insteadOf = "https://github.com/";
+      #   };
+      # };
       rerere = {
         enabled = true;
         autoupdate = true;

@@ -122,8 +122,14 @@
     group = "users";
     mode = "644";
   };
-  age.secrets.pvpnKey = {
-    file = ../../secrets/pvpnKey.age;
+  age.secrets.pvpn_uk = {
+    file = ../../secrets/pvpn_uk.age;
+    owner = "ndo";
+    group = "users";
+    mode = "644";
+  };
+  age.secrets.pvpn_mx = {
+    file = ../../secrets/pvpn_mx.age;
     owner = "ndo";
     group = "users";
     mode = "644";

@@ -323,11 +323,14 @@ in
       autostart = false;
       interface = {
         ip = "10.2.0.2/32";
-        privateKeyFile = config.age.secrets.pvpnKey.path;
+        # privateKeyFile = config.age.secrets.pvpn_uk.path;
+        privateKeyFile = config.age.secrets.pvpn_mx.path;
       };
       endpoint = {
-        ip = "77.247.178.58";
-        publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
+        # ip = "77.247.178.58"; # UK
+        # publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI="; # UK
+        ip = "138.199.50.107"; # MX
+        publicKey = "tHwmpVZsh4yfoA9/vWbacF6cWcXUKE9wuDP5bz66oh8="; # MX
       };
     };
 

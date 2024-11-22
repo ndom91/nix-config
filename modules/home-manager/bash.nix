@@ -180,6 +180,8 @@
     
     # Suppress direnv log output (which is super verbose and not that useful)
     # export DIRENV_LOG_FORMAT=
+
+    getCommitByChangeId () { echo -e "\n" && git rev-list --all | while read commit; do git cat-file -p $commit | grep -B 6 "$1" && echo -e "commit-id $commit\n"; done }
   '';
 }
 

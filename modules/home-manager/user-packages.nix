@@ -5,7 +5,7 @@
     unstablePkgs.xpipe
     unstablePkgs.zed-editor
     github-desktop
-    unstablePkgs.mission-center
+    mission-center
     unstablePkgs.meld
 
     # Chromium
