@@ -219,6 +219,7 @@ return {
       require("plugins.lsp.langs.html")
       require("plugins.lsp.langs.json")
       require("plugins.lsp.langs.rnix")
+      require("plugins.lsp.langs.terraform")
       require("plugins.lsp.langs.rust")
       require("plugins.lsp.langs.svelte")
       require("plugins.lsp.langs.tailwindcss")
