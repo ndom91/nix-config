@@ -2,6 +2,7 @@
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.nixcord.homeManagerModules.nixcord
     nix-colors.homeManagerModules.default
     ../../modules/home-manager
   ];
@@ -11,7 +12,7 @@
     homeDirectory = "/home/ndo";
     stateVersion = stateVersion;
     packages = [
-      inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
+      inputs.home-manager.packages.${pkgs.system}.home-manager # home-manager binary
       fira-sans-nerd-font
     ];
   };
@@ -34,9 +35,6 @@
         "2,monitor:eDP-1"
         "3,monitor:DP-1,default:true"
       ];
-      # exec-once = [
-      #   "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1.5"
-      # ];
       bindl = [
         # trigger when the switch is turning on
         ",switch:on:Lid Switch,exec,hyprctl keyword monitor 'eDP-1,disable'"
