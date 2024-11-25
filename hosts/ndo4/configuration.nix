@@ -31,7 +31,7 @@ in
     };
     loader.systemd-boot = {
       enable = true;
-      configurationLimit = 20;
+      configurationLimit = 10;
       netbootxyz.enable = true;
     };
 
@@ -188,7 +188,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirt" "kvm" "video" ];
   };
 
   home-manager = {
@@ -216,11 +216,9 @@ in
     xdgOpenUsePortal = true;
     config = {
       common.default = [ "gtk" ];
-      # hyprland.default = [ "gtk" "hyprland" ];
     };
 
     extraPortals = [
-      # unstablePkgs.xdg-desktop-portal-hyprland
       unstablePkgs.xdg-desktop-portal-gtk
     ];
   };

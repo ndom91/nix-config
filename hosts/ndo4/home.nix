@@ -34,9 +34,6 @@
         "2,monitor:DP-1,default:true"
         "3,monitor:DP-1"
       ];
-      # exec-once = [
-      #   "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1.5"
-      # ];
     };
   };
 

@@ -1,8 +1,5 @@
 { lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, config, pkgs, ... }:
 let
-  # tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
-  # corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
-  # lenovo-wwan = pkgs.callPackage ../../packages/lenovo-wwan/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
   binsider = pkgs.callPackage ../../packages/binsider/default.nix { };
@@ -23,6 +20,22 @@ in
     inputs.home-manager.nixosModules.default
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
+
+  nix = {
+    settings = {
+      substituters = [
+        "https://cache.nixos.org?priority=10"
+        "https://hyprland.cachix.org"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+  };
 
   # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
   age.secrets.wutangKey.file = ../../secrets/wutangKey.age;
@@ -126,7 +139,6 @@ in
         80
         443
       ];
-      # allowedUDPPorts = [];
     };
     hosts = {
       "127.0.0.1" = [ "ndo-gb.puff.lan" "ndo-gb" "localhost" ];
@@ -153,15 +165,6 @@ in
     displayManager = {
       defaultSession = "hyprland";
     };
-    # xserver = {
-    #   # enable = true;
-    #   videoDrivers = [ "xe" "intel" ];
-    #   xkb = {
-    #     layout = "us";
-    #     variant = "";
-    #     options = "caps:escape";
-    #   };
-    # };
     envfs.enable = true;
     libinput.touchpad = {
       tappingButtonMap = "lrm";
@@ -169,12 +172,11 @@ in
     # dbus.implementation = "broker";
   };
 
-  # Hyprland swaynotificationcenter service
-  systemd.user.units.swaync.enable = true;
 
   # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
   systemd.services.NetworkManager-wait-online.enable = false;
 
+  systemd.user.units.swaync.enable = true;
   systemd.services."flatpak-managed-install" = {
     serviceConfig = {
       ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
@@ -255,7 +257,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "networkmanager" "docker" "wheel" "libvirt" "kvm" "video" "render" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirt" "kvm" "video" "render" ];
   };
 
   home-manager = {
@@ -288,14 +290,34 @@ in
     quickemu # Download preconfiged VM qemu configs and ISOs
   ];
 
-  # Needed to load here before flatpak. Probably belongs in window-manager
-  # nix file like 'hyprland.nix'.
+
+  console = {
+    earlySetup = true;
+    colors = [
+      "000000"
+      "FC618D"
+      "7BD88F"
+      "FD9353"
+      "5AA0E6"
+      "948AE3"
+      "5AD4E6"
+      "F7F1FF"
+      "99979B"
+      "FB376F"
+      "4ECA69"
+      "FD721C"
+      "2180DE"
+      "7C6FDC"
+      "37CBE1"
+      "FFFFFF"
+    ];
+  };
+
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
     config = {
       common.default = [ "gtk" ];
-      # hyprland.default = [ "gtk" "hyprland" ];
     };
 
     extraPortals = [
