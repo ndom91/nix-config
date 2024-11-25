@@ -97,7 +97,6 @@
     duf # Disk Usage/Free Utility - a better 'df' alternative
     ncdu # analyzer your disk usage Interactively, via TUI(replacement of `du`)
     gpu-viewer # GPU htop
-    via # QMK Keyboard Config Tool
 
     # Terminal Apps
     unstablePkgs.charm-freeze # Code Screenshots

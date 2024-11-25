@@ -70,6 +70,7 @@
     xdg-user-dirs
     libva-utils
     vdpauinfo
+    via # QMK Keyboard Config Tool
     vulkan-tools
     way-displays
     unstablePkgs.webkitgtk_4_0
