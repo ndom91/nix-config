@@ -76,11 +76,13 @@
     unstablePkgs.lnav # Log file navigator
     git-trim # Trim your branches whose remote refs are merged or gone
     graphviz # Generate graphs on CLI
+    kondo # Multi-language vendor file cleaner (node_modules, vendor, etc)
     unstablePkgs.serie # Git Log output
     unstablePkgs.mold # Faster Linker
     unstablePkgs.terraformer # Terraform Introspection Tool
     unstablePkgs.terraform # IaaC
     unstablePkgs.awscli2 # aws-cli
+    unstablePkgs.oha # HTML Load Tester
 
     # Nix Tools
     nvd # Nix Visual Diff
@@ -109,12 +111,10 @@
     irssi # IRC Client
     parted # GParted Terminal
     ranger # TUI File Manager
-    kondo # Multi-language vendor file cleaner (node_modules, vendor, etc)
     speedtest-rs # Speedtest CLI
     unstablePkgs.yazi # Terminal File Manager
     unstablePkgs.netscanner # TUI Subnet Scanner
     # unstablePkgs.termscp # TUI S3/SFTP/etc client
-    unstablePkgs.oha # HTML Load Tester
     inputs.tsui.packages.${pkgs.system}.tsui # Tailscale TUI Client
     inputs.superfile.packages.${pkgs.system}.default # TUI File Manager
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default

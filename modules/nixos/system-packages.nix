@@ -3,82 +3,81 @@
   environment.systemPackages = with pkgs; [
     # bottles # wine manager
     # zig
-    inputs.agenix.packages.x86_64-linux.default
-    amdgpu_top
-    appimagekit
-    nvtopPackages.amd
-    appimage-run
-    bat
+    inputs.agenix.packages.x86_64-linux.default # Agenix secret manager
+    amdgpu_top # AMD GPU Top
+    appimagekit # AppImageKit
+    nvtopPackages.amd # AMD GPU Top
+    appimage-run # AppImage Runner
+    bat # cat replacement
     # bluez
-    brightnessctl
-    catppuccin-gtk
-    cmake
-    coreutils
-    dconf
-    dig
-    difftastic
-    docker-compose
-    dua
-    dumb-init
-    eza
-    fd
-    ffmpeg
-    file
-    fzf
-    gcc
-    git
-    gnome.gnome-disk-utility
-    gnumake
-    gnupg
-    htop
-    inotify-tools
-    ipmitool
-    jq
-    killall
-    libcamera
+    brightnessctl # Brightness Control
+    catppuccin-gtk # GTK Theme
+    cmake # CMake
+    coreutils # GNU Core Utilities
+    dconf # DConf Editor
+    dig # DNS Lookup
+    difftastic # diff tool
+    docker-compose # Docker Compose
+    dua # Disk Usage Analyzer
+    dumb-init # pid1 init system for Docker
+    eza # ls replacement (Rust)
+    fd # find replacement (Rust)
+    ffmpeg # multimedia framework
+    file # File type identification
+    fzf # Fuzzy Finder
+    gcc # GNU Compiler Collection
+    git # Git
+    gnome.gnome-disk-utility # Disks Utility (GParted)
+    gnumake # gmake (GNU Make)
+    gnupg # GPG
+    htop # system process monitor
+    inotify-tools # inotifywait
+    ipmitool # IPMI Tool
+    jq # CLI JSON Client
+    killall # killall
+    libcamera # libcamera
     # libfprint-2-tod1-elan
-    libnotify
-    lm_sensors
-    lshw
-    lsof
-    mlocate
-    nmap
-    ntfs3g
-    ntp
-    ouch
-    pamixer
-    pasystray
-    pavucontrol
-    pciutils
-    powertop
-    python311Packages.requests
-    qemu
-    rclone
-    ripgrep
-    openssh
-    sshfs
-    smartmontools
-    system-config-printer
-    tmux
-    tracexec
-    tree
-    tree
-    unzip
-    usbutils
-    watch
-    wget
+    libnotify # libnotify
+    lm_sensors # sensors
+    lshw # Hardware List
+    lsof # List Open Files
+    mlocate # Safer 'locate'
+    nmap # Network Mapper
+    ntfs3g # Mount NTFS drives
+    ntp # Network Time Protocol client
+    ouch # Compress / decompress many formats
+    pamixer # PulseAudio Mixer
+    pasystray # PulseAudio Sys Tray app
+    pavucontrol # PulseAudio Volume Control
+    pciutils # lspci
+    powertop # Power TOP displays power consumption
+    python311Packages.requests # Python Requests
+    qemu # QEMU
+    rclone # cloud storage client
+    ripgrep # rg
+    openssh # SSH 
+    sshfs # SSH Filesystem
+    smartmontools # S.M.A.R.T. monitoring
+    system-config-printer # printer configuration
+    tmux # Terminal Multiplexer
+    tracexec # Trace exec system calls
+    tree # List directories recursively
+    unzip # Unzip files
+    usbutils # Provides lsusb
+    watch # Command line tool to execute a program periodically
+    wget # Web Downloader
     xdg-user-dirs
-    libva-utils
-    vdpauinfo
+    libva-utils # vainfo
+    vdpauinfo # VDPAU (Video Decode and Presentation API for Unix)
     via # QMK Keyboard Config Tool
-    vulkan-tools
-    way-displays
-    unstablePkgs.webkitgtk_4_0
-    unstablePkgs.webkitgtk_4_1
-    wlay
-    wireguard-tools
+    vulkan-tools # vulkaninfo
+    way-displays # Manage Wayland Displays
+    unstablePkgs.webkitgtk_4_0 # WebKitGTK 4.0 (Tauri v1)
+    unstablePkgs.webkitgtk_4_1 # WebKitGTK 4.1 (Tauri v2)
+    wlay # GUI Wayland Output Management
+    wireguard-tools # wg-quick
     zip
-    zoxide
+    zoxide # cd replacement
 
     # sddm
     # bibata-cursors-translucent
@@ -97,6 +96,10 @@
       tweaks = [ "normal" ];
       variant = "mocha";
     })
+  ];
+
+  services.udev.packages = with pkgs; [
+    via
   ];
 
   # Register AppImages as binary format
