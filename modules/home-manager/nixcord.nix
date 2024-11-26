@@ -1,4 +1,4 @@
-{ lib, unstablePkgs, input }:
+{ inputs, config, unstablePkgs, pkgs, ... }:
 {
   # TODO: Import
   # https://github.com/kaylorben/nixcord
@@ -22,16 +22,56 @@
 
     config = {
       themeLinks = [
-        "https://refact0r.github.io/midnight-discord/midnight.css"
+        "https://refact0r.github.io/midnight-discord/flavors/midnight-catppuccin-mocha.theme.css"
       ];
       frameless = true;
       plugins = {
-        fakeNitro.enable = true;
+        alwaysTrust.enable = true;
+        betterFolders.enable = true;
+        betterUploadButton.enable = true;
         callTimer.enable = true;
-        friendsSince.enable = true;
+        clearURLs.enable = true;
+        copyFileContents.enable = true;
         crashHandler.enable = true;
-        volumeBooster.enable = true;
-        notificationVolume.enable = true;
+        fakeNitro.enable = true;
+        favoriteEmojiFirst.enable = true;
+        friendsSince.enable = true;
+        fullSearchContext.enable = true;
+        gifPaste.enable = true;
+        imageZoom.enable = true;
+        imageLink.enable = true;
+        memberCount.enable = true;
+        mentionAvatars.enable = true;
+        messageLinkEmbeds.enable = true;
+        noDevtoolsWarning.enable = true;
+        noServerEmojis = {
+          enable = true;
+          shownEmojis = "currentServer";
+        };
+        noScreensharePreview.enable = true;
+        noTypingAnimation.enable = true;
+        onePingPerDM.enable = true;
+        platformIndicators.enable = true;
+        previewMessage.enable = true;
+        readAllNotificationsButton.enable = true;
+        serverInfo.enable = true;
+        serverListIndicators.enable = true;
+        shikiCodeblocks = {
+          enable = true;
+          tryHljs = true;
+        };
+        showAllMessageButtons.enable = true;
+        showHiddenChannels.enable = true;
+        showMeYourName.enable = true;
+        silentTyping.enable = true;
+        unsuppressEmbeds.enable = true;
+        voiceChatDoubleClick.enable = true;
+        vencordToolbox.enable = true;
+        unindent.enable = true;
+        webKeybinds.enable = true;
+        whoReacted.enable = true;
+        # volumeBooster.enable = true;
+        # notificationVolume.enable = true;
         webScreenShareFixes.enable = true;
       };
     };
