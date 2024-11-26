@@ -27,7 +27,7 @@
     settings = {
       monitor = lib.mkForce [
         "DP-1,3440x1440,1080x480,1"
-        "DP-2,1920x1080,0x0,1,transform,3"
+        "DP-4,1920x1080,0x0,1,transform,3"
       ];
       workspace = [
         "1,monitor:DP-2,default:true"
