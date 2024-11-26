@@ -49,7 +49,10 @@ echo -e "[${CYAN}*${NC}] Extracting ${CYAN}$TARBALL_FILENAME${NC}"
 TAR_CONTENTS=$(tar --list --file "$TARBALL_FILENAME")
 
 tar -xf "$TARBALL_FILENAME"
-mv "$TAR_CONTENTS" "$APPIMAGE_FILENAME"
+
+if [[ "$TAR_CONTENTS" != "$APPIMAGE_FILENAME" ]]; then
+  mv "$TAR_CONTENTS" "$APPIMAGE_FILENAME"
+fi
 
 echo -e "[${CYAN}*${NC}] Cleaning up"
 

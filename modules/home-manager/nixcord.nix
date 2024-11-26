@@ -20,6 +20,12 @@
       package = unstablePkgs.vesktop;
     };
 
+    extraConfig = {
+      discordBranch = "canary";
+      minimizeToTray = false;
+      arRPC = false;
+    };
+
     config = {
       themeLinks = [
         "https://refact0r.github.io/midnight-discord/flavors/midnight-catppuccin-mocha.theme.css"
@@ -58,7 +64,7 @@
         serverListIndicators.enable = true;
         shikiCodeblocks = {
           enable = true;
-          tryHljs = true;
+          tryHljs = "PRIMARY";
         };
         showAllMessageButtons.enable = true;
         showHiddenChannels.enable = true;
@@ -66,7 +72,6 @@
         silentTyping.enable = true;
         unsuppressEmbeds.enable = true;
         voiceChatDoubleClick.enable = true;
-        vencordToolbox.enable = true;
         unindent.enable = true;
         webKeybinds.enable = true;
         whoReacted.enable = true;
