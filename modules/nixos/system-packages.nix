@@ -35,6 +35,7 @@
     ipmitool # IPMI Tool
     jq # CLI JSON Client
     killall # killall
+    kmon # Linux Kernel Monitor
     libcamera # libcamera
     # libfprint-2-tod1-elan
     libnotify # libnotify
