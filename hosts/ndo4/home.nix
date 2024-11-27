@@ -31,7 +31,7 @@
         "DP-4,1920x1080,0x0,1,transform,3"
       ];
       workspace = [
-        "1,monitor:DP-2,default:true"
+        "1,monitor:DP-4,default:true"
         "2,monitor:DP-1,default:true"
         "3,monitor:DP-1"
       ];
