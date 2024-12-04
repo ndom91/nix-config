@@ -9,7 +9,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 -- Skip compatibility routines and speed up loading
-vim.g.skip_ts_context_commentstring_module = true
+-- vim.g.skip_ts_context_commentstring_module = true
 
 -- Markdown
 vim.api.nvim_set_var("markdown_fenced_languages", {
@@ -29,8 +29,8 @@ vim.filetype.add({
   },
 })
 -- Treesitter synonyms
-vim.treesitter.language.register("bash", { "sh", "shell", "text", "robots", "fallback", "pem", "tmux" })
-vim.treesitter.language.register("svelte", "svelte")
+-- vim.treesitter.language.register("bash", { "sh", "shell", "text", "robots", "fallback", "pem", "tmux" })
+-- vim.treesitter.language.register("svelte", "svelte")
 
 opt.completeopt = "menu,menuone,noselect"
 opt.clipboard = "unnamedplus"
