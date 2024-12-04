@@ -51,7 +51,7 @@ let
       };
       persistent-workspaces = {
         "DP-1" = [ 2 3 ];
-        "DP-4" = [ 1 ];
+        "DP-2" = [ 1 ];
       };
       on-scroll-down = "hyprctl dispatch workspace e-1";
       on-scroll-up = "hyprctl dispatch workspace e+1";
@@ -183,7 +183,7 @@ let
   };
 
   ndo4Vertical = {
-    output = "DP-4";
+    output = "DP-2";
     layer = "top";
     exclusive = true;
     passthrough = false;
@@ -247,7 +247,7 @@ let
       };
       persistent-workspaces = {
         "DP-1" = [ 2 3 ];
-        "DP-4" = [ 1 ];
+        "DP-2" = [ 1 ];
       };
       on-scroll-down = "hyprctl dispatch workspace e-1";
       on-scroll-up = "hyprctl dispatch workspace e+1";
