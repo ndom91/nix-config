@@ -2,6 +2,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     lazy = true,
+    enabled = false,
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
@@ -13,11 +14,41 @@ return {
       },
     },
     keys = {
-      { "<leader>dr", function() require("dap").continue() end, desc = "dap continue" },
-      { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "dap toggle breakpoint" },
-      { "<leader>dv", function() require("dap").step_over() end, desc = "dap step over" },
-      { "<leader>di", function() require("dap").step_into() end, desc = "dap step into" },
-      { "<leader>do", function() require("dap").step_out() end, desc = "dap step out" },
+      {
+        "<leader>dr",
+        function()
+          require("dap").continue()
+        end,
+        desc = "dap continue",
+      },
+      {
+        "<leader>db",
+        function()
+          require("dap").toggle_breakpoint()
+        end,
+        desc = "dap toggle breakpoint",
+      },
+      {
+        "<leader>dv",
+        function()
+          require("dap").step_over()
+        end,
+        desc = "dap step over",
+      },
+      {
+        "<leader>di",
+        function()
+          require("dap").step_into()
+        end,
+        desc = "dap step into",
+      },
+      {
+        "<leader>do",
+        function()
+          require("dap").step_out()
+        end,
+        desc = "dap step out",
+      },
     },
     config = function()
       require("dap-vscode-js").setup({
@@ -83,7 +114,9 @@ return {
 
       require("dapui").setup()
       local dap, dapui = require("dap"), require("dapui")
-      dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open({ reset = true }) end
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open({ reset = true })
+      end
       dap.listeners.before.event_terminated["dapui_config"] = dapui.close
       dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
@@ -105,13 +138,27 @@ return {
       -- vim.keymap.set({ 'n', 't' }, '<A-l>', function() dap.step_into() end)
       -- vim.keymap.set({ 'n', 't' }, '<A-j>', function() dap.step_over() end)
       -- vim.keymap.set({ 'n', 't' }, 'dr', function() dap.continue() end)
-      vim.keymap.set("n", "<leader>dn", function() dap.run_to_cursor() end)
-      vim.keymap.set("n", "<leader>dc", function() dap.terminate() end)
-      vim.keymap.set("n", "<leader>dR", function() dap.clear_breakpoints() end)
-      vim.keymap.set("n", "<leader>de", function() dap.set_exception_breakpoints({ "all" }) end)
-      vim.keymap.set("n", "<leader>da", function() require("debugHelper").attach() end)
-      vim.keymap.set("n", "<leader>dA", function() require("debugHelper").attachToRemote() end)
-      vim.keymap.set("n", "<leader>di", function() require("dap.ui.widgets").hover() end)
+      vim.keymap.set("n", "<leader>dn", function()
+        dap.run_to_cursor()
+      end)
+      vim.keymap.set("n", "<leader>dc", function()
+        dap.terminate()
+      end)
+      vim.keymap.set("n", "<leader>dR", function()
+        dap.clear_breakpoints()
+      end)
+      vim.keymap.set("n", "<leader>de", function()
+        dap.set_exception_breakpoints({ "all" })
+      end)
+      vim.keymap.set("n", "<leader>da", function()
+        require("debugHelper").attach()
+      end)
+      vim.keymap.set("n", "<leader>dA", function()
+        require("debugHelper").attachToRemote()
+      end)
+      vim.keymap.set("n", "<leader>di", function()
+        require("dap.ui.widgets").hover()
+      end)
       vim.keymap.set("n", "<leader>d?", function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.scopes)

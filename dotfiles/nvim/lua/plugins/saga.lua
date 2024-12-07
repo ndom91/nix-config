@@ -3,7 +3,6 @@ return {
   enabled = true,
   event = "LspAttach",
   keys = {
-    { "<leader>sf", "<cmd>Lspsaga finder<CR>", desc = "[S]ymbol [F]inder" },
     { "<leader>tt", "<cmd>Lspsaga term_toggle<CR>", desc = "[T]erm [T]oggle" },
   },
   opts = {
@@ -16,6 +15,9 @@ return {
       sign = true,
       sign_priority = 40,
       virtual_text = false,
+    },
+    code_action = {
+      extend_gitsigns = true,
     },
   },
   dependencies = {

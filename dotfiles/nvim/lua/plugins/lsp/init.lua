@@ -6,11 +6,11 @@ local function goto_prev_error()
 end
 
 return {
-  {
-    "williamboman/mason.nvim",
-    lazy = false,
-    opts = {},
-  },
+  -- {
+  --   "williamboman/mason.nvim",
+  --   lazy = false,
+  --   opts = {},
+  -- },
   -- {
   --   "williamboman/mason-lspconfig.nvim",
   --   opts = {
@@ -25,7 +25,7 @@ return {
   --       "html",
   --       "svelte",
   --       "tailwindcss",
-  --       -- "rust_analyzer",
+  --       "rust_analyzer",
   --       "volar",
   --     },
   --     handlers = {
@@ -129,80 +129,66 @@ return {
       --     })
       --   end,
       -- })
+      -- NOTE: Migrated to `conform.nvim`
 
       vim.diagnostic.config({ jump = { float = true } })
 
       -- vim.keymap.set("n", "[d", vim.diagnostic.jump({ count = -1, float = true }))
       -- vim.keymap.set("n", "]d", vim.diagnostic.jump({ count = 1, float = true }))
-      vim.keymap.set("n", "]e", goto_next_error)
-      vim.keymap.set("n", "[e", goto_prev_error)
 
       -- On Attach
       vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+        group = vim.api.nvim_create_augroup("LspAttach", { clear = true }),
         callback = function(event)
-          local options = { buffer = event.buf }
           local builtin = require("telescope.builtin")
 
-          -- DISABLED: Enable inlay_hints on insert mode only
-          -- local inlay_group = vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
-          -- vim.api.nvim_create_autocmd("InsertEnter", {
-          --   buffer = event.buf,
-          --   callback = function() vim.lsp.inlay_hint.enable(event.buf, true) end,
-          --   group = inlay_group,
-          -- })
-          -- vim.api.nvim_create_autocmd("InsertLeave", {
-          --   buffer = event.buf,
-          --   callback = function() vim.lsp.inlay_hint.enable(event.buf, false) end,
-          --   group = inlay_group,
-          -- })
+          local map = function(keys, func, desc, mode)
+            mode = mode or "n"
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+          end
 
+          -- NOTE: What is this used for?
           vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-          vim.keymap.set("n", "<Leader>e", builtin.diagnostics, options)
-          vim.keymap.set("n", "gr", builtin.lsp_references, options)
-          vim.keymap.set("n", "gi", builtin.lsp_implementations, options)
-          -- vim.keymap.set("n", "gD", builtin.lsp_type_definitions, options)
-          vim.keymap.set("n", "gD", definitions, options)
-          vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", options)
-          vim.keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", options)
+          map("]e", goto_next_error, "Goto Next Error")
+          map("[e", goto_prev_error, "Goto Previous Error")
 
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, options)
-          vim.keymap.set("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", options)
-          vim.keymap.set("n", "<space>re", vim.lsp.buf.rename, options)
-
-          vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, options)
+          map("<Leader>e", builtin.diagnostics, "Show [E]rrors")
+          map("gi", builtin.lsp_implementations, "[G]oto [I]mplementations")
+          -- map("gT", builtin.lsp_type_definitions, "[G]oto [T]ype Definition")
+          map("gD", definitions, "[G]oto [D]efinitions")
+          map("gd", "<cmd>Lspsaga goto_definition<CR>", "[G]oto [D]efinition")
+          map("gr", "<cmd>Lspsaga finder<CR>", "[G]oto [R]eferences")
+          -- map("gr", builtin.lsp_references, "[G]oto [R]eferences")
+          map("K", vim.lsp.buf.hover, "Hover")
+          map("<space>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ctions")
+          map("<space>re", vim.lsp.buf.rename, "[R][e]name")
+          map("<C-s>", vim.lsp.buf.signature_help, "Signature Help", "i")
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-
           if client ~= nil then
-            -- Formatting keymap handler
-            -- local function attachFormatKeymap()
-            --   if not client.server_capabilities.documentFormattingProvider then return end
-            --
-            --   if client.name == "tsserver" then return end
-            --
-            --   -- vim.keymap.set("n", "<Leader>lf", function() format(client.id, event.buf) end, options)
-            --   vim.keymap.set("n", "<Leader>lf", function() format(client.id, event.buf) end, options)
-            -- end
-            -- attachFormatKeymap()
-
             -- Highlight symbol references on hover
-            if client.server_capabilities.documentHighlightProvider then
-              vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
-              vim.api.nvim_clear_autocmds({
-                buffer = event.buf,
-                group = "LspDocumentHighlight",
-              })
+            --
+            if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+              -- if client.server_capabilities.documentHighlightProvider then
+              local highlight_augroup = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
               vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                group = "LspDocumentHighlight",
+                group = highlight_augroup,
                 buffer = event.buf,
                 callback = vim.lsp.buf.document_highlight,
               })
-              vim.api.nvim_create_autocmd("CursorMoved", {
-                group = "LspDocumentHighlight",
+              vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+                group = highlight_augroup,
                 buffer = event.buf,
                 callback = vim.lsp.buf.clear_references,
+              })
+
+              vim.api.nvim_create_autocmd("LspDetach", {
+                group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
+                callback = function(event2)
+                  vim.lsp.buf.clear_references()
+                  vim.api.nvim_clear_autocmds({ group = highlight_augroup, buffer = event2.buf })
+                end,
               })
             end
 
@@ -210,31 +196,66 @@ return {
           end
 
           -- Fix treesitter ts-autotag diagnostics fix - https://github.com/windwp/nvim-ts-autotag#enable-update-on-insert
-          vim.lsp.handlers["textDocument/publishDiagnostics"] =
-            vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-              underline = true,
-              virtual_text = {
-                spacing = 5,
-                min = vim.diagnostic.severity.WARN,
-              },
-              update_in_insert = true,
-            })
+          -- vim.lsp.handlers["textDocument/publishDiagnostics"] =
+          --   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+          --     underline = true,
+          --     virtual_text = {
+          --       spacing = 5,
+          --       min = vim.diagnostic.severity.WARN,
+          --     },
+          --     update_in_insert = true,
+          --   })
         end,
       })
 
-      require("plugins.lsp.langs.css")
-      require("plugins.lsp.langs.lua")
-      require("plugins.lsp.langs.eslint")
-      require("plugins.lsp.langs.html")
-      require("plugins.lsp.langs.json")
-      require("plugins.lsp.langs.rnix")
-      require("plugins.lsp.langs.terraform")
-      require("plugins.lsp.langs.rust")
-      require("plugins.lsp.langs.svelte")
-      require("plugins.lsp.langs.tailwindcss")
-      require("plugins.lsp.langs.typescript")
-      require("plugins.lsp.langs.yaml")
-      -- require("plugins.lsp.langs.vue")
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      local servers = {
+        cssls = require("plugins.lsp.langs.css"),
+        lua_ls = require("plugins.lsp.langs.lua"),
+        eslint = require("plugins.lsp.langs.eslint"),
+        html = {},
+        jsonls = require("plugins.lsp.langs.json"),
+        rnix = {},
+        terraformls = {},
+        rust_analyzer = require("plugins.lsp.langs.rust"),
+        svelte = require("plugins.lsp.langs.svelte"),
+        tailwindcss = require("plugins.lsp.langs.tailwindcss"),
+        ts_ls = require("plugins.lsp.langs.typescript"),
+        yamlls = require("plugins.lsp.langs.yaml"),
+        -- require("plugins.lsp.langs.vue")
+      }
+
+      require("mason").setup()
+
+      -- You can add other tools here that you want Mason to install
+      -- for you, so that they are available from within Neovim.
+      local ensure_installed = vim.tbl_keys(servers or {})
+      vim.list_extend(ensure_installed, {
+        "stylua",
+        "nixpkgs-fmt",
+        "prettierd",
+        "rustywind",
+        -- "biome",
+        -- "eslint_d",
+        "js-debug-adapter",
+        "shellcheck",
+        "shfmt",
+      })
+      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+      require("mason-lspconfig").setup({
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+            require("lspconfig")[server_name].setup(server)
+          end,
+        },
+      })
     end,
   },
   {

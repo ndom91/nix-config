@@ -3,9 +3,6 @@ return {
   "nvim-lua/plenary.nvim",
   "nvim-lua/popup.nvim",
 
-  -- icons on completion
-  "onsails/lspkind-nvim",
-
   -- lsp function signature help on wildmenu
   {
     "ray-x/lsp_signature.nvim",
@@ -20,14 +17,10 @@ return {
     },
   },
   {
+    -- LSP status notifications bottom right
     "j-hui/fidget.nvim",
     event = "LspAttach",
     opts = {
-      -- integration = {
-      --   ["nvim-tree"] = {
-      --     enable = false,
-      --   },
-      -- },
       progress = {
         display = {
           progress_icon = {
@@ -45,7 +38,7 @@ return {
   },
   {
     "folke/trouble.nvim",
-    enabled = true,
+    enabled = false,
     config = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
@@ -109,6 +102,8 @@ return {
         typescript = true,
         typescriptreact = true,
         javascriptreact = true,
+        svelte = true,
+        rust = true,
         lua = true,
         bash = true,
         sh = function()
@@ -122,13 +117,14 @@ return {
       },
     },
   },
-  -- first-party github copilot plugin
   {
+    -- first-party github copilot plugin
     "github/copilot.vim",
     event = "InsertEnter",
     enabled = false,
   },
   {
+    -- LLM Chat
     "yetone/avante.nvim",
     event = "VeryLazy",
     build = "make",
@@ -146,25 +142,14 @@ return {
       },
     },
     dependencies = {
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "nvim-tree/nvim-web-devicons",
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      --- The below is optional, make sure to setup it properly if you have lazy=true
-      -- {
-      --   "MeanderingProgrammer/render-markdown.nvim",
-      --   opts = {
-      --     file_types = { "markdown", "Avante" },
-      --   },
-      --   ft = { "markdown", "Avante" },
-      -- },
     },
   },
   {
-    "RRethy/nvim-base16",
-    enabled = false,
-  },
-  {
+    -- Highlight CSS and other color codes in their color
     "NvChad/nvim-colorizer.lua",
     opts = {
       filetypes = { "*" },
@@ -178,6 +163,7 @@ return {
     },
   },
   {
+    -- Startup dashboard
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     enabled = true,
@@ -225,6 +211,7 @@ return {
     },
   },
   {
+    -- Nice notification alert component
     "rcarriga/nvim-notify",
     lazy = false,
     enabled = true,
@@ -245,6 +232,7 @@ return {
     end,
   },
   {
+    -- Better multi-key navigation i.e. vimium style
     "folke/which-key.nvim",
     enabled = false,
     config = function()
@@ -260,41 +248,41 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    enabled = false,
+    enabled = true,
     opts = {},
     keys = {
       {
-        "s",
+        "fj",
         function()
           require("flash").jump()
         end,
         { "n", "x", "o" },
-        desc = "Flash Jump",
+        desc = "[F]lash [J]ump",
       },
       {
-        "S",
+        "ft",
         mode = { "n", "x", "o" },
         function()
           require("flash").treesitter()
         end,
-        desc = "Flash Treesitter",
+        desc = "[F]lash [T]reesitter",
       },
-      {
-        "r",
-        function()
-          require("flash").remote()
-        end,
-        "o",
-        desc = "Remote Flash",
-      },
-      {
-        "R",
-        function()
-          require("flash").treesitter_search()
-        end,
-        { "o", "x" },
-        desc = "Flash Treesitter Search",
-      },
+      -- {
+      --   "r",
+      --   function()
+      --     require("flash").remote()
+      --   end,
+      --   "o",
+      --   desc = "Remote Flash",
+      -- },
+      -- {
+      --   "R",
+      --   function()
+      --     require("flash").treesitter_search()
+      --   end,
+      --   { "o", "x" },
+      --   desc = "Flash Treesitter Search",
+      -- },
       {
         "<c-s>",
         function()
@@ -322,6 +310,7 @@ return {
     },
   },
   {
+    -- Screenshots of code
     "segeljakt/vim-silicon",
     enabled = false,
   },
@@ -341,36 +330,27 @@ return {
       },
     },
   },
-  -- {
-  --   dir = "/opt/ndomino/nvim/freeze.nvim",
-  --   enabled = true,
-  --   lazy = false,
-  --   opts = {
-  --     theme = "dracula",
-  --   },
-  --   keys = {
-  --     {
-  --       "<leader>f",
-  --       function() require("freeze").exec() end,
-  --       mode = { "n", "v" },
-  --       desc = "[F]reeze",
-  --       noremap = true,
-  --     },
-  --   },
-  -- },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     opts = {},
   },
-  {
-    "tpope/vim-surround",
-    enabled = false,
-  },
   { "tpope/vim-repeat" },
-  { "tpope/vim-sleuth" },
+  {
+    -- Automatically detect and set buffer settings like tabstop and shiftwidth
+    "tpope/vim-sleuth",
+  },
+  {
+    -- Whitespace highlighting
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {
+      scope = { enabled = false },
+      exclude = { filetypes = { "help", "dashboard" } },
+    },
+  },
   {
     "notes-nvim",
     dependencies = { "nvim-neotest/nvim-nio" },
