@@ -1,4 +1,4 @@
 require("settings")
-require("lazy")
+require("initlazy")
 require("mappings")
 require("autocmds")
