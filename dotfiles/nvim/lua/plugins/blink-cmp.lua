@@ -22,7 +22,7 @@ return {
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
     -- see the "default configuration" section below for full documentation on how to define
     -- your own keymap.
-    keymap = { preset = "default" },
+    keymap = { preset = "super-tab" },
 
     appearance = {
       -- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -49,16 +49,46 @@ return {
       end,
     },
 
-    -- default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
       completion = {
         enabled_providers = { "lsp", "path", "luasnip", "buffer" },
       },
     },
 
-    -- experimental auto-brackets support
-    -- completion = { accept = { auto_brackets = { enabled = true } } }
+    completion = {
+      menu = {
+        draw = {
+          padding = { 0, 1 },
+          gap = 1,
+          columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source_name" } },
+          components = {
+            kind_icon = {
+              ellipsis = false,
+              text = function(ctx)
+                return " " .. ctx.kind_icon .. " " .. ctx.icon_gap
+              end,
+              highlight = function(ctx)
+                return require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx) or "BlinkCmpKind" .. ctx.kind
+              end,
+            },
+            source_name = {
+              width = { max = 30 },
+              -- source_name or source_id are supported
+              text = function(ctx)
+                return ctx.source_name
+              end,
+              highlight = "BlinkCmpSource",
+            },
+          },
+        },
+      },
+      documentation = {
+        auto_show = true,
+      },
+      ghost_text = {
+        enabled = true,
+      },
+    },
 
     -- experimental signature help support
     signature = { enabled = true },
