@@ -63,7 +63,15 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "b0o/schemastore.nvim",
-      "folke/neodev.nvim",
+      {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+          library = {
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
+      },
       { "nvim-telescope/telescope.nvim", dependencies = "nvim-lua/plenary.nvim" },
     },
     opts = {
@@ -215,6 +223,7 @@ return {
       })
 
       require("plugins.lsp.langs.css")
+      require("plugins.lsp.langs.lua")
       require("plugins.lsp.langs.eslint")
       require("plugins.lsp.langs.html")
       require("plugins.lsp.langs.json")
@@ -226,15 +235,6 @@ return {
       require("plugins.lsp.langs.typescript")
       require("plugins.lsp.langs.yaml")
       -- require("plugins.lsp.langs.vue")
-    end,
-  },
-  {
-    "folke/neodev.nvim",
-    enabled = true,
-    ft = "lua",
-    config = function()
-      require("neodev").setup({})
-      require("plugins.lsp.langs.lua")
     end,
   },
   {

@@ -1,5 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
+  enabled = false,
   dependencies = {
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "hrsh7th/cmp-nvim-lsp",
@@ -12,7 +13,9 @@ return {
     {
       "L3MON4D3/LuaSnip",
       build = "make install_jsregexp",
-      config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
     },
     "onsails/lspkind-nvim",
     {
@@ -56,7 +59,9 @@ return {
       },
       preselect = "item",
       snippet = {
-        expand = function(args) luasnip.lsp_expand(args.body) end,
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
       },
       mapping = {
         ["<C-n>"] = cmp.mapping.select_next_item(),
