@@ -234,9 +234,9 @@ in
       common.default = [ "gtk" ];
     };
 
-    extraPortals = [
-      unstablePkgs.xdg-desktop-portal-gtk
-    ];
+    # extraPortals = [
+    #   unstablePkgs.xdg-desktop-portal-gtk
+    # ];
   };
 
   programs = {
@@ -275,7 +275,7 @@ in
     # picosnitch.enable = true;
     opensnitch.enable = true;
 
-    gnome.gnome-keyring.enable = true;
+    # gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
     clamav = {

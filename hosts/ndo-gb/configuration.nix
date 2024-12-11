@@ -44,7 +44,8 @@ in
   boot = {
     plymouth = {
       enable = true;
-      theme = "breeze";
+      # theme = "breeze";
+      catppuccin.enable = true;
     };
     loader.systemd-boot = {
       enable = true;
@@ -320,9 +321,9 @@ in
       common.default = [ "gtk" ];
     };
 
-    extraPortals = [
-      unstablePkgs.xdg-desktop-portal-gtk
-    ];
+    # extraPortals = [
+    #   unstablePkgs.xdg-desktop-portal-gtk
+    # ];
   };
 
   programs = {
@@ -367,7 +368,7 @@ in
       ];
     };
 
-    gnome.gnome-keyring.enable = true;
+    # gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
     clamav = {

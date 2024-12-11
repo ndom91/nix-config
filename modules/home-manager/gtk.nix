@@ -22,12 +22,12 @@
     enable = true;
     font.name = "Fira Sans";
 
-    catppuccin = {
-      enable = true;
-      flavor = "mocha";
-      accent = "maroon";
-      gnomeShellTheme = true;
-    };
+    # catppuccin = {
+    #   enable = true;
+    #   flavor = "mocha";
+    #   accent = "maroon";
+    #   gnomeShellTheme = true;
+    # };
 
     # theme = {
     #   name = catppuccin_name;
