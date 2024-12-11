@@ -240,9 +240,9 @@ in
     opengl = {
       enable = true;
       package = unstablePkgs.mesa.drivers;
-      driSupport = true;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
-      driSupport32Bit = true;
+      # driSupport = true;
+      # driSupport32Bit = true;
       extraPackages = with unstablePkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
         intel-compute-runtime # 8th gen +

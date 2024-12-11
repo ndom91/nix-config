@@ -232,8 +232,8 @@ in
       enable = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
-      driSupport = true;
-      driSupport32Bit = true;
+      # driSupport = true;
+      # driSupport32Bit = true;
       extraPackages = with unstablePkgs; [
         intel-media-driver
         intel-compute-runtime

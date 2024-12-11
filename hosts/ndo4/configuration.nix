@@ -175,10 +175,10 @@ in
 
     opengl = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
+      # driSupport = true;
+      # driSupport32Bit = true;
       # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
       extraPackages = with unstablePkgs; [
         # libglvnd
