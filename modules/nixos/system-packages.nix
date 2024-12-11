@@ -27,7 +27,7 @@
     fzf # Fuzzy Finder
     gcc # GNU Compiler Collection
     git # Git
-    gnome.gnome-disk-utility # Disks Utility (GParted)
+    gnome-disk-utility # Disks Utility (GParted)
     gnumake # gmake (GNU Make)
     gnupg # GPG
     htop # system process monitor

@@ -3,7 +3,7 @@
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
-      "python3.11-youtube-dl-2021.12.17"
+      "python3.12-youtube-dl-2021.12.17"
     ];
   };
 
