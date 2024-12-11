@@ -44,8 +44,8 @@ in
   boot = {
     plymouth = {
       enable = true;
-      # theme = "breeze";
-      catppuccin.enable = true;
+      theme = "breeze";
+      # catppuccin.enable = true;
     };
     loader.systemd-boot = {
       enable = true;
