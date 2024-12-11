@@ -173,7 +173,7 @@ in
 
     amdgpu = { opencl.enable = true; }; # ROCM Support
 
-    opengl = {
+    graphics = {
       enable = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;

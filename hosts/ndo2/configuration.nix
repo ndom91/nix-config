@@ -236,8 +236,8 @@ in
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
 
-    # Intel Hardware Acceleration
-    opengl = {
+    # Intel Hardware Acceleration 
+    graphics = {
       enable = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;

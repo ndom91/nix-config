@@ -228,7 +228,7 @@ in
     };
 
     # Intel Hardware Acceleration
-    opengl = {
+    graphics = {
       enable = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
