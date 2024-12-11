@@ -41,14 +41,14 @@
     unstablePkgs.beeper # Universal Chat App
     unstablePkgs.chromium # Browser
     floorp # Firefox
-    gnome.gnome-boxes # VM Manager
-    gnome.seahorse # GPG Key Manager
+    gnome-boxes # VM Manager
+    seahorse # GPG Key Manager
     slack # Chat
     # unstablePkgs.vesktop # Discord client w/ better wayland support (see nixcord.nix)
     virt-manager # VM Manager
     gnome-text-editor # Plain Text Editor
-    cinnamon.nemo # GUI File Manager
-    gnome.file-roller # GUI Archive Manager
+    nemo # GUI File Manager
+    file-roller # GUI Archive Manager
     vlc # Media Player
     loupe # Image Viewer
 
