@@ -1,10 +1,10 @@
 {
   description = "ndom91 flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {
@@ -33,7 +33,7 @@
 
   outputs = { self, unstable, catppuccin, agenix, nix-colors, nixpkgs, nix-index-database, ... } @inputs:
     let
-      stateVersion = "24.05";
+      stateVersion = "24.11";
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
