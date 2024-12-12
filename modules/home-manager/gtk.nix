@@ -29,10 +29,10 @@
     #   gnomeShellTheme = true;
     # };
 
-    # theme = {
-    #   name = catppuccin_name;
-    #   package = pkgs.catppuccin-gtk;
-    # };
+    theme = {
+      name = "rose-pine";
+      # package = pkgs.catppuccin-gtk;
+    };
 
     cursorTheme = {
       # package = rose-pine-cursor;
@@ -46,7 +46,10 @@
 
     iconTheme = {
       # package = colloidIconTheme;
-      name = "Colloid-grey-nord-dark";
+      name = "Colloid-Grey-Nord-Dark";
+      # name = "BreezeX-RosePine-Linux";
+      # name = "BreezeX-RosePineDawn-Linux";
+      # name = "Colloid-Dark";
     };
 
     gtk2.extraConfig = ''
@@ -67,11 +70,13 @@
       ];
       extraConfig = {
         gtk-application-prefer-dark-theme = 1;
+        "AdwStyleManager:color-scheme" = "dark";
       };
     };
 
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
+      "AdwStyleManager:color-scheme" = "dark";
     };
   };
 

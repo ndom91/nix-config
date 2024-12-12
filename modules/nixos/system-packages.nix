@@ -11,7 +11,7 @@
     bat # cat replacement
     # bluez
     brightnessctl # Brightness Control
-    catppuccin-gtk # GTK Theme
+    # catppuccin-gtk # GTK Theme
     cmake # CMake
     coreutils # GNU Core Utilities
     dconf # DConf Editor
@@ -73,7 +73,7 @@
     via # QMK Keyboard Config Tool
     vulkan-tools # vulkaninfo
     way-displays # Manage Wayland Displays
-    unstablePkgs.webkitgtk_4_0 # WebKitGTK 4.0 (Tauri v1)
+    # unstablePkgs.webkitgtk_4_0 # WebKitGTK 4.0 (Tauri v1)
     unstablePkgs.webkitgtk_4_1 # WebKitGTK 4.1 (Tauri v2)
     wlay # GUI Wayland Output Management
     wireguard-tools # wg-quick
@@ -86,17 +86,20 @@
     xorg.xsetroot
     xorg.xprop
 
+
     # Theme
+    unstablePkgs.rose-pine-gtk-theme # Rose-Pine GTK Theme
+    # colloid-icon-theme
     (colloid-icon-theme.override {
       schemeVariants = [ "nord" ];
       colorVariants = [ "grey" ];
     })
-    (catppuccin-gtk.override {
-      accents = [ "maroon" ];
-      size = "standard";
-      tweaks = [ "normal" ];
-      variant = "mocha";
-    })
+    # (catppuccin-gtk.override {
+    #   accents = [ "maroon" ];
+    #   size = "standard";
+    #   tweaks = [ "normal" ];
+    #   variant = "mocha";
+    # })
   ];
 
   services.udev.packages = with pkgs; [
