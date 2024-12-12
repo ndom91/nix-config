@@ -229,6 +229,10 @@
         "float, class:nemo"
         "center, class:nemo"
 
+        # float Nautilus file manager
+        "float, class:org.gnome.Nautilus"
+        "center, class:org.gnome.Nautilus"
+
         # float pavucontrol
         "float, class:pavucontrol"
         "center, class:pavucontrol"
@@ -286,7 +290,8 @@
         "CTRL SHIFT, L, exec, hyprlock"
         "$mainMod, Return, exec, kitty"
         "$mainMod SHIFT, R, exec, hyprctl reload"
-        "$mainMod SHIFT, F, exec, nemo"
+        # "$mainMod SHIFT, F, exec, nemo"
+        "$mainMod SHIFT, F, exec, nautilus"
         "$mainMod SHIFT, Q, exec, wlogout -b 5 -c 0 -r 0 -m 0 --protocol layer-shell"
         "$mainMod SHIFT, Space, togglefloating,"
         "$mainMod, Space, cyclenext # hack to focus floating windows"

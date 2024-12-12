@@ -1,6 +1,6 @@
 { config, unstablePkgs, pkgs, lib, ... }:
 let
-  file-browser = "nemo";
+  file-browser = "nautilus";
   text-editor = "gnome-text-editor";
   web-browser = "vivaldi";
   discord = "vesktop";

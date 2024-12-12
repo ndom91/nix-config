@@ -14,6 +14,15 @@
       color-scheme = "prefer-dark";
     };
 
+    "org/gnome/nautilus/preferences" = {
+      default-folder-viewer = "list-view";
+      default-sort-order = "date_modified";
+      date-time-format = "detailed";
+      always-use-location-entry = true;
+      show-delete-permanently = true;
+      show-hidden-files = true;
+    };
+
     "org/freedesktop/appearance" = {
       color-scheme = 1;
     };

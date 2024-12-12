@@ -1,4 +1,4 @@
-{ pkgs, lib, osConfig, rose-pine-cursor, config, ... }:
+{ pkgs, unstablePkgs, lib, osConfig, rose-pine-cursor, config, ... }:
 {
   home.pointerCursor = {
     gtk.enable = true;
@@ -29,9 +29,19 @@
     #   gnomeShellTheme = true;
     # };
 
+    # theme = {
+    #   name = "rose-pine";
+    #   # package = pkgs.catppuccin-gtk;
+    # };
     theme = {
-      name = "rose-pine";
-      # package = pkgs.catppuccin-gtk;
+      # name = "rose-pine";
+      # package = unstablePkgs.rose-pine-gtk-theme;
+
+      name = "Graphite-pink-Dark";
+      package = unstablePkgs.graphite-gtk-theme.override {
+        themeVariants = [ "default" "pink" ];
+        tweaks = [ "rimless" "darker" "normal" ];
+      };
     };
 
     cursorTheme = {
@@ -70,13 +80,13 @@
       ];
       extraConfig = {
         gtk-application-prefer-dark-theme = 1;
-        "AdwStyleManager:color-scheme" = "dark";
+        "AdwStyleManager:color-scheme" = "prefer-dark";
       };
     };
 
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
-      "AdwStyleManager:color-scheme" = "dark";
+      "AdwStyleManager:color-scheme" = "prefer-dark";
     };
   };
 

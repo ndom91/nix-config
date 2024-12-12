@@ -88,7 +88,7 @@
 
 
     # Theme
-    unstablePkgs.rose-pine-gtk-theme # Rose-Pine GTK Theme
+    # unstablePkgs.rose-pine-gtk-theme # Rose-Pine GTK Theme
     # colloid-icon-theme
     (colloid-icon-theme.override {
       schemeVariants = [ "nord" ];

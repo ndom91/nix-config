@@ -152,11 +152,11 @@
     docker = {
       enable = true;
       # better for security than adding user to "docker" group
-      rootless = {
-        enable = true;
-        # make rootless instance the default
-        setSocketVariable = true;
-      };
+      # rootless = {
+      # enable = true;
+      # make rootless instance the default
+      # setSocketVariable = true;
+      # };
       autoPrune = {
         enable = true;
         dates = "weekly";
