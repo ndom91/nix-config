@@ -86,6 +86,9 @@
     xorg.xsetroot
     xorg.xprop
 
+    zsa-udev-rules # Voyager Oryx
+    keymapp # ZSA Flasher Util
+
 
     # Theme
     # unstablePkgs.rose-pine-gtk-theme # Rose-Pine GTK Theme

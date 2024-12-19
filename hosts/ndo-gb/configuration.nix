@@ -217,6 +217,7 @@ in
     enableAllFirmware = true;
     acpilight.enable = true;
     keyboard.qmk.enable = true;
+    keyboard.zsa.enable = true;
 
     bluetooth = {
       enable = true;
@@ -258,7 +259,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "networkmanager" "wheel" "libvirt" "kvm" "video" "render" ];
+    extraGroups = [ "plugdev" "networkmanager" "wheel" "libvirt" "kvm" "video" "render" ];
   };
 
   home-manager = {
