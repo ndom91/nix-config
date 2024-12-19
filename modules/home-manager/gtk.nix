@@ -16,6 +16,11 @@
     enable = true;
     flavor = "mocha";
     accent = "maroon";
+
+    # Programs
+    waybar.enable = true;
+    nvim.enable = true;
+    kitty.enable = true;
   };
 
   gtk = {
