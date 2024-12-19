@@ -20,7 +20,6 @@
     # Programs
     waybar.enable = true;
     nvim.enable = true;
-    kitty.enable = true;
   };
 
   gtk = {

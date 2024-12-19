@@ -1,12 +1,11 @@
-{ unstablePkgs, ... }:
+{ unstablePkgs, lib, ... }:
 {
-  # programs.kitty.catppuccin.enable = false;
   programs.kitty = {
     enable = true;
     package = unstablePkgs.kitty;
     # Pick "name" from https://github.com/kovidgoyal/kitty-themes/blob/master/themes.json
     # theme = "Rosé Pine";
-    themeFile = "rose-pine";
+    themeFile = lib.mkDefault "rose-pine";
     shellIntegration = {
       enableBashIntegration = true;
       mode = "no-cursor";

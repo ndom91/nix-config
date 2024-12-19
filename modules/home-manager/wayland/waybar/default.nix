@@ -1179,7 +1179,7 @@ in
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     });
     # Overridden by catppuccin flake input, see gtk.nix
-    style = ./style.css;
+    style = lib.mkDefault ./style.css;
     settings = bars;
   };
 }
