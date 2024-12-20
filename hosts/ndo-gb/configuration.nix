@@ -37,6 +37,10 @@ in
     };
   };
 
+  powerManagement.enable = true;
+
+  system.stateVersion = stateVersion;
+
   # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
   age.secrets.wutangKey.file = ../../secrets/wutangKey.age;
   age.secrets.derpyKey.file = ../../secrets/derpyKey.age;
@@ -45,7 +49,6 @@ in
     plymouth = {
       enable = true;
       theme = "breeze";
-      # catppuccin.enable = true;
     };
     loader.systemd-boot = {
       enable = true;
@@ -209,8 +212,8 @@ in
   environment.variables = {
     # VAAPI and VDPAU config for accelerated video.
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
-    VDPAU_DRIVER = "va_gl";
-    LIBVA_DRIVER_NAME = "iHD";
+    # VDPAU_DRIVER = "va_gl";
+    # LIBVA_DRIVER_NAME = "iHD";
   };
 
   hardware = {
@@ -232,10 +235,9 @@ in
     # Intel Hardware Acceleration
     graphics = {
       enable = true;
+      enable32Bit = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
-      # driSupport = true;
-      # driSupport32Bit = true;
       extraPackages = with unstablePkgs; [
         intel-media-driver
         intel-compute-runtime
@@ -244,13 +246,6 @@ in
         libvdpau-va-gl
       ];
     };
-    # TODO: Change to this for >= 24.11
-    #hardware = {
-    #  graphics = {
-    #    enable = true;
-    #    enable32Bit = lib.mkForce isInstall;
-    #  };
-    #};
 
     enableRedistributableFirmware = true;
     cpu.intel.updateMicrocode = true;
@@ -439,7 +434,6 @@ in
     };
     flatpak = {
       enable = true;
-      # uninstallUnmanagedPackages = true;
       remotes = lib.mkOptionDefault [{
         name = "flathub-beta";
         location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
@@ -449,10 +443,6 @@ in
       ];
     };
   };
-
-  powerManagement.enable = true;
-
-  system.stateVersion = stateVersion;
 }
 
 

@@ -18,25 +18,15 @@
     accent = "maroon";
 
     # Programs
-    waybar.enable = true;
-    nvim.enable = true;
+    # waybar.enable = true;
+    # nvim.enable = true;
   };
 
   gtk = {
     enable = true;
     font.name = "Fira Sans";
 
-    # catppuccin = {
-    #   enable = true;
-    #   flavor = "mocha";
-    #   accent = "maroon";
-    #   gnomeShellTheme = true;
-    # };
 
-    # theme = {
-    #   name = "rose-pine";
-    #   # package = pkgs.catppuccin-gtk;
-    # };
     theme = {
       # name = "rose-pine";
       # package = unstablePkgs.rose-pine-gtk-theme;

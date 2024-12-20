@@ -5,7 +5,7 @@
     package = unstablePkgs.kitty;
     # Pick "name" from https://github.com/kovidgoyal/kitty-themes/blob/master/themes.json
     # theme = "Rosé Pine";
-    themeFile = lib.mkDefault "rose-pine";
+    themeFile = lib.mkForce "rose-pine";
     shellIntegration = {
       enableBashIntegration = true;
       mode = "no-cursor";

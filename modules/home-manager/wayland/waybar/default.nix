@@ -1172,14 +1172,13 @@ in
   xdg.configFile."waybar/scripts/waybar-wttr.py".source = ../../../../dotfiles/waybar/scripts/waybar-wttr.py;
 
   programs.waybar = {
-    # catppuccin.enable = false;
     enable = true;
     systemd.enable = true;
     package = unstablePkgs.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     });
     # Overridden by catppuccin flake input, see gtk.nix
-    style = lib.mkDefault ./style.css;
+    style = lib.mkForce ./style.css;
     settings = bars;
   };
 }

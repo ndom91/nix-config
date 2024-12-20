@@ -10,7 +10,6 @@
     recursive = true;
   };
 
-  # programs.neovim.catppuccin.enable = false;
   # https://github.com/BirdeeHub/nixCats-nvim
   programs.neovim = {
     enable = true;
