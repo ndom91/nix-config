@@ -40,22 +40,22 @@
 
   home.packages = with pkgs; [
     # blueberry
-    evtest
-    mkchromecast
-    playerctl
-    swaybg
-    unstablePkgs.swaynotificationcenter
-    unstablePkgs.swayosd
-    wdisplays
-    wev
-    wf-recorder
-    wl-clipboard
-    wl-mirror
-    wlr-randr
+    evtest # Input event debugging
+    mkchromecast # Chromecast
+    playerctl # Media player control
+    swaybg # Set background on boot
+    unstablePkgs.swaynotificationcenter # Notification center
+    unstablePkgs.swayosd # Media OSD
+    wdisplays # Graphical Display Configuration
+    wev # Show wayland events
+    wf-recorder # Wayland screen recorder
+    wl-clipboard # Wayland clipboard
+    wl-mirror # Wayland screen mirror
+    wlr-randr # Wayland xrandr alternative
 
-    # Screenshot
-    grim
-    slurp
-    swappy
+    # Screenshot toolchain
+    grim # Grab images from Wayland compositors
+    slurp # Select a region from Wayland compositors
+    swappy # Annotate image from Wayland compositors
   ];
 }

@@ -330,6 +330,7 @@ in
 
     light.enable = true;
     adb.enable = true;
+    kdeconnect.enable = true;
   };
 
   # System Services
