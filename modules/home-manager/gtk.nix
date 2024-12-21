@@ -49,7 +49,6 @@
     };
 
     iconTheme = {
-      # package = colloidIconTheme;
       name = "Colloid-Grey-Nord-Dark";
       # name = "BreezeX-RosePine-Linux";
       # name = "BreezeX-RosePineDawn-Linux";

@@ -1177,7 +1177,6 @@ in
     package = unstablePkgs.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     });
-    # Overridden by catppuccin flake input, see gtk.nix
     style = lib.mkForce ./style.css;
     settings = bars;
   };

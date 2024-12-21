@@ -11,7 +11,6 @@
     bat # cat replacement
     # bluez
     brightnessctl # Brightness Control
-    # catppuccin-gtk # GTK Theme
     cmake # CMake
     coreutils # GNU Core Utilities
     dconf # DConf Editor
@@ -91,18 +90,10 @@
 
 
     # Theme
-    # unstablePkgs.rose-pine-gtk-theme # Rose-Pine GTK Theme
-    # colloid-icon-theme
     (colloid-icon-theme.override {
       schemeVariants = [ "nord" ];
       colorVariants = [ "grey" ];
     })
-    # (catppuccin-gtk.override {
-    #   accents = [ "maroon" ];
-    #   size = "standard";
-    #   tweaks = [ "normal" ];
-    #   variant = "mocha";
-    # })
   ];
 
   services.udev.packages = with pkgs; [
