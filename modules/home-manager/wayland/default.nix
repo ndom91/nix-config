@@ -15,19 +15,6 @@
   home.sessionVariables = {
     # WLR_RENDERER_ALLOW_SOFTWARE = "1"; # Required for VMs
 
-    # Make qt apps expect wayland
-    QT_QPA_PLATFORM = "wayland";
-    SDL_VIDEODRIVER = "wayland";
-    XDG_SESSION_TYPE = "wayland";
-
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-
-    HYPRLAND_LOG_WLR = "1";
-    GDK_BACKEND = "wayland,x11";
-
-    XCURSOR_SIZE = "24";
-
     # NixOS force Wayland for some apps
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
