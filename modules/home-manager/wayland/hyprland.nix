@@ -166,25 +166,56 @@
         focus_on_activate = true;
         allow_session_lock_restore = true;
       };
-      windowrule = [
-        "float, file_progress"
-        "float, confirm"
-        "float, dialog"
-        "float, download"
-        "float, notification"
-        "float, error"
-        "float, splash"
-        "float, confirmreset"
-      ];
+      # windowrule = [
+      #   "float, file_progress"
+      #   "float, confirm"
+      #   "float, dialog"
+      #   "float, download"
+      #   "float, notification"
+      #   "float, error"
+      #   "float, splash"
+      #   "float, confirmreset"
+      # ];
+      windowrule =
+        let
+          f = regex: "float, ^(${regex})$";
+        in
+        [
+          (f "org.gnome.Calculator")
+          (f "org.gnome.Nautilus")
+          (f "pavucontrol")
+          (f "blueberry")
+          (f "opensnitch")
+          (f "blueman-.*")
+          (f "nm-connection-editor")
+          (f "org.gnome.Settings")
+          (f "xdg-desktop-portal")
+          (f "xdg-desktop-portal-gnome")
+          (f "org.gnome.FileRoller")
+          (f "org.gnome.Loupe")
+          (f "org.gnome.TextEditor")
+          (f "org.ndom91.rustcast")
+          (f "(g|G)it-(b|B)utler.*")
+          (f "(b|B)eeper")
+          (f "nemo")
+          (f "(D|d)ev(T|t)ools")
+          (f "Developer Tools")
+          (f "Winetricks")
+          (f "lutris")
+          (f "beekeeper-studio")
+        ] ++ [
+          "float, file_progress"
+          "float, confirm"
+          "float, dialog"
+          "float, download"
+          "float, notification"
+          "float, error"
+          "float, splash"
+          "float, confirmreset"
+        ];
       windowrulev2 = [
         # General
         "animation fade, floating:1"
-
-        # File-Roller
-        "float, class:org.gnome.FileRoller"
-
-        # Rustcast
-        "float, class:org.ndom91.rustcast"
 
         # wlogout
         "float, title:wlogout"
@@ -194,15 +225,6 @@
         "workspace special silent, title:^(Firefox — Sharing Indicator)$"
         "workspace special silent, title:^.*(Sharing Indicator)$"
         "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
-
-        # Loupe Float
-        "float, class:org.gnome.Loupe"
-
-        # GitButler Float
-        "float, class:^((g|G)it-(b|B)utler.*)$"
-        "monitor DP-1, class:^((g|G)it-(b|B)utler.*)$"
-        "float, class:^((g|G)it(b|B)utler.*)$"
-        "monitor DP-1, class:^((g|G)it(b|B)utler.*)$"
 
         # 1Password Quick Access
         "stayfocused,title:^(Quick Access - 1Password)"
@@ -218,54 +240,6 @@
         # idle inhibit while watching videos
         "idleinhibit focus, class:^(vivaldi)$, title:^(.*YouTube.*)$"
         "idleinhibit fullscreen, class:^(vivaldi)$"
-
-        # float Beeper AppImage
-        "float, class:Beeper"
-
-        # float gnome-text-editor
-        "float, class:org.gnome.TextEditor"
-
-        # float nemo file manager
-        "float, class:nemo"
-        "center, class:nemo"
-
-        # float Nautilus file manager
-        "float, class:org.gnome.Nautilus"
-        "center, class:org.gnome.Nautilus"
-
-        # float pavucontrol
-        "float, class:pavucontrol"
-        "center, class:pavucontrol"
-
-        # float blueberry
-        "float, class:^(.*blueberry.*)$"
-        "center, class:^(.*blueberry.*)$"
-
-        # float blueman-manager
-        "float, class:^(.*blueman-.*)$"
-        "center, class:^(.*blueman-.*)$"
-
-        # float network-manager-editor
-        "float, class:nm-connection-editor"
-        "center, class:nm-connection-editor"
-
-        # opensnitch
-        "float, class:^(opensnitch_ui)$"
-
-        # DevTools
-        "float, title:^(DevTools.*)$"
-        "float, title:^(DevTools.*)$"
-        "float, title:^(Developer Tools.*)$"
-        "float, title:^(Developer Tools.*)$"
-
-        # Winetricks
-        "float, title:^(Winetricks.*)$"
-
-        # Lutris
-        "float, class:lutris"
-
-        # Beekeeper-Studio
-        "float, class:beekeeper-studio"
 
         # portal / polkit
         "dimaround, class:^(xdg-desktop-portal-gtk)$"
