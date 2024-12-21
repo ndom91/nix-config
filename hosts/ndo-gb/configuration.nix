@@ -330,7 +330,7 @@ in
 
     light.enable = true;
     adb.enable = true;
-    kdeconnect.enable = true;
+    kdeconnect.enable = false; # TODO: Wasn't connecting to ndo-op9
   };
 
   # System Services
