@@ -4,14 +4,15 @@
 # height=$(hyprctl monitors -j | jq ".[] | select(.id==${activeMonitorId}).height")
 # width=$(hyprctl monitors -j | jq ".[] | select(.id==${activeMonitorId})".width)
 # geometry="${width}x${height}"
+
 dir="$(xdg-user-dir PICTURES)/Screenshots"
 time=$(date +%Y-%m-%d-%I-%M-%S)
 file="Screenshot_${time}.png"
+annotate_cmd="satty --early-exit --disable-notifications --copy-command wl-copy --annotation-size-factor 0.5 -f -"
 
 # Buttons
 screen="󰹑   Capture Desktop"
 area="   Capture Area"
-window="󱣵   Capture Window"
 infive="󰔝   Take in 3s"
 inten="󰔜   Take in 10s"
 
@@ -21,29 +22,25 @@ countdown() {
 }
 
 # take shots
-shotnow() {
+shotarea() {
+  coords=$(slurp -d -b 00000000 -c 00000000 -s 00000010)
+  grim -c -g "$coords" - | ${annotate_cmd}
+}
+
+shotscreen() {
   cd "${dir}" && sleep 0.5 && grim -c | tee "$file" | wl-copy --primary --type image/png
 }
 
 shot3() {
   coords=$(slurp -d -b 00000000 -c 00000000 -s 00000010)
   countdown '3'
-  grim -c -g "$coords" - | swappy -f -
+  grim -c -g "$coords" - | ${annotate_cmd}
 }
 
 shot10() {
   coords=$(slurp -d -b 00000000 -c 00000000 -s 00000010)
   countdown '10'
-  grim -c -g "$coords" - | swappy -f -
-}
-
-shotwin() {
-  cd "${dir}" && grim -c -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee "$file" | wl-copy --primary --type image/png
-}
-
-shotarea() {
-  coords=$(slurp -d -b 00000000 -c 00000000 -s 00000010)
-  grim -c -g "$coords" - | swappy -f -
+  grim -c -g "$coords" - | ${annotate_cmd}
 }
 
 if [[ ! -d "$dir" ]]; then
@@ -63,19 +60,16 @@ chosen=$(echo -e "$options" | rofi \
   -theme "$HOME/.config/rofi/config/screenshot.rasi")
 
 case $chosen in
-  "$area")
-    shotarea
-    ;;
-  "$screen")
-    shotnow
-    ;;
-  "$window")
-    shotwin
-    ;;
-  "$infive")
-    shot3
-    ;;
-  "$inten")
-    shot10
-    ;;
+"$area")
+  shotarea
+  ;;
+"$screen")
+  shotscreen
+  ;;
+"$infive")
+  shot3
+  ;;
+"$inten")
+  shot10
+  ;;
 esac

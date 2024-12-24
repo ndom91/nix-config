@@ -57,5 +57,6 @@
     grim # Grab images from Wayland compositors
     slurp # Select a region from Wayland compositors
     swappy # Annotate image from Wayland compositors
+    satty # Better annotate image from Wayland compositors
   ];
 }
