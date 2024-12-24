@@ -61,12 +61,9 @@ return {
           name = "copilot",
           module = "blink-cmp-copilot",
         },
-        lsp = { fallback_for = { "lazydev" } },
-        lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+        lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lsp" } },
       },
-      completion = {
-        enabled_providers = { "lsp", "path", "snippets", "buffer", "copilot", "lazydev" },
-      },
+      default = { "lsp", "path", "snippets", "buffer", "copilot", "lazydev" },
     },
 
     completion = {
