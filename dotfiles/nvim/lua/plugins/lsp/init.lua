@@ -218,6 +218,7 @@ return {
         jsonls = require("plugins.lsp.langs.json"),
         rnix = {},
         terraformls = {},
+        astro = {},
         rust_analyzer = require("plugins.lsp.langs.rust"),
         svelte = require("plugins.lsp.langs.svelte"),
         tailwindcss = require("plugins.lsp.langs.tailwindcss"),
