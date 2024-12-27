@@ -27,6 +27,7 @@
     catppuccin.url = "github:catppuccin/nix";
     nixcord.url = "github:kaylorben/nixcord";
 
+    ghostty.url = "github:ghostty-org/ghostty";
     superfile.url = "github:MHNightCat/superfile";
     tsui.url = "github:guibou/tsui/fix_nix_run";
   };

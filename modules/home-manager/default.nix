@@ -20,6 +20,7 @@
     ../../modules/home-manager/wezterm.nix
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/kitty.nix
+    ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/wayland
     ../../modules/home-manager/scripts
   ];
@@ -116,7 +117,7 @@
       "workbench.iconTheme" = "rose-pine-icons";
       "workbench.colorTheme" = "Rosé Pine";
       "extensions.experimental.affinity" = {
-        "asvetliakov.vscode-neovim" =  1;
+        "asvetliakov.vscode-neovim" = 1;
       };
       "vscode-neovim.neovimClean" = true;
     };
