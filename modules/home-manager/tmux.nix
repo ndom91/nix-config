@@ -1,16 +1,18 @@
 { pkgs, config, lib, unstablePkgs, input, ... }:
 let
-  pythonInputs = (unstablePkgs.python311.withPackages (p: with p; [
+  pythonInputs = (unstablePkgs.python312.withPackages (p: with p; [
     libtmux
     pip
   ]));
+
   tmux-window-name = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "tmux-window-name";
     version = "2024-03-08";
     src = pkgs.fetchFromGitHub {
       owner = "ofirgall";
       repo = "tmux-window-name";
-      rev = "34026b6f442ceb07628bf25ae1b04a0cd475e9ae";
+      # rev = "34026b6f442ceb07628bf25ae1b04a0cd475e9ae";
+      rev = "dc97a79ac35a9db67af558bb66b3a7ad41c924e7";
       sha256 = "sha256-BNgxLk/BkaQkGlB4g2WKVs39y4VHL1Y2TdTEoBy7yo0=";
     };
     nativeBuildInputs = [ pkgs.makeWrapper ];
@@ -50,6 +52,7 @@ in
           # set -g @tmux_window_name_log_level "'DEBUG'"
           set -g @tmux_window_name_substitute_sets "[('/home/${config.home.username}/.nix-profile/bin/(.+) --.*', '\\g<1>')]"
           set -g @tmux_window_name_dir_programs "['nvim', 'vim', 'vi', 'git', '/home/${config.home.username}/.nix-profile/bin/nvim']"
+          set -g @tmux_window_name_show_program_args "False"
         '';
       }
       # {
@@ -103,7 +106,6 @@ in
       }
       unstablePkgs.tmuxPlugins.mode-indicator
       {
-        # Not necessary due to WezTerm's builtin URL highlighting / copying
         plugin = pkgs.tmuxPlugins.tmux-thumbs;
         extraConfig = ''
           set -g @thumbs-command 'echo -n {} | wl-copy'

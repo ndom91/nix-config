@@ -51,7 +51,7 @@
     pavucontrol # PulseAudio Volume Control
     pciutils # lspci
     powertop # Power TOP displays power consumption
-    python311Packages.requests # Python Requests
+    python312Packages.requests # Python Requests
     qemu # QEMU
     rclone # cloud storage client
     ripgrep # rg

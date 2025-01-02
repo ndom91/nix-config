@@ -178,7 +178,8 @@
       # ];
       windowrule =
         let
-          f = regex: "float, ^(${regex})$";
+          # f = regex: "float, ^(${regex})$";
+          f = regex: "float, .*${regex}.*";
         in
         [
           (f "(D|d)ev(T|t)ools")
@@ -188,7 +189,7 @@
           (f "Winetricks")
           (f "beekeeper-studio")
           (f "blueberry")
-          (f "blueman-.*")
+          (f "blueman")
           (f "lutris")
           (f "nemo")
           (f "nm-connection-editor")
@@ -262,7 +263,8 @@
 
         "$mainMod, Q, killactive"
         "CTRL SHIFT, L, exec, hyprlock"
-        "$mainMod, Return, exec, kitty"
+        "$mainMod, Return, exec, ghostty"
+        # "$mainMod, Return, exec, kitty"
         "$mainMod SHIFT, R, exec, hyprctl reload"
         # "$mainMod SHIFT, F, exec, nemo"
         "$mainMod SHIFT, F, exec, nautilus"
