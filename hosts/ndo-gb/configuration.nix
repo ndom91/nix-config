@@ -254,7 +254,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "plugdev" "networkmanager" "wheel" "libvirt" "kvm" "video" "render" ];
+    extraGroups = [ "plugdev" "networkmanager" "wheel" "libvirt" "kvm" "video" "render" "dialout" ];
   };
 
   home-manager = {
