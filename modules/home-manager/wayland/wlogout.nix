@@ -1,4 +1,4 @@
-{ inputs, pkgs, unstablePkgs, config, ... }:
+{ inputs, pkgs, lib, unstablePkgs, config, ... }:
 {
   xdg.configFile."wlogout" = {
     source = ../../../dotfiles/wlogout;
@@ -104,7 +104,7 @@
     # Style from 'hyprdots': https://raw.githubusercontent.com/prasanthrangan/hyprdots/main/Source/assets/wlog_style_1.png
     # https://github.com/prasanthrangan/hyprdots/blob/main/Configs/.config/wlogout/style_1.css
     # https://github.com/prasanthrangan/hyprdots/blob/37da06d3867671134186581453a7da00ea520a4b/Configs/.local/share/bin/logoutlaunch.sh#L63
-    style = ''
+    style = lib.mkForce ''
       * {
           background-image: none;
           font-size: 32px;
