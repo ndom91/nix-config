@@ -39,9 +39,14 @@
     nsn = "nix search nixpkgs";
 
     # coreutils
-    ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";
-    ls = "eza --icons --group-directories-first --classify";
-    tree = "eza --long --tree --time-style long-iso --icons --group";
+    # ll = "eza --icons -l -a --group-directories-first --time-style long-iso --classify --group --git";
+    # ls = "eza --icons --group-directories-first --classify";
+    # tree = "eza --long --tree --time-style long-iso --icons --group";
+    ll = "lla --icons -l --sort-dirs-first --git";
+    ls = "lla --icons --sort-dirs-first --grid";
+    lst = "lla  --timeline --icons --sort-dirs-first";
+    lss = "lla --icons --sort-dirs-first -S";
+    tree = "lla --icons --tree";
     less = "less --incsearch -JN --line-num-width=2 --use-color";
 
     # Commands
