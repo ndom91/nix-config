@@ -38,6 +38,7 @@
     libcamera # libcamera
     # libfprint-2-tod1-elan
     libnotify # libnotify
+    unstablePkgs.lla # ls rust replacement
     lm_sensors # sensors
     lshw # Hardware List
     lsof # List Open Files
