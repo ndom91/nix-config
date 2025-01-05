@@ -285,6 +285,7 @@ in
     opensnitch-ui
 
     quickemu # Download preconfiged VM qemu configs and ISOs
+    # unstablePkgs.bambu-studio # Broken 05.01.25
   ];
 
 
@@ -435,13 +436,34 @@ in
     };
     flatpak = {
       enable = true;
-      remotes = lib.mkOptionDefault [{
-        name = "flathub-beta";
-        location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
-      }];
+      remotes = lib.mkOptionDefault [
+        {
+          name = "flathub-beta";
+          location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
+        }
+        {
+          name = "flathub";
+          location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+        }
+      ];
       packages = [
         { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
+        { appId = "com.bambulab.BambuStudio"; origin = "flathub"; }
       ];
+      overrides = {
+        global = {
+          # Force Wayland by default
+          Context.sockets = [ "wayland" "!x11" "!fallback-x11" ];
+
+          Environment = {
+            # Fix un-themed cursor in some Wayland apps
+            XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
+
+            # Force correct theme for some GTK apps
+            GTK_THEME = "Adwaita:dark";
+          };
+        };
+      };
     };
   };
 }

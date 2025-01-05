@@ -332,12 +332,19 @@ in
     flatpak = {
       enable = true;
       # uninstallUnmanagedPackages = true;
-      remotes = lib.mkOptionDefault [{
-        name = "flathub-beta";
-        location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
-      }];
+      remotes = lib.mkOptionDefault [
+        {
+          name = "flathub-beta";
+          location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
+        }
+        {
+          name = "flathub";
+          location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+        }
+      ];
       packages = [
         { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
+        { appId = "com.bambulab.BambuStudio"; origin = "flathub"; }
       ];
       overrides = {
         global = {
