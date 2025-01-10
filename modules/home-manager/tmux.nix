@@ -13,7 +13,8 @@ let
       repo = "tmux-window-name";
       # rev = "34026b6f442ceb07628bf25ae1b04a0cd475e9ae";
       rev = "dc97a79ac35a9db67af558bb66b3a7ad41c924e7";
-      sha256 = "sha256-BNgxLk/BkaQkGlB4g2WKVs39y4VHL1Y2TdTEoBy7yo0=";
+      # sha256 = "sha256-BNgxLk/BkaQkGlB4g2WKVs39y4VHL1Y2TdTEoBy7yo0=";
+      sha256 = "sha256-o7ZzlXwzvbrZf/Uv0jHM+FiHjmBO0mI63pjeJwVJEhE=";
     };
     nativeBuildInputs = [ pkgs.makeWrapper ];
     rtpFilePath = "tmux_window_name.tmux";
@@ -41,7 +42,7 @@ in
     package = unstablePkgs.tmux;
     clock24 = true;
     keyMode = "vi";
-    newSession = true;
+    # newSession = true;
     historyLimit = 10000;
     prefix = "C-a";
     plugins = [
