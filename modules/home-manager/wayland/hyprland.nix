@@ -34,19 +34,17 @@
       debug = {
         disable_logs = true;
       };
-      xwayland = {
-        force_zero_scaling = true;
-      };
+      # xwayland = {
+      #   force_zero_scaling = true;
+      # };
       monitor = ",preferred,auto,auto";
       # Test multi-monitor: https://github.com/MatthiasBenaets/nix-config/blob/master/modules/desktops/hyprland.nix#L257
-
       env = [
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
       ];
       input = {
         kb_layout = "us";
         kb_options = "caps:escape";
-
         follow_mouse = 2;
         accel_profile = "adaptive";
       };
@@ -55,7 +53,8 @@
       ];
       exec-once = [
         # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
-        "${lib.getExe pkgs._1password-gui} --silent"
+        # "${lib.getExe pkgs._1password-gui} --silent"
+        "${lib.getExe pkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
         "${pkgs.blueman}/bin/blueman-applet"
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
       ];
@@ -90,7 +89,6 @@
           size = 8;
           passes = 2;
           ignore_opacity = true;
-          popups = true;
           new_optimizations = true;
         };
       };
@@ -101,7 +99,7 @@
         groupbar = {
           render_titles = true;
           font_family = "Fira Sans Light";
-          font_size = 9;
+          font_size = 10;
           height = 24;
           "col.active" = "rgb(181825)";
           "col.inactive" = "rgba(f5e0dc20)";
@@ -109,54 +107,54 @@
       };
       animations = {
         enabled = "yes";
-        bezier = [
-          "myBezier, 0.05, 0.9, 0.1, 1.05"
-          "linear, 0.0, 0.0, 1.0, 1.0"
-          "wind, 0.05, 0.9, 0.1, 1.05"
-          "winIn, 0.1, 1.1, 0.1, 1.1"
-          "winOut, 0.3, -0.3, 0, 1"
-          "slow, 0, 0.85, 0.3, 1"
-          "overshot, 0.7, 0.6, 0.1, 1.1"
-          "bounce, 1.1, 1.6, 0.1, 0.85"
-          "sligshot, 1, -1, 0.15, 1.25"
-          "nice, 0, 6.9, 0.5, -4.20"
-
-          "linear, 0, 0, 1, 1"
-          "md3_standard, 0.2, 0, 0, 1"
-          "md3_decel, 0.05, 0.7, 0.1, 1"
-          "md3_accel, 0.3, 0, 0.8, 0.15"
-          "overshot, 0.05, 0.9, 0.1, 1.1"
-          "crazyshot, 0.1, 1.5, 0.76, 0.92 "
-          "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
-          "menu_decel, 0.1, 1, 0, 1"
-          "menu_accel, 0.38, 0.04, 1, 0.07"
-          "easeInOutCirc, 0.85, 0, 0.15, 1"
-          "easeOutCirc, 0, 0.55, 0.45, 1"
-          "easeOutExpo, 0.16, 1, 0.3, 1"
-          "softAcDecel, 0.26, 0.26, 0.15, 1"
-        ];
-
-        animation = [
-          "windowsIn, 1, 5, slow, popin"
-          "windowsOut, 1, 5, winOut, popin"
-          "windowsMove, 1, 5, wind, slide"
-          "border, 1, 10, linear"
-          "fade, 1, 5, overshot"
-          "workspaces, 1, 5, wind"
-          "windows, 1, 5, bounce, popin"
-
-          "windows, 1, 3, md3_decel, popin 60%"
-          "windowsIn, 1, 3, md3_decel, popin 60%"
-          "windowsOut, 1, 3, md3_accel, popin 60%"
-          "border, 1, 10, default"
-          "fade, 1, 3, md3_decel"
-          "layers, 1, 2, md3_decel, slide"
-          "layersIn, 1, 3, menu_decel, slide"
-          "layersOut, 1, 1.6, menu_accel"
-          "fadeLayersIn, 1, 2, menu_decel"
-          "fadeLayersOut, 1, 4.5, menu_accel"
-          "workspaces, 1, 7, menu_decel, slide"
-        ];
+        # bezier = [
+        #   "myBezier, 0.05, 0.9, 0.1, 1.05"
+        #   "linear, 0.0, 0.0, 1.0, 1.0"
+        #   "wind, 0.05, 0.9, 0.1, 1.05"
+        #   "winIn, 0.1, 1.1, 0.1, 1.1"
+        #   "winOut, 0.3, -0.3, 0, 1"
+        #   "slow, 0, 0.85, 0.3, 1"
+        #   "overshot, 0.7, 0.6, 0.1, 1.1"
+        #   "bounce, 1.1, 1.6, 0.1, 0.85"
+        #   "sligshot, 1, -1, 0.15, 1.25"
+        #   "nice, 0, 6.9, 0.5, -4.20"
+        #
+        #   "linear, 0, 0, 1, 1"
+        #   "md3_standard, 0.2, 0, 0, 1"
+        #   "md3_decel, 0.05, 0.7, 0.1, 1"
+        #   "md3_accel, 0.3, 0, 0.8, 0.15"
+        #   "overshot, 0.05, 0.9, 0.1, 1.1"
+        #   "crazyshot, 0.1, 1.5, 0.76, 0.92 "
+        #   "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
+        #   "menu_decel, 0.1, 1, 0, 1"
+        #   "menu_accel, 0.38, 0.04, 1, 0.07"
+        #   "easeInOutCirc, 0.85, 0, 0.15, 1"
+        #   "easeOutCirc, 0, 0.55, 0.45, 1"
+        #   "easeOutExpo, 0.16, 1, 0.3, 1"
+        #   "softAcDecel, 0.26, 0.26, 0.15, 1"
+        # ];
+        #
+        # animation = [
+        #   "windowsIn, 1, 5, slow, popin"
+        #   "windowsOut, 1, 5, winOut, popin"
+        #   "windowsMove, 1, 5, wind, slide"
+        #   "border, 1, 10, linear"
+        #   "fade, 1, 5, overshot"
+        #   "workspaces, 1, 5, wind"
+        #   "windows, 1, 5, bounce, popin"
+        #
+        #   "windows, 1, 3, md3_decel, popin 60%"
+        #   "windowsIn, 1, 3, md3_decel, popin 60%"
+        #   "windowsOut, 1, 3, md3_accel, popin 60%"
+        #   "border, 1, 10, default"
+        #   "fade, 1, 3, md3_decel"
+        #   "layers, 1, 2, md3_decel, slide"
+        #   "layersIn, 1, 3, menu_decel, slide"
+        #   "layersOut, 1, 1.6, menu_accel"
+        #   "fadeLayersIn, 1, 2, menu_decel"
+        #   "fadeLayersOut, 1, 4.5, menu_accel"
+        #   "workspaces, 1, 7, menu_decel, slide"
+        # ];
       };
       misc = {
         disable_hyprland_logo = true;
@@ -166,19 +164,8 @@
         focus_on_activate = true;
         allow_session_lock_restore = true;
       };
-      # windowrule = [
-      #   "float, file_progress"
-      #   "float, confirm"
-      #   "float, dialog"
-      #   "float, download"
-      #   "float, notification"
-      #   "float, error"
-      #   "float, splash"
-      #   "float, confirmreset"
-      # ];
       windowrule =
         let
-          # f = regex: "float, ^(${regex})$";
           f = regex: "float, .*${regex}.*";
         in
         [
@@ -330,8 +317,9 @@
       );
       bindn = [
         # 1Password Quick Search
-        "CTRL SHIFT, Period, exec, ${lib.getExe pkgs._1password-gui} --quick-access"
+        # "CTRL SHIFT, Period, exec, ${lib.getExe pkgs._1password-gui} --quick-access"
         # "CTRL SHIFT, Period, exec, 1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
+        "CTRL SHIFT, Period, exec, ${lib.getExe pkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
       ];
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging
@@ -351,36 +339,36 @@
       bind = , escape, submap, reset
       submap = reset
 
-      plugin {
-        # hyprfocus {
-        #   enabled = yes
-        #
-        #   focus_animation = shrink
-        #
-        #   bezier = bezIn, 0.5,0.0,1.0,0.5
-        #   bezier = bezOut, 0.0,0.5,0.5,1.0
-        #
-        #   flash {
-        #       flash_opacity = 0.8
-        #
-        #       in_bezier = bezIn
-        #       in_speed = 0.5
-        #
-        #       out_bezier = bezOut
-        #       out_speed = 3
-        #   }
-        #
-        #   shrink {
-        #     shrink_percentage = 0.995
-        #
-        #     in_bezier = bezIn
-        #     in_speed = 0.25
-        #
-        #     out_bezier = bezOut
-        #     out_speed = 1
-        #   }
-        # }
-      }
+      # plugin {
+      # hyprfocus {
+      #   enabled = yes
+      #
+      #   focus_animation = shrink
+      #
+      #   bezier = bezIn, 0.5,0.0,1.0,0.5
+      #   bezier = bezOut, 0.0,0.5,0.5,1.0
+      #
+      #   flash {
+      #       flash_opacity = 0.8
+      #
+      #       in_bezier = bezIn
+      #       in_speed = 0.5
+      #
+      #       out_bezier = bezOut
+      #       out_speed = 3
+      #   }
+      #
+      #   shrink {
+      #     shrink_percentage = 0.995
+      #
+      #     in_bezier = bezIn
+      #     in_speed = 0.25
+      #
+      #     out_bezier = bezOut
+      #     out_speed = 1
+      #   }
+      # }
+      # }
     '';
   };
 }
