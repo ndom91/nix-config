@@ -449,6 +449,8 @@ in
       packages = [
         { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
         { appId = "com.bambulab.BambuStudio"; origin = "flathub"; }
+        { appId = "io.gitlab.azymohliad.WatchMate"; origin = "flathub"; }
+        { appId = "com.github.tchx84.Flatseal"; origin = "flathub"; }
       ];
       overrides = {
         global = {
