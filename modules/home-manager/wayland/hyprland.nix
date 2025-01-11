@@ -164,6 +164,9 @@
         focus_on_activate = true;
         allow_session_lock_restore = true;
       };
+      ecosystem = {
+        no_donation_nag = true;
+      };
       windowrule =
         let
           f = regex: "float, .*${regex}.*";
