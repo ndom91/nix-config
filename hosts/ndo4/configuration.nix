@@ -61,18 +61,9 @@ in
   };
 
   services = {
-    # opensnitch.enable = true;
     displayManager = {
       defaultSession = "hyprland";
     };
-    # xserver = {
-    #   videoDrivers = [ "amdgpu" ];
-    #   xkb = {
-    #     layout = "us";
-    #     variant = "";
-    #     options = "caps:escape";
-    #   };
-    # };
     envfs.enable = true;
   };
 
@@ -160,6 +151,7 @@ in
   hardware = {
     enableAllFirmware = true;
     keyboard.qmk.enable = true;
+    keyboard.zsa.enable = true;
 
     bluetooth = {
       enable = true;
@@ -175,6 +167,7 @@ in
 
     graphics = {
       enable = true;
+      enable32 = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
       # driSupport = true;
@@ -225,6 +218,9 @@ in
 
     opensnitch
     opensnitch-ui
+
+    quickemu # Download preconfiged VM qemu configs and ISOs
+    unstablePkgs.bambu-studio # Broken 05.01.25
   ];
 
   xdg.portal = {
@@ -331,7 +327,6 @@ in
 
     flatpak = {
       enable = true;
-      # uninstallUnmanagedPackages = true;
       remotes = lib.mkOptionDefault [
         {
           name = "flathub-beta";
@@ -345,6 +340,8 @@ in
       packages = [
         { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
         { appId = "com.bambulab.BambuStudio"; origin = "flathub"; }
+        { appId = "io.gitlab.azymohliad.WatchMate"; origin = "flathub"; }
+        { appId = "com.github.tchx84.Flatseal"; origin = "flathub"; }
       ];
       overrides = {
         global = {
