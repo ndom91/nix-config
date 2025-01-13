@@ -167,7 +167,7 @@ in
 
     graphics = {
       enable = true;
-      enable32 = true;
+      enable32Bit = true;
       package = unstablePkgs.mesa.drivers;
       package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
       # driSupport = true;
@@ -197,7 +197,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "networkmanager" "wheel" "libvirt" "kvm" "video" "dialout" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirt" "kvm" "video" "render" "dialout" "plugdev" ];
   };
 
   home-manager = {
