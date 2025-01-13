@@ -79,6 +79,7 @@
     git-trim # Trim your branches whose remote refs are merged or gone
     graphviz # Generate graphs on CLI
     kondo # Multi-language vendor file cleaner (node_modules, vendor, etc)
+    just # Command runner
     unstablePkgs.serie # Git Log output
     unstablePkgs.mold # Faster Linker
     unstablePkgs.terraformer # Terraform Introspection Tool

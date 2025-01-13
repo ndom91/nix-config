@@ -107,6 +107,13 @@
       };
       animations = {
         enabled = "yes";
+        bezier = [
+          "linear, 1, 1, 0, 0"
+        ];
+        animation = [
+          "fadeIn, 1, 5, linear"
+          "fadeOut, 1, 5, linear"
+        ];
         # bezier = [
         #   "myBezier, 0.05, 0.9, 0.1, 1.05"
         #   "linear, 0.0, 0.0, 1.0, 1.0"
