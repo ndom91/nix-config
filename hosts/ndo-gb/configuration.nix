@@ -55,6 +55,7 @@ in
       configurationLimit = 10;
       netbootxyz.enable = true;
     };
+
     loader.efi.canTouchEfiVariables = true;
 
     # make 3.5mm jack work

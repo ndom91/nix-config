@@ -12,7 +12,7 @@
     homeDirectory = "/home/ndo";
     stateVersion = stateVersion;
     packages = [
-      inputs.home-manager.packages.x86_64-linux.home-manager # home-manager binary
+      inputs.home-manager.packages.${pkgs.system}.home-manager # home-manager binary
       fira-sans-nerd-font
     ];
   };

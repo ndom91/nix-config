@@ -13,7 +13,7 @@
   # https://github.com/BirdeeHub/nixCats-nvim
   programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.x86_64-linux.neovim;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
 
     viAlias = true;
     vimAlias = true;

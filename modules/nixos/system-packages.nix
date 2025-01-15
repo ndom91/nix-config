@@ -80,7 +80,6 @@
     zip
     zoxide # cd replacement
 
-    # sddm
     # bibata-cursors-translucent
     xorg.xrdb
     xorg.xsetroot
@@ -88,7 +87,6 @@
 
     zsa-udev-rules # Voyager Oryx
     keymapp # ZSA Flasher Util
-
 
     # Theme
     (colloid-icon-theme.override {
