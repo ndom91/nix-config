@@ -54,7 +54,7 @@
       exec-once = [
         # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
         # "${lib.getExe pkgs._1password-gui} --silent"
-        "${lib.getExe pkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
+        "${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
         "${pkgs.blueman}/bin/blueman-applet"
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
       ];
@@ -107,6 +107,13 @@
       };
       animations = {
         enabled = "yes";
+        bezier = [
+          "linear, 1, 1, 0, 0"
+        ];
+        animation = [
+          "fadeIn, 1, 5, linear"
+          "fadeOut, 1, 5, linear"
+        ];
         # bezier = [
         #   "myBezier, 0.05, 0.9, 0.1, 1.05"
         #   "linear, 0.0, 0.0, 1.0, 1.0"
@@ -322,7 +329,7 @@
         # 1Password Quick Search
         # "CTRL SHIFT, Period, exec, ${lib.getExe pkgs._1password-gui} --quick-access"
         # "CTRL SHIFT, Period, exec, 1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
-        "CTRL SHIFT, Period, exec, ${lib.getExe pkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
+        "CTRL SHIFT, Period, exec, ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
       ];
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging

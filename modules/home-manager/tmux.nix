@@ -11,15 +11,14 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "ofirgall";
       repo = "tmux-window-name";
-      # rev = "34026b6f442ceb07628bf25ae1b04a0cd475e9ae";
       rev = "dc97a79ac35a9db67af558bb66b3a7ad41c924e7";
-      # sha256 = "sha256-BNgxLk/BkaQkGlB4g2WKVs39y4VHL1Y2TdTEoBy7yo0=";
       sha256 = "sha256-o7ZzlXwzvbrZf/Uv0jHM+FiHjmBO0mI63pjeJwVJEhE=";
     };
     nativeBuildInputs = [ pkgs.makeWrapper ];
     rtpFilePath = "tmux_window_name.tmux";
     postInstall = ''
-      NIX_BIN_PATH="${builtins.getEnv "HOME"}/.nix-profile/bin"
+      # NIX_BIN_PATH="${builtins.getEnv "HOME"}/.nix-profile/bin"
+      NIX_BIN_PATH="/nix/store"
       # Update USR_BIN_REMOVER with .nix-profile PATH
       sed -i "s|^USR_BIN_REMOVER.*|USR_BIN_REMOVER = (r\'^$NIX_BIN_PATH/(.+)( --.*)?\', r\'\\\g<1>\')|" $target/scripts/rename_session_windows.py
 
