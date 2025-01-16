@@ -47,7 +47,7 @@
     _1password = { enable = true; };
     _1password-gui = {
       enable = true;
-      package = unstablePkgs._1password-gui-beta;
+      package = unstablePkgs._1password-gui;
       polkitPolicyOwners = [ "ndo" ];
     };
 
