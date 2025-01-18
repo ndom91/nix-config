@@ -12,7 +12,7 @@
     aliases = {
       pr = "pull --rebase";
     };
-    difftastic.enable = true;
+    # difftastic.enable = true;
     extraConfig = {
       init = {
         defaultBranch = "main";
@@ -25,7 +25,7 @@
         helper = "cache --timeout=360000";
       };
       merge = {
-        conflictStyle = "zdiff3";
+        # conflictStyle = "zdiff3";
         tool = "nvim";
       };
       status = {

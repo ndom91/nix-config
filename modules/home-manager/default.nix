@@ -69,7 +69,7 @@
       git = {
         paging = {
           colorArg = "always";
-          externalDiffCommand = "${pkgs.difftastic}/bin/difft --color=always";
+          # externalDiffCommand = "${pkgs.difftastic}/bin/difft --color=always";
         };
       };
     };
