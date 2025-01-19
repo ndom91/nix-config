@@ -1,0 +1,11 @@
+font-size = 12
+font-family = Operator Mono Light
+theme = rose-pine
+command = tmux new-session
+
+background = #191724
+background-opacity = 0.95
+window-padding-balance = true
+# gtk-titlebar = false
+
+keybind = ctrl+enter=unbind
