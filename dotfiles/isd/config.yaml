@@ -1,0 +1,5 @@
+journalctl_args: 
+  - "--pager-end"
+
+# The theme of the application.
+theme: "tokyo-night"
