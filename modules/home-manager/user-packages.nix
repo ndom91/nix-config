@@ -121,6 +121,6 @@
     inputs.tsui.packages.${pkgs.system}.tsui # Tailscale TUI Client
     inputs.superfile.packages.${pkgs.system}.default # TUI File Manager
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-    inputs.isd.default # Interactive Systemd
+    inputs.isd.packages.${pkgs.system}.default # Interactive Systemd
   ];
 }

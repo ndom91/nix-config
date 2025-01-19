@@ -22,7 +22,13 @@ in
     pkgs.xdg-utils
   ];
   xdg = {
-    configFile."user-dirs.dirs".force = true;
+    configFile = {
+      "user-dirs.dirs".force = true;
+      "isd/config.yaml" = {
+        force = true;
+        source = ../../dotfiles/isd/config.yaml;
+      };
+    };
     userDirs = {
       enable = true;
       createDirectories = true;
