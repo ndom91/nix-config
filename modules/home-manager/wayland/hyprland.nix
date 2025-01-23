@@ -182,6 +182,7 @@
           (f "(D|d)ev(T|t)ools")
           (f "(b|B)eeper")
           (f "(g|G)it-(b|B)utler.*")
+          (f "gitbutler-tauri")
           (f "Developer Tools")
           (f "Winetricks")
           (f "beekeeper-studio")
