@@ -78,8 +78,8 @@ in
           };
           ipv4 = {
             method = "auto";
-            nameserver = "192.168.188.1";
-            dns-search = "";
+            nameserver = "192.168.178.2";
+            dns-search = "gitbutler.lan";
           };
           wifi = {
             mode = "infrastructure";
