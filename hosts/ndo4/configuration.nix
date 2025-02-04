@@ -220,7 +220,7 @@ in
     opensnitch-ui
 
     quickemu # Download preconfiged VM qemu configs and ISOs
-    unstablePkgs.bambu-studio # Broken 05.01.25
+    # unstablePkgs.bambu-studio # Broken 05.01.25
   ];
 
   xdg.portal = {
