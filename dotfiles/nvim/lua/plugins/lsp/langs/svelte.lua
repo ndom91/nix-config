@@ -24,7 +24,7 @@
 -- })
 
 return {
-  -- capabilities = require("plugins.lsp.capabilities"),
+  capabilities = require("plugins.lsp.capabilities"),
   on_attach = function(client)
     vim.api.nvim_create_autocmd("BufWritePost", {
       pattern = { "*.js", "*.ts" },
@@ -34,6 +34,14 @@ return {
       end,
     })
   end,
+  root_dir = require("lspconfig.util").root_pattern(
+    "package.json",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "tsconfig.json",
+    "jsconfig.json",
+    ".git"
+  ),
   settings = {
     svelte = {
       plugin = {
