@@ -62,6 +62,9 @@ in
     extraModprobeConfig = ''
       options snd_hda_intel model=headset-mode
     '';
+
+    # Support mounting NFS shares
+    supportedFilesystems = [ "nfs" ];
   };
 
   networking = {
@@ -287,6 +290,7 @@ in
 
     quickemu # Download preconfiged VM qemu configs and ISOs
     # unstablePkgs.bambu-studio # Broken 05.01.25
+    bambu-studio
   ];
 
 

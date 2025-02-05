@@ -57,6 +57,7 @@
     # rustdesk - sciter ui lib is deprecated, using flutter version instead
     rustdesk-flutter # Remote Desktop
     obsidian # Note Taking
+    unstablePkgs.remmina
 
     # System Tools
     qdirstat # Disk Usage Analyzer
