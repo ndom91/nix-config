@@ -21,8 +21,8 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.45.2";
-    # hyprland.url = "github:hyprwm/Hyprland/v0.45.2";
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/v0.47.2";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nix-colors.url = "github:misterio77/nix-colors";
     catppuccin.url = "github:catppuccin/nix";
