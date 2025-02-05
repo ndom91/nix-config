@@ -62,6 +62,7 @@
     system-config-printer # printer configuration
     tmux # Terminal Multiplexer
     tracexec # Trace exec system calls
+    traceroute # Network Traceroute
     tree # List directories recursively
     unzip # Unzip files
     usbutils # Provides lsusb
