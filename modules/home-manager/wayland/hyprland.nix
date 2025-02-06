@@ -19,7 +19,7 @@
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
-    systemd.variables = [ "--all" ];
+    # systemd.variables = [ "--all" ];
 
     plugins = [
       # unstablePkgs.hyprlandPlugins.hy3

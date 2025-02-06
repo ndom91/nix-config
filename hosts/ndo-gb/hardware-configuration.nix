@@ -5,11 +5,15 @@
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
-  # boot.initrd.kernelModules = [ "i915" ];
-  boot.initrd.kernelModules = [ "xe" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelParams = [ "i915.force_probe=7d45" "mitigations=off" ];
-  boot.kernelParams = [ "xe.force_probe=7d45" "mitigations=off" ];
+
+  # Both i915 and xe are compatible with this laptop's iGPU, sometimes apps have issues with one or the other 
+  # though, so every few months I find myself switching back and forth and checking if "'xe' is ready yet".
+  boot.initrd.kernelModules = [ "i915" ];
+  boot.kernelParams = [ "i915.force_probe=7d45" "mitigations=off" ];
+  # boot.initrd.kernelModules = [ "xe" ];
+  # boot.kernelParams = [ "xe.force_probe=7d45" "mitigations=off" ];
+
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 

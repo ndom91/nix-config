@@ -17,7 +17,7 @@
 
     # NixOS force Wayland for some apps
     NIXOS_OZONE_WL = "1";
-    MOZ_ENABLE_WAYLAND = "1";
+    # MOZ_ENABLE_WAYLAND = "1";
 
     # fix modals from being attached on tiling wms
     _JAVA_AWT_WM_NONREPARENTING = "1";

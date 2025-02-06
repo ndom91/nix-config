@@ -36,9 +36,9 @@
       # debug = {
       #   disable_scale_checks = true;
       # };
-      exec-once = [
-        "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1.6"
-      ];
+      # exec-once = [
+      #   "${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1.6"
+      # ];
       bindl = [
         # trigger when the switch is turning on
         ",switch:on:Lid Switch,exec,hyprctl keyword monitor 'eDP-1,disable'"
