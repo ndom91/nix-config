@@ -6,6 +6,6 @@
 
 {
   imports = [
-    ../home-manager/modules/home-manager/thunar.nix
+    ../../home-manager/thunar.nix
   ];
 }

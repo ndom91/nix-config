@@ -18,7 +18,6 @@
     ../../modules/home-manager/nixcord.nix
     ../../modules/home-manager/scripts
     ../../modules/home-manager/starship.nix
-    # ../../modules/home-manager/thunar.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/wayland
     ../../modules/home-manager/wezterm.nix
