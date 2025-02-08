@@ -47,8 +47,11 @@
     # unstablePkgs.vesktop # Discord client w/ better wayland support (see nixcord.nix)
     virt-manager # VM Manager
     gnome-text-editor # Plain Text Editor
-    nemo # GUI File Manager
-    nautilus # Gnome File Manager
+    # nemo # GUI File Manager
+    # nautilus # Gnome File Manager
+    xfce.thunar # XFCE File Manager
+    xfce.thunar-volman # XFCE File Manager Plugin for external volumes
+    xfce.thunar-archive-plugin # XFCE File Manager Plugin for archive mgmt
     sushi #  Gnome File Manager Previewer
     file-roller # GUI Archive Manager
     vlc # Media Player
