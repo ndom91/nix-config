@@ -6,23 +6,24 @@
     # Programming Lanaguages
     ../../modules/home-manager/languages/rust.nix
     # Common
-    ../../modules/home-manager/git.nix
-    ../../modules/home-manager/tmux.nix
-    ../../modules/home-manager/neofetch.nix
+    ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/bash.nix
-    ../../modules/home-manager/xdg.nix
     ../../modules/home-manager/dconf.nix
+    ../../modules/home-manager/ghostty.nix
+    ../../modules/home-manager/git.nix
     ../../modules/home-manager/gtk.nix
-    ../../modules/home-manager/starship.nix
+    ../../modules/home-manager/kitty.nix
+    ../../modules/home-manager/neofetch.nix
     ../../modules/home-manager/neovim.nix
     ../../modules/home-manager/nixcord.nix
-    ../../modules/home-manager/zathura.nix
-    ../../modules/home-manager/wezterm.nix
-    ../../modules/home-manager/alacritty.nix
-    ../../modules/home-manager/kitty.nix
-    ../../modules/home-manager/ghostty.nix
-    ../../modules/home-manager/wayland
     ../../modules/home-manager/scripts
+    ../../modules/home-manager/starship.nix
+    # ../../modules/home-manager/thunar.nix
+    ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/wayland
+    ../../modules/home-manager/wezterm.nix
+    ../../modules/home-manager/xdg.nix
+    ../../modules/home-manager/zathura.nix
   ];
 
   home.file = {
