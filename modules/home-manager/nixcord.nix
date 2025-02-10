@@ -54,7 +54,7 @@
           enable = true;
           shownEmojis = "currentServer";
         };
-        noScreensharePreview.enable = true;
+        # noScreensharePreview.enable = true;
         noTypingAnimation.enable = true;
         onePingPerDM.enable = true;
         platformIndicators.enable = true;
