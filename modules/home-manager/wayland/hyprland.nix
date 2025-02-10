@@ -192,6 +192,7 @@
           (f "nemo")
           (f "nm-connection-editor")
           (f "opensnitch.*")
+          (f "thunar")
           (f "org.gnome.Calculator")
           (f "org.gnome.FileRoller")
           (f "org.gnome.Loupe")
@@ -262,10 +263,10 @@
         "$mainMod, Q, killactive"
         "CTRL SHIFT, L, exec, hyprlock"
         "$mainMod, Return, exec, ghostty"
+        # "$mainMod SHIFT, R, exec, hyprctl reload"
         # "$mainMod, Return, exec, kitty"
-        "$mainMod SHIFT, R, exec, hyprctl reload"
         # "$mainMod SHIFT, F, exec, nemo"
-        "$mainMod SHIFT, F, exec, nautilus"
+        "$mainMod SHIFT, F, exec, thunar"
         "$mainMod SHIFT, Q, exec, wlogout -b 5 -c 0 -r 0 -m 0 --protocol layer-shell"
         "$mainMod SHIFT, Space, togglefloating,"
         "$mainMod, Space, cyclenext # hack to focus floating windows"

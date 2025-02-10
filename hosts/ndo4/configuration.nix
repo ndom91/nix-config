@@ -13,6 +13,7 @@ in
     ../../modules/nixos/system-packages.nix
     ../../modules/nixos/services/polkit-agent.nix
     ../../modules/nixos/services/nginx.nix
+    ../../modules/nixos/services/default.nix
     ../../modules/nixos/services/tailscale.nix
     ../../modules/nixos/services/ssh.nix
     ../../modules/nixos/services/greetd.nix
@@ -39,6 +40,11 @@ in
       experimental-features = [ "nix-command" "flakes" ];
     };
   };
+
+  ndom91 = {
+    thunar.enable = true;
+  };
+
 
   boot = {
     plymouth = {

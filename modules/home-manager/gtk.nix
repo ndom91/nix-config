@@ -70,6 +70,7 @@
         "file:///opt/nextauthjs authjs"
         "file:///opt opt"
         "file:///mnt mnt"
+        "file:///home/ndo/Documents/3d_models 3d_models"
       ];
       extraConfig = {
         gtk-application-prefer-dark-theme = 1;
