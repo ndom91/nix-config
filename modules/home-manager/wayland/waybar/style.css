@@ -38,8 +38,9 @@ window#waybar {
 .modules-center,
 .modules-right {
   border-radius: 12px;
-  background-color: @primary-bg;
-  padding: 2px 6px;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
 }
 
 window#waybar.hidden {
@@ -55,14 +56,12 @@ window#waybar.hidden {
   /* Use box-shadow instead of border so the text isn't offset */
   padding: 2px 6px;
   border-radius: 4px;
-
-  background-color: @surface;
   color: @text;
 }
 
 #workspaces button.active {
-  color: @text;
-  background-color: @primary-bg;
+  color: @rose;
+  background-color: @surface;
 }
 
 #workspaces button:hover {
@@ -73,8 +72,10 @@ window#waybar.hidden {
 
 #workspaces button.urgent {
   background-color: @love;
+  color: @primary-bg;
 }
 
+#window,
 #backlight,
 #battery,
 #clock,
@@ -95,19 +96,25 @@ window#waybar.hidden {
 #submap,
 #network {
   border-radius: 9px;
-  margin: 6px 3px;
+  border: 3px solid @surface;
+  margin: 6px 3px 3px 3px;
   padding: 6px 12px;
 
-  background-color: @surface;
+  background-color: @primary-bg;
   color: @text;
+}
+
+/* First and last modules should not have outside margin */
+#tray {
+  margin-right: 0px;
+}
+#clock {
+  margin-left: 0px;
 }
 
 #submap {
   background-color: @love;
-}
-
-#window {
-  background-color: @transparent;
+  color: @primary-bg;
 }
 
 #user .avatar {
