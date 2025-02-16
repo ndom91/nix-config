@@ -45,6 +45,10 @@ in
   age.secrets.wutangKey.file = ../../secrets/wutangKey.age;
   age.secrets.derpyKey.file = ../../secrets/derpyKey.age;
 
+  ndom91 = {
+    thunar.enable = true;
+  };
+
   boot = {
     plymouth = {
       enable = true;
