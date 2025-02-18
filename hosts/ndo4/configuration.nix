@@ -114,6 +114,16 @@ in
       ];
       # make the routes on this interface a dependency for network-online.target
       linkConfig.RequiredForOnline = "routable";
+      networkConfig = {
+        # accept Router Advertisements for Stateless IPv6 Autoconfiguraton (SLAAC)
+        IPv6AcceptRA = true;
+      };
+      ipv6PrefixDelegationConfig = {
+        # Let networkd know that we would very much like to use DHCPv6
+        # to obtain the "managed" information. Not sure why they can't
+        # just take that from the upstream RAs.
+        Managed = true;
+      };
     };
   };
 
@@ -227,6 +237,7 @@ in
 
     quickemu # Download preconfiged VM qemu configs and ISOs
     bambu-studio # unstable version is Broken 05.01.25
+    bottles # Wine Manager
   ];
 
   xdg.portal = {

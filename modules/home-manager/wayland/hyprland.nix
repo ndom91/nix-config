@@ -19,7 +19,7 @@
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
-    # systemd.variables = [ "--all" ];
+    systemd.variables = [ "--all" ];
 
     plugins = [
       # unstablePkgs.hyprlandPlugins.hy3
@@ -114,54 +114,6 @@
           "fadeIn, 1, 5, linear"
           "fadeOut, 1, 5, linear"
         ];
-        # bezier = [
-        #   "myBezier, 0.05, 0.9, 0.1, 1.05"
-        #   "linear, 0.0, 0.0, 1.0, 1.0"
-        #   "wind, 0.05, 0.9, 0.1, 1.05"
-        #   "winIn, 0.1, 1.1, 0.1, 1.1"
-        #   "winOut, 0.3, -0.3, 0, 1"
-        #   "slow, 0, 0.85, 0.3, 1"
-        #   "overshot, 0.7, 0.6, 0.1, 1.1"
-        #   "bounce, 1.1, 1.6, 0.1, 0.85"
-        #   "sligshot, 1, -1, 0.15, 1.25"
-        #   "nice, 0, 6.9, 0.5, -4.20"
-        #
-        #   "linear, 0, 0, 1, 1"
-        #   "md3_standard, 0.2, 0, 0, 1"
-        #   "md3_decel, 0.05, 0.7, 0.1, 1"
-        #   "md3_accel, 0.3, 0, 0.8, 0.15"
-        #   "overshot, 0.05, 0.9, 0.1, 1.1"
-        #   "crazyshot, 0.1, 1.5, 0.76, 0.92 "
-        #   "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
-        #   "menu_decel, 0.1, 1, 0, 1"
-        #   "menu_accel, 0.38, 0.04, 1, 0.07"
-        #   "easeInOutCirc, 0.85, 0, 0.15, 1"
-        #   "easeOutCirc, 0, 0.55, 0.45, 1"
-        #   "easeOutExpo, 0.16, 1, 0.3, 1"
-        #   "softAcDecel, 0.26, 0.26, 0.15, 1"
-        # ];
-        #
-        # animation = [
-        #   "windowsIn, 1, 5, slow, popin"
-        #   "windowsOut, 1, 5, winOut, popin"
-        #   "windowsMove, 1, 5, wind, slide"
-        #   "border, 1, 10, linear"
-        #   "fade, 1, 5, overshot"
-        #   "workspaces, 1, 5, wind"
-        #   "windows, 1, 5, bounce, popin"
-        #
-        #   "windows, 1, 3, md3_decel, popin 60%"
-        #   "windowsIn, 1, 3, md3_decel, popin 60%"
-        #   "windowsOut, 1, 3, md3_accel, popin 60%"
-        #   "border, 1, 10, default"
-        #   "fade, 1, 3, md3_decel"
-        #   "layers, 1, 2, md3_decel, slide"
-        #   "layersIn, 1, 3, menu_decel, slide"
-        #   "layersOut, 1, 1.6, menu_accel"
-        #   "fadeLayersIn, 1, 2, menu_decel"
-        #   "fadeLayersOut, 1, 4.5, menu_accel"
-        #   "workspaces, 1, 7, menu_decel, slide"
-        # ];
       };
       misc = {
         disable_hyprland_logo = true;
