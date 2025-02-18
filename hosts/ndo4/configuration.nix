@@ -109,7 +109,7 @@ in
       ntp = [ "10.0.0.1" ];
       domains = [ "puff.lan" ];
       routes = [
-        { routeConfig.Gateway = "10.0.0.1"; }
+        { Gateway = "10.0.0.1"; }
       ];
       # make the routes on this interface a dependency for network-online.target
       linkConfig.RequiredForOnline = "routable";
@@ -157,10 +157,10 @@ in
   environment.variables = {
     # VAAPI and VDPAU config for accelerated video.
     # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
-    VDPAU_DRIVER = "radeonsi";
-    LIBVA_DRIVER_NAME = "radeonsi";
+    # VDPAU_DRIVER = "radeonsi";
+    # LIBVA_DRIVER_NAME = "radeonsi";
     # AMD_VULKAN_ICD = "RADV"; # "RADV" | "AMDVLK(?)"
-    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+    # VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
   };
 
   hardware = {

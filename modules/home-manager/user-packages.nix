@@ -41,6 +41,7 @@
     unstablePkgs.beeper # Universal Chat App
     unstablePkgs.chromium # Browser
     floorp # Firefox
+    firefox-esr # Firefox
     gnome-boxes # VM Manager
     seahorse # GPG Key Manager
     slack # Chat

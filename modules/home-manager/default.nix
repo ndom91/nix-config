@@ -88,7 +88,7 @@
       eamodio.gitlens
       # Languages
       esbenp.prettier-vscode
-      rust-lang.rust-analyzer
+      # rust-lang.rust-analyzer
       svelte.svelte-vscode
     ];
     userSettings = {
