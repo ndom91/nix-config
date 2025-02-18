@@ -1,4 +1,4 @@
-{ lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, overlays, config, pkgs, ... }:
+{ lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, config, pkgs, ... }:
 let
   # tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   # corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
