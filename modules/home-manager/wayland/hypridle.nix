@@ -12,8 +12,15 @@
           before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
           # to avoid having to press a key twice to turn on the display.
           after_sleep_cmd = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
+          inhibit_sleep = 3;
         };
         listener = [
+          {
+            # Dim screen
+            timeout = 300;
+            on-timeout = "brightnessctl -s set 20"; # set monitor backlight to minimum.
+            on-resume = "brightnessctl -r"; # monitor backlight restore.
+          }
           {
             # Alert that lock is incoming
             timeout = 590;

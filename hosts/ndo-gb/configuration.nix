@@ -12,6 +12,7 @@ in
     ../../modules/nixos/system-packages.nix
     ../../modules/nixos/services/polkit-agent.nix
     ../../modules/nixos/services/tailscale.nix
+    ../../modules/nixos/services/default.nix
     ../../modules/nixos/services/ssh.nix
     ../../modules/nixos/services/greetd.nix
     ../../modules/home-manager/qt.nix
@@ -44,6 +45,10 @@ in
   # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
   age.secrets.wutangKey.file = ../../secrets/wutangKey.age;
   age.secrets.derpyKey.file = ../../secrets/derpyKey.age;
+
+  ndom91 = {
+    thunar.enable = true;
+  };
 
   boot = {
     plymouth = {
