@@ -131,10 +131,12 @@ return {
     opts = {
       provider = "claude",
       -- provider = "openai",
-      openai = {
-        model = "gpt-4o-2024-08-06",
-      },
+      -- openai = {
+      --   model = "gpt-4o-2024-08-06",
+      -- },
       claude = {
+        -- TODO: Ensure logging in 1 time per reboot is available in all terminal sessions
+        -- api_key_name = "cmd:op item get mq6qqndpax27wvnn4hge73ewf4 --fields label=credential --reveal",
         endpoint = "https://api.anthropic.com",
         model = "claude-3-5-sonnet-20240620",
         temperature = 0,
