@@ -235,7 +235,7 @@ in
     opensnitch-ui
 
     quickemu # Download preconfiged VM qemu configs and ISOs
-    bambu-studio # unstable version is Broken 05.01.25
+    unstablePkgs.bambu-studio # unstable version is Broken 05.01.25
     bottles # Wine Manager
   ];
 

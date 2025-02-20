@@ -75,11 +75,12 @@
       extraConfig = {
         gtk-application-prefer-dark-theme = 1;
         "AdwStyleManager:color-scheme" = "prefer-dark";
+        gtk-theme-name = "Adwaita";
       };
     };
 
     gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      gtk-application-prefer-dark-theme = true;
       "AdwStyleManager:color-scheme" = "prefer-dark";
     };
   };

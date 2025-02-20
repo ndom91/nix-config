@@ -5,6 +5,8 @@
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
+    systemd.enable = true;
+    xwayland.enable = true;
     # systemd.variables = [ "--all" ];
 
     plugins = [
@@ -29,6 +31,35 @@
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         "HYPRLAND_TRACE,1"
         "AQ_TRACE,1"
+
+        # XDG Desktop Portal
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+
+        # QT
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "QT_QPA_PLATFORMTHEME,qt6ct"
+        "QT_QPA_PLATFORMTHEME,qt5ct"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+
+        # GDK
+        "GDK_SCALE,1"
+
+        # Toolkit Backend
+        "GDK_BACKEND,wayland,x11,*"
+        "CLUTTER_BACKEND,wayland"
+
+        # Mozilla
+        "MOZ_ENABLE_WAYLAND,1"
+
+        # Disable appimage launcher by default
+        "APPIMAGELAUNCHER_DISABLE,1"
+
+        # Ozone
+        "OZONE_PLATFORM,wayland"
+        "ELECTRON_OZONE_PLATFORM_HINT,wayland"
       ];
       input = {
         kb_layout = "us";
