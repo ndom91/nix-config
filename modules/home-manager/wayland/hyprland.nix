@@ -1,25 +1,11 @@
 { pkgs, lib, unstablePkgs, config, rose-pine-cursor, inputs, ... }:
 {
-
-  xdg.configFile."swappy/config".text = ''
-    [Default]
-    save_dir=$HOME/Pictures/Screenshots
-    save_filename_format=swappy-%Y%m%d-%H%M%S.png
-    show_panel=true
-    line_size=8
-    text_size=24
-    text_font=sans-serif
-    paint_mode=brush
-    early_exit=true
-    fill_shape=false
-  '';
-
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
-    systemd.variables = [ "--all" ];
+    # systemd.variables = [ "--all" ];
 
     plugins = [
       # unstablePkgs.hyprlandPlugins.hy3
@@ -32,15 +18,17 @@
 
     settings = {
       debug = {
-        disable_logs = true;
+        disable_logs = false;
       };
-      xwayland = {
-        force_zero_scaling = true;
-      };
+      # xwayland = {
+      #   force_zero_scaling = true;
+      # };
       monitor = ",preferred,auto,auto";
       # Test multi-monitor: https://github.com/MatthiasBenaets/nix-config/blob/master/modules/desktops/hyprland.nix#L257
       env = [
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+        "HYPRLAND_TRACE,1"
+        "AQ_TRACE,1"
       ];
       input = {
         kb_layout = "us";
@@ -57,6 +45,9 @@
         "${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
         "${pkgs.blueman}/bin/blueman-applet"
         "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
+
+        # I forgot why i need this
+        # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
       general = {
         gaps_in = 10;
