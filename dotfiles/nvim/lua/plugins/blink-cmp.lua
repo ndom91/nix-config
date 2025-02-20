@@ -4,6 +4,7 @@ return {
 
   dependencies = {
     "giuxtaposition/blink-cmp-copilot", -- Blink Copilot Source
+    "Kaiser-Yang/blink-cmp-avante", -- Blink Avante Source
     -- "L3MON4D3/LuaSnip", -- Snippets Engine
     -- "rafamadriz/friendly-snippets", -- Snippets
     -- "onsails/lspkind-nvim", -- Icons
@@ -62,6 +63,13 @@ return {
           module = "blink-cmp-copilot",
         },
         lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lsp" } },
+        avante = {
+          module = "blink-cmp-avante",
+          name = "Avante",
+          opts = {
+            -- options for blink-cmp-avante
+          },
+        },
       },
       default = { "lsp", "path", "snippets", "buffer", "copilot", "lazydev" },
     },
