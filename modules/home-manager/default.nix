@@ -38,6 +38,7 @@
 
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
+    ".config/chrome-flags.conf".source = ../../dotfiles/chrome-flags.conf;
   };
 
   services = {
