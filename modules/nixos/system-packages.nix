@@ -79,7 +79,7 @@
     wlay # GUI Wayland Output Management
     wireguard-tools # wg-quick
     zip
-    zoxide # cd replacement
+    # zoxide # cd replacement
 
     # bibata-cursors-translucent
     xorg.xrdb

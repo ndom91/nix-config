@@ -53,7 +53,7 @@
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
 
         # GDK
-        "GDK_SCALE,2"
+        "GDK_SCALE,1"
 
         # Toolkit Backend
         "GDK_BACKEND,wayland,x11,*"
@@ -164,6 +164,7 @@
           (f "(D|d)ev(T|t)ools")
           (f "(b|B)eeper")
           (f "(g|G)it-(b|B)utler.*")
+          (f "Save File")
           (f "gitbutler-tauri")
           (f "Developer Tools")
           (f "Winetricks")

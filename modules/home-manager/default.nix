@@ -132,8 +132,12 @@
 
   programs.zoxide = {
     enable = true;
+    enableBashIntegration = true;
     options = [
       "--cmd cd"
     ];
+  };
+  home.sessionVariables = {
+    "_ZO_DOCTOR" = "0";
   };
 }

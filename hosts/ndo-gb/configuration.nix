@@ -349,7 +349,7 @@ in
       enable = true;
       withUWSM = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
     light.enable = true;
@@ -491,6 +491,13 @@ in
       };
     };
   };
+
+  # Ensure network is online before desktop starts
+  systemd.targets.graphical = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+  };
+
 }
 
 

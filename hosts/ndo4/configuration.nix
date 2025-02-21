@@ -41,6 +41,8 @@ in
     };
   };
 
+  system.stateVersion = stateVersion;
+
   ndom91 = {
     thunar.enable = true;
   };
@@ -371,5 +373,9 @@ in
     };
   };
 
-  system.stateVersion = stateVersion;
+  # Ensure network is online before desktop starts
+  systemd.targets.graphical = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+  };
 }

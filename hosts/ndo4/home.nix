@@ -35,11 +35,11 @@
         explicit_sync = 0;
         explicit_sync_kms = 0;
       };
-      # workspace = [
-      #   "1,monitor:DP-2,default:true"
-      #   "2,monitor:DP-1,default:true"
-      #   "3,monitor:DP-1"
-      # ];
+      workspace = [
+        "1,monitor:DP-2,default:true"
+        "2,monitor:DP-1,default:true"
+        "3,monitor:DP-1"
+      ];
     };
   };
 
