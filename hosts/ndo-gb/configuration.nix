@@ -242,11 +242,22 @@ in
     };
 
     # Intel Hardware Acceleration
+    # graphics = {
+    #   enable = true;
+    #   enable32Bit = true;
+    #   package = unstablePkgs.mesa.drivers;
+    #   package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
+    #   extraPackages = with unstablePkgs; [
+    #     intel-media-driver
+    #     intel-compute-runtime
+    #
+    #     vaapiVdpau
+    #     libvdpau-va-gl
+    #   ];
+    # };
     graphics = {
-      enable = true;
-      enable32Bit = true;
-      package = unstablePkgs.mesa.drivers;
-      package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
+      package = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa.drivers;
+      package32 = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa.drivers;
       extraPackages = with unstablePkgs; [
         intel-media-driver
         intel-compute-runtime
@@ -338,7 +349,7 @@ in
       enable = true;
       withUWSM = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
     light.enable = true;

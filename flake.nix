@@ -1,10 +1,11 @@
 {
   description = "ndom91 flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    pkgs2411.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {
@@ -44,7 +45,7 @@
     isd.url = "github:isd-project/isd"; # Interactive SystemD
   };
 
-  outputs = { self, unstable, catppuccin, agenix, nix-colors, nixpkgs, nix-index-database, ... } @inputs:
+  outputs = { self, unstable, catppuccin, agenix, nix-colors, nixpkgs, nix-index-database, pkgs2411, ... } @inputs:
     let
       stateVersion = "24.11";
       system = "x86_64-linux";
@@ -66,7 +67,7 @@
       nixosConfigurations = {
         ndo4 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nix-colors unstablePkgs stateVersion;
+            inherit inputs nix-colors unstablePkgs stateVersion pkgs2411;
           };
           modules = [
             ./hosts/ndo4/configuration.nix
@@ -78,7 +79,7 @@
         };
         ndo-gb = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nix-colors unstablePkgs stateVersion;
+            inherit inputs nix-colors unstablePkgs stateVersion pkgs2411;
           };
           modules = [
             ./hosts/ndo-gb/configuration.nix
@@ -90,7 +91,7 @@
         };
         ndo2 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nix-colors unstablePkgs stateVersion;
+            inherit inputs nix-colors unstablePkgs stateVersion pkgs2411;
           };
           modules = [
             ./hosts/ndo2/configuration.nix

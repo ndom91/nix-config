@@ -16,7 +16,8 @@
       (google-fonts.override { fonts = [ "Inter" ]; })
 
       # nerdfonts
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      # (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      nerd-fonts.symbols-only
     ];
 
     fontconfig = {
