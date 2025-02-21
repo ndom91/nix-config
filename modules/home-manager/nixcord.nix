@@ -8,11 +8,12 @@
     discord = {
       enable = false;
       openASAR.enable = false;
-      vencord = {
-        enable = false;
-        # still relevant for vesktop even if not enabled here
-        package = unstablePkgs.vencord;
-      };
+      vencord.enable = false;
+      # vencord = {
+      #   enable = false;
+      #   # still relevant for vesktop even if not enabled here
+      #   package = pkgs.vencord;
+      # };
     };
     # use vesktop instead (wayland optimized discord client)
     vesktop = {
@@ -21,7 +22,7 @@
     };
 
     extraConfig = {
-      discordBranch = "canary";
+      # discordBranch = "canary";
       minimizeToTray = false;
       arRPC = false;
     };

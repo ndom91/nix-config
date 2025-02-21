@@ -11,6 +11,7 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = "";
+      inputs.home-manager.follows = "home-manager";
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
@@ -22,12 +23,19 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&tag=v0.45.2";
     # hyprland.url = "github:hyprwm/Hyprland/v0.45.2";
-    hyprland.url = "github:hyprwm/Hyprland/v0.47.2";
-    # hyprland.url = "github:hyprwm/Hyprland";
-    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    # hyprland.url = "github:hyprwm/Hyprland/v0.47.2";
+    hyprland.url = "github:hyprwm/Hyprland/nix-module";
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+    };
     nix-colors.url = "github:misterio77/nix-colors";
     catppuccin.url = "github:catppuccin/nix";
-    nixcord.url = "github:kaylorben/nixcord";
+    # nixcord = {
+    #   url = "github:kaylorben/nixcord";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Applications
     ghostty.url = "github:ghostty-org/ghostty"; # Terminal Emulator
@@ -43,7 +51,7 @@
 
       pkgs = import nixpkgs {
         system = system;
-        overlays = [ (self: super: { utillinux = super.util-linux; }) ];
+        # overlays = [ (self: super: { utillinux = super.util-linux; }) ];
       };
 
       unstablePkgs = import unstable {

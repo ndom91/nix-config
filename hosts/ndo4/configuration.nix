@@ -65,12 +65,6 @@ in
     };
   };
 
-  services = {
-    displayManager = {
-      defaultSession = "hyprland";
-    };
-    envfs.enable = true;
-  };
 
   # Networking
   networking = {
@@ -244,22 +238,26 @@ in
     xdgOpenUsePortal = true;
     config = {
       common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
     };
-
-    # extraPortals = [
-    #   unstablePkgs.xdg-desktop-portal-gtk
-    # ];
   };
 
   programs = {
     hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      withUWSM = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
   };
 
   # System Services
   services = {
+    # xserver.enable = true;
+    displayManager = {
+      defaultSession = "hyprland";
+    };
+    envfs.enable = true;
     protonvpn = {
       enable = true;
       autostart = false;

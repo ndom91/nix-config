@@ -3,28 +3,36 @@
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
-    systemd.enable = true;
-    xwayland.enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # xwayland.enable = true;
     # systemd.variables = [ "--all" ];
 
-    plugins = [
-      # unstablePkgs.hyprlandPlugins.hy3
-      # (unstablePkgs.hyprlandPlugins.hy3.override {
-      #   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      # })
-      # Hyprfocus compilation broken until: https://github.com/pyt0xic/hyprfocus/pull/1 merged
-      # inputs.hyprfocus.packages.${pkgs.system}.hyprfocus
-    ];
+    systemd = {
+      enable = false;
+      variables = [ "--all" ];
+      extraCommands = [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
+    };
+
+    # plugins = [
+    # unstablePkgs.hyprlandPlugins.hy3
+    # (unstablePkgs.hyprlandPlugins.hy3.override {
+    #   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    # })
+    # Hyprfocus compilation broken until: https://github.com/pyt0xic/hyprfocus/pull/1 merged
+    # inputs.hyprfocus.packages.${pkgs.system}.hyprfocus
+    # ];
 
     settings = {
       debug = {
         disable_logs = false;
       };
-      # xwayland = {
-      #   force_zero_scaling = true;
-      # };
+      xwayland = {
+        force_zero_scaling = true;
+      };
       monitor = ",preferred,auto,auto";
       # Test multi-monitor: https://github.com/MatthiasBenaets/nix-config/blob/master/modules/desktops/hyprland.nix#L257
       env = [
@@ -33,9 +41,9 @@
         "AQ_TRACE,1"
 
         # XDG Desktop Portal
-        "XDG_CURRENT_DESKTOP,Hyprland"
-        "XDG_SESSION_TYPE,wayland"
-        "XDG_SESSION_DESKTOP,Hyprland"
+        # "XDG_CURRENT_DESKTOP,Hyprland"
+        # "XDG_SESSION_TYPE,wayland"
+        # "XDG_SESSION_DESKTOP,Hyprland"
 
         # QT
         "QT_QPA_PLATFORM,wayland;xcb"
@@ -45,7 +53,7 @@
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
 
         # GDK
-        "GDK_SCALE,1"
+        "GDK_SCALE,2"
 
         # Toolkit Backend
         "GDK_BACKEND,wayland,x11,*"
@@ -55,7 +63,7 @@
         "MOZ_ENABLE_WAYLAND,1"
 
         # Disable appimage launcher by default
-        "APPIMAGELAUNCHER_DISABLE,1"
+        # "APPIMAGELAUNCHER_DISABLE,1"
 
         # Ozone
         "OZONE_PLATFORM,wayland"
@@ -71,14 +79,14 @@
         "${unstablePkgs.swayosd}/bin/swayosd-server"
       ];
       exec-once = [
+        # finalize startup
+        "uwsm finalize"
         # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
         # "${lib.getExe pkgs._1password-gui} --silent"
-        "${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
-        "${pkgs.blueman}/bin/blueman-applet"
-        "${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
-
-        # I forgot why i need this
-        # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        # "${pkgs.blueman}/bin/blueman-applet"
+        "uwsm app -- waybar"
+        "uwsm app -- ${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
+        "uwsm app -- ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
       ];
       general = {
         gaps_in = 10;

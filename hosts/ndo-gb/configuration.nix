@@ -326,17 +326,19 @@ in
     xdgOpenUsePortal = true;
     config = {
       common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
     };
-
-    # extraPortals = [
-    #   unstablePkgs.xdg-desktop-portal-gtk
-    # ];
+    extraPortals = [
+      unstablePkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   programs = {
     hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      withUWSM = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
     light.enable = true;

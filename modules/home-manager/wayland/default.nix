@@ -18,6 +18,9 @@
     # NixOS force Wayland for some apps
     NIXOS_OZONE_WL = "1";
     # MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
 
     # fix modals from being attached on tiling wms
     _JAVA_AWT_WM_NONREPARENTING = "1";

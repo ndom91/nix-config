@@ -15,7 +15,7 @@
     ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/neofetch.nix
     ../../modules/home-manager/neovim.nix
-    ../../modules/home-manager/nixcord.nix
+    # ../../modules/home-manager/nixcord.nix
     ../../modules/home-manager/scripts
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/tmux.nix
