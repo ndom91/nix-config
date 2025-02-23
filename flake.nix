@@ -52,8 +52,11 @@
 
       pkgs = import nixpkgs {
         system = system;
-        # overlays = [ (self: super: { utillinux = super.util-linux; }) ];
       };
+
+      # pkgsStable = import pkgs2411 {
+      #   system = system;
+      # };
 
       unstablePkgs = import unstable {
         config = {
@@ -67,7 +70,7 @@
       nixosConfigurations = {
         ndo4 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nix-colors unstablePkgs stateVersion pkgs2411;
+            inherit inputs nix-colors unstablePkgs stateVersion;
           };
           modules = [
             ./hosts/ndo4/configuration.nix
@@ -79,7 +82,7 @@
         };
         ndo-gb = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nix-colors unstablePkgs stateVersion pkgs2411;
+            inherit inputs nix-colors unstablePkgs stateVersion;
           };
           modules = [
             ./hosts/ndo-gb/configuration.nix
@@ -91,7 +94,7 @@
         };
         ndo2 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nix-colors unstablePkgs stateVersion pkgs2411;
+            inherit inputs nix-colors unstablePkgs stateVersion;
           };
           modules = [
             ./hosts/ndo2/configuration.nix

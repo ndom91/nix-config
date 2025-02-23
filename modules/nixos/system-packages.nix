@@ -1,4 +1,4 @@
-{ pkgs, pkgs2411, inputs, unstablePkgs, ... }:
+{ pkgs, inputs, unstablePkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # bottles # wine manager
