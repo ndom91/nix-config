@@ -2,6 +2,7 @@
  * rose-pine theme colors
  * https://rosepinetheme.com/palette/ingredients/
  **/
+@define-color secondary-bg #14121D;
 @define-color primary-bg #191724;
 @define-color surface #1f1d2e;
 @define-color overlay #26233a;
@@ -14,6 +15,7 @@
 @define-color pine #31748f;
 @define-color foam #9ccfd8;
 @define-color iris #c4a7e7;
+@define-color hl-lowest #161420;
 @define-color hl-low #21202e;
 @define-color hl-med #403d52;
 @define-color hl-high #524f67;
@@ -37,9 +39,9 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-  border-radius: 12px;
-  background-color: transparent;
-  padding: 0;
+  border-radius: 8px;
+  background-color: @hl-lowest;
+  padding: 1px 5px 1px 5px;
   margin: 0;
 }
 
@@ -95,9 +97,8 @@ window#waybar.hidden {
 #privacy,
 #submap,
 #network {
-  border-radius: 9px;
-  border: 3px solid @surface;
-  margin: 6px 3px 3px 3px;
+  border-radius: 4px;
+  margin: 6px 3px;
   padding: 6px 12px;
 
   background-color: @primary-bg;
@@ -141,8 +142,7 @@ window#waybar.hidden {
 }
 
 #battery.charging {
-  background-color: @surface;
-  color: @text;
+  color: @rose;
   animation: none;
 }
 
@@ -154,9 +154,10 @@ tooltip {
 }
 
 tooltip label {
-  padding: 5px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 4px 4px @hl-mid;
 
-  background-color: @surface;
+  background-color: @primary-bg;
   color: @text;
 }

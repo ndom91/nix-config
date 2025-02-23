@@ -105,7 +105,7 @@ in
           };
           ipv4 = {
             method = "auto";
-            nameserver = "10.0.0.1";
+            nameserver = "10.0.1.1";
             dns-search = "puff.lan";
           };
           ipv6 = {
@@ -500,7 +500,4 @@ in
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
   };
-
 }
-
-
