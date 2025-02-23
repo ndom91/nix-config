@@ -108,6 +108,9 @@ in
             nameserver = "10.0.0.1";
             dns-search = "puff.lan";
           };
+          ipv6 = {
+            method = "auto";
+          };
           wifi = {
             mode = "infrastructure";
             ssid = "WutangLAN";
@@ -138,11 +141,11 @@ in
         # };
       };
     };
-    nameservers = [
-      "10.0.0.1"
-    ];
+    # nameservers = [
+    #   "10.0.0.1"
+    # ];
     timeServers = [
-      "10.0.0.1"
+      # "10.0.0.1"
       "0.nixos.pool.ntp.org"
       "1.nixos.pool.ntp.org"
     ];
