@@ -40,9 +40,9 @@
 
     # Applications
     ghostty.url = "github:ghostty-org/ghostty"; # Terminal Emulator
-    superfile.url = "github:MHNightCat/superfile"; # Terminal File Manager
-    tsui.url = "github:guibou/tsui/fix_nix_run"; # Tailsccale TUI
     isd.url = "github:isd-project/isd"; # Interactive SystemD
+    # superfile.url = "github:MHNightCat/superfile"; # Terminal File Manager
+    # tsui.url = "github:guibou/tsui/fix_nix_run"; # Tailsccale TUI
   };
 
   outputs = { self, unstable, catppuccin, agenix, nix-colors, nixpkgs, nix-index-database, pkgs2411, ... } @inputs:
