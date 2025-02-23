@@ -15,7 +15,7 @@
     ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/neofetch.nix
     ../../modules/home-manager/neovim.nix
-    ../../modules/home-manager/nixcord.nix
+    # ../../modules/home-manager/nixcord.nix
     ../../modules/home-manager/scripts
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/tmux.nix
@@ -38,6 +38,7 @@
 
     ".config/brave-flags.conf".source = ../../dotfiles/brave-flags.conf;
     ".config/electron-flags.conf".source = ../../dotfiles/electron-flags.conf;
+    ".config/chrome-flags.conf".source = ../../dotfiles/chrome-flags.conf;
   };
 
   services = {
@@ -131,8 +132,12 @@
 
   programs.zoxide = {
     enable = true;
+    enableBashIntegration = true;
     options = [
       "--cmd cd"
     ];
+  };
+  home.sessionVariables = {
+    "_ZO_DOCTOR" = "0";
   };
 }

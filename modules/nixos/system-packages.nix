@@ -1,12 +1,12 @@
-{ pkgs, inputs, unstablePkgs, ... }:
+{ pkgs, pkgs2411, inputs, unstablePkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # bottles # wine manager
     # zig
     inputs.agenix.packages.x86_64-linux.default # Agenix secret manager
-    amdgpu_top # AMD GPU Top
-    appimagekit # AppImageKit
     nvtopPackages.amd # AMD GPU Top
+    amdgpu_top # AMD GPU Top
+    # inputs.pkgs2411.appimagekit # AppImageKit
     appimage-run # AppImage Runner
     bat # cat replacement
     # bluez
@@ -79,7 +79,7 @@
     wlay # GUI Wayland Output Management
     wireguard-tools # wg-quick
     zip
-    zoxide # cd replacement
+    # zoxide # cd replacement
 
     # bibata-cursors-translucent
     xorg.xrdb

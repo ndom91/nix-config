@@ -132,10 +132,12 @@
 
   programs.bash.initExtra = ''
     if [ -f /run/agenix/openai ]; then
-      export OPENAI_API_KEY=$(cat /run/agenix/openai)
+      OPENAI_API_KEY=$(cat /run/agenix/openai)
+      export OPENAI_API_KEY
     fi
     if [ -f /run/agenix/anthropic ]; then
-      export ANTHROPIC_API_KEY=$(cat /run/agenix/anthropic)
+      ANTHROPIC_API_KEY=$(cat /run/agenix/anthropic)
+      export ANTHROPIC_API_KEY
     fi
 
     if [ -f "$HOME/.dotfiles/colorscripts/blocks.sh" ]; then

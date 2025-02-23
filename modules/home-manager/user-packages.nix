@@ -45,7 +45,7 @@
     gnome-boxes # VM Manager
     seahorse # GPG Key Manager
     slack # Chat
-    # unstablePkgs.vesktop # Discord client w/ better wayland support (see nixcord.nix)
+    unstablePkgs.vesktop # Discord client w/ better wayland support (see nixcord.nix)
     virt-manager # VM Manager
     gnome-text-editor # Plain Text Editor
     sushi #  Gnome File Manager Previewer

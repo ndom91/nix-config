@@ -18,6 +18,9 @@
     # NixOS force Wayland for some apps
     NIXOS_OZONE_WL = "1";
     # MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
 
     # fix modals from being attached on tiling wms
     _JAVA_AWT_WM_NONREPARENTING = "1";
@@ -59,4 +62,17 @@
     swappy # Annotate image from Wayland compositors
     satty # Better annotate image from Wayland compositors
   ];
+
+  xdg.configFile."swappy/config".text = ''
+    [Default]
+    save_dir=$HOME/Pictures/Screenshots
+    save_filename_format=swappy-%Y%m%d-%H%M%S.png
+    show_panel=true
+    line_size=8
+    text_size=24
+    text_font=sans-serif
+    paint_mode=brush
+    early_exit=true
+    fill_shape=false
+  '';
 }

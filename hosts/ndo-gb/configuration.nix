@@ -245,11 +245,22 @@ in
     };
 
     # Intel Hardware Acceleration
+    # graphics = {
+    #   enable = true;
+    #   enable32Bit = true;
+    #   package = unstablePkgs.mesa.drivers;
+    #   package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
+    #   extraPackages = with unstablePkgs; [
+    #     intel-media-driver
+    #     intel-compute-runtime
+    #
+    #     vaapiVdpau
+    #     libvdpau-va-gl
+    #   ];
+    # };
     graphics = {
-      enable = true;
-      enable32Bit = true;
-      package = unstablePkgs.mesa.drivers;
-      package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
+      package = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa.drivers;
+      package32 = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa.drivers;
       extraPackages = with unstablePkgs; [
         intel-media-driver
         intel-compute-runtime
@@ -329,17 +340,19 @@ in
     xdgOpenUsePortal = true;
     config = {
       common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
     };
-
-    # extraPortals = [
-    #   unstablePkgs.xdg-desktop-portal-gtk
-    # ];
+    extraPortals = [
+      unstablePkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   programs = {
     hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      withUWSM = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
     light.enable = true;
@@ -481,6 +494,13 @@ in
       };
     };
   };
+
+  # Ensure network is online before desktop starts
+  systemd.targets.graphical = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+  };
+
 }
 
 

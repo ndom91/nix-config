@@ -41,6 +41,8 @@ in
     };
   };
 
+  system.stateVersion = stateVersion;
+
   ndom91 = {
     thunar.enable = true;
   };
@@ -65,12 +67,6 @@ in
     };
   };
 
-  services = {
-    displayManager = {
-      defaultSession = "hyprland";
-    };
-    envfs.enable = true;
-  };
 
   # Networking
   networking = {
@@ -180,30 +176,27 @@ in
 
     amdgpu = { opencl.enable = true; }; # ROCM Support
 
+    # graphics = {
+    #   enable = true;
+    #   enable32Bit = true;
+    #   package = unstablePkgs.mesa.drivers;
+    #   package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
+    #   # driSupport = true;
+    #   # driSupport32Bit = true;
+    #   # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
+    #   extraPackages = with unstablePkgs; [
+    #     # libglvnd
+    #     vaapiVdpau
+    #     libvdpau-va-gl
+    #   ];
+    #   extraPackages32 = with pkgs; [
+    #     # unstablePkgs.driversi686Linux.amdvlk
+    #   ];
+    # };
     graphics = {
-      enable = true;
-      enable32Bit = true;
-      package = unstablePkgs.mesa.drivers;
-      package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
-      # driSupport = true;
-      # driSupport32Bit = true;
-      # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
-      extraPackages = with unstablePkgs; [
-        # libglvnd
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-      extraPackages32 = with pkgs; [
-        # unstablePkgs.driversi686Linux.amdvlk
-      ];
+      package = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa.drivers;
+      package32 = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa.drivers;
     };
-    # TODO: Change to this for >= 24.11
-    #hardware
-    #  graphics = {
-    #    enable = true;
-    #    enable32Bit = true;
-    #  };
-    #};
 
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
@@ -235,7 +228,7 @@ in
     opensnitch-ui
 
     quickemu # Download preconfiged VM qemu configs and ISOs
-    bambu-studio # unstable version is Broken 05.01.25
+    unstablePkgs.bambu-studio # unstable version is Broken 05.01.25
     bottles # Wine Manager
   ];
 
@@ -244,22 +237,26 @@ in
     xdgOpenUsePortal = true;
     config = {
       common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
     };
-
-    # extraPortals = [
-    #   unstablePkgs.xdg-desktop-portal-gtk
-    # ];
   };
 
   programs = {
     hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      withUWSM = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
   };
 
   # System Services
   services = {
+    # xserver.enable = true;
+    displayManager = {
+      defaultSession = "hyprland";
+    };
+    envfs.enable = true;
     protonvpn = {
       enable = true;
       autostart = false;
@@ -376,5 +373,9 @@ in
     };
   };
 
-  system.stateVersion = stateVersion;
+  # Ensure network is online before desktop starts
+  systemd.targets.graphical = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+  };
 }

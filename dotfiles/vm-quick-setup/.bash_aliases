@@ -2,6 +2,8 @@ if [ -f /usr/bin/exa ]; then
   alias ll='exa --icons -l -a --group-directories-first --time-style long-iso --classify --group'
   alias ls='exa --icons --group-directories-first --classify'
   alias tree='exa --long --tree --time-style long-iso --icons --group'
+else
+  alias ll='ls -lah'
 fi
 
 alias hn='hostname'

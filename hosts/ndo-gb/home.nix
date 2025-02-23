@@ -2,7 +2,7 @@
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     inputs.catppuccin.homeManagerModules.catppuccin
-    inputs.nixcord.homeManagerModules.nixcord
+    # inputs.nixcord.homeManagerModules.nixcord
     nix-colors.homeManagerModules.default
     ../../modules/home-manager
   ];
