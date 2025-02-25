@@ -499,4 +499,7 @@ in
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
   };
+  systemd.services.NetworkManager = {
+    wantedBy = [ "systemd-resolved.service" ];
+  };
 }
