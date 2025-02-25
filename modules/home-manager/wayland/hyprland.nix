@@ -164,7 +164,6 @@
           (f "(D|d)ev(T|t)ools")
           (f "(b|B)eeper")
           (f "(g|G)it-(b|B)utler.*")
-          (f "Save File")
           (f "gitbutler-tauri")
           (f "Developer Tools")
           (f "Winetricks")
@@ -195,6 +194,8 @@
           "float, error"
           "float, splash"
           "float, confirmreset"
+          "float, title:(S|s)ave (F|f)ile"
+          "float, title:(O|o)pen (F|f)ile"
         ];
       windowrulev2 = [
         # General
