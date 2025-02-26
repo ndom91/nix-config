@@ -79,7 +79,7 @@
   programs.vscode = {
     enable = true;
     package = unstablePkgs.vscodium;
-    extensions = with unstablePkgs.vscode-extensions; [
+    profiles.default.extensions = with unstablePkgs.vscode-extensions; [
       # Theme
       mvllow.rose-pine
       # General
@@ -92,7 +92,7 @@
       # rust-lang.rust-analyzer
       svelte.svelte-vscode
     ];
-    userSettings = {
+    profiles.default.userSettings = {
       "editor.scrollbar.vertical" = "hidden";
       "editor.scrollbar.verticalScrollbarSize" = 0;
       "security.workspace.trust.untrustedFiles" = "newWindow";

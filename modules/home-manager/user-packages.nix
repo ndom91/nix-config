@@ -111,15 +111,15 @@
     whois
     jq # CLI JSON Client
     cliphist # Clipboard History
-    irssi # IRC Client
+    # irssi # IRC Client
     parted # GParted Terminal
     ranger # TUI File Manager
     speedtest-rs # Speedtest CLI
-    unstablePkgs.yazi # Terminal File Manager
+    # unstablePkgs.yazi # Terminal File Manager
     unstablePkgs.netscanner # TUI Subnet Scanner
     # unstablePkgs.termscp # TUI S3/SFTP/etc client
-    inputs.tsui.packages.${pkgs.system}.tsui # Tailscale TUI Client
-    inputs.superfile.packages.${pkgs.system}.default # TUI File Manager
+    # inputs.tsui.packages.${pkgs.system}.tsui # Tailscale TUI Client
+    # inputs.superfile.packages.${pkgs.system}.default # TUI File Manager
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     inputs.isd.packages.${pkgs.system}.default # Interactive Systemd
   ];

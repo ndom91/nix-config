@@ -713,7 +713,7 @@ let
     modules-right = [
       "privacy"
       "idle_inhibitor"
-      "bluetooth"
+      # "bluetooth"
       "custom/weather"
       "network"
       "wireplumber"
@@ -873,7 +873,7 @@ let
     };
     wireplumber = {
       format = "<span font='12' rise='-2pt'> </span> {volume}";
-      format-muted = "<span font='12' rise='-2pt'></span>";
+      format-muted = "<span font='12' rise='-2pt'> </span>";
       on-click = "${pkgs.pamixer}/bin/pamixer -t";
       on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
     };
@@ -955,7 +955,7 @@ let
     modules-right = [
       "privacy"
       "idle_inhibitor"
-      "bluetooth"
+      # "bluetooth"
       "custom/weather"
       "network"
       "wireplumber"

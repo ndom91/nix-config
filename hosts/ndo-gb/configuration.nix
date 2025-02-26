@@ -105,8 +105,11 @@ in
           };
           ipv4 = {
             method = "auto";
-            nameserver = "10.0.0.1";
+            nameserver = "10.0.1.1";
             dns-search = "puff.lan";
+          };
+          ipv6 = {
+            method = "auto";
           };
           wifi = {
             mode = "infrastructure";
@@ -138,11 +141,11 @@ in
         # };
       };
     };
-    nameservers = [
-      "10.0.0.1"
-    ];
+    # nameservers = [
+    #   "10.0.0.1"
+    # ];
     timeServers = [
-      "10.0.0.1"
+      # "10.0.0.1"
       "0.nixos.pool.ntp.org"
       "1.nixos.pool.ntp.org"
     ];
@@ -305,7 +308,6 @@ in
     opensnitch-ui
 
     quickemu # Download preconfiged VM qemu configs and ISOs
-    # unstablePkgs.bambu-studio # Broken 05.01.25
     bambu-studio
   ];
 
@@ -497,7 +499,7 @@ in
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
   };
-
+  systemd.services.NetworkManager = {
+    wantedBy = [ "systemd-resolved.service" ];
+  };
 }
-
-
