@@ -115,12 +115,14 @@
     parted # GParted Terminal
     ranger # TUI File Manager
     speedtest-rs # Speedtest CLI
+    systemctl-tui # Rust systemd TUI
+    rose-pine-hyprcursor # Hyprland rose-pine cursor
     # unstablePkgs.yazi # Terminal File Manager
-    unstablePkgs.netscanner # TUI Subnet Scanner
+    # netscanner # TUI Subnet Scanner
     # unstablePkgs.termscp # TUI S3/SFTP/etc client
     # inputs.tsui.packages.${pkgs.system}.tsui # Tailscale TUI Client
     # inputs.superfile.packages.${pkgs.system}.default # TUI File Manager
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-    inputs.isd.packages.${pkgs.system}.default # Interactive Systemd
+    # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    # inputs.isd.packages.${pkgs.system}.default # Interactive Systemd
   ];
 }
