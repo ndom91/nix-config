@@ -1,4 +1,4 @@
-{ pkgs, inputs, unstablePkgs, ... }:
+{ pkgs, inputs, lib, unstablePkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     nodejs_22
@@ -39,9 +39,9 @@
   boot = {
     kernel.sysctl = {
       # Vite large project workarounds - https://vitejs.dev/guide/troubleshooting#requests-are-stalled-forever
-      "fs.inotify.max_queued_events" = 16384;
-      "fs.inotify.max_user_instances" = 8192;
-      "fs.inotify.max_user_watches" = 524288;
+      "fs.inotify.max_queued_events" = lib.mkForce 16384;
+      "fs.inotify.max_user_instances" = lib.mkForce 8192;
+      "fs.inotify.max_user_watches" = lib.mkForce 524288;
     };
   };
 }

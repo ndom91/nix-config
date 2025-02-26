@@ -162,5 +162,92 @@
         dates = "weekly";
       };
     };
+    # lxd = {
+    #   enable = true;
+    #   recommendedSysctlSettings = true;
+    #   preseed = {
+    #     networks = [{
+    #       name = "lxdbr0";
+    #       type = "bridge";
+    #       config = {
+    #         "ipv4.address" = "10.0.0.11/24";
+    #         "ipv6.address" = "auto";
+    #         # "ipv4.nat" = "true";
+    #         # "ipv6.address" = "fd42::1/64";
+    #       };
+    #     }];
+    #
+    #     storage_pools = [{
+    #       name = "default";
+    #       driver = "dir";
+    #       config.source = "/opt/lxd/default";
+    #     }];
+    #
+    #     profiles = [{
+    #       name = "default";
+    #       devices.eth0 = {
+    #         name = "eth0";
+    #         nictype = "bridged";
+    #         parent = "lxdbr0";
+    #         type = "nic";
+    #       };
+    #       devices.root = {
+    #         path = "/";
+    #         pool = "default";
+    #         type = "disk";
+    #         size = "35GiB";
+    #       };
+    #     }];
+    #   };
+    # };
+    # lxc = {
+    #   enable = true;
+    #   lxcfs.enable = true;
+    #   defaultConfig = ''
+    #     lxc.include = ${pkgs.lxcfs}/share/lxc/config/common.conf.d/00-lxcfs.conf
+    #   '';
+    # };
+    incus = {
+      enable = true;
+      ui.enable = true;
+      ui.package = pkgs.incus-ui-canonical;
+      preseed = {
+        config = {
+          "core.https_address" = "10.0.0.10:9999";
+        };
+        networks = [{
+          name = "lxdbr0";
+          type = "bridge";
+          config = {
+            "ipv4.address" = "10.0.0.12/24";
+            "ipv6.address" = "auto";
+            "ipv4.nat" = "true";
+            # "ipv6.address" = "fd42::1/64";
+          };
+        }];
+
+        storage_pools = [{
+          name = "default";
+          driver = "dir";
+          config.source = "/opt/lxd/default";
+        }];
+
+        profiles = [{
+          name = "default";
+          devices.eth0 = {
+            name = "eth0";
+            nictype = "bridged";
+            parent = "lxdbr0";
+            type = "nic";
+          };
+          devices.root = {
+            path = "/";
+            pool = "default";
+            type = "disk";
+            size = "35GiB";
+          };
+        }];
+      };
+    };
   };
 }
