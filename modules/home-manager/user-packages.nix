@@ -38,9 +38,8 @@
     unstablePkgs.mqttui
     unstablePkgs.tabiew # TUI Table Viewer (CSV, TSV, Parquet, etc.)
 
-    unstablePkgs.beeper # Universal Chat App
+    # unstablePkgs.beeper # Universal Chat App
     unstablePkgs.chromium # Browser
-    floorp # Firefox
     firefox-esr # Firefox
     gnome-boxes # VM Manager
     seahorse # GPG Key Manager
