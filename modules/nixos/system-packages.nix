@@ -34,6 +34,7 @@
     ipmitool # IPMI Tool
     jq # CLI JSON Client
     killall # killall
+    keyutils # Tools to manage linux kernel key management
     kmon # Linux Kernel Monitor
     libcamera # libcamera
     # libfprint-2-tod1-elan
@@ -73,7 +74,7 @@
     vdpauinfo # VDPAU (Video Decode and Presentation API for Unix)
     via # QMK Keyboard Config Tool
     vulkan-tools # vulkaninfo
-    way-displays # Manage Wayland Displays
+    # way-displays # Manage Wayland Displays
     # unstablePkgs.webkitgtk_4_0 # WebKitGTK 4.0 (Tauri v1)
     unstablePkgs.webkitgtk_4_1 # WebKitGTK 4.1 (Tauri v2)
     wlay # GUI Wayland Output Management
