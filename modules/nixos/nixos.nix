@@ -213,13 +213,13 @@
       ui.package = pkgs.incus-ui-canonical;
       preseed = {
         config = {
-          "core.https_address" = "10.0.0.10:9999";
+          "core.https_address" = "0.0.0.0:9999";
         };
         networks = [{
           name = "lxdbr0";
           type = "bridge";
           config = {
-            "ipv4.address" = "10.0.0.12/24";
+            "ipv4.address" = "10.0.100.2/24";
             "ipv6.address" = "auto";
             "ipv4.nat" = "true";
             # "ipv6.address" = "fd42::1/64";
