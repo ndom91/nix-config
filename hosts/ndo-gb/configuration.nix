@@ -177,18 +177,6 @@ in
     # wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
   };
 
-  services = {
-    displayManager = {
-      defaultSession = "hyprland";
-    };
-    envfs.enable = true;
-    libinput.touchpad = {
-      tappingButtonMap = "lrm";
-    };
-    # dbus.implementation = "broker";
-  };
-
-
   # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
   systemd.services.NetworkManager-wait-online.enable = false;
 
@@ -361,6 +349,21 @@ in
 
   # System Services
   services = {
+    displayManager = {
+      defaultSession = "hyprland";
+    };
+    envfs.enable = true;
+    libinput.touchpad = {
+      tappingButtonMap = "lrm";
+    };
+
+    dbus.implementation = "broker";
+    dbus.packages = with pkgs; [
+      gcr
+      gnome-settings-daemon
+    ];
+
+    gnome.gnome-keyring.enable = true;
     opensnitch.enable = true;
     picosnitch.enable = false;
 
@@ -390,8 +393,6 @@ in
         "1.0.0.1"
       ];
     };
-
-    # gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
     clamav = {

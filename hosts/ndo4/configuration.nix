@@ -256,6 +256,14 @@ in
     displayManager = {
       defaultSession = "hyprland";
     };
+
+    dbus.implementation = "broker";
+    dbus.packages = with pkgs; [
+      gcr
+      gnome-settings-daemon
+    ];
+
+    gnome.gnome-keyring.enable = true;
     envfs.enable = true;
     protonvpn = {
       enable = true;
