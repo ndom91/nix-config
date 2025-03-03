@@ -6,5 +6,7 @@
     python312Packages.libtmux
     python312Packages.pip
     python312Packages.pipx
+
+    python313Packages.uv
   ];
 }
