@@ -283,13 +283,13 @@ in
       #     "x-scheme-handler/mailto"
       #   ];
       # };
-      # beeper = {
-      #   name = "Beeper";
-      #   exec = "/opt/appimages/beeper.AppImage";
-      #   icon = "/home/ndo/Pictures/beeperLogo.png";
-      #   type = "Application";
-      #   categories = [ "Network" "WebBrowser" ];
-      # };
+      beeper = {
+        name = "Beeper";
+        exec = "/opt/appimages/beeper.AppImage";
+        icon = "/home/ndo/Pictures/beeperLogo.png";
+        type = "Application";
+        categories = [ "Network" "WebBrowser" ];
+      };
       heynote = {
         name = "HeyNote";
         exec = "/opt/appimages/Heynote.AppImage";

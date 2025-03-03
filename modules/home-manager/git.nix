@@ -17,6 +17,9 @@
       init = {
         defaultBranch = "main";
       };
+      column = {
+        ui = "auto";
+      };
       core = {
         editor = "nvim";
         excludesfile = "~/.gitignore-global";
@@ -24,28 +27,53 @@
       credential = {
         helper = "cache --timeout=360000";
       };
+      help = {
+        autocorrect = "prompt";
+      };
       merge = {
-        # conflictStyle = "zdiff3";
+        conflictStyle = "zdiff3";
         tool = "nvim";
+      };
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = true;
+        renames = true;
       };
       status = {
         short = true;
         branch = true;
       };
       pull = {
-        rebase = false;
-        default = "current";
+        rebase = true;
+      };
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+        updateRefs = true;
       };
       push = {
-        default = "current";
+        default = "simple";
         autoSetupRemote = true;
+        followTags = true;
+      };
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
       };
       remote = {
         pushDefault = "origin";
       };
+      commit = {
+        verbose = true;
+      };
       branch = {
         autoSetupMerge = "simple";
         sort = "-committerdate";
+      };
+      tag = {
+        sort = "version:refname";
       };
       # url = {
       #   "git@github.com:" = {
