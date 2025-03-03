@@ -4,9 +4,10 @@
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
     # Ex with ${pkg}/bin/[binary] mapping example: https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/hyprland/default.nix
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # xwayland.enable = true;
-    # systemd.variables = [ "--all" ];
+    # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    package = null;
+    portalPackage = null;
+    xwayland.enable = true;
 
     systemd = {
       enable = false;
@@ -37,8 +38,8 @@
       # Test multi-monitor: https://github.com/MatthiasBenaets/nix-config/blob/master/modules/desktops/hyprland.nix#L257
       env = [
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
-        "HYPRLAND_TRACE,1"
-        "AQ_TRACE,1"
+        # "HYPRLAND_TRACE,1"
+        # "AQ_TRACE,1"
 
         # XDG Desktop Portal
         # "XDG_CURRENT_DESKTOP,Hyprland"
@@ -46,28 +47,28 @@
         # "XDG_SESSION_DESKTOP,Hyprland"
 
         # QT
-        "QT_QPA_PLATFORM,wayland;xcb"
-        "QT_QPA_PLATFORMTHEME,qt6ct"
-        "QT_QPA_PLATFORMTHEME,qt5ct"
-        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+        # "QT_QPA_PLATFORMTHEME,qt6ct"
+        # "QT_QPA_PLATFORM,wayland;xcb"
+        # "QT_QPA_PLATFORMTHEME,qt5ct"
+        # "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+        # "QT_AUTO_SCREEN_SCALE_FACTOR,1"
 
         # GDK
         "GDK_SCALE,1"
 
         # Toolkit Backend
-        "GDK_BACKEND,wayland,x11,*"
-        "CLUTTER_BACKEND,wayland"
+        # "GDK_BACKEND,wayland,x11,*"
+        # "CLUTTER_BACKEND,wayland"
 
         # Mozilla
-        "MOZ_ENABLE_WAYLAND,1"
+        # "MOZ_ENABLE_WAYLAND,1"
 
         # Disable appimage launcher by default
         # "APPIMAGELAUNCHER_DISABLE,1"
 
         # Ozone
-        "OZONE_PLATFORM,wayland"
-        "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+        # "OZONE_PLATFORM,wayland"
+        # "ELECTRON_OZONE_PLATFORM_HINT,wayland"
       ];
       input = {
         kb_layout = "us";
@@ -75,9 +76,9 @@
         follow_mouse = 2;
         accel_profile = "adaptive";
       };
-      exec = [
-        "${unstablePkgs.swayosd}/bin/swayosd-server"
-      ];
+      # exec = [
+      #   "${unstablePkgs.swayosd}/bin/swayosd-server"
+      # ];
       exec-once = [
         # finalize startup
         "uwsm finalize"
@@ -86,6 +87,7 @@
         # "${pkgs.blueman}/bin/blueman-applet"
         "uwsm app -- waybar"
         "uwsm app -- ${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
+        "uwsm app -- ${pkgs.swayosd}/bin/swayosd-server"
         "uwsm app -- ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
       ];
       general = {

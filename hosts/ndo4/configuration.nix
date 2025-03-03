@@ -211,6 +211,7 @@ in
   home-manager = {
     extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font stateVersion; };
     useGlobalPkgs = true;
+    useUserPackages = true;
     users = {
       "ndo" = import ./home.nix;
     };
@@ -235,10 +236,13 @@ in
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    config = {
-      common.default = [ "gtk" ];
-      hyprland.default = [ "gtk" "hyprland" ];
-    };
+    # config = {
+    #   common.default = [ "gtk" ];
+    #   hyprland.default = [ "gtk" "hyprland" ];
+    # };
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
   };
 
   programs = {
