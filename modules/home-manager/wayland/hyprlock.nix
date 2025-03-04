@@ -5,10 +5,11 @@ in
 {
   programs.hyprlock = {
     enable = true;
-    package = unstablePkgs.hyprlock;
+    # package = hyprlock;
     settings = {
       general = {
         disable_loading_bar = true;
+        # immediate_render = true;
       };
 
       background = [

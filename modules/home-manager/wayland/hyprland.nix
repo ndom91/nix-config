@@ -1,4 +1,7 @@
 { pkgs, lib, unstablePkgs, config, rose-pine-cursor, inputs, ... }:
+let
+  runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
+in
 {
   wayland.windowManager.hyprland = {
     # Ex: https://github.com/vimjoyer/nixconf/blob/main/homeManagerModules/features/hyprland/default.nix
@@ -50,7 +53,7 @@
         # "QT_QPA_PLATFORMTHEME,qt6ct"
         # "QT_QPA_PLATFORM,wayland;xcb"
         # "QT_QPA_PLATFORMTHEME,qt5ct"
-        # "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         # "QT_AUTO_SCREEN_SCALE_FACTOR,1"
 
         # GDK
@@ -85,10 +88,11 @@
         # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
         # "${lib.getExe pkgs._1password-gui} --silent"
         # "${pkgs.blueman}/bin/blueman-applet"
-        "uwsm app -- waybar"
+        # "uwsm app -- waybar"
         "uwsm app -- ${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
         "uwsm app -- ${pkgs.swayosd}/bin/swayosd-server"
         "uwsm app -- ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
+        "hyprlock"
       ];
       general = {
         gaps_in = 10;
@@ -247,7 +251,7 @@
         "$mainMod, I, changegroupactive,f"
 
         "$mainMod, Q, killactive"
-        "CTRL SHIFT, L, exec, hyprlock"
+        "CTRL SHIFT, L, exec, ${runOnce "hyprlock"}"
         "$mainMod, Return, exec, ghostty"
         # "$mainMod SHIFT, R, exec, hyprctl reload"
         # "$mainMod, Return, exec, kitty"

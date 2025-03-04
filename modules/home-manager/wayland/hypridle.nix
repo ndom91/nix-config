@@ -7,7 +7,9 @@
         general = {
           # avoid starting multiple hyprlock instances.
           # lock_cmd = "pidof hyprlock || ${config.programs.hyprlock.package}/bin/hyprlock";
-          lock_cmd = "pidof ${config.programs.hyprlock.package}/bin/hyprlock || ${config.programs.hyprlock.package}/bin/hyprlock";
+          # lock_cmd = "pidof ${config.programs.hyprlock.package}/bin/hyprlock || ${config.programs.hyprlock.package}/bin/hyprlock";
+          lock_cmd = lib.getExe config.programs.hyprlock.package;
+
           # lock before suspend.
           before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
           # to avoid having to press a key twice to turn on the display.
@@ -18,7 +20,7 @@
           {
             # Dim screen
             timeout = 300;
-            on-timeout = "brightnessctl -s set 20"; # set monitor backlight to minimum.
+            on-timeout = "brightnessctl -s set 30"; # set monitor backlight to minimum.
             on-resume = "brightnessctl -r"; # monitor backlight restore.
           }
           {
@@ -47,4 +49,5 @@
       };
     };
   };
+  systemd.user.services.hypridle.Unit.After = lib.mkForce "graphical-session.target";
 }
