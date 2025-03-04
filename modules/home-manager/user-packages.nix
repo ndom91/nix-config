@@ -63,6 +63,7 @@
     libsecret # Secret Service
     polkit_gnome # Polkit Agent
     unstablePkgs.rclone # cloud storage client
+    rsync # file transfer
 
     # Dev Tools
     beekeeper-studio # SQL Client

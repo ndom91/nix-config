@@ -208,7 +208,7 @@
     #   '';
     # };
     incus = {
-      enable = true;
+      enable = false;
       ui.enable = true;
       ui.package = pkgs.incus-ui-canonical;
       preseed = {
