@@ -201,7 +201,10 @@ in
     polkit.enable = true;
     pam.services.hyprlock = {
       enableGnomeKeyring = true;
+      # allow wayland lockers to unlock the screen
+      text = "auth include login";
     };
+
     pki.certificateFiles = [
       # "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
       ./../../dotfiles/certs/puff.lan.crt
@@ -365,6 +368,7 @@ in
     ];
 
     gnome.gnome-keyring.enable = true;
+
     opensnitch.enable = true;
     picosnitch.enable = false;
 
@@ -502,6 +506,6 @@ in
     after = [ "network-online.target" ];
   };
   systemd.services.NetworkManager = {
-    wantedBy = [ "systemd-resolved.service" ];
+    wantedBy = [ "systemd-resolved.service" "clamav-freshclam.service" ];
   };
 }

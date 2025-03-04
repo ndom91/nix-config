@@ -143,6 +143,8 @@ in
     polkit.enable = true;
     pam.services.hyprlock = {
       enableGnomeKeyring = true;
+      # allow wayland lockers to unlock the screen
+      text = "auth include login";
     };
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt

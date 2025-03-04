@@ -49,10 +49,12 @@
         };
       };
       gestures = {
+        # Disable because of bug https://github.com/hyprwm/Hyprland/issues/9262
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
         workspace_swipe_distance = 200;
         workspace_swipe_create_new = false;
+        workspace_swipe_forever = true;
       };
     };
   };
