@@ -20,10 +20,10 @@ let
       # NIX_BIN_PATH="${builtins.getEnv "HOME"}/.nix-profile/bin"
       NIX_BIN_PATH="/nix/store"
       # Update USR_BIN_REMOVER with .nix-profile PATH
-      sed -i "s|^USR_BIN_REMOVER.*|USR_BIN_REMOVER = (r\'^$NIX_BIN_PATH/(.+)( --.*)?\', r\'\\\g<1>\')|" $target/scripts/rename_session_windows.py
+      sed -i "s|^USR_BIN_REMOVER.*|USR_BIN_REMOVER = (r\'^$NIX_BIN_PATH/(.+)( --.*)?\', r\'\\\\g<1>\')|" $target/scripts/rename_session_windows.py
 
       # Update substitute_sets with .nix-profile PATHs
-      sed -i "s|^\ssubstitute_sets: List.*|    substitute_sets: List[Tuple] = field(default_factory=lambda: [(\'/$NIX_BIN_PATH/(.+) --.*\', \'\\\g<1>\'), (r\'.+ipython([32])\', r\'ipython\\\g<1>\'), USR_BIN_REMOVER, (r\'(bash) (.+)/(.+[ $])(.+)\', \'\\\g<3>\\\g<4>\')])|" $target/scripts/rename_session_windows.py
+      sed -i "s|^\ssubstitute_sets: List.*|    substitute_sets: List[Tuple] = field(default_factory=lambda: [(\'/$NIX_BIN_PATH/(.+) --.*\', \'\\\\g<1>\'), (r\'.+ipython([32])\', r\'ipython\\\\g<1>\'), USR_BIN_REMOVER, (r\'(bash) (.+)/(.+[ $])(.+)\', \'\\\\g<3>\\\\g<4>\')])|" $target/scripts/rename_session_windows.py
 
       # Update dir_programs with .nix-profile PATH for applications
       sed -i "s|^\sdir_programs: List.*|    dir_programs: List[str] = field(default_factory=lambda: [["$NIX_BIN_PATH/vim", "$NIX_BIN_PATH/vi", "$NIX_BIN_PATH/git", "$NIX_BIN_PATH/nvim"]])|" $target/scripts/rename_session_windows.py
@@ -50,11 +50,12 @@ in
         extraConfig = ''
           # tmux-window-name
           # set -g @tmux_window_name_log_level "'DEBUG'"
-          set -g @tmux_window_name_substitute_sets "[('/home/${config.home.username}/.nix-profile/bin/(.+) --.*', '\\g<1>')]"
-          set -g @tmux_window_name_dir_programs "['nvim', 'vim', 'vi', 'git', '/home/${config.home.username}/.nix-profile/bin/nvim']"
+          set -g @tmux_window_name_substitute_sets "[('/nix/store/.*/bin/(.+)', '\\g<1>')]"
+          set -g @tmux_window_name_dir_programs "['vim', 'vi', 'git', '/nix/store/.*/bin/nvim', 'nvim']"
           set -g @tmux_window_name_show_program_args "False"
         '';
       }
+      # set -g @tmux_window_name_substitute_sets "[('/home/${config.home.username}/.nix-profile/bin/(.+) --.*', '\\g<1>')]"
       # {
       #   plugin = unstablePkgs.tmuxPlugins.catppuccin;
       #   extraConfig = ''
