@@ -329,12 +329,13 @@ in
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    # config = {
-    #   common.default = [ "gtk" ];
-    #   hyprland.default = [ "gtk" "hyprland" ];
-    # };
+    config = {
+      common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
+    };
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
+      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
     ];
   };
 
@@ -479,7 +480,7 @@ in
       ];
       packages = [
         { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
-        { appId = "com.bambulab.BambuStudio"; origin = "flathub"; }
+        # { appId = "com.bambulab.BambuStudio"; origin = "flathub"; }
         { appId = "io.gitlab.azymohliad.WatchMate"; origin = "flathub"; }
         { appId = "com.github.tchx84.Flatseal"; origin = "flathub"; }
       ];
@@ -505,7 +506,12 @@ in
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
   };
-  systemd.services.NetworkManager = {
-    wantedBy = [ "systemd-resolved.service" "clamav-freshclam.service" ];
-  };
+
+  # TODO: systemd-resolved seems to need restarted after every fresh boot once I make it to `graphical-session.target`.
+  # I've noticed that if I run `resolvectl status` at that point, it errors on getting link details for all interfaces other
+  # than the primary wlp0s20f3 wifi interface, i.e. tailscale, docker bridge, etc. However, I can't resolve anything from
+  # any interface. Even though `Global` and the `wl...` interface seem correctly set up.
+  # systemd.targets.network-online = {
+  #   wantedBy = [ "systemd-resolved.service" "clamav-freshclam.service" ];
+  # };
 }
