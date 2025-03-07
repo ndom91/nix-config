@@ -26,7 +26,15 @@
   services.greetd =
     let
       session = {
-        command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+        # command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+        command = ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --time \
+          --remember \
+          --asterisks \
+          --sessions "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions" \
+          --cmd "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop"
+        '';
         user = "ndo";
       };
     in
@@ -40,16 +48,8 @@
       };
     };
 
-  # programs.uwsm = {
-  #   enable = true;
-  #   waylandCompositors.hyprland = {
-  #     binPath = "/run/current-system/sw/bin/Hyprland";
-  #     prettyName = "Hyprland";
-  #     # comment = "Hyprland managed by UWSM";
-  #   };
-  # };
-
   security.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.hyprland.enableGnomeKeyring = true;
 
   # this is a life saver.
   # literally no documentation about this anywhere.
