@@ -14,11 +14,11 @@ in
 
     systemd = {
       enable = false;
-      variables = [ "--all" ];
-      extraCommands = [
-        "systemctl --user stop graphical-session.target"
-        "systemctl --user start hyprland-session.target"
-      ];
+      # variables = [ "--all" ];
+      # extraCommands = [
+      #   "systemctl --user stop graphical-session.target"
+      #   "systemctl --user start hyprland-session.target"
+      # ];
     };
 
     # plugins = [
@@ -79,20 +79,15 @@ in
         follow_mouse = 2;
         accel_profile = "adaptive";
       };
-      # exec = [
-      #   "${unstablePkgs.swayosd}/bin/swayosd-server"
-      # ];
+      # exec = [ ];
       exec-once = [
         # finalize startup
         "uwsm finalize"
-        # "1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
-        # "${lib.getExe pkgs._1password-gui} --silent"
         # "${pkgs.blueman}/bin/blueman-applet"
-        # "uwsm app -- waybar"
-        "uwsm app -- ${pkgs.swaybg}/bin/swaybg -m fill -i ~/.config/hypr/wallpaper.png"
-        "uwsm app -- ${pkgs.swayosd}/bin/swayosd-server"
-        "uwsm app -- ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  --silent"
-        "hyprlock"
+        "uwsm app -- ${lib.getExe pkgs.waybar}"
+        "uwsm app -- ${lib.getExe pkgs.swaybg} -m fill -i ~/.config/hypr/wallpaper.png"
+        "uwsm app -- ${lib.getExe pkgs.swayosd}"
+        "uwsm app -- ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --silent"
       ];
       general = {
         gaps_in = 10;

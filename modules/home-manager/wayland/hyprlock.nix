@@ -9,7 +9,7 @@ in
     settings = {
       general = {
         disable_loading_bar = true;
-        # immediate_render = true;
+        immediate_render = true;
       };
 
       background = [

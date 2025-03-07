@@ -1173,10 +1173,7 @@ in
 
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
-    package = unstablePkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    });
+    systemd.enable = false;
     style = lib.mkForce ./style.css;
     settings = bars;
   };
