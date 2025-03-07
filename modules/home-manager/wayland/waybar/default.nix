@@ -1159,7 +1159,6 @@ let
     (lib.mkIf (osConfig.networking.hostName == "ndo2") {
       one = ndo2Main;
       two = ndo2Wide;
-      # two = gitButler;
     })
     (lib.mkIf (osConfig.networking.hostName == "ndo-gb") {
       one = ndoGbMain;
