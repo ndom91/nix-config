@@ -86,7 +86,7 @@ in
         # "${pkgs.blueman}/bin/blueman-applet"
         "uwsm app -- ${lib.getExe pkgs.waybar}"
         "uwsm app -- ${lib.getExe pkgs.swaybg} -m fill -i ~/.config/hypr/wallpaper.png"
-        "uwsm app -- ${lib.getExe pkgs.swayosd}"
+        "uwsm app -- ${lib.getExe' pkgs.swayosd "swayosd"}"
         "uwsm app -- ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --silent"
       ];
       general = {
