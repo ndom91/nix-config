@@ -290,17 +290,19 @@ in
     # tokyo-night-sddm
     # corners-sddm
     # binsider # ELF bin analyzer
-    cpupower-gui
-    powerstat
+    # cpupower-gui
+    # powerstat
     rose-pine-cursor
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
 
-    wirelesstools
+    wirelesstools # iwconfig, iwlist, etc.
     opensnitch
     opensnitch-ui
-
     quickemu # Download preconfiged VM qemu configs and ISOs
-    bambu-studio
+
+    # 3D Printing
+    # bambu-studio
+    orca-slicer
   ];
 
 

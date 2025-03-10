@@ -231,17 +231,18 @@ in
     opensnitch-ui
 
     quickemu # Download preconfiged VM qemu configs and ISOs
-    bambu-studio # unstable version is Broken 05.01.25
+    # bambu-studio # unstable version is Broken 05.01.25
+
     bottles # Wine Manager
   ];
 
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    # config = {
-    #   common.default = [ "gtk" ];
-    #   hyprland.default = [ "gtk" "hyprland" ];
-    # };
+    config = {
+      common.default = [ "gtk" ];
+      hyprland.default = [ "gtk" "hyprland" ];
+    };
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
     ];
