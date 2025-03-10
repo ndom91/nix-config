@@ -3,7 +3,7 @@
 , ...
 }: {
   programs.zathura = {
-    enable = true;
+    enable = false;
     options = {
       font = "Inter 12";
       selection-notification = true;

@@ -5,7 +5,8 @@ let
   web-browser = "vivaldi-stable";
   discord = "vesktop";
   slack = "slack";
-  document-viewer = "org.pwmt.zathura";
+  document-viewer = "mupdf";
+  # document-viewer = "org.pwmt.zathura";
   media-player = "vlc";
   image-viewer = "org.gnome.Loupe";
 

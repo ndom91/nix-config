@@ -105,7 +105,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     PAGER = "less -R";
-    READER = "zathura";
+    READER = "mupdf";
     BROWSER = "vivaldi";
     VIDEO = "vlc";
     RIPGREP_CONFIG_PATH = "$HOME/.ripgreprc";
