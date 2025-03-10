@@ -9,6 +9,7 @@
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/dconf.nix
+    ../../modules/home-manager/flameshot.nix
     ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/gtk.nix
