@@ -62,11 +62,11 @@ chosen=$(echo -e "$options" | rofi \
 case $chosen in
 "$area")
   # shotarea
-  flameshot gui
+  sleep 1 && flameshot gui
   ;;
 "$screen")
   # shotscreen
-  flameshot screen
+  sleep 1 && flameshot screen
   ;;
 "$infive")
   # shot3
