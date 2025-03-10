@@ -2,11 +2,11 @@
 {
   home.packages = with pkgs; [
     # Graphical Applications
-    unstablePkgs.xpipe
-    unstablePkgs.zed-editor
-    github-desktop
+    xpipe
+    zed-editor
     mission-center
-    unstablePkgs.meld
+    # github-desktop
+    # unstablePkgs.meld
 
     # Chromium
     (unstablePkgs.vivaldi.override {
@@ -33,24 +33,23 @@
     })
 
     # Experimental
-    unstablePkgs.flameshot
-    unstablePkgs.zed-editor
-    unstablePkgs.mqttui
-    unstablePkgs.tabiew # TUI Table Viewer (CSV, TSV, Parquet, etc.)
+    unstablePkgs.mqttui # MQTT TUI
+    # unstablePkgs.zed-editor # IDE
+    # unstablePkgs.tabiew # TUI Table Viewer (CSV, TSV, Parquet, etc.)
 
     # unstablePkgs.beeper # Universal Chat App
     unstablePkgs.chromium # Browser
     firefox-esr # Firefox
     gnome-boxes # VM Manager
     seahorse # GPG Key Manager
-    slack # Chat
+    # slack # Chat
     unstablePkgs.vesktop # Discord client w/ better wayland support (see nixcord.nix)
     virt-manager # VM Manager
     gnome-text-editor # Plain Text Editor
-    sushi #  Gnome File Manager Previewer
     file-roller # GUI Archive Manager
     vlc # Media Player
     loupe # Image Viewer
+    mupdf # PDF (not native way
 
     # rustdesk - sciter ui lib is deprecated, using flutter version instead
     rustdesk-flutter # Remote Desktop
@@ -80,12 +79,12 @@
     graphviz # Generate graphs on CLI
     kondo # Multi-language vendor file cleaner (node_modules, vendor, etc)
     just # Command runner
-    unstablePkgs.serie # Git Log output
-    unstablePkgs.mold # Faster Linker
+    # unstablePkgs.serie # Git Log output
+    # unstablePkgs.mold # Faster Linker
     unstablePkgs.terraformer # Terraform Introspection Tool
     unstablePkgs.terraform # IaaC
     unstablePkgs.awscli2 # aws-cli
-    unstablePkgs.oha # HTML Load Tester
+    # unstablePkgs.oha # HTML Load Tester
 
     # Nix Tools
     nvd # Nix Visual Diff
@@ -96,18 +95,17 @@
     bottom # not top
     procs # process viewer
     bandwhich # network monitor
-    hyperfine # command-line benchmarking tool
-    gping # ping, but with a graph(TUI)
+    # hyperfine # command-line benchmarking tool
+    # gping # ping, but with a graph(TUI)
     doggo # DNS client for humans
-    duf # Disk Usage/Free Utility - a better 'df' alternative
     ncdu # analyzer your disk usage Interactively, via TUI(replacement of `du`)
     gpu-viewer # GPU htop
 
     # Terminal Apps
     unstablePkgs.charm-freeze # Code Screenshots
     lazydocker # TUI Docker
-    starship # Terminal Prompt
-    hwatch # Interactive 'watch' alternative
+    starship # Terminal Promps
+    # hwatch # Interactive 'watch' alternative
     whois
     jq # CLI JSON Client
     cliphist # Clipboard History
