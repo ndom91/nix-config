@@ -51,10 +51,11 @@
     loupe # Image Viewer
     mupdf # PDF (not native way
 
-    # rustdesk - sciter ui lib is deprecated, using flutter version instead
-    rustdesk-flutter # Remote Desktop
+    # TODO: Reenable rustdesk after https://github.com/NixOS/nixpkgs/pull/390171 is merged
+    # rustdesk
+    # rustdesk-flutter # Remote Desktop
     obsidian # Note Taking
-    unstablePkgs.remmina
+    unstablePkgs.remmina # RDP
 
     # System Tools
     qdirstat # Disk Usage Analyzer
