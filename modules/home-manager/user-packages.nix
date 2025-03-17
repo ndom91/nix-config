@@ -86,6 +86,7 @@
     unstablePkgs.terraform # IaaC
     unstablePkgs.awscli2 # aws-cli
     # unstablePkgs.oha # HTML Load Tester
+    rdap # WHOIS replacement domain registration lookup service / CLI from the IETF
 
     # Nix Tools
     nvd # Nix Visual Diff
