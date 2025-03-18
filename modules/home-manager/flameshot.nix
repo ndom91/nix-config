@@ -4,7 +4,10 @@
   # natively under Wayland yet, but it does seem to play nicely with xwayland + hyprland :pray:
 
   home.packages = with pkgs; [
-    flameshot
+    (flameshot.override {
+      # Enable USE_WAYLAND_GRIM compile flag
+      enableWlrSupport = true;
+    })
   ];
 
   xdg.configFile."flameshot/flameshot.ini" = {
