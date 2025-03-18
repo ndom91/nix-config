@@ -43,7 +43,9 @@
 , at-spi2-core
 , qt5
 , libdrm
-, mesa
+  # See: https://github.com/hyprwm/Hyprland/pull/9612
+  # , mesa
+, libgbm
 , vulkan-loader
 , nss
 , nspr
@@ -157,7 +159,9 @@ stdenv.mkDerivation rec {
     pango
     cairo
     libdrm
-    mesa
+    # See: https://github.com/hyprwm/Hyprland/pull/9612
+    # mesa
+    libgbm
     vulkan-loader
     wayland
     pipewire
