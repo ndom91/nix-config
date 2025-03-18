@@ -282,6 +282,7 @@ in
         # Special Keys
         ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ",XF86SelectiveScreenshot, exec, sleep 1 && flameshot gui"
 
         ",XF86AudioPlay, exec, playerctl play-pause"
         ",XF86AudioNext, exec, playerctl next"
@@ -289,10 +290,10 @@ in
         ",XF86AudioStop, exec, playerctl stop"
 
         # SwayOSD + AudioControl
-        ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
-        ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
-        ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
-        ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
+        # ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+        # ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        # ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+        # ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
       ]
       ++ (
         builtins.concatLists (builtins.genList
