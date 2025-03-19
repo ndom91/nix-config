@@ -86,7 +86,7 @@ in
         # "${pkgs.blueman}/bin/blueman-applet"
         "uwsm app -- ${lib.getExe pkgs.waybar}"
         "uwsm app -- ${lib.getExe pkgs.swaybg} -m fill -i ~/.config/hypr/wallpaper.png"
-        "uwsm app -- ${lib.getExe' pkgs.swayosd "swayosd"}"
+        "uwsm app -- ${lib.getExe' pkgs.swayosd "swayosd-server"}"
         "uwsm app -- ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --silent"
       ];
       general = {
@@ -159,12 +159,12 @@ in
       };
       windowrule =
         let
-          f = regex: "float, .*${regex}.*";
+          f = regex: "float, class:.*${regex}.*";
         in
         [
           (f "(D|d)ev(T|t)ools")
           (f "(b|B)eeper")
-          (f "(g|G)it-(b|B)utler.*")
+          (f "(g|G)it-(b|B)utler")
           (f "gitbutler-tauri")
           (f "Developer Tools")
           (f "Winetricks")
@@ -174,7 +174,7 @@ in
           (f "lutris")
           (f "nemo")
           (f "nm-connection-editor")
-          (f "opensnitch.*")
+          (f "opensnitch")
           (f "thunar")
           (f "org.gnome.Calculator")
           (f "org.gnome.FileRoller")
@@ -187,59 +187,49 @@ in
           (f "xdg-desktop-portal")
           (f "xdg-desktop-portal-gnome")
         ] ++ [
-          "float, file_progress"
-          "float, confirm"
-          "float, dialog"
-          "float, download"
-          "float, notification"
-          "float, error"
-          "float, splash"
-          "float, confirmreset"
           "float, title:(S|s)ave (F|f)ile"
           "float, title:(O|o)pen (F|f)ile"
+          # General
+          "animation fade, floating:1"
+
+          # wlogout
+          "float, title:wlogout"
+          "fullscreen, title:wlogout"
+
+          # throw sharing indicators away
+          "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+          "workspace special silent, title:^.*(Sharing Indicator)$"
+          "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
+
+          # 1Password Quick Access
+          "stayfocused,title:^(Quick Access - 1Password)"
+          "monitor DP-1,title:^(Quick Access - 1Password)"
+          # "noinitialfocus,title:Quick Access - 1Password,floating"
+          # "forceinput,title:^(Quick Access - 1Password)"
+
+          # 1Password GUI
+          "monitor DP-1,class:^(1Password)$"
+          "center, class:^(1Password)$"
+          "float, class:^(1Password)$"
+
+          # idle inhibit while watching videos
+          "idleinhibit focus, class:^(vivaldi)$, title:^(.*YouTube.*)$"
+          "idleinhibit fullscreen, class:^(vivaldi)$"
+
+          # portal / polkit
+          "dimaround, class:^(xdg-desktop-portal-gtk)$"
+          "float, class:^(xdg-desktop-portal-gtk)$"
+          "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
+          "float, class:^(polkit-gnome-authentication-agent-1)$"
+          "dimaround, class:^(gcr-prompter)$"
+          "float, class:^(gcr-prompter)$"
+
+          # xwaylandvideobridge - https://wiki.hyprland.org/Useful-Utilities/Screen-Sharing/#xwayland
+          "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
+          "noanim,class:^(xwaylandvideobridge)$"
+          "nofocus,class:^(xwaylandvideobridge)$"
+          "noinitialfocus,class:^(xwaylandvideobridge)$"
         ];
-      windowrulev2 = [
-        # General
-        "animation fade, floating:1"
-
-        # wlogout
-        "float, title:wlogout"
-        "fullscreen, title:wlogout"
-
-        # throw sharing indicators away
-        "workspace special silent, title:^(Firefox — Sharing Indicator)$"
-        "workspace special silent, title:^.*(Sharing Indicator)$"
-        "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
-
-        # 1Password Quick Access
-        "stayfocused,title:^(Quick Access - 1Password)"
-        "monitor DP-1,title:^(Quick Access - 1Password)"
-        # "noinitialfocus,title:Quick Access - 1Password,floating"
-        # "forceinput,title:^(Quick Access - 1Password)"
-
-        # 1Password GUI
-        "monitor DP-1,class:^(1Password)$"
-        "center, class:^(1Password)$"
-        "float, class:^(1Password)$"
-
-        # idle inhibit while watching videos
-        "idleinhibit focus, class:^(vivaldi)$, title:^(.*YouTube.*)$"
-        "idleinhibit fullscreen, class:^(vivaldi)$"
-
-        # portal / polkit
-        "dimaround, class:^(xdg-desktop-portal-gtk)$"
-        "float, class:^(xdg-desktop-portal-gtk)$"
-        "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
-        "float, class:^(polkit-gnome-authentication-agent-1)$"
-        "dimaround, class:^(gcr-prompter)$"
-        "float, class:^(gcr-prompter)$"
-
-        # xwaylandvideobridge - https://wiki.hyprland.org/Useful-Utilities/Screen-Sharing/#xwayland
-        "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
-        "noanim,class:^(xwaylandvideobridge)$"
-        "nofocus,class:^(xwaylandvideobridge)$"
-        "noinitialfocus,class:^(xwaylandvideobridge)$"
-      ];
       bind = [
         "$mainMod, G, togglegroup,"
         "$mainMod, U, changegroupactive,b"
@@ -290,10 +280,10 @@ in
         ",XF86AudioStop, exec, playerctl stop"
 
         # SwayOSD + AudioControl
-        # ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
-        # ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
-        # ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
-        # ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
+        ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+        ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+        ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
       ]
       ++ (
         builtins.concatLists (builtins.genList

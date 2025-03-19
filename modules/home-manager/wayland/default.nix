@@ -47,8 +47,8 @@
     mkchromecast # Chromecast
     playerctl # Media player control
     swaybg # Set background on boot
-    unstablePkgs.swaynotificationcenter # Notification center
-    unstablePkgs.swayosd # Media OSD
+    swaynotificationcenter # Notification center
+    swayosd # Media OSD
     wdisplays # Graphical Display Configuration
     wev # Show wayland events
     wf-recorder # Wayland screen recorder
