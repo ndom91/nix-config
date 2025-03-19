@@ -165,6 +165,7 @@ in
     enableAllFirmware = true;
     keyboard.qmk.enable = true;
     keyboard.zsa.enable = true;
+    flipperzero.enable = true;
 
     bluetooth = {
       enable = true;
@@ -178,31 +179,8 @@ in
 
     amdgpu = { opencl.enable = true; }; # ROCM Support
 
-    # graphics = {
-    #   enable = true;
-    #   enable32Bit = true;
-    #   package = unstablePkgs.mesa.drivers;
-    #   package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
-    #   # driSupport = true;
-    #   # driSupport32Bit = true;
-    #   # OpenGL Mesa version pinning - https://github.com/NixOS/nixpkgs/issues/94315#issuecomment-719892849
-    #   extraPackages = with unstablePkgs; [
-    #     # libglvnd
-    #     vaapiVdpau
-    #     libvdpau-va-gl
-    #   ];
-    #   extraPackages32 = with pkgs; [
-    #     # unstablePkgs.driversi686Linux.amdvlk
-    #   ];
-    # };
     graphics = {
       enable = true;
-
-      # package = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa.drivers;
-      # package32 = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa.drivers;
-
-      # package = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.libgbm.drivers;
-      # package32 = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.libgbm.drivers;
     };
 
     enableRedistributableFirmware = true;

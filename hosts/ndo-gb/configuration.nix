@@ -224,6 +224,7 @@ in
     acpilight.enable = true;
     keyboard.qmk.enable = true;
     keyboard.zsa.enable = true;
+    flipperzero.enable = true;
 
     bluetooth = {
       enable = true;
@@ -235,28 +236,8 @@ in
       # };
     };
 
-    # Intel Hardware Acceleration
-    # graphics = {
-    #   enable = true;
-    #   enable32Bit = true;
-    #   package = unstablePkgs.mesa.drivers;
-    #   package32 = unstablePkgs.pkgsi686Linux.mesa.drivers;
-    #   extraPackages = with unstablePkgs; [
-    #     intel-media-driver
-    #     intel-compute-runtime
-    #
-    #     vaapiVdpau
-    #     libvdpau-va-gl
-    #   ];
-    # };
     graphics = {
       enable = true;
-      # package = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa.drivers;
-      # package32 = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.mesa.drivers;
-
-      # package = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.libgbm.drivers;
-      # package32 = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.pkgsi686Linux.libgbm.drivers;
-
       extraPackages = with unstablePkgs; [
         intel-media-driver
         intel-compute-runtime
@@ -301,7 +282,7 @@ in
     inputs.nixos-needtoreboot.packages.${pkgs.system}.default
 
     wirelesstools # iwconfig, iwlist, etc.
-    opensnitch
+    opensnitch # network activity monitor / firewall
     opensnitch-ui
     quickemu # Download preconfiged VM qemu configs and ISOs
 
