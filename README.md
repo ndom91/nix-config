@@ -14,7 +14,7 @@ This repository started off with my preexisting [dotfiles](https://github.com/nd
 | :---------: | :----------------------: | :--------------------: | :---: | :-----------------: | :--: | :-: | :---: |
 | `ndo4`      | [MSI B550 Gaming]        |  [AMD Ryzen 5 5600X]   | 32GB  | [AMD Radeon 5600XT] | 🖥️   | ❄️   | ✅    |
 | `ndo-gb`    | [Thinkpad X1 Carbon 12G] |  [Intel Ultra 7 155U]  | 32GB  | [Intel Xe]          | 💻️   | ❄️   | ✅    |
-| `ndo2`      | [Huawei Matebook X Pro]  |  [Intel i5 8250U]      | 16GB  | [Intel UHD 620]     | 💻️   | ❄️   | ✅    |
+| `ndo2`      | [Huawei Matebook X Pro]  |  [Intel i5 8250U]      | 16GB  | [Intel UHD 620]     | 💻️   | ❄️   | 🟩    |
 
 
 ## 📂 Directories

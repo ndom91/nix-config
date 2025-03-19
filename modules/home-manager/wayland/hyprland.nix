@@ -305,9 +305,7 @@ in
       );
       bindn = [
         # 1Password Quick Search
-        # "CTRL SHIFT, Period, exec, ${lib.getExe pkgs._1password-gui} --quick-access"
-        # "CTRL SHIFT, Period, exec, 1password --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
-        "CTRL SHIFT, Period, exec, ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
+        "CTRL SHIFT, Period, exec, ${lib.getExe pkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --quick-access"
       ];
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging
