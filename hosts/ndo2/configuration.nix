@@ -156,7 +156,7 @@ in
       # allowedUDPPorts = [];
     };
     hosts = {
-      "127.0.0.1" = [ "localhost" "ndo4" "sveltekasten" "db.puff.lan" ];
+      "127.0.0.1" = [ "localhost" "ndo2" "sveltekasten" "db.puff.lan" ];
       "10.0.0.25" = [ "checkly.pi" "docker-pi" ];
       "172.18.1.110" = [ "www.iceportal.de" "iceportal.de" ];
     };
@@ -199,8 +199,6 @@ in
   # Hyprland swaynotificationcenter service
   systemd.user.units.swaync.enable = true;
 
-  # systemd services
-  systemd.services.systemd-udevd.restartIfChanged = false;
   # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
   systemd.services.NetworkManager-wait-online.enable = false;
 

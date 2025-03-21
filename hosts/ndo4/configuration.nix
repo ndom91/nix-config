@@ -73,6 +73,7 @@ in
     hostName = "ndo4";
     useNetworkd = true;
     useDHCP = false;
+    domain = "puff.lan";
     # networkmanager.enable = true;
     firewall = {
       enable = false;
@@ -84,12 +85,8 @@ in
     timeServers = [
       "time.puff.lan"
     ];
-    hosts = {
-      "127.0.0.1" = [ "ndo4.puff.lan" "ndo4" "localhost" "sveltekasten" ];
-    };
   };
 
-  systemd.services.systemd-udevd.restartIfChanged = false;
   # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
   systemd.services.NetworkManager-wait-online.enable = false;
 
@@ -273,10 +270,13 @@ in
       domains = [
         "puff.lan"
       ];
-      fallbackDns = [
-        "1.1.1.1"
-        "1.0.0.1"
-      ];
+      fallbackDns = [ ];
+      # [] = none
+      # null = upstream defauls
+      # [
+      #   "1.1.1.1"
+      #   "1.0.0.1"
+      # ];
     };
 
     # picosnitch.enable = true;
