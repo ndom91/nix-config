@@ -5,6 +5,7 @@ in
 {
   "sshHosts.age".publicKeys = [ ndo ];
   "wutangKey.age".publicKeys = [ ndo ];
+  "nm-secrets.age".publicKeys = [ ndo ];
   "pvpn_uk.age".publicKeys = [ ndo ];
   "pvpn_mx.age".publicKeys = [ ndo ];
   "cbaseKey.age".publicKeys = [ ndo ];
