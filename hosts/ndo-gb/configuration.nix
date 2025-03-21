@@ -42,9 +42,14 @@ in
 
   system.stateVersion = stateVersion;
 
-  # age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
+  age.secrets.cbaseKey.file = ../../secrets/cbaseKey.age;
   age.secrets.wutangKey.file = ../../secrets/wutangKey.age;
   age.secrets.derpyKey.file = ../../secrets/derpyKey.age;
+  age.secrets.nm-secrets = {
+    file = ../../secrets/nm-secrets.age;
+    owner = "root";
+    group = "root";
+  };
 
   ndom91 = {
     thunar.enable = true;
@@ -74,78 +79,111 @@ in
 
   networking = {
     hostName = "ndo-gb";
-    useDHCP = lib.mkDefault true;
+    domain = "puff.lan";
+    useDHCP = lib.mkDefault false;
+    # useNetworkd = true;
+    # interfaces = {
+    #   wlan0.ipv4.addresses = [{ address = "10.0.1.52"; prefixLength = 24; }];
+    # };
     networkmanager = {
       enable = true;
-      dns = "systemd-resolved";
-      ensureProfiles.profiles = {
-        "gitbutler-wifi" = {
-          connection = {
-            id = "gitbutler-wifi";
-            type = "wifi";
+      dns = "systemd-resolved"; # 'dnsmasq', 'default', 'systemd-resolved', 'none';
+      # https://people.freedesktop.org/~lkundrak/nm-docs/nm-settings-keyfile.html
+      # https://people.freedesktop.org/~lkundrak/nm-docs/nm-settings.html
+      ensureProfiles = {
+        environmentFiles = [
+          config.age.secrets.nm-secrets.path
+        ];
+        profiles = {
+          "gitbutler-wifi" = {
+            connection = {
+              id = "gitbutler-wifi";
+              type = "wifi";
+              autoconnect = true;
+            };
+            ipv4 = {
+              method = "auto";
+              nameserver = "192.168.178.2";
+              dns-search = "gitbutler.lan";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "Derpy Dino Bronx";
+            };
+            wifi-security = {
+              key-mgmt = "wpa-psk";
+              psk = config.age.secrets.derpyKey.path;
+            };
           };
-          ipv4 = {
-            method = "auto";
-            nameserver = "192.168.178.2";
-            dns-search = "gitbutler.lan";
+          "WutangLAN_01" = {
+            connection = {
+              id = "WutangLAN_01";
+              type = "wifi";
+              # autoconnect = true;
+            };
+            ipv4 = {
+              method = "manual";
+              address1 = "10.0.1.51/24";
+              gateway = "10.0.1.1";
+              dns = "10.0.1.1;";
+              dns-search = "puff.lan;";
+            };
+            ipv6 = {
+              addr-gen-mode = "stable-privacy";
+              dns-search = "puff.lan";
+              method = "auto";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "WutangLAN";
+            };
+            wifi-security = {
+              key-mgmt = "wpa-psk";
+              psk = "$WUTANGLAN_PSK";
+            };
           };
-          wifi = {
-            mode = "infrastructure";
-            ssid = "Derpy Dino Bronx";
-          };
-          wifi-security = {
-            key-mgmt = "wpa-psk";
-            psk = config.age.secrets.derpyKey.path;
+          "c-base-crew" = {
+            connection = {
+              id = "c-base-crew";
+              type = "wifi";
+              autoconnect = false;
+            };
+            ipv4 = {
+              method = "auto";
+              nameserver = "10.0.0.1";
+              dns-search = "";
+            };
+            wifi = {
+              mode = "infrastructure";
+              ssid = "c-base-crew";
+              # hidden = true;
+              security = "802-11-wireless-security";
+            };
+            wifi-security = {
+              key-mgmt = "wpa-eap";
+              psk = config.age.secrets.cbaseKey.path;
+            };
+            "802-1x" = {
+              eap = "peap";
+              identity = "ndo";
+              ca-cert = "/etc/ssl/certs/ca-bundle.crt";
+              # subject_match = "/CN=radius.cbrp3.c-base.org";
+              altsubject-matches = "DNS:radius.cbrp3.c-base.org";
+              phase1-peapver = "1";
+              phase2-auth = "mschapv2";
+              # https://people.freedesktop.org/~lkundrak/nm-docs/nm-settings.html#secrets-flags
+              # password-flags = "2"; # 2 = don't save
+            };
           };
         };
-        "WutangLAN" = {
-          connection = {
-            id = "WutangLAN";
-            type = "wifi";
-          };
-          ipv4 = {
-            method = "auto";
-            nameserver = "10.0.1.1";
-            dns-search = "puff.lan";
-          };
-          ipv6 = {
-            method = "auto";
-          };
-          wifi = {
-            mode = "infrastructure";
-            ssid = "WutangLAN";
-          };
-          wifi-security = {
-            key-mgmt = "wpa-psk";
-            psk = config.age.secrets.wutangKey.path;
-          };
-        };
-        # "c-base-crew" = {
-        #   connection = {
-        #     id = "c-base-crew";
-        #     type = "wifi";
-        #   };
-        #   ipv4 = {
-        #     method = "auto";
-        #     nameserver = "10.0.0.1";
-        #     dns-search = "puff.lan";
-        #   };
-        #   wifi = {
-        #     mode = "infrastructure";
-        #     ssid = "c-base-crew";
-        #   };
-        #   wifi-security = {
-        #     key-mgmt = "wpa-eap";
-        #     psk = config.age.secrets.cbaseKey.path;
-        #   };
-        # };
       };
     };
-    # nameservers = [
-    #   "10.0.0.1"
-    # ];
+    nameservers = [
+      "10.0.1.1"
+    ];
     timeServers = [
       # "10.0.0.1"
+      "time.puff.lan"
       "0.nixos.pool.ntp.org"
       "1.nixos.pool.ntp.org"
     ];
@@ -157,24 +195,8 @@ in
       ];
     };
     hosts = {
-      "127.0.0.1" = [ "ndo-gb.puff.lan" "ndo-gb" "localhost" ];
       "172.18.1.110" = [ "www.iceportal.de" "iceportal.de" ];
     };
-
-    # TODO: Test Crew Wifi Config
-    # wireless.networks."c-base-crew" = {
-    #   hidden = true;
-    #   auth = ''
-    #     ssid="c-base-crew"
-    #     key_mgmt=WPA-EAP
-    #     eap=PEAP
-    #     identity="ndo"
-    #     ca_cert="/etc/ssl/certs/ca-bundie.crt"
-    #     subject_match="/CN=radius.cbrp3.c-base.org"
-    #     phase2="auth=MSCHAPV2"
-    #   '';
-    # };
-    # wireless.networks."c-base-crew".psk = config.age.secrets.cbaseKey.path;
   };
 
   # rebuild-switch bug - https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1377224366
@@ -379,13 +401,17 @@ in
 
     resolved = {
       enable = true;
+      llmnr = "false";
       domains = [
         "puff.lan"
       ];
-      fallbackDns = [
-        "1.1.1.1"
-        "1.0.0.1"
-      ];
+      fallbackDns = [ ];
+      # [] = none
+      # null = upstream defauls
+      # [
+      #   "1.1.1.1"
+      #   "1.0.0.1"
+      # ];
     };
 
     fwupd.enable = true;
@@ -404,9 +430,7 @@ in
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
-      domainName = "puff.lan";
       browseDomains = [
-        "local"
         "puff.lan"
       ];
     };
@@ -490,7 +514,16 @@ in
   };
 
   # Ensure network is online before desktop starts
-  systemd.targets.graphical = {
+  # systemd.targets.graphical = {
+  #   wants = [ "network-online.target" ];
+  #   after = [ "network-online.target" ];
+  # };
+  # Ensure network is online before starting these services
+  systemd.services.clamav-freshclam = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+  };
+  systemd.services.flatpak-managed-install = {
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
   };
