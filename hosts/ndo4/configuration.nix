@@ -273,10 +273,6 @@ in
       fallbackDns = [ ];
       # [] = none
       # null = upstream defauls
-      # [
-      #   "1.1.1.1"
-      #   "1.0.0.1"
-      # ];
     };
 
     # picosnitch.enable = true;

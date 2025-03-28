@@ -99,7 +99,6 @@ in
             connection = {
               id = "gitbutler-wifi";
               type = "wifi";
-              autoconnect = true;
             };
             ipv4 = {
               method = "auto";
@@ -119,11 +118,10 @@ in
             connection = {
               id = "WutangLAN_01";
               type = "wifi";
-              # autoconnect = true;
             };
             ipv4 = {
               method = "manual";
-              address1 = "10.0.1.51/24";
+              address1 = "10.0.1.52/24";
               gateway = "10.0.1.1";
               dns = "10.0.1.1;";
               dns-search = "puff.lan;";
@@ -146,7 +144,6 @@ in
             connection = {
               id = "c-base-crew";
               type = "wifi";
-              autoconnect = false;
             };
             ipv4 = {
               method = "auto";
@@ -228,17 +225,9 @@ in
     };
 
     pki.certificateFiles = [
-      # "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
       ./../../dotfiles/certs/puff.lan.crt
       ./../../dotfiles/certs/nextdns.crt
     ];
-  };
-
-  environment.variables = {
-    # VAAPI and VDPAU config for accelerated video.
-    # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
-    # VDPAU_DRIVER = "va_gl";
-    # LIBVA_DRIVER_NAME = "iHD";
   };
 
   hardware = {
@@ -408,10 +397,6 @@ in
       fallbackDns = [ ];
       # [] = none
       # null = upstream defauls
-      # [
-      #   "1.1.1.1"
-      #   "1.0.0.1"
-      # ];
     };
 
     fwupd.enable = true;
