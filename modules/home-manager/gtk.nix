@@ -18,6 +18,7 @@
     accent = "maroon";
 
     # Programs
+    vscode.enable = false;
     # waybar.enable = true;
     # nvim.enable = true;
   };
