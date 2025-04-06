@@ -6,56 +6,6 @@ local function goto_prev_error()
 end
 
 return {
-  -- {
-  --   "williamboman/mason.nvim",
-  --   lazy = false,
-  --   opts = {},
-  -- },
-  -- {
-  --   "williamboman/mason-lspconfig.nvim",
-  --   opts = {
-  --     automatic_installation = true,
-  --     ensure_installed = {
-  --       "rnix",
-  --       "lua_ls",
-  --       "ts_ls", -- typescript_languageserver
-  --       "bashls",
-  --       "cssls",
-  --       "eslint",
-  --       "html",
-  --       "svelte",
-  --       "tailwindcss",
-  --       "rust_analyzer",
-  --       "volar",
-  --     },
-  --     handlers = {
-  --       -- The first entry (without a key) will be the default handler
-  --       -- and will be called for each installed server that doesn't have
-  --       -- a dedicated handler.
-  --       -- function(server_name) -- default handler (optional)
-  --       --   require("lspconfig")[server_name].setup({})
-  --       -- end,
-  --     },
-  --   },
-  -- },
-  -- {
-  --   "WhoIsSethDaniel/mason-tool-installer.nvim",
-  --   opts = {
-  --     ensure_installed = {
-  --       "nixpkgs-fmt",
-  --       "prettierd",
-  --       "rustywind",
-  --       -- "biome",
-  --       -- "eslint_d",
-  --       "js-debug-adapter",
-  --       "shellcheck",
-  --       "shfmt",
-  --     },
-  --     auto_update = true,
-  --     run_on_start = true,
-  --     debounce_hours = 12,
-  --   },
-  -- },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -238,6 +188,8 @@ return {
         "prettierd",
         "rustywind",
         -- "biome",
+        -- "biome_organize_imports",
+        -- "demo_fmt",
         -- "eslint_d",
         "js-debug-adapter",
         "shellcheck",
@@ -261,19 +213,24 @@ return {
   },
   {
     "stevearc/conform.nvim",
+    dependencies = {
+      "LittleEndianRoot/mason-conform",
+    },
     enabled = true,
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     keys = {
       {
+        -- Customize or remove this keymap to your liking
         "<leader>lf",
         function()
-          vim.cmd("Format")
+          require("conform").format({ async = true })
         end,
         mode = "",
-        desc = "[F]ormat",
+        desc = "[F]ormat buffer",
       },
     },
     config = function()
-      local conform = require("conform")
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
       vim.api.nvim_create_user_command("Format", function(args)
@@ -286,28 +243,83 @@ return {
           }
         end
 
-        conform.format({ async = false, lsp_format = "fallback", range = range })
+        require("conform").format({ async = false, lsp_format = "fallback", range = range })
       end, { range = true })
 
-      conform.setup({
+      require("conform").setup({
+        log_level = vim.log.levels.DEBUG,
         formatters_by_ft = {
           sh = { "shfmt" },
           lua = { "stylua" },
-          javascript = { "prettierd" },
-          typescript = { "prettierd" },
-          javascriptreact = { "prettierd" },
-          typescriptreact = { "prettierd" },
-          svelte = { "prettierd" },
+          rust = { "rustfmt", lsp_format = "fallback" },
+          javascript = { "prettierd", "prettier", stop_after_first = true },
+          typescript = { "prettierd", "prettier", stop_after_first = true },
+          javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+          typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+          svelte = {
+            "prettierd_svelte",
+            -- "biome",
+            -- "prettierd",
+            -- "prettier",
+            -- stop_after_first = true,
+            lsp_format = "fallback",
+          },
           ["_"] = { "trim_whitespace" },
         },
         notify_on_error = true,
-        format_on_save = {
-          -- These options will be passed to conform.format()
-          timeout_ms = 500,
-          async = false,
+        default_format_opts = {
           lsp_format = "fallback",
         },
+        format_after_save = function(bufnr)
+          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return
+          end
+          return { lsp_format = "fallback" }
+        end,
+        format_on_save = function(bufnr)
+          -- Disable autoformat on certain filetypes
+          local ignore_filetypes = { "sql", "java" }
+          if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+            return
+          end
+          -- Disable with a global or buffer-local variable
+          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return
+          end
+          -- Disable autoformat for files in a certain path
+          local bufname = vim.api.nvim_buf_get_name(bufnr)
+          if bufname:match("/node_modules/") then
+            return
+          end
+
+          return { timeout_ms = 500, lsp_format = "fallback" }
+        end,
         formatters = {
+          prettierd_svelte = {
+            env = {
+              PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
+            },
+            command = "prettier",
+            -- When cwd is not found, don't run the formatter (default false)
+            require_cwd = true,
+            cwd = require("conform.util").root_file({
+              ".prettierrc",
+              ".prettierrc.json",
+              ".prettierrc.yml",
+              ".prettierrc.yaml",
+              ".prettierrc.json5",
+              ".prettierrc.js",
+              ".prettierrc.cjs",
+              ".prettierrc.mjs",
+              ".prettierrc.toml",
+              "prettier.config.js",
+              "prettier.config.cjs",
+              "prettier.config.mjs",
+            }),
+            prepend_args = {
+              "--plugin prettier-plugin-svelte",
+            },
+          },
           prettierd = {
             env = {
               PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
@@ -318,6 +330,7 @@ return {
             --     return false
             --   end
             -- end,
+            -- When cwd is not found, don't run the formatter (default false)
             require_cwd = true,
             cwd = require("conform.util").root_file({
               ".prettierrc",

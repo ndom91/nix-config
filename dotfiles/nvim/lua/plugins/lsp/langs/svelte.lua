@@ -42,15 +42,15 @@ return {
     "jsconfig.json",
     ".git"
   ),
-  settings = {
-    svelte = {
-      plugin = {
-        svelte = {
-          format = {
-            enable = false,
-          },
-        },
-      },
-    },
-  },
+  -- settings = {
+  --   svelte = {
+  --     plugin = {
+  --       svelte = {
+  --         format = {
+  --           enable = false,
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
 }
