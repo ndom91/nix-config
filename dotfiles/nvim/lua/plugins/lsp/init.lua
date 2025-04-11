@@ -247,11 +247,13 @@ return {
       end, { range = true })
 
       require("conform").setup({
-        log_level = vim.log.levels.DEBUG,
+        -- log_level = vim.log.levels.DEBUG,
         formatters_by_ft = {
           sh = { "shfmt" },
           lua = { "stylua" },
-          rust = { "rustfmt", lsp_format = "fallback" },
+          nix = { "rnix", "nixpkgs-fmt" },
+          rust = { "rustfmt" },
+          astro = { "prettierd_astro" },
           javascript = { "prettierd", "prettier", stop_after_first = true },
           typescript = { "prettierd", "prettier", stop_after_first = true },
           javascriptreact = { "prettierd", "prettier", stop_after_first = true },
@@ -262,7 +264,6 @@ return {
             -- "prettierd",
             -- "prettier",
             -- stop_after_first = true,
-            lsp_format = "fallback",
           },
           ["_"] = { "trim_whitespace" },
         },
@@ -295,6 +296,31 @@ return {
           return { timeout_ms = 500, lsp_format = "fallback" }
         end,
         formatters = {
+          prettierd_astro = {
+            env = {
+              PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
+            },
+            command = "prettier",
+            -- When cwd is not found, don't run the formatter (default false)
+            require_cwd = true,
+            cwd = require("conform.util").root_file({
+              ".prettierrc",
+              ".prettierrc.json",
+              ".prettierrc.yml",
+              ".prettierrc.yaml",
+              ".prettierrc.json5",
+              ".prettierrc.js",
+              ".prettierrc.cjs",
+              ".prettierrc.mjs",
+              ".prettierrc.toml",
+              "prettier.config.js",
+              "prettier.config.cjs",
+              "prettier.config.mjs",
+            }),
+            prepend_args = {
+              "--plugin prettier-plugin-astro",
+            },
+          },
           prettierd_svelte = {
             env = {
               PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
