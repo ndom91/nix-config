@@ -300,6 +300,8 @@ in
     # 3D Printing
     # bambu-studio
     orca-slicer
+
+    bottles # Wine Manager
   ];
 
 
