@@ -119,7 +119,7 @@ return {
           if client ~= nil then
             -- Highlight symbol references on hover
             --
-            if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+            if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
               -- if client.server_capabilities.documentHighlightProvider then
               local highlight_augroup = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
               vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
