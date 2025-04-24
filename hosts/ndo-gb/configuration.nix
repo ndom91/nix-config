@@ -240,11 +240,11 @@ in
     bluetooth = {
       enable = true;
       powerOnBoot = true;
-      # settings = {
-      #   General = {
-      #     Experimental = true;
-      #   };
-      # };
+      settings = {
+        General = {
+          Experimental = true;
+        };
+      };
     };
 
     graphics = {
@@ -265,7 +265,7 @@ in
   users.users.ndo = {
     isNormalUser = true;
     description = "ndo";
-    extraGroups = [ "plugdev" "networkmanager" "wheel" "libvirt" "kvm" "video" "render" "dialout" "lxd" "incus-admin" ];
+    extraGroups = [ "plugdev" "networkmanager" "wheel" "libvirt" "kvm" "video" "render" "dialout" "lxd" "incus-admin" "docker" ];
   };
 
   home-manager = {
