@@ -90,7 +90,7 @@ in
         "uwsm app -- ${lib.getExe pkgs.waybar}"
         "uwsm app -- ${lib.getExe pkgs.swaybg} -m fill -i ~/.config/hypr/wallpaper.png"
         "uwsm app -- ${lib.getExe' pkgs.swayosd "swayosd-server"}"
-        "uwsm app -- ${lib.getExe unstablePkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --silent"
+        "uwsm app -- ${lib.getExe pkgs._1password-gui} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --silent"
       ];
       general = {
         gaps_in = 10;

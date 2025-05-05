@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, unstablePkgs, ... }:
+{ inputs, config, pkgs, ... }:
 {
   nixpkgs.config = {
     allowUnfree = true;
@@ -34,15 +34,19 @@
     command-not-found.enable = false;
     nix-index-database.comma.enable = true;
 
-    _1password = { enable = true; };
+    _1password = {
+      enable = true;
+      package = pkgs._1password-cli;
+    };
     _1password-gui = {
       enable = true;
+      package = pkgs._1password-gui;
       polkitPolicyOwners = [ "ndo" ];
     };
 
     nix-ld = {
       enable = true;
-      package = unstablePkgs.nix-ld;
+      package = pkgs.nix-ld;
       libraries = with pkgs; [
         stdenv.cc.cc.lib
       ];

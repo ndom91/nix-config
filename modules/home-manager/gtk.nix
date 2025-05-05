@@ -19,6 +19,7 @@
 
     # Programs
     vscode.enable = false;
+    mako.enable = false;
     # waybar.enable = true;
     # nvim.enable = true;
   };
