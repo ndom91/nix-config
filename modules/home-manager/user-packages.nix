@@ -86,6 +86,7 @@
     unstablePkgs.terraform # IaaC
     unstablePkgs.awscli2 # aws-cli
     # unstablePkgs.oha # HTML Load Tester
+    turso-cli
     rdap # WHOIS replacement domain registration lookup service / CLI from the IETF
     wireshark # Packet Capture
 
