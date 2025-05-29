@@ -138,7 +138,7 @@ return {
         -- TODO: Ensure logging in 1 time per reboot is available in all terminal sessions
         -- api_key_name = "cmd:op item get mq6qqndpax27wvnn4hge73ewf4 --fields label=credential --reveal",
         endpoint = "https://api.anthropic.com",
-        model = "claude-3-5-sonnet-20240620",
+        model = "claude-sonnet-4-20250514",
         temperature = 0,
         max_tokens = 4096,
       },

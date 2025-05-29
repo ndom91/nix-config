@@ -38,7 +38,7 @@
     # };
 
     # Applications
-    ghostty.url = "github:ghostty-org/ghostty"; # Terminal Emulator
+    ghostty.url = "github:ghostty-org/ghostty?ref=v1.1.3"; # Terminal Emulator
     isd.url = "github:isd-project/isd"; # Interactive SystemD
     # superfile.url = "github:MHNightCat/superfile"; # Terminal File Manager
     # tsui.url = "github:guibou/tsui/fix_nix_run"; # Tailsccale TUI
