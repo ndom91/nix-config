@@ -36,6 +36,7 @@
     unstablePkgs.mqttui # MQTT TUI
     # unstablePkgs.zed-editor # IDE
     # unstablePkgs.tabiew # TUI Table Viewer (CSV, TSV, Parquet, etc.)
+    testdisk
 
     # unstablePkgs.beeper # Universal Chat App
     unstablePkgs.chromium # Browser
