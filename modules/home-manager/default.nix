@@ -1,6 +1,6 @@
-{ fira-sans-nerd-font, rose-pine-cursor, nix-colors, lib, inputs, stateVersion, config, pkgs, unstablePkgs, ... }:
+{ fira-sans-nerd-font, rose-pine-cursor, nix-colors, lib, inputs, stateVersion, config, pkgs, unstablePkgs, pkgs2505, ... }:
 {
-  imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
+  imports = with rose-pine-cursor inputs pkgs unstablePkgs pkgs2505; [
     # User Packages
     ../../modules/home-manager/user-packages.nix
     # Programming Lanaguages

@@ -4,7 +4,7 @@
     allowUnfree = true;
     permittedInsecurePackages = [
       "python3.12-youtube-dl-2021.12.17"
-      "beekeeper-studio-5.1.5"
+      "beekeeper-studio-5.2.9"
     ];
   };
 

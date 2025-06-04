@@ -6,7 +6,7 @@
     inputs.agenix.packages.x86_64-linux.default # Agenix secret manager
     nvtopPackages.amd # AMD GPU Top
     amdgpu_top # AMD GPU Top
-    # inputs.pkgs2411.appimagekit # AppImageKit
+    # appimagekit # AppImageKit
     appimage-run # AppImage Runner
     bat # cat replacement
     # bluez

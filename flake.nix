@@ -1,7 +1,7 @@
 {
   description = "ndom91 flake";
   inputs = {
-    pkgs2411.url = "github:nixos/nixpkgs/nixos-24.11";
+    pkgs2505.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -44,7 +44,7 @@
     # tsui.url = "github:guibou/tsui/fix_nix_run"; # Tailsccale TUI
   };
 
-  outputs = { self, unstable, catppuccin, agenix, nix-colors, nixpkgs, nix-index-database, pkgs2411, ... } @inputs:
+  outputs = { self, unstable, catppuccin, agenix, nix-colors, nixpkgs, nix-index-database, pkgs2505, ... } @inputs:
     let
       stateVersion = "24.11";
       system = "x86_64-linux";
@@ -65,7 +65,7 @@
       nixosConfigurations = {
         ndo4 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nix-colors unstablePkgs stateVersion;
+            inherit inputs nix-colors unstablePkgs stateVersion pkgs2505;
           };
           modules = [
             ./hosts/ndo4/configuration.nix
@@ -77,7 +77,7 @@
         };
         ndo-gb = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nix-colors unstablePkgs stateVersion;
+            inherit inputs nix-colors unstablePkgs stateVersion pkgs2505;
           };
           modules = [
             ./hosts/ndo-gb/configuration.nix
@@ -89,7 +89,7 @@
         };
         ndo2 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs nix-colors unstablePkgs stateVersion;
+            inherit inputs nix-colors unstablePkgs stateVersion pkgs2505;
           };
           modules = [
             ./hosts/ndo2/configuration.nix

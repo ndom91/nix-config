@@ -1,4 +1,4 @@
-{ inputs, config, unstablePkgs, pkgs, ... }:
+{ inputs, config, unstablePkgs, pkgs, pkgs2505, ... }:
 {
   home.packages = with pkgs; [
     # Graphical Applications
@@ -9,7 +9,7 @@
     # unstablePkgs.meld
 
     # Chromium
-    (unstablePkgs.vivaldi.override {
+    (vivaldi.override {
       # isSnapshot = true;
       proprietaryCodecs = true;
       enableWidevine = true;
@@ -89,6 +89,7 @@
     turso-cli
     rdap # WHOIS replacement domain registration lookup service / CLI from the IETF
     wireshark # Packet Capture
+    rpi-imager # RaspberyPi Flasher
 
     # Nix Tools
     nvd # Nix Visual Diff
