@@ -5,6 +5,7 @@
     ../../modules/home-manager/user-packages.nix
     # Programming Lanaguages
     ../../modules/home-manager/languages/rust.nix
+    ../../modules/home-manager/languages/golang.nix
     # Common
     ../../modules/home-manager/alacritty.nix
     ../../modules/home-manager/bash.nix
