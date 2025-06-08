@@ -1,8 +1,8 @@
 local function goto_next_error()
-  vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity[1] })
+  vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity.ERROR })
 end
 local function goto_prev_error()
-  vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity[1] })
+  vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity.ERROR })
 end
 
 return {
@@ -166,6 +166,7 @@ return {
         eslint = require("plugins.lsp.langs.eslint"),
         html = {},
         jsonls = require("plugins.lsp.langs.json"),
+        gopls = {},
         rnix = {},
         terraformls = {},
         astro = {},
@@ -198,6 +199,8 @@ return {
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
+        -- automatic_enable = true,
+        -- ensure_installed = ensure_installed,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -253,6 +256,7 @@ return {
           lua = { "stylua" },
           nix = { "rnix", "nixpkgs-fmt" },
           rust = { "rustfmt" },
+          go = { "gofumpt", "gofmt" },
           astro = { "prettierd_astro" },
           javascript = { "prettierd", "prettier", stop_after_first = true },
           typescript = { "prettierd", "prettier", stop_after_first = true },
