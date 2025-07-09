@@ -1,8 +1,8 @@
 local function goto_next_error()
-  vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity.ERROR })
+  vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity[1] })
 end
 local function goto_prev_error()
-  vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity.ERROR })
+  vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity[1] })
 end
 
 return {
@@ -199,8 +199,6 @@ return {
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
-        -- automatic_enable = true,
-        -- ensure_installed = ensure_installed,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -258,16 +256,18 @@ return {
           rust = { "rustfmt" },
           go = { "gofumpt", "gofmt" },
           astro = { "prettierd_astro" },
-          javascript = { "prettierd", "prettier", stop_after_first = true },
-          typescript = { "prettierd", "prettier", stop_after_first = true },
-          javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-          typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+          javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
+          typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
+          javascriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+          typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+          json = { "biome", stop_after_first = true },
+          css = { "biome", stop_after_first = true },
           svelte = {
+            "biome",
             "prettierd_svelte",
-            -- "biome",
             -- "prettierd",
             -- "prettier",
-            -- stop_after_first = true,
+            stop_after_first = true,
           },
           ["_"] = { "trim_whitespace" },
         },

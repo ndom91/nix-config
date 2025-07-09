@@ -134,13 +134,15 @@ return {
       -- openai = {
       --   model = "gpt-4o-2024-08-06",
       -- },
-      claude = {
-        -- TODO: Ensure logging in 1 time per reboot is available in all terminal sessions
-        -- api_key_name = "cmd:op item get mq6qqndpax27wvnn4hge73ewf4 --fields label=credential --reveal",
-        endpoint = "https://api.anthropic.com",
-        model = "claude-sonnet-4-20250514",
-        temperature = 0,
-        max_tokens = 4096,
+      providers = {
+        claude = {
+          -- TODO: Ensure logging in 1 time per reboot is available in all terminal sessions
+          -- api_key_name = "cmd:op item get mq6qqndpax27wvnn4hge73ewf4 --fields label=credential --reveal",
+          endpoint = "https://api.anthropic.com",
+          model = "claude-sonnet-4-20250514",
+          -- temperature = 0,
+          -- max_tokens = 4096,
+        },
       },
     },
     dependencies = {
@@ -236,7 +238,7 @@ return {
   {
     -- Better multi-key navigation i.e. vimium style
     "folke/which-key.nvim",
-    enabled = false,
+    enabled = true,
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
@@ -353,12 +355,12 @@ return {
       exclude = { filetypes = { "help", "dashboard" } },
     },
   },
-  {
-    "notes-nvim",
-    dependencies = { "nvim-neotest/nvim-nio" },
-    dev = true,
-    opts = {
-      rootDir = "/home/ndo/Documents/notebook",
-    },
-  },
+  -- {
+  --   "notes-nvim",
+  --   dependencies = { "nvim-neotest/nvim-nio" },
+  --   dev = true,
+  --   opts = {
+  --     rootDir = "/home/ndo/Documents/notebook",
+  --   },
+  -- },
 }

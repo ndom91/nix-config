@@ -12,12 +12,20 @@ return {
     { "<leader>.", require("telescope.builtin").find_files, desc = "Find Files" },
     {
       "<leader>,",
-      function() require("telescope.builtin").buffers({ show_all_buffers = true }) end,
+      function()
+        require("telescope.builtin").buffers({ show_all_buffers = true })
+      end,
       desc = "Find Buffers",
     },
     { "<leader>/", require("telescope.builtin").live_grep, desc = "Live Grep" },
     { "<leader>:", require("telescope.builtin").command_history, desc = "Command History" },
-    { "<leader>r", require("telescope.builtin").oldfiles, desc = "Old Files" },
+    {
+      "<leader>r",
+      function()
+        require("telescope.builtin").oldfiles({ cwd_only = true })
+      end,
+      desc = "Old Files",
+    },
     { "<leader>ft", require("telescope.builtin").builtin, desc = "[F]ind [B]uiltin" },
     { "<leader>fh", require("telescope.builtin").help_tags, desc = "[F]ind [H]elp Tags" },
     {
@@ -33,7 +41,9 @@ return {
     { "<leader>fd", require("telescope.builtin").diagnostics, desc = "[F]ind [D]iagnostics" },
     {
       "<leader>fe",
-      function() require("telescope.builtin").diagnostics({ severity = 0 }) end,
+      function()
+        require("telescope.builtin").diagnostics({ severity = 0 })
+      end,
       desc = "[F]ind [E]rrors",
     },
     { "<leader>km", require("telescope.builtin").keymaps, desc = "[K]ey[m]aps" },
@@ -123,7 +133,9 @@ return {
             ["<s-up>"] = actions.cycle_history_prev,
             ["<s-down>"] = actions.cycle_history_next,
             ["<C-c>"] = actions.delete_buffer,
-            ["<C-w>"] = function() vim.api.nvim_input("<c-s-w>") end,
+            ["<C-w>"] = function()
+              vim.api.nvim_input("<c-s-w>")
+            end,
           },
           n = {
             ["q"] = actions.close,
