@@ -1,0 +1,39 @@
+From d919c0d5cd3ac7b621c15dd1d742fe368ad022bc Mon Sep 17 00:00:00 2001
+From: Subho <contact.subhoghosh@gmail.com>
+Date: Tue, 24 Jun 2025 18:14:22 +0530
+Subject: [PATCH] fix: escape not working
+
+---
+ src/apprt/gtk/Surface.zig | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/apprt/gtk/Surface.zig b/src/apprt/gtk/Surface.zig
+index 5c886e663c..038123258e 100644
+--- a/src/apprt/gtk/Surface.zig
++++ b/src/apprt/gtk/Surface.zig
+@@ -1856,6 +1856,16 @@ pub fn keyEvent(
+         if (entry.native == keycode) break :keycode entry.key;
+     } else .unidentified;
+
++    // When not composing, we prefer the logical key (from keyval) to respect
++    // OS-level key remapping (e.g., caps:swapescape). This allows users to
++    // swap keys at the OS level and have Ghostty recognize the remapped keys.
++    const key = if (!self.im_composing) key: {
++        if (gtk_key.keyFromKeyval(keyval)) |key| {
++            break :key key;
++        }
++        break :key physical_key;
++    } else .unidentified;
++
+     // Get our modifier for the event
+     const mods: input.Mods = gtk_key.eventMods(
+         event,
+@@ -1904,7 +1914,7 @@ pub fn keyEvent(
+     // Invoke the core Ghostty logic to handle this input.
+     const effect = self.core_surface.keyCallback(.{
+         .action = action,
+-        .key = physical_key,
++        .key = key,
+         .mods = mods,
+         .consumed_mods = consumed_mods,
+         .composing = self.im_composing,
