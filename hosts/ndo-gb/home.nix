@@ -49,7 +49,6 @@
         };
       };
       gestures = {
-        # Disable because of bug https://github.com/hyprwm/Hyprland/issues/9262
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
         workspace_swipe_distance = 200;
@@ -65,7 +64,7 @@
     #   enable = true;
     #   components = [ "pkcs11" "secrets" "ssh" ];
     # };
-    opensnitch-ui.enable = true;
+    opensnitch-ui.enable = false;
   };
 
   programs.home-manager.enable = true;

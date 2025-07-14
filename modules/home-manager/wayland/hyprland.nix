@@ -33,12 +33,16 @@ in
     settings = {
       ecosystem = {
         no_update_news = true;
+        no_donation_nag = true;
       };
       debug = {
         disable_logs = false;
       };
-      xwayland = {
-        force_zero_scaling = true;
+      # xwayland = {
+      #   force_zero_scaling = true;
+      # };
+      render = {
+        # new_render_scheduling = true;
       };
       monitor = ",preferred,auto,auto";
       # Test multi-monitor: https://github.com/MatthiasBenaets/nix-config/blob/master/modules/desktops/hyprland.nix#L257
@@ -60,7 +64,7 @@ in
         # "QT_AUTO_SCREEN_SCALE_FACTOR,1"
 
         # GDK
-        "GDK_SCALE,1"
+        # "GDK_SCALE,1"
 
         # Toolkit Backend
         # "GDK_BACKEND,wayland,x11,*"
@@ -114,7 +118,7 @@ in
         dim_strength = "0.075";
 
         shadow = {
-          enabled = false;
+          enabled = true;
         };
 
         blur = {
@@ -148,6 +152,7 @@ in
           "fadeIn, 1, 5, linear"
           "fadeOut, 1, 5, linear"
         ];
+        workspace_wraparound = true;
       };
       misc = {
         disable_hyprland_logo = true;
@@ -156,9 +161,6 @@ in
         key_press_enables_dpms = true;
         focus_on_activate = true;
         allow_session_lock_restore = true;
-      };
-      ecosystem = {
-        no_donation_nag = true;
       };
       windowrule =
         let
