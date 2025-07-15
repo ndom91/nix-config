@@ -1,9 +1,9 @@
-{ fira-sans-nerd-font, rose-pine-cursor, nix-colors, lib, inputs, config, pkgs, unstablePkgs, stateVersion, ... }:
+{ fira-sans-nerd-font, rose-pine-cursor, lib, inputs, config, pkgs, unstablePkgs, stateVersion, ... }:
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     inputs.catppuccin.homeModules.catppuccin
     # inputs.nixcord.homeManagerModules.nixcord
-    nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
     ../../modules/home-manager
   ];
 
@@ -21,7 +21,7 @@
   systemd.user.startServices = "sd-switch";
 
   # Themes - https://github.com/tinted-theming/base16-schemes
-  colorScheme = nix-colors.colorSchemes.rose-pine;
+  colorScheme = inputs.nix-colors.colorSchemes.rose-pine;
 
   # ndo4 overrides
   wayland.windowManager.hyprland = {

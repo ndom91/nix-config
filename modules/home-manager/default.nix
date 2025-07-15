@@ -102,7 +102,7 @@
       "security.workspace.trust.enabled" = false;
       "editor.fontFamily" = "'Operator Mono', 'monospace', monospace";
       "extensions.autoUpdate" = false;
-      "terminal.external.linuxExec" = "kitty";
+      "terminal.external.linuxExec" = "ghostty";
       "telemetry.telemetryLevel" = "off";
       "window.menuBarVisibility" = "toggle";
       "[typescript]" = {

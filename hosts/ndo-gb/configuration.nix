@@ -1,11 +1,11 @@
-{ lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, config, pkgs, pkgs2505, ... }:
+{ lib, inputs, stateVersion, unstablePkgs, config, pkgs, pkgs2505, ... }:
 let
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
   binsider = pkgs.callPackage ../../packages/binsider/default.nix { };
 in
 {
-  imports = with agenix pkgs; [
+  imports = with pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/nixos.nix
@@ -269,7 +269,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font stateVersion pkgs2505; };
+    extraSpecialArgs = { inherit rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font stateVersion pkgs2505; };
     useGlobalPkgs = true;
     useUserPackages = true;
     users = {
