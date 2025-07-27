@@ -91,6 +91,7 @@
     rdap # WHOIS replacement domain registration lookup service / CLI from the IETF
     wireshark # Packet Capture
     rpi-imager # RaspberyPi Flasher
+    claude-code # Anthropic LLM TUI Client
 
     # Nix Tools
     nvd # Nix Visual Diff
