@@ -15,7 +15,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    flake-input-patcher.url = "github:jfly/flake-input-patcher";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -59,19 +58,6 @@
         };
         localSystem = { inherit system; };
       };
-
-      # TODO: Patch Ghostty to fix caps:esc override bug (https://github.com/ghostty-org/ghostty/discussions/7356)
-      # patcher = unpatchedInputs.flake-input-patcher.lib.x86_64-linux;
-      #
-      # inputs = patcher.patch unpatchedInputs {
-      #   # Patching a direct dependency:
-      #   ghostty.patches = [
-      #     (patcher.fetchpatch {
-      #       url = "path:/etc/nixos/modules/home-manager/ghostty_capsesc.patch";
-      #       # url = "file:///etc/nixos/modules/home-manager/ghostty_capsesc.patch";
-      #     })
-      #   ];
-      # };
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
