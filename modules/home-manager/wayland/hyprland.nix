@@ -242,7 +242,7 @@ in
 
         "$mainMod, Q, killactive"
         "CTRL SHIFT, L, exec, ${runOnce "hyprlock"}"
-        "$mainMod, Return, exec, ghostty"
+        "$mainMod, Return, exec, ${runOnce "ghostty"}"
         # "$mainMod SHIFT, R, exec, hyprctl reload"
         # "$mainMod, Return, exec, kitty"
         # "$mainMod SHIFT, F, exec, nemo"
