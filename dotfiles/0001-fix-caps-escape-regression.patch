@@ -1,0 +1,72 @@
+From bf7c3202faf7acd7e33a54e31b4cb426be63eb07 Mon Sep 17 00:00:00 2001
+From: Wes Koerber <wes@weskoerber.com>
+Date: Tue, 1 Jul 2025 09:15:34 -0400
+Subject: [PATCH] fix: caps-escape regression
+
+---
+ src/apprt/gtk-ng/class/surface.zig |  9 ++++++++-
+ src/apprt/gtk/Surface.zig          | 14 +++++++++++++-
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/src/apprt/gtk-ng/class/surface.zig b/src/apprt/gtk-ng/class/surface.zig
+index 580436bd3..641fd4fb9 100644
+--- a/src/apprt/gtk-ng/class/surface.zig
++++ b/src/apprt/gtk-ng/class/surface.zig
+@@ -874,6 +874,13 @@ pub const Surface = extern struct {
+             if (entry.native == keycode) break :keycode entry.key;
+         } else .unidentified;
+ 
++        const key = if (!priv.im_composing) key: {
++            if (gtk_key.keyFromKeyval(keyval)) |key|
++                break :key key
++            else
++                break :key physical_key;
++        } else .unidentified;
++
+         // Get our modifier for the event
+         const mods: input.Mods = gtk_key.eventMods(
+             event,
+@@ -923,7 +930,7 @@ pub const Surface = extern struct {
+         const surface = priv.core_surface orelse return false;
+         const effect = surface.keyCallback(.{
+             .action = action,
+-            .key = physical_key,
++            .key = key,
+             .mods = mods,
+             .consumed_mods = consumed_mods,
+             .composing = priv.im_composing,
+diff --git a/src/apprt/gtk/Surface.zig b/src/apprt/gtk/Surface.zig
+index 231ab0c09..52e054537 100644
+--- a/src/apprt/gtk/Surface.zig
++++ b/src/apprt/gtk/Surface.zig
+@@ -1886,6 +1886,18 @@ pub fn keyEvent(
+         break :consumed gtk_key.translateMods(@bitCast(masked));
+     };
+ 
++    // If we're not in a dead key state, we want to translate our text
++    // to some input.Key.
++    const key = if (!self.im_composing) key: {
++        // First, try to convert the keyval directly to a key. This allows the
++        // use of key remapping and identification of keypad numerics (as
++        // opposed to their ASCII counterparts)
++        if (gtk_key.keyFromKeyval(keyval)) |key| {
++            break :key key;
++        }
++        break :key physical_key;
++    } else .unidentified;
++
+     // log.debug("key pressed key={} keyval={x} physical_key={} composing={} text_len={} mods={}", .{
+     //     key,
+     //     keyval,
+@@ -1915,7 +1927,7 @@ pub fn keyEvent(
+     // Invoke the core Ghostty logic to handle this input.
+     const effect = self.core_surface.keyCallback(.{
+         .action = action,
+-        .key = physical_key,
++        .key = key,
+         .mods = mods,
+         .consumed_mods = consumed_mods,
+         .composing = self.im_composing,
+-- 
+2.50.1
+
