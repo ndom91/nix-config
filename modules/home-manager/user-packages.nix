@@ -55,7 +55,7 @@
     firefox-esr # Firefox
     gnome-boxes # VM Manager
     seahorse # GPG Key Manager
-    # slack # Chat
+    slack # Chat
     unstablePkgs.vesktop # Discord client w/ better wayland support (see nixcord.nix)
     virt-manager # VM Manager
     gnome-text-editor # Plain Text Editor
