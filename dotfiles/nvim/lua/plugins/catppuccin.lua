@@ -1,5 +1,6 @@
 return {
-  "m4xshen/catppuccinight.nvim",
+  "catppuccin/nvim",
+  -- "m4xshen/catppuccinight.nvim",
   enabled = true,
   priority = 1000,
   lazy = false,
@@ -97,5 +98,7 @@ return {
       }
     end,
   },
-  init = function() vim.cmd.colorscheme "catppuccin" end,
+  init = function()
+    vim.cmd.colorscheme("catppuccin")
+  end,
 }
