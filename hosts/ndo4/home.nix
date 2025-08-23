@@ -31,10 +31,11 @@
         "DP-2,1920x1080,0x0,1,transform,3"
       ];
       render = {
-        direct_scanout = true;
+        # direct_scanout = true;
 
         # Fixes some apps stuttering (xournalpp, hyprlock). Possibly an amdgpu bug
-        allow_early_buffer_release = true;
+        # allow_early_buffer_release = true;
+
         # explicit_sync = 0;
         # explicit_sync_kms = 0;
       };
@@ -46,12 +47,12 @@
     };
   };
 
-  services = {
-    gnome-keyring = {
-      enable = true;
-      components = [ "pkcs11" "secrets" "ssh" ];
-    };
-  };
+  # services = {
+  #   gnome-keyring = {
+  #     enable = true;
+  #     components = [ "pkcs11" "secrets" "ssh" ];
+  #   };
+  # };
 
   programs.home-manager.enable = true;
 }

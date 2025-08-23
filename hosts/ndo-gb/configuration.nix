@@ -226,7 +226,7 @@ in
 
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
-      ./../../dotfiles/certs/nextdns.crt
+      # ./../../dotfiles/certs/nextdns.crt
     ];
   };
 
@@ -303,7 +303,6 @@ in
 
     bottles # Wine Manager
   ];
-
 
   console = {
     earlySetup = true;

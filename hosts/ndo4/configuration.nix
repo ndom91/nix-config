@@ -1,7 +1,5 @@
-{ lib, inputs, stateVersion, unstablePkgs, config, pkgs, ... }:
+{ lib, inputs, stateVersion, unstablePkgs, config, pkgs, pkgs2505, ... }:
 let
-  # tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
-  # corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
   rose-pine-cursor = pkgs.callPackage ../../packages/rose-pine-cursor/default.nix { };
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
 in
@@ -60,11 +58,11 @@ in
 
     loader.efi.canTouchEfiVariables = true;
 
-    kernel.sysctl = {
-      # used by tailscale for exit node
-      "net.ipv4.ip_forward" = 1;
-      "net.ipv6.conf.all.forwarding" = 1;
-    };
+    # kernel.sysctl = {
+    #   # used by tailscale for exit node
+    #   "net.ipv4.ip_forward" = 1;
+    #   "net.ipv6.conf.all.forwarding" = 1;
+    # };
   };
 
 
@@ -145,7 +143,7 @@ in
     };
     pki.certificateFiles = [
       ./../../dotfiles/certs/puff.lan.crt
-      ./../../dotfiles/certs/nextdns.crt
+      # ./../../dotfiles/certs/nextdns.crt
     ];
   };
 
@@ -167,11 +165,11 @@ in
     bluetooth = {
       enable = true;
       powerOnBoot = true;
-      # settings = {
-      #   General = {
-      #     Experimental = true;
-      #   };
-      # };
+      settings = {
+        General = {
+          Experimental = true;
+        };
+      };
     };
 
     amdgpu = { opencl.enable = true; }; # ROCM Support
@@ -191,7 +189,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font stateVersion; };
+    extraSpecialArgs = { inherit rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font stateVersion pkgs2505; };
     useGlobalPkgs = true;
     useUserPackages = true;
     users = {
@@ -216,6 +214,28 @@ in
     bottles # Wine Manager
   ];
 
+  console = {
+    earlySetup = true;
+    colors = [
+      "000000"
+      "FC618D"
+      "7BD88F"
+      "FD9353"
+      "5AA0E6"
+      "948AE3"
+      "5AD4E6"
+      "F7F1FF"
+      "99979B"
+      "FB376F"
+      "4ECA69"
+      "FD721C"
+      "2180DE"
+      "7C6FDC"
+      "37CBE1"
+      "FFFFFF"
+    ];
+  };
+
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -225,6 +245,7 @@ in
     };
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
+      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
     ];
   };
 
@@ -243,7 +264,7 @@ in
     displayManager = {
       defaultSession = "hyprland";
     };
-
+    envfs.enable = true;
     dbus.implementation = "broker";
     dbus.packages = with pkgs; [
       gcr
@@ -251,7 +272,10 @@ in
     ];
 
     gnome.gnome-keyring.enable = true;
-    envfs.enable = true;
+
+    opensnitch.enable = true;
+    picosnitch.enable = false;
+
     protonvpn = {
       enable = true;
       autostart = false;
@@ -260,8 +284,10 @@ in
         privateKeyFile = config.age.secrets.pvpn_uk.path;
       };
       endpoint = {
-        ip = "77.247.178.58";
-        publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI=";
+        # ip = "77.247.178.58"; # UK
+        # publicKey = "Zee6nAIrhwMYEHBolukyS/ir3FK76KRf0OE8FGtKUnI="; # UK
+        ip = "138.199.50.107"; # MX
+        publicKey = "tHwmpVZsh4yfoA9/vWbacF6cWcXUKE9wuDP5bz66oh8="; # MX
       };
     };
 
@@ -274,11 +300,6 @@ in
       # [] = none
       # null = upstream defauls
     };
-
-    # picosnitch.enable = true;
-    opensnitch.enable = true;
-
-    # gnome.gnome-keyring.enable = true;
 
     fwupd.enable = true;
     clamav = {
@@ -304,18 +325,18 @@ in
     };
     avahi = {
       enable = true;
-      domainName = "puff.lan";
+      # domainName = "puff.lan";
       browseDomains = [
         "local"
         "puff.lan"
       ];
       nssmdns4 = true;
-      # openFirewall = true;
-      publish = {
-        enable = true;
-        domain = true;
-        userServices = true;
-      };
+      openFirewall = true;
+      # publish = {
+      #   enable = true;
+      #   domain = true;
+      #   userServices = true;
+      # };
     };
 
     # My Elan reader still not supported
@@ -346,7 +367,7 @@ in
       ];
       packages = [
         { appId = "org.gimp.GIMP"; origin = "flathub-beta"; } # Gimp 2.99
-        { appId = "com.bambulab.BambuStudio"; origin = "flathub"; }
+        # { appId = "com.bambulab.BambuStudio"; origin = "flathub"; }
         { appId = "io.gitlab.azymohliad.WatchMate"; origin = "flathub"; }
         { appId = "com.github.tchx84.Flatseal"; origin = "flathub"; }
       ];
@@ -368,8 +389,19 @@ in
   };
 
   # Ensure network is online before desktop starts
-  systemd.targets.graphical = {
+  # systemd.targets.graphical = {
+  #   wants = [ "network-online.target" ];
+  #   after = [ "network-online.target" ];
+  # };
+
+  # Ensure network is online before starting these services
+  systemd.services.clamav-freshclam = {
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
   };
+  systemd.services.flatpak-managed-install = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+  };
+
 }

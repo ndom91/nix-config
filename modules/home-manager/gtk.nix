@@ -51,7 +51,7 @@
     };
 
     iconTheme = {
-      name = "Colloid-Grey-Nord-Dark";
+      name = lib.mkDefault "Colloid-Grey-Nord-Dark";
       # name = "BreezeX-RosePine-Linux";
       # name = "BreezeX-RosePineDawn-Linux";
       # name = "Colloid-Dark";
