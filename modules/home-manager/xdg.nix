@@ -291,21 +291,21 @@ in
         type = "Application";
         categories = [ "Network" "WebBrowser" ];
       };
-      heynote = {
-        name = "HeyNote";
-        exec = "/opt/appimages/Heynote.AppImage";
-        icon = "/home/ndo/Pictures/heynote-logo.png";
-        type = "Application";
-        categories = [ "Development" "Utility" ];
-      };
-      gitbutler-nightly = {
-        name = "GitButler (nightly)";
-        exec = "env RUST_LOG=debug GDK_BACKEND=wayland APPIMAGE=/opt/appimages/git-butler-nightly_latest.AppImage APPIMAGE_GTK_THEME=Adwaita:dark /opt/appimages/git-butler-nightly_latest.AppImage %U";
-        icon = "/home/ndo/Pictures/git-butler-nightly.png";
-        terminal = false;
-        type = "Application";
-        categories = [ "Development" "Application" ];
-      };
+      # heynote = {
+      #   name = "HeyNote";
+      #   exec = "/opt/appimages/Heynote.AppImage";
+      #   icon = "/home/ndo/Pictures/heynote-logo.png";
+      #   type = "Application";
+      #   categories = [ "Development" "Utility" ];
+      # };
+      # gitbutler-nightly = {
+      #   name = "GitButler (nightly)";
+      #   exec = "env RUST_LOG=debug GDK_BACKEND=wayland APPIMAGE=/opt/appimages/git-butler-nightly_latest.AppImage APPIMAGE_GTK_THEME=Adwaita:dark /opt/appimages/git-butler-nightly_latest.AppImage %U";
+      #   icon = "/home/ndo/Pictures/git-butler-nightly.png";
+      #   terminal = false;
+      #   type = "Application";
+      #   categories = [ "Development" "Application" ];
+      # };
     };
   };
 }

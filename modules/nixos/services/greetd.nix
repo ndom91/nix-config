@@ -28,7 +28,7 @@
       session = {
         # command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
         command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          ${pkgs.tuigreet}/bin/tuigreet \
           --time \
           --remember \
           --asterisks \
