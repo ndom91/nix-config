@@ -152,7 +152,7 @@ in
           "fadeIn, 1, 5, linear"
           "fadeOut, 1, 5, linear"
         ];
-        workspace_wraparound = true;
+        # workspace_wraparound = true;
       };
       misc = {
         disable_hyprland_logo = true;

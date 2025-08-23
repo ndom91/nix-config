@@ -2,7 +2,7 @@
 let
   file-browser = "nautilus";
   text-editor = "gnome-text-editor";
-  web-browser = "vivaldi-stable";
+  web-browser = "vivaldi";
   discord = "vesktop";
   slack = "slack";
   document-viewer = "mupdf";
