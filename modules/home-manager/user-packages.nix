@@ -68,7 +68,7 @@
     # rustdesk
     # rustdesk-flutter # Remote Desktop
     obsidian # Note Taking
-    unstablePkgs.remmina # RDP
+    # unstablePkgs.remmina # RDP
 
     # System Tools
     qdirstat # Disk Usage Analyzer
