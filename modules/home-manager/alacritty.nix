@@ -8,6 +8,9 @@
       # import = [
       #   /home/ndo/.config/alacritty-rose-pine.toml
       # ];
+      general = {
+        live_config_reload = true;
+      };
       font = {
         size = 10;
         bold_italic = {
@@ -46,7 +49,6 @@
       #   }];
       # };
 
-      live_config_reload = true;
 
       env = {
         TERM = "alacritty";
@@ -74,9 +76,11 @@
           }
         ];
       };
-      shell = {
-        program = "bash";
-        args = [ "-l" "-c" "tmux new-session" ];
+      terminal = {
+        shell = {
+          program = "bash";
+          args = [ "-l" "-c" "tmux new-session" ];
+        };
       };
       window = {
         dynamic_title = true;

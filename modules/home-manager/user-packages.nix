@@ -13,6 +13,18 @@
       # isSnapshot = true;
       proprietaryCodecs = true;
       enableWidevine = true;
+      # widevine-cdm = pkgs.widevine-cdm.overrideAttrs (oldAttrs: {
+      #   src = pkgs.fetchzip {
+      #     url = "https://alien.slackbook.org/slackbuilds/chromium-widevine-plugin/build/4.10.2891.0-linux-x64.zip";
+      #     hash = "sha256-ZO6FmqJUnB9VEJ7caJt58ym8eB3/fDATri3iOWCULRI";
+      #
+      #     ## builds just fine, but fails to play DRM content - PEBCAK?
+      #     #url = "https://dl.google.com/widevine-cdm/1.4.9.1088-linux-x64.zip";
+      #     #hash = "sha256-AT/LlX1q5LuoB+xxgYRQlEKhhCmw37q7FET3IavSzJo";
+      #
+      #     stripRoot = false;
+      #   };
+      # });
       commandLineArgs = [
         "--enable-features=UseOzonePlatform"
         "--ozone-platform=wayland"
@@ -43,7 +55,7 @@
     firefox-esr # Firefox
     gnome-boxes # VM Manager
     seahorse # GPG Key Manager
-    # slack # Chat
+    slack # Chat
     unstablePkgs.vesktop # Discord client w/ better wayland support (see nixcord.nix)
     virt-manager # VM Manager
     gnome-text-editor # Plain Text Editor
@@ -56,7 +68,7 @@
     # rustdesk
     # rustdesk-flutter # Remote Desktop
     obsidian # Note Taking
-    unstablePkgs.remmina # RDP
+    # unstablePkgs.remmina # RDP
 
     # System Tools
     qdirstat # Disk Usage Analyzer
@@ -91,6 +103,7 @@
     rdap # WHOIS replacement domain registration lookup service / CLI from the IETF
     wireshark # Packet Capture
     rpi-imager # RaspberyPi Flasher
+    claude-code # Anthropic LLM TUI Client
 
     # Nix Tools
     nvd # Nix Visual Diff

@@ -1,4 +1,4 @@
-{ lib, agenix, nix-colors, inputs, stateVersion, unstablePkgs, config, pkgs, ... }:
+{ lib, inputs, stateVersion, unstablePkgs, config, pkgs, ... }:
 let
   # tokyo-night-sddm = pkgs.libsForQt5.callPackage ../../packages/tokyo-night-sddm/default.nix { };
   # corners-sddm = pkgs.libsForQt5.callPackage ../../packages/corners-sddm/default.nix { };
@@ -6,7 +6,7 @@ let
   fira-sans-nerd-font = pkgs.callPackage ../../packages/fira-sans-nerd-font/default.nix { };
 in
 {
-  imports = with agenix pkgs; [
+  imports = with pkgs; [
     ./hardware-configuration.nix
     ../../modules/nixos/nixos.nix
     ../../modules/nixos/fonts.nix
@@ -269,7 +269,7 @@ in
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit nix-colors rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font stateVersion; };
+    extraSpecialArgs = { inherit rose-pine-cursor inputs unstablePkgs fira-sans-nerd-font stateVersion; };
     useGlobalPkgs = true;
     users = {
       "ndo" = import ./home.nix;

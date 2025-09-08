@@ -18,7 +18,8 @@
     accent = "maroon";
 
     # Programs
-    vscode.enable = false;
+    vscode.profiles.default.enable = false;
+    # vscode.enable = false;
     mako.enable = false;
     # waybar.enable = true;
     # nvim.enable = true;
@@ -27,7 +28,6 @@
   gtk = {
     enable = true;
     font.name = "Fira Sans";
-
 
     theme = {
       # name = "rose-pine";
@@ -51,7 +51,7 @@
     };
 
     iconTheme = {
-      name = "Colloid-Grey-Nord-Dark";
+      name = lib.mkDefault "Colloid-Grey-Nord-Dark";
       # name = "BreezeX-RosePine-Linux";
       # name = "BreezeX-RosePineDawn-Linux";
       # name = "Colloid-Dark";

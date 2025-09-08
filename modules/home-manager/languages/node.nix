@@ -32,9 +32,9 @@
   systemd.user.extraConfig = ''
     DefaultLimitNOFILE=524288
   '';
-  systemd.extraConfig = ''
-    DefaultLimitNOFILE=524288
-  '';
+  # systemd.extraConfig = ''
+  #   DefaultLimitNOFILE=524288
+  # '';
 
   boot = {
     kernel.sysctl = {

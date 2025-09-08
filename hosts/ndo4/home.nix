@@ -1,9 +1,9 @@
-{ fira-sans-nerd-font, rose-pine-cursor, nix-colors, lib, inputs, config, pkgs, unstablePkgs, stateVersion, ... }:
+{ fira-sans-nerd-font, rose-pine-cursor, lib, inputs, config, pkgs, unstablePkgs, stateVersion, ... }:
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     inputs.catppuccin.homeModules.catppuccin
     # inputs.nixcord.homeManagerModules.nixcord
-    nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
     ../../modules/home-manager
   ];
 
@@ -21,7 +21,7 @@
   systemd.user.startServices = "sd-switch";
 
   # Themes - https://github.com/tinted-theming/base16-schemes
-  colorScheme = nix-colors.colorSchemes.rose-pine;
+  colorScheme = inputs.nix-colors.colorSchemes.rose-pine;
 
   # ndo4 overrides
   wayland.windowManager.hyprland = {
@@ -31,10 +31,11 @@
         "DP-2,1920x1080,0x0,1,transform,3"
       ];
       render = {
-        direct_scanout = true;
+        # direct_scanout = true;
 
         # Fixes some apps stuttering (xournalpp, hyprlock). Possibly an amdgpu bug
-        allow_early_buffer_release = true;
+        # allow_early_buffer_release = true;
+
         # explicit_sync = 0;
         # explicit_sync_kms = 0;
       };
@@ -46,12 +47,12 @@
     };
   };
 
-  services = {
-    gnome-keyring = {
-      enable = true;
-      components = [ "pkcs11" "secrets" "ssh" ];
-    };
-  };
+  # services = {
+  #   gnome-keyring = {
+  #     enable = true;
+  #     components = [ "pkcs11" "secrets" "ssh" ];
+  #   };
+  # };
 
   programs.home-manager.enable = true;
 }

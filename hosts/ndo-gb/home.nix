@@ -1,9 +1,9 @@
-{ fira-sans-nerd-font, rose-pine-cursor, nix-colors, lib, inputs, stateVersion, config, pkgs, unstablePkgs, pkgs2505, ... }:
+{ fira-sans-nerd-font, rose-pine-cursor, lib, inputs, stateVersion, config, pkgs, unstablePkgs, pkgs2505, ... }:
 {
   imports = with rose-pine-cursor inputs pkgs unstablePkgs; [
     inputs.catppuccin.homeModules.catppuccin
     # inputs.nixcord.homeManagerModules.nixcord
-    nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
     ../../modules/home-manager
   ];
 
@@ -21,7 +21,7 @@
   systemd.user.startServices = "sd-switch";
 
   # Themes - https://github.com/tinted-theming/base16-schemes
-  colorScheme = nix-colors.colorSchemes.rose-pine;
+  colorScheme = inputs.nix-colors.colorSchemes.rose-pine;
 
   # ndo-gb overrides
   wayland.windowManager.hyprland = {
@@ -49,7 +49,6 @@
         };
       };
       gestures = {
-        # Disable because of bug https://github.com/hyprwm/Hyprland/issues/9262
         workspace_swipe = true;
         workspace_swipe_fingers = 3;
         workspace_swipe_distance = 200;
@@ -65,7 +64,7 @@
     #   enable = true;
     #   components = [ "pkcs11" "secrets" "ssh" ];
     # };
-    opensnitch-ui.enable = true;
+    opensnitch-ui.enable = false;
   };
 
   programs.home-manager.enable = true;
