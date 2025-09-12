@@ -14,6 +14,7 @@
       inputs.darwin.follows = "";
       inputs.home-manager.follows = "home-manager";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -84,6 +85,7 @@
             inputs.nix-index-database.nixosModules.nix-index
             inputs.agenix.nixosModules.default
             inputs.catppuccin.nixosModules.catppuccin
+            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
           ];
         };
         ndo2 = nixpkgs.lib.nixosSystem {
