@@ -13,7 +13,7 @@ This repository started off with my preexisting [dotfiles](https://github.com/nd
 |   Hostname  |       Motherboard        |         CPU            |  RAM  |        GPU          | Role | OS  | State |
 | :---------: | :----------------------: | :--------------------: | :---: | :-----------------: | :--: | :-: | :---: |
 | `ndo4`      | [MSI B550 Gaming]        |  [AMD Ryzen 5 5600X]   | 32GB  | [AMD Radeon 5600XT] | 🖥️   | ❄️   | ✅    |
-| `ndo-gb`    | [Thinkpad X1 Carbon 12G] |  [Intel Ultra 7 155U]  | 32GB  | [Intel Xe]          | 💻️   | ❄️   | ✅    |
+| `ndo-gb`    | [Thinkpad X1 Carbon 12th Gen] |  [Intel Ultra 7 155U]  | 32GB  | [Intel Xe]          | 💻️   | ❄️   | ✅    |
 | `ndo2`      | [Huawei Matebook X Pro]  |  [Intel i5 8250U]      | 16GB  | [Intel UHD 620]     | 💻️   | ❄️   | 🟩    |
 
 
@@ -44,7 +44,7 @@ This repository started off with my preexisting [dotfiles](https://github.com/nd
 MIT
 
 [MSI B550 Gaming]: https://www.msi.com/Motherboard/MPG-B550-GAMING-EDGE-WIFI
-[Thinkpad X1 Carbon 12G]: https://www.lenovo.com/us/en/p/laptops/thinkpad/thinkpadx1/thinkpad-x1-carbon-gen-12-(14-inch-intel)/len101t0083
+[Thinkpad X1 Carbon 12th Gen]: https://www.lenovo.com/us/en/p/laptops/thinkpad/thinkpadx1/thinkpad-x1-carbon-gen-12-(14-inch-intel)/len101t0083
 [Huawei Matebook X Pro]: https://consumer.huawei.com/en/laptops/matebook-x-pro-ultra-premium-edition/
 
 [AMD Ryzen 5 5600X]: https://www.amd.com/en/products/processors/desktops/ryzen/5000-series/amd-ryzen-5-5600x.html
