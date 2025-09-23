@@ -2,3 +2,4 @@ nixos-switch.log
 nixos-vm-test/*.fd
 nixos-vm-test/*.qcow2
 nixos-vm-test/result
+.DS_Store
