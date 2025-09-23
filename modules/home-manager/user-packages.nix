@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     # Graphical Applications
     xpipe
-    zed-editor
+    # zed-editor
     mission-center
     # github-desktop
     # unstablePkgs.meld
@@ -48,7 +48,7 @@
     unstablePkgs.mqttui # MQTT TUI
     # unstablePkgs.zed-editor # IDE
     # unstablePkgs.tabiew # TUI Table Viewer (CSV, TSV, Parquet, etc.)
-    testdisk
+    testdisk # Data Recovery Tool
 
     # unstablePkgs.beeper # Universal Chat App
     unstablePkgs.chromium # Browser
@@ -62,12 +62,12 @@
     file-roller # GUI Archive Manager
     vlc # Media Player
     loupe # Image Viewer
-    mupdf # PDF (not native way
+    mupdf # PDF 
+    obsidian # Note Taking
 
     # TODO: Reenable rustdesk after https://github.com/NixOS/nixpkgs/pull/390171 is merged
     # rustdesk
     # rustdesk-flutter # Remote Desktop
-    obsidian # Note Taking
     # unstablePkgs.remmina # RDP
 
     # System Tools
@@ -79,18 +79,18 @@
     rsync # file transfer
 
     # Dev Tools
-    beekeeper-studio # SQL Client
+    # beekeeper-studio # SQL Client
     sqlite # Database
     mitmproxy # Proxy
     # prettier-d-slim # Prettier Daemon
     # unstablePkgs.nodePackages.wrangler
     (builtins.getFlake "github:NixOS/nixpkgs/8dfad603247387df1df4826b8bea58efc5d012d8").legacyPackages.${pkgs.system}.nodePackages.wrangler
     unstablePkgs.tree-sitter
-    unstablePkgs.toolong # CLI to tail log files
+    # unstablePkgs.toolong # CLI to tail log files
     # unstablePkgs.tailspin # Log file highlighter
     unstablePkgs.lnav # Log file navigator
-    git-trim # Trim your branches whose remote refs are merged or gone
-    graphviz # Generate graphs on CLI
+    # git-trim # Trim your branches whose remote refs are merged or gone
+    # graphviz # Generate graphs on CLI
     kondo # Multi-language vendor file cleaner (node_modules, vendor, etc)
     just # Command runner
     # unstablePkgs.serie # Git Log output

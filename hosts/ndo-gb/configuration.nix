@@ -211,8 +211,10 @@ in
   # See: https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html#Description
   systemd.sleep.extraConfig = ''
     AllowHiberation=yes
+    SuspendEstimationSec=30m
+    HibernateDelaySec=1h
+    AllowSuspendThenHibernate=yes
     # Currently on s2idle supported; see `cat /sys/power/mem_sleep`
-    # AllowSuspendThenHibernate=yes
   '';
 
   security = {
@@ -430,7 +432,7 @@ in
 
     # Laptop Specific
     logind = {
-      lidSwitch = "suspend-then-hibernate";
+      settings.Login.HandleLidSwitch = "suspend-then-hibernate";
     };
     thermald.enable = true;
     # upower.enable = true;

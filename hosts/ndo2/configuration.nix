@@ -347,7 +347,7 @@ in
 
     # Laptop Specific
     logind = {
-      lidSwitch = "suspend-then-hibernate";
+      settings.Login.HandleLidSwitch = "suspend-then-hibernate";
     };
     thermald.enable = true;
     upower.enable = true;
