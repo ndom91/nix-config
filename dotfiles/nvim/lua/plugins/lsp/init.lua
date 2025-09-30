@@ -166,8 +166,7 @@ return {
         eslint = require("plugins.lsp.langs.eslint"),
         html = {},
         jsonls = require("plugins.lsp.langs.json"),
-        gopls = {},
-        rnix = {},
+        -- rnix = {},
         terraformls = {},
         astro = {},
         rust_analyzer = require("plugins.lsp.langs.rust"),
@@ -185,7 +184,7 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         "stylua",
-        "nixpkgs-fmt",
+        -- "nixpkgs-fmt",
         "prettierd",
         "rustywind",
         -- "biome",
@@ -252,9 +251,8 @@ return {
         formatters_by_ft = {
           sh = { "shfmt" },
           lua = { "stylua" },
-          nix = { "rnix", "nixpkgs-fmt" },
+          -- nix = { "rnix", "nixpkgs-fmt" },
           rust = { "rustfmt" },
-          go = { "gofumpt", "gofmt" },
           astro = { "prettierd_astro" },
           javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
           typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
