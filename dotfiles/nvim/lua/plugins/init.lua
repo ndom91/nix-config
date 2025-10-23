@@ -128,6 +128,7 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     build = "make",
+    enabled = false,
     opts = {
       provider = "claude",
       -- provider = "openai",
@@ -222,6 +223,7 @@ return {
     config = function()
       local notify = require("notify")
       notify.setup({
+        merge_duplicates = true,
         render = "wrapped-compact",
         background_colour = "#191724",
         -- icons = {
@@ -242,17 +244,13 @@ return {
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("which-key").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("which-key").setup({})
     end,
   },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    enabled = true,
+    enabled = false,
     opts = {},
     keys = {
       {
@@ -320,7 +318,7 @@ return {
   },
   {
     "ndom91/freeze.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false,
     keys = {
       {

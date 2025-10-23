@@ -1,5 +1,6 @@
 return {
-  "m4xshen/catppuccinight.nvim",
+  "catppuccin/nvim",
+  -- "m4xshen/catppuccinight.nvim",
   enabled = true,
   priority = 1000,
   lazy = false,
@@ -27,6 +28,9 @@ return {
     },
     custom_highlights = function(colors)
       return {
+        -- Context Highlights
+        TreesitterContextBottom = { link = "None" },
+        TreesitterContextLineNumberBottom = { underline = true, fg = colors.muave },
         -- TreesitterContextSeparator = { bg = colors.mauve, fg = colors.mauve, undercurl = true },
         TreesitterContext = { bg = colors.base },
         TreesitterContextLineNumber = { fg = colors.mauve },
@@ -97,5 +101,7 @@ return {
       }
     end,
   },
-  init = function() vim.cmd.colorscheme "catppuccin" end,
+  init = function()
+    vim.cmd.colorscheme("catppuccin")
+  end,
 }

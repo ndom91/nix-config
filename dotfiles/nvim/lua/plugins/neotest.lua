@@ -1,11 +1,20 @@
 return {
   "nvim-neotest/neotest",
-  enabled = true,
+  enabled = false,
   keys = {
-    { "<leader>tts", function() require("neotest").summary.toggle() end, desc = "[T]oggle Neo[t]e[s]t", silent = true },
+    {
+      "<leader>tts",
+      function()
+        require("neotest").summary.toggle()
+      end,
+      desc = "[T]oggle Neo[t]e[s]t",
+      silent = true,
+    },
     {
       "<leader>tto",
-      function() require("neotest").output_panel.toggle() end,
+      function()
+        require("neotest").output_panel.toggle()
+      end,
       desc = "[T]oggle [T]est [O]output Panel",
       silent = true,
     },
