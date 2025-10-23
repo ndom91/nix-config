@@ -149,6 +149,11 @@
       export PATH="$HOME/.pnpm-global:$PATH"
       export PNPM_HOME="$HOME/.pnpm-global"
     fi
+   
+    # Opencode
+    if [ -d "$HOME/.opencode" ]; then
+      export PATH=$HOME/.opencode/bin:$PATH
+    fi
 
     # BUN
     if [ -f "$HOME/.bun/bin/bun" ]; then
