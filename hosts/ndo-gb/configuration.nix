@@ -255,8 +255,8 @@ in
         intel-media-driver
         intel-compute-runtime
 
-        vaapiVdpau
-        libvdpau-va-gl
+        # vaapiVdpau
+        # libvdpau-va-gl
       ];
     };
 
