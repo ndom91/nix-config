@@ -171,7 +171,7 @@ return {
     -- Startup dashboard
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
-    enabled = true,
+    enabled = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       theme = "hyper",
@@ -303,6 +303,7 @@ return {
   },
   {
     "kdheepak/lazygit.nvim",
+    enabled = false,
     keys = {
       { "<leader>lg", "<cmd>LazyGit<CR>", desc = "[L]azy [G]it", noremap = true, silent = true },
     },
@@ -345,6 +346,7 @@ return {
   {
     -- Whitespace highlighting
     "lukas-reineke/indent-blankline.nvim",
+    enabled = false,
     main = "ibl",
     ---@module "ibl"
     ---@type ibl.config

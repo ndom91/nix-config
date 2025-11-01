@@ -9,6 +9,9 @@ return {
     symbol_in_winbar = {
       enable = false,
     },
+    peek_definition = {
+      enable = true,
+    },
     lightbulb = {
       enable = true,
       enable_in_insert = false,

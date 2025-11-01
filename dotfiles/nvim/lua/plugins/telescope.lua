@@ -161,7 +161,7 @@ return {
           horizontal = {
             prompt_position = "bottom",
             preview_width = 0.55,
-            results_width = 0.8,
+            -- results_width = 0.8,
           },
           vertical = {
             mirror = false,
@@ -195,6 +195,7 @@ return {
         dotfiles = { find_command = { "fd", "--type", "f", ".", "/home/ndo/.dotfiles" } },
       },
       extensions = {
+        grapple = {},
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({}),
         },

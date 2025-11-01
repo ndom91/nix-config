@@ -216,7 +216,7 @@ return {
           end
         end,
         additional_vim_regex_highlighting = { "ruby" },
-        indent = { enable = true, disable = { "ruby" } },
+        -- indent = { enable = true, disable = { "ruby" } },
       },
     })
   end,
