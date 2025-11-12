@@ -30,9 +30,9 @@ return {
     config = function()
       local utils = require("plugins.lsp.utils")
 
-      local function definitions(options)
-        return utils.list_or_jump("textDocument/definition", "LSP Definitions", options)
-      end
+      -- local function definitions(options)
+      --   return utils.list_or_jump("textDocument/definition", "LSP Definitions", options)
+      -- end
 
       -- Formatting Setup
       -- Create an augroup that is used for managing our formatting autocmds.
@@ -104,12 +104,11 @@ return {
           map("[e", goto_prev_error, "Goto Previous Error")
 
           map("<Leader>e", builtin.diagnostics, "Show [E]rrors")
-          map("gi", builtin.lsp_implementations, "[G]oto [I]mplementations")
-          -- map("gT", builtin.lsp_type_definitions, "[G]oto [T]ype Definition")
-          map("gD", definitions, "[G]oto [D]efinitions")
-          map("gd", "<cmd>Lspsaga goto_definition<CR>", "[G]oto [D]efinition")
-          map("gr", "<cmd>Lspsaga finder<CR>", "[G]oto [R]eferences")
-          -- map("gr", builtin.lsp_references, "[G]oto [R]eferences")
+          map("gD", ":lua Snacks.picker.lsp_declarations()<cr>", "[G]oto [D]eclarations")
+          map("gd", ":lua Snacks.picker.lsp_definitions()<cr>", "[G]oto [d]efinition")
+          map("gr", ":lua Snacks.picker.lsp_references()<cr>", "[G]oto [r]eferences")
+          map("gi", ":lua Snacks.picker.lsp_implementations()<cr>", "[G]oto [i]mplementations")
+          map("gt", ":lua Snacks.picker.lsp_type_definitions()<cr>", "[G]oto [t]ype definitions")
           map("K", vim.lsp.buf.hover, "Hover")
           map("<space>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ctions")
           map("<space>re", vim.lsp.buf.rename, "[R][e]name")
@@ -261,7 +260,7 @@ return {
           json = { "biome", stop_after_first = true },
           css = { "biome", stop_after_first = true },
           svelte = {
-            "biome",
+            -- "biome",
             "prettierd_svelte",
             -- "prettierd",
             -- "prettier",

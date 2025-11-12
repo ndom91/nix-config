@@ -2,6 +2,11 @@ return {
   "folke/snacks.nvim",
   ---@type snacks.Config
   opts = {
+    bigfile = {},
+    words = {},
+    notify = {},
+    picker = {},
+    statuscolumn = {},
     gitbrowse = {},
     terminal = {},
     lazygit = {},
@@ -63,9 +68,10 @@ return {
     },
   },
   keys = {
-    { "<leader>go", ":lua Snacks.gitbrowse.open()<cr>", desc = "Tag a file" },
+    { "<leader>gop", ":lua Snacks.gitbrowse.open({what = 'branch'})<cr>", desc = "Open PR on GitHub" },
+    { "<leader>gof", ":lua Snacks.gitbrowse.open({what = 'file'})<cr>", desc = "Open file on GitHub" },
+    { "<leader>goc", ":lua Snacks.gitbrowse.open({what = 'commit'})<cr>", desc = "Open commit on GitHub" },
     { "<leader>gp", ":lua Snacks.gh.pr()<cr>", desc = "View GH PRs" },
-    { "<leader>lg", ":lua Snacks.lazygit.open()<cr>", desc = "[L]azy [G]it", noremap = true, silent = true },
     { "<leader>lg", ":lua Snacks.lazygit.open()<cr>", desc = "[L]azy [G]it", noremap = true, silent = true },
   },
 }
