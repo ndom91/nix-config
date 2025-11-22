@@ -280,7 +280,7 @@ return {
         end,
         format_on_save = function(bufnr)
           -- Disable autoformat on certain filetypes
-          local ignore_filetypes = { "sql", "java" }
+          local ignore_filetypes = { "java" }
           if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
             return
           end
@@ -382,66 +382,9 @@ return {
     end,
   },
   {
-    "laytan/tailwind-sorter.nvim",
-    enabled = false,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-lua/plenary.nvim",
-    },
-    build = "cd formatter && npm i && npm run build",
-    config = function()
-      require("tailwind-sorter").setup({
-        on_save_enabled = true,
-        on_save_pattern = { "*.vue", "*.html", "*.js", "*.jsx", "*.ts", "*.tsx", "*.astro", "*.svelte" },
-      })
-    end,
-  },
-  {
-    "sbdchd/neoformat",
-    enabled = false,
-  },
-  {
-    "pmizio/typescript-tools.nvim",
-    enabled = false,
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {
-      on_attach = function(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-
-        -- if vim.lsp.inlay_hint then vim.lsp.inlay_hint.enable(bufnr, true) end
-      end,
-      settings = {
-        tsserver_file_preferences = {
-          -- Inlay Hints
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-      -- settings = {
-      --   tsserver_file_preferences = {
-      --     -- importModuleSpecifierPreference = "non-relative",
-      --     jsx_close_tag = {
-      --       enable = true,
-      --       filetypes = { "javascriptreact", "typescriptreact" },
-      --     },
-      --   },
-      -- },
-    },
-    config = function()
-      local api = require("typescript-tools.api")
-      require("typescript-tools").setup({
-        handlers = {
-          -- 80006 = 'This may be converted to an async function' diagnostics.
-          ["textDocument/publishDiagnostics"] = api.filter_diagnostics({ 80006 }),
-        },
-      })
-    end,
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+    enabled = vim.fn.has("nvim-0.10.0") == 1,
   },
 }

@@ -36,55 +36,6 @@ return {
       },
     },
   },
-  {
-    "folke/trouble.nvim",
-    enabled = false,
-    config = true,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    keys = {
-      {
-        "<leader>tr",
-        function()
-          require("trouble").toggle()
-        end,
-        desc = "[T]oggle [T]rouble",
-      },
-      {
-        "<leader>trw",
-        function()
-          require("trouble").toggle("workspace_diagnostics")
-        end,
-        desc = "[Tr]ouble [W]orkspace",
-      },
-      {
-        "<leader>trd",
-        function()
-          require("trouble").toggle("lsp_type_definitions")
-        end,
-        desc = "[Tr]ouble Type [D]efinitions",
-      },
-      {
-        "<leader>trr",
-        function()
-          require("trouble").toggle("lsp_references")
-        end,
-        desc = "[Tr]ouble [R]eferences",
-      },
-    },
-  },
-  -- tailwind token colorizer
-  {
-    "mrshmllow/document-color.nvim",
-    enabled = false,
-    keys = {
-      { "<leader>tdc", "require('document-color').buf_toggle()", desc = "[T]oggle [D]ocument [C]olor" },
-    },
-    config = function()
-      local docColors = require("document-color")
-      docColors.setup({ mode = "background" })
-      docColors.buf_attach()
-    end,
-  },
   -- lua based copilot replacement
   {
     "zbirenbaum/copilot.lua",
@@ -168,58 +119,10 @@ return {
     },
   },
   {
-    -- Startup dashboard
-    "nvimdev/dashboard-nvim",
-    event = "VimEnter",
-    enabled = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      theme = "hyper",
-      config = {
-        week_header = { enable = true },
-        packages = { enable = true },
-        project = {
-          enable = false,
-          limit = 8,
-          icon = " ",
-          label = "",
-          action = function(path)
-            vim.cmd("Telescope find_files cwd=" .. path)
-          end,
-        },
-        mru = { limit = 10, label = "Most Recent", cwd_only = true },
-        shortcut = {
-          {
-            desc = " Update",
-            group = "@property",
-            action = "Lazy update",
-            key = "u",
-          },
-          {
-            icon = " ",
-            icon_hl = "@variable",
-            desc = "Files",
-            group = "Label",
-            action = function(path)
-              vim.cmd("Telescope find_files cwd=" .. path)
-            end,
-            key = "f",
-          },
-          {
-            desc = " dotfiles",
-            group = "Number",
-            action = "Telescope dotfiles",
-            key = "d",
-          },
-        },
-      },
-    },
-  },
-  {
     -- Nice notification alert component
     "rcarriga/nvim-notify",
     lazy = false,
-    enabled = true,
+    enabled = false,
     config = function()
       local notify = require("notify")
       notify.setup({
