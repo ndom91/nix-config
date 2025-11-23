@@ -119,28 +119,6 @@ return {
     },
   },
   {
-    -- Nice notification alert component
-    "rcarriga/nvim-notify",
-    lazy = false,
-    enabled = false,
-    config = function()
-      local notify = require("notify")
-      notify.setup({
-        merge_duplicates = true,
-        render = "wrapped-compact",
-        background_colour = "#191724",
-        -- icons = {
-        --   ERROR = '',
-        --   WARN = '',
-        --   INFO = '',
-        --   DEBUG = '',
-        --   TRACE = '✎',
-        -- },
-      })
-      vim.notify = notify
-    end,
-  },
-  {
     -- Better multi-key navigation i.e. vimium style
     "folke/which-key.nvim",
     enabled = true,
@@ -151,74 +129,10 @@ return {
     end,
   },
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    enabled = false,
-    opts = {},
-    keys = {
-      {
-        "fj",
-        function()
-          require("flash").jump()
-        end,
-        { "n", "x", "o" },
-        desc = "[F]lash [J]ump",
-      },
-      {
-        "ft",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "[F]lash [T]reesitter",
-      },
-      -- {
-      --   "r",
-      --   function()
-      --     require("flash").remote()
-      --   end,
-      --   "o",
-      --   desc = "Remote Flash",
-      -- },
-      -- {
-      --   "R",
-      --   function()
-      --     require("flash").treesitter_search()
-      --   end,
-      --   { "o", "x" },
-      --   desc = "Flash Treesitter Search",
-      -- },
-      {
-        "<c-s>",
-        function()
-          require("flash").toggle()
-        end,
-        { "c" },
-        desc = "Flash Toggle",
-      },
-    },
-  },
-  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     opts = {},
-  },
-  {
-    "kdheepak/lazygit.nvim",
-    enabled = false,
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<CR>", desc = "[L]azy [G]it", noremap = true, silent = true },
-    },
-    -- optional for floating window border decoration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-  {
-    -- Screenshots of code
-    "segeljakt/vim-silicon",
-    enabled = false,
   },
   {
     "ndom91/freeze.nvim",
@@ -238,6 +152,7 @@ return {
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    enabled = false,
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     opts = {},
   },
@@ -245,18 +160,6 @@ return {
   {
     -- Automatically detect and set buffer settings like tabstop and shiftwidth
     "tpope/vim-sleuth",
-  },
-  {
-    -- Whitespace highlighting
-    "lukas-reineke/indent-blankline.nvim",
-    enabled = false,
-    main = "ibl",
-    ---@module "ibl"
-    ---@type ibl.config
-    opts = {
-      scope = { enabled = false },
-      exclude = { filetypes = { "help", "dashboard" } },
-    },
   },
   -- {
   --   "notes-nvim",

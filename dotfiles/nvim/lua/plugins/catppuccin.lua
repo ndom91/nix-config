@@ -1,6 +1,5 @@
 return {
   "catppuccin/nvim",
-  -- "m4xshen/catppuccinight.nvim",
   enabled = true,
   priority = 1000,
   lazy = false,

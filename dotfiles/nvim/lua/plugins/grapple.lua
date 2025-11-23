@@ -1,3 +1,4 @@
+-- Harpoon alternative. Quick jump file list
 return {
   "cbochs/grapple.nvim",
   dependencies = {
@@ -10,14 +11,11 @@ return {
   cmd = "Grapple",
   keys = {
     { "<leader>a", "<cmd>Grapple toggle<cr>", desc = "Tag a file" },
-    -- { "<leader>h", "<cmd>Telescope grapple tags<cr>", desc = "Toggle tags menu" },
     { "<leader>h", "<cmd>Grapple toggle_tags<cr>", desc = "Toggle tags menu" },
-
     { "<c-n>", "<cmd>Grapple cycle_tags next<cr>", desc = "Go to next tag" },
     { "<c-p>", "<cmd>Grapple cycle_tags prev<cr>", desc = "Go to previous tag" },
   },
   win_opts = {
-    -- Can be fractional
     width = 80,
     height = 12,
     row = 0.5,
@@ -32,7 +30,6 @@ return {
     title_pos = "center",
     title_padding = " ", -- custom: adds padding around window title
 
-    -- footer = "", -- disable footer
     footer_pos = "",
   },
 }

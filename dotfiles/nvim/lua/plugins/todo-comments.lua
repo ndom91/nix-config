@@ -1,5 +1,6 @@
 return {
   "folke/todo-comments.nvim", -- special highlight  @TODO, @FIXME, etc comments
+  enabled = false,
   dependencies = "nvim-lua/plenary.nvim",
   keys = {
     { "<leader>td", "<cmd>TodoTrouble<CR>", desc = "[T]o[d]o Trouble" },

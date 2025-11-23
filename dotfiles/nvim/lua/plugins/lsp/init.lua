@@ -28,59 +28,6 @@ return {
       inlay_hints = { enabled = false },
     },
     config = function()
-      local utils = require("plugins.lsp.utils")
-
-      -- local function definitions(options)
-      --   return utils.list_or_jump("textDocument/definition", "LSP Definitions", options)
-      -- end
-
-      -- Formatting Setup
-      -- Create an augroup that is used for managing our formatting autocmds.
-      --      We need one augroup per client to make sure that multiple clients
-      --      can attach to the same buffer without interfering with each other.
-      -- local _augroups = {}
-      -- local get_augroup = function(client)
-      --   if not _augroups[client.id] then
-      --     local group_name = "kickstart-lsp-format-" .. client.name
-      --     local id = vim.api.nvim_create_augroup(group_name, { clear = true })
-      --     _augroups[client.id] = id
-      --   end
-      --
-      --   return _augroups[client.id]
-      -- end
-
-      -- Format function
-      -- local function format(client_id, bufnr)
-      --   local client = vim.lsp.get_client_by_id(client_id)
-      --   if client ~= nil then
-      --     if not client.server_capabilities.documentFormattingProvider then return end
-      --     -- vim.notify("name: " .. client.name .. "| buf: " .. bufnr)
-      --
-      --     -- if client.name == "tsserver" then return end
-      --
-      --     vim.lsp.buf.format({
-      --       client_id = client_id,
-      --       async = false,
-      --       filter = function(formatClient) return formatClient.name ~= "tsserver" end,
-      --       -- filter = function(c) return c.id == client.id end,
-      --     })
-      --   end
-      -- end
-
-      -- Whenever an LSP attaches to a buffer, add a BufWritePre autocmd
-      -- vim.api.nvim_create_autocmd("LspAttach", {
-      --   group = vim.api.nvim_create_augroup("lsp-attach-format", { clear = true }),
-      --   callback = function(event)
-      --     local client = vim.lsp.get_client_by_id(event.data.client_id)
-      --     vim.api.nvim_create_autocmd("BufWritePre", {
-      --       group = get_augroup(client),
-      --       buffer = event.buf,
-      --       callback = function() format(event.data.client_id, event.buf) end,
-      --     })
-      --   end,
-      -- })
-      -- NOTE: Migrated to `conform.nvim`
-
       vim.diagnostic.config({ jump = { float = true } })
 
       -- vim.keymap.set("n", "[d", vim.diagnostic.jump({ count = -1, float = true }))
@@ -102,17 +49,18 @@ return {
 
           map("]e", goto_next_error, "Goto Next Error")
           map("[e", goto_prev_error, "Goto Previous Error")
-
           map("<Leader>e", builtin.diagnostics, "Show [E]rrors")
+
           map("gD", ":lua Snacks.picker.lsp_declarations()<cr>", "[G]oto [D]eclarations")
           map("gd", ":lua Snacks.picker.lsp_definitions()<cr>", "[G]oto [d]efinition")
           map("gr", ":lua Snacks.picker.lsp_references()<cr>", "[G]oto [r]eferences")
           map("gi", ":lua Snacks.picker.lsp_implementations()<cr>", "[G]oto [i]mplementations")
           map("gt", ":lua Snacks.picker.lsp_type_definitions()<cr>", "[G]oto [t]ype definitions")
           map("K", vim.lsp.buf.hover, "Hover")
-          map("<space>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ctions")
+          map("<space>ca", vim.lsp.buf.code_action, "[C]ode [A]ctions")
           map("<space>re", vim.lsp.buf.rename, "[R][e]name")
-          map("<C-s>", vim.lsp.buf.signature_help, "Signature Help", "i")
+          -- map("<space>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ctions")
+          -- map("<C-s>", vim.lsp.buf.signature_help, "Signature Help", "i")
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client ~= nil then
@@ -220,7 +168,6 @@ return {
     cmd = { "ConformInfo" },
     keys = {
       {
-        -- Customize or remove this keymap to your liking
         "<leader>lf",
         function()
           require("conform").format({ async = true })
@@ -380,11 +327,5 @@ return {
         },
       })
     end,
-  },
-  {
-    "folke/ts-comments.nvim",
-    opts = {},
-    event = "VeryLazy",
-    enabled = vim.fn.has("nvim-0.10.0") == 1,
   },
 }

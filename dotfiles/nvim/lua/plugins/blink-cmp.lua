@@ -71,7 +71,7 @@ return {
           },
         },
       },
-      default = { "lsp", "path", "snippets", "buffer", "copilot", "lazydev" },
+      default = { "lsp", "path", "snippets", "buffer", "copilot", "lazydev", "omni" },
     },
 
     completion = {
@@ -88,9 +88,9 @@ return {
               end,
               highlight = function(ctx)
                 -- return require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
-                  -- or ("BlinkCmpKind" .. ctx.kind)
-                  -- retu "BlinkCmpKind" .. ctx.kind
-                  return "BlinkCmpKind" .. ctx.kind
+                -- or ("BlinkCmpKind" .. ctx.kind)
+                -- retu "BlinkCmpKind" .. ctx.kind
+                return "BlinkCmpKind" .. ctx.kind
               end,
             },
             source_name = {
