@@ -1,4 +1,20 @@
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+local delete_buffer = function(prompt_bufnr)
+  local current_picker = action_state.get_current_picker(prompt_bufnr)
+  local entry = action_state.get_selected_entry()
+
+  if entry and entry.bufnr then
+    -- Delete the buffer
+    vim.api.nvim_buf_delete(entry.bufnr, { force = false })
+
+    -- Remove the entry from the picker and refresh
+    current_picker:delete_selection(function(selection)
+      -- Buffer already deleted above, just need to update the picker
+    end)
+  end
+end
 
 local file_ignore_patterns = {
   "%.jpg",
@@ -25,7 +41,7 @@ local file_ignore_patterns = {
 
 return {
   "nvim-telescope/telescope.nvim",
-  branch = "master",
+  tag = "v0.1.9",
   dependencies = {
     "nvim-telescope/telescope-ui-select.nvim",
   },
@@ -34,7 +50,14 @@ return {
     {
       "<leader>,",
       function()
-        require("telescope.builtin").buffers({ show_all_buffers = true })
+        require("telescope.builtin").buffers({
+          show_all_buffers = true,
+          attach_mappings = function(_, map)
+            map("i", "<C-c>", delete_buffer)
+            map("n", "d", delete_buffer)
+            return true
+          end,
+        })
       end,
       desc = "Find Buffers",
     },
@@ -100,7 +123,7 @@ return {
     { "<leader>gb", require("telescope.builtin").git_branches, desc = "[G]it [B]ranches" },
   },
   opts = {
-    defaults = {},
+    -- defaults = {},
     prompt_prefix = "  ",
     selection_caret = " ",
     entry_prefix = "  ",
@@ -125,14 +148,15 @@ return {
         ["<c-k>"] = actions.move_selection_previous,
         ["<s-up>"] = actions.cycle_history_prev,
         ["<s-down>"] = actions.cycle_history_next,
-        ["<C-c>"] = actions.delete_buffer,
+        ["<C-c>"] = delete_buffer,
         ["<C-w>"] = function()
           vim.api.nvim_input("<c-s-w>")
         end,
       },
       n = {
+        ["<esc>"] = actions.close,
         ["q"] = actions.close,
-        ["<C-c>"] = actions.delete_buffer + actions.move_to_top,
+        ["d"] = delete_buffer,
       },
     },
     vimgrep_arguments = {
@@ -163,14 +187,11 @@ return {
       height = 0.80,
       preview_cutoff = 120,
     },
-    -- dynamic_preview_title = true,
   },
   pickers = {
     live_grep = {
       prompt_title = "Grep",
       preview_title = "Results",
-      -- path_display = { "smart" },
-      dynamic_preview_title = true,
       file_ignore_patterns,
     },
     find_files = {

@@ -118,6 +118,11 @@ return {
       },
     },
   },
+  -- Comment toggling
+  {
+    "numToStr/Comment.nvim",
+    config = true,
+  },
   {
     -- Better multi-key navigation i.e. vimium style
     "folke/which-key.nvim",
