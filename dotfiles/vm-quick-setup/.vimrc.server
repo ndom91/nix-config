@@ -1,3 +1,6 @@
+syntax on           " Syntax highlighting
+filetype plugin indent on " Enable filetype/indent rules on load
+
 set guicursor=""    " Default block cursor
 set relativenumber  " Relative line numbers
 set number          " Line numbers
@@ -5,12 +8,14 @@ set autoindent      " Indenation
 set tabstop=2       " Tab = 2 spaces
 set shiftwidth=2    " Shift over = 2 spaces
 set expandtab       " Expand tabs->spaces
-syntax on           " Syntax highlighting
-filetype plugin indent on " Enable filetype/indent rules on load
+
+" converting tabs to space before writing the a file
+autocmd! bufwritepre * set expandtab | retab! 2
 
 set ignorecase  " Do case insensitive matching
-set smartcase		" Do smart case matching
+set smartcase   " Do smart case matching
 set smartindent " Do smart indenting
+set smarttab    " Do smart indenting
 set showmatch   " Show matching brackets
 set wrap        " Enable word wrapping
 set noswapfile  " Disable swapfile
@@ -26,7 +31,7 @@ set showcmd     " Show (partial) command in status line
 set scrolloff=8 " Keep 8 lines on top/bottom
 
 " <Enter> to disable search result highlight
-nnoremap <silent> <CR> :<C-u>nohlsearch<CR><C-l> 
+nnoremap <silent> <CR> :<C-u>nohlsearch<CR><C-l>
 
 " Enable nginx syntaxhighlighting
 au BufRead,BufNewFile *.nginx set ft=nginx
