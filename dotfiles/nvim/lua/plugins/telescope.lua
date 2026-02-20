@@ -46,7 +46,8 @@ return {
     "nvim-telescope/telescope-ui-select.nvim",
   },
   keys = {
-    { "<leader>.", require("telescope.builtin").find_files, desc = "Find Files" },
+    -- { "<leader>.", require("telescope.builtin").find_files, desc = "Find Files" },
+    -- { "<leader>/", require("telescope.builtin").live_grep, desc = "Live Grep" },
     {
       "<leader>,",
       function()
@@ -61,7 +62,6 @@ return {
       end,
       desc = "Find Buffers",
     },
-    { "<leader>/", require("telescope.builtin").live_grep, desc = "Live Grep" },
     { "<leader>:", require("telescope.builtin").command_history, desc = "Command History" },
     {
       "<leader>r",

@@ -38,6 +38,7 @@ return {
         group = vim.api.nvim_create_augroup("LspAttach", { clear = true }),
         callback = function(event)
           local builtin = require("telescope.builtin")
+          local lsp_utils = require("plugins.lsp.utils")
 
           local map = function(keys, func, desc, mode)
             mode = mode or "n"
@@ -51,11 +52,11 @@ return {
           map("[e", goto_prev_error, "Goto Previous Error")
           map("<Leader>e", builtin.diagnostics, "Show [E]rrors")
 
-          map("gD", ":lua Snacks.picker.lsp_declarations()<cr>", "[G]oto [D]eclarations")
-          map("gd", ":lua Snacks.picker.lsp_definitions()<cr>", "[G]oto [d]efinition")
-          map("gr", ":lua Snacks.picker.lsp_references()<cr>", "[G]oto [r]eferences")
-          map("gi", ":lua Snacks.picker.lsp_implementations()<cr>", "[G]oto [i]mplementations")
-          map("gt", ":lua Snacks.picker.lsp_type_definitions()<cr>", "[G]oto [t]ype definitions")
+          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+          map("gd", function() lsp_utils.list_or_jump("textDocument/definition", "LSP Definitions") end, "[G]oto [d]efinition")
+          map("gr", function() Snacks.picker.lsp_references() end, "[G]oto [r]eferences")
+          map("gi", function() Snacks.picker.lsp_implementations() end, "[G]oto [i]mplementations")
+          map("gt", builtin.lsp_type_definitions, "[G]oto [t]ype definitions")
           map("K", vim.lsp.buf.hover, "Hover")
           map("<space>ca", vim.lsp.buf.code_action, "[C]ode [A]ctions")
           map("<space>re", vim.lsp.buf.rename, "[R][e]name")

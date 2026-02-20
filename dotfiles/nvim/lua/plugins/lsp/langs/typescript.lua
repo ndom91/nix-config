@@ -1,49 +1,48 @@
 return {
-  -- capabilities = require("plugins.lsp.capabilities"),
-  on_attach = function(client, bufnr)
-    client.server_capabilities.document_formatting = false
-    -- null-ls messes with formatexpr for some reason, which messes up `gq`
-    -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
-    -- update: no longer using null-ls (none-ls) atm
-    -- vim.bo[bufnr].formatexpr = nil
-  end,
-  -- handlers = {
-  --   -- Go right to first result if there is more than 1
-  --   ["textDocument/definition"] = function(err, result, ctx)
-  --     if #result > 1 then
-  --       result = { result[1] }
-  --       return vim.lsp.handlers["textDocument/definition"](err, result, ctx)
-  --     end
-  --
-  --     return vim.lsp.handlers["textDocument/definition"](err, result, ctx)
-  --   end,
-  -- },
+  init_options = {
+    preferences = {
+      -- Import suggestions
+      includePackageJsonAutoImports = "auto",
+      importModuleSpecifierPreference = "project-relative",
+      importModuleSpecifierEnding = "minimal",
+      -- Completions
+      includeCompletionsForModuleExports = true,
+      includeCompletionsForImportStatements = true,
+      includeCompletionsWithSnippetText = true,
+      includeAutomaticOptionalChainCompletions = true,
+      -- General
+      allowIncompleteCompletions = true,
+      displayPartsForJSDoc = true,
+    },
+    hostInfo = "neovim",
+  },
   settings = {
     documentFormatting = false,
-    -- taken from https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration
     javascript = {
-      inlayHints = false,
-      -- inlayHints = {
-      --   includeInlayEnumMemberValueHints = true,
-      --   includeInlayFunctionLikeReturnTypeHints = true,
-      --   includeInlayFunctionParameterTypeHints = true,
-      --   includeInlayParameterNameHints = "all",
-      --   includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-      --   includeInlayPropertyDeclarationTypeHints = true,
-      --   includeInlayVariableTypeHints = true,
-      -- },
+      inlayHints = { enabled = false },
+      preferences = {
+        importModuleSpecifierPreference = "project-relative",
+        includePackageJsonAutoImports = "auto",
+      },
+      suggest = {
+        completeFunctionCalls = true,
+        includeAutomaticOptionalChainCompletions = true,
+        autoImports = true,
+      },
+      updateImportsOnFileMove = { enabled = "always" },
     },
     typescript = {
-      inlayHints = false,
-      -- inlayHints = {
-      --   includeInlayEnumMemberValueHints = true,
-      --   includeInlayFunctionLikeReturnTypeHints = true,
-      --   includeInlayFunctionParameterTypeHints = true,
-      --   includeInlayParameterNameHints = "all",
-      --   includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-      --   includeInlayPropertyDeclarationTypeHints = true,
-      --   includeInlayVariableTypeHints = true,
-      -- },
+      inlayHints = { enabled = false },
+      preferences = {
+        importModuleSpecifierPreference = "project-relative",
+        includePackageJsonAutoImports = "auto",
+      },
+      suggest = {
+        completeFunctionCalls = true,
+        includeAutomaticOptionalChainCompletions = true,
+        autoImports = true,
+      },
+      updateImportsOnFileMove = { enabled = "always" },
     },
   },
   filetypes = {

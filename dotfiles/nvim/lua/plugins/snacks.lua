@@ -71,10 +71,12 @@ return {
     },
   },
   keys = {
-    { "<leader>gop", ":lua Snacks.gitbrowse.open({what = 'branch'})<cr>", desc = "Open PR on GitHub" },
-    { "<leader>gof", ":lua Snacks.gitbrowse.open({what = 'file'})<cr>", desc = "Open file on GitHub" },
-    { "<leader>goc", ":lua Snacks.gitbrowse.open({what = 'commit'})<cr>", desc = "Open commit on GitHub" },
-    { "<leader>gp", ":lua Snacks.gh.pr()<cr>", desc = "View GH PRs" },
-    { "<leader>lg", ":lua Snacks.lazygit.open()<cr>", desc = "[L]azy [G]it", noremap = true, silent = true },
+    -- GitHub open: <leader>go + suffix
+    { "<leader>gof", function() Snacks.gitbrowse.open({ what = "file" }) end, desc = "Open file on GitHub" },
+    { "<leader>gom", function() Snacks.gitbrowse.open({ what = "file", branch = "main" }) end, desc = "Open file on main" },
+    { "<leader>goc", function() Snacks.gitbrowse.open({ what = "commit" }) end, desc = "Open commit on GitHub" },
+    { "<leader>gob", function() Snacks.gitbrowse.open({ what = "branch" }) end, desc = "Open branch/PR on GitHub" },
+    { "<leader>gop", function() Snacks.gh.pr() end, desc = "View GH PRs" },
+    { "<leader>lg", function() Snacks.lazygit.open() end, desc = "Lazygit" },
   },
 }
