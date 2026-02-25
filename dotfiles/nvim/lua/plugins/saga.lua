@@ -1,6 +1,6 @@
 return {
   "nvimdev/lspsaga.nvim",
-  enabled = false,
+  enabled = true,
   event = "LspAttach",
   keys = {
     { "<leader>tt", "<cmd>Lspsaga term_toggle<CR>", desc = "[T]erm [T]oggle" },

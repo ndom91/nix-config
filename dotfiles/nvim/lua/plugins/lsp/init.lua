@@ -58,9 +58,8 @@ return {
           map("gi", function() Snacks.picker.lsp_implementations() end, "[G]oto [i]mplementations")
           map("gt", builtin.lsp_type_definitions, "[G]oto [t]ype definitions")
           map("K", vim.lsp.buf.hover, "Hover")
-          map("<space>ca", vim.lsp.buf.code_action, "[C]ode [A]ctions")
+          map("<space>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ctions")
           map("<space>re", vim.lsp.buf.rename, "[R][e]name")
-          -- map("<space>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ctions")
           -- map("<C-s>", vim.lsp.buf.signature_help, "Signature Help", "i")
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)

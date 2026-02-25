@@ -11,7 +11,7 @@ return {
   opts = {
     debug = {
       enabled = false,
-      show_scores = false,
+      show_scores = true,
     },
     -- max_threads = 2,
     -- preview = {
