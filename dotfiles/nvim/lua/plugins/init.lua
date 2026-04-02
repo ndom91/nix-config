@@ -1,21 +1,6 @@
 return {
   "nvim-tree/nvim-web-devicons",
-  "nvim-lua/plenary.nvim",
-  "nvim-lua/popup.nvim",
 
-  -- lsp function signature help on wildmenu
-  {
-    "ray-x/lsp_signature.nvim",
-    enabled = true,
-    opts = {
-      hint_enable = true,
-      hint_inline = function()
-        return false
-      end,
-      floating_window = false,
-      bind = true,
-    },
-  },
   {
     -- LSP status notifications bottom right
     "j-hui/fidget.nvim",
@@ -39,10 +24,13 @@ return {
   -- lua based copilot replacement
   {
     "zbirenbaum/copilot.lua",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     cmd = "Copilot",
     build = ":Copilot auth",
+    dependencies = {
+      "copilotlsp-nvim/copilot-lsp",
+    },
     opts = {
       suggestion = { enabled = false },
       panel = { enabled = false },
@@ -103,25 +91,6 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
-  },
-  {
-    -- Highlight CSS and other color codes in their color
-    "NvChad/nvim-colorizer.lua",
-    opts = {
-      filetypes = { "*" },
-      user_default_options = {
-        names = false,
-        RRGGBBAA = true,
-        css = true,
-        tailwind = true,
-        mode = "background",
-      },
-    },
-  },
-  -- Comment toggling
-  {
-    "numToStr/Comment.nvim",
-    config = true,
   },
   {
     -- Better multi-key navigation i.e. vimium style

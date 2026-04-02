@@ -37,7 +37,6 @@ local file_ignore_patterns = {
   "^build/",
   "[.]svelte-kit/",
 }
--- require("telescope").load_extension("ui-select")
 
 return {
   "nvim-telescope/telescope.nvim",
@@ -122,6 +121,10 @@ return {
     { "<leader>gfh", require("telescope.builtin").git_bcommits, desc = "[G]it [F]ile [H]istory" },
     { "<leader>gb", require("telescope.builtin").git_branches, desc = "[G]it [B]ranches" },
   },
+  config = function(_, opts)
+    require("telescope").setup(opts)
+    require("telescope").load_extension("ui-select")
+  end,
   opts = {
     defaults = {
       entry_prefix = "  ",
@@ -208,12 +211,6 @@ return {
       grapple = {},
       ["ui-select"] = {
         require("telescope.themes").get_dropdown({}),
-      },
-      fzf = {
-        fuzzy = true, -- false will only do exact matching
-        override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
       },
     },
   },

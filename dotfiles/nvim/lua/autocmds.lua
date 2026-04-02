@@ -1,10 +1,30 @@
 -- highlight yank for a brief second for visual feedback
-vim.cmd("autocmd! TextYankPost * lua vim.highlight.on_yank { on_visual = false }")
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({ on_visual = false })
+  end,
+})
 
--- Set .mdx files as 'tsx'
-vim.cmd("autocmd BufNewFile,BufRead *.mdx set filetype=tsx")
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.textwidth = 80
+  end,
+})
 
-vim.cmd("autocmd FileType markdown setlocal textwidth=80")
+-- Native treesitter highlighting (Neovim 0.12+)
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local buf = args.buf
+    -- Skip large files
+    local max_filesize = 500 * 1024 -- 500 KB
+    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
+    if ok and stats and stats.size > max_filesize then
+      return
+    end
+    pcall(vim.treesitter.start, buf)
+  end,
+})
 
 -- show cursor line only in active window
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {

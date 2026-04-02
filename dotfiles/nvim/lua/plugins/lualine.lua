@@ -3,7 +3,7 @@ return {
   enabled = true,
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "AndreM222/copilot-lualine",
+    -- "AndreM222/copilot-lualine", -- disabled
   },
   config = function()
     local function show_macro_recording()
@@ -39,7 +39,7 @@ return {
     })
     require("lualine").setup({
       options = {
-        theme = "catppuccin",
+        theme = "catppuccin-mocha",
         globalstatus = true,
         -- Old
         -- component_separators = { left = "", right = "" },
@@ -114,14 +114,14 @@ return {
         },
         lualine_y = {
           -- "progress",
-          {
-            "copilot",
-            show_colors = true,
-            padding = 2,
-            symbols = {
-              spinners = require("copilot-lualine.spinners").dots,
-            },
-          },
+          -- {
+          --   "copilot",
+          --   show_colors = true,
+          --   padding = 2,
+          --   symbols = {
+          --     spinners = require("copilot-lualine.spinners").dots,
+          --   },
+          -- },
           {
             "diagnostics",
             padding = 0,

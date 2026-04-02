@@ -7,10 +7,9 @@ end
 
 return {
   {
-    "neovim/nvim-lspconfig",
+    "williamboman/mason.nvim",
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig", -- provides default cmd/filetypes/root_dir for servers
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "b0o/schemastore.nvim",
       {
@@ -24,14 +23,35 @@ return {
       },
       { "nvim-telescope/telescope.nvim", dependencies = "nvim-lua/plenary.nvim" },
     },
-    opts = {
-      inlay_hints = { enabled = false },
-    },
     config = function()
-      vim.diagnostic.config({ jump = { float = true } })
+      require("mason").setup()
 
-      -- vim.keymap.set("n", "[d", vim.diagnostic.jump({ count = -1, float = true }))
-      -- vim.keymap.set("n", "]d", vim.diagnostic.jump({ count = 1, float = true }))
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          -- LSP servers
+          "css-lsp",
+          "lua-language-server",
+          "eslint-lsp",
+          "html-lsp",
+          "json-lsp",
+          "terraform-ls",
+          "astro-language-server",
+          "rust-analyzer",
+          "svelte-language-server",
+          "tailwindcss-language-server",
+          "typescript-language-server",
+          "yaml-language-server",
+          -- Formatters & tools
+          "stylua",
+          "prettierd",
+          "rustywind",
+          "js-debug-adapter",
+          "shellcheck",
+          "shfmt",
+        },
+      })
+
+      vim.diagnostic.config({ jump = { float = true } })
 
       -- On Attach
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -45,29 +65,27 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
 
-          -- NOTE: What is this used for?
-          vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+          -- Built-in LSP document color (inline color squares)
+          if client and client:supports_method("textDocument/documentColor") then
+            vim.lsp.document_color.enable(true, { bufnr = event.buf }, { style = 'virtual' })
+          end
 
           map("]e", goto_next_error, "Goto Next Error")
           map("[e", goto_prev_error, "Goto Previous Error")
           map("<Leader>e", builtin.diagnostics, "Show [E]rrors")
 
-          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
           map("gd", function() lsp_utils.list_or_jump("textDocument/definition", "LSP Definitions") end, "[G]oto [d]efinition")
           map("gr", function() Snacks.picker.lsp_references() end, "[G]oto [r]eferences")
           map("gi", function() Snacks.picker.lsp_implementations() end, "[G]oto [i]mplementations")
           map("gt", builtin.lsp_type_definitions, "[G]oto [t]ype definitions")
-          map("K", vim.lsp.buf.hover, "Hover")
           map("<space>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ctions")
           map("<space>re", vim.lsp.buf.rename, "[R][e]name")
-          -- map("<C-s>", vim.lsp.buf.signature_help, "Signature Help", "i")
 
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client ~= nil then
             -- Highlight symbol references on hover
-            --
             if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-              -- if client.server_capabilities.documentHighlightProvider then
               local highlight_augroup = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
               vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                 group = highlight_augroup,
@@ -79,7 +97,6 @@ return {
                 buffer = event.buf,
                 callback = vim.lsp.buf.clear_references,
               })
-
               vim.api.nvim_create_autocmd("LspDetach", {
                 group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
                 callback = function(event2)
@@ -91,79 +108,28 @@ return {
 
             client.server_capabilities.semanticTokensProvider = nil
           end
-
-          -- Fix treesitter ts-autotag diagnostics fix - https://github.com/windwp/nvim-ts-autotag#enable-update-on-insert
-          -- vim.lsp.handlers["textDocument/publishDiagnostics"] =
-          --   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-          --     underline = true,
-          --     virtual_text = {
-          --       spacing = 5,
-          --       min = vim.diagnostic.severity.WARN,
-          --     },
-          --     update_in_insert = true,
-          --   })
         end,
       })
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-      local servers = {
-        cssls = require("plugins.lsp.langs.css"),
-        lua_ls = require("plugins.lsp.langs.lua"),
-        eslint = require("plugins.lsp.langs.eslint"),
-        html = {},
-        jsonls = require("plugins.lsp.langs.json"),
-        -- rnix = {},
-        terraformls = {},
-        astro = {},
-        rust_analyzer = require("plugins.lsp.langs.rust"),
-        svelte = require("plugins.lsp.langs.svelte"),
-        tailwindcss = require("plugins.lsp.langs.tailwindcss"),
-        ts_ls = require("plugins.lsp.langs.typescript"),
-        yamlls = require("plugins.lsp.langs.yaml"),
-        -- require("plugins.lsp.langs.vue")
-      }
-
-      require("mason").setup()
-
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        "stylua",
-        -- "nixpkgs-fmt",
-        "prettierd",
-        "rustywind",
-        -- "biome",
-        -- "biome_organize_imports",
-        -- "demo_fmt",
-        -- "eslint_d",
-        "js-debug-adapter",
-        "shellcheck",
-        "shfmt",
-      })
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-      require("mason-lspconfig").setup({
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
-          end,
-        },
+      -- Enable all LSP servers (configs auto-loaded from lsp/ directory)
+      vim.lsp.enable({
+        "astro",
+        "cssls",
+        "eslint",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "rust_analyzer",
+        "svelte",
+        "tailwindcss",
+        "terraformls",
+        "tsgo",
+        "yamlls",
       })
     end,
   },
   {
     "stevearc/conform.nvim",
-    dependencies = {
-      "LittleEndianRoot/mason-conform",
-    },
-    enabled = true,
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     keys = {
@@ -178,6 +144,21 @@ return {
     },
     config = function()
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+      local prettier_root = require("conform.util").root_file({
+        ".prettierrc",
+        ".prettierrc.json",
+        ".prettierrc.yml",
+        ".prettierrc.yaml",
+        ".prettierrc.json5",
+        ".prettierrc.js",
+        ".prettierrc.cjs",
+        ".prettierrc.mjs",
+        ".prettierrc.toml",
+        "prettier.config.js",
+        "prettier.config.cjs",
+        "prettier.config.mjs",
+      })
 
       vim.api.nvim_create_user_command("Format", function(args)
         local range = nil
@@ -219,12 +200,6 @@ return {
         default_format_opts = {
           lsp_format = "fallback",
         },
-        format_after_save = function(bufnr)
-          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-            return
-          end
-          return { lsp_format = "fallback" }
-        end,
         format_on_save = function(bufnr)
           -- Disable autoformat on certain filetypes
           local ignore_filetypes = { "java" }
@@ -245,81 +220,23 @@ return {
         end,
         formatters = {
           prettierd_astro = {
-            env = {
-              PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
-            },
+            env = { PRETTIERD_LOCAL_PRETTIER_ONLY = "true" },
             command = "prettier",
-            -- When cwd is not found, don't run the formatter (default false)
             require_cwd = true,
-            cwd = require("conform.util").root_file({
-              ".prettierrc",
-              ".prettierrc.json",
-              ".prettierrc.yml",
-              ".prettierrc.yaml",
-              ".prettierrc.json5",
-              ".prettierrc.js",
-              ".prettierrc.cjs",
-              ".prettierrc.mjs",
-              ".prettierrc.toml",
-              "prettier.config.js",
-              "prettier.config.cjs",
-              "prettier.config.mjs",
-            }),
-            prepend_args = {
-              "--plugin prettier-plugin-astro",
-            },
+            cwd = prettier_root,
+            prepend_args = { "--plugin prettier-plugin-astro" },
           },
           prettierd_svelte = {
-            env = {
-              PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
-            },
+            env = { PRETTIERD_LOCAL_PRETTIER_ONLY = "true" },
             command = "prettier",
-            -- When cwd is not found, don't run the formatter (default false)
             require_cwd = true,
-            cwd = require("conform.util").root_file({
-              ".prettierrc",
-              ".prettierrc.json",
-              ".prettierrc.yml",
-              ".prettierrc.yaml",
-              ".prettierrc.json5",
-              ".prettierrc.js",
-              ".prettierrc.cjs",
-              ".prettierrc.mjs",
-              ".prettierrc.toml",
-              "prettier.config.js",
-              "prettier.config.cjs",
-              "prettier.config.mjs",
-            }),
-            prepend_args = {
-              "--plugin prettier-plugin-svelte",
-            },
+            cwd = prettier_root,
+            prepend_args = { "--plugin prettier-plugin-svelte" },
           },
           prettierd = {
-            env = {
-              PRETTIERD_LOCAL_PRETTIER_ONLY = "true",
-            },
-            -- condition = function()
-            --   -- Use eslint/eslint_d lsp if available
-            --   if next(vim.lsp.get_clients({ name = "eslint" })) then
-            --     return false
-            --   end
-            -- end,
-            -- When cwd is not found, don't run the formatter (default false)
+            env = { PRETTIERD_LOCAL_PRETTIER_ONLY = "true" },
             require_cwd = true,
-            cwd = require("conform.util").root_file({
-              ".prettierrc",
-              ".prettierrc.json",
-              ".prettierrc.yml",
-              ".prettierrc.yaml",
-              ".prettierrc.json5",
-              ".prettierrc.js",
-              ".prettierrc.cjs",
-              ".prettierrc.mjs",
-              ".prettierrc.toml",
-              "prettier.config.js",
-              "prettier.config.cjs",
-              "prettier.config.mjs",
-            }),
+            cwd = prettier_root,
           },
           shfmt = {
             prepend_args = { "-i", "2" },

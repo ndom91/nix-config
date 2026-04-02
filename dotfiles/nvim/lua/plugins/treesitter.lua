@@ -12,7 +12,7 @@ return {
       "folke/ts-comments.nvim",
       opts = {},
       event = "VeryLazy",
-      enabled = vim.fn.has("nvim-0.10.0") == 1,
+      enabled = true,
     },
     {
       "nvim-treesitter/nvim-treesitter-context", -- Show scope context when scrolling
@@ -69,16 +69,7 @@ return {
       "vue",
       "yaml",
     },
-    highlight = {
-      enable = true,
-      disable = function(lang, buf)
-        local max_filesize = 500 * 1024 -- 500 KB
-        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-          return true
-        end
-      end,
-    },
+    highlight = { enable = false },
     parser_install_dir = nil,
   },
 }

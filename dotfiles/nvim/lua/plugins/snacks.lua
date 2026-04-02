@@ -12,13 +12,19 @@ return {
     statuscolumn = {},
     gitbrowse = {},
     terminal = {},
-    lazygit = {},
+    lazygit = {
+      configure = false,
+      env = {
+        LG_CONFIG_FILE = vim.fn.expand("~/.config/lazygit/config.yml"),
+      },
+    },
     gh = {},
     image = {
       env = {
         SNACKS_GHOSTTY = true,
       },
       doc = {
+        inline = false,
         conceal = true,
       },
     },
@@ -65,6 +71,11 @@ return {
       },
     },
     styles = {
+      lazygit = {
+        width = 0.9,
+        height = 0.9,
+        border = "rounded",
+      },
       snacks_image = {
         border = false,
       },
@@ -72,11 +83,47 @@ return {
   },
   keys = {
     -- GitHub open: <leader>go + suffix
-    { "<leader>gof", function() Snacks.gitbrowse.open({ what = "file" }) end, desc = "Open file on GitHub" },
-    { "<leader>gom", function() Snacks.gitbrowse.open({ what = "file", branch = "main" }) end, desc = "Open file on main" },
-    { "<leader>goc", function() Snacks.gitbrowse.open({ what = "commit" }) end, desc = "Open commit on GitHub" },
-    { "<leader>gob", function() Snacks.gitbrowse.open({ what = "branch" }) end, desc = "Open branch/PR on GitHub" },
-    { "<leader>gop", function() Snacks.gh.pr() end, desc = "View GH PRs" },
-    { "<leader>lg", function() Snacks.lazygit.open() end, desc = "Lazygit" },
+    {
+      "<leader>gof",
+      function()
+        Snacks.gitbrowse.open({ what = "file" })
+      end,
+      desc = "Open file on GitHub",
+    },
+    {
+      "<leader>gom",
+      function()
+        Snacks.gitbrowse.open({ what = "file", branch = "main" })
+      end,
+      desc = "Open file on main",
+    },
+    {
+      "<leader>goc",
+      function()
+        Snacks.gitbrowse.open({ what = "commit" })
+      end,
+      desc = "Open commit on GitHub",
+    },
+    {
+      "<leader>gob",
+      function()
+        Snacks.gitbrowse.open({ what = "branch" })
+      end,
+      desc = "Open branch/PR on GitHub",
+    },
+    {
+      "<leader>gop",
+      function()
+        Snacks.gh.pr()
+      end,
+      desc = "View GH PRs",
+    },
+    {
+      "<leader>lg",
+      function()
+        Snacks.lazygit.open()
+      end,
+      desc = "Lazygit",
+    },
   },
 }

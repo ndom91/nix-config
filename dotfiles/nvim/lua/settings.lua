@@ -24,7 +24,7 @@ vim.api.nvim_set_var("markdown_fenced_languages", {
 
 vim.filetype.add({
   extension = {
-    mdx = "jsx",
+    mdx = "tsx",
     tf = "terraform",
   },
 })
@@ -40,7 +40,6 @@ opt.breakindent = true
 -- opt.linebreak = true
 
 opt.belloff = "all"
-opt.hidden = true
 opt.ignorecase = true
 opt.inccommand = "split"
 opt.incsearch = true
@@ -65,8 +64,6 @@ opt.tabstop = 2
 opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
-opt.termguicolors = true
-opt.wildmenu = true
 
 opt.wildignorecase = true
 opt.wildignore:append("**/node_modules/*")

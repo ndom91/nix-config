@@ -98,7 +98,13 @@ function M.list_or_jump(action, title, options)
 
   options = options or {}
 
-  local params = vim.lsp.util.make_position_params()
+  local clients = vim.lsp.get_clients({ bufnr = 0, method = action })
+  if #clients == 0 then
+    vim.notify("No LSP client supports " .. action, vim.log.levels.INFO)
+    return
+  end
+
+  local params = vim.lsp.util.make_position_params(0, clients[1].offset_encoding)
   vim.lsp.buf_request(0, action, params, function(err, result, ctx)
     if err then
       vim.api.nvim_err_writeln("Error when executing " .. action .. " : " .. err.message)
