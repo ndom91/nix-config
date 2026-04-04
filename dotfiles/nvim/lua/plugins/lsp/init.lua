@@ -38,6 +38,7 @@ return {
           "astro-language-server",
           "rust-analyzer",
           "svelte-language-server",
+          "taplo",
           "tailwindcss-language-server",
           "typescript-language-server",
           "yaml-language-server",
@@ -123,6 +124,7 @@ return {
         "svelte",
         "tailwindcss",
         "terraformls",
+        "taplo",
         "tsgo",
         "yamlls",
       })
