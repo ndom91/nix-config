@@ -98,7 +98,7 @@ vim.treesitter.start = function(bufnr, lang)
   if vim.bo[bufnr].filetype == "markdown" then return end -- nvim 0.13 range() bug
   vim.schedule(function()
     if vim.api.nvim_buf_is_valid(bufnr) then
-      _ts_start(bufnr, lang)
+      pcall(_ts_start, bufnr, lang)
     end
   end)
 end
