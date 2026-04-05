@@ -18,6 +18,9 @@ return {
       "nvim-treesitter/nvim-treesitter-context", -- Show scope context when scrolling
       opts = {
         max_lines = 4,
+        on_attach = function(buf)
+          return vim.bo[buf].filetype ~= "markdown" -- nvim 0.13 treesitter range() bug
+        end,
       },
     },
     { "fei6409/log-highlight.nvim", event = "BufRead *.log", opts = {} },

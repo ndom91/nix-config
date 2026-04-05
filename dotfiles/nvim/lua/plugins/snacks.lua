@@ -25,6 +25,7 @@ return {
       },
       doc = {
         inline = false,
+        float = false, -- nvim 0.13 treesitter range() bug on markdown
         conceal = true,
       },
     },
@@ -36,7 +37,7 @@ return {
           pane = 2,
           icon = " ",
           title = "Git Status",
-          section = "terminal",
+          -- section = "terminal",
           enabled = function()
             return Snacks.git.get_root() ~= nil
           end,
@@ -60,15 +61,7 @@ return {
       },
     },
     indent = {
-      animate = {
-        enabled = 1,
-        style = "out",
-        easing = "linear",
-        duration = {
-          step = 20, -- ms per step
-          total = 250, -- maximum duration
-        },
-      },
+      enabled = false, -- nvim 0.13 nightly treesitter range() bug in scope/parse
     },
     styles = {
       lazygit = {

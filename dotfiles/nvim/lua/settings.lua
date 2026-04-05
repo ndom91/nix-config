@@ -88,3 +88,17 @@ opt.wildignore:append(".,..")
 -- Psuendotransparency for popup-menu
 opt.pumblend = 20
 opt.wrap = true
+
+-- Defer vim.treesitter.start() to avoid blocking UI on file open.
+-- nvim 0.13 bundled ftplugins (lua.lua, help.lua) call it synchronously,
+-- and the initial parse can block for seconds.
+local _ts_start = vim.treesitter.start
+vim.treesitter.start = function(bufnr, lang)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+  if vim.bo[bufnr].filetype == "markdown" then return end -- nvim 0.13 range() bug
+  vim.schedule(function()
+    if vim.api.nvim_buf_is_valid(bufnr) then
+      _ts_start(bufnr, lang)
+    end
+  end)
+end
